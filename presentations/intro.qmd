@@ -102,11 +102,6 @@ ChatGPT can be wrong! Use ChatGPT as a source for learning, not to do the work f
 ```
 
 ---
-
-
-
-
----
 ### Now...
 **If you have already installed R and RStudio, jump to step 3. Otherwise:**
 

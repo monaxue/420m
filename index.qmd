@@ -10,6 +10,6 @@ format:
 
 [Slides](docs/presentations/intro.html)
 
-RMarkdown file to test:[test.Rmd](r_demos/test.Rmd)
+**RMarkdown file to test:** [test.Rmd](r_demos/test.Rmd)
 
-What the RMarkdown file should look like:[test.html](docs/r_demos/test.html)
+**What the RMarkdown file should look like:** [test.pdf](docs/r_demos/test.pdf)

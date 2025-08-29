@@ -1,2 +1,16 @@
-.quarto
 venv
+
+.quarto
+/.quarto/
+
+
+# R session files
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# Quarto/RMarkdown cache & output
+*_cache/
+*.utf8.md
+*.knit.md

@@ -93,7 +93,7 @@ ChatGPT can be wrong!
 :::{.card-list}
 
 - If you have already run this RMarkdown file to see if it's working
-    - Link for file
+    - <https://tinyurl.com/test-Rmd>
 
 :::
 
@@ -112,5 +112,5 @@ ChatGPT can be wrong!
 
 :::{.card-list}
 - Run this RMarkdown file to see if it's working
-    - Link for file
+    - <https://tinyurl.com/test-Rmd>
 :::

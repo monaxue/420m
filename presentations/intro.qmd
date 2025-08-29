@@ -24,7 +24,7 @@ What Psychology topics are you most interested in?
 - I am a PhD student in Desmond Ong's lab! 
 - I study emotion reasoning and learning with compuational models. 
 - Driving question: how do cultural differences in emotion cateogires emerge?
-- Outside of academics, I love dancing and starting random projects! I have ADHD :)
+- Outside of academics, I love dancing and starting random projects!
 :::
 
 ## How does this course work?
@@ -61,7 +61,7 @@ What Psychology topics are you most interested in?
 ::: {.card-list}
 - Let's watch the videos together!
 - It will be chill.
-- Please feel free to come to office hours to discuss anything you would like, including graduate school, managing ADHD, having a life outside of school, hopes and dreams.
+- Please feel free to come to office hours to discuss anything you would like, including graduate school, time management, having a life outside of school, hopes and dreams.
 :::
 
 ::::: {.columns}

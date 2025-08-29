@@ -34,11 +34,13 @@
   list-style: none; /* Hide the default bullet */
   width: 100%;
   list-style: none; /* Hide the default bullet */
+  line-height: 1.5
 }
 .reveal .slide .card-list ol {
   width: 100%;
   list-style-type: decimal;
   list-style-position: inside;
+  line-height: 1.5
 
 }
 .reveal .slide .card-list > ul > li,
@@ -47,24 +49,36 @@
   box-sizing: border-box; /* Include padding in the element's total width */
   line-height: 1; /* Adjust line height for list items */
   background-color: var(--li-bg-1);
-  padding:20px;
+  padding-left:20px;
+  padding-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   border-radius: 15px;
   width: 95%;
+  line-height: 1.5
 }
 
 .reveal .slide .card-list li > :where(ul, ol) > li {
   background-color: var(--li-bg-2);
   /* optional tweaks so the inner card sits nicely inside the parent */
   width: 89%;
-  padding: 12px;
+  padding-left:20px;
+  padding-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   border-radius: 15px;
+  line-height: 1.5
 }
 
 .reveal .slide .card-list li > :where(ul, ol) > li > :where(ul, ol) > li {
   background-color: var(--li-bg-1);
   width: 88%;
-  padding: 10px;
-  border-radius: 12px;
+  padding-left:20px;
+  padding-right: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 15px;
+  line-height: 1.5
 }
 
 
@@ -78,3 +92,7 @@
 .reveal .slides > section.theme-blue   { --bg: var(--bg-blue);   --li-bg-1: var(--li-bg-1-blue); --li-bg-2: var(--li-bg-2-blue);}
 .reveal .slides > section.theme-orange { --bg: var(--bg-orange); --li-bg-1: var(--li-bg-1-orange); --li-bg-2: var(--li-bg-2-orange);}
 .reveal .slides > section.theme-green  { --bg: var(--bg-green);  --li-bg-1: var(--li-bg-1-green); --li-bg-2: var(--li-bg-2-green);}
+
+.reveal .slides p {
+  line-height: 1.5; /* Adjust this value as needed */
+}

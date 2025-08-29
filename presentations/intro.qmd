@@ -133,3 +133,7 @@ Go here to install Rstudio
 - Run this RMarkdown file to see if it's working
     - <https://tinyurl.com/test-Rmd>
 :::
+
+.reveal li {
+      line-height: 1.5; /* Adjust this value as needed */
+    }

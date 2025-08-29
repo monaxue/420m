@@ -1,0 +1,15 @@
+---
+format:
+    html: default
+
+---
+
+# Welcome to PSYCH420's Lab Section!
+
+## Week 1
+
+[Slides](docs/presentations/intro.html)
+
+[RMarkdown file to test](r_demos/test.Rmd)
+
+[What the RMarkdown file should look like](docs/r_demos/test.Rmd)

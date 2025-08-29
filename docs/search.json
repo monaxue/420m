@@ -1,0 +1,149 @@
+[
+  {
+    "objectID": "r_demos/test.html",
+    "href": "r_demos/test.html",
+    "title": "Wecome to PSYCH 420",
+    "section": "",
+    "text": "This is a heading\nThis is some descriptive text\n\n# This is a comment\n# I loaded some packages here. Now these packages are accessible to the rest of the document.\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.2     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.1.0     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(ggplot2)\n\n\n\nIf the PDF doesn’t compile…\nYou may have to install “tinytex.’ Un-comment the two lines below and run them with the green triangle on the right. Then re-comment them.\n\n#install.packages('tinytex')\n#tinytex::install_tinytex()\n\n\n\nHere is some fake data\n\na &lt;- 2 # We can use &lt;- to assign values to variables\n\nb &lt;- 1\n\nx &lt;- rnorm(n = 100, mean = 5, sd=1) # Here, I sampled some random values from a normal distribution and assigned them to the variable x\n\nerrors &lt;- rnorm(n = 100, mean = 0, sd=1) # Same for the errors\n\ny &lt;- a*x+b + errors # I generated fake y values by using the function y = ax + b\n\ndata &lt;- tibble(x = x, y = a*x+b + errors) # I created a dataframe to store the fake data\n\nWe can take a peak at the first few rows using the head() functions\n\nhead(data) \n\n# A tibble: 6 × 2\n      x     y\n  &lt;dbl&gt; &lt;dbl&gt;\n1  4.11  8.78\n2  6.18 13.0 \n3  4.78 11.9 \n4  5.21 12.5 \n5  6.48 14.4 \n6  4.99 11.7 \n\n\n\n\nThis is the histogram of x\n\nggplot(data, aes(x)) + geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\nThis is the scatter plot of the raw data\n\nggplot(data, aes(x,y)) + geom_point()\n\n\n\n\n\n\n\n\n\n\nThis is a filtered dataset for x &lt; 5\n\nfiltered_data &lt;- data %&gt;% filter(x&lt;5)\n\nsummary(filtered_data) # We can quickly find some statistics using the summary() function\n\n       x               y         \n Min.   :2.854   Min.   : 5.904  \n 1st Qu.:4.209   1st Qu.: 9.053  \n Median :4.347   Median : 9.914  \n Mean   :4.391   Mean   : 9.909  \n 3rd Qu.:4.817   3rd Qu.:10.764  \n Max.   :4.988   Max.   :12.661  \n\n\n\n\nThis is the scatter plot of the filtered data\n\nfiltered_scatter &lt;- ggplot(filtered_data, aes(x,y)) + geom_point()\nfiltered_scatter\n\n\n\n\n\n\n\n\n\n\nYou can add a line of best fit like so\n\nfiltered_scatter + geom_abline(slope = a, intercept = b)"
+  },
+  {
+    "objectID": "presentations/intro.html#welcome-to-psych-420",
+    "href": "presentations/intro.html#welcome-to-psych-420",
+    "title": "Week 1 Lab",
+    "section": "Welcome to PSYCH 420!",
+    "text": "Welcome to PSYCH 420!\nWhat Psychology topics are you most interested in?"
+  },
+  {
+    "objectID": "presentations/intro.html#overview",
+    "href": "presentations/intro.html#overview",
+    "title": "Week 1 Lab",
+    "section": "Overview",
+    "text": "Overview\n\n\nIntro\nSyllubus, and other logistics\nChecking R installation"
+  },
+  {
+    "objectID": "presentations/intro.html#hi-im-mona",
+    "href": "presentations/intro.html#hi-im-mona",
+    "title": "Week 1 Lab",
+    "section": "Hi, I’m Mona",
+    "text": "Hi, I’m Mona\n\n\nI am a PhD student in Desmond Ong’s lab!\nI study emotion reasoning and learning with compuational models.\nDriving question: how do cultural differences in emotion cateogires emerge?\nOutside of academics, I love dancing and starting random projects! I have ADHD :)"
+  },
+  {
+    "objectID": "presentations/intro.html#how-does-this-course-work",
+    "href": "presentations/intro.html#how-does-this-course-work",
+    "title": "Week 1 Lab",
+    "section": "How does this course work?",
+    "text": "How does this course work?\n\n\nHybrid format\nOnline “content modules”\n\nShort videos\nShort practice quizes\n\nIn-person labs\n\nWith TA (me!)\nTurn in work at the end of lab\nYou can leave after you finish"
+  },
+  {
+    "objectID": "presentations/intro.html#syllabus",
+    "href": "presentations/intro.html#syllabus",
+    "title": "Week 1 Lab",
+    "section": "Syllabus",
+    "text": "Syllabus\nDownload PDF file."
+  },
+  {
+    "objectID": "presentations/intro.html#expectations",
+    "href": "presentations/intro.html#expectations",
+    "title": "Week 1 Lab",
+    "section": "Expectations",
+    "text": "Expectations\n\n\nBe engaged\n\nWork in small groups and help each other\n\nAttendence\n\nAttendence will be taken by PollEverywhere questions\n\nYou are expected to complete lecture materials before lab\n\nI know that independent work can be challenging\nThat is why during my office hours, we can come together to watch the videos"
+  },
+  {
+    "objectID": "presentations/intro.html#office-hours",
+    "href": "presentations/intro.html#office-hours",
+    "title": "Week 1 Lab",
+    "section": "Office hours",
+    "text": "Office hours\n\n\nLet’s watch the videos together!\nIt will be chill.\nPlease feel free to come to office hours to discuss anything you would like, including graduate school, managing ADHD, having a life outside of school, hopes and dreams.\n\n\n\n\n\n\n\n\n\n\n\n\n\nhttps://www.when2meet.com/?31944050-nWPtY\nPlease enter your availability by Saturday."
+  },
+  {
+    "objectID": "presentations/intro.html#tips",
+    "href": "presentations/intro.html#tips",
+    "title": "Week 1 Lab",
+    "section": "Tips",
+    "text": "Tips\n\n\nGo to Alex’s office hours! He’s really nice.\nFor coding, the internet and ChatGPT are your friends\n\n\n\n\n\n\n\n\n\n\nCaution\n\n\nChatGPT can be wrong!"
+  },
+  {
+    "objectID": "presentations/intro.html#poll-what-is-your-experience-with-r",
+    "href": "presentations/intro.html#poll-what-is-your-experience-with-r",
+    "title": "Week 1 Lab",
+    "section": "Poll: What is your experience with R?",
+    "text": "Poll: What is your experience with R?"
+  },
+  {
+    "objectID": "presentations/intro.html#finally",
+    "href": "presentations/intro.html#finally",
+    "title": "Week 1 Lab",
+    "section": "Finally…",
+    "text": "Finally…\n\n\nRun this RMarkdown file to see if it’s working\n\nhttps://tinyurl.com/test-Rmd"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to PSYCH420’s Lab Section!",
+    "section": "",
+    "text": "Slides\nRMarkdown file to test"
+  },
+  {
+    "objectID": "index.html#week-1",
+    "href": "index.html#week-1",
+    "title": "Welcome to PSYCH420’s Lab Section!",
+    "section": "",
+    "text": "Slides\nRMarkdown file to test"
+  },
+  {
+    "objectID": "monatheme/template.html#introduction",
+    "href": "monatheme/template.html#introduction",
+    "title": "Untitled",
+    "section": "Introduction",
+    "text": "Introduction\nTODO Create an example file that demonstrates the formatting and features of your format."
+  },
+  {
+    "objectID": "monatheme/template.html#more-information",
+    "href": "monatheme/template.html#more-information",
+    "title": "Untitled",
+    "section": "More Information",
+    "text": "More Information\nYou can learn more about controlling the appearance of RevealJS output here: https://quarto.org/docs/presentations/revealjs/"
+  },
+  {
+    "objectID": "presentations/week2.html#r",
+    "href": "presentations/week2.html#r",
+    "title": "STAT420 Lab",
+    "section": "R",
+    "text": "R\n\nDownload R\nDownload R Studio\ninstall.packages\n\ntidyverse\nggplot2\n\nYAML Header\nCode block:"
+  },
+  {
+    "objectID": "presentations/week2.html#rmarkdown-essentials",
+    "href": "presentations/week2.html#rmarkdown-essentials",
+    "title": "STAT420 Lab",
+    "section": "RMarkdown Essentials",
+    "text": "RMarkdown Essentials\n\nHeaderR Code ChunkRendering\n\n\n---\n# This is the YAML Header. Notice it is enclosed in \"---\"\n# It includes metadata like the following:\n\ntitle: ...\nauthor: ...\ndate: ...\noutput: pdf_document\n---\n\n\n```{r}\n# This is your R code chunk.\n# This is where you write R code.\n```\n\n\n\n\n# This is a heading\n\n```{r}\n# This is a comment\na &lt;- 1\nb &lt;- 2\n\nprint(a)\n```\n\nThis is a heading\n# This is a comment\na &lt;- 1\nb &lt;- 2\n\nprint(a)\n1"
+  },
+  {
+    "objectID": "presentations/week2.html#basic-syntax",
+    "href": "presentations/week2.html#basic-syntax",
+    "title": "STAT420 Lab",
+    "section": "Basic Syntax",
+    "text": "Basic Syntax\n# This is a comment. You denote it with #\n\n# This is how you assign values (e.g., 1) to a variable (e.g., a)\na &lt;- 1 \n\n# This is how you create a list. You use the notation c()\nx &lt;- c(1,2,3)"
+  },
+  {
+    "objectID": "presentations/week2.html#packages",
+    "href": "presentations/week2.html#packages",
+    "title": "STAT420 Lab",
+    "section": "Packages",
+    "text": "Packages\n# Instaling packages:\ninstall.packages(\"package_name\") # Make sure to include the \" \"\n\n# Importing packages\nlibrary(\"package_name\")"
+  },
+  {
+    "objectID": "presentations/week2.html#import-data",
+    "href": "presentations/week2.html#import-data",
+    "title": "STAT420 Lab",
+    "section": "Import data",
+    "text": "Import data\nlibrary(tidyverse)\n\ndata &lt;- read_csv(\"data-folder/data.csv\")"
+  },
+  {
+    "objectID": "presentations/week2.html#plot-data",
+    "href": "presentations/week2.html#plot-data",
+    "title": "STAT420 Lab",
+    "section": "Plot data",
+    "text": "Plot data\nlibrary(ggplot2)\n\n# If we want to plot data$y ~ data$x\n\n# Frist, define the data\nggplot(data,aes(x,y)) + \n    geom_point() # add the scatter plot layer"
+  }
+]

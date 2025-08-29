@@ -1,7 +1,6 @@
 project:
   title: "fa2025_psych420"
-  output-dir: _output
-
+  output-dir: docs
 
 
 

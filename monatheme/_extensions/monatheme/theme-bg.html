@@ -1,0 +1,21 @@
+<script>
+(function () {
+  function applyBG() {
+    document.querySelectorAll('.reveal .slides section').forEach(sec => {
+      const bg = getComputedStyle(sec).getPropertyValue('--bg').trim()
+             || getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
+      if (bg) sec.setAttribute('data-background-color', bg);
+    });
+    if (window.Reveal && Reveal.sync) Reveal.sync();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyBG);
+  } else {
+    applyBG();
+  }
+  if (window.Reveal && Reveal.on) {
+    Reveal.on('ready', applyBG);
+    Reveal.on('slidechanged', applyBG);
+  }
+})();
+</script>

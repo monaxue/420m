@@ -1,0 +1,116 @@
+---
+title: Week 1 Lab
+
+---
+
+## Welcome to PSYCH 420!
+
+### What Psychology topics are you most interested in?
+
+```{=html}
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/9hLIqc0r5bjiCAdfOS1Rn?controls=none&short_poll=true" width="100%" height="600"></iframe>
+```
+
+## Overview
+
+::: {.card-list .nonincremental}
+- Intro
+- Syllubus, and other logistics 
+- Checking R installation
+:::
+
+## Hi, I'm Mona
+::: {.card-list}
+- I am a PhD student in Desmond Ong's lab! 
+- I study emotion reasoning and learning with compuational models. 
+- Driving question: how do cultural differences in emotion cateogires emerge?
+- Outside of academics, I love dancing and starting random projects! I have ADHD :)
+:::
+
+## How does this course work?
+::: {.card-list}
+- Hybrid format
+- Online "content modules"
+    - Short videos
+    - Short practice quizes
+- In-person labs
+    - With TA (me!)
+    - Turn in work at the end of lab
+    - You can leave after you finish
+:::
+
+## Syllabus
+
+{{< pdf assets/420Syllabus_Fall_2025.pdf width=100% height=800 >}}
+
+
+## Expectations
+::: {.card-list}
+- Be engaged
+    - Work in small groups and help each other
+- Attendence
+    - Attendence will be taken by PollEverywhere questions
+- You are expected to complete lecture materials before lab
+    - I know that inependent work can be challenging
+    - That is why during my office hours, we can come together to watch the videos
+
+:::
+
+## Office hours
+::: {.card-list}
+- Let's watch the videos together!
+- It will be chill.
+- Please feel free to come to office hours to discuss anything you would like, including graduate school, managing ADHD, having a life outside of school, hopes and dreams.
+- ![](assets\when2meet-office-hours.png){height="150"}
+    - <https://www.when2meet.com/?31944050-nWPtY>
+- Please enter your availability by Saturday.
+:::
+
+## Tips
+::: {.card-list}
+- Go to Alex's office hours! He's really nice.
+- For coding, the internet and ChatGPT are your friends
+:::
+
+. . .
+
+::: {.callout-caution}
+ChatGPT can be wrong!
+:::
+
+
+## Poll: What is your experience with R?
+
+```{=html}
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/9hLIqc0r5bjiCAdfOS1Rn?controls=none&short_poll=true" width="100%" height="600"></iframe>
+```
+
+## Next week
+- Introduction to R
+
+## If you haven't installed R or RStudio, stay and install
+
+:::{.card-list}
+
+- If you have already run this RMarkdown file to see if it's working
+    - Link for file
+
+:::
+
+--- 
+
+### Go here to install R
+
+<https://cran.r-project.org/>
+```{=html}
+    <iframe src=https://cran.r-project.org/ width="100%" height="500" ></iframe>
+```
+### Go here to install Rstudio {.column}
+<https://posit.co/download/rstudio-desktop/>
+
+## Install Tinytex
+
+:::{.card-list}
+- Run this RMarkdown file to see if it's working
+    - Link for file
+:::

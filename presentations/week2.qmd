@@ -1,0 +1,118 @@
+## R
+
+- Download R
+- Download R Studio
+- install.packages
+    - tidyverse
+    - ggplot2
+- YAML Header
+- Code block:
+
+## RMarkdown Essentials
+
+::::: {.panel-tabset}
+
+### Header
+````{verbatim}
+---
+# This is the YAML Header. Notice it is enclosed in "---"
+# It includes metadata like the following:
+
+title: ...
+author: ...
+date: ...
+output: pdf_document
+---
+
+````
+
+### R Code Chunk
+
+````{verbatim}
+```{r}
+# This is your R code chunk.
+# This is where you write R code.
+```
+````
+
+### Rendering
+
+:::: {.columns}
+:::{.column width="50%"}
+
+````{verbatim}
+# This is a heading
+
+```{r}
+# This is a comment
+a <- 1
+b <- 2
+
+print(a)
+```
+````
+
+:::
+
+:::{.column width="50%"}
+#### This is a heading
+
+```r
+# This is a comment
+a <- 1
+b <- 2
+
+print(a)
+```
+1
+
+:::
+
+::::
+
+:::::
+
+## Basic Syntax
+````r
+# This is a comment. You denote it with #
+
+# This is how you assign values (e.g., 1) to a variable (e.g., a)
+a <- 1 
+
+# This is how you create a list. You use the notation c()
+x <- c(1,2,3)
+````
+
+## Packages
+
+````r
+# Instaling packages:
+install.packages("package_name") # Make sure to include the " "
+
+# Importing packages
+library("package_name")
+
+````
+
+## Import data
+
+````r
+library(tidyverse)
+
+data <- read_csv("data-folder/data.csv")
+
+````
+
+## Plot data
+
+```r
+library(ggplot2)
+
+# If we want to plot data$y ~ data$x
+
+# Frist, define the data
+ggplot(data,aes(x,y)) + 
+    geom_point() # add the scatter plot layer
+
+```
+

@@ -101,8 +101,7 @@ ChatGPT can be wrong! Use ChatGPT as a source for learning, not to do the work f
 <iframe src="https://embed.polleverywhere.com/multiple_choice_polls/tvr9BartQ6whc3SFTG3c7?controls=none&short_poll=true" width="100%" height="600px"></iframe>
 ```
 
----
-### Now...
+## Now...
 **If you have already installed R and RStudio, jump to step 3. Otherwise:**
 
 :::: {.nonincremental}

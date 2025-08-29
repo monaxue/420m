@@ -5,10 +5,10 @@ title: Week 1 Lab
 
 ## Welcome to PSYCH 420!
 
-What Psychology topics are you most interested in?
+**What do you think about ChatGPT?**
 
 ```{=html}
-<iframe src="https://embed.polleverywhere.com/free_text_polls/GXaTU98hIuhz3Inb3L5Zb?controls=none&short_poll=true" width="100%" height="600px"></iframe>
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/w9nMb1UH2AYeKw3IuPzsb?controls=none&short_poll=true" width="100%" height="600px"></iframe>
 ```
 
 ## Overview
@@ -26,6 +26,26 @@ What Psychology topics are you most interested in?
 - Driving question: how do cultural differences in emotion categories emerge?
 - Outside of academics, I love dancing and starting random projects!
 :::
+
+## Now, it's your turn!
+
+What Psychology topics are you most interested in?
+
+```{=html}
+<iframe src="https://embed.polleverywhere.com/free_text_polls/GXaTU98hIuhz3Inb3L5Zb?controls=none&short_poll=true" width="100%" height="600px"></iframe>
+```
+
+---
+
+::: {.card-list}
+- Turn to your neighbor and introduce yourself
+- Any hobbies or traits that you have in common?
+:::
+
+::: {.card-list}
+- Now go around, say your name, and tell us what you have in common.
+:::
+
 
 ## How does this course work?
 ::: {.card-list}
@@ -84,7 +104,7 @@ What Psychology topics are you most interested in?
 
 ## Tips
 ::: {.card-list}
-- Go to Alex's office hours! He's really nice.
+- Go to Alex's office hours! He's really nice. 
 - For coding, the internet (StackOverflow is great) and ChatGPT are your friends
 :::
 

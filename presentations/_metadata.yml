@@ -3,4 +3,8 @@ format:
       incremental: true
       self-contained: false
       smaller: true
+      chalkboard:
+        theme: whiteboard
+      preview-links: true
+
 author: "Mona Xue"

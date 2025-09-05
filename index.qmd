@@ -8,8 +8,15 @@ format:
 
 ## Week 1
 
-[Slides](docs/presentations/intro.html)
+[Slides](presentations/intro.html)
 
 **RMarkdown file to test:** [test.Rmd](r_demos/test.Rmd)
 
-**What the RMarkdown file should look like:** [test.pdf](docs/r_demos/test.pdf)
+**What the RMarkdown file should look like:** [test.pdf](r_demos/test.pdf)
+
+
+## Week 2
+
+[Slides](presentations/week2.html)
+
+[R Cheatsheet](presentations/r-cheatsheet.html)

@@ -7,7 +7,7 @@ title: Week 2 Lab
 :::::{.columns}
 :::{.column}
 :::{.card-list}
-- We wil by trying Slido for attendence.
+- We will by trying Slido for attendance.
 
 - Scan the code below and create a profile.
 
@@ -72,7 +72,7 @@ title: Week 2 Lab
 - Markdown text and headings
 - What is a code block?
 - The "run" button and keyboard shortcut
-- Basic r syntax: comments, assign, varibles, strings, lists, operators, print, indeces
+- Basic r syntax: comments, assign, variables, strings, lists, operators, print, indices
 - R coding challenge
 - Installing packages
 - Reading data
@@ -226,7 +226,7 @@ x[1:2] # Outputs "a", "b"
 ```
 . . . 
 
-**This is how you print values so that they are visable**
+**This is how you print values so that they are visible**
 ```r
 print(x)
 ```
@@ -412,7 +412,7 @@ word3 <- c(word2, "G")
 - Create a vector with numbers 14, 31, 9, 19, 81, 3 and name that `c`
 - Insert the sum of vector `a` and the sum of vector `b` to the end of vector `a`. Assign this to `d`
 - Subtract vector `c` from vector `d`. Make this vector `e`. Print `e`
-- Each number in vector `e` represents the position of a letter in `word3`. This position is called the index. A new word is formed when you reorder the letters based on the order specifed in `e`. Print out the new word. Challenge mode: decipher the word in one line of code using `[]`
+- Each number in vector `e` represents the position of a letter in `word3`. This position is called the index. A new word is formed when you reorder the letters based on the order specified in `e`. Print out the new word. Challenge mode: decipher the word in one line of code using `[]`
 
 :::
 
@@ -434,7 +434,7 @@ e <- d - c
 
 print(e)
 
-# Each number in vector e represents the position of a letter in `word3`. This position is called the index. A new word is formed when you reorder the letters based on the order specifed in `e`. Print out the new word. Challenge mode: decypher the word in one line of code using []
+# Each number in vector e represents the position of a letter in `word3`. This position is called the index. A new word is formed when you reorder the letters based on the order specified in `e`. Print out the new word. Challenge mode: decipher the word in one line of code using []
 
 print(word3[e])
 
@@ -469,7 +469,7 @@ e <- d - c
 
 print(e)
 
-# Each number in vector e represents the position of a letter in `word3`. This position is called the index. A new word is formed when you reorder the letters based on the order specifed in `e`. Print out the new word. Challenge mode: decypher the word in one line of code using []
+# Each number in vector e represents the position of a letter in `word3`. This position is called the index. A new word is formed when you reorder the letters based on the order specified in `e`. Print out the new word. Challenge mode: decipher the word in one line of code using []
 
 print(word3[e])
 

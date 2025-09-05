@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.33">
 
   <meta name="author" content="Mona Xue">
-  <title>week2</title>
+  <title>Week 2 Lab</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -194,10 +194,16 @@
   <div class="reveal">
     <div class="slides">
 
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Week 2 Lab</h1>
 
-<section>
-<section id="week-2" class="title-slide slide level1 center">
-<h1>Week 2</h1>
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Mona Xue 
+</div>
+</div>
+</div>
 
 </section>
 <section id="slido" class="slide level2">
@@ -206,7 +212,7 @@
 <div class="column">
 <div class="card-list">
 <ul>
-<li class="fragment"><p>We wil by trying Slido for attendence.</p></li>
+<li class="fragment"><p>We will by trying Slido for attendance.</p></li>
 <li class="fragment"><p>Scan the code below and create a profile.</p></li>
 <li class="fragment"><p>If you don’t create a profile, I won’t know you were here.</p></li>
 <li class="fragment"><p>There’s a Q&amp;A function. We could try that and see if it works.</p></li>
@@ -226,7 +232,7 @@
 <li class="fragment">Alex’s office hours are Tuesday and Thursday, 1-2pm in SEAY 5.206</li>
 </ul>
 </div>
-</section></section>
+</section>
 <section>
 <section id="coding-time" class="title-slide slide level1 center">
 <h1>Coding time!</h1>
@@ -275,7 +281,7 @@
 <li>Markdown text and headings</li>
 <li>What is a code block?</li>
 <li>The “run” button and keyboard shortcut</li>
-<li>Basic r syntax: comments, assign, varibles, strings, lists, operators, print, indeces</li>
+<li>Basic r syntax: comments, assign, variables, strings, lists, operators, print, indices</li>
 <li>R coding challenge</li>
 <li>Installing packages</li>
 <li>Reading data</li>
@@ -400,7 +406,7 @@
 <span id="cb8-4"><a href=""></a>x[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="co"># Outputs "a", "b"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
-<p><strong>This is how you print values so that they are visable</strong></p>
+<p><strong>This is how you print values so that they are visible</strong></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -439,7 +445,6 @@
 <span id="cb13-12"><a href=""></a></span>
 <span id="cb13-13"><a href=""></a>(<span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span>) <span class="sc">*</span> <span class="dv">2</span> <span class="sc">/</span> (<span class="dv">2</span>) <span class="co"># Order of operations still apply, remember to use parentheses when you need to</span></span>
 <span id="cb13-14"><a href=""></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>QR Code</p>
 </section></section>
 <section>
 <section id="coding-challenge" class="title-slide slide level1 center">
@@ -451,6 +456,10 @@
 <div class="card-list">
 <ul>
 <li class="fragment">Your friend is trying to send you his secret password. He gave you the word “Random”, then provided a list instructions on how to decode it.</li>
+<li class="fragment">R Cheatsheet
+<ul>
+<li class="fragment"><img data-src="assets/r-cheatsheet.png"></li>
+</ul></li>
 </ul>
 </div>
 </section>
@@ -571,9 +580,9 @@
 <div class="card-list">
 <ul>
 <li class="fragment">Create a vector with numbers 14, 31, 9, 19, 81, 3 and name that <code>c</code></li>
-<li class="fragment">Insert the sum of vector <code>b</code> and the sum of vector <code>c</code> to the end of vector <code>a</code>. Assign this to <code>d</code></li>
-<li class="fragment">Subtract vector <code>c</code> from vector <code>d</code>. Make this vector e. Print <code>e</code></li>
-<li class="fragment">Each number in vector <code>e</code> represents the position of a letter in <code>word3</code>. This position is called the index. A new word is formed when you reorder the letters based on the order specifed in <code>e</code>. Print out the new word. Challenge mode: decipher the word in one line of code using <code>[]</code></li>
+<li class="fragment">Insert the sum of vector <code>a</code> and the sum of vector <code>b</code> to the end of vector <code>a</code>. Assign this to <code>d</code></li>
+<li class="fragment">Subtract vector <code>c</code> from vector <code>d</code>. Make this vector <code>e</code>. Print <code>e</code></li>
+<li class="fragment">Each number in vector <code>e</code> represents the position of a letter in <code>word3</code>. This position is called the index. A new word is formed when you reorder the letters based on the order specified in <code>e</code>. Print out the new word. Challenge mode: decipher the word in one line of code using <code>[]</code></li>
 </ul>
 </div>
 <aside class="notes">
@@ -582,17 +591,17 @@
 <span id="cb18-3"><a href=""></a></span>
 <span id="cb18-4"><a href=""></a>c <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">31</span>, <span class="dv">9</span>, <span class="dv">19</span>, <span class="dv">81</span>, <span class="dv">3</span>)</span>
 <span id="cb18-5"><a href=""></a></span>
-<span id="cb18-6"><a href=""></a><span class="co"># Insert the sum of vector `b` and the sum of vector `c` to the end of vector `a`. Assign this to `d`</span></span>
+<span id="cb18-6"><a href=""></a><span class="co"># Insert the sum of vector `a` and the sum of vector `b` to the end of vector `a`. Assign this to `d`</span></span>
 <span id="cb18-7"><a href=""></a></span>
 <span id="cb18-8"><a href=""></a>d <span class="ot">&lt;-</span> <span class="fu">c</span>(a,<span class="fu">sum</span>(a),<span class="fu">sum</span>(b))</span>
 <span id="cb18-9"><a href=""></a></span>
-<span id="cb18-10"><a href=""></a><span class="co"># Subtract vector `c` from vector `d`. Make this vector e. Print `e`</span></span>
+<span id="cb18-10"><a href=""></a><span class="co"># Subtract vector `c` from vector `d`. Make this vector `e`. Print `e`</span></span>
 <span id="cb18-11"><a href=""></a></span>
 <span id="cb18-12"><a href=""></a>e <span class="ot">&lt;-</span> d <span class="sc">-</span> c</span>
 <span id="cb18-13"><a href=""></a></span>
 <span id="cb18-14"><a href=""></a><span class="fu">print</span>(e)</span>
 <span id="cb18-15"><a href=""></a></span>
-<span id="cb18-16"><a href=""></a><span class="co"># Each number in vector e represents the position of a letter in `word3`. This position is called the index. A new word is formed when you reorder the letters based on the order specifed in `e`. Print out the new word. Challenge mode: decypher the word in one line of code using []</span></span>
+<span id="cb18-16"><a href=""></a><span class="co"># Each number in vector e represents the position of a letter in `word3`. This position is called the index. A new word is formed when you reorder the letters based on the order specified in `e`. Print out the new word. Challenge mode: decipher the word in one line of code using []</span></span>
 <span id="cb18-17"><a href=""></a></span>
 <span id="cb18-18"><a href=""></a><span class="fu">print</span>(word3[e])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <style type="text/css">
@@ -621,17 +630,17 @@
 <span id="cb19-3"><a href=""></a></span>
 <span id="cb19-4"><a href=""></a>c <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">31</span>, <span class="dv">9</span>, <span class="dv">19</span>, <span class="dv">81</span>, <span class="dv">3</span>)</span>
 <span id="cb19-5"><a href=""></a></span>
-<span id="cb19-6"><a href=""></a><span class="co"># Insert the sum of vector `b` and the sum of vector `c` to the end of vector `a`. Assign this to `d`</span></span>
+<span id="cb19-6"><a href=""></a><span class="co"># Insert the sum of vector `a` and the sum of vector `b` to the end of vector `a`. Assign this to `d`</span></span>
 <span id="cb19-7"><a href=""></a></span>
 <span id="cb19-8"><a href=""></a>d <span class="ot">&lt;-</span> <span class="fu">c</span>(a,<span class="fu">sum</span>(a),<span class="fu">sum</span>(b))</span>
 <span id="cb19-9"><a href=""></a></span>
-<span id="cb19-10"><a href=""></a><span class="co"># Subtract vector `c` from vector `d`. Make this vector e. Print `e`</span></span>
+<span id="cb19-10"><a href=""></a><span class="co"># Subtract vector `c` from vector `d`. Make this vector `e`. Print `e`</span></span>
 <span id="cb19-11"><a href=""></a></span>
 <span id="cb19-12"><a href=""></a>e <span class="ot">&lt;-</span> d <span class="sc">-</span> c</span>
 <span id="cb19-13"><a href=""></a></span>
 <span id="cb19-14"><a href=""></a><span class="fu">print</span>(e)</span>
 <span id="cb19-15"><a href=""></a></span>
-<span id="cb19-16"><a href=""></a><span class="co"># Each number in vector e represents the position of a letter in `word3`. This position is called the index. A new word is formed when you reorder the letters based on the order specifed in `e`. Print out the new word. Challenge mode: decypher the word in one line of code using []</span></span>
+<span id="cb19-16"><a href=""></a><span class="co"># Each number in vector e represents the position of a letter in `word3`. This position is called the index. A new word is formed when you reorder the letters based on the order specified in `e`. Print out the new word. Challenge mode: decipher the word in one line of code using []</span></span>
 <span id="cb19-17"><a href=""></a></span>
 <span id="cb19-18"><a href=""></a><span class="fu">print</span>(word3[e])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>

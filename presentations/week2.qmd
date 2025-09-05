@@ -278,7 +278,7 @@ sum(y) # Adds together the elements of y
 
 mean(y) # Takes the mean of the elements of y
 
-2 * 2 # Multiplcation
+2 * 2 # Multiplication
 
 2 / 2 # Division
 

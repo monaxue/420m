@@ -288,8 +288,8 @@ sqrt(2) # Square root of 2
 ## 
 :::{.card-list}
 - Your friend is trying to send you his secret password. He gave you the word "Random", then provided a list instructions on how to decode it.
-
 - R Cheatsheet
+    - ![](assets/r-cheatsheet.png)
 
 :::
 

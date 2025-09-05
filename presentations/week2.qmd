@@ -282,9 +282,6 @@ sqrt(2) # Square root of 2
 ```
 
 
-QR Code
-
-
 # Coding challenge
 ***Get into groups of 3-4***
 

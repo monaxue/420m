@@ -17,7 +17,7 @@ title: Week 2 Lab
 :::{.card-list}
 - We will by trying Slido for attendance.
 
-- Scan the code below and create a profile.
+- Scan the code and create a profile.
 
 - If you don't create a profile, I won't know you were here.
 

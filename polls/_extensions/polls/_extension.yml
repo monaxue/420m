@@ -1,0 +1,20 @@
+title: "Polls"
+version: 0.1.0
+
+contributes:
+  formats:
+    revealjs:
+      self-contained: false
+      css:
+        - polls.cssj
+      include-in-header:
+        - text: |
+            <script>
+              // Set your API endpoint here (or override in your document YAML)
+              window.POLL_API = window.POLL_API || "https://fraage.de";
+            </script>
+      include-after-body:
+        - polls.js
+      resources:
+        - polls.js
+        - polls.css

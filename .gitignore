@@ -14,3 +14,4 @@ venv
 *_cache/
 *.utf8.md
 *.knit.md
+/.luarc.json

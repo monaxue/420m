@@ -1,0 +1,87 @@
+## Basic Syntax
+
+```r
+# This is a comment. You denote it with #
+
+x # This is a variable. It can store stuff
+
+"x" # This is a string. It is just text
+
+# This is how you assign values to a variable
+x <- 1 
+
+```
+
+**This is how you create a vector. You use the notation `c()`**
+```r
+x <- c("a", "b", "c")
+y <- c(1, 2, 3)
+z <- 1:3 # This is the same as y. The : indicates a vector from 1 to 3
+
+```
+
+**To choose a specific element of a vector, you can use `[]`**
+```r
+x[2] # Outputs "b"
+y[3] # Outputs 3
+x[c(2, 3)] # Outputs "b", "c"
+x[1:2] # Outputs "a", "b"
+
+```
+
+**This is how you print values so that they are visable**
+```r
+print(x)
+```
+
+## Doing math
+
+
+```r
+1 + 1
+1 - 1
+```
+2
+
+0
+
+
+**Adding a single number to a vector**
+
+```r
+y + 1 # Adds the single number to all elements in the vector
+```
+2, 3, 4
+
+**Adding a vector to a vector**
+```r
+y + z # Adds the 1st to the 1st, the 2nd to the 2nd, etc.
+
+```
+2, 4, 6
+
+
+**Other useful functions**
+
+```r
+sum(y) # Adds together the elements of y
+
+mean(y) # Takes the mean of the elements of y
+
+2 * 2 # Multiplcation
+
+2 / 2 # Division
+
+2^2 # To the power of 2
+
+sqrt(2) # Square root of 2
+
+(2 + 2) * 2 / (2) # Order of operations still apply, remember to use parentheses when you need to
+
+
+```
+
+
+
+ 
+

@@ -1,0 +1,15 @@
+## Plot data
+
+- Install ggplot2
+- How do we install packages? Slido question
+
+```r
+library(ggplot2)
+
+# If we want to plot data$y ~ data$x
+
+# Frist, define the data
+ggplot(data,aes(x,y)) + 
+    geom_point() # add the scatter plot layer
+
+```

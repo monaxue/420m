@@ -3,6 +3,14 @@ title: Week 2 Lab
 
 ---
 
+## Website
+:::{.card-list}
+- You can now find all lab materials on this site
+    - <https://monaxue.github.io/420m/>
+    - ![](assets/website.png){height=200}
+
+:::
+
 ## Slido
 :::::{.columns}
 :::{.column}
@@ -289,9 +297,9 @@ sqrt(2) # Square root of 2
 
 ## 
 :::{.card-list}
-- Your friend is trying to send you his secret password. He gave you the word "Random", then provided a list instructions on how to decode it.
+- Your friend is trying to send you a secret password, but he is worried about security. So he gives you the starting word "random", then provides you with a list instructions to decode it.
 - R Cheatsheet
-    - ![](assets/r-cheatsheet.png)
+    - ![](assets/r-cheatsheet-files.png){height="200"}
 
 :::
 
@@ -511,6 +519,8 @@ data <- read_csv("data-folder/data.csv")
 ## Knit your RMarkdown file
 After you knit your Rmakdown file, upload it to canvas. You are done!
 ![](assets/knit.gif)
+
+Remember you can now find all lab materials on this site: <https://monaxue.github.io/420m/>
 
 
 

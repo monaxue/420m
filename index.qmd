@@ -19,4 +19,4 @@ format:
 
 [Slides](presentations/week2.html)
 
-[R Cheatsheet](presentations/r-cheatsheet.html)
+[R Cheatsheet](files/r-cheatsheet-files.html)

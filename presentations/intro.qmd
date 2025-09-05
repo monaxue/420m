@@ -52,7 +52,7 @@ What Psychology topics are you most interested in?
 - Hybrid format
 - Online "content modules"
     - Short videos
-    - Short practice quizes
+    - Short practice quizzes
 - In-person labs
     - With TA (me!)
     - Turn in work at the end of lab
@@ -68,8 +68,8 @@ What Psychology topics are you most interested in?
 ::: {.card-list}
 - Be engaged
     - Work in small groups and help each other
-- Attendence
-    - Attendence will be taken by PollEverywhere questions
+- Attendance
+    - Attendance will be taken by PollEverywhere questions
 - You are expected to complete lecture materials before lab
     - I know that independent work can be challenging
     - That is why during my office hours, we can come together to watch the videos

@@ -489,21 +489,10 @@ print(word3[e])
 ::: {card-list}
 Install packages in the console with `install.packages("package_name")`
 
-We will install the package "tidyverse", which is used for data analysis. Go ahead and enter `install.packages("tidyverse") in the console.
+We will install the package "tidyverse", which is used for data analysis. Go ahead and enter `install.packages("tidyverse")` in the console.
 :::
 
 ![](assets/install-package.gif)
-
-````r
-
-## Load packages
-````r
-
-library("package_name")
-
-# Install tidyverse (important package for data analysis)
-
-````
 
 ## Import data
 

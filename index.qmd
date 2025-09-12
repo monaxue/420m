@@ -15,7 +15,7 @@ format:
 **What the RMarkdown file should look like:** [test.pdf](r_demos/test.pdf)
 
 
-## Week 2: File directory, basic syntax, knitting PDFs
+## Week 2: File directory, basic syntax, loading packages, importing data
 
 [Slides](presentations/week2.html)
 

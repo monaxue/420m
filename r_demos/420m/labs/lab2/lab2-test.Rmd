@@ -1,0 +1,59 @@
+---
+author: Mona Xue
+date: 2025-09-12
+output: pdf_document
+---
+# Import packages and data
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+
+data <- read_csv("2020heights.csv")
+```
+
+```{r}
+head(data)
+
+```
+# Plotting a Histogram
+
+```{r}
+
+ggplot(data, aes(heights)) + geom_histogram(binwidth = 10, color="red")
+
+ggplot(data, aes(x=heights)) + geom_histogram()
+
+ggplot(data, aes(x=heights)) + geom_histogram(binwidth = 10)
+
+ggplot(data, aes(x=heights)) + geom_histogram(binwidth = 0.1)
+
+ggplot(data, aes(x=heights)) + geom_histogram(binwidth = 0.5) # choose your own binwidth
+
+ggplot(data, aes(x=heights)) + geom_histogram(binwidth = 2, fill = "pink", color="red")
+
+```
+# Pipes
+```{r}
+
+data <- data %>% mutate(a=mean(heights))
+head(data)
+
+```
+
+# Chaining pipes
+```{r}
+
+data <- data %>% mutate(b=sum(heights)) %>% arrange(heights)
+head(data)
+
+```
+
+# Calculating the Z score
+```{r}
+
+data <- data %>% mutate(z_score =(heights-mean(heights))/sd(heights)) %>% arrange(abs(z_score))
+
+```
+
+What are the 5 observations with the most extreme (largest absolute values) z score?

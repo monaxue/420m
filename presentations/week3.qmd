@@ -1,15 +1,213 @@
-## Plot data
+# Week 3 Lab
+**Get into groups of 3-4**
 
-- Install ggplot2
-- How do we install packages? Slido question
+## File system review
 
-```r
-library(ggplot2)
+::: {.card-list}
+ - Before we start, let's do some review
+ - Most of the bugs from last class came from files being stored somewhere you didn't expect
+ - So let's do some review with Slido
 
-# If we want to plot data$y ~ data$x
+:::
 
-# Frist, define the data
-ggplot(data,aes(x,y)) + 
-    geom_point() # add the scatter plot layer
+##
+
+```{=html}
+
+<iframe src = https://wall.sli.do/event/bN8K1hrZToTdRGPHyyPM1U/?section=a825325b-f2e3-4a76-8c79-3bc87d758b90 width=100% height=600></iframe>
+
 
 ```
+
+# Now we can create our lab2 folder
+
+## We will be using the 2020heights.csv file today
+
+::: {.card-list}
+
+- We need to make sure our 2020heights.csv is accessible in lab2
+- You can copy and paste the csv file into lab2 from lab1
+
+:::
+
+## Open up R
+
+::: {.card-list .nonincremental}
+
+- Create an R Project in your lab2 folder
+
+![](assets/make-r-project.gif)
+
+:::
+
+## Before we create our Rmd file...
+
+**How do you make sure to create the Rmd file in the proper folder?**
+
+```{=html}
+
+<iframe src = https://wall.sli.do/event/bN8K1hrZToTdRGPHyyPM1U/?section=a825325b-f2e3-4a76-8c79-3bc87d758b90 width=100% height=600></iframe>
+
+
+```
+
+## Now create an EMPTY Rmd file
+
+**Remember, a .Rmd file, not .R**
+
+![](assets/make-rmarkdown.gif)
+
+:::{.notes}
+    - Which group can tell me what's the difference between a Rmd file and a normal R script?
+:::
+
+
+# Save the Rmd file
+
+
+**After you create the file, make sure to save the Rmd file and name it `lab2`**
+
+## Now that the file is created and saved
+
+::: {.card-list}
+- We can add our YAML header and our first code chunk
+- Let's review how to properly add those
+
+:::
+
+## Slido poll
+
+```{=html}
+
+<iframe src = https://wall.sli.do/event/bN8K1hrZToTdRGPHyyPM1U/?section=a825325b-f2e3-4a76-8c79-3bc87d758b90 width=100% height=600></iframe>
+
+
+```
+
+# Let's take a look in R
+
+:::{.notes}
+
+My actions:
+- Open up R
+
+Key points:
+- Make sure that the RMarkdown file is empty, ctr + A delete if need be.
+
+Give a real time demo
+
+:::
+
+
+## Load data
+
+:::{.notes}
+
+Do this as a real time demo
+
+:::
+
+::: {.card-list}
+
+- Load tidyverse using `library(tidyverse)`
+- Load 2020heights.csv and assign it to `data`
+- Let's take a look at the data
+    - You can use `head(data)`
+    - Or you can click on data under `environment`
+
+:::
+
+
+## Plot data
+
+::: {.notes}
+Still a real time demo
+
+:::
+
+::: {.card-list}
+
+- In the console, install `ggplot2` using `install.packages("ggplot2")`
+- Then load `ggplot2` at the top
+
+:::
+
+## ggplot basics
+
+::: {.notes}
+Go back to slides
+
+
+:::
+
+::: {.card-list}
+
+- Basic formulation: `ggplot(data, aes(x,y))`
+    - This doesn't plot anything, but just provides important information, like the x and y variables, to ggplot
+    - You could just have `x` in aesthetics for histograms
+- `aes` means "aesthetics"
+- To actually plot things, you add layers using `+`
+- Examples of layers:
+    - `geom_histogram()` for histograms
+    - `geom_point()` for scatter plots
+
+::: 
+
+# Let's take a look in R
+
+::: {.notes}
+
+Show ggplot in R
+
+ggplot(data, aes(heights)) + geom_histogram(binwidth = 10, color="red")
+
+:::
+
+## Manipulating dataframes with %>% (pipes)
+
+::: {.card-list}
+
+- %>% pass functions to dataframes
+
+    - `data <- data %>% mutate(a=mean(heights))`
+
+- You can chain pipes together, like so
+    
+    - `data <- data %>% mutate(a=mean(x)) %>% arrange(a)`
+
+:::
+
+# Today's deliverables
+
+##
+
+**A knitted pdf document, not a screen shot. Ignore what Canvas says. When you are finished, check in with me.**
+
+::::: {.columns}
+
+:::: {.column}
+
+**5 histograms using `ggplot`**
+
+1. normal (we did this already)
+2. `binwidth = 10`
+3. `binwidth = 0.1`
+4. choose your own binwidth
+5. binwidth = 2, with `fill = "pink"` and `color = "red"` in `geom_histogram()`
+6. Beneath the code block, use plain text biefly describe the shape of the distribution. Is it symmetrical? Normal?
+
+::::
+
+:::: {.column}
+
+**An updated dataframe with a new `z_score` column**
+
+1. Use `%>%` with the `mutate()` function
+2. To calculate the `z_score`, use `z_score = (heights-mean(heights)/sd(heights)`
+3. Use `head(data)` to double check that the data has been updated
+4. Use `arrange(abs(z_score))` to sort the data by the absolute `z_score` value, from lowest to highest
+5. Beneath the code block, use plain text to list the 5 `z_scores` with the highest absolute values.
+
+::::
+
+:::::

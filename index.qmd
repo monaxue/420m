@@ -20,3 +20,7 @@ format:
 [Slides](presentations/week2.html)
 
 [R Cheatsheet](files/r-cheatsheet-files.html)
+
+## Week 3
+
+[Slides](presentations/week3.html)

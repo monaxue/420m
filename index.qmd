@@ -24,4 +24,5 @@ format:
 ## Week 3: Histograms, pipes, and Z-scores
 
 [Slides](presentations/week3.html)
+
 [Example PDF](r_demos/420m/labs/lab2/lab2-example.pdf)

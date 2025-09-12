@@ -6,7 +6,7 @@ format:
 
 # Welcome to PSYCH420's Lab Section!
 
-## Week 1
+## Week 1: Install R, RStudio, and TinyTex
 
 [Slides](presentations/intro.html)
 
@@ -15,13 +15,13 @@ format:
 **What the RMarkdown file should look like:** [test.pdf](r_demos/test.pdf)
 
 
-## Week 2
+## Week 2: File directory, basic syntax, knitting PDFs
 
 [Slides](presentations/week2.html)
 
 [R Cheatsheet](files/r-cheatsheet-files.html)
 
-## Week 3
+## Week 3: Histograms, pipes, and Z-scores
 
 [Slides](presentations/week3.html)
 [Example PDF](r_demos/420m/labs/lab2/lab2-example.pdf)

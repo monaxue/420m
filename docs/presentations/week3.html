@@ -132,7 +132,7 @@
 <section>
 <section id="week-3-lab" class="title-slide slide level1 center">
 <h1>Week 3 Lab</h1>
-<p><strong>Get into groups of 3-4</strong></p>
+<p><strong>Histograms, pipes, and Z-scores</strong></p>
 </section>
 <section id="file-system-review" class="slide level2">
 <h2>File system review</h2>
@@ -147,8 +147,7 @@
 <section id="section" class="slide level2">
 <h2></h2>
 
-<iframe src="https://wall.sli.do/event/bN8K1hrZToTdRGPHyyPM1U/?section=a825325b-f2e3-4a76-8c79-3bc87d758b90" width="100%" height="600"></iframe>
-
+<iframe src="https://app.sli.do/event/bN8K1hrZToTdRGPHyyPM1U" height="800" width="100%" frameborder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido"></iframe>
 
 </section></section>
 <section>
@@ -178,7 +177,7 @@
 <h2>Before we create our Rmd file…</h2>
 <p><strong>How do you make sure to create the Rmd file in the proper folder?</strong></p>
 
-<iframe src="https://wall.sli.do/event/bN8K1hrZToTdRGPHyyPM1U/?section=a825325b-f2e3-4a76-8c79-3bc87d758b90" width="100%" height="600"></iframe>
+<iframe src="https://app.sli.do/event/bN8K1hrZToTdRGPHyyPM1U" height="800" width="100%" frameborder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido"></iframe>
 
 
 </section>
@@ -217,7 +216,7 @@
 <section id="slido-poll" class="slide level2">
 <h2>Slido poll</h2>
 
-<iframe src="https://wall.sli.do/event/bN8K1hrZToTdRGPHyyPM1U/?section=a825325b-f2e3-4a76-8c79-3bc87d758b90" width="100%" height="600"></iframe>
+<iframe src="https://app.sli.do/event/bN8K1hrZToTdRGPHyyPM1U" height="800" width="100%" frameborder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido"></iframe>
 
 
 </section></section>
@@ -347,7 +346,7 @@
 <ul>
 <li class="fragment"><code>data &lt;- data %&gt;% mutate(a=mean(heights))</code></li>
 </ul></li>
-<li class="fragment"><p>you can chain pipes together, like so</p>
+<li class="fragment"><p>You can chain pipes together, like so</p>
 <ul>
 <li class="fragment"><code>data &lt;- data %&gt;% mutate(a=mean(x)) %&gt;% arrange(a)</code></li>
 </ul></li>
@@ -366,7 +365,7 @@
 <div class="column">
 <p><strong>5 histograms using <code>ggplot</code></strong></p>
 <ol type="1">
-<li class="fragment">normal</li>
+<li class="fragment">normal (we did this already)</li>
 <li class="fragment"><code>binwidth = 10</code></li>
 <li class="fragment"><code>binwidth = 0.1</code></li>
 <li class="fragment">choose your own binwidth</li>
@@ -376,10 +375,10 @@
 </div><div class="column">
 <p><strong>An updated dataframe with a new <code>z_score</code> column</strong></p>
 <ol type="1">
-<li class="fragment">use <code>%&gt;%</code> with the <code>mutate()</code> function</li>
-<li class="fragment">to calculate the <code>z_score</code>, use <code>z_score = (heights-mean(heights)/sd(heights)</code></li>
-<li class="fragment">use <code>head(data)</code> to double check that the data has been updated</li>
-<li class="fragment">use <code>arrange(abs(z_score))</code> to sort the data by the absolute <code>z_score</code> value, from lowest to highest</li>
+<li class="fragment">Use <code>%&gt;%</code> with the <code>mutate()</code> function</li>
+<li class="fragment">To calculate the <code>z_score</code>, use <code>z_score = (heights-mean(heights)/sd(heights)</code></li>
+<li class="fragment">Use <code>head(data)</code> to double check that the data has been updated</li>
+<li class="fragment">Use <code>arrange(abs(z_score))</code> to sort the data by the absolute <code>z_score</code> value, from lowest to highest</li>
 <li class="fragment">Beneath the code block, use plain text to list the 5 <code>z_scores</code> with the highest absolute values.</li>
 </ol>
 </div></div>

@@ -33,6 +33,9 @@ ggplot(data, aes(x=heights)) + geom_histogram(binwidth = 0.5) # choose your own 
 ggplot(data, aes(x=heights)) + geom_histogram(binwidth = 2, fill = "pink", color="red")
 
 ```
+
+Describe the general shape of the histogram here.
+
 # Pipes
 ```{r}
 

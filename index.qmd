@@ -24,3 +24,4 @@ format:
 ## Week 3
 
 [Slides](presentations/week3.html)
+[Example PDF](r_demos/420m/labs/lab2/lab2-example.pdf)

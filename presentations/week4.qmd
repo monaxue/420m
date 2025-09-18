@@ -63,7 +63,7 @@
 
 :::
 
-## Let's take a look in R.
+## Let's take a look in R
 
 ::: card-list
 
@@ -93,17 +93,14 @@
 
 ## Summary tables
 
-Try changing `mutate()` to `summarize()`, while keeping everything in mutate the same.
-
-Let's take a look in R
-
-##
-
 ::: card-list
 
-- What happens? 
-- What happened to the `data` variable? 
-- What happens if you change `summarize()` back to `mutate()`?
+- Try changing `mutate()` to `summarize()`, while keeping everything in mutate the same.
+
+- Let's take a look in R
+
+    - What happens to the `data` variable? 
+    - What happens if you change `summarize()` back to `mutate()`?
 
 :::
 
@@ -114,7 +111,7 @@ Let's take a look in R
 
 - To avoid this, when making a table, create a separate variable, something like `summary_table`
 
-- Let's take a look in R.
+- Let's take a look in R
 
 :::
 
@@ -137,7 +134,7 @@ Let's take a look in R
     - Border color by sex: `color=sex`
     - Fill color by sex: `fill=sex`
 
-- Let's take a look in R.
+- Let's take a look in R
 ::: 
 
 ## Other plots
@@ -149,7 +146,7 @@ Let's take a look in R
 - Scatter plots: `geom_point()`
 - Error bars: `geom_errorbar()`
 - Same `aes()` rules apply for these plots
-- Let's take a look in r
+- Let's take a look in R
 :::
 
 ## Putting it together
@@ -177,7 +174,7 @@ ses=sds/sqrt(count), cis=1.96*ses)
 
 - We can create a plot of means with error bars showing the 95% CIs by using `summary_table` with `ggplot2`
 
-- Let's take a look in r
+- Let's take a look in R
 
 :::
 

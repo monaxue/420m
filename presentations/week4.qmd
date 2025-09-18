@@ -1,0 +1,210 @@
+
+# Week 4 Lab
+
+**Make your lab3 folder and project**
+
+## Download `HandWashingData.csv` from Canvas 
+
+::: card-list
+- **Where do you save the data?**
+:::
+
+## 
+
+**We are going to manipulate data and create plots today. So what packages should you load?**
+
+```{=html}
+
+<iframe src=https://wall.sli.do/event/b2cMuVGp9PQKgGXnB3YC4D/?section=43da493f-56ee-48db-b011-2c809c8ce01c height=600, width=100%></iframe>
+
+```
+
+## Load the new dataset
+
+```{=html}
+
+<iframe src=https://wall.sli.do/event/b2cMuVGp9PQKgGXnB3YC4D/?section=43da493f-56ee-48db-b011-2c809c8ce01c height=600, width=100%></iframe>
+
+```
+
+## 
+
+**You want to add a column named `Mean` to the dataframe `data` where each row contains the mean of the column `washes`**
+
+```{=html}
+
+<iframe src=https://wall.sli.do/event/b2cMuVGp9PQKgGXnB3YC4D/?section=43da493f-56ee-48db-b011-2c809c8ce01c height=600, width=100%></iframe>
+
+```
+
+# Let's take a look in R
+
+##
+
+**Now write the line of code. In this new column, what values did you get in the top 3 rows?**
+
+
+```{=html}
+
+<iframe src=https://wall.sli.do/event/b2cMuVGp9PQKgGXnB3YC4D/?section=43da493f-56ee-48db-b011-2c809c8ce01c height=600, width=100%></iframe>
+
+```
+
+##
+
+::: card-list
+
+- What we have above is that every row has the same mean value. This is because we took the mean of the entire row. 
+
+- What if you want to take the mean washes of each sex?
+
+- Answer:
+    - `group_by()`
+
+:::
+
+## Let's take a look in R.
+
+::: card-list
+
+- Give this a try
+    - Add `group_by(sex)` right before mutate. 
+    - Then, rerun the code.
+
+- What happens?
+
+:::
+
+
+## Other summary statistics
+
+::: card-list
+
+- Standard deviation of washes: `sds=sd(washes)`
+- Number of rows: `count=n()`
+- Sample standard errors: `ses=sds/sqrt(count)`
+- 95% confidence interval: `cis=1.96*ses`
+
+- **Now, try using `mutate()` to add these other summary statistics to the dataframe, grouping by sex.** (5 min.)
+
+:::
+
+# What it should look like in R
+
+## Summary tables
+
+Try changing `mutate()` to `summarize()`, while keeping everything in mutate the same.
+
+Let's take a look in R
+
+##
+
+::: card-list
+
+- What happens? 
+- What happened to the `data` variable? 
+- What happens if you change `summarize()` back to `mutate()`?
+
+:::
+
+## Be careful when reassigning variables.
+::: card-list
+
+- The code probably doesn't work anymore, because `data` is now the table, not the full dataframe
+
+- To avoid this, when making a table, create a separate variable, something like `summary_table`
+
+- Let's take a look in R.
+
+:::
+
+# Moving on the plots!
+
+## What is the code for creating a histogram of washes?
+
+```{=html}
+
+<iframe src=https://wall.sli.do/event/b2cMuVGp9PQKgGXnB3YC4D/?section=43da493f-56ee-48db-b011-2c809c8ce01c height=600, width=100%></iframe>
+
+```
+
+# Let's take a look in R
+
+## Plot by sex
+::: card-list
+- You can plot the data by sex using these arguments in `aes()`.
+    - Plot by sex: `group=sex`
+    - Border color by sex: `color=sex`
+    - Fill color by sex: `fill=sex`
+
+- Let's take a look in R.
+::: 
+
+## Other plots
+
+::: card-list
+- Box plots: `geom_boxplot()`
+- Frequency polygon: `geom_freqpoly()`
+    - like histogram but continuous
+- Scatter plots: `geom_point()`
+- Error bars: `geom_errorbar()`
+- Same `aes()` rules apply for these plots
+- Let's take a look in r
+:::
+
+## Putting it together
+
+::: card-list
+
+- Remember our `summary_table`
+
+:::
+
+. . .
+
+````{verbatim}
+```{r}
+
+summary_table <- data %>% summarize(count=n(), means=mean(washes), sds=sd(washes),
+ses=sds/sqrt(count), cis=1.96*ses)
+
+```
+````
+
+. . .
+
+::: card-list
+
+- We can create a plot of means with error bars showing the 95% CIs by using `summary_table` with `ggplot2`
+
+- Let's take a look in r
+
+:::
+
+##
+
+````{verbatim}
+```{r}
+
+ggplot(summary_table, aes(x=sex, y=means)) + 
+
+    geom_point() +
+
+    geom_errorbar(aes(ymin= means - cis, ymax = means + cis))
+
+```
+````
+
+---
+
+**Question**: Do females in general wash their hand more often than males?
+
+**Methods**: 25 female and 25 male volunteers were given a fitbit-like device that measured the number of times they washed their hands. The total number of times each volunteer washed their hands over the course of a week was measured. The volunteers were initially told that the devices measured “activity”, and were only told that hand washing was being measured after the experiment.
+
+**Deliverables**: Please turn in an RMarkdown PDF file that has:
+
+1. The data distributions shown as either histograms or frequency polygons (you don’t need to do both, but you can)
+1. A boxplot of the data
+1. A summary table with the counts, means, standard deviations, standard errors, and 95% CIs.
+1. A plot of the means with error bars showing the 95% CIs
+1. Your conclusion: do females in general wash their hands more than males, or is the difference likely just due to random variability?

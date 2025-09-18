@@ -1,0 +1,54 @@
+---
+title: "lab3-example"
+output: pdf_document
+---
+
+```{r}
+#| message: false
+
+library(tidyverse)
+library(ggplot2)
+
+data <- read_csv("HandWashingData.csv")
+
+```
+
+```{r}
+
+data <- data %>% group_by(sex) %>% mutate(count=n(), means=mean(washes), sds=sd(washes),
+ses=sds/sqrt(count), cis=1.96*ses)
+
+```
+
+```{r}
+
+summary_table <- data %>% summarize(count=n(), means=mean(washes), sds=sd(washes),
+ses=sds/sqrt(count), cis=1.96*ses)
+
+```
+
+```{r}
+plot <- ggplot(data, aes(x=washes, color=sex, fill=sex))
+
+plot + geom_histogram()
+
+```
+
+```{r}
+
+plot + geom_freqpoly()
+
+```
+```{r}
+plot + geom_boxplot()
+```
+```{r}
+ggplot(data, aes(x=sex, y=washes, fill=sex)) + geom_boxplot()
+
+```
+
+```{r}
+
+ggplot(summary_table, aes(x=sex, y=means, color=sex)) + geom_point() + geom_errorbar(aes(ymin=means-cis, ymax=means+cis))
+
+```

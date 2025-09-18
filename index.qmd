@@ -6,7 +6,39 @@ format:
 
 # Welcome to PSYCH420's Lab Section!
 
-## Week 1: Install R, RStudio, and TinyTex
+Mona's email: <monaxue@utexas.edu>
+
+Mona's office hours: Fri: 1-3pm in SEAY 4.326A, or by appointment
+
+Alex's office hours: Tues/Thurs: 12-1pm in SEAY 5.206
+
+---
+
+## Week 4
+
+[Slides](presentations/week4.html)
+
+[Example PDF](r_demos/420m/labs/lab3/lab3-example.pdf)
+
+## Week 3
+
+Histograms, pipes, and Z-scores
+
+[Slides](presentations/week3.html)
+
+[Example PDF](r_demos/420m/labs/lab2/lab2-example.pdf)
+
+## Week 2
+
+File directory, basic syntax, loading packages, importing data
+
+[Slides](presentations/week2.html)
+
+[R Cheatsheet](files/r-cheatsheet-files.html)
+
+## Week 1
+
+Install R, RStudio, and TinyTex
 
 [Slides](presentations/intro.html)
 
@@ -15,14 +47,7 @@ format:
 **What the RMarkdown file should look like:** [test.pdf](r_demos/test.pdf)
 
 
-## Week 2: File directory, basic syntax, loading packages, importing data
 
-[Slides](presentations/week2.html)
 
-[R Cheatsheet](files/r-cheatsheet-files.html)
 
-## Week 3: Histograms, pipes, and Z-scores
 
-[Slides](presentations/week3.html)
-
-[Example PDF](r_demos/420m/labs/lab2/lab2-example.pdf)

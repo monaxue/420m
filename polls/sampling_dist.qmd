@@ -1,0 +1,12 @@
+```{r}
+
+library(tidyverse)
+library(ggplot2)
+
+data <- read_csv("polls/Polls-per-participant-Week_5.csv")
+
+names(data)
+
+ggplot(data, aes(x=as.numeric(`What value did you get?`))) + geom_freqpoly()
+
+```

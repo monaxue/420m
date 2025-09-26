@@ -1,0 +1,32 @@
+﻿Participant ID,Which ones will generate a valid plot?,What value did you get?,"How many rows and columns does this have? replicate(300, rnorm(200, 100, 10)"
+647970545,A; C,96.88,
+647974368,C; F,100.7258,"300 columns, 200 rows"
+647974370,C; D; F,98.12171,300 columns and 200 rows
+647974383,B; C; D; E,107.1651,300 columns and 200 rows
+647974425,C; E,106.4232,"197 rows, 7 columns ; 7 columns, 3 rows ; 300 columns, 200 rows "
+647974443,D,104.0195,300，200
+647974461,B,77.35926,"300 rows, 200 columns "
+647974473,C; D; F,96.35623,"227 rows, 10 columns; 50 columns and 200 rows"
+647974477,C; D; F,93.29,"300 columns, 200 rows"
+647974480,B; C; E; F,88.58603,200 rows and 6 columns ; 300 rows and 6 columns. Says omitted 197 rows; 200 rows and 50 columns in the matrix data; 50 rows and 300 columns 
+647974481,A; C; D; F,95.84123,"300 rows, 200 columns; 300 columns, 200 rows; 300 rows, 50 columns; 200 rows, 50 columns; 300 columns, 200 rows; 300 columns, 200 rows"
+647974497,B; D,94.3725,200 rows 300 columns 
+647974527,C; D; E; F,92.95694,200 rows and 300 columns
+647974535,A; B; F,99.689,"300 rows and 3 columns?; 300, 200?"
+647974539,C; D; E; F,101.9567,200 rows and 300 columns 
+647974551,D,110.4598,200 rows 50 columns
+647974564,D,100.5773,200 and 300
+647974565,B; E,,
+647974579,A; C; D; E; F,93.52,3 and 300; 200 and 300
+647974591,C; D; E; F,87.53,200 rows 300 columns
+647974610,D; F,85.59108,"200,300; 200,50"
+647974664,B; C; E; F,"93.23377
+","300 columns, 200 rows"
+647974670,D,110.3482; 110.3482,rows= 50 colums= 200
+647974753,A; C; D,101.8701,300 columns 200 rows
+647974865,C; E; F,103.9242,"300 columns 200 rows
+"
+647975262,A; B; C; E,92.94018,197 rows and 300 columns
+647975692,B; E; F,73.96,8 columns 100+ rows; 8 columns 300 rows
+647979004,,100,Too many to count? ; 200 x300
+647980769,,,110; 105*

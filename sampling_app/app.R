@@ -1,13 +1,3 @@
----
-format: html
-filters: 
-  - shinylive
----
-
-```{shinylive-r}
-
-#| standalone: true
-
 library(tidyverse)
 library(ggplot2)
 library(matrixStats)
@@ -137,5 +127,3 @@ server <- function(input, output, session){
 
 
 shinyApp(ui, server)
-
-```

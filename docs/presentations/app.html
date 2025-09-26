@@ -71,7 +71,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<pre class="{shinylive-r}"><code>library(tidyverse)
+<pre class="{shinylive-r}"><code>
+#| standalone: true
+
+library(tidyverse)
 library(ggplot2)
 library(matrixStats)
 library(shiny)
@@ -79,9 +82,7 @@ library(shinylive)
 
 ui &lt;- fluidPage(
     plotOutput('plot'),
-    splitLayout(
-      plotOutput('meanplot'),
-      plotOutput('sdplot')),
+    plotOutput('meanplot'),
     splitLayout(cellWidths=c("90%", "10%"),
       verbatimTextOutput("rnorm1"),
       actionButton("sample", "Run")),
@@ -184,18 +185,14 @@ server &lt;- function(input, output, session){
     output$plot &lt;- renderPlot({ 
       avg = mean(pts()$x)
       sd_all = sd(pts()$x)
-      ggplot(normal, aes(x=x, y=Density)) + geom_line(linewidth = 2, color="grey") + theme_classic() + geom_point(data = pts(), aes(x=x,y=y), size=3) + geom_vline(xintercept = avg, color="firebrick") + geom_vline(xintercept = avg+sd_all, color="steelblue") + geom_vline(xintercept = avg-sd_all, color="steelblue") + annotate("label", label = "Mean", x = avg, y =  max_y) + annotate("label", label = "+SD", x = avg+sd_all, y =  max_y) + annotate("label", label = "-SD", x = avg-sd_all, y =  max_y) + theme(axis.title.y = element_blank(),
+      ggplot(normal, aes(x=x, y=Density)) + geom_line(linewidth = 2, color="grey") + theme_classic() + geom_point(data = pts(), aes(x=x,y=y), size=3) + geom_vline(xintercept = avg, color="firebrick") + geom_vline(xintercept = avg+sd_all, color="steelblue") + geom_vline(xintercept = avg-sd_all, color="steelblue") + annotate("label", label = "Mean", x = avg, y =  max_y) + annotate("label", label = "+SD", x = avg+sd_all, y =  max_y-0.01) + annotate("label", label = "-SD", x = avg-sd_all, y =  max_y-0.01) + theme(axis.title.y = element_blank(),
       axis.text.y  = element_blank(), axis.ticks.y = element_blank())})
     
     output$meanplot &lt;- renderPlot({
       mean_mean = mean(mean_now()$Mean)
-      ggplot(data = mean_now(), aes(x=Mean, y=y)) + geom_point(color="firebrick") + geom_vline(xintercept=mean_mean) + annotate("label", label = "Mean of means", x = mean_mean, y =  max_y)+ ylim(0, 0.05) + xlim(95, 105) + theme_classic() + theme(axis.title.y = element_blank(),
+      SE = sd(mean_now()$Mean)
+      ggplot(data = mean_now(), aes(x=Mean, y=y)) + geom_point(color="firebrick") + geom_vline(xintercept=mean_mean, color="firebrick") + annotate("label", label = "Mean of means", x = mean_mean, y =  max_y)+ geom_vline(xintercept = mean_mean+SE, color="steelblue") + geom_vline(xintercept = mean_mean-SE, color="steelblue") + annotate("label", label = "+SE", x = mean_mean+SE, y =  max_y-0.01) + annotate("label", label = "-SE", x = mean_mean-SE, y =  max_y-0.01) + ylim(0, 0.05) + xlim(60, 140) + theme_classic() + theme(axis.title.y = element_blank(),
       axis.text.y  = element_blank(), axis.ticks.y = element_blank()) })
-    
-    output$sdplot &lt;- renderPlot({
-      SE = mean(sd_now()$SD)
-      ggplot(data = sd_now(), aes(x=SD, y=y)) + geom_point(color="steelblue") + geom_vline(xintercept=SE) + annotate("label", label = "Std. Error", x = SE, y =  max_y) + ylim(0, 0.05) + xlim(5, 15) + theme_classic() + theme(axis.title.y = element_blank(),
-      axis.text.y  = element_blank(), axis.ticks.y = element_blank())})
     
 }
 

@@ -92,7 +92,7 @@ matrix
 
 ## Now you try!
 ::: card-list
-- `5_samples <- replicate(5, rnorm(n = 10, mean = 100, sd = 10))`
+- `samples_5 <- replicate(5, rnorm(n = 10, mean = 100, sd = 10))`
 - `sampling_dist <- colMeans(5_samples)`
 - `SE <- sd(sampling_dist)`
 
@@ -111,9 +111,9 @@ matrix
     - Plot the sample using `geom_freqpoly()`
     - Hint: ggplot requires a dataframe. You can convert a sample to dataframes by using `tibble(x=sample)`
 1. Create a sampling distribution of 1000, where each sample contains 25 samples from a normal distribution with `mean = 100` and `sd = 10`
-    - Hint: use `1000_samples <- replicate(N=..., rnorm(...))`
+    - Hint: use `samples_1000 <- replicate(N=..., rnorm(...))`
     - What is the mean and standard error?
-    - Create a matrix called `sampling_dist` by using `colMeans(1000_samples)`
+    - Create a vector called `sampling_dist` by using `colMeans(samples_1000)`
     - Convert this matrix into a a dataframe for plotting (using `tibble()`)
     - Plot the sampling distribution using `geom_freqpoly()`
 1. Repeat the two steps above for a sample size of 100 (also using 1000 samples for the second part)

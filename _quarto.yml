@@ -1,5 +1,7 @@
 project:
   title: "fa2025_psych420"
   output-dir: docs
+  resources:
+    - site/**
 
 author: Mona Xue

@@ -1,0 +1,25 @@
+---
+format: html
+filters: [shinylive]
+---
+
+# Week 5 Lab
+**Create your lab4 folder and project**
+
+## Sampling distributions
+
+## rnorm()
+The "r" stands for random, and "norm" stands for normal distribution. This function samples from a normal distribution randomly. 
+
+
+## Deliverables
+::: card-list
+
+1. Plot a sample of 25, with `mean = 100`, and `sd = 10`
+1. Plot a sampling distribution of 1000, where each sample contains 25 samples, with `mean = 100` and `sd = 10`
+1. Plot a sample of 100, with `mean = 100`, and `sd = 10`
+1. Plot a sampling distribution of 1000, where each sample contains 100 samples, with `mean = 100` and `sd = 10`
+1. A comparison of the two sampling distributions (about the same width)
+1. A comparison of the two sampling distributions (n=100 is narrower)
+
+:::

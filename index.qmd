@@ -14,6 +14,10 @@ Alex's office hours: Tues/Thurs: 12-1pm in SEAY 5.206
 
 ---
 
+## Week 5
+
+[Sampling simulation](site/sampling/index.html)
+
 ## Week 4
 
 [Slides](presentations/week4.html)

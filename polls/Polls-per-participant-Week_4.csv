@@ -1,0 +1,193 @@
+﻿Participant ID,Poll ID,Poll Type,Poll Question,Poll Option,Submission Date,Submission Time
+644878333,64181010,Open Text,What packages should you load?,library(tidyverse),9/19/2025,10:07:15
+644878333,64181010,Open Text,What packages should you load?,library (ggplot),9/19/2025,10:08:06
+644878333,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:12:24
+644878333,64181203,Open Text,What is the code for adding the column?,"mutate(data, Mean=mean(washes))",9/19/2025,10:23:15
+644878333,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?",35.02,9/19/2025,10:28:50
+644878333,64181308,Open Text,What is the code for creating a histogram of washes?,"ggplot(data, aes(x = washes))",9/19/2025,11:02:37
+644878360,64181010,Open Text,What packages should you load?,ggplot2,9/19/2025,10:06:31
+644878360,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:10:33
+644878360,64181130,Open Text,Take a peek at the data. What are the column names?,washes sex,9/19/2025,10:10:33
+644878360,64181203,Open Text,What is the code for adding the column?,data<- data %>%mutate (mean=(mean(washes)),9/19/2025,10:17:23
+644878360,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?","35.02, 35.02, 35.02",9/19/2025,10:28:36
+644878360,64181308,Open Text,What is the code for creating a histogram of washes?,"ggplot(data, aes(x=washes)) + geom_histogram",9/19/2025,11:02:56
+644878363,64181010,Open Text,What packages should you load?,Library(tidyverse),9/19/2025,10:06:19
+644878363,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:11:05
+644878363,64181203,Open Text,What is the code for adding the column?,Data <- data %>% mutate (Mean=mean(washes)) ,9/19/2025,10:19:14
+644878363,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?",35.02,9/19/2025,10:27:15
+644878363,64181308,Open Text,What is the code for creating a histogram of washes?,"ggplot_hist(raw_data, aes(washes))",9/19/2025,11:05:00
+644878379,64181010,Open Text,What packages should you load?,Tidyverse and ggplot2,9/19/2025,10:06:19
+644878379,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:09:32
+644878379,64181130,Open Text,Take a peek at the data. What are the column names?,Washes and sex,9/19/2025,10:09:32
+644878379,64181203,Open Text,What is the code for adding the column?,data <- data %>% mutate(Mean = mean(washes)),9/19/2025,10:16:49
+644878379,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?","35.02, 35.02, 35.02",9/19/2025,10:29:14
+644878379,64181308,Open Text,What is the code for creating a histogram of washes?,"ggplot(data, aes(x=washing)) + geom_histogram()",9/19/2025,11:03:48
+644878382,64181010,Open Text,What packages should you load?,"Tidyverse
+Ggplot",9/19/2025,10:06:24
+644878382,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:11:39
+644878382,64181130,Open Text,Take a peek at the data. What are the column names?,"Washes, sex",9/19/2025,10:13:21
+644878382,64181203,Open Text,What is the code for adding the column?,Data$mean <- Handwashing,9/19/2025,10:24:47
+644878382,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?",35.02 3 times,9/19/2025,10:30:25
+644878382,64181308,Open Text,What is the code for creating a histogram of washes?,Ggplot<- Geom_histogram,9/19/2025,11:04:10
+644878396,64181010,Open Text,What packages should you load?,Tidyverse and ggplot2,9/19/2025,10:06:52
+644878396,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:09:34
+644878396,64181130,Open Text,Take a peek at the data. What are the column names?,"washes, sex",9/19/2025,10:09:34
+644878396,64181203,Open Text,What is the code for adding the column?,data <- data %>% mutate( meanwashes = mean(washes)) ,9/19/2025,10:18:07
+644878396,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?","
+1: 38, F, 35.02
+2: 39, F, 35.02
+3: 36, F, 35.02 ",9/19/2025,10:29:05
+644878396,64181308,Open Text,What is the code for creating a histogram of washes?,"Ggplot(data, aes( x = washes) + geom_ histogram()",9/19/2025,11:04:27
+644878405,64181010,Open Text,What packages should you load?,ggplot ,9/19/2025,10:06:10
+644878405,64181010,Open Text,What packages should you load?,tidyverse,9/19/2025,10:06:20
+644878405,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:11:13
+644878405,64181130,Open Text,Take a peek at the data. What are the column names?,washes sex,9/19/2025,10:11:13
+644878405,64181203,Open Text,What is the code for adding the column?,"data %>% mutate(Mean= mean(washes, na.rm = true))",9/19/2025,10:19:46
+644878405,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?",35.02,9/19/2025,10:33:43
+644878405,64181308,Open Text,What is the code for creating a histogram of washes?,"library(ggplot2)
+ggplot(data, aes(x= washes)) + geom_histogram()",9/19/2025,11:03:49
+644878408,64181010,Open Text,What packages should you load?,Library(tidyverse) ggplot2,9/19/2025,10:06:38
+644878410,64181010,Open Text,What packages should you load?,"Tidyverse, ",9/19/2025,10:06:11
+644878410,64181010,Open Text,What packages should you load?,Ggplot,9/19/2025,10:07:57
+644878410,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:09:25
+644878410,64181130,Open Text,Take a peek at the data. What are the column names?,Washes and sex,9/19/2025,10:13:27
+644878410,64181203,Open Text,What is the code for adding the column?,Use a $,9/19/2025,10:16:04
+644878410,64181203,Open Text,What is the code for adding the column?,"data$col <- c(1, 2, 3, 4)",9/19/2025,10:16:57
+644878410,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?","35.02, 35.02, 35.02",9/19/2025,10:28:30
+644878410,64181308,Open Text,What is the code for creating a histogram of washes?,"ggplot(data, aes(x=washes)) +geom_histogram(binwidth = 5)",9/19/2025,11:02:19
+644878425,64181010,Open Text,What packages should you load?,"Tidyverse, ggplot ",9/19/2025,10:06:11
+644878425,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:11:40
+644878425,64181203,Open Text,What is the code for adding the column?,Dataframe,9/19/2025,10:19:17
+644878425,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?","38, 39, 36",9/19/2025,10:27:05
+644878425,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?",Mean is 35.02,9/19/2025,10:27:48
+644878425,64181308,Open Text,What is the code for creating a histogram of washes?,geom_hist(),9/19/2025,11:01:22
+644878427,64181010,Open Text,What packages should you load?,tidyr,9/19/2025,10:06:31
+644878427,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:09:14
+644878427,64181130,Open Text,Take a peek at the data. What are the column names?,washes sex,9/19/2025,10:13:58
+644878427,64181203,Open Text,What is the code for adding the column?,"data$Mean <- rowMeans(data[, c(""washes"", ""col2"", ""col3"")])",9/19/2025,10:15:07
+644878427,64181308,Open Text,What is the code for creating a histogram of washes?,hist(data),9/19/2025,11:01:32
+644878433,64181010,Open Text,What packages should you load?,Tidyverse. Ggplot2,9/19/2025,10:06:28
+644878433,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:11:53
+644878433,64181130,Open Text,Take a peek at the data. What are the column names?,Washes and sex,9/19/2025,10:11:53
+644878433,64181203,Open Text,What is the code for adding the column?,data$washes_mean <- mean(df$washes),9/19/2025,10:18:44
+644878433,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?",35.02,9/19/2025,10:29:15
+644878433,64181308,Open Text,What is the code for creating a histogram of washes?,"Ggplot(data, aes(x=mean)) +geom_histogram",9/19/2025,11:05:17
+644878456,64181010,Open Text,What packages should you load?,Tidyverse ,9/19/2025,10:07:06
+644878456,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:11:51
+644878456,64181130,Open Text,Take a peek at the data. What are the column names?,Washes and sex,9/19/2025,10:11:51
+644878456,64181203,Open Text,What is the code for adding the column?,Data$mean <- mean (data$washes),9/19/2025,10:19:39
+644878456,64181308,Open Text,What is the code for creating a histogram of washes?,"Ggplot (data, aes(x= washes) + geom_histogram()",9/19/2025,11:04:20
+644878457,64181010,Open Text,What packages should you load?,library(tidyverse),9/19/2025,10:06:47
+644878457,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:12:00
+644878457,64181130,Open Text,Take a peek at the data. What are the column names?,"washes, sex",9/19/2025,10:12:00
+644878457,64181130,Open Text,Take a peek at the data. What are the column names?,"washes, sex",9/19/2025,10:13:21
+644878457,64181203,Open Text,What is the code for adding the column?,data <- mutate(Mean = mean(washes)),9/19/2025,10:21:57
+644878457,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?","35.02
+",9/19/2025,10:33:39
+644878457,64181308,Open Text,What is the code for creating a histogram of washes?,"ggplot(data, aes(x=washes)) + geom_histogram()",9/19/2025,11:01:48
+644878538,64181010,Open Text,What packages should you load?,"tidyverse, ggplot2",9/19/2025,10:06:25
+644878538,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:09:55
+644878538,64181130,Open Text,Take a peek at the data. What are the column names?,"washes, sex",9/19/2025,10:09:55
+644878538,64181203,Open Text,What is the code for adding the column?,data <- data %>% mutate(Mean = mean(washes)),9/19/2025,10:17:03
+644878538,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?","35.02, 35.02, 35.02",9/19/2025,10:28:42
+644878538,64181308,Open Text,What is the code for creating a histogram of washes?,"ggplot(data, aes(x = washes)) + geom_histogram()",9/19/2025,11:02:28
+644878540,64181010,Open Text,What packages should you load?,Tideyverse,9/19/2025,10:08:11
+644878540,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:10:10
+644878540,64181203,Open Text,What is the code for adding the column?,mean<-data(washes),9/19/2025,10:21:28
+644878540,64181308,Open Text,What is the code for creating a histogram of washes?,"ggplot(data,aes(x=washes))+geom_histogram()",9/19/2025,11:06:12
+644878543,64181010,Open Text,What packages should you load?,tidyverse,9/19/2025,10:06:15
+644878543,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:09:39
+644878543,64181130,Open Text,Take a peek at the data. What are the column names?,washes and sex,9/19/2025,10:09:39
+644878543,64181203,Open Text,What is the code for adding the column?,mutate,9/19/2025,10:15:26
+644878543,64181203,Open Text,What is the code for adding the column?,mutate,9/19/2025,10:19:54
+644878543,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?","35.02,35.02,35.02",9/19/2025,10:27:16
+644878543,64181308,Open Text,What is the code for creating a histogram of washes?,"ggplot(raw_data, aes(x=washes)) + geom_histogram()",9/19/2025,11:03:39
+644878593,64181010,Open Text,What packages should you load?,"Library(tidyverse)
+Library (ggplot)",9/19/2025,10:07:30
+644878593,64181008,Multiple choice (Single selection),How do you load the new dataset?,"read.csv(""HandWashingData.csv"")",9/19/2025,10:10:03
+644878593,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:12:35
+644878593,64181130,Open Text,Take a peek at the data. What are the column names?,"Washes, sex",9/19/2025,10:10:03
+644878594,64181010,Open Text,What packages should you load?,"ggplot
+tidyverse",9/19/2025,10:06:44
+644878594,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:10:23
+644878594,64181130,Open Text,Take a peek at the data. What are the column names?,Washes and sex,9/19/2025,10:10:23
+644878594,64181203,Open Text,What is the code for adding the column?,Mutate(data)<- mean(washes),9/19/2025,10:21:14
+644878594,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?","35.02  
+35.02
+35.02",9/19/2025,10:27:21
+644878594,64181308,Open Text,What is the code for creating a histogram of washes?,"ggplot(data, aes(x=washes))+geom_histogram",9/19/2025,11:02:43
+644878606,64181010,Open Text,What packages should you load?,Tidyverse,9/19/2025,10:06:36
+644878606,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:10:09
+644878606,64181130,Open Text,Take a peek at the data. What are the column names?,"Washes, sex",9/19/2025,10:10:09
+644878606,64181203,Open Text,What is the code for adding the column?,"df[""mean""] <- c(""washes"")",9/19/2025,10:17:12
+644878606,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?",35.02,9/19/2025,10:33:49
+644878606,64181308,Open Text,What is the code for creating a histogram of washes?,"Ggplot(data, aes(x=washes)) + geom_histogram()",9/19/2025,11:02:49
+644878638,64181010,Open Text,What packages should you load?,ggplot,9/19/2025,10:07:44
+644878638,64181008,Multiple choice (Single selection),How do you load the new dataset?,read_csv(HandWashingData.csv),9/19/2025,10:10:04
+644878638,64181008,Multiple choice (Single selection),How do you load the new dataset?,"read.csv(""HandWashingData.csv"")",9/19/2025,10:12:26
+644878638,64181130,Open Text,Take a peek at the data. What are the column names?,"Washes, Sex",9/19/2025,10:10:04
+644878638,64181203,Open Text,What is the code for adding the column?,data <- data %>% mutate(Mean=mean(washes)),9/19/2025,10:18:35
+644878638,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?","35.02		
+35.02		
+35.02",9/19/2025,10:27:28
+644878675,64181010,Open Text,What packages should you load?,"Tidyverse 
+ggplot2",9/19/2025,10:07:07
+644878675,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:10:16
+644878675,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:12:24
+644878675,64181130,Open Text,Take a peek at the data. What are the column names?,"Washes, sex",9/19/2025,10:10:16
+644878675,64181203,Open Text,What is the code for adding the column?,"Data <- mutate(data, Mean = mean(washes))",9/19/2025,10:16:16
+644878675,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?","35.02, 35.02, 35.02",9/19/2025,10:28:11
+644878675,64181308,Open Text,What is the code for creating a histogram of washes?,"ggplot(data, aes(x=washes) +
+   geom_histogram(binwidth = 1)",9/19/2025,11:03:58
+644878688,64181010,Open Text,What packages should you load?,"gg1, tidyverse",9/19/2025,10:06:43
+644878688,64181008,Multiple choice (Single selection),How do you load the new dataset?,data <- read_csv(HandWashingData.csv),9/19/2025,10:11:18
+644878688,64181130,Open Text,Take a peek at the data. What are the column names?,"washes sex
+",9/19/2025,10:11:18
+644878688,64181203,Open Text,What is the code for adding the column?,mutate (row_mean),9/19/2025,10:16:35
+644878688,64181308,Open Text,What is the code for creating a histogram of washes?,geom_histogram,9/19/2025,11:01:23
+644878693,64181010,Open Text,What packages should you load?,Ggplot2,9/19/2025,10:06:46
+644878693,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:10:57
+644878693,64181130,Open Text,Take a peek at the data. What are the column names?,washes,9/19/2025,10:10:57
+644878693,64181203,Open Text,What is the code for adding the column?,data <- data %>% mutate(a=mean(washes)),9/19/2025,10:16:30
+644878693,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?",35.02,9/19/2025,10:27:38
+644878693,64181308,Open Text,What is the code for creating a histogram of washes?,geom_histogram（）,9/19/2025,11:01:34
+644878792,64181010,Open Text,What packages should you load?,library(tidyverse) and library(ggplot2),9/19/2025,10:06:47
+644878792,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:09:29
+644878792,64181130,Open Text,Take a peek at the data. What are the column names?,washes sex,9/19/2025,10:13:33
+644878792,64181203,Open Text,What is the code for adding the column?,"data <- mutate(data, Mean = mean(washes))",9/19/2025,10:15:04
+644878792,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?",35.02,9/19/2025,10:26:46
+644878792,64181308,Open Text,What is the code for creating a histogram of washes?,"plot <- ggplot(hwd, aes(x=washes, color=sex, fill=sex)) + geom_histogram()",9/19/2025,11:02:05
+644878918,64181010,Open Text,What packages should you load?,"ggplot, tidyverse",9/19/2025,10:07:08
+644878918,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:11:04
+644878918,64181130,Open Text,Take a peek at the data. What are the column names?,Washes Sex,9/19/2025,10:11:04
+644878918,64181203,Open Text,What is the code for adding the column?,[],9/19/2025,10:17:03
+644878918,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?","35.02, 35.02, 35.02",9/19/2025,10:30:06
+644878918,64181308,Open Text,What is the code for creating a histogram of washes?,"ggplot(rawdata, aes(x=washes))",9/19/2025,11:04:37
+644879134,64181010,Open Text,What packages should you load?,Tidyverse ,9/19/2025,10:08:21
+644879134,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:10:39
+644879134,64181130,Open Text,Take a peek at the data. What are the column names?,Washes sex ,9/19/2025,10:13:27
+644879134,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?","35.02, 35.02, 35.02",9/19/2025,10:30:24
+644879397,64181010,Open Text,What packages should you load?,Sd ,9/19/2025,10:07:46
+644879397,64181010,Open Text,What packages should you load?,Library tidyverae,9/19/2025,10:08:02
+644879397,64181008,Multiple choice (Single selection),How do you load the new dataset?,data <- read_csv(HandWashingData.csv),9/19/2025,10:10:11
+644879397,64181130,Open Text,Take a peek at the data. What are the column names?,Washes sex,9/19/2025,10:13:27
+644879397,64181203,Open Text,What is the code for adding the column?,Data ,9/19/2025,10:16:53
+644879397,64181203,Open Text,What is the code for adding the column?,"Ggplot(data,aes())",9/19/2025,10:19:50
+644879397,64181203,Open Text,What is the code for adding the column?,"ggplot(data, aes())",9/19/2025,10:19:59
+644879397,64181308,Open Text,What is the code for creating a histogram of washes?,"ggplot(data, aes(x=washes))",9/19/2025,11:02:25
+644880297,64181008,Multiple choice (Single selection),How do you load the new dataset?,"data <- read_csv(""HandWashingData.csv"")",9/19/2025,10:10:08
+644880297,64181130,Open Text,Take a peek at the data. What are the column names?,Washes sex,9/19/2025,10:10:08
+644880297,64181203,Open Text,What is the code for adding the column?,data<-data%>% mutate (Mean=mean(washes)),9/19/2025,10:17:53
+644880297,64181224,Open Text,"In this new column, what values did you get in the top 3 rows?","38 F  35.02
+39 F  35.02
+36 F  35.02",9/19/2025,10:29:30
+644880297,64181308,Open Text,What is the code for creating a histogram of washes?,"wash<-ggplot(data,(aes(x=washes)+geom_histogram())",9/19/2025,11:05:10
+644883690,64181203,Open Text,What is the code for adding the column?,data <- data %>% mutate (a=mean (washes)),9/19/2025,10:19:43
+644883690,64181308,Open Text,What is the code for creating a histogram of washes?,"ggplot(data, aes(x=washes)) + geom_histogram",9/19/2025,11:02:33
+644884448,64181203,Open Text,What is the code for adding the column?,%<%,9/19/2025,10:22:13
+644884448,64181203,Open Text,What is the code for adding the column?,%<%,9/19/2025,10:22:18
+644884448,64181203,Open Text,What is the code for adding the column?,data <- data %>% mutate ,9/19/2025,10:22:43
+644898452,64181308,Open Text,What is the code for creating a histogram of washes?,"ggplot(data, aes(x = washes)) +
+  geom_histogram",9/19/2025,11:03:37
+644898452,64181308,Open Text,What is the code for creating a histogram of washes?,"ggplot(data, aes(x = washes)) +
+  geom_histogram ()",9/19/2025,11:04:42

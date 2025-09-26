@@ -1,0 +1,72 @@
+
+
+```{r}
+#| message: false
+
+library(tidyverse)
+
+library(ggplot2)
+
+library(stringr)
+
+raw_data <- read_csv("polls/Polls-per-participant-Week_4.csv")
+```
+
+```{r}
+
+clean <- function(.x, clean_list=FALSE, clean_code=FALSE){
+    #col <- ensym(.col)
+
+    x <- .x %>% str_trim()
+    
+    #x <- as.character(dplyr::pull(.data, !!col)) %>% str_trim()
+
+
+    if(clean_list == TRUE){
+        x <- x %>% str_replace_all("\\s\\b(and)\\b\\s", ", ") %>%
+        str_replace_all("\n", ", ")
+
+    }
+    
+        
+    if(clean_code == TRUE){
+
+    }
+
+    symbols = c("<-", "=", "%>%", "\\+")
+    patterns <- paste0("\\s*", symbols, "\\s*")
+    replacements <- paste0(" ", gsub("\\\\", "", symbols), " ")
+    names(replacements) <- patterns
+
+    x <- x %>% 
+        str_remove_all("\n") %>% 
+        #str_replace_all(",+", ",") %>% 
+        str_replace_all("\\s+,", ", ") %>%
+        str_replace_all(",", ", ") %>% 
+        str_replace_all(replacements) %>%
+        str_squish() 
+
+    #dplyr::mutate(.data, !!col := x)
+
+    return(x)
+}
+
+
+```
+
+```{r}
+
+data <- raw_data %>% mutate(id=1:dim(raw_data)[1]) %>% select(c(`id`, `Poll Question`, `Poll Option`)) %>% pivot_wider(id_cols = id, names_from=`Poll Question`, values_from=`Poll Option`) %>% mutate(across(-c(id), ~ clean(.x)))
+
+```
+
+```{r}
+
+data_list <- lapply(names(data), function(col) {
+ data %>% count(.data[[col]], name = "n")
+})
+names(data_list) <- names(data)
+
+
+
+```

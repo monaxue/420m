@@ -15,3 +15,5 @@ venv
 *.utf8.md
 *.knit.md
 /.luarc.json
+
+**/*.quarto_ipynb

@@ -1,5 +1,5 @@
 project:
-  title: "fa2025_psych420"
+  title: "420m"
   output-dir: docs
   resources:
     - site/**

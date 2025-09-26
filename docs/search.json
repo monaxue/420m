@@ -81,14 +81,14 @@
     "href": "index.html",
     "title": "Welcome to PSYCH420’s Lab Section!",
     "section": "",
-    "text": "Slides\nRMarkdown file to test"
+    "text": "Mona’s email: monaxue@utexas.edu\nMona’s office hours: Fri: 1-3pm in SEAY 4.326A, or by appointment\nAlex’s office hours: Tues/Thurs: 12-1pm in SEAY 5.206\n\n\n\nSampling simulation\n\n\n\nSlides\nExample PDF\n\n\n\nHistograms, pipes, and Z-scores\nSlides\nExample PDF\n\n\n\nFile directory, basic syntax, loading packages, importing data\nSlides\nR Cheatsheet\n\n\n\nInstall R, RStudio, and TinyTex\nSlides\nRMarkdown file to test: test.Rmd\nWhat the RMarkdown file should look like: test.pdf"
   },
   {
     "objectID": "index.html#week-1",
     "href": "index.html#week-1",
     "title": "Welcome to PSYCH420’s Lab Section!",
     "section": "",
-    "text": "Slides\nRMarkdown file to test"
+    "text": "Install R, RStudio, and TinyTex\nSlides\nRMarkdown file to test: test.Rmd\nWhat the RMarkdown file should look like: test.pdf"
   },
   {
     "objectID": "monatheme/template.html#introduction",
@@ -145,5 +145,110 @@
     "title": "STAT420 Lab",
     "section": "Plot data",
     "text": "Plot data\nlibrary(ggplot2)\n\n# If we want to plot data$y ~ data$x\n\n# Frist, define the data\nggplot(data,aes(x,y)) + \n    geom_point() # add the scatter plot layer"
+  },
+  {
+    "objectID": "index.html#week-5",
+    "href": "index.html#week-5",
+    "title": "Welcome to PSYCH420’s Lab Section!",
+    "section": "",
+    "text": "Sampling simulation"
+  },
+  {
+    "objectID": "index.html#week-4",
+    "href": "index.html#week-4",
+    "title": "Welcome to PSYCH420’s Lab Section!",
+    "section": "",
+    "text": "Slides\nExample PDF"
+  },
+  {
+    "objectID": "index.html#week-3",
+    "href": "index.html#week-3",
+    "title": "Welcome to PSYCH420’s Lab Section!",
+    "section": "",
+    "text": "Histograms, pipes, and Z-scores\nSlides\nExample PDF"
+  },
+  {
+    "objectID": "index.html#week-2",
+    "href": "index.html#week-2",
+    "title": "Welcome to PSYCH420’s Lab Section!",
+    "section": "",
+    "text": "File directory, basic syntax, loading packages, importing data\nSlides\nR Cheatsheet"
+  },
+  {
+    "objectID": "presentations/week5.html",
+    "href": "presentations/week5.html",
+    "title": "Week 5 Lab",
+    "section": "",
+    "text": "Create your lab4 folder and project\n\n\n\n\n\n\n\n\n\n\n\n\n\n“r” stands for random\n“norm” stands for normal distribution\nThis function samples from a normal distribution randomly.\nLet’s take see this in action.\n\n\n\n\n\n\n\nrun the rnorm function with a mean of 100 and an sd of 10, with a sample size of 1.\nrnorm(n, mean, sd)\n\n\n\n\n\n\n\n\n\n\nCreates a matrix of results, where each column is a single experiment.\n\n```r\n\nmatrix &lt;- replicate(3, rnorm(5, mean = 100, sd = 10))\nmatrix\n\n```\n          [,1]      [,2]      [,3]\n[1,] 122.85353  98.96323  99.39199\n[2,]  85.13403  85.24940  93.66550\n[3,]  99.45157 102.84034 119.71288\n[4,] 111.03297 109.18319  84.86919\n[5,]  93.45378 109.78161 104.45262\n\nLet’s see this in action\n\n\n\n\n\n\n\nIt allows us to calculate summary statistics for sub-samples.\nWe can learn about the relationship between these summary statistics for smaller samples, and the “true” population.\n\n\n\n\n\nLet’s take a look the simulation\n\n\n\n\n\nA distribution of means is called the sampling distribution\nThe standard deviation of the means (sampling distribution) is the standard error\nThe standard error is much smaller than the standard deviation\n\n\n\n\n\n\n\n5_samples &lt;- replicate(5, rnorm(n = 10, mean = 100, sd = 10))\nsampling_dist &lt;- colMeans(5_samples)\nSE &lt;- sd(sampling_dist)\n\n\n\n\n\n\n\nFrom a normal distribution with mean = 100, and sd = 10, draw a sample of 25:\n\nHint: use sample &lt;- rnorm(n=..., mean=..., sd=...), and fill in the … with values that make sense.\nWhat is the mean and standard deviation?\nPlot the sample using geom_freqpoly()\nHint: ggplot requires a dataframe. You can convert a sample to dataframes by using tibble(x=sample)\n\nCreate a sampling distribution of 1000, where each sample contains 25 samples from a normal distribution with mean = 100 and sd = 10\n\nHint: use 1000_samples &lt;- replicate(N=…, rnorm(…))\nWhat is the mean and standard error?\nCreate a matrix called sampling_dist by using colMeans(1000_samples)\nConvert this matrix into a a dataframe for plotting (using tibble)\nPlot the sampling distribution using geom_freqpoly()\n\nRepeat the two steps above for a sample size of 100 (also using 1000 samples for the second part)\nCompare the two sample distributions (about the same width)\nCompare the two sampling distributions (n=100 is narrower)\n\n\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.2\n✔ ggplot2   4.0.0     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.1.0     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(ggplot2)\n\nsample_25 &lt;- tibble(x=rnorm(25, 100, 10))\n\nsample_100 &lt;- tibble(x=rnorm(100, 100, 10))\n\nsampling_25 &lt;- tibble(x=colMeans(replicate(1000, rnorm(25, 100, 10))))\n\nsampling_100 &lt;- tibble(x=colMeans(replicate(1000, rnorm(100, 100, 10))))"
+  },
+  {
+    "objectID": "presentations/week5.html#rnormn-mean-sd",
+    "href": "presentations/week5.html#rnormn-mean-sd",
+    "title": "Week 5 Lab",
+    "section": "",
+    "text": "“r” stands for random\n“norm” stands for normal distribution\nThis function samples from a normal distribution randomly.\nLet’s take see this in action."
+  },
+  {
+    "objectID": "presentations/week5.html#now-you-try",
+    "href": "presentations/week5.html#now-you-try",
+    "title": "Week 5 Lab",
+    "section": "",
+    "text": "run the rnorm function with a mean of 100 and an sd of 10, with a sample size of 1.\nrnorm(n, mean, sd)"
+  },
+  {
+    "objectID": "presentations/week5.html#replicate",
+    "href": "presentations/week5.html#replicate",
+    "title": "Week 5 Lab",
+    "section": "",
+    "text": "Creates a matrix of results, where each column is a single experiment.\n\n```r\n\nmatrix &lt;- replicate(3, rnorm(5, mean = 100, sd = 10))\nmatrix\n\n```\n          [,1]      [,2]      [,3]\n[1,] 122.85353  98.96323  99.39199\n[2,]  85.13403  85.24940  93.66550\n[3,]  99.45157 102.84034 119.71288\n[4,] 111.03297 109.18319  84.86919\n[5,]  93.45378 109.78161 104.45262\n\nLet’s see this in action"
+  },
+  {
+    "objectID": "presentations/week5.html#why-do-we-want-to-simulate-with-replicate-instead-just-take-a-larger-sample-size",
+    "href": "presentations/week5.html#why-do-we-want-to-simulate-with-replicate-instead-just-take-a-larger-sample-size",
+    "title": "Week 5 Lab",
+    "section": "",
+    "text": "It allows us to calculate summary statistics for sub-samples.\nWe can learn about the relationship between these summary statistics for smaller samples, and the “true” population."
+  },
+  {
+    "objectID": "presentations/week5.html#means-of-means-and-standard-errors",
+    "href": "presentations/week5.html#means-of-means-and-standard-errors",
+    "title": "Week 5 Lab",
+    "section": "",
+    "text": "Let’s take a look the simulation"
+  },
+  {
+    "objectID": "presentations/week5.html#key-points",
+    "href": "presentations/week5.html#key-points",
+    "title": "Week 5 Lab",
+    "section": "",
+    "text": "A distribution of means is called the sampling distribution\nThe standard deviation of the means (sampling distribution) is the standard error\nThe standard error is much smaller than the standard deviation"
+  },
+  {
+    "objectID": "presentations/week5.html#now-you-try-1",
+    "href": "presentations/week5.html#now-you-try-1",
+    "title": "Week 5 Lab",
+    "section": "",
+    "text": "5_samples &lt;- replicate(5, rnorm(n = 10, mean = 100, sd = 10))\nsampling_dist &lt;- colMeans(5_samples)\nSE &lt;- sd(sampling_dist)"
+  },
+  {
+    "objectID": "presentations/week5.html#deliverables",
+    "href": "presentations/week5.html#deliverables",
+    "title": "Week 5 Lab",
+    "section": "",
+    "text": "From a normal distribution with mean = 100, and sd = 10, draw a sample of 25:\n\nHint: use sample &lt;- rnorm(n=..., mean=..., sd=...), and fill in the … with values that make sense.\nWhat is the mean and standard deviation?\nPlot the sample using geom_freqpoly()\nHint: ggplot requires a dataframe. You can convert a sample to dataframes by using tibble(x=sample)\n\nCreate a sampling distribution of 1000, where each sample contains 25 samples from a normal distribution with mean = 100 and sd = 10\n\nHint: use 1000_samples &lt;- replicate(N=…, rnorm(…))\nWhat is the mean and standard error?\nCreate a matrix called sampling_dist by using colMeans(1000_samples)\nConvert this matrix into a a dataframe for plotting (using tibble)\nPlot the sampling distribution using geom_freqpoly()\n\nRepeat the two steps above for a sample size of 100 (also using 1000 samples for the second part)\nCompare the two sample distributions (about the same width)\nCompare the two sampling distributions (n=100 is narrower)\n\n\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.2\n✔ ggplot2   4.0.0     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.1.0     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(ggplot2)\n\nsample_25 &lt;- tibble(x=rnorm(25, 100, 10))\n\nsample_100 &lt;- tibble(x=rnorm(100, 100, 10))\n\nsampling_25 &lt;- tibble(x=colMeans(replicate(1000, rnorm(25, 100, 10))))\n\nsampling_100 &lt;- tibble(x=colMeans(replicate(1000, rnorm(100, 100, 10))))"
+  },
+  {
+    "objectID": "presentations/week5.html#review-question",
+    "href": "presentations/week5.html#review-question",
+    "title": "420m",
+    "section": "Review question",
+    "text": "Review question"
+  },
+  {
+    "objectID": "presentations/week5.html#sampling-distributions",
+    "href": "presentations/week5.html#sampling-distributions",
+    "title": "420m",
+    "section": "Sampling distributions",
+    "text": "Sampling distributions"
   }
 ]

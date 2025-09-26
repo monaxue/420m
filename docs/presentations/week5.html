@@ -6,8 +6,8 @@
 <script src="week5_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="week5_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="week5_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="week5_files/libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.33">
+<link href="week5_files/libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.24">
 
   <meta name="author" content="Mona Xue">
   <title>week5</title>
@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="week5_files/libs/revealjs/dist/theme/quarto-58529db90ad35bf0ff860a77ff523a3b.css">
+  <link rel="stylesheet" href="week5_files/libs/revealjs/dist/theme/quarto-ffc9d66842859dcdd26fda343f3a80be.css">
   <link href="week5_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="week5_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="week5_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -200,157 +200,175 @@
 <h1>Week 5 Lab</h1>
 <p><strong>Create your lab4 folder and project</strong></p>
 </section>
-<section id="sampling-distributions" class="slide level2">
-<h2>Sampling distributions</h2>
+<section id="review-question" class="slide level2">
+<h2>Review question</h2>
+
+<iframe src="https://wall.sli.do/event/3oY6Sijg8wvh8dq8k65iQf/?section=7c2e35e5-0092-4380-a5b1-e2828ec7cd06" width="100%," height="600"></iframe>
+
+</section></section>
+<section>
+<section id="sampling-distributions" class="title-slide slide level1 center">
+<h1>Sampling distributions</h1>
+
 </section>
-<section id="rnorm" class="slide level2">
-<h2>rnorm()</h2>
-<p>The “r” stands for random, and “norm” stands for normal distribution. This function samples from a normal distribution randomly.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {shinylive-r} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href=""></a></span>
-<span id="cb1-2"><a href=""></a>library(tidyverse)</span>
-<span id="cb1-3"><a href=""></a>library(shiny)</span>
-<span id="cb1-4"><a href=""></a>library(ggplot2)</span>
-<span id="cb1-5"><a href=""></a>library(matrixStats)</span>
-<span id="cb1-6"><a href=""></a></span>
-<span id="cb1-7"><a href=""></a>ui &lt;- fluidPage(</span>
-<span id="cb1-8"><a href=""></a>    plotOutput('plot'),</span>
-<span id="cb1-9"><a href=""></a>    splitLayout(</span>
-<span id="cb1-10"><a href=""></a>      plotOutput('meanplot'),</span>
-<span id="cb1-11"><a href=""></a>      plotOutput('sdplot')),</span>
-<span id="cb1-12"><a href=""></a>    splitLayout(cellWidths=c("90%", "10%"),</span>
-<span id="cb1-13"><a href=""></a>      verbatimTextOutput("rnorm1"),</span>
-<span id="cb1-14"><a href=""></a>      actionButton("sample", "Run")),</span>
-<span id="cb1-15"><a href=""></a>    splitLayout(cellWidths=c("90%", "10%"),</span>
-<span id="cb1-16"><a href=""></a>      verbatimTextOutput("rnorm25"),</span>
-<span id="cb1-17"><a href=""></a>      actionButton("sample25", "Run")),</span>
-<span id="cb1-18"><a href=""></a>    splitLayout(cellWidths=c("90%", "10%"),</span>
-<span id="cb1-19"><a href=""></a>      verbatimTextOutput("replicaternorm25"),</span>
-<span id="cb1-20"><a href=""></a>      actionButton("replicate25", "Run")),</span>
-<span id="cb1-21"><a href=""></a>    splitLayout(cellWidths=c("90%", "10%"),</span>
-<span id="cb1-22"><a href=""></a>      textInput("rnormyours", label = NULL, placeholder="Enter your own function"),</span>
-<span id="cb1-23"><a href=""></a>      actionButton("yoursample", "Run")),</span>
-<span id="cb1-24"><a href=""></a>      br(),</span>
-<span id="cb1-25"><a href=""></a>    actionButton("reset", "Reset")</span>
-<span id="cb1-26"><a href=""></a>)</span>
-<span id="cb1-27"><a href=""></a></span>
-<span id="cb1-28"><a href=""></a></span>
-<span id="cb1-29"><a href=""></a></span>
-<span id="cb1-30"><a href=""></a>server &lt;- function(input, output, session){</span>
-<span id="cb1-31"><a href=""></a></span>
-<span id="cb1-32"><a href=""></a>    reset_all &lt;- function() {</span>
-<span id="cb1-33"><a href=""></a>    # reset reactives you maintain</span>
-<span id="cb1-34"><a href=""></a>    if (exists("pts"))      pts(tibble(x = numeric(), y = numeric()))</span>
-<span id="cb1-35"><a href=""></a>    if (exists("mean_now")) mean_now(tibble(Mean = numeric(), y = numeric()))   # if your mean_now is a tibble log</span>
-<span id="cb1-36"><a href=""></a>    if (exists("sd_now"))   sd_now(tibble(SD   = numeric(), y = numeric()))       # if your sd_now is a tibble log</span>
-<span id="cb1-37"><a href=""></a></span>
-<span id="cb1-38"><a href=""></a>    # if in your earlier code mean_now()/sd_now() were scalars, do:</span>
-<span id="cb1-39"><a href=""></a>    # if (exists("mean_now")) mean_now(NA_real_)</span>
-<span id="cb1-40"><a href=""></a>    # if (exists("sd_now"))   sd_now(NA_real_)</span>
-<span id="cb1-41"><a href=""></a></span>
-<span id="cb1-42"><a href=""></a>    # clear inputs</span>
-<span id="cb1-43"><a href=""></a>    updateTextInput(session, "rnormyours", value = "")</span>
-<span id="cb1-44"><a href=""></a>  }</span>
-<span id="cb1-45"><a href=""></a></span>
-<span id="cb1-46"><a href=""></a>    observeEvent(input$reset, {</span>
-<span id="cb1-47"><a href=""></a>    reset_all() })</span>
-<span id="cb1-48"><a href=""></a></span>
-<span id="cb1-49"><a href=""></a>    output$rnorm1 &lt;- renderText("rnorm(1, mean = 100, sd = 10)")</span>
-<span id="cb1-50"><a href=""></a>    output$rnorm25 &lt;- renderText("rnorm(25, mean = 100, sd = 10)")</span>
-<span id="cb1-51"><a href=""></a>    output$replicaternorm25 &lt;- renderText("replicate(50, rnorm(25, mean = 100, sd = 10))")</span>
-<span id="cb1-52"><a href=""></a></span>
-<span id="cb1-53"><a href=""></a>    pts &lt;- reactiveVal(tibble(x = numeric(), y = numeric()))</span>
-<span id="cb1-54"><a href=""></a>    mean_now &lt;- reactiveVal(tibble(Mean = numeric(), y = numeric()))</span>
-<span id="cb1-55"><a href=""></a>    sd_now &lt;- reactiveVal(tibble(SD = numeric(), y = numeric()))</span>
-<span id="cb1-56"><a href=""></a></span>
-<span id="cb1-57"><a href=""></a>    observeEvent(input$sample, {</span>
-<span id="cb1-58"><a href=""></a>        x_now &lt;- rnorm(1, mean = 100, sd = 10)</span>
-<span id="cb1-59"><a href=""></a>        dat &lt;- bind_rows(pts(), tibble(x = x_now)) %&gt;% group_by(round(x)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup() </span>
-<span id="cb1-60"><a href=""></a>        pts(dat)</span>
-<span id="cb1-61"><a href=""></a>        }) </span>
-<span id="cb1-62"><a href=""></a></span>
-<span id="cb1-63"><a href=""></a>    observeEvent(input$sample25, {</span>
-<span id="cb1-64"><a href=""></a>        x_now &lt;- rnorm(25, mean = 100, sd = 10)</span>
-<span id="cb1-65"><a href=""></a>        dat &lt;- bind_rows(pts(), tibble(x = x_now)) %&gt;% group_by(round(x)) %&gt;% mutate(y = (row_number()-1) * 0.001)</span>
-<span id="cb1-66"><a href=""></a>        pts(dat)</span>
-<span id="cb1-67"><a href=""></a></span>
-<span id="cb1-68"><a href=""></a>        mean_dat &lt;- mean_now() %&gt;% bind_rows(tibble(Mean = mean(x_now))) %&gt;% group_by(round(Mean)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup()</span>
-<span id="cb1-69"><a href=""></a>        sd_dat &lt;- sd_now() %&gt;% bind_rows(tibble(SD = sd(x_now))) %&gt;% group_by(round(SD)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup()</span>
-<span id="cb1-70"><a href=""></a>        mean_now(mean_dat)</span>
-<span id="cb1-71"><a href=""></a>        sd_now(sd_dat)</span>
-<span id="cb1-72"><a href=""></a>        }) </span>
-<span id="cb1-73"><a href=""></a></span>
-<span id="cb1-74"><a href=""></a>    observeEvent(input$replicate25, {</span>
-<span id="cb1-75"><a href=""></a>        x_now &lt;- replicate(50, rnorm(25, mean = 100, sd = 10))</span>
-<span id="cb1-76"><a href=""></a>        x_vec &lt;- as.numeric(x_now)</span>
-<span id="cb1-77"><a href=""></a>        dat &lt;- bind_rows(pts(), tibble(x = x_vec)) %&gt;% group_by(round(x)) %&gt;% mutate(y = (row_number()-1) * 0.001)</span>
-<span id="cb1-78"><a href=""></a>        pts(dat)</span>
-<span id="cb1-79"><a href=""></a></span>
-<span id="cb1-80"><a href=""></a>        mean_dat &lt;- mean_now() %&gt;% bind_rows(tibble(Mean = as.numeric(colMeans(x_now)))) %&gt;% group_by(round(Mean)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup()</span>
-<span id="cb1-81"><a href=""></a>        sd_dat &lt;- sd_now() %&gt;% bind_rows(tibble(SD = as.numeric(matrixStats::colSds(x_now)))) %&gt;% group_by(round(SD)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup()</span>
-<span id="cb1-82"><a href=""></a>        mean_now(mean_dat)</span>
-<span id="cb1-83"><a href=""></a>        sd_now(sd_dat)</span>
-<span id="cb1-84"><a href=""></a>        }) </span>
-<span id="cb1-85"><a href=""></a></span>
-<span id="cb1-86"><a href=""></a>    observeEvent(input$yoursample, {</span>
-<span id="cb1-87"><a href=""></a>        x_now &lt;- tryCatch(eval(parse(text = input$rnormyours)), error = function(e) numeric(0))</span>
-<span id="cb1-88"><a href=""></a>        x_vec &lt;- as.numeric(x_now)</span>
-<span id="cb1-89"><a href=""></a>        dat &lt;- bind_rows(pts(), tibble(x = x_vec)) %&gt;% group_by(round(x)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup()</span>
-<span id="cb1-90"><a href=""></a>        pts(dat)</span>
-<span id="cb1-91"><a href=""></a></span>
-<span id="cb1-92"><a href=""></a>        if (length(x_now) &gt; 1 &amp; !is.matrix(x_now)){</span>
-<span id="cb1-93"><a href=""></a>          mean_dat &lt;- mean_now() %&gt;% bind_rows(tibble(Mean = mean(x_now))) %&gt;% group_by(round(Mean)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup()</span>
-<span id="cb1-94"><a href=""></a>          sd_dat &lt;- sd_now() %&gt;% bind_rows(tibble(SD = sd(x_now))) %&gt;% group_by(round(SD)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup()</span>
-<span id="cb1-95"><a href=""></a>          mean_now(mean_dat)</span>
-<span id="cb1-96"><a href=""></a>          sd_now(sd_dat)</span>
-<span id="cb1-97"><a href=""></a>        }</span>
-<span id="cb1-98"><a href=""></a>        else if (is.matrix(x_now)){</span>
-<span id="cb1-99"><a href=""></a>          mean_dat &lt;- mean_now() %&gt;% bind_rows(tibble(Mean = as.numeric(colMeans(x_now)))) %&gt;% group_by(round(Mean)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup()</span>
-<span id="cb1-100"><a href=""></a>          sd_dat &lt;- sd_now() %&gt;% bind_rows(tibble(SD = as.numeric(matrixStats::colSds(x_now)))) %&gt;% group_by(round(SD)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup()</span>
-<span id="cb1-101"><a href=""></a>          mean_now(mean_dat)</span>
-<span id="cb1-102"><a href=""></a>          sd_now(sd_dat)</span>
-<span id="cb1-103"><a href=""></a>        }</span>
-<span id="cb1-104"><a href=""></a>        </span>
-<span id="cb1-105"><a href=""></a>        </span>
-<span id="cb1-106"><a href=""></a>        }) </span>
-<span id="cb1-107"><a href=""></a></span>
-<span id="cb1-108"><a href=""></a>    normal = tibble(x = 60:140, Density = dnorm(60:140, mean = 100, sd = 10))</span>
-<span id="cb1-109"><a href=""></a>    max_y = max(normal$Density + 0.01)</span>
-<span id="cb1-110"><a href=""></a></span>
-<span id="cb1-111"><a href=""></a>    output$plot &lt;- renderPlot({ </span>
-<span id="cb1-112"><a href=""></a>      avg = mean(pts()$x)</span>
-<span id="cb1-113"><a href=""></a>      sd_all = sd(pts()$x)</span>
-<span id="cb1-114"><a href=""></a>      ggplot(normal, aes(x=x, y=Density)) + geom_line(linewidth = 2, color="grey") + theme_classic() + geom_point(data = pts(), aes(x=x,y=y), size=3) + geom_vline(xintercept = avg, color="firebrick") + geom_vline(xintercept = avg+sd_all, color="steelblue") + geom_vline(xintercept = avg-sd_all, color="steelblue") + annotate("label", label = "Mean", x = avg, y =  max_y) + annotate("label", label = "+SD", x = avg+sd_all, y =  max_y) + annotate("label", label = "-SD", x = avg-sd_all, y =  max_y) + theme(axis.title.y = element_blank(),</span>
-<span id="cb1-115"><a href=""></a>      axis.text.y  = element_blank(), axis.ticks.y = element_blank())})</span>
-<span id="cb1-116"><a href=""></a>    </span>
-<span id="cb1-117"><a href=""></a>    output$meanplot &lt;- renderPlot({</span>
-<span id="cb1-118"><a href=""></a>      mean_mean = mean(mean_now()$Mean)</span>
-<span id="cb1-119"><a href=""></a>      ggplot(data = mean_now(), aes(x=Mean, y=y)) + geom_point(color="firebrick") + geom_vline(xintercept=mean_mean) + annotate("label", label = "Mean of means", x = mean_mean, y =  max_y)+ ylim(0, 0.05) + xlim(95, 105) + theme_classic() + theme(axis.title.y = element_blank(),</span>
-<span id="cb1-120"><a href=""></a>      axis.text.y  = element_blank(), axis.ticks.y = element_blank()) })</span>
-<span id="cb1-121"><a href=""></a>    </span>
-<span id="cb1-122"><a href=""></a>    output$sdplot &lt;- renderPlot({</span>
-<span id="cb1-123"><a href=""></a>      SE = mean(sd_now()$SD)</span>
-<span id="cb1-124"><a href=""></a>      ggplot(data = sd_now(), aes(x=SD, y=y)) + geom_point(color="steelblue") + geom_vline(xintercept=SE) + annotate("label", label = "Std. Error", x = SE, y =  max_y) + ylim(0, 0.05) + xlim(5, 15) + theme_classic() + theme(axis.title.y = element_blank(),</span>
-<span id="cb1-125"><a href=""></a>      axis.text.y  = element_blank(), axis.ticks.y = element_blank())})</span>
-<span id="cb1-126"><a href=""></a>    </span>
-<span id="cb1-127"><a href=""></a>}</span>
-<span id="cb1-128"><a href=""></a></span>
-<span id="cb1-129"><a href=""></a></span>
-<span id="cb1-130"><a href=""></a></span>
-<span id="cb1-131"><a href=""></a></span>
-<span id="cb1-132"><a href=""></a>shinyApp(ui, server)</span>
-<span id="cb1-133"><a href=""></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="rnormn-mean-sd" class="slide level2">
+<h2>rnorm(n, mean, sd)</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">“r” stands for random</li>
+<li class="fragment">“norm” stands for normal distribution</li>
+<li class="fragment">This function samples from a normal distribution randomly.</li>
+<li class="fragment">Let’s take see this in action.</li>
+</ul>
+</div>
 </section>
-<section id="deliverables" class="slide level2">
+<section id="now-you-try" class="slide level2">
+<h2>Now you try!</h2>
+<div class="card-list">
+<ul>
+<li>Run the <code>rnorm(n, mean, sd)</code> function with a mean of 100 and an sd of 10, with a sample size of 1.</li>
+</ul>
+
+<iframe src="https://wall.sli.do/event/3oY6Sijg8wvh8dq8k65iQf/?section=7c2e35e5-0092-4380-a5b1-e2828ec7cd06" width="100%," height="600"></iframe>
+
+</div>
+</section>
+<section id="replicate" class="slide level2">
+<h2>replicate()</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">We can run each experiment multiple times.</li>
+<li class="fragment">replicate(), creates a matrix of results, where each column is a single experiment.</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href=""></a>```r</span>
+<span id="cb1-2"><a href=""></a></span>
+<span id="cb1-3"><a href=""></a>matrix &lt;- replicate(3, rnorm(5, mean = 100, sd = 10))</span>
+<span id="cb1-4"><a href=""></a>matrix</span>
+<span id="cb1-5"><a href=""></a></span>
+<span id="cb1-6"><a href=""></a>```</span>
+<span id="cb1-7"><a href=""></a>          [,1]      [,2]      [,3]</span>
+<span id="cb1-8"><a href=""></a>[1,] 122.85353  98.96323  99.39199</span>
+<span id="cb1-9"><a href=""></a>[2,]  85.13403  85.24940  93.66550</span>
+<span id="cb1-10"><a href=""></a>[3,]  99.45157 102.84034 119.71288</span>
+<span id="cb1-11"><a href=""></a>[4,] 111.03297 109.18319  84.86919</span>
+<span id="cb1-12"><a href=""></a>[5,]  93.45378 109.78161 104.45262</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<p><strong>Let’s see this in action</strong></p>
+</div>
+</section>
+<section id="why-do-we-want-to-simulate-with-replicate" class="slide level2">
+<h2>Why do we want to simulate with replicate()?</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">Can we just take a larger sample size?</li>
+<li class="fragment">It allows us to calculate summary statistics for sub-samples.</li>
+<li class="fragment">We can learn about the relationship between these summary statistics for smaller samples, and the “true” population.</li>
+</ul>
+</div>
+</section>
+<section id="means-of-means-and-standard-errors" class="slide level2">
+<h2>Means of means and standard errors</h2>
+<p><strong>Let’s take a look at the simulation</strong></p>
+</section>
+<section id="key-points" class="slide level2">
+<h2>Key points</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">A distribution of means is called the sampling distribution</li>
+<li class="fragment">The standard deviation of the means (sampling distribution) is the standard error</li>
+<li class="fragment">The standard error is much smaller than the standard deviation</li>
+</ul>
+</div>
+</section>
+<section id="now-you-try-1" class="slide level2">
+<h2>Now you try!</h2>
+<div class="card-list">
+<ul>
+<li class="fragment"><code>5_samples &lt;- replicate(5, rnorm(n = 10, mean = 100, sd = 10))</code></li>
+<li class="fragment"><code>sampling_dist &lt;- colMeans(5_samples)</code></li>
+<li class="fragment"><code>SE &lt;- sd(sampling_dist)</code></li>
+</ul>
+</div>
+</section>
+<section id="deliverables" class="slide level2 scrollable">
 <h2>Deliverables</h2>
 <div class="card-list">
 <ol type="1">
-<li class="fragment">Plot a sample of 25, with <code>mean = 100</code>, and <code>sd = 10</code></li>
-<li class="fragment">Plot a sampling distribution of 1000, where each sample contains 25 samples, with <code>mean = 100</code> and <code>sd = 10</code></li>
-<li class="fragment">Plot a sample of 100, with <code>mean = 100</code>, and <code>sd = 10</code></li>
-<li class="fragment">Plot a sampling distribution of 1000, where each sample contains 100 samples, with <code>mean = 100</code> and <code>sd = 10</code></li>
-<li class="fragment">A comparison of the two sampling distributions (about the same width)</li>
-<li class="fragment">A comparison of the two sampling distributions (n=100 is narrower)</li>
+<li>From a normal distribution with <code>mean = 100</code>, and <code>sd = 10</code>, draw a sample of 25:
+<ul>
+<li>Hint: use <code>sample &lt;- rnorm(n=..., mean=..., sd=...)</code>, and fill in the … with values that make sense.</li>
+<li>What is the mean and standard deviation?</li>
+<li>Plot the sample using <code>geom_freqpoly()</code></li>
+<li>Hint: ggplot requires a dataframe. You can convert a sample to dataframes by using <code>tibble(x=sample)</code></li>
+</ul></li>
+<li>Create a sampling distribution of 1000, where each sample contains 25 samples from a normal distribution with <code>mean = 100</code> and <code>sd = 10</code>
+<ul>
+<li>Hint: use <code>1000_samples &lt;- replicate(N=..., rnorm(...))</code></li>
+<li>What is the mean and standard error?</li>
+<li>Create a matrix called <code>sampling_dist</code> by using <code>colMeans(1000_samples)</code></li>
+<li>Convert this matrix into a a dataframe for plotting (using <code>tibble()</code>)</li>
+<li>Plot the sampling distribution using <code>geom_freqpoly()</code></li>
+</ul></li>
+<li>Repeat the two steps above for a sample size of 100 (also using 1000 samples for the second part)</li>
+<li>Compare the two <strong>sample</strong> distributions (about the same width)</li>
+<li>Compare the two <strong>sampling</strong> distributions (n=100 is narrower)</li>
+<li>Show me your RMarkdown PDF when you are done.</li>
 </ol>
+</div>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Sample n=25</a></li><li><a href="#tabset-1-2">Sample n=100</a></li><li><a href="#tabset-1-3">Sampling n=25</a></li><li><a href="#tabset-1-4">Sampling n=100</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week5_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week5_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-3">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week5_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-4">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week5_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 </section></section>
@@ -545,7 +563,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -571,6 +589,82 @@
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
@@ -619,13 +713,14 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

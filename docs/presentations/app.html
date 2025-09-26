@@ -8,7 +8,7 @@
 
 <meta name="author" content="Mona Xue">
 
-<title>index</title>
+<title>app</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,26 +24,27 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="index_files/libs/clipboard/clipboard.min.js"></script>
-<script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="index_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="index_files/libs/quarto-html/popper.min.js"></script>
-<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="index_files/libs/quarto-html/anchor.min.js"></script>
-<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="app_files/libs/clipboard/clipboard.min.js"></script>
+<script src="app_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="app_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="app_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="app_files/libs/quarto-html/popper.min.js"></script>
+<script src="app_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="app_files/libs/quarto-html/anchor.min.js"></script>
+<link href="app_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="app_files/libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="app_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="app_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="app_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="app.html"><i class="bi bi-file-slides"></i>RevealJS (monatheme)</a></li></ul></div></div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -70,42 +71,139 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="welcome-to-psych420s-lab-section" class="level1">
-<h1>Welcome to PSYCH420’s Lab Section!</h1>
-<p>Mona’s email: <a href="mailto:monaxue@utexas.edu" class="email">monaxue@utexas.edu</a></p>
-<p>Mona’s office hours: Fri: 1-3pm in SEAY 4.326A, or by appointment</p>
-<p>Alex’s office hours: Tues/Thurs: 12-1pm in SEAY 5.206</p>
-<hr>
-<section id="week-5" class="level2">
-<h2 class="anchored" data-anchor-id="week-5">Week 5</h2>
-<p><a href="presentations/week5.html">Slides</a></p>
-<p><a href="site/index.html">Sampling simulation (coming soon)</a></p>
-</section>
-<section id="week-4" class="level2">
-<h2 class="anchored" data-anchor-id="week-4">Week 4</h2>
-<p><a href="presentations/week4.html">Slides</a></p>
-<p><a href="r_demos/420m/labs/lab3/lab3-example.pdf">Example PDF</a></p>
-</section>
-<section id="week-3" class="level2">
-<h2 class="anchored" data-anchor-id="week-3">Week 3</h2>
-<p>Histograms, pipes, and Z-scores</p>
-<p><a href="presentations/week3.html">Slides</a></p>
-<p><a href="r_demos/420m/labs/lab2/lab2-example.pdf">Example PDF</a></p>
-</section>
-<section id="week-2" class="level2">
-<h2 class="anchored" data-anchor-id="week-2">Week 2</h2>
-<p>File directory, basic syntax, loading packages, importing data</p>
-<p><a href="presentations/week2.html">Slides</a></p>
-<p><a href="files/r-cheatsheet-files.html">R Cheatsheet</a></p>
-</section>
-<section id="week-1" class="level2">
-<h2 class="anchored" data-anchor-id="week-1">Week 1</h2>
-<p>Install R, RStudio, and TinyTex</p>
-<p><a href="presentations/intro.html">Slides</a></p>
-<p><strong>RMarkdown file to test:</strong> <a href="r_demos/test.Rmd">test.Rmd</a></p>
-<p><strong>What the RMarkdown file should look like:</strong> <a href="r_demos/test.pdf">test.pdf</a></p>
-</section>
-</section>
+<pre class="{shinylive-r}"><code>library(tidyverse)
+library(ggplot2)
+library(matrixStats)
+library(shiny)
+library(shinylive)
+
+ui &lt;- fluidPage(
+    plotOutput('plot'),
+    splitLayout(
+      plotOutput('meanplot'),
+      plotOutput('sdplot')),
+    splitLayout(cellWidths=c("90%", "10%"),
+      verbatimTextOutput("rnorm1"),
+      actionButton("sample", "Run")),
+    splitLayout(cellWidths=c("90%", "10%"),
+      verbatimTextOutput("rnorm25"),
+      actionButton("sample25", "Run")),
+    splitLayout(cellWidths=c("90%", "10%"),
+      verbatimTextOutput("replicaternorm25"),
+      actionButton("replicate25", "Run")),
+    splitLayout(cellWidths=c("90%", "10%"),
+      textInput("rnormyours", label = NULL, placeholder="Enter your own function"),
+      actionButton("yoursample", "Run")),
+      br(),
+    actionButton("reset", "Reset")
+)
+
+
+
+server &lt;- function(input, output, session){
+
+    reset_all &lt;- function() {
+    # reset reactives you maintain
+    if (exists("pts"))      pts(tibble(x = numeric(), y = numeric()))
+    if (exists("mean_now")) mean_now(tibble(Mean = numeric(), y = numeric()))   # if your mean_now is a tibble log
+    if (exists("sd_now"))   sd_now(tibble(SD   = numeric(), y = numeric()))       # if your sd_now is a tibble log
+
+    # if in your earlier code mean_now()/sd_now() were scalars, do:
+    # if (exists("mean_now")) mean_now(NA_real_)
+    # if (exists("sd_now"))   sd_now(NA_real_)
+
+    # clear inputs
+    updateTextInput(session, "rnormyours", value = "")
+  }
+
+    observeEvent(input$reset, {
+    reset_all() })
+
+    output$rnorm1 &lt;- renderText("rnorm(1, mean = 100, sd = 10)")
+    output$rnorm25 &lt;- renderText("rnorm(25, mean = 100, sd = 10)")
+    output$replicaternorm25 &lt;- renderText("replicate(50, rnorm(25, mean = 100, sd = 10))")
+
+    pts &lt;- reactiveVal(tibble(x = numeric(), y = numeric()))
+    mean_now &lt;- reactiveVal(tibble(Mean = numeric(), y = numeric()))
+    sd_now &lt;- reactiveVal(tibble(SD = numeric(), y = numeric()))
+
+    observeEvent(input$sample, {
+        x_now &lt;- rnorm(1, mean = 100, sd = 10)
+        dat &lt;- bind_rows(pts(), tibble(x = x_now)) %&gt;% group_by(round(x)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup() 
+        pts(dat)
+        }) 
+
+    observeEvent(input$sample25, {
+        x_now &lt;- rnorm(25, mean = 100, sd = 10)
+        dat &lt;- bind_rows(pts(), tibble(x = x_now)) %&gt;% group_by(round(x)) %&gt;% mutate(y = (row_number()-1) * 0.001)
+        pts(dat)
+
+        mean_dat &lt;- mean_now() %&gt;% bind_rows(tibble(Mean = mean(x_now))) %&gt;% group_by(round(Mean)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup()
+        sd_dat &lt;- sd_now() %&gt;% bind_rows(tibble(SD = sd(x_now))) %&gt;% group_by(round(SD)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup()
+        mean_now(mean_dat)
+        sd_now(sd_dat)
+        }) 
+
+    observeEvent(input$replicate25, {
+        x_now &lt;- replicate(50, rnorm(25, mean = 100, sd = 10))
+        x_vec &lt;- as.numeric(x_now)
+        dat &lt;- bind_rows(pts(), tibble(x = x_vec)) %&gt;% group_by(round(x)) %&gt;% mutate(y = (row_number()-1) * 0.001)
+        pts(dat)
+
+        mean_dat &lt;- mean_now() %&gt;% bind_rows(tibble(Mean = as.numeric(colMeans(x_now)))) %&gt;% group_by(round(Mean)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup()
+        sd_dat &lt;- sd_now() %&gt;% bind_rows(tibble(SD = as.numeric(matrixStats::colSds(x_now)))) %&gt;% group_by(round(SD)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup()
+        mean_now(mean_dat)
+        sd_now(sd_dat)
+        }) 
+
+    observeEvent(input$yoursample, {
+        x_now &lt;- tryCatch(eval(parse(text = input$rnormyours)), error = function(e) numeric(0))
+        x_vec &lt;- as.numeric(x_now)
+        dat &lt;- bind_rows(pts(), tibble(x = x_vec)) %&gt;% group_by(round(x)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup()
+        pts(dat)
+
+        if (length(x_now) &gt; 1 &amp; !is.matrix(x_now)){
+          mean_dat &lt;- mean_now() %&gt;% bind_rows(tibble(Mean = mean(x_now))) %&gt;% group_by(round(Mean)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup()
+          sd_dat &lt;- sd_now() %&gt;% bind_rows(tibble(SD = sd(x_now))) %&gt;% group_by(round(SD)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup()
+          mean_now(mean_dat)
+          sd_now(sd_dat)
+        }
+        else if (is.matrix(x_now)){
+          mean_dat &lt;- mean_now() %&gt;% bind_rows(tibble(Mean = as.numeric(colMeans(x_now)))) %&gt;% group_by(round(Mean)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup()
+          sd_dat &lt;- sd_now() %&gt;% bind_rows(tibble(SD = as.numeric(matrixStats::colSds(x_now)))) %&gt;% group_by(round(SD)) %&gt;% mutate(y = (row_number()-1) * 0.001) %&gt;% ungroup()
+          mean_now(mean_dat)
+          sd_now(sd_dat)
+        }
+        
+        
+        }) 
+
+    normal = tibble(x = 60:140, Density = dnorm(60:140, mean = 100, sd = 10))
+    max_y = max(normal$Density + 0.01)
+
+    output$plot &lt;- renderPlot({ 
+      avg = mean(pts()$x)
+      sd_all = sd(pts()$x)
+      ggplot(normal, aes(x=x, y=Density)) + geom_line(linewidth = 2, color="grey") + theme_classic() + geom_point(data = pts(), aes(x=x,y=y), size=3) + geom_vline(xintercept = avg, color="firebrick") + geom_vline(xintercept = avg+sd_all, color="steelblue") + geom_vline(xintercept = avg-sd_all, color="steelblue") + annotate("label", label = "Mean", x = avg, y =  max_y) + annotate("label", label = "+SD", x = avg+sd_all, y =  max_y) + annotate("label", label = "-SD", x = avg-sd_all, y =  max_y) + theme(axis.title.y = element_blank(),
+      axis.text.y  = element_blank(), axis.ticks.y = element_blank())})
+    
+    output$meanplot &lt;- renderPlot({
+      mean_mean = mean(mean_now()$Mean)
+      ggplot(data = mean_now(), aes(x=Mean, y=y)) + geom_point(color="firebrick") + geom_vline(xintercept=mean_mean) + annotate("label", label = "Mean of means", x = mean_mean, y =  max_y)+ ylim(0, 0.05) + xlim(95, 105) + theme_classic() + theme(axis.title.y = element_blank(),
+      axis.text.y  = element_blank(), axis.ticks.y = element_blank()) })
+    
+    output$sdplot &lt;- renderPlot({
+      SE = mean(sd_now()$SD)
+      ggplot(data = sd_now(), aes(x=SD, y=y)) + geom_point(color="steelblue") + geom_vline(xintercept=SE) + annotate("label", label = "Std. Error", x = SE, y =  max_y) + ylim(0, 0.05) + xlim(5, 15) + theme_classic() + theme(axis.title.y = element_blank(),
+      axis.text.y  = element_blank(), axis.ticks.y = element_blank())})
+    
+}
+
+
+
+
+shinyApp(ui, server)
+</code></pre>
 
 </main>
 <!-- /main column -->

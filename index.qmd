@@ -14,6 +14,12 @@ Alex's office hours: Tues/Thurs: 12-1pm in SEAY 5.206
 
 ---
 
+## Week 6
+
+[Case study template Rmd file](r_demos/case_study_template.Rmd)
+
+[Case study template example PDF](r_demos/case_study_template.pdf)
+
 ## Week 5
 
 [Slides](presentations/week5.html)

@@ -5,3 +5,6 @@ project:
     - site/**
 
 author: Mona Xue
+
+code-tools: 
+  source: true

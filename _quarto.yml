@@ -1,10 +1,8 @@
 project:
   title: "420m"
   output-dir: docs
-  resources:
-    - r_demos/
+
+resources:
+  - r_demos/**
 
 author: Mona Xue
-
-code-tools: 
-  source: true

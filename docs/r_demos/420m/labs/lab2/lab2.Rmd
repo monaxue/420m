@@ -1,0 +1,43 @@
+---
+author: Mona Xue
+date: 2025-09-12
+output: pdf_document
+---
+
+
+# Load packages
+```{r}
+
+library(tidyverse)
+library(ggplot2)
+
+
+```
+
+# Load data
+```{r}
+
+data <- read_csv("2020heights.csv")
+head(data)
+
+
+```
+
+# Histograms
+```{r}
+
+ggplot(data, aes(x=heights)) + geom_histogram()
+
+ggplot(data, aes(x=heights)) + geom_histogram(binwidth = 10)
+
+ggplot(data, aes(x=heights)) + geom_histogram(color="red", fill="pink")
+
+```
+The histogram looks ...
+
+# Modify data
+```{r}
+
+data <- data %>% mutate(a=mean(heights)) %>% arrange(heights)
+
+```

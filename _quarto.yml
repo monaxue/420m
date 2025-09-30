@@ -2,7 +2,7 @@ project:
   title: "420m"
   output-dir: docs
   resources:
-    - site/**
+    - r_demos/
 
 author: Mona Xue
 

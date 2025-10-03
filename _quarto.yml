@@ -1,13 +1,7 @@
 project:
-  type: website
-  render:
-    - "index.qmd"
-    - "!r_demos/"
-    - "!presentations/"
+  title: "420m"
+  output-dir: docs
   resources:
-    - r_demos/**
-    - "presentations/"
+    - site/**
 
-website:
-   title: "420m"
-   site-url: "https://monaxue.github.io/420m/"
+author: Mona Xue

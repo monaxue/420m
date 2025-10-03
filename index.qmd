@@ -1,8 +1,3 @@
----
-format:
-    html: default
-
----
 
 # Welcome to PSYCH420's Lab Section!
 
@@ -15,6 +10,8 @@ Alex's office hours: Tues/Thurs: 12-1pm in SEAY 5.206
 ---
 
 ## Week 6
+
+[Confidence interval simulation](https://shiny.rit.albany.edu/stat/confidence/)
 
 [Case study template Rmd file](r_demos/case_study_template.Rmd)
 

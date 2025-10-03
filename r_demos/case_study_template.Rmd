@@ -6,12 +6,10 @@ output: "pdf_document"
 ---
 
 
-# Paragraph 1 title
-Content of paragraph 1. Your R Markdown file should be neat and easy to read. Use this template as a guideline, and make adjustments as needed.
+# Introduction
+Content of paragraph 1. Make sure there is a space between hashes and the title. And make sure there is an empty line between paragraphs. Otherwise, the next will not render properly. Remember that big headings have one hash, and sub-headings have two (or more) hashes.
 
-
-# Paragraph 2 title
-Content of paragraph 2
+Your R Markdown file should be neat and easy to read. Use this template as a guideline, and make adjustments as needed.
 
 # Code
 
@@ -23,21 +21,65 @@ Content of paragraph 2
 library(tidyverse)
 library(ggplot2)
 
-raw <- read_csv("example_data.csv")
+raw <- read_csv("HandWashingData.csv")
 
 ```
 
 ## Clean data
 ```{r}
 
-data <- raw %>% mutate(example_clean=A+B)
-
-```           
-
-## Example plot
-```{r}
-
-ggplot(raw, aes(x=A, y=B)) + geom_point()
+data <- raw %>% group_by(sex) %>% mutate(means=mean(washes))
 
 ```
-Figure 1. This is an example plot. You can add figure descriptions beneath figures like so.
+
+## Example plot 1
+
+```{r}
+#| warning: false
+#| message: false
+
+
+# In code blocks, make sure that the code length doesn't go past the grey line.
+# by adding line breaks.
+
+# facet_wrap(~ sex) creates separate panels by sex.
+
+ggplot(data, aes(x=washes)) + geom_histogram() + facet_wrap(~ sex) + 
+  labs(title = "Histogram of washes", x = "Washes", y = "Count")
+
+
+
+```
+
+Figure 1. This is an example histogram. You can add figure descriptions beneath figures like so. For instance: On the left is the histogram washes for females, and on the right is the histogram of washes for males.
+
+## Summary table
+```{r}
+table <- data %>% summarize(Count = n(), Mean = mean(washes), SD = sd(washes), 
+                            SE = SD/sqrt(Count), ci = 1.96*SE, 
+                            ci_min = Mean - ci, ci_max = Mean + ci, 
+                            CI = paste0("[", round(ci_min, 2), 
+                                        ", ", 
+                                        round(ci_max, 2), "]"))
+
+
+# knitr::kable() is a function that renders a pretty table
+
+table %>% mutate(Sex = sex) %>% select(Sex, Count, Mean, SD, SE, CI) %>% knitr::kable() 
+
+```
+
+## Example plot 2
+```{r}
+
+ggplot(table, aes(x=sex, y=Mean)) + geom_point() + 
+  geom_errorbar(aes(ymax = ci_max, ymin = ci_min)) + 
+  labs(title = "Mean washes by sex", x = "Sex", y = "Mean washes")
+
+```
+
+Figure 2. This is an plot of mean washes for females and males with 95% confidence intervals. 
+
+# Results
+
+Content of paragraph 2. This paragraph should include a description of the general shape of the histogram(s). Are they normal? Skewed? Are they similar or different between groups? It should include an interpretation of your confidence intervals. For instance: The 95% confidence interval for females is `r table$CI[1]`, whereas the confidence interval for males is `r table$CI[2]`. This means that we are 95% confident that the true mean for females lies somewhere in the interval `r table$CI[1]`, and we are 95% confident that the true mean for males lies somewhere between `r table$CI[2]`. Since these intervals overlap, we are fairly confident that the true mean washes for females and males are different, and we can conclude that on average, females wash their hands more than males. You should also describe the implications of these results.

@@ -9,7 +9,7 @@ library(ggplot2)
 
 library(stringr)
 
-raw_data <- read_csv("polls/Polls-per-participant-Week_4.csv")
+raw_data <- read_csv("Polls-per-participant-Week_4.csv")
 ```
 
 ```{r}

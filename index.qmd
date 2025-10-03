@@ -11,9 +11,11 @@ Alex's office hours: Tues/Thurs: 12-1pm in SEAY 5.206
 
 ## Week 6
 
+[Slides](presentations/week6.html)
+
 [Confidence interval simulation](https://shiny.rit.albany.edu/stat/confidence/)
 
-[Case study template Rmd file](r_demos/case_study_template.Rmd)
+[Case study template Rmd file](https://github.com/monaxue/420m/blob/master/r_demos/case_study_template.Rmd)
 
 [Case study template example PDF](r_demos/case_study_template.pdf)
 

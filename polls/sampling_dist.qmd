@@ -3,7 +3,7 @@
 library(tidyverse)
 library(ggplot2)
 
-data <- read_csv("polls/Polls-per-participant-Week_5.csv")
+data <- read_csv("Polls-per-participant-Week_5.csv")
 
 names(data)
 

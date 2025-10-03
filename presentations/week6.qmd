@@ -1,0 +1,156 @@
+
+# Week 6
+
+
+## Last week's lab
+
+::: card-list
+
+- A lot of you made avoidable mistakes in last weeks lab. Things like forgetting to including certain means. 
+- Make sure to double check everything before you submit.
+- Easy fix: double check with me before you leave.
+
+:::
+
+## Confidence interval review
+
+::: card-list
+
+- Go to the lab website and click on the link to the confidence interval simulator.
+
+- Explore the site.
+
+- Discuss with your neighbors:
+
+    - What do you observe?
+
+    - Keep in mind: the difference between the population mean and the sample mean.
+
+    - Based on your observations, what do you think a confidence interval is?
+
+:::
+
+##
+
+```{=html}
+<iframe src="https://wall.sli.do/event/psqmdehPARDpce13BWS1LY/?section=b87f4381-4b7d-41fd-abd0-76f5f34870db" height=600 width=100%></iframe>
+```
+
+# Case studies
+
+## How to choose what to show in a plot
+**Answer will be vague**
+
+::: card-list
+
+- If you can provide a good justification, even if you are wrong, I will be more lenient in grading. You can do so in the figure descriptions.
+- Be intentional about what subgroups you choose. Do you think comparing certain subgroups will provide useful information? When in doubt, create plots that distinguish between all subgroups and decide which ones are worth keeping.
+- For histograms, it is best to plot groups in separate plots/panels. In is harder to determine shape when the different colors are stacked.
+ 
+
+::: 
+
+
+## Plot interpretation checklist
+
+- [ ] Compare results between groups.
+- [ ] When comparing between groups, make sure to that the x-axes have the same range. Otherwise, you might mistakenly think two plots are more similar than they actually are.
+- [ ] Provide a reason why you think a plot shows a certain outcome. This usually has to do with confidence intervals.
+- [ ] Report CI values in your Results section, and explain how the CI values support your interpretation.
+
+## Plot interpretation checklist
+- [ ] Do not "overdescribe" plots. Because samples are generated randomly, there will be variation in the plots that are not representative of the population. Instead, focus on general shapes and confidence intervals.
+    - [ ] You do not need to describe every peak and valley of a histogram
+    - [ ] When there are overlaps in confidence intervals, avoid ranking those means.
+- [ ] Is the claim I'm making valid with the analyses I have done? 
+    - [ ] Histograms don't tell you if a result is significant
+    - [ ] Mean plots do not say anything about correlation
+
+
+## CI interpretation
+
+**You want to write your CI interpretation almost exactly like the following:**
+
+The 95% confidence interval is [33.92, 34.88]. This means that we are 95% confident that the true mean lies within [33.92, 34.88].
+
+...
+
+Because the confidence intervals do not overlap, we can be fairly confident that the true means of females and males are different.
+
+## How to format nice RMarkdown files
+- For weekly labs, I'm more lenient on formatting of your reports.
+- However, for case studies, they should be more clear.
+- I made a case study template to help guide you. I highly recommend using it, but feel free experiment.
+- I encourage you to practice formatting in weekly labs as well.
+
+## Essentials
+
+```{=html}
+<iframe src="https://wall.sli.do/event/psqmdehPARDpce13BWS1LY/?section=b87f4381-4b7d-41fd-abd0-76f5f34870db" height=600 width=100%></iframe>
+```
+
+## Essentials
+
+- [ ] Use Markdown text to write the main text. Comments should be restricted to notes related to the code.
+- [ ] Properly format headings and sub-headings for different sections
+- [ ] Make sure your code lines aren't too long so they don't run off the page
+- [ ] Properly label graphs with `labs()`.
+
+## Advanced formatting options
+
+::: card-list
+
+- To remove unwanted warnings and messages from the output, use these at the very top of a code block:
+    - #| warning: false
+    - #| message: false
+- Use `knitr::kable()` to print nicer tables
+- Use `facet_wrap(~ group_name)` with ggplot to separate panels by group
+- Use inline r code: ``` `r ` ``` to print variables in your paragraphs
+- Use `round()` to round to fewer decimals
+- Use `paste0()` to add together strings and variables.
+
+:::
+
+## Example 
+
+````{verbatim}
+
+```{r}
+#| warning: false
+#| message: false
+
+ci <- paste0("[", round(ci_min, 2), ", ", round(ci_max, 2), "]")
+```
+The confidence interval is `r ci`.
+````
+
+The confidence interval is [33.92, 34.88].
+
+::: card-list
+More examples can be found in the case study template.
+
+:::
+
+# Deliverables
+
+::: card-list
+- In a nicely formatted RMarkdown file, critique your own case study by applying the concepts we learned today. 
+	- Improve one of your case study plot. Explain what you changed and why.
+	- In a paragraph, describe what you would change in your interpretation of results, e.g., This is what I said... This is what I would say now.
+:::
+
+
+## What is a 95% confidence interval?
+
+::: card-list
+
+- 95% of the samples generated by a population with the true mean, $\mu$, will have a CI that contains $\mu$.
+
+- WRONG: There is a 95% probability that the CI contains the true mean, $\mu$.
+
+    - This is different from the first statement
+    - You cannot actually calculate this probability directly, because it requires that you know the true mean, $\mu$
+
+- Therefore, we instead use the term "confident". We say that we are 95% confident that the CI contains the true mean.
+    - There is a reason why it is called the confidence interval, and not the probability interval.
+:::

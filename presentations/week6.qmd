@@ -78,10 +78,12 @@ The 95% confidence interval is [33.92, 34.88]. This means that we are 95% confid
 Because the confidence intervals do not overlap, we can be fairly confident that the true means of females and males are different.
 
 ## How to format nice RMarkdown files
+::: card-list
 - For weekly labs, I'm more lenient on formatting of your reports.
 - However, for case studies, they should be more clear.
 - I made a case study template to help guide you. I highly recommend using it, but feel free experiment.
 - I encourage you to practice formatting in weekly labs as well.
+:::
 
 ## Essentials
 

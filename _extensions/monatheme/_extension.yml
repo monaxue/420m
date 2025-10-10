@@ -8,4 +8,6 @@ contributes:
       theme: [default, custom.scss]
       include-after-body: 
         file: theme-bg.html
+      filters:
+        - iframe.lua
 

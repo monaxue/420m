@@ -1,0 +1,154 @@
+---
+title: "Sampling Distributions Lab Notebook"
+output:
+  pdf_document: default
+  html_notebook: default
+header-includes:
+    - \usepackage {hyperref}
+    - \hypersetup {colorlinks = true, urlcolor = blue}
+---
+
+## Goals
+For this lab, we are going to play with sampling distributions a little bit by making our own! More specifically, we hope to "prove" CLT via computer simulation. So, when we generate a sampling distribution of the mean, it should
+
+* be normal (Gaussian) in shape
+* have an sd (i.e. standard error) that is s/sqrt(n)
+
+By explicitly computing the sampling distribution in this way, the students will hopefully gain a more solid understanding of what the sampling distribution is.
+
+## Deliverables
+Students should submit a lab report including the following:
+
+* plots of their obtained *sample* and *sampling* distributions for **n=25**
+* plots of their obtained *sample* and *sampling* distributions for **n=100**
+* a comparison of the two *sample* distributions (about the same width)
+* a comparison of the two *sampling* distributions (n=100 is narrower)
+
+## 0. Housekeeping
+* Take attendance 
+* Remind them about office hours and encourage attendance as needed
+* Just generally check in and see how they are doing.
+* Remind them (again) that the title and abstract are due next week
+
+## 1. A quick online demo of sampling distributions
+To give them a visual overview of what we are doing, you might want to spend a couple minutes showing them a few things on the 
+[Rice Virtual Statistics Laboratory](https://onlinestatbook.com/stat_sim/sampling_dist/index.html) (click to take you there). Do something like the following:
+
+* hit the "Animated" button a couple times (for n=5, the default)
+* hit "5" a couple times
+* hit "10,000" (or "100,000")
+
+Point out what's happening while doing this, and have the students make a mental note of the width of the sampling distribution.
+
+Now repeat the above for n=25 (Just hit animated once though - it's slow). Note emphatically that it is:
+
+* more skinny than the n=5 case
+* has an sd of ~ 1 = 5/sqrt(25) - the pop sd over root-sample-size
+
+## 2. Let's code!
+
+### 2.1  First things first, as always, we'll load the tidyverse
+```{r}
+library(tidyverse)
+```
+
+### 2.2 Simulate a single experiment
+Before we delve into the sampling distribution, lets see how we would simulate a single experiment yielding a normally distributed sample of data.
+```{r}
+# take a sample
+oneSample <- rnorm(25, mean = 100, sd = 10)
+
+# compute the mean and sd
+my_mean <-  mean(oneSample)
+my_sample_sd <- sd(oneSample)
+
+print(my_mean)
+print(my_sample_sd)
+```
+Note that the mean and sd are not exactly 100 and 10 due to random sampling and the inherent variability of the universe.
+
+### 2.3 Plot the **sample distribution** for this **one** experiment
+We'll also explicitly set the x-axis limits to +/- 3 sds using `xlim()` so we can make visual comparisons among the plots.
+```{r}
+# put the data into a tibble with a single variable "oneSample"
+sampleTibble <- tibble(oneSample)
+
+# plot the sample distribution!
+sampleTibble %>% 
+  ggplot(aes(x = oneSample)) + 
+  geom_freqpoly(binwidth = 4) +
+  xlim(70, 130)
+```
+
+#### 2.3.1 How much variability was there among our means in lab?
+Ask the students to call out their values they got for the sample means. What is the biggest, what is the smallest? (What range of values should we expect to get? That comes next!)
+
+### 2.4  Simulate a bunch of experiments!
+We are going to use the function `replicate()` to get data from many experiments from a population. We'll use the `rnorm()` function to make the data inside of `replicate()`.
+```{r}
+lotsOfSamples <- replicate(1000, rnorm(25, mean = 100, sd = 10))
+```
+
+The `lotsOfSamples` object that this creates is a 25 x 1000 matrix (table) of numbers, in which each of the 1000 columns holds the n=25 sample of data from a single simulated experiment. 
+
+### 2.5 Compute the **sampling** distribution
+```{r}
+# take the mean of all the samples (i.e. mean of each column)
+mySamplingDist <- colMeans(lotsOfSamples)
+
+myStandardErr <- sd(mySamplingDist)
+print(myStandardErr)
+```
+
+Note that the sd of the sampl**ing** distribution (i.e. the standard error) is much less than the sd of the sample. In fact, it is smaller by a factor of 5 (i.e. `sqrt(25)`)
+
+### 2.6 Plot the **sampling distribution** for these **many** experiments
+```{r}
+# make the means into a tibble
+sampDistTibble <- tibble(mySamplingDist)
+
+# plot the sampling distribution!
+sampDistTibble %>% 
+  ggplot(aes(x = mySamplingDist)) + 
+  geom_freqpoly(binwidth = 1) +
+  xlim(70, 130)
+```
+
+### 2.7 Compute the standard error and plot the sampling distribution for n=100
+Have the students repeat steps 2.2 though 2.6 with a sample size of 100.
+
+###  2.8 Example code
+Each student's code should end up looking something like the code in the file SampDistsLabCodeOnly.R
+
+## 3. Cheat sheet
+Here is a cheat sheet of R commands they will need.
+
+New commands:
+
+* `rnorm()` - generate normally distributed random numbers (simulated data!)
+* `print()` - print the value of a variable to the console
+* `xlim()` - sets the x-axis limits for a ggplot plot
+* `replicate()` - do many experiments and make a table of the data
+* `colMeans()` - take the mean of each column of data
+* `tibble()` - make a plane R data object into a tidyverse tibble
+
+Familiar commands:
+
+* `library()` - load a package (usually the tidyverse)
+* `mean()` - compute the arithmetic mean
+* `sd()` - compute the standard deviation
+* `ggplot()` - define data mappings for a plot
+* `geom_freqpoly` - plot a frequency distribution
+
+## Danger zone
+Some things to keep an eye out for are:
+
+* confusion of the sample size (25 or 100) with the number of replications (1000)
+* failure to change the sample size in **both** step 2.2 and 2.4
+* confusion of the sample and sampling distributions (of course)
+* ggplot plots won't appear in the plots pane if they `source` the file - to make the plots appear, either
+  - select the plotting code and `run` it
+  - assign the plot to an object and `show()` it as in the example code
+* confusion between the name of a tibble and variable it contains
+* puzzlement that the standard error *is* a standard deviation, it's just a special one that gets its own name
+* plotting code may throw this: `Warning message:Removed 2 row(s) containing missing values (geom_path).` Just ignore it.

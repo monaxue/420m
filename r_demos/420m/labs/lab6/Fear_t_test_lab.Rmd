@@ -1,0 +1,162 @@
+---
+title: "Lab 6"
+author: Your Name
+output: pdf_document
+---
+
+## Goals
+For this lab, we are going to look at some data showing how much people say that they fear flying vs. driving. For context, flying is much safer than driving - lifetime odds of dying by car are about 1:100, while those for dying by plane are about 1:7000 (see, e.g. https://injuryfacts.nsc.org/all-injuries/preventable-death-overview/odds-of-dying/). 
+
+* Plot the data
+  - raw data distributions
+  - means with (CLT-based) 95% CIs
+* Simulate (Monte Carlo style) the difference between average fear for flying vs. driving
+* Compare the MC results with a traditional t-test
+
+The fact that the simulation agrees so well with the t-test should reinforce the idea that the t-test (and all statistical tests), are mathematical "simulations" of an infinite number of replicated experiments.
+
+## The data
+The data are (simulated but realistic) ratings of how much 25 randomly selected people fear driving and how much 25 other randomly selected people fear flying, both on a 10 pt. scale. The file contains two variables: mode: "flying" or "driving", and fear: a rating between 1 and 10.
+
+## Deliverables
+Students should submit a lab report including the following:
+
+* frequency polygons of the data distributions
+* plots of the means with 95% CIs
+* a frequency polygon of the simulated sampling distribution of the difference
+* the output of the canned t-test
+* a sentence or 3 summarizing the findings based upon the plots and comparing these with the traditional t-test
+
+## 0. Housekeeping
+* Take attendance .
+* Remind them about office hours and encourage attendance as needed.
+* Just generally check in and see how they are doing.
+* Remind them of the next major thing due.
+
+## 1.0 It's coding time!
+
+### 1.1 Get the tidyverse tools and load the data
+```{r, message=FALSE}
+library(tidyverse)
+fvd <- read_csv('FlyingVsDrivingFearData.csv')
+```
+
+### 1.2 look at frequency polygons of the data
+```{r}
+ggplot(fvd, aes(x = fear, color = mode)) + geom_freqpoly(binwidth = 1)
+```
+
+### 1.3 summarize the data 
+```{r, message=FALSE}
+fearSum <- fvd %>% 
+  group_by(mode) %>% 
+  summarize(
+    cts = n(),
+    mns = mean(fear),
+    sds = sd(fear),
+  ) %>% 
+  mutate(ses = sds/sqrt(cts)) %>% 
+  mutate(cis = 1.96*ses)
+  
+knitr::kable(fearSum)
+```
+
+### 1.4 plot means with CIs
+```{r}
+ggplot(fearSum, aes(x = mode, y = mns)) +
+  geom_point(size = 4) +
+  geom_errorbar(aes(ymin = mns - cis, ymax = mns + cis), width = 0.33) +
+  ylab("Fear Rating") +
+  xlab("Mode of Travel")
+```
+Okay, well, I guess those groups are different haha. As the students make this plot, encourage them to appreciate how rare (virtually impossible) is would be for a typical flying mean to come from the distribution of driving means, and vice verse. Encourage them to look at this plot as a visual t-test.
+
+### 1.5 Simulate the mean fear of driving across many experiments
+
+As before, we are going to use the function `replicate()` to get data from many experiments from a population. We'll use the `rnorm()` function to make the data inside of `replicate()`. Rather than worry about indexing into the summary tibble, we'll just enter the sample size, mean, and standard deviations by hand.
+```{r}
+driving_sim_data <- replicate(1000, rnorm(25, mean = 2.84, sd = 1.028))
+```
+
+The `driving_sim_data` object that this creates is a 25 x 1000 matrix (table) of numbers, in which each of the 1000 columns holds the n=25 sample of data from a single simulated experiment. 
+
+#### now compute the means for fear of driving
+```{r}
+# take the mean of all the samples (i.e. mean of each column)
+driving_means <- colMeans(driving_sim_data)
+```
+
+### 1.6 Simulate the mean fear of flying across many experiments
+
+Here, we'll do the same thing as above, just using the mean and sd for flying instead of driving.
+```{r}
+flying_sim_data <- replicate(1000, rnorm(25, mean = 5.20, sd = 0.957))
+```
+
+As above with `driving_sim_data`, we're creating a flying_sim_data object that is a 25 x 1000 matrix (table) of numbers, in which each of the 1000 columns holds the n=25 sample of data from a single simulated experiment. 
+
+#### the **sampling** distribution for fear of flying
+```{r}
+# take the mean of all the samples (i.e. mean of each column)
+flying_means <- colMeans(flying_sim_data)
+```
+
+### 1.7 compute the sampling distribution of the difference between means
+Compute the literal differece between the means of all our simulated experiments
+```{r}
+diff_between_means <- driving_means - flying_means
+```
+### make a tibble for easier plotting 
+```{r}
+meanDiffsTibble <- tibble(diff_between_means)
+```
+### plot
+```{r}
+meanDiffsPlot <- meanDiffsTibble %>% 
+  ggplot(aes(x = diff_between_means)) + 
+  geom_freqpoly(binwidth = 0.1)
+
+show(meanDiffsPlot)
+```
+
+So there is about a 2.3 difference in how much people fear flying vs. driving (on a 10 point scale). Notice also that the bulk of this distribution lies between about -1.75 and -3; this can be compared with the 95% CIs on the difference generated by the t-test function.
+
+### 2.0 Look at the t-test
+Compute the t-test. 
+
+```{r}
+t.test(data = fvd, fear ~ mode)
+```
+
+Well all righty then. Not that the large value of t and the teensy weensy itty bitty p-value agree with the plot of means +/- 95% CIs. Notice also that the 95% CI on the difference agrees quite will with our plot of the simulated differences between the means.
+
+(Also, as we point out in the module, Welch gets the credit now for adjusting the df to allow for unequal variances. Poor Student.)
+
+### 3. Cheat sheet
+Here is a cheat sheet of R commands they will need.
+
+New commands:
+
+* `t.test()` - compute t, p, and CIs on the difference between means
+* `ylab()` and `xlab()` - add axis labels to a plot
+
+Familiar commands:
+
+* `library()` - load a package (usually the tidyverse)
+* `read_csv()` - load the data
+* `ggplot()` - define data mappings for a plot
+* `geom_freqpoly` - plot a frequency distribution
+* `group_by()` - group data by a variable value
+* `summarize()` - make a summary table
+* `n()` - count the number of observations
+* `mean()` - compute the arithmetic mean
+* `sd()` - compute the standard deviation
+* `mutate()` - add a variable to a tibble
+* `print()` - print the value of a variable to the console
+* `geom_point` - plot data points
+* `geom_errorbar` - add error bars to a plot
+* `replicate()` - do many experiments and make a table of the data
+* `rnorm()` - generate normally distributed random numbers (simulated data!)
+* `colMeans()` - take the mean of each column of data
+* `tibble()` - make a plane R data object into a tidyverse tibble
+

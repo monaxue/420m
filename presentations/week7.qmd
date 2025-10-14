@@ -2,7 +2,7 @@
 
 
 # Week 7 lab
-Go to <https://monaxue.github.io/402m> and open up this presentation. You will be answering Slido questions directly in the slides.
+Go to <https://monaxue.github.io/420m> and open up this presentation. You will be answering Slido questions directly in the slides.
 
 # Part 1: Plot data
 
@@ -152,7 +152,6 @@ A t-test on the data confirms the above intuition. The confidence interval gener
 
 # Slido questions and answers
 
-<!--Slido
 
 # Slido 1
 
@@ -250,8 +249,5 @@ A t-test on the data confirms the above intuition. The confidence interval gener
 **Answer**: They are fairly similar.
 
 :::
-
-
-Slido-->
 
 

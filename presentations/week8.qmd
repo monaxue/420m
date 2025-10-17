@@ -183,8 +183,6 @@ head(wider_data)
 
 :::
 
-<!--
-
 # Notes
 
 ## Simulation code and example plot
@@ -247,5 +245,3 @@ t.test(wider_data$flying, wider_data$driving, paired=TRUE)
     - id, flying, driving
 
 :::
-
--->

@@ -423,84 +423,67 @@
 <li>A few sentences summarizing the findings and comparing these with the traditional t-test from last week.</li>
 </ul>
 </div>
-<!--
+</section></section>
+<section>
+<section id="notes" class="title-slide slide level1 center">
+<h1>Notes</h1>
 
-# Notes
+</section>
+<section id="simulation-code-and-example-plot" class="slide level2">
+<h2>Simulation code and example plot</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a></span>
+<span id="cb4-2"><a href=""></a>wider_data <span class="ot">&lt;-</span> wider_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">differences=</span>flying<span class="sc">-</span>driving)</span>
+<span id="cb4-3"><a href=""></a></span>
+<span id="cb4-4"><a href=""></a>wider_summary <span class="ot">&lt;-</span> wider_data <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">count=</span><span class="fu">n</span>(), <span class="at">mean=</span><span class="fu">mean</span>(differences), <span class="at">sd=</span><span class="fu">sd</span>(differences), <span class="at">ses=</span>sd<span class="sc">/</span><span class="fu">sqrt</span>(count), <span class="at">ci=</span><span class="fl">1.96</span><span class="sc">*</span>ses)</span>
+<span id="cb4-5"><a href=""></a></span>
+<span id="cb4-6"><a href=""></a>diff_sim_data <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">rnorm</span>(<span class="dv">25</span>, wider_summary<span class="sc">$</span>mean, wider_summary<span class="sc">$</span>sd))</span>
+<span id="cb4-7"><a href=""></a></span>
+<span id="cb4-8"><a href=""></a>diff_means <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(diff_sim_data)</span>
+<span id="cb4-9"><a href=""></a></span>
+<span id="cb4-10"><a href=""></a>diff_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(diff_means)</span>
+<span id="cb4-11"><a href=""></a></span>
+<span id="cb4-12"><a href=""></a><span class="fu">ggplot</span>(diff_tibble, <span class="fu">aes</span>(<span class="at">x=</span>diff_means)) <span class="sc">+</span> <span class="fu">geom_freqpoly</span>(<span class="at">binwidth =</span> <span class="fl">0.1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
-## Simulation code and example plot
-
-```r
-
-wider_data <- wider_data %>% mutate(differences=flying-driving)
-
-wider_summary <- wider_data %>% summarize(count=n(), mean=mean(differences), sd=sd(differences), ses=sd/sqrt(count), ci=1.96*ses)
-
-diff_sim_data <- replicate(1000, rnorm(25, wider_summary$mean, wider_summary$sd))
-
-diff_means <- colMeans(diff_sim_data)
-
-diff_tibble <- tibble(diff_means)
-
-ggplot(diff_tibble, aes(x=diff_means)) + geom_freqpoly(binwidth = 0.1)
-
-```
-
-
-::: {.cell}
-::: {.cell-output-display}
-![](week8_files/figure-revealjs/unnamed-chunk-4-1.png){width=960}
-:::
-:::
-
-
-## Paired t-test results
-
-```r
-t.test(wider_data$flying, wider_data$driving, paired=TRUE)
-```
-
-::: {.cell}
-::: {.cell-output .cell-output-stdout}
-
-```
-
+<img data-src="week8_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<section id="paired-t-test-results" class="slide level2">
+<h2>Paired t-test results</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">t.test</span>(wider_data<span class="sc">$</span>flying, wider_data<span class="sc">$</span>driving, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
     Paired t-test
 
 data:  wider_data$flying and wider_data$driving
-t = 24.087, df = 24, p-value < 2.2e-16
+t = 24.087, df = 24, p-value &lt; 2.2e-16
 alternative hypothesis: true mean difference is not equal to 0
 95 percent confidence interval:
  2.15778 2.56222
 sample estimates:
 mean difference 
-           2.36 
-```
-
-
-:::
-:::
-
-
-::: {.card-list .nonincremental}
-
-- The confidence interval is much smaller than from last week (which was about -1.8 to -2.9, so about twice the width). 
-
-- The t is even bigger than last week and that the p-value is even smaller (2.2e-16 is actually the smallest value common computers can represent).
-
-:::
-
-## Slido answers
-
-::: card-list
-
-- What are the column names of the current dataframe?
-    - id, mode, fear
-- What column names do we need so we can use `mutate(differences = flying - driving)`.
-    - id, flying, driving
-
-:::
-
--->
+           2.36 </code></pre>
+</div>
+</div>
+<div class="card-list">
+<ul>
+<li><p>The confidence interval is much smaller than from last week (which was about -1.8 to -2.9, so about twice the width).</p></li>
+<li><p>The t is even bigger than last week and that the p-value is even smaller (2.2e-16 is actually the smallest value common computers can represent).</p></li>
+</ul>
+</div>
+</section>
+<section id="slido-answers" class="slide level2">
+<h2>Slido answers</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">What are the column names of the current dataframe?
+<ul>
+<li class="fragment">id, mode, fear</li>
+</ul></li>
+<li class="fragment">What column names do we need so we can use <code>mutate(differences = flying - driving)</code>.
+<ul>
+<li class="fragment">id, flying, driving</li>
+</ul></li>
+</ul>
+</div>
 
 </section></section>
     </div>

@@ -9,6 +9,10 @@ Alex's office hours: Tues/Thurs: 12-1pm in SEAY 5.206
 
 ---
 
+## Week 8
+
+[Slides](presentations/week8.html)
+
 ## Week 7
 
 [Slides](presentations/week7.html)

@@ -1,0 +1,251 @@
+# Week 8
+Download `FearWithinData.csv` from Canvas
+
+## `geom_jitter()`
+
+::: card-list
+
+- Gives data points a little shove for visibility
+
+:::
+
+. . .
+
+```r
+ggplot(data, aes(x=mode, y=fear)) + geom_jitter(width = 0.1, height = 0.1)
+
+```
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+
+data <- read_csv("data/FearWithinData.csv")
+
+ggplot(data, aes(x=mode, y=fear)) + geom_jitter(width = 0.1, height = 0.1)
+
+
+```
+
+## 
+
+
+
+::: card-list
+
+- Create a a `geom_jitter()` plot with `x = mode` and `y = fear` and color by `id`.
+- Your plot should look like the following. What are your observations?
+
+:::
+
+. . . 
+
+```{r}
+
+ggplot(data, aes(x=mode, y=fear, color = id)) + geom_jitter(width = 0.1, height = 0.1)
+
+```
+
+
+
+
+## Paired t-test
+
+::::: {.card-list .nonincremental}
+
+- Instead of computing average differences, a paired t-test uses differences for each individual.
+
+
+:::: {.columns}
+
+::: {.column width="20%"}
+
+:::
+
+
+::: {.column width="25%"}
+
+|Name|A|B|
+|----|-|-|
+|Bob |2|1|
+|Amy |3|2|
+|Joe |4|2|
+|Emma|5|1|
+
+:::
+
+
+::: {.column width="10%"}
+
+$\rightarrow$
+
+:::
+
+
+::: {.column width="25%"}
+
+|Name|A - B|
+|----|-----|
+|Bob |1|
+|Amy |1|
+|Joe |2|
+|Emma|3|
+
+:::
+
+::: {.column width="20%"}
+
+:::
+
+::::
+
+- To do a paired t-test in R, use the following code:
+    - `t.test(data$A, data$B, paired = TRUE)` 
+    - This computes `t`, `p`, and `CIs` for paired data
+
+
+:::::
+
+##
+
+:::::: columns
+
+::::: column
+
+:::: card-list
+
+- We want to calculate the differences between `flying` and `driving` for each individual using `mutate()`
+
+- But we cannot do that with the the current dataset structure. Why?
+
+- ::: {.iframe height="300"}
+  https://wall.sli.do/event/9Bbh4F7LnAyi7JPA28eLhY/?section=06ae0710-a7c0-43cc-93d7-b74269262631
+  :::
+
+::::
+
+:::::
+
+::::: column
+
+::: card-list
+- What are the column names of the current dataframe?
+- What column names do we need so we can use `mutate(differences = flying - driving)`. Hint:
+    - |Name|A|B|A - B|
+      |----|-|-|---|
+      |Bob |2|1|1|
+      |Amy |3|2|1|
+      |Joe |4|2|2|
+      |Emma|5|1|4|
+
+
+:::
+
+:::::
+
+::::::
+
+## `pivot_wider()`
+
+```r
+wider_data <- data %>% pivot_wider(names_from=mode, values_from=fear)
+
+head(wider_data)
+
+```
+
+```{r}
+
+wider_data <- data %>% pivot_wider(names_from=mode, values_from=fear)
+
+head(wider_data)
+
+```
+
+
+## Deliverables
+
+::: {.card-list .nonincremental}
+
+- Plot the frequency polygon of the data distributions colored by `mode` (should look the same as last week's)
+- Plot fear vs. mode using `geom_jitter()`, colored by subject ID
+- Using `pivot_wider()`, create a wider dataframe with column names `id`, `flying`, `driving`, and assign this to `wider_data`
+- Using `mutate()`, add a column named `differences` to `wider_data` that shows the difference between the fear of flying and driving for each indidivual.
+- Plot the frequency polygon of the differences
+- Simulate and plot
+    - Print a summary table of the differences, with the count, mean, sd, se, and ci. 
+    - Using the mean and sd from the summary table, simulate 1000 trials of 25 samples per trial using `replicate()` and `rnorm()`. Assign this to `diff_sim_data`
+    - Take the `colMeans()` of `diff_sim_data` and then use this to create a dataframe using `tibble()`.
+    - Plot the frequency polygon of the simulated means.
+- Print the output of the paired t-test using 
+    - `t.test(wider_data$flying, wider_data$driving, paired = TRUE)`
+- A few sentences summarizing the findings and comparing these with the traditional t-test from last week.
+
+:::
+
+<!--
+
+# Notes
+
+## Simulation code and example plot
+
+```r
+
+wider_data <- wider_data %>% mutate(differences=flying-driving)
+
+wider_summary <- wider_data %>% summarize(count=n(), mean=mean(differences), sd=sd(differences), ses=sd/sqrt(count), ci=1.96*ses)
+
+diff_sim_data <- replicate(1000, rnorm(25, wider_summary$mean, wider_summary$sd))
+
+diff_means <- colMeans(diff_sim_data)
+
+diff_tibble <- tibble(diff_means)
+
+ggplot(diff_tibble, aes(x=diff_means)) + geom_freqpoly(binwidth = 0.1)
+
+```
+
+```{r}
+wider_data <- wider_data %>% mutate(differences=flying-driving)
+
+wider_summary <- wider_data %>% summarize(count=n(), mean=mean(differences), sd=sd(differences), ses=sd/sqrt(count), ci=1.96*ses)
+
+diff_sim_data <- replicate(1000, rnorm(25, wider_summary$mean, wider_summary$sd))
+
+diff_means <- colMeans(diff_sim_data)
+
+diff_tibble <- tibble(diff_means)
+
+ggplot(diff_tibble, aes(x=diff_means)) + geom_freqpoly(binwidth = 0.1)
+```
+
+## Paired t-test results
+
+```r
+t.test(wider_data$flying, wider_data$driving, paired=TRUE)
+```
+```{r}
+
+t.test(wider_data$flying, wider_data$driving, paired=TRUE)
+```
+
+::: {.card-list .nonincremental}
+
+- The confidence interval is much smaller than from last week (which was about -1.8 to -2.9, so about twice the width). 
+
+- The t is even bigger than last week and that the p-value is even smaller (2.2e-16 is actually the smallest value common computers can represent).
+
+:::
+
+## Slido answers
+
+::: card-list
+
+- What are the column names of the current dataframe?
+    - id, mode, fear
+- What column names do we need so we can use `mutate(differences = flying - driving)`.
+    - id, flying, driving
+
+:::
+
+-->

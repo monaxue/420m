@@ -296,15 +296,7 @@ print(t_test)
 
 ::::
 
-## Slido
-
-::: iframe
-
-https://wall.sli.do/event/2TAfoM6CFtGQE4tc5xhNYU/?section=a3f79d34-ac1c-479b-ba52-dd6a19e127bd
-
-:::
-
-<!--
+# Slido
 
 ## For the large dataset:
 
@@ -337,8 +329,6 @@ https://wall.sli.do/event/2TAfoM6CFtGQE4tc5xhNYU/?section=a3f79d34-ac1c-479b-ba5
     - The p-value is large even though the frequency polygons look different. 
 
 :::
-
--->
 
 ## What's weird?
 

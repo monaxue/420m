@@ -197,8 +197,6 @@ print(t_test)
 
 ```
 
-<!--
-
 ## Code
 
 ```r
@@ -222,8 +220,6 @@ knitr::kable(summary)
 print(t_test)
 
 ```
-
--->
 
 ::::
 
@@ -275,8 +271,6 @@ print(t_test)
 
 ```
 
-<!--
-
 ## Code
 
 ```r
@@ -299,8 +293,6 @@ knitr::kable(summary)
 print(t_test)
 
 ```
-
--->
 
 ::::
 

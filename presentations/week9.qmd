@@ -134,9 +134,14 @@ $\rightarrow$
 
 In t.test, we want `t.test(UT_sals,TAMU_sals)`, where `UT_sals` is the salary of all UT grads, and `TAMU_sals` is the salary of TAMU grads. What should the code look like?
 
-<!--
+::: iframe
+
+https://wall.sli.do/event/2TAfoM6CFtGQE4tc5xhNYU/?section=a3f79d34-ac1c-479b-ba52-dd6a19e127bd
+
+:::
 
 ```r
+
 
 UT_sals <- data$salary[data$school == "UT"]
 TAMU_sals <- data$salary[data$school == "TAMU"]
@@ -151,8 +156,6 @@ t.test(UT_sals,TAMU_sals)
 t.test(data$salary[data$school=="UT"], data$salary[data$school=="TAMU"])
 
 ```
-
--->
 
 ## Create the plots, summary table, and do a t-test for both datasets
 

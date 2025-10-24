@@ -210,6 +210,8 @@ print(t_test)
 
 ```
 
+<!--
+
 ## Code
 
 ```r
@@ -233,6 +235,8 @@ knitr::kable(summary)
 print(t_test)
 
 ```
+
+-->
 
 ::::
 
@@ -284,6 +288,8 @@ print(t_test)
 
 ```
 
+<!--
+
 ## Code
 
 ```r
@@ -307,6 +313,7 @@ print(t_test)
 
 ```
 
+-->
 
 ::::
 
@@ -436,8 +443,6 @@ ut_wins <- replicate(100,
 sum(ut_wins)/100
 
 ```
-
-:::
 
 
 

@@ -405,7 +405,7 @@ t.test(data$salary[data$school=="UT"], data$salary[data$school=="TAMU"])
 <section id="large-sample" class="slide level2">
 <h2>Large sample</h2>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Frequency polygon</a></li><li><a href="#tabset-1-2">Summary table</a></li><li><a href="#tabset-1-3">Mean plot</a></li><li><a href="#tabset-1-4">t-test</a></li><li><a href="#tabset-1-5">Code</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Frequency polygon</a></li><li><a href="#tabset-1-2">Summary table</a></li><li><a href="#tabset-1-3">Mean plot</a></li><li><a href="#tabset-1-4">t-test</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
 <div class="cell">
@@ -481,26 +481,33 @@ mean of x mean of y
  73017.98  72993.73 </code></pre>
 </div>
 </div>
-</div>
-<div id="tabset-1-5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a></span>
-<span id="cb2-2"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/salsLargeN.csv"</span>)</span>
-<span id="cb2-3"><a href=""></a></span>
-<span id="cb2-4"><a href=""></a>hist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x=</span>salary, <span class="at">color=</span>school)) <span class="sc">+</span> <span class="fu">geom_freqpoly</span>()</span>
-<span id="cb2-5"><a href=""></a></span>
-<span id="cb2-6"><a href=""></a>UT_sals <span class="ot">&lt;-</span> data<span class="sc">$</span>salary[data<span class="sc">$</span>school <span class="sc">==</span> <span class="st">"UT"</span>]</span>
-<span id="cb2-7"><a href=""></a>TAMU_sals <span class="ot">&lt;-</span> data<span class="sc">$</span>salary[data<span class="sc">$</span>school <span class="sc">==</span> <span class="st">"TAMU"</span>]</span>
-<span id="cb2-8"><a href=""></a></span>
-<span id="cb2-9"><a href=""></a>t_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(TAMU_sals,UT_sals)</span>
-<span id="cb2-10"><a href=""></a></span>
-<span id="cb2-11"><a href=""></a>summary <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(school) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Count=</span><span class="fu">n</span>(), <span class="at">Mean =</span> <span class="fu">mean</span>(salary), <span class="at">SD =</span> <span class="fu">sd</span>(salary), <span class="at">SE=</span>SD<span class="sc">/</span><span class="fu">sqrt</span>(Count), <span class="at">CI =</span> <span class="fl">1.96</span><span class="sc">*</span>SE)</span>
-<span id="cb2-12"><a href=""></a></span>
-<span id="cb2-13"><a href=""></a>mean_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(summary, <span class="fu">aes</span>(<span class="at">x=</span>school, <span class="at">y=</span>Mean)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>Mean<span class="sc">-</span>CI, <span class="at">ymax=</span>Mean<span class="sc">+</span>CI))</span>
-<span id="cb2-14"><a href=""></a></span>
-<span id="cb2-15"><a href=""></a>hist</span>
-<span id="cb2-16"><a href=""></a>mean_plot</span>
-<span id="cb2-17"><a href=""></a>knitr<span class="sc">::</span><span class="fu">kable</span>(summary)</span>
-<span id="cb2-18"><a href=""></a><span class="fu">print</span>(t_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!--
+
+## Code
+
+```r
+
+data <- read_csv("data/salsLargeN.csv")
+
+hist <- ggplot(data, aes(x=salary, color=school)) + geom_freqpoly()
+
+UT_sals <- data$salary[data$school == "UT"]
+TAMU_sals <- data$salary[data$school == "TAMU"]
+
+t_test <- t.test(TAMU_sals,UT_sals)
+
+summary <- data %>% group_by(school) %>% summarize(Count=n(), Mean = mean(salary), SD = sd(salary), SE=SD/sqrt(Count), CI = 1.96*SE)
+
+mean_plot <- ggplot(summary, aes(x=school, y=Mean)) + geom_point() + geom_errorbar(aes(ymin=Mean-CI, ymax=Mean+CI))
+
+hist
+mean_plot
+knitr::kable(summary)
+print(t_test)
+
+```
+
+-->
 </div>
 </div>
 </div>
@@ -508,7 +515,7 @@ mean of x mean of y
 <section id="small-sample" class="slide level2">
 <h2>Small sample</h2>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Frequency polygon</a></li><li><a href="#tabset-2-2">Summary table</a></li><li><a href="#tabset-2-3">Mean plot</a></li><li><a href="#tabset-2-4">t-test</a></li><li><a href="#tabset-2-5">Code</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Frequency polygon</a></li><li><a href="#tabset-2-2">Summary table</a></li><li><a href="#tabset-2-3">Mean plot</a></li><li><a href="#tabset-2-4">t-test</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
 <div class="cell">
@@ -584,25 +591,32 @@ mean of x mean of y
  73017.98  72993.73 </code></pre>
 </div>
 </div>
-</div>
-<div id="tabset-2-5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/salsSmallN.csv"</span>)</span>
-<span id="cb4-2"><a href=""></a></span>
-<span id="cb4-3"><a href=""></a>hist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x=</span>salary, <span class="at">color=</span>school)) <span class="sc">+</span> <span class="fu">geom_freqpoly</span>(<span class="at">binwidth=</span><span class="dv">1000</span>)</span>
-<span id="cb4-4"><a href=""></a></span>
-<span id="cb4-5"><a href=""></a>UT_sals <span class="ot">&lt;-</span> data<span class="sc">$</span>salary[data<span class="sc">$</span>school <span class="sc">==</span> <span class="st">"UT"</span>]</span>
-<span id="cb4-6"><a href=""></a>TAMU_sals <span class="ot">&lt;-</span> data<span class="sc">$</span>salary[data<span class="sc">$</span>school <span class="sc">==</span> <span class="st">"TAMU"</span>]</span>
-<span id="cb4-7"><a href=""></a></span>
-<span id="cb4-8"><a href=""></a>t_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(TAMU_sals, UT_sals)</span>
-<span id="cb4-9"><a href=""></a></span>
-<span id="cb4-10"><a href=""></a>summary <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(school) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Count=</span><span class="fu">n</span>(), <span class="at">Mean =</span> <span class="fu">mean</span>(salary), <span class="at">SD =</span> <span class="fu">sd</span>(salary), <span class="at">SE=</span>SD<span class="sc">/</span><span class="fu">sqrt</span>(Count), <span class="at">CI =</span> <span class="fl">1.96</span><span class="sc">*</span>SE)</span>
-<span id="cb4-11"><a href=""></a></span>
-<span id="cb4-12"><a href=""></a>mean_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(summary, <span class="fu">aes</span>(<span class="at">x=</span>school, <span class="at">y=</span>Mean)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>Mean<span class="sc">-</span>CI, <span class="at">ymax=</span>Mean<span class="sc">+</span>CI))</span>
-<span id="cb4-13"><a href=""></a></span>
-<span id="cb4-14"><a href=""></a>hist</span>
-<span id="cb4-15"><a href=""></a>mean_plot</span>
-<span id="cb4-16"><a href=""></a>knitr<span class="sc">::</span><span class="fu">kable</span>(summary)</span>
-<span id="cb4-17"><a href=""></a><span class="fu">print</span>(t_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!--
+
+## Code
+
+```r
+data <- read_csv("data/salsSmallN.csv")
+
+hist <- ggplot(data, aes(x=salary, color=school)) + geom_freqpoly(binwidth=1000)
+
+UT_sals <- data$salary[data$school == "UT"]
+TAMU_sals <- data$salary[data$school == "TAMU"]
+
+t_test <- t.test(TAMU_sals, UT_sals)
+
+summary <- data %>% group_by(school) %>% summarize(Count=n(), Mean = mean(salary), SD = sd(salary), SE=SD/sqrt(Count), CI = 1.96*SE)
+
+mean_plot <- ggplot(summary, aes(x=school, y=Mean)) + geom_point() + geom_errorbar(aes(ymin=Mean-CI, ymax=Mean+CI))
+
+hist
+mean_plot
+knitr::kable(summary)
+print(t_test)
+
+```
+
+-->
 </div>
 </div>
 </div>
@@ -677,8 +691,8 @@ mean of x mean of y
 </ul>
 </div>
 <div class="fragment">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>effect_size <span class="ot">&lt;-</span> (summary[[<span class="dv">1</span>,<span class="dv">3</span>]] <span class="sc">-</span> summary[[<span class="dv">2</span>,<span class="dv">3</span>]]) <span class="sc">/</span> summary[[<span class="dv">1</span>,<span class="dv">4</span>]]</span>
-<span id="cb5-2"><a href=""></a>effect_size</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>effect_size <span class="ot">&lt;-</span> (summary[[<span class="dv">1</span>,<span class="dv">3</span>]] <span class="sc">-</span> summary[[<span class="dv">2</span>,<span class="dv">3</span>]]) <span class="sc">/</span> summary[[<span class="dv">1</span>,<span class="dv">4</span>]]</span>
+<span id="cb3-2"><a href=""></a>effect_size</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.02425852</code></pre>
@@ -705,18 +719,17 @@ mean of x mean of y
 <li class="fragment"><p>Then simulate this 100 times using replicate, and sum the output to count the total number of instances that UT samples are higher. Divide by 100 to get the percent.</p></li>
 </ul>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a></span>
-<span id="cb7-2"><a href=""></a>ut_wins <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">100</span>, </span>
-<span id="cb7-3"><a href=""></a>    <span class="fu">sample</span>(data<span class="sc">$</span>salary[data<span class="sc">$</span>school <span class="sc">==</span> <span class="st">"UT"</span>], <span class="at">size=</span><span class="dv">1</span>) <span class="sc">&gt;</span> </span>
-<span id="cb7-4"><a href=""></a>        <span class="fu">sample</span>(data<span class="sc">$</span>salary[data<span class="sc">$</span>school <span class="sc">==</span> <span class="st">"TAMU"</span>], <span class="at">size=</span><span class="dv">1</span>))</span>
-<span id="cb7-5"><a href=""></a></span>
-<span id="cb7-6"><a href=""></a><span class="fu">sum</span>(ut_wins)<span class="sc">/</span><span class="dv">100</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a></span>
+<span id="cb5-2"><a href=""></a>ut_wins <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">100</span>, </span>
+<span id="cb5-3"><a href=""></a>    <span class="fu">sample</span>(data<span class="sc">$</span>salary[data<span class="sc">$</span>school <span class="sc">==</span> <span class="st">"UT"</span>], <span class="at">size=</span><span class="dv">1</span>) <span class="sc">&gt;</span> </span>
+<span id="cb5-4"><a href=""></a>        <span class="fu">sample</span>(data<span class="sc">$</span>salary[data<span class="sc">$</span>school <span class="sc">==</span> <span class="st">"TAMU"</span>], <span class="at">size=</span><span class="dv">1</span>))</span>
+<span id="cb5-5"><a href=""></a></span>
+<span id="cb5-6"><a href=""></a><span class="fu">sum</span>(ut_wins)<span class="sc">/</span><span class="dv">100</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.44</code></pre>
+<pre><code>[1] 0.47</code></pre>
 </div>
 </div>
-<p>:::</p>
 </section>
 <section id="deliverables" class="slide level2">
 <h2>Deliverables</h2>
@@ -731,12 +744,12 @@ mean of x mean of y
 <li>Interpretation of results using the following template:</li>
 </ul>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href=""></a></span>
-<span id="cb9-2"><a href=""></a>The small and large sample studies actually produced [similar/different] means and standard deviations for the salaries of UT and A&amp;M grads.</span>
-<span id="cb9-3"><a href=""></a></span>
-<span id="cb9-4"><a href=""></a>In terms of t and p-values, the two studies yielded [similar/different] results, where the large sample had a[small/large] p-value, and the small sample had a [small/large] p-value.</span>
-<span id="cb9-5"><a href=""></a></span>
-<span id="cb9-6"><a href=""></a>The effects sizes showed [a small/large] difference in salary, indicating that the differences in salary between schools are [notable/not notable], despite the [small/large] p-values for the [large/small] sample study.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb7-1"><a href=""></a></span>
+<span id="cb7-2"><a href=""></a>The small and large sample studies actually produced [similar/different] means and standard deviations for the salaries of UT and A&amp;M grads.</span>
+<span id="cb7-3"><a href=""></a></span>
+<span id="cb7-4"><a href=""></a>In terms of t and p-values, the two studies yielded [similar/different] results, where the large sample had a[small/large] p-value, and the small sample had a [small/large] p-value.</span>
+<span id="cb7-5"><a href=""></a></span>
+<span id="cb7-6"><a href=""></a>The effects sizes showed [a small/large] difference in salary, indicating that the differences in salary between schools are [notable/not notable], despite the [small/large] p-values for the [large/small] sample study.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </section></section>
     </div>

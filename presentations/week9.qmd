@@ -20,15 +20,7 @@ Download `salsLargeN.csv` and `salsSmallN.csv`
 
 **Since we are looking at a difference between means, what plots/analyses should we do in R?**
 
-::: iframe
-
-https://wall.sli.do/event/2TAfoM6CFtGQE4tc5xhNYU/?section=a3f79d34-ac1c-479b-ba52-dd6a19e127bd
-
-:::
-
-<!-- 
-
-::: card-list
+::: {.card-list .nonincremental}
 
 - Frequency polygon
 - t-test
@@ -37,7 +29,7 @@ https://wall.sli.do/event/2TAfoM6CFtGQE4tc5xhNYU/?section=a3f79d34-ac1c-479b-ba5
 
 Answer: All of the above.
 
--->
+:::
 
 ## t-test review
 

@@ -330,8 +330,17 @@
 <div class="card-list">
 <ul>
 <li class="fragment"><p>We want to calculate the differences between <code>flying</code> and <code>driving</code> for each individual using <code>mutate()</code></p></li>
-<li class="fragment"><p>But we cannot do that with the the current dataset structure. Why?</p></li>
-<li class="fragment"><iframe src="https://wall.sli.do/event/9Bbh4F7LnAyi7JPA28eLhY/?section=06ae0710-a7c0-43cc-93d7-b74269262631" width="100%" height="300" style="border:0;"></iframe></li>
+<li class="fragment"><p>But we cannot do that with the the current dataset structure. Why?</p>
+<ul>
+<li class="fragment">What are the column names of the current dataframe?
+<ul>
+<li class="fragment">id, mode, fear</li>
+</ul></li>
+<li class="fragment">What column names do we need so we can use <code>mutate(differences = flying - driving)</code>.
+<ul>
+<li class="fragment">id, flying, driving</li>
+</ul></li>
+</ul></li>
 </ul>
 </div>
 </div><div class="column">
@@ -467,21 +476,6 @@ mean difference
 <ul>
 <li><p>The confidence interval is much smaller than from last week (which was about -1.8 to -2.9, so about twice the width).</p></li>
 <li><p>The t is even bigger than last week and that the p-value is even smaller (2.2e-16 is actually the smallest value common computers can represent).</p></li>
-</ul>
-</div>
-</section>
-<section id="slido-answers" class="slide level2">
-<h2>Slido answers</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">What are the column names of the current dataframe?
-<ul>
-<li class="fragment">id, mode, fear</li>
-</ul></li>
-<li class="fragment">What column names do we need so we can use <code>mutate(differences = flying - driving)</code>.
-<ul>
-<li class="fragment">id, flying, driving</li>
-</ul></li>
 </ul>
 </div>
 

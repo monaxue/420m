@@ -118,9 +118,10 @@ $\rightarrow$
 
 - But we cannot do that with the the current dataset structure. Why?
 
-- ::: {.iframe height="300"}
-  https://wall.sli.do/event/9Bbh4F7LnAyi7JPA28eLhY/?section=06ae0710-a7c0-43cc-93d7-b74269262631
-  :::
+    - What are the column names of the current dataframe?
+        - id, mode, fear
+    - What column names do we need so we can use `mutate(differences = flying - driving)`.
+        - id, flying, driving
 
 ::::
 
@@ -235,13 +236,3 @@ t.test(wider_data$flying, wider_data$driving, paired=TRUE)
 
 :::
 
-## Slido answers
-
-::: card-list
-
-- What are the column names of the current dataframe?
-    - id, mode, fear
-- What column names do we need so we can use `mutate(differences = flying - driving)`.
-    - id, flying, driving
-
-:::

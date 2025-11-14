@@ -15,15 +15,17 @@ ggplot(data, aes(x=addic, y=dep)) + geom_point()
 
 ```
 
-<!-- **Answer:** `ggplot(raw, aes(x=addic, y=dep)) + geom_point()` -->
+**Answer:** `ggplot(raw, aes(x=addic, y=dep)) + geom_point()`
 
-##
+<!--##
 
 ::: iframe
 
 https://wall.sli.do/event/uEK2jHiAiKEvwPckneSgMt/?section=d3e4e3b6-a11b-40e7-80e9-e9091034cc4c
 
 :::
+
+-->
 
 ## New ggplot function! `geom_smooth()`
 
@@ -52,11 +54,15 @@ lm
 
 ## Which number is the slope of the regression plot?
 
-::: iframe
+**Answer:** 0.22837
+
+<!-- ::: iframe
 
 https://wall.sli.do/event/uEK2jHiAiKEvwPckneSgMt/?section=d3e4e3b6-a11b-40e7-80e9-e9091034cc4c
 
 :::
+
+-->
 
 ## Get more info from `lm()`
 

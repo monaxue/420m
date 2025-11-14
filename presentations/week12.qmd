@@ -1,0 +1,82 @@
+# Week 12
+**Download `depAndSocMed.csv` from Canvas.**
+
+
+## What ggplot code would you use to reproduce this plot?
+
+```{r}
+
+library(tidyverse)
+library(ggplot2)
+
+data <- read_csv("data/depAndSocMed.csv")
+
+ggplot(data, aes(x=addic, y=dep)) + geom_point()
+
+```
+
+<!-- **Answer:** `ggplot(raw, aes(x=addic, y=dep)) + geom_point()` -->
+
+##
+
+::: iframe
+
+https://wall.sli.do/event/uEK2jHiAiKEvwPckneSgMt/?section=d3e4e3b6-a11b-40e7-80e9-e9091034cc4c
+
+:::
+
+## New ggplot function! `geom_smooth()`
+
+
+```r
+ggplot(data, aes(x=addic, y=dep)) + geom_point() + geom_smooth(method = "lm")
+```
+
+```{r}
+
+ggplot(data, aes(x=addic, y=dep)) + geom_point() + geom_smooth(method = "lm")
+
+```
+
+## `lm()` function
+"lm" stands for "linear model". Use this function to conduct a regression analysis
+
+```r
+lm <- lm(dep ~ addic, data=data)
+lm
+```
+```{r}
+lm <- lm(dep ~ addic, data=data)
+lm
+```
+
+## Which number is the slope of the regression plot?
+
+::: iframe
+
+https://wall.sli.do/event/uEK2jHiAiKEvwPckneSgMt/?section=d3e4e3b6-a11b-40e7-80e9-e9091034cc4c
+
+:::
+
+## Get more info from `lm()`
+
+```r
+summary(lm)
+```
+
+```{r}
+summary(lm)
+```
+
+## Deliverables
+
+::: card-list
+
+- A graph of depression vs. addiction score
+- A graph of depression vs. time on social media
+- Regression summaries for each of those two relationships
+- A brief summary of your findings
+
+:::
+
+

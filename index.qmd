@@ -14,7 +14,7 @@ Effects of exercise
 
 [Slides](presentations/week13.html){.filelink}
 
-[Deliverables]()
+[Rmd file](r_demos/420m/comparingPolyFitsTA.Rmd){.filelink}
 
 [shapeVsHours.csv](r_demos/420m/shapeVsHours.csv){.filelink}
 

@@ -2,13 +2,15 @@
 
 ## From last week: Fitting a straight line
 
-Review: What is the code for fitting a straight line to data?
+Review: What is the code for getting the slopes and p-values of a fitted line?
 
 ::: iframe
 
 https://wall.sli.do/event/2ygxsjqUawadj9CePTaGEP/?section=18cb091e-0a22-4de1-8166-34cbb1000484
 
 :::
+
+## 
 
 ```r
 model1 <- lm(reported_shape ~ hours, data = data)
@@ -39,9 +41,33 @@ ggplot(data=data1, aes(x=hours, y=reported_shape)) + geom_point() + geom_smooth(
 
 ## Residuals
 
-By subtracting the line from the individual data points, the slope and intercept are "removed", and all that is left is the noise from individuals.
-
 ![](assets/regression_to_residuals.gif)
+
+## How residuals work
+
+::: panel-tabset
+
+### The gist
+
+$y_\text{model} = \text{intercept} + \text{slope}\times x$
+
+$y_\text{data points} =  y_\text{model} + \text{errors}$
+
+$\text{errors} = y_\text{data points} - y_\text{model}$
+
+By subtracting the line from the individual data points, the slope and intercept are "removed", and all that is left is the noise from individuals. In other words, all that is left are the errors. If the model is the true model, then the true errors are random (by definition, errors are random). The "errors" that a model predicts are the called the residuals.
+
+
+### Slightly more accurate
+
+$y_\text{model} = \text{intercept}_\text{model} + \text{slope}_\text{model} \times x_\text{data points}$
+
+$y_\text{data points} =  y_\text{model} + \text{errors}_\text{model}$
+
+$\text{errors}_\text{model} = y_\text{data points} - y_\text{model}$
+
+
+:::
 
 ## Getting residuals in R
 The `lm()` function in R automatically calculates the residuals for you. 
@@ -122,6 +148,10 @@ ggplot(data=data2, aes(x=hours, y=resids)) + geom_point() + geom_smooth(method="
 
 :::
 ::::
+
+## Interpretation
+
+We can see that in the second dataset, there is still a pattern in the residual plot. Specifically, there is an clear curve in residuals. This means that the straight line model that we have fitted to the data is not accounting for all systematic variance. Ideally, we want a model that can capture the true relationship between two variables, so a better model should be chosen to account for more of the systematic patterns. This would result in a plot where the residuals appear randomly scattered, as only errors (like measurement errors, variation do to other unrelated variables, etc.) are left.
 
 
 ## Fitting curved lines using polynomials

@@ -203,8 +203,11 @@
 </section>
 <section id="from-last-week-fitting-a-straight-line" class="slide level2">
 <h2>From last week: Fitting a straight line</h2>
-<p>Review: What is the code for fitting a straight line to data?</p>
+<p>Review: What is the code for getting the slopes and p-values of a fitted line?</p>
 <iframe src="https://wall.sli.do/event/2ygxsjqUawadj9CePTaGEP/?section=18cb091e-0a22-4de1-8166-34cbb1000484" width="100%" height="600px" style="border:0;"></iframe>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(reported_shape <span class="sc">~</span> hours, <span class="at">data =</span> data)</span>
 <span id="cb1-2"><a href=""></a>model1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell">
@@ -226,9 +229,27 @@ Coefficients:
 <img data-src="week13_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
 <section id="residuals" class="slide level2">
 <h2>Residuals</h2>
-<p>By subtracting the line from the individual data points, the slope and intercept are “removed”, and all that is left is the noise from individuals.</p>
 
 <img data-src="assets/regression_to_residuals.gif" class="r-stretch"></section>
+<section id="how-residuals-work" class="slide level2">
+<h2>How residuals work</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">The gist</a></li><li><a href="#tabset-1-2">Slightly more accurate</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<p><span class="math inline">\(y_\text{model} = \text{intercept} + \text{slope}\times x\)</span></p>
+<p><span class="math inline">\(y_\text{data points} =  y_\text{model} + \text{errors}\)</span></p>
+<p><span class="math inline">\(\text{errors} = y_\text{data points} - y_\text{model}\)</span></p>
+<p>By subtracting the line from the individual data points, the slope and intercept are “removed”, and all that is left is the noise from individuals. In other words, all that is left are the errors. If the model is the true model, then the true errors are random (by definition, errors are random). The “errors” that a model predicts are the called the residuals.</p>
+</div>
+<div id="tabset-1-2">
+<p><span class="math inline">\(y_\text{model} = \text{intercept}_\text{model} + \text{slope}_\text{model} \times x_\text{data points}\)</span></p>
+<p><span class="math inline">\(y_\text{data points} =  y_\text{model} + \text{errors}_\text{model}\)</span></p>
+<p><span class="math inline">\(\text{errors}_\text{model} = y_\text{data points} - y_\text{model}\)</span></p>
+</div>
+</div>
+</div>
+</section>
 <section id="getting-residuals-in-r" class="slide level2">
 <h2>Getting residuals in R</h2>
 <p>The <code>lm()</code> function in R automatically calculates the residuals for you.</p>
@@ -310,6 +331,10 @@ Coefficients:
 </div>
 </div>
 </div></div>
+</section>
+<section id="interpretation" class="slide level2">
+<h2>Interpretation</h2>
+<p>We can see that in the second dataset, there is still a pattern in the residual plot. Specifically, there is an clear curve in residuals. This means that the straight line model that we have fitted to the data is not accounting for all systematic variance. Ideally, we want a model that can capture the true relationship between two variables, so a better model should be chosen to account for more of the systematic patterns. This would result in a plot where the residuals appear randomly scattered, as only errors (like measurement errors, variation do to other unrelated variables, etc.) are left.</p>
 </section>
 <section id="fitting-curved-lines-using-polynomials" class="slide level2">
 <h2>Fitting curved lines using polynomials</h2>

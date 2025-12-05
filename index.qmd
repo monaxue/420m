@@ -8,6 +8,10 @@
 
 ------------------------------------------------------------------------
 
+## Week 14
+
+[Slides](presentations/week14.html){.filelink}
+
 ## Week 13
 
 Effects of exercise

@@ -1,0 +1,80 @@
+---
+title: Case Study 4
+author: Mona Xue
+date: 2025-12-05
+---
+
+# Introduction
+
+
+# Code and plots
+
+```{r}
+#| warning: false
+
+library(tidyverse)
+library(ggplot2)
+
+raw <- read_csv("mental-rotation.csv")
+
+head(raw)
+
+
+```
+
+```{r}
+
+table <- raw %>% group_by(patient) %>% summarize(Mean = mean(response_time), SD = sd(response_time))
+
+knitr::kable(table)
+
+```
+
+
+```{r}
+
+ggplot(raw, aes(x=response_time)) + geom_freqpoly() + facet_wrap(~patient)
+
+```
+Figure 1. Histogram of response times for each patient.
+
+
+```{r}
+
+ggplot(raw, aes(y=response_time, x=rotation_deg)) + geom_smooth(method="lm") + facet_wrap(~patient)
+
+```
+Figure 2. Regression plots showing the relationship between response times and rotation degree for each patient, with 95% confidence intervals.
+
+
+```{r}
+
+patient1 <- raw %>% filter(patient==1)
+patient2 <- raw %>% filter(patient==2)
+patient3 <- raw %>% filter(patient==3)
+patient4 <- raw %>% filter(patient==4)
+patient5 <- raw %>% filter(patient==5)
+
+summary(lm(response_time ~ rotation_deg, data=patient1))
+summary(lm(response_time ~ rotation_deg, data=patient2))
+summary(lm(response_time ~ rotation_deg, data=patient3))
+summary(lm(response_time ~ rotation_deg, data=patient4))
+summary(lm(response_time ~ rotation_deg, data=patient5))
+
+```
+
+
+# Interpretations
+
+Histograms:
+
+Regression plots:
+
+CI:
+
+p-value:
+
+General conclusion:
+
+# External sources
+I did not use any external sources

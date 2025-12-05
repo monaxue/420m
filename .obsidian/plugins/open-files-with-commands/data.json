@@ -1,0 +1,40 @@
+{
+  "openNewTab": false,
+  "openFileIn": "activeTab",
+  "deleteCommandWhenFileIsDeleted": true,
+  "updateCommandsOnRename": true,
+  "commands": [
+    {
+      "id": "e47d6f75-3bbd-4192-822f-a87eb6362ba0",
+      "name": "",
+      "filePath": "",
+      "openFileIn": "activeTab",
+      "command": {
+        "id": "",
+        "name": ""
+      }
+    },
+    {
+      "id": "bae6c77e-84ce-415b-82fd-92ee86606d98",
+      "name": "New tab",
+      "filePath": "Resources/Templates/New tab.md",
+      "openFileIn": "activeTab",
+      "command": {
+        "id": "open-files-with-commands:bae6c77e-84ce-415b-82fd-92ee86606d98",
+        "name": "Open files with commands: New tab"
+      }
+    }
+  ],
+  "customVariables": [
+    {
+      "name": "date",
+      "value": "{{d:YYYY-MM-DD}}",
+      "type": "string"
+    },
+    {
+      "name": "time",
+      "value": "{{d:HH:mm:ss}}",
+      "type": "string"
+    }
+  ]
+}

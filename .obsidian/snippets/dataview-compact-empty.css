@@ -1,0 +1,34 @@
+/* Compact "No results" / empty states for Dataview everywhere */
+
+/* Reading view + Live Preview, DQL + DataviewJS blocks */
+.theme-light :is(.markdown-preview-view, .is-live-preview)
+  :is(.block-language-dataview, .block-language-dataviewjs) .dataview
+  :is(.dataview-empty, .dataview-error),
+.theme-dark :is(.markdown-preview-view, .is-live-preview)
+  :is(.block-language-dataview, .block-language-dataviewjs) .dataview
+  :is(.dataview-empty, .dataview-error) {
+  font-size: 0.85em !important;
+  line-height: 1.2 !important;
+  opacity: 0.65 !important;
+  margin: 0.1rem 0 0.6rem !important;
+  padding: 0 !important;
+}
+
+/* Fallback: when the message is a lone <p> without classes */
+.theme-light :is(.markdown-preview-view, .is-live-preview)
+  :is(.block-language-dataview, .block-language-dataviewjs)
+  .dataview:has(> p:only-child:not(:has(*))),
+.theme-dark :is(.markdown-preview-view, .is-live-preview)
+  :is(.block-language-dataview, .block-language-dataviewjs)
+  .dataview:has(> p:only-child:not(:has(*))) {
+  font-size: 0.85em !important;
+  line-height: 1.2 !important;
+  opacity: 0.65 !important;
+  margin: 0.1rem 0 0.6rem !important;
+  padding: 0 !important;
+}
+
+/* Optional: tighten list spacing generally inside Dataview blocks */
+:is(.markdown-preview-view, .is-live-preview) .dataview ul {
+  margin: 0.1rem 0 0.6rem !important;
+}

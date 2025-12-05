@@ -1,0 +1,54 @@
+{
+  "fuzzy": true,
+  "maxResults": 50,
+  "triggers": [
+    {
+      "symbol": "%",
+      "name": "Up",
+      "source": "pages",
+      "pageFilters": {
+        "excludeFolders": [
+          ".obsidian/"
+        ]
+      },
+      "template": "(up::{{link}})",
+      "wrapPreviousWord": false
+    },
+    {
+      "symbol": "&",
+      "name": "Down",
+      "source": "pages",
+      "pageFilters": {
+        "excludeFolders": [
+          ".obsidian/"
+        ]
+      },
+      "template": "(down::{{link}})",
+      "wrapPreviousWord": false
+    },
+    {
+      "symbol": "!",
+      "name": "Todo",
+      "source": "pages",
+      "pageFilters": {
+        "excludeFolders": [
+          ".obsidian/"
+        ]
+      },
+      "template": "- [ ] (todo::{{link}})",
+      "wrapPreviousWord": false
+    },
+    {
+      "symbol": ";",
+      "name": "To read",
+      "source": "pages",
+      "pageFilters": {
+        "excludeFolders": [
+          ".obsidian/"
+        ]
+      },
+      "template": "- [ ] (todo::[[Papers]]) {{link}}",
+      "wrapPreviousWord": false
+    }
+  ]
+}

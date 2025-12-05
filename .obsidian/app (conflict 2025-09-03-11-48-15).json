@@ -1,0 +1,11 @@
+{
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "folder",
+  "promptDelete": false,
+  "strictLineBreaks": false,
+  "propertiesInDocument": "visible",
+  "newFileFolderPath": "Notes",
+  "livePreview": true,
+  "showLineNumber": false,
+  "showUnsupportedFiles": true
+}

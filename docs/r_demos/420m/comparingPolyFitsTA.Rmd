@@ -225,6 +225,8 @@ Plot the data with second order linear fit (a curved line).
 
 ```
 
+Plot summary:
+
 ### 3.4 Plot the residuals for the second order fit
 
 Do the regression.

@@ -1,0 +1,282 @@
+{
+  "main": {
+    "id": "07f113659977df1d",
+    "type": "split",
+    "children": [
+      {
+        "id": "cf35ef3eddd42a60",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "67f397b98ca20ef1",
+            "type": "leaf",
+            "state": {
+              "type": "mk-space",
+              "state": {
+                "path": "Academic journal"
+              },
+              "icon": "lucide-file",
+              "title": "Academic journal"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "033e7d88091aae87",
+    "type": "split",
+    "children": [
+      {
+        "id": "dcc908172bf093ec",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e4e2191be0b8d147",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "2b13541570fd6df6",
+            "type": "leaf",
+            "state": {
+              "type": "book-smith-view",
+              "state": {},
+              "icon": "book",
+              "title": "Book manager"
+            }
+          },
+          {
+            "id": "79336ab80b0b1a8d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          },
+          {
+            "id": "00fa0ea928303972",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "45849c0c8c00775f",
+            "type": "leaf",
+            "state": {
+              "type": "mk-path-view",
+              "state": {},
+              "icon": "layout-grid",
+              "title": "Navigator"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "8c2f9cbb1754d4cb",
+    "type": "split",
+    "children": [
+      {
+        "id": "e3e21a04d587c94d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2a1bff10273e9bde",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "books/Test/Untitled.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Untitled"
+            }
+          },
+          {
+            "id": "ca65a2cbec9eeb57",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "books/Test/Untitled.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Untitled"
+            }
+          },
+          {
+            "id": "81113bfd5957120c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "bdfe8d34a4fd86d4",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "books/Test/Untitled.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Untitled"
+            }
+          },
+          {
+            "id": "720bcd0f3c41a2e2",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "c786875a0790d754",
+            "type": "leaf",
+            "state": {
+              "type": "book-smith-tool",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 460.5,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "command-palette:Open command palette": false,
+      "daily-notes:Open today's daily note": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "templates:Insert template": false,
+      "publish:Publish changes...": false,
+      "mood-tracker:Open Mood Tracker": false,
+      "mood-tracker:Open Mood Tracking History": false,
+      "smart-connections:Open: Smart Chat": false,
+      "smart-connections:Smart Connections: Open connections view": false,
+      "smart-connections:Smart Connections: Open random connection": false,
+      "obsidian-importer:Open Importer": false,
+      "interactivity:Run Interactivity": false,
+      "book-smith:Open book panel": false,
+      "qmd-as-md-obsidian:Toggle Quarto Preview": false,
+      "scribe:Scribe": false
+    }
+  },
+  "active": "45849c0c8c00775f",
+  "lastOpenFiles": [
+    "Academic journal/Academic journal.md",
+    "Writing/Writing.md",
+    "Writing",
+    "MeSearch/MeSearch.md",
+    "MeSearch",
+    "Academic journal/Old Obsidian reading notes/Old Obsidian reading notes.md",
+    "Academic journal/Old obsidian research ideas/Old obsidian research ideas.md",
+    "Academic journal/Old obsidian research ideas/religious communities.md",
+    "Academic journal/Old obsidian research ideas/personality matching.md",
+    "Academic journal/Old obsidian research ideas/evolution of storytelling techniques, accuracy decrease.md",
+    "Academic journal/Old obsidian research ideas/group vs. Individual Friendship Qualities.md",
+    "Academic journal/Research diary/Research diary.md",
+    "Academic journal/Research diary/Untitled.md",
+    "Academic journal/My research summaries/My research summaries.md",
+    "Academic journal/Teaching ideas/Teaching ideas.md",
+    "Academic journal/Thoughts about papers/Thoughts about papers.md",
+    "Academic journal/Thoughts on science/Thoughts on science.md",
+    "Academic journal/Research diary/Research summaries (database)/Research summaries (database).md",
+    "Academic journal/Thoughts about papers/Untitled.md",
+    "Academic journal/Thoughts about papers/Untitled 2.md",
+    "Academic journal/Thoughts about papers/Liberals Think More Analytically (More “WEIRD”) than Conservatives.md",
+    "Academic journal/Teaching ideas/Ways of thinking in psychology.md",
+    "Academic journal/Teaching ideas/Goals of intro psych.md",
+    "Academic journal/Teaching ideas/Project ideas.md",
+    "Academic journal/Teaching ideas/Books to consult.md",
+    "Academic journal/Teaching ideas (database)/Teaching ideas (database).md",
+    "Academic journal/Teaching ideas (database)/Project ideas.md",
+    "Academic journal/Teaching ideas (database)/Ways of thinking in psychology.md",
+    "Academic journal/Teaching ideas (database)",
+    "Academic journal/Thoughts about papers/Thoughts about papers (database)",
+    "Academic journal/My research summaries/Cool topics (database)",
+    "Images/PXL_20240926_063514282.MP.jpg",
+    "Images",
+    "Images/DALLE_2025-02-07_14.20.45_-_A_simple_2D_clip_art_illustration_of_an_ash-root._The_root_is_dark_grey_and_charred-looking_with_small_cracks_along_its_surface._It_has_a_twisted_gn.webp",
+    "Academic Journal/Academic journal/Research ideas/Research ideas (database)/Instrumental causal learning/Experiment draft 1/Study 1- two total ingredients/desktop.ini",
+    "Academic Journal/Academic journal/Research ideas/Research ideas (database)/Instrumental causal learning/Experiment draft 1/desktop.ini",
+    "Academic Journal/Academic journal/Research ideas/Research ideas (database)/Simple instinctual emotion vs. social learning model/desktop.ini",
+    "Academic Journal/Academic journal/Research ideas/Research ideas (database)/RL model of cross-cultural differences in emotions “suppression”/desktop.ini",
+    "Images/c739d080-3355-4829-a1bb-78f162e0ba4b.png",
+    "Images/PXL_20241015_011017037.jpg",
+    "Images/PXL_20241008_185104530.jpg",
+    "Images/PXL_20250129_003637023.jpg",
+    "Images/PXL_20250128_223038667.jpg",
+    "Images/PXL_20250127_232237307.MP.jpg",
+    "Images/PXL_20250128_204347591.jpg",
+    "Images/PXL_20241031_021737116 2.jpg",
+    "Untitled.canvas",
+    "Untitled 5.canvas",
+    "Untitled 2.canvas",
+    "Untitled 4.canvas",
+    "Untitled 3.canvas",
+    "Untitled 1.canvas",
+    "Research ideas/Untitled.canvas"
+  ]
+}

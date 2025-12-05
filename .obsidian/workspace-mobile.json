@@ -1,0 +1,343 @@
+{
+  "main": {
+    "id": "916706a217695946",
+    "type": "split",
+    "children": [
+      {
+        "id": "ce397180f4018081",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "eba800910252a298",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Daily Notes/2025-09-09.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "2025-09-09"
+            }
+          },
+          {
+            "id": "2ef45c4dc0b7b54f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Daily Notes/2025-09-09.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "2025-09-09"
+            }
+          },
+          {
+            "id": "b5e24467dbfdfb68",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "LiteratureNotes/frijdaRelationsEmotionAppraisal1989.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "frijdaRelationsEmotionAppraisal1989"
+            }
+          },
+          {
+            "id": "1ff2cf5701402adb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Notes/Some project ideas after reading Desmond's NSF.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "Some project ideas after reading Desmond's NSF"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "506949a400074996",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "1c1d019ffe07a057",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "byCreatedTime",
+            "autoReveal": false
+          },
+          "icon": "lucide-folder-closed",
+          "title": "Files"
+        }
+      },
+      {
+        "id": "0c99e9b2dd04142c",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "2025-09-08",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          },
+          "icon": "lucide-search",
+          "title": "Search"
+        }
+      },
+      {
+        "id": "07ba83d546a03cae",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-tags",
+          "title": "Tags"
+        }
+      },
+      {
+        "id": "4f6d9aa944976271",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {},
+          "icon": "lucide-bookmark",
+          "title": "Bookmarks"
+        }
+      },
+      {
+        "id": "2379334b06226f75",
+        "type": "leaf",
+        "state": {
+          "type": "all-properties",
+          "state": {
+            "sortOrder": "frequency",
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-archive",
+          "title": "All properties"
+        }
+      },
+      {
+        "id": "c4e4cc9f2962b141",
+        "type": "leaf",
+        "state": {
+          "type": "mk-path-view",
+          "state": {},
+          "icon": "lucide-ghost",
+          "title": "mk-path-view"
+        }
+      },
+      {
+        "id": "93ede8f0b0ea308e",
+        "type": "leaf",
+        "pinned": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Daily Notes/2025-09-08.md",
+            "mode": "source",
+            "source": false,
+            "backlinks": false
+          },
+          "pinned": true,
+          "icon": "lucide-file",
+          "title": "2025-09-08"
+        }
+      },
+      {
+        "id": "4234446641edf834",
+        "type": "leaf",
+        "pinned": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Daily Notes/2025-09-08.md",
+            "mode": "source",
+            "source": false,
+            "backlinks": false
+          },
+          "pinned": true,
+          "icon": "lucide-file",
+          "title": "2025-09-08"
+        }
+      }
+    ],
+    "currentTab": 1
+  },
+  "right": {
+    "id": "d970afe03f32f56e",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "1b23cbfb0729a061",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "Notes/Desmond meeting week 2.md",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-coming-in",
+          "title": "Backlinks"
+        }
+      },
+      {
+        "id": "c088df93cba888a0",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-going-out",
+          "title": "Outgoing links"
+        }
+      },
+      {
+        "id": "7c96f766ced428c6",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "followCursor": false,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-list",
+          "title": "Outline"
+        }
+      },
+      {
+        "id": "a529a45b8ed2264b",
+        "type": "leaf",
+        "state": {
+          "type": "calendar",
+          "state": {},
+          "icon": "calendar-with-checkmark",
+          "title": "Calendar"
+        }
+      },
+      {
+        "id": "b161172f27b31b9c",
+        "type": "leaf",
+        "state": {
+          "type": "bc-matrix-view",
+          "state": {},
+          "icon": "lucide-ghost",
+          "title": "bc-matrix-view"
+        }
+      }
+    ],
+    "currentTab": 3
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "scholar:Open Scholar Library": false,
+      "scholar:Add to Scholar Library": false,
+      "system3-relay:Relay": false,
+      "dashboard-navigator:Open dashboard navigator": false,
+      "obsidian-regex-pipeline:Regex Rulesets": false,
+      "pinned-daily-notes:Open today's daily note (Pinned)": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-file-info-plugin:File Info Panel": false,
+      "pomodoro-timer:Toggle timer panel": false,
+      "quickadd:QuickAdd": false,
+      "cmdr:QuickAdd: Default page": false,
+      "obsidian42-brat:BRAT": false,
+      "tag-page-md:Refresh tag page": true,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "command-palette:Open command palette": false,
+      "workspaces:Manage workspace layouts": true,
+      "daily-notes:Open today's daily note": false,
+      "bases:Create new base": false,
+      "canvas:Create new canvas": false,
+      "iconic:Open rulebook": true,
+      "custom-sort:Toggle custom sorting": true,
+      "publish:Publish changes...": true,
+      "obsidian-importer:Open Importer": true,
+      "qmd-as-md-obsidian:Toggle Quarto Preview": false,
+      "interactivity:Run Interactivity": false,
+      "templates:Insert template": false,
+      "scribe:Scribe": false
+    }
+  },
+  "active": "2ef45c4dc0b7b54f",
+  "lastOpenFiles": [
+    "LiteratureNotes/yeoAssociationsCognitiveAppraisals2023.md",
+    "Daily Notes/2025-09-09.md",
+    "LiteratureNotes/frijdaRelationsEmotionAppraisal1989.md",
+    "Notes/Some project ideas after reading Desmond's NSF.md",
+    "Daily Notes/2025-09-08.md",
+    "Daily Notes/2025-09-08-Thinkpad-P14.md",
+    "Notes/Desmond's meeting.md",
+    "Notes/Desmond meeting week 2.md",
+    "Notes/Week 2.md",
+    "Notes/Time management.md",
+    "Notes/TA.md",
+    "Notes/Summary of Appraisal theories.md",
+    "Notes/Speechify comments.md",
+    "Notes/Obsidian.md",
+    "Notes/Ideal routine.md",
+    "Notes/Focus.md",
+    "Notes/Continuous appraisal space project.md",
+    "Notes/ADHD Journal.md",
+    "Ink/Drawing/2025.9.3 - 11.34am.drawing",
+    "Daily Notes/2025-09-05.md",
+    "LiteratureNotes",
+    "Daily Notes/2025-09-04.md",
+    "Ink/Drawing/2025.9.3 - 11.34am (conflict 2025-09-08-19-50-18).drawing",
+    "Notes/Finite horizon MDP's.md",
+    "Daily Notes/2025-09-03.md",
+    "Notes/Stats.md",
+    "Notes/Ta'ing ideas.md",
+    "Resources/PXL_20250902_163155961.MP.jpg",
+    "Resources/Pasted image 20250902184801.png",
+    "Notes/Obsidian customization notes (conflict 2025-09-03-09-54-57).md",
+    "Notes/Markov Decisions class.md",
+    "Ink/Drawing",
+    "Ink",
+    "Untitled",
+    "Daily Notes/Daily Notes Database.base",
+    "Daily Notes",
+    "Academic journal/Research ideas/Research ideas",
+    "Ink/Drawing/2025.8.15 - 17.32pm.drawing"
+  ]
+}

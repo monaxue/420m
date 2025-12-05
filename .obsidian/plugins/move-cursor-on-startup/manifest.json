@@ -1,0 +1,11 @@
+{
+	"id": "move-cursor-on-startup",
+	"name": "Move Cursor On Startup",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Move cursor right then left briefly on startup --> first opened note. Makes DataView expressions 'activate' automatically instead of waiting for user interaction.",
+	"author": "Jared Kelnhofer",
+	"authorUrl": "https://www.linkedin.com/in/jared-kelnhofer/",
+	"fundingUrl": "https://account.venmo.com/u/jaredkelnhofer",
+	"isDesktopOnly": false
+}

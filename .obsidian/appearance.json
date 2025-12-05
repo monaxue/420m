@@ -1,0 +1,15 @@
+{
+  "accentColor": "#c78400",
+  "theme": "moonstone",
+  "cssTheme": "Primary",
+  "enabledCssSnippets": [
+    "supercharged-links-gen",
+    "image-align",
+    "dataview-compact-empty"
+  ],
+  "interfaceFontFamily": "Atkinson Hyperlegible Next",
+  "textFontFamily": "Atkinson Hyperlegible Next",
+  "monospaceFontFamily": "Atkinson Hyperlegible Mono",
+  "showViewHeader": true,
+  "showRibbon": false
+}

@@ -105,7 +105,7 @@
 :::
 
 ::: iframe
-https://wall.sli.do/event/ryk82jYqEag2H34gf42HUH?section=a06acef7-071f-472a-bf8a-459e93caa778&integration=slido-admin&utm_source=slidoadmin
+https://wall.sli.do/event/ryk82jYqEag2H34gf42HUH
 :::
 
 ## Discuss
@@ -173,7 +173,7 @@ Fill out your availability by Saturday so I can determine the best time for offi
 
 ::: iframe
 
-https://wall.sli.do/event/ryk82jYqEag2H34gf42HUH?section=a06acef7-071f-472a-bf8a-459e93caa778&integration=slido-admin&utm_source=slidoadmin
+https://wall.sli.do/event/ryk82jYqEag2H34gf42HUH
 
 :::
 

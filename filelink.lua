@@ -16,6 +16,10 @@ end
 function Link(el)
   -- Only transform links with .filelink
   if not has_class(el, "filelink") then
+    -- Add target="_blank" while preserving everything else
+    el.attributes = el.attributes or {}
+    el.attributes.target = "_blank"
+    el.attributes.rel = "noopener noreferrer"
     return el
   end
 

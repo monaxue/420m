@@ -1,13 +1,14 @@
 # Welcome to PSYCH420's Lab Section!
-
+**TA:** Mona Xue
+**Lab time:** Friday, 12-2pm
 **Mona's email:** [monaxue\@utexas.edu](mailto:monaxue@utexas.edu){.email}
 
-**Mona's office hours:** Fridays 1-3pm. Office hours will be over Zoom on normal Fridays, whereas they will in SEAY 4.326A on the Fridays before case studies are due. You can also schedule an appointment for any day. Just shoot me a message through email or through Canvas.
+<!-- **Mona's office hours:** Fridays 1-3pm. Office hours will be over Zoom on normal Fridays, whereas they will in SEAY 4.326A on the Fridays before case studies are due. You can also schedule an appointment for any day. Just shoot me a message through email or through Canvas.
 
-**Alex's office hours:** Tues/Thurs: 12-1pm in SEAY 5.206
+**Alex's office hours:** Tues/Thurs: 12-1pm in SEAY 5.206 -->
 
 ------------------------------------------------------------------------
-
+<!--
 ## Week 14
 
 [Slides](presentations/week14.html){.filelink}
@@ -84,12 +85,12 @@ File directory, basic syntax, loading packages, importing data
 
 [R Cheatsheet](files/r-cheatsheet.html){.filelink}
 
+-->
+
 ## Week 1
 
-Install R, RStudio, and TinyTex
+Lab info, R setup
 
 [Slides](presentations/intro.html){.filelink}
 
-**RMarkdown file to test:** [test.Rmd](r_demos/test.Rmd){.filelink}
-
-**What the RMarkdown file should look like:** [test.pdf](r_demos/test.pdf){.filelink}
+[test.Rmd](r_demos/test.Rmd){.filelink}

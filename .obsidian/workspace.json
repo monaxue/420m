@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "presentations/week14.qmd",
-                "mode": "source",
+                "mode": "preview",
                 "source": false,
                 "backlinks": false
               },
@@ -126,7 +126,29 @@
   "right": {
     "id": "8c2f9cbb1754d4cb",
     "type": "split",
-    "children": [],
+    "children": [
+      {
+        "id": "d71489fb97c5c7ca",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "51446873db4d39d5",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "presentations/week14.qmd",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of week14"
+            }
+          }
+        ]
+      }
+    ],
     "direction": "horizontal",
     "width": 331,
     "collapsed": true

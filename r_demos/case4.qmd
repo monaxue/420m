@@ -41,7 +41,7 @@ Figure 1. Histogram of response times for each patient.
 
 ```{r}
 
-ggplot(raw, aes(y=response_time, x=rotation_deg)) + geom_smooth(method="lm") + facet_wrap(~patient)
+ggplot(raw, aes(y=response_time, x=rotation_deg)) + geom_point() + geom_smooth(method="lm") + facet_wrap(~patient)
 
 ```
 Figure 2. Regression plots showing the relationship between response times and rotation degree for each patient, with 95% confidence intervals.

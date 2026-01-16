@@ -1,0 +1,177 @@
+# Week 5 Lab
+**Create your lab4 folder and project**
+
+## Review question
+
+```{=html}
+
+<iframe src=https://wall.sli.do/event/3oY6Sijg8wvh8dq8k65iQf/?section=7c2e35e5-0092-4380-a5b1-e2828ec7cd06 width=100%, height=600></iframe>
+
+```
+
+# Sampling distributions
+
+## rnorm(n, mean, sd)
+
+::: card-list
+
+- "r" stands for random
+- "norm" stands for normal distribution
+- This function samples from a normal distribution randomly. 
+- Let's take see this in action.
+
+:::
+
+## Now you try!
+
+::: {.card-list .nonincremental}
+
+- Run the `rnorm(n, mean, sd)` function with a mean of 100 and an sd of 10, with a sample size of 1.
+
+```{=html}
+
+<iframe src=https://wall.sli.do/event/3oY6Sijg8wvh8dq8k65iQf/?section=7c2e35e5-0092-4380-a5b1-e2828ec7cd06 width=100%, height=600></iframe>
+
+```
+
+:::
+
+
+## replicate()
+
+::: card-list
+- We can run each experiment multiple times.
+- replicate(), creates a matrix of results, where each column is a single experiment.
+
+:::
+
+. . .
+
+````{verbatim}
+```r
+
+matrix <- replicate(3, rnorm(5, mean = 100, sd = 10))
+matrix
+
+```
+          [,1]      [,2]      [,3]
+[1,] 122.85353  98.96323  99.39199
+[2,]  85.13403  85.24940  93.66550
+[3,]  99.45157 102.84034 119.71288
+[4,] 111.03297 109.18319  84.86919
+[5,]  93.45378 109.78161 104.45262
+
+````
+
+. . .
+
+**Let's see this in action**
+
+
+
+## Why do we want to simulate with replicate()?
+::: card-list
+- Can we just take a larger sample size?
+- It allows us to calculate summary statistics for sub-samples.
+- We can learn about the relationship between these summary statistics for smaller samples, and the "true" population.
+
+:::
+
+## Means of means and standard errors
+
+**Let's take a look at the simulation**
+
+## Key points
+
+::: card-list
+- A distribution of means is called the sampling distribution
+- The standard deviation of the means (sampling distribution) is the standard error
+- The standard error is much smaller than the standard deviation
+
+:::
+
+## Now you try!
+::: card-list
+- `samples_5 <- replicate(5, rnorm(n = 10, mean = 100, sd = 10))`
+- `sampling_dist <- colMeans(5_samples)`
+- `SE <- sd(sampling_dist)`
+
+:::
+
+:::: scrollable
+
+## Deliverables
+
+
+::: {.card-list .nonincremental}
+
+1. From a normal distribution with `mean = 100`, and `sd = 10`, draw a sample of 25:
+    - Hint: use `sample <- rnorm(n=..., mean=..., sd=...)`, and fill in the ... with values that make sense.
+    - What is the mean and standard deviation?
+    - Plot the sample using `geom_freqpoly()`
+    - Hint: ggplot requires a dataframe. You can convert a sample to dataframes by using `tibble(x=sample)`
+1. Create a sampling distribution of 1000, where each sample contains 25 samples from a normal distribution with `mean = 100` and `sd = 10`
+    - Hint: use `samples_1000 <- replicate(N=..., rnorm(...))`
+    - What is the mean and standard error?
+    - Create a vector called `sampling_dist` by using `colMeans(samples_1000)`
+    - Convert this matrix into a a dataframe for plotting (using `tibble()`)
+    - Plot the sampling distribution using `geom_freqpoly()`
+1. Repeat the two steps above for a sample size of 100 (also using 1000 samples for the second part)
+1. Compare the two **sample** distributions (about the same width)
+1. Compare the two **sampling** distributions (n=100 is narrower)
+1. Show me your RMarkdown PDF when you are done.
+
+:::
+
+::::
+
+
+```{r}
+
+library(tidyverse)
+
+library(ggplot2)
+
+sample_25 <- tibble(x=rnorm(25, 100, 10))
+
+sample_100 <- tibble(x=rnorm(100, 100, 10))
+
+sampling_25 <- tibble(x=colMeans(replicate(1000, rnorm(25, 100, 10))))
+
+sampling_100 <- tibble(x=colMeans(replicate(1000, rnorm(100, 100, 10))))
+
+
+```
+
+##
+
+::: panel-tabset
+
+### Sample n=25
+```{r}
+
+ggplot(sample_25, aes(x=x)) + geom_freqpoly()
+```
+
+### Sample n=100
+```{r}
+ggplot(sample_100, aes(x=x)) + geom_freqpoly()
+```
+
+### Sampling n=25
+
+```{r}
+
+ggplot(sampling_25, aes(x=x)) + geom_freqpoly()
+
+```
+
+### Sampling n=100
+
+```{r}
+
+ggplot(sampling_100, aes(x=x)) + geom_freqpoly()
+
+```
+
+:::

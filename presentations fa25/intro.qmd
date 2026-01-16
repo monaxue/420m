@@ -1,0 +1,142 @@
+---
+title: Week 1 Lab
+
+---
+
+## Welcome to PSYCH 420!
+
+**What do you think about ChatGPT?**
+
+```{=html}
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/w9nMb1UH2AYeKw3IuPzsb?controls=none&short_poll=true" width="100%" height="600px"></iframe>
+```
+
+## Overview
+
+::: {.card-list .nonincremental}
+- Intro
+- Syllubus, and other logistics 
+- Checking R installation
+:::
+
+## Hi, I'm Mona
+::: {.card-list}
+- I am a PhD student in Desmond Ong's lab! 
+- I study emotion reasoning and learning with compuational models. 
+- Driving question: how do cultural differences in emotion categories emerge?
+- Outside of academics, I love dancing and starting random projects!
+:::
+
+## Now, it's your turn!
+
+What Psychology topics are you most interested in?
+
+```{=html}
+<iframe src="https://embed.polleverywhere.com/free_text_polls/GXaTU98hIuhz3Inb3L5Zb?controls=none&short_poll=true" width="100%" height="600px"></iframe>
+```
+
+---
+
+::: {.card-list}
+- Turn to your neighbor and introduce yourself
+- Any hobbies or traits that you have in common?
+:::
+
+::: {.card-list}
+- Now go around, say your name, and tell us what you have in common.
+:::
+
+
+## How does this course work?
+::: {.card-list}
+- Hybrid format
+- Online "content modules"
+    - Short videos
+    - Short practice quizzes
+- In-person labs
+    - With TA (me!)
+    - Turn in work at the end of lab
+    - You can leave after you finish
+:::
+
+## Syllabus
+
+{{< pdf assets/420Syllabus_Fall_2025.pdf width=100% height=800 >}}
+
+
+## Expectations
+::: {.card-list}
+- Be engaged
+    - Work in small groups and help each other
+- Attendance
+    - Attendance will be taken by PollEverywhere questions
+- You are expected to complete lecture materials before lab
+    - I know that independent work can be challenging
+    - That is why during my office hours, we can come together to watch the videos
+
+:::
+
+## Office hours
+
+::: {.card-list}
+- Let's watch the videos together!
+- It will be chill.
+- Please feel free to come to office hours to discuss anything you would like, including graduate school, time management, having a life outside of school, hopes and dreams.
+:::
+
+::::: {.columns}
+
+:::: {.column width="20%"}
+:::{.card-list}
+- ![](assets/when2meet-office-hours.png){height="150"}
+:::
+::::
+
+:::: {.column width="80%"}
+:::{.card-list}
+- 
+    - <https://www.when2meet.com/?31944050-nWPtY>
+    - Please enter your availability by Saturday.
+:::
+::::
+
+:::::
+
+## Tips
+::: {.card-list}
+- Go to Alex's office hours! He's really nice. 
+- For coding, the internet (StackOverflow is great) and ChatGPT are your friends
+:::
+
+. . .
+
+::: {.callout-caution width="95%"}
+ChatGPT can be wrong! Use ChatGPT as a source for learning, not to do the work for you.
+:::
+
+
+## Poll: What is your experience with R?
+
+```{=html}
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/tvr9BartQ6whc3SFTG3c7?controls=none&short_poll=true" width="100%" height="600px"></iframe>
+```
+
+## Now...
+**If you have already installed R and RStudio, jump to step 3. Otherwise:**
+
+:::: {.nonincremental}
+
+1. Install R: <https://cran.r-project.org/>
+
+2. Install Rstudio: <https://posit.co/download/rstudio-desktop/>
+    
+3. Run this RMarkdown file to see if it's working: <https://tinyurl.com/test-Rmd>
+
+4. Feel free to head out when you are finished
+
+::: {.card-list}
+- Next week: introduce the essentials of R
+- Link to slides: <https://tinyurl.com/psych420-lab-slides/intro>
+:::
+
+::::

@@ -4,7 +4,5 @@ project:
   resources:
     - site/**
 
-author: Mona Xue
-
 filters:
   - filelink.lua

@@ -1,0 +1,25 @@
+---
+title: Lab 2
+author: Mona Xue
+date: 2026-01-23
+---
+
+# Some code
+
+```{r}
+# Load packages
+
+## Include code for fist r chunk here
+
+```
+
+```{r}
+
+## Include code for second r chunk here.
+
+```
+
+
+# About me
+Who are you? How would you describe your personality? What are you passionate about? What are your hobbies?
+

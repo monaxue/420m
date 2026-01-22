@@ -1,66 +1,42 @@
----
-title: Week 2 Lab
-
----
-
-## Website
-:::{.card-list}
-- You can now find all lab materials on this site
-    - <https://monaxue.github.io/420m/>
-    - ![](assets/website.png){height=200}
-
-:::
-
-## Slido
-:::::{.columns}
-:::{.column}
-:::{.card-list}
-- We will by trying Slido for attendance.
-
-- Scan the code and create a profile.
-
-- If you don't create a profile, I won't know you were here.
-
-- There's a Q&A function. We could try that and see if it works. 
-
-:::
-::::
-
-::::{.column}
-
-```{=html}
-
-<iframe src ="https://wall.sli.do/event/6ynmgcWS5imsspPsvsCZS5/?section=d9900205-0acd-4d58-a00b-1db0f08c917f" width="100%", height="600"></iframe>
-
-```
-::::
-:::::
+# Week 2
 
 ## Office hours
 :::{.card-list}
-- My office hours are Friday from 1-3pm, in SEAY 4.326A
-- Alex's office hours are Tuesday and Thursday, 1-2pm in SEAY 5.206
+- My office hours will be right after class.
 :::
 
-# Coding time!
+## 
+::: card-list
+- It might be useful to open the slides for today from the lab website
+
+    - <https://monaxue.github.io/420m/>
+
+:::
 
 ## Make a folder for this class
 
 :::{.card-list}
 
-- Create a folder somewhere locally (home, documents, etc) named `420m`
-    - Inside this, create a subfolder for labs
-        - Insider this, create a subfolder for lab 1
-- The organization should look like: `…/420m/labs/lab1`
+- Create a folder somewhere named `420m`
+    - Home, documents, desktop. etc
+    - Do not create it in a cloud service (iCloud, OneDrive, etc.)
+    - Do not create it in downloads
+
+:::
+
+## Make sub-folders
+
+::: card-list
+- Inside `420m`, create a folder called `lab2`
+- The organization should look like: `…/420m/lab2`
 :::
 
 ## What is an RStudio project?
 
 ::: {.card-list}
-- A project tells RStudio where the main folder for your project is
+- A project tells RStudio which folder is the main folder
 - That way, when you read or save files, R will know where to find them.
-- We will be make a new project for each lab
-
+- We will make a new project for each lab
 :::
 
 ## Now, create an RStudio project
@@ -68,451 +44,281 @@ title: Week 2 Lab
 :::{.card-list}
 - To create a project, click on `Project > New Project > Existing Directory`
 - Select your `lab1` folder
-![](assets/make-r-project.gif)
+- ![](assets/make-r-project.gif)
 :::
 
 
-# RMarkdown Essentials
+## What is RMarkdown?
 
-:::{.notes}
+::: card-list
 
-- What is a YAML header?
-- Markdown text and headings
-- What is a code block?
-- The "run" button and keyboard shortcut
-- Basic r syntax: comments, assign, variables, strings, lists, operators, print, indices
-- R coding challenge
-- Installing packages
-- Reading data
-- Knitting your RMarkdown file
+- RMarkdown is a special type of file that combines the functions of R and Word.
+- This means you can format documents directly in R
+- [Example](assets/rmarkdown_example.html){.filelink}
 
 :::
 
 ## Creat an RMarkdown file
 
-:::{.card-list}
+
 Create an **empty** RMarkdown file
 
 ![](assets/make-rmarkdown.gif)
 
+## Save the file
 
+Save this Rmd file in your lab2 folder. Name it something like "lab2"
+
+## Experiment with the `#` symbol
+::: card-list
+
+- On one line, write the following text: `Hello, my name is [fill in your name]`
+- Test the following out by knitting the file
+    - What happens with you start a line with `#`?
+    - What happens when you include/remove the space between `#` and the rest of the text?
+    - What happens when you start a line with `##`
+
+<!--
+
+Answers:
+
+    - What happens with you start a line with `#`?
+        - The text becomes a big title.
+    - What happens when you include/remove the space between `#` and the rest of the text?
+        - The space after `#` is important for the title to render properly.
+    - What happens when you start a line with `##`
+        - It becomes a smaller title.
+
+-->
 
 :::
 
-## What is a YAML header?
-````{verbatim}
----
-# This is the YAML Header. Notice it is enclosed in "---" it is used to store information.
+## Slido
 
-# It includes metadata like the following:
+<!--
+::: card-list
+- What does # Text output?
+- What does #Text output?
+- What does ## Text output?
 
-title: ...
-author: ...
-date: ...
-output: pdf_document
----
+:::
 
-````
-
-## Markdown
+-->
 
 
-````{verbatim}
-
-# This is a heading. Notice the "#"
-
-## This is a sub-heading. Notice the "##"
-
-Markdown is a markup language that makes formatting text easier.
-
-It allows you to write normal text alongside code.
-
-````
-
-````{=html}
-
-<br></br>
-
-<h3> This is a heading. Notice the "#" </h3>
-
-<h4> This is a sub-heading. Notice the "##" </h4>
-
-<p>Markdown is a markup language that makes formatting text easier.</p>
-
-<p>It allows you to write normal text alongside code.</p>
-
-````
+::: iframe
+https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
+:::
 
 
 
-## R Code Chunk
+## Try wrapping text with the following:
+
 
 ````{verbatim}
 ```{r}
 
-# This is your R code chunk.
-# This is where you write R code.
-
+{text to wrap}
+    
 ```
 ````
 
-## With both Markdown and R code = RMarkdown
+::: card-list
 
-:::: {.columns}
-:::{.column width="50%"}
+- Hint: Those symbols are called a `backticks`, not `'quotes'`. You can find the symbol right below the `esc` key.
+- Remember to include both ` ```{r} ` above and ` ``` ` below.
+- What happens when you wrap
+    - Text that start with `#`
+    - Plain text
+    - `print(1+1)`
+:::
+
+## Slido
+
+
+::: iframe
+https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
+:::
+
+<!--
+
+## What happens?
+
+::: card-list
+- What happens when you wrap lines that start with `#`?
+    - They become comments.
+- What happens when you wrap plain text lines?
+    - The file doesn't knit
+- Try wrapping that around the following text: `print(1+1)`.
+    - It prints 2
+:::
+
+-->
+
+## R code chunks
+
+::: card-list
+
+- Wrapping text in ` ```{r} ` and ` ``` ` makes them into r code. These are called r "code chunks"
+- To see if text has been properly wrapped, makes sure that the lines turned grey.
+- To run individual code chunks, click on the little triangle icon.
+    - ![](assets/run-code.gif)
+
+:::
+
+# Basic `R` code review
+
+## What does this output?
 
 ````{verbatim}
-# This is a heading
-
-You can write text like this
-
 ```{r}
-# This is a comment
 a <- 1
-b <- 2
-
 print(a)
 ```
 ````
 
+<!-- Answer: 1 -->
+
+::: iframe
+https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
 :::
 
-:::{.column width="50%"}
-#### This is a heading
+## What does this output?
 
-```r
-# This is a comment
-a <- 1
-b <- 2
-
-print(a)
+````{verbatim}
+```{r}
+b <- 1:3
+print(b)
 ```
-1
+````
 
-:::
-::::
+<!-- Answer: 1, 2, 3 -->
 
-## Running your code
+::: iframe
+https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
+::: 
 
-Use "run" button or the keyboard shortcut `Ctr + Enter` or `Command + Enter`
 
-![](assets/run-code.gif)
+## What does this output?
 
-## Basic Syntax
-
-. . . 
-
-```r
-# This is a comment. You denote it with #
-
-x # This is a variable. It can store stuff
-
-"x" # This is a string. It is just text
-
-# This is how you assign values to a variable
-x <- 1 
-
+````{verbatim}
+```{r}
+c <- c(3,4,5)
+print(c)
 ```
-. . . 
+````
 
-**This is how you create a vector. You use the notation `c()`**
-```r
-x <- c("a", "b", "c")
-y <- c(1, 2, 3)
-z <- 1:3 # This is the same as y. The : indicates a vector from 1 to 3
+<!-- Answer: 3, 4, 5 -->
 
+::: iframe
+https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
+::: 
+
+## What does this output?
+
+````{verbatim}
+```{r}
+c <- c(3,4,5)
+c[4] <- 6
+print(c)
 ```
-. . . 
+````
 
-**To choose a specific element of a vector, you can use `[]`**
-```r
-x[2] # Outputs "b"
-y[3] # Outputs 3
-x[c(2, 3)] # Outputs "b", "c"
-x[1:2] # Outputs "a", "b"
+<!-- Answer: 3, 4, 5, 6 -->
 
+::: iframe
+https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
+::: 
+
+## What does this output
+
+````{verbatim}
+```{r}
+a <- 1:4
+b <- c(2,3,5,6)
+b[3] <- 2
+c <- c(a,b)
+print(c)
 ```
-. . . 
+````
 
-**This is how you print values so that they are visible**
-```r
-print(x)
-```
+<!-- Answer: 1, 2, 3, 4, 2, 3, 2, 6 -->
 
-## Doing math
-
-. . . 
-
-```r
-1 + 1
-1 - 1
-```
-2
-
-0
-
-. . . 
-
-**Adding a single number to a vector**
-
-```r
-y + 1 # Adds the single number to all elements in the vector
-```
-2, 3, 4
-
-**Adding a vector to a vector**
-```r
-y + z # Adds the 1st to the 1st, the 2nd to the 2nd, etc.
-
-```
-. . .
-
-2, 4, 6
-
-. . . 
-
-## Other useful functions
-
-```r
-sum(y) # Adds together the elements of y
-
-mean(y) # Takes the mean of the elements of y
-
-2 * 2 # Multiplication
-
-2 / 2 # Division
-
-2^2 # To the power of 2
-
-sqrt(2) # Square root of 2
-
-(2 + 2) * 2 / (2) # Order of operations still apply, remember to use parentheses when you need to
-
-
-```
-
-
-# Coding challenge
-***Get into groups of 3-4***
-
-## 
-:::{.card-list}
-- Your friend is trying to send you a secret password, but he is worried about security. So he gives you the starting word "random", then provides you with a list instructions to decode it.
-- R Cheatsheet
-    - ![](assets/r-cheatsheet-files.png){height="200"}
-
+::: iframe
+https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
 :::
 
-## Part 1
-:::{.card-list}
 
-- Create vector `a` with the numbers 18, 32, 11, and 25, in that order
-- Add 3 to all of vector `a`. Then divide by 7. Then subtract 2. Assign this to vector `b`. Make sure to add parentheses everytime you do an operation
-- Sum up the numbers in vector `b` and print it
-:::
+## Reading data
 
-:::{.notes}
+::: {.card-list .nonincremental}
 
-```r
+1. Download `2020_heights.csv` and save it you your `lab2` folder.
+1. Import the data into R
 
-# Create vector a with the numbers 18, 32, 11, and 25, in that order
-
-a <- c(18,32,11,25)
-
-# Add 3 to all of vector `a`. Then divide by 7. Then subtract 2. Assign this to vector `b`. Make sure to add parentheses everytime you do an operation
-
-b <- ((a + 3) / 7) - 2
-
-# Sum up the numbers in vector b and print it
-
-print(sum(b))
-
-```
-
-:::
-
-##
-
-**What did you get?** (make sure you created a profile)
-
-```{=html}
-
-<iframe src ="https://wall.sli.do/event/6ynmgcWS5imsspPsvsCZS5/?section=d9900205-0acd-4d58-a00b-1db0f08c917f" width="100%", height="600"></iframe>
-
-```
-
-## Answers
-
-```r
-
-# Create vector a with the numbers 18, 32, 11, and 25, in that order
-
-a <- c(18,32,11,25)
-
-# Add 3 to all of vector `a`. Then divide by 7. Then subtract 2. Assign this to vector `b`. Make sure to add parentheses everytime you do an operation
-
-b <- ((a + 3) / 7) - 2
-
-# Sum up the numbers in vector b and print it
-
-print(sum(b))
-
-```
-
-
-## Part 2
-:::{.card-list}
-- Create a vector out of the letters of the word RANDOM using `c()`. Remember that letters are strings. Assign this vector to the variable `word1`
-- Using `[:]`, remove the letter that is in `b`'s position. Assign that to the variable `word2`
-- Insert the letter "G" to the end of the `word2`, assign that to word3
-:::
-
-:::{.notes}
-
-```r
-
-# Create a vector out of the letters of the word RANDOM using `c()`. Remember that letters are strings. Assign this vector to the variable word1
-
-word1 <- c("R", "A", "N", "D", "O", "M") 
-
-# Using `[:]`, remove the letter that is in `b`'s position. Assign that to the variable `word2`
-
-word2 <- word1[1:5]
-
-# Insert the letter "G" to the end of the `word2`, assign that to `word3`
-
-word3 <- c(word2, "G")
-```
-
-
-:::
-
-##
-
-**What did you get?**
-
-```{=html}
-
-<iframe src ="https://wall.sli.do/event/6ynmgcWS5imsspPsvsCZS5/?section=d9900205-0acd-4d58-a00b-1db0f08c917f" width="100%", height="600"></iframe>
-
-```
-
-## Answer
-
-```r
-
-# Create a vector out of the letters of the word RANDOM using `c()`. Remember that letters are strings. Assign this vector to the variable word1
-
-word1 <- c("R", "A", "N", "D", "O", "M") 
-
-# Using `[:]`, remove the letter that is in `b`'s position. Assign that to the variable `word2`
-
-word2 <- word1[1:5]
-
-# Insert the letter "G" to the end of the `word2`, assign that to `word3`
-
-word3 <- c(word2, "G")
-```
-
-## Part 3
-
-:::{.card-list}
-- Create a vector with numbers 14, 31, 9, 19, 81, 3 and name that `c`
-- Insert the sum of vector `a` and the sum of vector `b` to the end of vector `a`. Assign this to `d`
-- Subtract vector `c` from vector `d`. Make this vector `e`. Print `e`
-- Each number in vector `e` represents the position of a letter in `word3`. This position is called the index. A new word is formed when you reorder the letters based on the order specified in `e`. Print out the new word. Challenge mode: decipher the word in one line of code using `[]`
-
-:::
-
-::: {.notes}
-
-```r
-
-# Create `a` vector with numbers 14, 31, 9, 19, 81, 3 and name that `c`
-
-c <- c(14, 31, 9, 19, 81, 3)
-
-# Insert the sum of vector `a` and the sum of vector `b` to the end of vector `a`. Assign this to `d`
-
-d <- c(a,sum(a),sum(b))
-
-# Subtract vector `c` from vector `d`. Make this vector `e`. Print `e`
-
-e <- d - c
-
-print(e)
-
-# Each number in vector e represents the position of a letter in `word3`. This position is called the index. A new word is formed when you reorder the letters based on the order specified in `e`. Print out the new word. Challenge mode: decipher the word in one line of code using []
-
-print(word3[e])
-
-```
-
-:::
-
-##
-
-**What is the final answer?**
-```{=html}
-
-<iframe src ="https://wall.sli.do/event/6ynmgcWS5imsspPsvsCZS5/?section=d9900205-0acd-4d58-a00b-1db0f08c917f" width="100%", height="600"></iframe>
-
-```
-
-## Answer
-
-```r
-
-# Create `a` vector with numbers 14, 31, 9, 19, 81, 3 and name that `c`
-
-c <- c(14, 31, 9, 19, 81, 3)
-
-# Insert the sum of vector `a` and the sum of vector `b` to the end of vector `a`. Assign this to `d`
-
-d <- c(a,sum(a),sum(b))
-
-# Subtract vector `c` from vector `d`. Make this vector `e`. Print `e`
-
-e <- d - c
-
-print(e)
-
-# Each number in vector e represents the position of a letter in `word3`. This position is called the index. A new word is formed when you reorder the letters based on the order specified in `e`. Print out the new word. Challenge mode: decipher the word in one line of code using []
-
-print(word3[e])
-
-```
-
-# Moving on to other things...
-
-## Install packages
-::: {card-list}
-Install packages in the console with `install.packages("package_name")`
-
-We will install the package "tidyverse", which is used for data analysis. Go ahead and enter `install.packages("tidyverse")` in the console.
-:::
-
-![](assets/install-package.gif)
-
-## Import data
-
-Download the data file from canvas called 2020heights.csv and put it into this folder
-
-````r
+````{verbatim}
+```{r}
 library(tidyverse)
-
-data <- read_csv("data-folder/data.csv")
-
+lab2_data <- read_csv("2020heights.csv")
+```
 ````
 
-## Knit your RMarkdown file
-After you knit your Rmakdown file, upload it to canvas. You are done!
-![](assets/knit.gif)
+- Note: make sure to use `read_csv`, and not `read.csv`
+1. Use `head(lab2_data)` to take a peak at the dataset.
 
-Remember you can now find all lab materials on this site: <https://monaxue.github.io/420m/>
+:::
 
+## What are the variables of this dataset?
 
+::: iframe
+https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
+:::
 
-```
+<!-- Answer: Just `heights`-->
+
+## Add the title, author, date
+::: {.card-list .nonincremental}
+
+- At the very top of the document, add a section by enclosing it with `---`
+
+- Let me show you in R
+
+````{verbatim}
+---
+title: lab2
+author: Mona Xue
+date: 2026-01-23
+---
+````
+
+- Note: date is in `yyyy-mm-dd` format
+
+:::
+
+## Deliverables
+
+::: {.card-list .nonincremental}
+1. Create a new EMPTY RMarkdown file.
+1. Add the tile, author, and date, enclosed with `---`
+1. Add a large heading that says `Code`. Beneath this, include
+    - One `r` code chunk that:
+        - starts with a comment that says "Load packages"
+        - loads the tidyverse packages using `library()`
+        - imports `test_data.csv` using `read_csv()`     
+    - A second `r` code chunk. In this chunk,
+        - create a list of numbers from 1 to 3. Assign this to the variable `a`
+        - create a list of numbers from 4 to 9. Assign this to `b.
+        - change the 3rd element of `b` to 3.
+        - create a new list by combining `a` and `b`. Assign this to `c`
+        - print the list `c` by using `print(c)`
+1. Add a large heading that says `About me`. Beneath this, write a short paragraph in plain text answering the following:
+    - Who are you? 
+    - How would you describe your personality? 
+    - What are you passionate about? 
+    - What are your hobbies?
+1. Knit the file, then show it to me.
+1. Finally, sumbmit the html file to Canvas. Once you are finished, you may leave.
+:::
+
 
 

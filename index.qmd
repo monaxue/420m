@@ -75,15 +75,20 @@ Histograms, pipes, and Z-scores
 
 [Example PDF](r_demos/420m/labs/lab2/lab2-example.pdf){.filelink}
 
+-->
+
 ## Week 2
 
 File directory, basic syntax, loading packages, importing data
 
 [Slides](presentations/week2.html){.filelink}
 
-[R Cheatsheet](files/r-cheatsheet.html){.filelink}
+[2020heights.csv](files/2020heights.csv){.filelink}
 
--->
+[Example deliverable](files/lab2.html){.filelink}
+
+[RMarkdown cheatsheet](presentations/rmarkdown_cheatsheet.html){.filelink}
+
 
 ## Week 1
 

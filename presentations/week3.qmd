@@ -64,7 +64,7 @@
 # Save the Rmd file
 
 
-**After you create the file, make sure to save the Rmd file and name it `lab2`**
+**After you create the file, make sure to save the Rmd file and name it `lab3`**
 
 ## Now that the file is created and saved
 
@@ -97,6 +97,9 @@ Give a real time demo
 
 :::
 
+## Many small causes -> bell shaped errors
+- independent causes
+- bell shaped = normally distriubuted = Gaussian
 
 ## Load data
 

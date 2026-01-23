@@ -110,10 +110,11 @@ Answers:
 https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
 :::
 
-
-
 ## Try wrapping text with the following:
 
+:::: panel-tabset
+
+## R code chunk
 
 ````{verbatim}
 ```{r}
@@ -125,13 +126,19 @@ https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
 
 ::: card-list
 
-- Hint: Those symbols are called a `backticks`, not `'quotes'`. You can find the symbol right below the `esc` key.
+- Hint: Those symbols are called a `backticks`, not `'quotes'`.
 - Remember to include both ` ```{r} ` above and ` ``` ` below.
 - What happens when you wrap
-    - Text that start with `#`
+    - Text that starts with `#`
     - Plain text
     - `print(1+1)`
 :::
+
+## Backtick
+
+![](assets/backtick_keyboard.webp)
+
+::::
 
 ## Slido
 

@@ -1,16 +1,18 @@
 # Week 2
+Open the slides for today from the lab website: <https://monaxue.github.io/420m/>
 
 ## Office hours
 :::{.card-list}
 - My office hours will be right after class.
 :::
 
-## 
+## Outline
 ::: card-list
-- It might be useful to open the slides for today from the lab website
-
-    - <https://monaxue.github.io/420m/>
-
+1. File system
+2. RMarkdown
+3. R syntax review
+4. Import dataset
+5. Deliverables
 :::
 
 ## Make a folder for this class
@@ -43,7 +45,7 @@
 
 :::{.card-list}
 - To create a project, click on `Project > New Project > Existing Directory`
-- Select your `lab1` folder
+- Select your `lab2` folder
 - ![](assets/make-r-project.gif)
 :::
 
@@ -69,46 +71,39 @@ Create an **empty** RMarkdown file
 
 Save this Rmd file in your lab2 folder. Name it something like "lab2"
 
+![](assets/save_file.png)
+
 ## Experiment with the `#` symbol
 ::: card-list
 
 - On one line, write the following text: `Hello, my name is [fill in your name]`
 - Test the following out by knitting the file
-    - What happens with you start a line with `#`?
+    - What happens when you start a line with `#`?
     - What happens when you include/remove the space between `#` and the rest of the text?
     - What happens when you start a line with `##`
-
-<!--
-
-Answers:
-
-    - What happens with you start a line with `#`?
-        - The text becomes a big title.
-    - What happens when you include/remove the space between `#` and the rest of the text?
-        - The space after `#` is important for the title to render properly.
-    - What happens when you start a line with `##`
-        - It becomes a smaller title.
-
--->
 
 :::
 
 ## Slido
 
-<!--
+
 ::: card-list
 - What does # Text output?
+    - A big title "Text"
 - What does #Text output?
+    - Plain text "#Text"
 - What does ## Text output?
+    - A smaller title "Text"
 
 :::
 
--->
-
+<!--
 
 ::: iframe
 https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
 :::
+
+-->
 
 ## Try wrapping text with the following:
 
@@ -119,7 +114,7 @@ https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
 ````{verbatim}
 ```{r}
 
-{text to wrap}
+text to wrap
     
 ```
 ````
@@ -140,6 +135,8 @@ https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
 
 ::::
 
+<!--
+
 ## Slido
 
 
@@ -147,7 +144,7 @@ https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
 https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
 :::
 
-<!--
+-->
 
 ## What happens?
 
@@ -159,8 +156,6 @@ https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
 - Try wrapping that around the following text: `print(1+1)`.
     - It prints 2
 :::
-
--->
 
 ## R code chunks
 
@@ -175,6 +170,16 @@ https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
 
 # Basic `R` code review
 
+<!--
+
+## What does these output?
+
+::: iframe
+https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
+:::
+
+-->
+
 ## What does this output?
 
 ````{verbatim}
@@ -184,13 +189,9 @@ print(a)
 ```
 ````
 
-<!-- Answer: 1 -->
+Answer: 1
 
-::: iframe
-https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
-:::
-
-## What does this output?
+## What does this output
 
 ````{verbatim}
 ```{r}
@@ -199,11 +200,7 @@ print(b)
 ```
 ````
 
-<!-- Answer: 1, 2, 3 -->
-
-::: iframe
-https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
-::: 
+Answer: 1, 2, 3
 
 
 ## What does this output?
@@ -215,11 +212,7 @@ print(c)
 ```
 ````
 
-<!-- Answer: 3, 4, 5 -->
-
-::: iframe
-https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
-::: 
+Answer: 3, 4, 5
 
 ## What does this output?
 
@@ -231,11 +224,7 @@ print(c)
 ```
 ````
 
-<!-- Answer: 3, 4, 5, 6 -->
-
-::: iframe
-https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
-::: 
+Answer: 3, 4, 5, 6
 
 ## What does this output
 
@@ -249,19 +238,19 @@ print(c)
 ```
 ````
 
-<!-- Answer: 1, 2, 3, 4, 2, 3, 2, 6 -->
-
-::: iframe
-https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
-:::
-
+Answer: 1, 2, 3, 4, 2, 3, 2, 6
 
 ## Reading data
 
+:::: panel-tabset
+
+## Instructions
+
 ::: {.card-list .nonincremental}
 
-1. Download `2020_heights.csv` and save it you your `lab2` folder.
-1. Import the data into R
+1. Download `2020heights.csv` and save it you your `lab2` folder.
+1. **Important**: Do not use the import button!
+1. Instead, we use following code to import data
 
 ````{verbatim}
 ```{r}
@@ -271,22 +260,40 @@ lab2_data <- read_csv("2020heights.csv")
 ````
 
 - Note: make sure to use `read_csv`, and not `read.csv`
-1. Use `head(lab2_data)` to take a peak at the dataset.
+- Use `head(lab2_data)` to take a peak at the dataset.
 
 :::
 
+## Troubleshooting
+
+::: {.card-list .nonincremental}
+1. The number one issue comes from the incorrect file name. Did you remember to include the quotes around the file name? Does your file name match the file in the folder?
+2. Another very common issue is incorrect folder and project organization.
+    - Are both heights2020.csv and lab2.Rmd in the `lab2` folder?
+    - Is your RStudio project in the folder `lab2`?
+    - Is the `lab2` folder in the `420m` folder?
+    - Do you have multiple `420m` folder and you have opened the incorrect project?
+
+:::
+
+::::
+
 ## What are the variables of this dataset?
+
+<!--
 
 ::: iframe
 https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
 :::
 
-<!-- Answer: Just `heights`-->
+-->
+
+Answer: Just `heights`
 
 ## Add the title, author, date
 ::: {.card-list .nonincremental}
 
-- At the very top of the document, add a section by enclosing it with `---`
+- At the **very top** of the document, add a section by enclosing it with `---`
 
 - Let me show you in R
 
@@ -299,6 +306,7 @@ date: 2026-01-23
 ````
 
 - Note: date is in `yyyy-mm-dd` format
+- Important: this section must be at the very top of the document, otherwise there will be an error.
 
 :::
 
@@ -311,7 +319,7 @@ date: 2026-01-23
     - One `r` code chunk that:
         - starts with a comment that says "Load packages"
         - loads the tidyverse packages using `library()`
-        - imports `test_data.csv` using `read_csv()`     
+        - imports `2020heights.csv` using `read_csv()`     
     - A second `r` code chunk. In this chunk,
         - create a list of numbers from 1 to 3. Assign this to the variable `a`
         - create a list of numbers from 4 to 9. Assign this to `b.

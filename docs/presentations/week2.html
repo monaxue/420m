@@ -199,7 +199,7 @@
 <section>
 <section id="week-2" class="title-slide slide level1 center">
 <h1>Week 2</h1>
-
+<p>Open the slides for today from the lab website: <a href="https://monaxue.github.io/420m/" class="uri" target="_blank" rel="noopener noreferrer">https://monaxue.github.io/420m/</a></p>
 </section>
 <section id="office-hours" class="slide level2">
 <h2>Office hours</h2>
@@ -209,15 +209,16 @@
 </ul>
 </div>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
+<section id="outline" class="slide level2 scrollable">
+<h2>Outline</h2>
 <div class="card-list">
-<ul>
-<li class="fragment"><p>It might be useful to open the slides for today from the lab website</p>
-<ul>
-<li class="fragment"><a href="https://monaxue.github.io/420m/" class="uri" target="_blank" rel="noopener noreferrer">https://monaxue.github.io/420m/</a></li>
-</ul></li>
-</ul>
+<ol type="1">
+<li class="fragment">File system</li>
+<li class="fragment">RMarkdown</li>
+<li class="fragment">R syntax review</li>
+<li class="fragment">Import dataset</li>
+<li class="fragment">Deliverables</li>
+</ol>
 </div>
 </section>
 <section id="make-a-folder-for-this-class" class="slide level2">
@@ -257,7 +258,7 @@
 <div class="card-list">
 <ul>
 <li class="fragment">To create a project, click on <code>Project &gt; New Project &gt; Existing Directory</code></li>
-<li class="fragment">Select your <code>lab1</code> folder</li>
+<li class="fragment">Select your <code>lab2</code> folder</li>
 <li class="fragment"><img data-src="assets/make-r-project.gif"></li>
 </ul>
 </div>
@@ -280,7 +281,8 @@
 <section id="save-the-file" class="slide level2">
 <h2>Save the file</h2>
 <p>Save this Rmd file in your lab2 folder. Name it something like “lab2”</p>
-</section>
+
+<img data-src="assets/save_file.png" class="r-stretch"></section>
 <section id="experiment-with-the-symbol" class="slide level2">
 <h2>Experiment with the <code>#</code> symbol</h2>
 <div class="card-list">
@@ -288,37 +290,38 @@
 <li class="fragment">On one line, write the following text: <code>Hello, my name is [fill in your name]</code></li>
 <li class="fragment">Test the following out by knitting the file
 <ul>
-<li class="fragment">What happens with you start a line with <code>#</code>?</li>
+<li class="fragment">What happens when you start a line with <code>#</code>?</li>
 <li class="fragment">What happens when you include/remove the space between <code>#</code> and the rest of the text?</li>
 <li class="fragment">What happens when you start a line with <code>##</code></li>
 </ul></li>
 </ul>
-<!--
-
-Answers:
-
-    - What happens with you start a line with `#`?
-        - The text becomes a big title.
-    - What happens when you include/remove the space between `#` and the rest of the text?
-        - The space after `#` is important for the title to render properly.
-    - What happens when you start a line with `##`
-        - It becomes a smaller title.
-
--->
 </div>
 </section>
 <section id="slido" class="slide level2">
 <h2>Slido</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">What does # Text output?
+<ul>
+<li class="fragment">A big title “Text”</li>
+</ul></li>
+<li class="fragment">What does #Text output?
+<ul>
+<li class="fragment">Plain text “#Text”</li>
+</ul></li>
+<li class="fragment">What does ## Text output?
+<ul>
+<li class="fragment">A smaller title “Text”</li>
+</ul></li>
+</ul>
+</div>
 <!--
-::: card-list
-- What does # Text output?
-- What does #Text output?
-- What does ## Text output?
 
+::: iframe
+https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
 :::
 
 -->
-<iframe src="https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz" width="100%" height="600px" style="border:0;"></iframe>
 </section>
 <section id="try-wrapping-text-with-the-following" class="slide level2">
 <h2>Try wrapping text with the following:</h2>
@@ -328,7 +331,7 @@ Answers:
 <div id="tabset-1-1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href=""></a>```{r}</span>
 <span id="cb1-2"><a href=""></a></span>
-<span id="cb1-3"><a href=""></a>{text to wrap}</span>
+<span id="cb1-3"><a href=""></a>text to wrap</span>
 <span id="cb1-4"><a href=""></a>    </span>
 <span id="cb1-5"><a href=""></a>```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="card-list">
@@ -349,24 +352,35 @@ Answers:
 </div>
 </div>
 </div>
-</section>
-<section id="slido-1" class="slide level2">
-<h2>Slido</h2>
-<iframe src="https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz" width="100%" height="600px" style="border:0;"></iframe>
 <!--
 
-## What happens?
+## Slido
 
-::: card-list
-- What happens when you wrap lines that start with `#`?
-    - They become comments.
-- What happens when you wrap plain text lines?
-    - The file doesn't knit
-- Try wrapping that around the following text: `print(1+1)`.
-    - It prints 2
+
+::: iframe
+https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
 :::
 
 -->
+</section>
+<section id="what-happens" class="slide level2">
+<h2>What happens?</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">What happens when you wrap lines that start with <code>#</code>?
+<ul>
+<li class="fragment">They become comments.</li>
+</ul></li>
+<li class="fragment">What happens when you wrap plain text lines?
+<ul>
+<li class="fragment">The file doesn’t knit</li>
+</ul></li>
+<li class="fragment">Try wrapping that around the following text: <code>print(1+1)</code>.
+<ul>
+<li class="fragment">It prints 2</li>
+</ul></li>
+</ul>
+</div>
 </section>
 <section id="r-code-chunks" class="slide level2">
 <h2>R code chunks</h2>
@@ -384,7 +398,15 @@ Answers:
 <section>
 <section id="basic-r-code-review" class="title-slide slide level1 center">
 <h1>Basic <code>R</code> code review</h1>
+<!--
 
+## What does these output?
+
+::: iframe
+https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
+:::
+
+-->
 </section>
 <section id="what-does-this-output" class="slide level2">
 <h2>What does this output?</h2>
@@ -392,17 +414,15 @@ Answers:
 <span id="cb2-2"><a href=""></a>a &lt;- 1</span>
 <span id="cb2-3"><a href=""></a>print(a)</span>
 <span id="cb2-4"><a href=""></a>```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Answer: 1 -->
-<iframe src="https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz" width="100%" height="600px" style="border:0;"></iframe>
+<p>Answer: 1</p>
 </section>
 <section id="what-does-this-output-1" class="slide level2">
-<h2>What does this output?</h2>
+<h2>What does this output</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href=""></a>```{r}</span>
 <span id="cb3-2"><a href=""></a>b &lt;- 1:3</span>
 <span id="cb3-3"><a href=""></a>print(b)</span>
 <span id="cb3-4"><a href=""></a>```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Answer: 1, 2, 3 -->
-<iframe src="https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz" width="100%" height="600px" style="border:0;"></iframe>
+<p>Answer: 1, 2, 3</p>
 </section>
 <section id="what-does-this-output-2" class="slide level2">
 <h2>What does this output?</h2>
@@ -410,8 +430,7 @@ Answers:
 <span id="cb4-2"><a href=""></a>c &lt;- c(3,4,5)</span>
 <span id="cb4-3"><a href=""></a>print(c)</span>
 <span id="cb4-4"><a href=""></a>```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Answer: 3, 4, 5 -->
-<iframe src="https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz" width="100%" height="600px" style="border:0;"></iframe>
+<p>Answer: 3, 4, 5</p>
 </section>
 <section id="what-does-this-output-3" class="slide level2">
 <h2>What does this output?</h2>
@@ -420,8 +439,7 @@ Answers:
 <span id="cb5-3"><a href=""></a>c[4] &lt;- 6</span>
 <span id="cb5-4"><a href=""></a>print(c)</span>
 <span id="cb5-5"><a href=""></a>```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Answer: 3, 4, 5, 6 -->
-<iframe src="https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz" width="100%" height="600px" style="border:0;"></iframe>
+<p>Answer: 3, 4, 5, 6</p>
 </section>
 <section id="what-does-this-output-4" class="slide level2">
 <h2>What does this output</h2>
@@ -432,15 +450,19 @@ Answers:
 <span id="cb6-5"><a href=""></a>c &lt;- c(a,b)</span>
 <span id="cb6-6"><a href=""></a>print(c)</span>
 <span id="cb6-7"><a href=""></a>```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!-- Answer: 1, 2, 3, 4, 2, 3, 2, 6 -->
-<iframe src="https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz" width="100%" height="600px" style="border:0;"></iframe>
+<p>Answer: 1, 2, 3, 4, 2, 3, 2, 6</p>
 </section>
 <section id="reading-data" class="slide level2 scrollable">
 <h2>Reading data</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Instructions</a></li><li><a href="#tabset-2-2">Troubleshooting</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
 <div class="card-list">
 <ol type="1">
-<li>Download <code>2020_heights.csv</code> and save it you your <code>lab2</code> folder.</li>
-<li>Import the data into R</li>
+<li>Download <code>2020heights.csv</code> and save it you your <code>lab2</code> folder.</li>
+<li><strong>Important</strong>: Do not use the import button!</li>
+<li>Instead, we use following code to import data</li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb7-1"><a href=""></a>```{r}</span>
 <span id="cb7-2"><a href=""></a>library(tidyverse)</span>
@@ -448,22 +470,43 @@ Answers:
 <span id="cb7-4"><a href=""></a>```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Note: make sure to use <code>read_csv</code>, and not <code>read.csv</code></li>
-</ul>
-<ol type="1">
 <li>Use <code>head(lab2_data)</code> to take a peak at the dataset.</li>
+</ul>
+</div>
+</div>
+<div id="tabset-2-2">
+<div class="card-list">
+<ol type="1">
+<li>The number one issue comes from the incorrect file name. Did you remember to include the quotes around the file name? Does your file name match the file in the folder?</li>
+<li>Another very common issue is incorrect folder and project organization.
+<ul>
+<li>Are both heights2020.csv and lab2.Rmd in the <code>lab2</code> folder?</li>
+<li>Is your RStudio project in the folder <code>lab2</code>?</li>
+<li>Is the <code>lab2</code> folder in the <code>420m</code> folder?</li>
+<li>Do you have multiple <code>420m</code> folder and you have opened the incorrect project?</li>
+</ul></li>
 </ol>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="what-are-the-variables-of-this-dataset" class="slide level2">
 <h2>What are the variables of this dataset?</h2>
-<iframe src="https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz" width="100%" height="600px" style="border:0;"></iframe>
-<!-- Answer: Just `heights`-->
+<!--
+
+::: iframe
+https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
+:::
+
+-->
+<p>Answer: Just <code>heights</code></p>
 </section>
 <section id="add-the-title-author-date" class="slide level2">
 <h2>Add the title, author, date</h2>
 <div class="card-list">
 <ul>
-<li><p>At the very top of the document, add a section by enclosing it with <code>---</code></p></li>
+<li><p>At the <strong>very top</strong> of the document, add a section by enclosing it with <code>---</code></p></li>
 <li><p>Let me show you in R</p></li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb8-1"><a href=""></a>---</span>
@@ -473,6 +516,7 @@ Answers:
 <span id="cb8-5"><a href=""></a>---</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Note: date is in <code>yyyy-mm-dd</code> format</li>
+<li>Important: this section must be at the very top of the document, otherwise there will be an error.</li>
 </ul>
 </div>
 </section>
@@ -488,7 +532,7 @@ Answers:
 <ul>
 <li>starts with a comment that says “Load packages”</li>
 <li>loads the tidyverse packages using <code>library()</code></li>
-<li>imports <code>test_data.csv</code> using <code>read_csv()</code><br>
+<li>imports <code>2020heights.csv</code> using <code>read_csv()</code><br>
 </li>
 </ul></li>
 <li>A second <code>r</code> code chunk. In this chunk,

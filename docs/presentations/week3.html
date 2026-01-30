@@ -28,8 +28,74 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="week3_files/libs/revealjs/dist/theme/quarto-813f6d88ccc2debae1e185667dc297ce.css">
+  <link rel="stylesheet" href="week3_files/libs/revealjs/dist/theme/quarto-793037751465ef36f94eeeb00878bf19.css">
   <link href="week3_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="week3_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="week3_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -47,6 +113,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -132,144 +199,79 @@
 <section>
 <section id="week-3-lab" class="title-slide slide level1 center">
 <h1>Week 3 Lab</h1>
-<p><strong>Histograms, pipes, and Z-scores</strong></p>
+<p><strong>Open up R Studio</strong></p>
 </section>
-<section id="file-system-review" class="slide level2">
-<h2>File system review</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Before we start, let’s do some review</li>
-<li class="fragment">Most of the bugs from last class came from files being stored somewhere you didn’t expect</li>
-<li class="fragment">So let’s do some review with Slido</li>
-</ul>
-</div>
-</section>
-<section id="section" class="slide level2">
-<h2></h2>
-
-<iframe src="https://wall.sli.do/event/bN8K1hrZToTdRGPHyyPM1U" height="800" width="100%" frameborder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido"></iframe>
-
+<section id="first-we-need-to-create-our-lab3-folder" class="slide level2">
+<h2>First, we need to create our lab3 folder</h2>
+<p>Where should you create your lab3 folder?</p>
+<iframe src="https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN" width="100%" height="600px" style="border:0;"></iframe>
 </section></section>
 <section>
-<section id="now-we-can-create-our-lab2-folder" class="title-slide slide level1 center">
-<h1>Now we can create our lab2 folder</h1>
+<section id="create-your-lab3-folder" class="title-slide slide level1 center">
+<h1>Create your lab3 folder</h1>
 
 </section>
-<section id="we-will-be-using-the-2020heights.csv-file-today" class="slide level2">
-<h2>We will be using the 2020heights.csv file today</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">We need to make sure our 2020heights.csv is accessible in lab2</li>
-<li class="fragment">You can copy and paste the csv file into lab2 from lab1</li>
-</ul>
-</div>
+<section id="next-we-need-to-create-our-r-studio-project" class="slide level2">
+<h2>Next, we need to create our R studio project</h2>
+<p>Where do we create our R studio project?</p>
+<iframe src="https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN" width="100%" height="600px" style="border:0;"></iframe>
 </section>
-<section id="open-up-r" class="slide level2">
-<h2>Open up R</h2>
-<div class="card-list">
-<ul>
-<li>Create an R Project in your lab2 folder</li>
-</ul>
-<p><img data-src="assets/make-r-project.gif"></p>
-</div>
-</section>
-<section id="before-we-create-our-rmd-file" class="slide level2">
-<h2>Before we create our Rmd file…</h2>
-<p><strong>How do you make sure to create the Rmd file in the proper folder?</strong></p>
+<section id="lets-create-the-r-studio-project" class="slide level2">
+<h2>Let’s create the R studio project</h2>
 
-<iframe src="https://wall.sli.do/event/bN8K1hrZToTdRGPHyyPM1U" height="800" width="100%" frameborder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido"></iframe>
-
-
-</section>
+<img data-src="assets/make-r-project.gif" class="r-stretch"></section>
 <section id="now-create-an-empty-rmd-file" class="slide level2">
-<h2>Now create an EMPTY Rmd file</h2>
-<p><strong>Remember, a .Rmd file, not .R</strong></p>
+<h2>Now, create an EMPTY Rmd file</h2>
+<p>Make sure it is EMPTY</p>
 
-<img data-src="assets/make-rmarkdown.gif" class="r-stretch"><aside class="notes">
-<pre><code>- Which group can tell me what's the difference between a Rmd file and a normal R script?</code></pre>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section></section>
+<img data-src="assets/make-rmarkdown.gif" class="r-stretch"></section></section>
 <section>
 <section id="save-the-rmd-file" class="title-slide slide level1 center">
 <h1>Save the Rmd file</h1>
-<p><strong>After you create the file, make sure to save the Rmd file and name it <code>lab2</code></strong></p>
+<p>Where do we save the Rmd file?</p>
+<iframe src="https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN" width="100%" height="600px" style="border:0;"></iframe>
 </section>
-<section id="now-that-the-file-is-created-and-saved" class="slide level2">
-<h2>Now that the file is created and saved</h2>
+<section id="add-the-title-author-and-date" class="slide level2">
+<h2>Add the title, author, and date</h2>
+<p>What is the proper format?</p>
+<iframe src="https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN" width="100%" height="600px" style="border:0;"></iframe>
+</section>
+<section id="add-the-first-code-chunk" class="slide level2">
+<h2>Add the first code chunk</h2>
+<p>What is the proper format?</p>
+<iframe src="https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN" width="100%" height="600px" style="border:0;"></iframe>
+</section>
+<section id="simulating-height" class="slide level2">
+<h2>Simulating height</h2>
 <div class="card-list">
 <ul>
-<li class="fragment">We can add our YAML header and our first code chunk</li>
-<li class="fragment">Let’s review how to properly add those</li>
+<li class="fragment">Today, we are going to simulate our own heights dataset, and then plot it</li>
+<li class="fragment">What is a simulation?</li>
 </ul>
 </div>
 </section>
-<section id="slido-poll" class="slide level2">
-<h2>Slido poll</h2>
-
-<iframe src="https://wall.sli.do/event/bN8K1hrZToTdRGPHyyPM1U" height="800" width="100%" frameborder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido"></iframe>
-
-
-</section></section>
-<section>
-<section id="lets-take-a-look-in-r" class="title-slide slide level1 center">
-<h1>Let’s take a look in R</h1>
-<aside class="notes">
-<p>My actions: - Open up R</p>
-<p>Key points: - Make sure that the RMarkdown file is empty, ctr + A delete if need be.</p>
-<p>Give a real time demo</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="load-data" class="slide level2">
-<h2>Load data</h2>
-<aside class="notes">
-<p>Do this as a real time demo</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="there-is-a-mechanism-that-produces-all-data" class="slide level2">
+<h2>There is a mechanism that produces all data</h2>
 <div class="card-list">
 <ul>
-<li class="fragment">Load tidyverse using <code>library(tidyverse)</code></li>
-<li class="fragment">Load 2020heights.csv and assign it to <code>data</code></li>
-<li class="fragment">Let’s take a look at the data
+<li class="fragment">What are some factors that impact height?</li>
+<li class="fragment">Let’s say that everyone’s height is determined by the average height plus or minus some of these factors.
 <ul>
-<li class="fragment">You can use <code>head(data)</code></li>
-<li class="fragment">Or you can click on data under <code>environment</code></li>
+<li class="fragment">Let’s take a look in R</li>
 </ul></li>
+<li class="fragment">We just simulated for one person. Now we want to repeat this 100 times.</li>
 </ul>
 </div>
-</section>
-<section id="plot-data" class="slide level2">
-<h2>Plot data</h2>
 <aside class="notes">
-<p>Still a real time demo</p>
+<p>Have students raise their hands.</p>
+<ul>
+<li>Genes</li>
+<li>Nutrition</li>
+<li>Exercise</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>avg_height <span class="ot">&lt;-</span> <span class="dv">66</span></span>
+<span id="cb1-2"><a href=""></a>genes <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="sc">-</span><span class="dv">10</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="co"># randomly samples a single number from -10 to 10</span></span>
+<span id="cb1-3"><a href=""></a>final_height <span class="ot">&lt;-</span> avg_height <span class="sc">+</span> genes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -281,51 +283,123 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="for-loops" class="slide level2">
+<h2>for loops</h2>
 <div class="card-list">
 <ul>
-<li class="fragment">In the console, install <code>ggplot2</code> using <code>install.packages("ggplot2")</code></li>
-<li class="fragment">Then load <code>ggplot2</code> at the top</li>
+<li class="fragment"><p>Wrap the following around the code you want to repeat</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="cf">for</span> (person <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb2-2"><a href=""></a><span class="co"># Code to repeat goes here. This repeats the code 100 times.</span></span>
+<span id="cb2-3"><a href=""></a><span class="co"># `person` takes the value 1 the first time, then 2 the second time, etc.</span></span>
+<span id="cb2-4"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li class="fragment"><p>Try running that block of code. Try printing <code>final_height</code>. What do you get?</p></li>
+</ul>
+</div>
+<div class="fragment">
+<iframe src="https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN" width="100%" height="600px" style="border:0;"></iframe>
+</div>
+</section>
+<section id="you-need-to-store-all-the-numbers-from-the-simulation" class="slide level2">
+<h2>You need to store all the numbers from the simulation!</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">If you don’t store the simulated numbers into a list, <code>final_height</code> gets over-written again and again.</li>
+<li class="fragment">So we create an empty list, then each time the for loop runs, we store the new value in the next place in the list.</li>
+</ul>
+</div>
+</section>
+<section id="what-goes-in-a-b-and-c" class="slide level2">
+<h2>What goes in A, B, and C?</h2>
+<div class="columns">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>avg_height <span class="ot">&lt;-</span> <span class="dv">66</span></span>
+<span id="cb3-2"><a href=""></a>sim_heights <span class="ot">&lt;-</span> A</span>
+<span id="cb3-3"><a href=""></a></span>
+<span id="cb3-4"><a href=""></a><span class="cf">for</span> (person <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb3-5"><a href=""></a>genes <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="sc">-</span><span class="dv">10</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">1</span>)</span>
+<span id="cb3-6"><a href=""></a>final_height <span class="ot">&lt;-</span> avg_height <span class="sc">+</span> genes</span>
+<span id="cb3-7"><a href=""></a>sim_heights[B] <span class="ot">&lt;-</span> C</span>
+<span id="cb3-8"><a href=""></a>}</span>
+<span id="cb3-9"><a href=""></a></span>
+<span id="cb3-10"><a href=""></a>sim_heights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>hint: <code>person</code> goes in one of them</p>
+</div><div class="column">
+<iframe src="https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN" width="100%" height="600px" style="border:0;"></iframe>
+</div></div>
+<aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="plot-the-data" class="slide level2 scrollable">
+<h2>Plot the data</h2>
+<div class="card-list">
+<ol type="1">
+<li>Convert our sim_heights to a dataframe.
+<ul>
+<li>We will need to load the <code>tidyverse</code> package to do so.</li>
+</ul></li>
+<li>Plot a histogram using ggplot()
+<ul>
+<li>We will need the <code>ggplot2</code> package.</li>
+</ul></li>
+</ol>
+</div>
+<iframe src="https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN" width="100%" height="600px" style="border:0;"></iframe>
+</section>
+<section id="creating-a-dataframe" class="slide level2">
+<h2>Creating a dataframe</h2>
+<div class="card-list">
+<ul>
+<li class="fragment"><p>Use the following code to create a dataframe with 1 column named <code>heights</code>, populated with our simulated data:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">heights =</span> sim_heights) <span class="co"># converts the c() list to a dataframe</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li class="fragment"><p>Let’s take a look in R</p></li>
 </ul>
 </div>
 </section>
 <section id="ggplot-basics" class="slide level2">
 <h2>ggplot basics</h2>
-<aside class="notes">
-<p>Go back to slides</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 <div class="card-list">
 <ul>
 <li class="fragment">Basic formulation: <code>ggplot(data, aes(x,y))</code>
 <ul>
 <li class="fragment">This doesn’t plot anything, but just provides important information, like the x and y variables, to ggplot</li>
+<li class="fragment"><code>aes</code> means “aesthetics”</li>
 <li class="fragment">You could just have <code>x</code> in aesthetics for histograms</li>
 </ul></li>
-<li class="fragment"><code>aes</code> means “aesthetics”</li>
 <li class="fragment">To actually plot things, you add layers using <code>+</code></li>
 <li class="fragment">Examples of layers:
 <ul>
 <li class="fragment"><code>geom_histogram()</code> for histograms</li>
-<li class="fragment"><code>geom_point()</code> for scatter plots</li>
+<li class="fragment"><code>geom_freqpoly()</code> for frequency polygons (continuous versions of histograms)</li>
 </ul></li>
 </ul>
 </div>
 </section></section>
 <section>
-<section id="lets-take-a-look-in-r-1" class="title-slide slide level1 center">
+<section id="lets-take-a-look-in-r" class="title-slide slide level1 center">
 <h1>Let’s take a look in R</h1>
 <aside class="notes">
-<p>Show ggplot in R</p>
-<p>ggplot(data, aes(heights)) + geom_histogram(binwidth = 10, color=“red”)</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>avg_height <span class="ot">&lt;-</span> <span class="dv">66</span></span>
+<span id="cb5-2"><a href=""></a>sim_heights <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb5-3"><a href=""></a></span>
+<span id="cb5-4"><a href=""></a><span class="cf">for</span> (person <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb5-5"><a href=""></a>genes <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="sc">-</span><span class="dv">10</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">1</span>)</span>
+<span id="cb5-6"><a href=""></a>sim_heights[person] <span class="ot">&lt;-</span> avg_height <span class="sc">+</span> genes</span>
+<span id="cb5-7"><a href=""></a>}</span>
+<span id="cb5-8"><a href=""></a></span>
+<span id="cb5-9"><a href=""></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">heights =</span> sim_heights)</span>
+<span id="cb5-10"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data=</span>df, <span class="fu">aes</span>(<span class="at">x=</span>heights)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -338,50 +412,137 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="manipulating-dataframes-with-pipes" class="slide level2">
-<h2>Manipulating dataframes with %&gt;% (pipes)</h2>
+<section id="run-the-simulation-multiple-times" class="slide level2">
+<h2>Run the simulation multiple times</h2>
+<p>What is the shape of your plot?</p>
+<iframe src="https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN" width="100%" height="600px" style="border:0;"></iframe>
+<aside class="notes">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="lets-add-another-variable" class="slide level2">
+<h2>Let’s add another variable</h2>
+<aside class="notes">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>avg_height <span class="ot">&lt;-</span> <span class="dv">66</span></span>
+<span id="cb6-2"><a href=""></a>sim_heights <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb6-3"><a href=""></a></span>
+<span id="cb6-4"><a href=""></a><span class="cf">for</span> (person <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb6-5"><a href=""></a>genes <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="sc">-</span><span class="dv">10</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">1</span>)</span>
+<span id="cb6-6"><a href=""></a>nutrition <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size=</span><span class="dv">1</span>)</span>
+<span id="cb6-7"><a href=""></a></span>
+<span id="cb6-8"><a href=""></a>sim_heights[person] <span class="ot">&lt;-</span> avg_height <span class="sc">+</span> genes <span class="sc">+</span> nutrition</span>
+<span id="cb6-9"><a href=""></a>}</span>
+<span id="cb6-10"><a href=""></a></span>
+<span id="cb6-11"><a href=""></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">heights =</span> sim_heights)</span>
+<span id="cb6-12"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data=</span>df, <span class="fu">aes</span>(<span class="at">x=</span>heights)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="how-has-the-shape-changed" class="slide level2">
+<h2>How has the shape changed?</h2>
+<iframe src="https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN" width="100%" height="600px" style="border:0;"></iframe>
+<aside class="notes">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="many-independent-causes-bell-shaped-distribution" class="slide level2">
+<h2>Many independent causes → bell shaped distribution</h2>
 <div class="card-list">
 <ul>
-<li class="fragment"><p>%&gt;% pass functions to dataframes</p>
-<ul>
-<li class="fragment"><code>data &lt;- data %&gt;% mutate(a=mean(heights))</code></li>
-</ul></li>
-<li class="fragment"><p>You can chain pipes together, like so</p>
-<ul>
-<li class="fragment"><code>data &lt;- data %&gt;% mutate(a=mean(x)) %&gt;% arrange(a)</code></li>
-</ul></li>
+<li class="fragment">With more independent causes, the distribution becomes more bell shaped</li>
+<li class="fragment">This approximates a normal/Gaussian distribution</li>
+<li class="fragment">This is the central limit theorem</li>
 </ul>
 </div>
-</section></section>
-<section>
-<section id="todays-deliverables" class="title-slide slide level1 center">
-<h1>Today’s deliverables</h1>
-
 </section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<p><strong>A knitted pdf document, not a screen shot. Ignore what Canvas says. When you are finished, check in with me.</strong></p>
-<div class="columns">
-<div class="column">
-<p><strong>5 histograms using <code>ggplot</code></strong></p>
+<section id="saving-you-data" class="slide level2">
+<h2>Saving you data</h2>
+<p>To save your dataset, use the following:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">write_csv</span>(df, <span class="st">"dataset_name.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="notes-about-todays-deliverables" class="slide level2">
+<h2>Notes about today’s deliverables</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">Submit an html file to Canvas (ignore what Canvas says).</li>
+<li class="fragment">To make the process more efficient, check in with your group before you check in with me. If you check with 2 people and confirm that your lab reports look similar, then I only have to check 10 reports, rather than 30. This means you won’t have to wait as long for me to come around.</li>
+</ul>
+</div>
+</section>
+<section id="deliverables" class="slide level2 scrollable">
+<h2>Deliverables</h2>
+<div class="card-list">
 <ol type="1">
-<li class="fragment">normal (we did this already)</li>
-<li class="fragment"><code>binwidth = 10</code></li>
-<li class="fragment"><code>binwidth = 0.1</code></li>
-<li class="fragment">choose your own binwidth</li>
-<li class="fragment">binwidth = 2, with <code>fill = "pink"</code> and <code>color = "red"</code> in <code>geom_histogram()</code></li>
-<li class="fragment">Beneath the code block, use plain text biefly describe the shape of the distribution. Is it symmetrical? Normal?</li>
-</ol>
-</div><div class="column">
-<p><strong>An updated dataframe with a new <code>z_score</code> column</strong></p>
+<li>Simulate heights data for 200 people.
 <ol type="1">
-<li class="fragment">Use <code>%&gt;%</code> with the <code>mutate()</code> function</li>
-<li class="fragment">To calculate the <code>z_score</code>, use <code>z_score = (heights-mean(heights)/sd(heights)</code></li>
-<li class="fragment">Use <code>head(data)</code> to double check that the data has been updated</li>
-<li class="fragment">Use <code>arrange(abs(z_score))</code> to sort the data by the absolute <code>z_score</code> value, from lowest to highest</li>
-<li class="fragment">Beneath the code block, use plain text to list the 5 <code>z_scores</code> with the highest absolute values.</li>
+<li>This time, use women’s average height (64 inches)</li>
+<li>Include the two variables we used before.</li>
+<li>Include an additional variable of your choice.</li>
+</ol></li>
+<li>A histogram or frequency polygon of women’s heights.</li>
+<li>Save the dataset as “heights_women.csv” using <code>write_csv()</code></li>
+<li>How would you describe the shape of your distribution?</li>
+<li>Let’s say that you look at the distribution of a dataset and see that it is not bell shaped. Based on our first simulation and what we learned about the central limit theorem, what is one possible reason why that may be?</li>
 </ol>
-</div></div>
+</div>
+<aside class="notes">
+<p>There may be one (or only a few) factors dominating the dataset.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 
 </section></section>
     </div>
@@ -601,6 +762,82 @@
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

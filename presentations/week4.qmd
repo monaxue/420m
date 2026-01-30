@@ -1,9 +1,22 @@
 
-# Week 4 Lab
+## Week 4 Lab
 
-**Make your lab3 folder and project**
+::: notes
+This week we will simulate sex differences in height, use group_by, change colors in the plot, use facet_wrap, and create a summary table.
 
-## Download `HandWashingData.csv` from Canvas 
+Talk about how we can't draw conclusions about differences from descriptive plots alone.
+:::
+
+As always:
+1. Create your lab4 folder
+1. Create your R studio project
+1. Create your lab4.Rmd file
+1. Add the title, author, and date to the Rmd file.
+1. Load `tidyverse` and `ggplot2` using the `library()` function.
+
+Additionally:
+1. Copy the heights data that you simulated from last week into the lab4 folder.
+1. Load the data into lab4.Rmd using read_csv()
 
 ::: card-list
 - **Where do you save the data?**
@@ -28,6 +41,26 @@
 ```
 
 ## 
+Last week, we ended by simulating female heights. Now, let's simulate male heights.
+::: card-list
+    - 
+:::
+
+
+## Manipulating dataframes with %>% (pipes)
+
+::: {.card-list}
+
+- %>% pass functions to dataframes
+
+    - `df <- df %>% mutate(sex="f")`
+
+- You can chain pipes together, like so
+    
+    - `df <- df %>% mutate(sex="f")) %>% mutate(mean=mean(height))`
+
+:::
+
 
 **You want to add a column named `Mean` to the dataframe `data` where each row contains the mean of the column `washes`**
 

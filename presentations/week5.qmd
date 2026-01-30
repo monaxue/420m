@@ -1,6 +1,11 @@
 # Week 5 Lab
 **Create your lab4 folder and project**
 
+::: notes
+This week, we will plot confidence intervals, simulate (?) CIs, and go over case study expectations. But we can also do central limit theorem again and simulate using the same concept as week 3.
+
+:::
+
 ## Review question
 
 ```{=html}

@@ -1,215 +1,319 @@
 # Week 3 Lab
-**Histograms, pipes, and Z-scores**
+**Open up R Studio**
 
-## File system review
 
-::: {.card-list}
- - Before we start, let's do some review
- - Most of the bugs from last class came from files being stored somewhere you didn't expect
- - So let's do some review with Slido
+## First, we need to create our lab3 folder
 
+Where should you create your lab3 folder?
+
+::: iframe
+https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
 :::
 
-##
+. . .
 
-```{=html}
+# Create your lab3 folder
 
-<iframe src="https://wall.sli.do/event/bN8K1hrZToTdRGPHyyPM1U" height=800 width="100%" frameBorder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido"></iframe>
+## Next, we need to create our R studio project
+Where do we create our R studio project?
 
-```
-
-# Now we can create our lab2 folder
-
-## We will be using the 2020heights.csv file today
-
-::: {.card-list}
-
-- We need to make sure our 2020heights.csv is accessible in lab2
-- You can copy and paste the csv file into lab2 from lab1
-
+::: iframe
+https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
 :::
 
-## Open up R
-
-::: {.card-list .nonincremental}
-
-- Create an R Project in your lab2 folder
+## Let's create the R studio project
 
 ![](assets/make-r-project.gif)
 
-:::
 
-## Before we create our Rmd file...
+## Now, create an EMPTY Rmd file
 
-**How do you make sure to create the Rmd file in the proper folder?**
-
-```{=html}
-
-<iframe src="https://wall.sli.do/event/bN8K1hrZToTdRGPHyyPM1U" height=800 width="100%" frameBorder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido"></iframe>
-
-
-```
-
-## Now create an EMPTY Rmd file
-
-**Remember, a .Rmd file, not .R**
+Make sure it is EMPTY
 
 ![](assets/make-rmarkdown.gif)
-
-:::{.notes}
-    - Which group can tell me what's the difference between a Rmd file and a normal R script?
-:::
 
 
 # Save the Rmd file
 
+Where do we save the Rmd file?
 
-**After you create the file, make sure to save the Rmd file and name it `lab3`**
-
-## Now that the file is created and saved
-
-::: {.card-list}
-- We can add our YAML header and our first code chunk
-- Let's review how to properly add those
-
+::: iframe
+https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
 :::
 
-## Slido poll
+## Add the title, author, and date
+What is the proper format?
 
-```{=html}
+::: iframe
+https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
+:::
 
-<iframe src="https://wall.sli.do/event/bN8K1hrZToTdRGPHyyPM1U" height="800" width="100%" frameBorder="0" style="min-height: 560px;" allow="clipboard-write" title="Slido"></iframe>
+## Add the first code chunk
+What is the proper format?
+
+::: iframe
+https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
+:::
+
+## Simulating height
+::: card-list
+- Today, we are going to simulate our own heights dataset, and then plot it
+- What is a simulation?
+:::
+
+## There is a mechanism that produces all data
+
+:::: card-list
+- What are some factors that impact height?
+- Let's say that everyone's height is determined by the average height plus or minus some of these factors. 
+    - Let's take a look in R
+- We just simulated for one person. Now we want to repeat this 100 times.
+::::
+
+::: notes
+Have students raise their hands.
+
+- Genes
+- Nutrition
+- Exercise
+
+```r
+avg_height <- 66
+genes <- sample(-10:10, size=1) # randomly samples a single number from -10 to 10
+final_height <- avg_height + genes
+```
+:::
+
+## for loops
+
+::: card-list
+- Wrap the following around the code you want to repeat
+
+    ```r
+    for (person in 1:100){
+    # Code to repeat goes here. This repeats the code 100 times.
+    # `person` takes the value 1 the first time, then 2 the second time, etc.
+    }
+    ```
+- Try running that block of code. Try printing `final_height`. What do you get?
+:::
+
+. . .
+
+::: iframe
+https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
+:::
+
+## You need to store all the numbers from the simulation!
+::: card-list
+- If you don't store the simulated numbers into a list, `final_height` gets over-written again and again.
+- So we create an empty list, then each time the for loop runs, we store the new value in the next place in the list.
+:::
+
+## What goes in A, B, and C?
 
 
+::::: columns
+
+:::: column
+
+```r
+avg_height <- 66
+sim_heights <- A
+
+for (person in 1:100){
+genes <- sample(-10:10, size=1)
+final_height <- avg_height + genes
+sim_heights[B] <- C
+}
+
+sim_heights
 ```
 
-# Let's take a look in R
+hint: `person` goes in one of them
 
-:::{.notes}
+::::
 
-My actions:
-- Open up R
+:::: column
 
-Key points:
-- Make sure that the RMarkdown file is empty, ctr + A delete if need be.
+::: iframe
+https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
+:::
 
-Give a real time demo
+::::
+:::::
+
+::: notes
 
 :::
 
-## Many small causes -> bell shaped errors
-- independent causes
-- bell shaped = normally distriubuted = Gaussian
+## Plot the data
+::: {.card-list .nonincremental}
 
-## Load data
-
-:::{.notes}
-
-Do this as a real time demo
-
-:::
-
-::: {.card-list}
-
-- Load tidyverse using `library(tidyverse)`
-- Load 2020heights.csv and assign it to `data`
-- Let's take a look at the data
-    - You can use `head(data)`
-    - Or you can click on data under `environment`
-
+1. Convert our sim_heights to a dataframe.
+    - We will need to load the `tidyverse` package to do so.
+1. Plot a histogram using ggplot()
+    - We will need the `ggplot2` package.
 :::
 
 
-## Plot data
-
-::: {.notes}
-Still a real time demo
-
+::: iframe
+https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
 :::
 
-::: {.card-list}
+## Creating a dataframe
+::: card-list
+- Use the following code to create a dataframe with 1 column named `heights`, populated with our simulated data:
 
-- In the console, install `ggplot2` using `install.packages("ggplot2")`
-- Then load `ggplot2` at the top
-
+    ```r
+    df <- tibble(heights = sim_heights) # converts the c() list to a dataframe
+    ```
+- Let's take a look in R
 :::
 
 ## ggplot basics
-
-::: {.notes}
-Go back to slides
-
-
-:::
 
 ::: {.card-list}
 
 - Basic formulation: `ggplot(data, aes(x,y))`
     - This doesn't plot anything, but just provides important information, like the x and y variables, to ggplot
+    - `aes` means "aesthetics"
     - You could just have `x` in aesthetics for histograms
-- `aes` means "aesthetics"
 - To actually plot things, you add layers using `+`
 - Examples of layers:
     - `geom_histogram()` for histograms
-    - `geom_point()` for scatter plots
+    - `geom_freqpoly()` for frequency polygons (continuous versions of histograms)
+
+::: 
+# Let's take a look in R
+
+::: notes
+
+```r
+avg_height <- 66
+sim_heights <- c()
+
+for (person in 1:100){
+genes <- sample(-10:10, size=1)
+sim_heights[person] <- avg_height + genes
+}
+
+df <- tibble(heights = sim_heights)
+ggplot(data=df, aes(x=heights)) + geom_histogram()
+
+```
+
+:::
+
+## Run the simulation multiple times
+
+What is the shape of your plot?
+
+::: iframe
+https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
+:::
+
+::: notes
+```{r}
+library(tidyverse)
+library(ggplot2)
+```
+
+```{r}
+avg_height <- 66
+sim_heights <- c()
+
+for (person in 1:100){
+genes <- sample(-10:10, size=1)
+sim_heights[person] <- avg_height + genes
+}
+
+df <- tibble(heights = sim_heights)
+ggplot(data=df, aes(x=heights)) + geom_histogram()
+```
+:::
+
+## Let's add another variable
+
+
+::: notes
+
+```r
+avg_height <- 66
+sim_heights <- c()
+
+for (person in 1:100){
+genes <- sample(-10:10, size=1)
+nutrition <- sample(-5:5, size=1)
+
+sim_heights[person] <- avg_height + genes + nutrition
+}
+
+df <- tibble(heights = sim_heights)
+ggplot(data=df, aes(x=heights)) + geom_histogram()
+```
+
+:::
+
+## How has the shape changed?
+
+::: iframe
+https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
+:::
+
+::: notes
+
+```{r}
+avg_height <- 66
+sim_heights <- c()
+
+for (person in 1:100){
+genes <- sample(-10:10, size=1)
+nutrition <- sample(-5:5, size=1)
+
+sim_heights[person] <- avg_height + genes + nutrition
+}
+
+df <- tibble(heights = sim_heights)
+ggplot(data=df, aes(x=heights)) + geom_freqpoly()
+```
+
+:::
+
+## Many independent causes → bell shaped distribution
+::: card-list
+- With more independent causes, the distribution becomes more bell shaped
+- This approximates a normal/Gaussian distribution
+- This is the central limit theorem
+:::
+
+## Saving you data
+
+To save your dataset, use the following:
+
+```r
+write_csv(df, "dataset_name.csv")
+```
+
+## Notes about today's deliverables
+::: card-list
+- Submit an html file to Canvas (ignore what Canvas says).
+- To make the process more efficient, check in with your group before you check in with me. If you check with 2 people and confirm that your lab reports look similar, then I only have to check 10 reports, rather than 30. This means you won't have to wait as long for me to come around.
+:::
+
+## Deliverables
+::: {.card-list .nonincremental}
+1. Simulate heights data for 200 people. 
+    1. This time, use women's average height (64 inches)
+    1. Include the two variables we used before.
+    1. Include an additional variable of your choice. 
+1. A histogram or frequency polygon of women's heights.
+1. Save the dataset as "heights_women.csv" using `write_csv()`
+1. How would you describe the shape of your distribution?
+1. Let's say that you look at the distribution of a dataset and see that it is not bell shaped. Based on our first simulation and what we learned about the central limit theorem, what is one possible reason why that may be?
 
 ::: 
 
-# Let's take a look in R
-
-::: {.notes}
-
-Show ggplot in R
-
-ggplot(data, aes(heights)) + geom_histogram(binwidth = 10, color="red")
-
+::: notes
+There may be one (or only a few) factors dominating the dataset.
 :::
-
-## Manipulating dataframes with %>% (pipes)
-
-::: {.card-list}
-
-- %>% pass functions to dataframes
-
-    - `data <- data %>% mutate(a=mean(heights))`
-
-- You can chain pipes together, like so
-    
-    - `data <- data %>% mutate(a=mean(x)) %>% arrange(a)`
-
-:::
-
-# Today's deliverables
-
-##
-
-**A knitted pdf document, not a screen shot. Ignore what Canvas says. When you are finished, check in with me.**
-
-::::: {.columns}
-
-:::: {.column}
-
-**5 histograms using `ggplot`**
-
-1. normal (we did this already)
-2. `binwidth = 10`
-3. `binwidth = 0.1`
-4. choose your own binwidth
-5. binwidth = 2, with `fill = "pink"` and `color = "red"` in `geom_histogram()`
-6. Beneath the code block, use plain text biefly describe the shape of the distribution. Is it symmetrical? Normal?
-
-::::
-
-:::: {.column}
-
-**An updated dataframe with a new `z_score` column**
-
-1. Use `%>%` with the `mutate()` function
-2. To calculate the `z_score`, use `z_score = (heights-mean(heights)/sd(heights)`
-3. Use `head(data)` to double check that the data has been updated
-4. Use `arrange(abs(z_score))` to sort the data by the absolute `z_score` value, from lowest to highest
-5. Beneath the code block, use plain text to list the 5 `z_scores` with the highest absolute values.
-
-::::
-
-:::::

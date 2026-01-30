@@ -1,5 +1,5 @@
 # Welcome to PSYCH420's Lab Section!
-**Lab time:** Friday, 12-2pm | **TA:** Mona Xue | **Email:** [monaxue\@utexas.edu](mailto:monaxue@utexas.edu){.email}
+**Lab time:** Friday, 12-2pm | **TA:** Mona Xue | **Email:** [monaxue\@utexas.edu](mailto:monaxue@utexas.edu){.email} | **Office hours:** Friday, 2pm
 
 <!-- **Mona's office hours:** Fridays 1-3pm. Office hours will be over Zoom on normal Fridays, whereas they will in SEAY 4.326A on the Fridays before case studies are due. You can also schedule an appointment for any day. Just shoot me a message through email or through Canvas.
 
@@ -67,15 +67,15 @@ Effects of exercise
 
 [Example PDF](r_demos/420m/labs/lab3/lab3-example.pdf){.filelink}
 
+-->
+
 ## Week 3
 
-Histograms, pipes, and Z-scores
+for loops, central limit theorem, histograms/frequency polygons
 
 [Slides](presentations/week3.html){.filelink}
 
-[Example PDF](r_demos/420m/labs/lab2/lab2-example.pdf){.filelink}
 
--->
 
 ## Week 2
 

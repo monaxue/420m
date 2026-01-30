@@ -1,0 +1,26 @@
+<!--
+
+Discrete "coin toss" example
+
+```{r}
+
+avg_height <- 69
+
+sim_heights <- c()
+
+# There are 4 genes. 2 genes make you tall, and 2 genes make you short. Each gene is responsible for 5 inches. You are the tallest if you get 2 tall genes and no short genes, and the shortest if you get 2 short genes and no tall genes.
+
+for (i in 1:500){
+    gene1 <- sample(c(0,5), size=1)
+    gene2 <- sample(c(0,5), size=1)
+    gene3 <- sample(c(0,-5), size=1)
+    gene4 <- sample(c(0,-5), size=1)
+    error <- gene1 + gene2 + gene3 + gene4
+    sim_heights[i] <- avg_height + error
+}
+
+hist(sim_heights)
+
+```
+
+-->

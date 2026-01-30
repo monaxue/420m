@@ -1,14 +1,16 @@
 # Week 3 Lab
 **Open up R Studio**
 
+## Review: Where should your 420M folder be?
+
+![](assets/slido-where-can-your-420m-folder-be.png)
+
 
 ## First, we need to create our lab3 folder
 
 Where should you create your lab3 folder?
 
-::: iframe
-https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
-:::
+Answer: Your 420m Folder
 
 . . .
 
@@ -17,9 +19,7 @@ https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
 ## Next, we need to create our R studio project
 Where do we create our R studio project?
 
-::: iframe
-https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
-:::
+![](assets/slido-where-should-you-create-your-r-studio-project-in-this-class.png)
 
 ## Let's create the R studio project
 
@@ -37,51 +37,63 @@ Make sure it is EMPTY
 
 Where do we save the Rmd file?
 
-::: iframe
-https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
-:::
+![](assets/slido-where-should-you-save-your-rmd-file.png)
 
 ## Add the title, author, and date
 What is the proper format?
 
-::: iframe
-https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
+:::: columns
+::: column
+![](assets/yml_slido.png)
 :::
+
+::: column
+![](assets/slido-how-do-you-properly-format-the-title-author-and-date.png)
+:::
+::::
 
 ## Add the first code chunk
 What is the proper format?
 
-::: iframe
-https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
+:::: columns
+
+::: column
+![](assets/code_block_slido.png)
 :::
+
+::: column
+![](assets/slido-how-do-you-properly-format-your-code-chunk.png)
+:::
+::::
 
 ## Simulating height
 ::: card-list
 - Today, we are going to simulate our own heights dataset, and then plot it
 - What is a simulation?
+    - A simulation is when we generate fake data form scratch.
+    - Our beliefs and hypotheses inform the mechanism we use to generate the data.
 :::
 
 ## There is a mechanism that produces all data
 
 :::: card-list
 - What are some factors that impact height?
+    - Genetics
+    - Nutrition
+    - Exercise
 - Let's say that everyone's height is determined by the average height plus or minus some of these factors. 
     - Let's take a look in R
+    ```r
+    avg_height <- 66
+    genes <- sample(-10:10, size=1) # randomly samples a single number from -10 to 10
+    final_height <- avg_height + genes
+    ```
 - We just simulated for one person. Now we want to repeat this 100 times.
 ::::
 
 ::: notes
 Have students raise their hands.
 
-- Genes
-- Nutrition
-- Exercise
-
-```r
-avg_height <- 66
-genes <- sample(-10:10, size=1) # randomly samples a single number from -10 to 10
-final_height <- avg_height + genes
-```
 :::
 
 ## for loops
@@ -96,13 +108,18 @@ final_height <- avg_height + genes
     }
     ```
 - Try running that block of code. Try printing `final_height`. What do you get?
+    - You should only get one number.
 :::
+
+<!--
 
 . . .
 
 ::: iframe
 https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
 :::
+
+-->
 
 ## You need to store all the numbers from the simulation!
 ::: card-list
@@ -129,19 +146,49 @@ sim_heights[B] <- C
 
 sim_heights
 ```
-
-hint: `person` goes in one of them
-
+::: card-list
+- hint: `person` goes in one of them
+- A = c()
+    - This is am empty list to store data
+:::
 ::::
 
 :::: column
+
+::: card-list
+- B = person
+    - person takes the value of 1 the first time the for loop runs, and 2 the second time, 3 the third time, etc., until we reach the 100th time.
+- C = final_height
+    - We put the final_height of the first person in sim_heights[1], and second person in sim_heights[2], etc.
+:::
+
+
+<!--
 
 ::: iframe
 https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
 :::
 
+-->
+
 ::::
 :::::
+
+##
+
+```r
+avg_height <- 66
+sim_heights <- c()
+
+for (person in 1:100){
+genes <- sample(-10:10, size=1)
+final_height <- avg_height + genes
+sim_heights[person] <- final_height
+
+}
+
+sim_heights
+```
 
 ::: notes
 
@@ -157,9 +204,7 @@ https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
 :::
 
 
-::: iframe
-https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
-:::
+![](assets/slido-how-should-you-load-the-tidyverse-package.png)
 
 ## Creating a dataframe
 ::: card-list
@@ -187,8 +232,6 @@ https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
 ::: 
 # Let's take a look in R
 
-::: notes
-
 ```r
 avg_height <- 66
 sim_heights <- c()
@@ -203,17 +246,18 @@ ggplot(data=df, aes(x=heights)) + geom_histogram()
 
 ```
 
-:::
-
 ## Run the simulation multiple times
 
 What is the shape of your plot?
 
+<!--
 ::: iframe
 https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
 :::
+-->
 
-::: notes
+Answer: they vary a lot, but overall they are flat.
+
 ```{r}
 library(tidyverse)
 library(ggplot2)
@@ -221,22 +265,24 @@ library(ggplot2)
 
 ```{r}
 avg_height <- 66
-sim_heights <- c()
+all_sims <- list()
 
-for (person in 1:100){
-genes <- sample(-10:10, size=1)
-sim_heights[person] <- avg_height + genes
+for (j in 1:6){
+    sim_heights <- c()
+    for (person in 1:100){
+    genes <- sample(-10:10, size=1)
+    sim_heights[person] <- avg_height + genes
+    }
+    df <- tibble(heights = sim_heights, sim=rep(x = j, times=100))
+    all_sims[[j]] <- df
 }
 
-df <- tibble(heights = sim_heights)
-ggplot(data=df, aes(x=heights)) + geom_histogram()
+df <- bind_rows(all_sims)
+
+ggplot(data=df, aes(x=heights)) + geom_histogram() + facet_wrap(~sim)
 ```
-:::
 
 ## Let's add another variable
-
-
-::: notes
 
 ```r
 avg_height <- 66
@@ -253,32 +299,35 @@ df <- tibble(heights = sim_heights)
 ggplot(data=df, aes(x=heights)) + geom_histogram()
 ```
 
-:::
-
 ## How has the shape changed?
 
+Answer: With an additional variable, the shapes of the distributions are more bell shaped.
+
+<!--
 ::: iframe
 https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
 :::
-
-::: notes
+-->
 
 ```{r}
 avg_height <- 66
-sim_heights <- c()
+all_sims <- list()
 
-for (person in 1:100){
-genes <- sample(-10:10, size=1)
-nutrition <- sample(-5:5, size=1)
-
-sim_heights[person] <- avg_height + genes + nutrition
+for (j in 1:6){
+    sim_heights <- c()
+    for (person in 1:100){
+    genes <- sample(-10:10, size=1)
+    nutrition <- sample(-5:5, size=1)
+    sim_heights[person] <- avg_height + genes + nutrition
+    }
+    df <- tibble(heights = sim_heights, sim=rep(x = j, times=100))
+    all_sims[[j]] <- df
 }
 
-df <- tibble(heights = sim_heights)
-ggplot(data=df, aes(x=heights)) + geom_freqpoly()
-```
+df <- bind_rows(all_sims)
 
-:::
+ggplot(data=df, aes(x=heights)) + geom_histogram() + facet_wrap(~sim)
+```
 
 ## Many independent causes → bell shaped distribution
 ::: card-list
@@ -310,10 +359,12 @@ write_csv(df, "dataset_name.csv")
 1. A histogram or frequency polygon of women's heights.
 1. Save the dataset as "heights_women.csv" using `write_csv()`
 1. How would you describe the shape of your distribution?
+    - With three variables, the shape of the distribution is even more bell shaped.
 1. Let's say that you look at the distribution of a dataset and see that it is not bell shaped. Based on our first simulation and what we learned about the central limit theorem, what is one possible reason why that may be?
+    - There may be one (or only a few) causal factors dominating how the dataset is generated.
 
 ::: 
 
 ::: notes
-There may be one (or only a few) factors dominating the dataset.
+
 :::

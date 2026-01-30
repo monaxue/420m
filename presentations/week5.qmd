@@ -2,7 +2,7 @@
 **Create your lab4 folder and project**
 
 ::: notes
-This week, we will plot confidence intervals, simulate (?) CIs, and go over case study expectations. But we can also do central limit theorem again and simulate using the same concept as week 3.
+This week, we will plot confidence intervals, simulate (?) CIs, and go over case study expectations. But we can also do central limit theorem again and simulate using the same concept as week 3. Or maybe confidence intervals will still be covered in week 6 and won't be as important for the first case study. 
 
 :::
 

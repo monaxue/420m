@@ -215,35 +215,34 @@ https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
     - Descriptive statistics describes larger trends in the data, without making claims about the true population values.
 :::
 
-::: iframe
-:::
-
 ## Summary table
 
 ::: {.card-list .nonincremental}
 - Compare the following to the version with `mutate()`. How do they differ?
-:::
+    - Note: this is an incomplete summary table. Please read more below!
 
-```r
-summary_table <- df_both %>% group_by(sex) %>% summarize(Mean=mean(heights))
-summary_table
-```
+    ```r
+    summary_table <- df_both %>% group_by(sex) %>% summarize(Mean=mean(heights))
+    summary_table
+    ```
 
+- Complete summary table should fill in the following
+
+    ```r
+    summary_table <- df_both %>% group_by(sex) %>% summarize(Mean=mean(heights), SampleSize = ..., SD = ..., SE = ...)
+    summary_table
+    ```
+
+    - SD is standard deviation and SE is standard error.
+    - The function to calculate the sample size is just `n()`
+    - The function to calculate SD is `sd(height)`
+    - To calculate SE, that is SD/sqrt(SampleSize)
+
+- Output from complete code:
 ```{r}
 summary_table <- df_both %>% group_by(sex) %>% summarize(SampleSize=n(),Mean=mean(heights), SD = sd(heights), SE=SD/sqrt(SampleSize))
 summary_table
 ```
-
-::: iframe
-
-:::
-
-::: {.card-list .nonincremental}
-
-- For this class, a summary table includes SampleSize, Mean, SD, and SE (standard error).
-- The function to calculate the sample size is just `n()`
-- The function to calculate SD is `sd(height)`
-- To calculate SE, that is SD/sqrt(SampleSize)
 
 :::
 

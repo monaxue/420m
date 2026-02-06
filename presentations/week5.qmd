@@ -174,40 +174,4 @@ ggplot(sampling_100, aes(x=x)) + geom_freqpoly()
 
 :::
 
-## Case study rubric
-
-Overall:
-1. Sections: 
-- Research Question and Hypotheses
-- Methods Overview
-- Results and Interpretation
-- External sources
-1. Submit an html file that is formatted well and organized logically.
-
-Research Question and Hypotheses
-- Research question (1 sentence)
-- The main hypothesis (1 sentence)
-- The null hypothesis (1 sentence)
-
-Methods Overview
-Explain how the the research question informs your methdological choices, like what groups you are comparing, what statistical procedues you are conducting, what plots your are creating, etc.
-
-Results and Interpretation
-1. At least one descriptive plot
-1. At least one inferential plot
-1. At least one summary table.
-1. A main paragraph that includes:
-    - Key results (means, sd, confidence intervals)
-    - Appropriate interpretations for each result (don't "over-interpret")
-    - Appropriate interpretations for each plot (don't "over-interpret")
-    - As part of your interpretations, make sure to demonstrate an understanding of the definition of key concepts. Especially for:
-        - Confidence interval
-        - "Significance"
-1. Using your own best judgment, how strongly do you think your results support the main hypothesis? Why?
-
-External sources section:
-The case studies can be completed without using any external sources. However, if you choose to use them, you must be able to justify the choice. So, please list every line of code and statistical concept that we have not covered in class, and explain:
-1. What they do or mean
-1. Why you have chosen to use this in place of what we learned in class
-1. A link to the source, if it exists, otherwise a description is fine.
 

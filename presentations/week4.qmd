@@ -2,8 +2,7 @@
 ## Week 4 Lab
 
 ::: notes
-This week we will simulate sex differences in height, descriptive and analytic statistics. Use group_by, change colors in the plot, use facet_wrap, and create a summary table. 
-Talk about how we can't draw conclusions about differences from descriptive plots alone.
+This week as it is went over by an hour. You need to take stuff out!
 :::
 
 ::: {.card-list .nonincremental}
@@ -24,15 +23,29 @@ As always:
 
 . . .
 
+<!--
+
 ::: iframe
 https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
 :::
 
-::: notes
-- Given that the dataframe is called `df` and the column name is called `values`, what is the code for a basic histogram using ggplot2?    
-- What is the main function of a for loop?
-- What is the general code for a for loop?
+-->
 
+##
+
+::: card-list
+
+- Given that the dataframe is called `df` and the column name is called `values`, what is the code for a basic histogram using ggplot2?
+    - `ggplot(data=df, aes(x=values)) + geom_histogram()`    
+- What is the main function of a for loop?
+    - To repeat stuff
+- What is the general code for a for loop?
+    
+    ```r
+        for (person in 1:3){
+            # code to repeat
+        }
+    ```
 :::
 
 ::: notes
@@ -57,9 +70,7 @@ Last week, we ended by simulating female heights. Now, let's simulate 200 male h
 
 ## What are correct ways to load data in this class?
 
-::: iframe
-https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
-:::
+![](assets/slido-what-are-correct-ways-to-load-data-in-this-class.png)
 
 ## Now load data
 
@@ -151,8 +162,11 @@ Make sure you have two columns
 
 - Again, we use %>% ("pipes") to apply a function to a dataframe
 - What do you notice about all the numbers in the Mean column?
+    - They are the same
 
 :::
+
+<!--
 
 . . .
 
@@ -160,18 +174,25 @@ Make sure you have two columns
 https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
 :::
 
+-->
 
 ## Apply functions to each group with group_by()
 
 ::: card-list
 - %>% (pipes) can be chained together
 - We can use pipes to add the `group_by()` before using mutate.
-- Compare the following with the previous version without the group_by(). What's the difference?
 
     ```r
     df_mutated <- df_both %>% group_by(sex) %>% mutate(Mean=mean(heights))
     ```
+
+- Compare the above with the previous version without the group_by(). What's the difference?
+    - They are the within each sex, but different between
+
+    
 :::
+
+<!--
 
 . . . 
 
@@ -179,6 +200,8 @@ https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
 https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
 
 :::
+
+-->
 
 ## Note: The following two slides are import for the upcoming case study assignment. 
 
@@ -270,9 +293,7 @@ ggplot(df_both, aes(x=sex, y=heights)) + geom_boxplot()
 
 ## Interpretations
 
-::: iframe
-https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
-:::
+![](assets/slido-what-should-include-for-your-interpretations-of-a-histogram.png)
 
 ::: notes
 - What should include for your interpretations of a histogram?
@@ -342,10 +363,9 @@ ggplot(summary_table, aes(x=sex,y=Mean)) + geom_point() + geom_errorbar(aes(ymin
 
 ## Interpretations
 
-::: iframe
-https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
+![](assets/slido-what-should-you-include-in-your-ci-interpretations.png)
 
-:::
+Example: The confidence intervals for male and female height do not overlap, which means that the true means are likely actually different, where the mean male height is higher than the mean female height.
 
 ::: notes
 - What should you include in your CI interpretations?

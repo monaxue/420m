@@ -199,7 +199,7 @@
 <section id="week-4-lab" class="slide level2 scrollable">
 <h2>Week 4 Lab</h2>
 <aside class="notes">
-<p>This week we will simulate sex differences in height, descriptive and analytic statistics. Use group_by, change colors in the plot, use facet_wrap, and create a summary table. Talk about how we can’t draw conclusions about differences from descriptive plots alone.</p>
+<p>This week as it is went over by an hour. You need to take stuff out!</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -231,25 +231,34 @@
 </ul>
 </div>
 <div class="fragment">
-<iframe src="https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg" width="100%" height="600px" style="border:0;"></iframe>
-<aside class="notes">
+<!--
+
+::: iframe
+https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
+:::
+
+-->
+</div>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<div class="card-list">
 <ul>
-<li>Given that the dataframe is called <code>df</code> and the column name is called <code>values</code>, what is the code for a basic histogram using ggplot2?<br>
+<li class="fragment"><p>Given that the dataframe is called <code>df</code> and the column name is called <code>values</code>, what is the code for a basic histogram using ggplot2?</p>
+<ul>
+<li class="fragment"><code>ggplot(data=df, aes(x=values)) + geom_histogram()</code><br>
 </li>
-<li>What is the main function of a for loop?</li>
-<li>What is the general code for a for loop?</li>
+</ul></li>
+<li class="fragment"><p>What is the main function of a for loop?</p>
+<ul>
+<li class="fragment">To repeat stuff</li>
+</ul></li>
+<li class="fragment"><p>What is the general code for a for loop?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>    <span class="cf">for</span> (person <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){</span>
+<span id="cb1-2"><a href=""></a>        <span class="co"># code to repeat</span></span>
+<span id="cb1-3"><a href=""></a>    }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+</div>
 <aside class="notes">
 <p>After brain dump, ask for 5 volunteers for demonstration</p>
 <style type="text/css">
@@ -263,7 +272,6 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</div>
 </section>
 <section id="simulate-male-heights" class="slide level2">
 <h2>Simulate male heights</h2>
@@ -281,8 +289,8 @@
 </section>
 <section id="what-are-correct-ways-to-load-data-in-this-class" class="slide level2">
 <h2>What are correct ways to load data in this class?</h2>
-<iframe src="https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg" width="100%" height="600px" style="border:0;"></iframe>
-</section>
+
+<img data-src="assets/slido-what-are-correct-ways-to-load-data-in-this-class.png" class="r-stretch"></section>
 <section id="now-load-data" class="slide level2 scrollable">
 <h2>Now load data</h2>
 <div class="card-list">
@@ -308,26 +316,26 @@
 <ul>
 <li class="fragment"><p>We want to add a column title <code>sex</code> to both <code>df_women</code> and <code>df_men</code></p></li>
 <li class="fragment"><p>We use %&gt;% (called “pipes”) to apply a function to a dataframe.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>df_women <span class="ot">&lt;-</span> df_women <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">sex=</span><span class="st">'f'</span>)</span>
-<span id="cb1-2"><a href=""></a>df_men <span class="ot">&lt;-</span> df_men <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">sex=</span><span class="st">'m'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>df_women <span class="ot">&lt;-</span> df_women <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">sex=</span><span class="st">'f'</span>)</span>
+<span id="cb2-2"><a href=""></a>df_men <span class="ot">&lt;-</span> df_men <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">sex=</span><span class="st">'m'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 </div>
 </section>
 <section id="combine-df_women-and-df_men-into-one-dataframe" class="slide level2">
 <h2>2. Combine <code>df_women</code> and <code>df_men</code> into one dataframe</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>df_both <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df_women, df_men)</span>
-<span id="cb2-2"><a href=""></a><span class="fu">head</span>(df_both)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>df_both <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df_women, df_men)</span>
+<span id="cb3-2"><a href=""></a><span class="fu">head</span>(df_both)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
   heights sex  
     &lt;dbl&gt; &lt;chr&gt;
-1      70 f    
-2      61 f    
-3      68 f    
-4      64 f    
-5      72 f    
-6      63 f    </code></pre>
+1      64 f    
+2      70 f    
+3      62 f    
+4      68 f    
+5      67 f    
+6      60 f    </code></pre>
 </div>
 </div>
 <p>Make sure you have two columns</p>
@@ -337,28 +345,47 @@
 <div class="card-list">
 <ul>
 <li class="fragment"><p>We can create a column named <code>Mean</code> that calculates the mean of heights like so:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>df_mutated <span class="ot">&lt;-</span> df_both <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Mean=</span><span class="fu">mean</span>(heights), <span class="at">heights_plus_one =</span> heights <span class="sc">+</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>df_mutated <span class="ot">&lt;-</span> df_both <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Mean=</span><span class="fu">mean</span>(heights), <span class="at">heights_plus_one =</span> heights <span class="sc">+</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li class="fragment"><p>Again, we use %&gt;% (“pipes”) to apply a function to a dataframe</p></li>
-<li class="fragment"><p>What do you notice about all the numbers in the Mean column?</p></li>
+<li class="fragment"><p>What do you notice about all the numbers in the Mean column?</p>
+<ul>
+<li class="fragment">They are the same</li>
+</ul></li>
 </ul>
 </div>
-<div class="fragment">
-<iframe src="https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg" width="100%" height="600px" style="border:0;"></iframe>
-</div>
+<!--
+
+. . .
+
+::: iframe
+https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
+:::
+
+-->
 </section>
 <section id="apply-functions-to-each-group-with-group_by" class="slide level2">
 <h2>Apply functions to each group with group_by()</h2>
 <div class="card-list">
 <ul>
 <li class="fragment"><p>%&gt;% (pipes) can be chained together</p></li>
-<li class="fragment"><p>We can use pipes to add the <code>group_by()</code> before using mutate.</p></li>
-<li class="fragment"><p>Compare the following with the previous version without the group_by(). What’s the difference?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>df_mutated <span class="ot">&lt;-</span> df_both <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Mean=</span><span class="fu">mean</span>(heights))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li class="fragment"><p>We can use pipes to add the <code>group_by()</code> before using mutate.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>df_mutated <span class="ot">&lt;-</span> df_both <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Mean=</span><span class="fu">mean</span>(heights))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li class="fragment"><p>Compare the above with the previous version without the group_by(). What’s the difference?</p>
+<ul>
+<li class="fragment">They are the within each sex, but different between</li>
+</ul></li>
 </ul>
 </div>
-<div class="fragment">
-<iframe src="https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg" width="100%" height="600px" style="border:0;"></iframe>
-</div>
+<!--
+
+. . . 
+
+::: iframe
+https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
+
+:::
+
+-->
 </section>
 <section id="note-the-following-two-slides-are-import-for-the-upcoming-case-study-assignment." class="slide level2">
 <h2>Note: The following two slides are import for the upcoming case study assignment.</h2>
@@ -387,15 +414,15 @@
 <li>Compare the following to the version with <code>mutate()</code>. How do they differ?</li>
 </ul>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>summary_table <span class="ot">&lt;-</span> df_both <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Mean=</span><span class="fu">mean</span>(heights))</span>
-<span id="cb6-2"><a href=""></a>summary_table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>summary_table <span class="ot">&lt;-</span> df_both <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Mean=</span><span class="fu">mean</span>(heights))</span>
+<span id="cb7-2"><a href=""></a>summary_table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   sex   SampleSize  Mean    SD    SE
   &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 f            200  64.3  4.04 0.286
-2 m            200  69.1  4.75 0.336</code></pre>
+1 f            200  63.8  4.01 0.283
+2 m            200  69.3  4.70 0.332</code></pre>
 </div>
 </div>
 <div class="iframe">
@@ -415,7 +442,7 @@
 <ul>
 <li>Use <code>facet_warp(~sex)</code> to create a separate panel for each sex.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">ggplot</span>(...) <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">ggplot</span>(...) <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -432,7 +459,7 @@
 <ul>
 <li>Use <code>facet_warp(~sex)</code> to create a separate panel for each sex.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">ggplot</span>(...) <span class="sc">+</span> <span class="fu">geom_freqpoly</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="fu">ggplot</span>(...) <span class="sc">+</span> <span class="fu">geom_freqpoly</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -451,7 +478,7 @@
 <li>What should the x and y variables be?</li>
 </ul>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="fu">ggplot</span>(...) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="fu">ggplot</span>(...) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -463,7 +490,7 @@
 </div>
 </div>
 <div id="tabset-1-6">
-<iframe src="https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg" width="100%" height="600px" style="border:0;"></iframe>
+<p><img data-src="assets/slido-what-should-include-for-your-interpretations-of-a-histogram.png"></p>
 <aside class="notes">
 <ul>
 <li>What should include for your interpretations of a histogram?
@@ -517,16 +544,16 @@
 <li>The Upper 95% CI is calculated as <code>Mean+1.96*SE</code></li>
 <li>You can obtain just the CIs by using <code>select()</code>, with the columns you want as input.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>summary_table <span class="ot">&lt;-</span> summary_table <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">LowerCI =</span> Mean<span class="fl">-1.96</span><span class="sc">*</span>SE, <span class="at">UpperCI =</span> Mean<span class="fl">+1.96</span><span class="sc">*</span>SE)</span>
-<span id="cb11-2"><a href=""></a>CIs <span class="ot">&lt;-</span> summary_table <span class="sc">%&gt;%</span> <span class="fu">select</span>(sex, LowerCI, UpperCI)</span>
-<span id="cb11-3"><a href=""></a>CIs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>summary_table <span class="ot">&lt;-</span> summary_table <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">LowerCI =</span> Mean<span class="fl">-1.96</span><span class="sc">*</span>SE, <span class="at">UpperCI =</span> Mean<span class="fl">+1.96</span><span class="sc">*</span>SE)</span>
+<span id="cb12-2"><a href=""></a>CIs <span class="ot">&lt;-</span> summary_table <span class="sc">%&gt;%</span> <span class="fu">select</span>(sex, LowerCI, UpperCI)</span>
+<span id="cb12-3"><a href=""></a>CIs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   sex   LowerCI UpperCI
   &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-1 f        63.8    64.9
-2 m        68.4    69.7</code></pre>
+1 f        63.3    64.4
+2 m        68.6    69.9</code></pre>
 </div>
 </div>
 </div>
@@ -540,7 +567,7 @@
 <li>Like for the boxplot, we need both x and y in aes(). What are they?</li>
 </ul>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data=</span>summary_table, <span class="fu">aes</span>(...)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> LowerCI, <span class="at">ymax=</span>UpperCI)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data=</span>summary_table, <span class="fu">aes</span>(...)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> LowerCI, <span class="at">ymax=</span>UpperCI)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -552,7 +579,8 @@
 </div>
 </div>
 <div id="tabset-2-4">
-<iframe src="https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg" width="100%" height="600px" style="border:0;"></iframe>
+<p><img data-src="assets/slido-what-should-you-include-in-your-ci-interpretations.png"></p>
+<p>Example: The confidence intervals for male and female height do not overlap, which means that the true means are likely actually different, where the mean male height is higher than the mean female height.</p>
 <aside class="notes">
 <ul>
 <li>What should you include in your CI interpretations?

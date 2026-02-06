@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="week4_files/libs/revealjs/dist/theme/quarto-813f6d88ccc2debae1e185667dc297ce.css">
+  <link rel="stylesheet" href="week4_files/libs/revealjs/dist/theme/quarto-793037751465ef36f94eeeb00878bf19.css">
   <link href="week4_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="week4_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="week4_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -113,6 +113,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -195,213 +196,411 @@
     <div class="slides">
 
 
-<section>
-<section id="week-4-lab" class="title-slide slide level1 center">
-<h1>Week 4 Lab</h1>
-<p><strong>Make your lab3 folder and project</strong></p>
-</section>
-<section id="download-handwashingdata.csv-from-canvas" class="slide level2">
-<h2>Download <code>HandWashingData.csv</code> from Canvas</h2>
+<section id="week-4-lab" class="slide level2 scrollable">
+<h2>Week 4 Lab</h2>
+<aside class="notes">
+<p>This week we will simulate sex differences in height, descriptive and analytic statistics. Use group_by, change colors in the plot, use facet_wrap, and create a summary table. Talk about how we can’t draw conclusions about differences from descriptive plots alone.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="card-list">
-<ul>
-<li class="fragment"><strong>Where do you save the data?</strong></li>
-</ul>
-</div>
-</section>
-<section id="section" class="slide level2">
-<h2></h2>
-<p><strong>We are going to manipulate data and create plots today. So what packages should you load?</strong></p>
-
-<iframe src="https://wall.sli.do/event/b2cMuVGp9PQKgGXnB3YC4D/?section=43da493f-56ee-48db-b011-2c809c8ce01c" height="600," width="100%"></iframe>
-
-</section>
-<section id="load-the-new-dataset" class="slide level2">
-<h2>Load the new dataset</h2>
-
-<iframe src="https://wall.sli.do/event/b2cMuVGp9PQKgGXnB3YC4D/?section=43da493f-56ee-48db-b011-2c809c8ce01c" height="600," width="100%"></iframe>
-
-</section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<p><strong>You want to add a column named <code>Mean</code> to the dataframe <code>data</code> where each row contains the mean of the column <code>washes</code></strong></p>
-
-<iframe src="https://wall.sli.do/event/b2cMuVGp9PQKgGXnB3YC4D/?section=43da493f-56ee-48db-b011-2c809c8ce01c" height="600," width="100%"></iframe>
-
-</section></section>
-<section>
-<section id="lets-take-a-look-in-r" class="title-slide slide level1 center">
-<h1>Let’s take a look in R</h1>
-
-</section>
-<section id="section-2" class="slide level2">
-<h2></h2>
-<p><strong>Now write the line of code. In this new column, what values did you get in the top 3 rows?</strong></p>
-
-<iframe src="https://wall.sli.do/event/b2cMuVGp9PQKgGXnB3YC4D/?section=43da493f-56ee-48db-b011-2c809c8ce01c" height="600," width="100%"></iframe>
-
-</section>
-<section id="section-3" class="slide level2">
-<h2></h2>
-<div class="card-list">
-<ul>
-<li class="fragment"><p>What we have above is that every row has the same mean value. This is because we took the mean of the entire row.</p></li>
-<li class="fragment"><p>What if you want to take the mean washes of each sex?</p></li>
-<li class="fragment"><p>Answer:</p>
-<ul>
-<li class="fragment"><code>group_by()</code></li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="lets-take-a-look-in-r-1" class="slide level2">
-<h2>Let’s take a look in R</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Give this a try
-<ul>
-<li class="fragment">Add <code>group_by(sex)</code> right before mutate.</li>
-<li class="fragment">Then, rerun the code.</li>
-</ul></li>
-<li class="fragment">What happens?</li>
-</ul>
-</div>
-</section>
-<section id="other-summary-statistics" class="slide level2">
-<h2>Other summary statistics</h2>
-<div class="card-list">
-<ul>
-<li class="fragment"><p>Standard deviation of washes: <code>sds=sd(washes)</code></p></li>
-<li class="fragment"><p>Number of rows: <code>count=n()</code></p></li>
-<li class="fragment"><p>Sample standard errors: <code>ses=sds/sqrt(count)</code></p></li>
-<li class="fragment"><p>95% confidence interval: <code>cis=1.96*ses</code></p></li>
-<li class="fragment"><p><strong>Now, try using <code>mutate()</code> to add these other summary statistics to the dataframe, grouping by sex.</strong> (5 min.)</p></li>
-</ul>
-</div>
-</section></section>
-<section>
-<section id="what-it-should-look-like-in-r" class="title-slide slide level1 center">
-<h1>What it should look like in R</h1>
-
-</section>
-<section id="summary-tables" class="slide level2">
-<h2>Summary tables</h2>
-<div class="card-list">
-<ul>
-<li class="fragment"><p>Try changing <code>mutate()</code> to <code>summarize()</code>, while keeping everything in mutate the same.</p></li>
-<li class="fragment"><p>Let’s take a look in R</p>
-<ul>
-<li class="fragment">What happens to the <code>data</code> variable?</li>
-<li class="fragment">What happens if you change <code>summarize()</code> back to <code>mutate()</code>?</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="be-careful-when-reassigning-variables." class="slide level2">
-<h2>Be careful when reassigning variables.</h2>
-<div class="card-list">
-<ul>
-<li class="fragment"><p>The code probably doesn’t work anymore, because <code>data</code> is now the table, not the full dataframe</p></li>
-<li class="fragment"><p>To avoid this, when making a table, create a separate variable, something like <code>summary_table</code></p></li>
-<li class="fragment"><p>Let’s take a look in R</p></li>
-</ul>
-</div>
-</section></section>
-<section>
-<section id="moving-on-the-plots" class="title-slide slide level1 center">
-<h1>Moving on the plots!</h1>
-
-</section>
-<section id="what-is-the-code-for-creating-a-histogram-of-washes" class="slide level2">
-<h2>What is the code for creating a histogram of washes?</h2>
-
-<iframe src="https://wall.sli.do/event/b2cMuVGp9PQKgGXnB3YC4D/?section=43da493f-56ee-48db-b011-2c809c8ce01c" height="600," width="100%"></iframe>
-
-</section></section>
-<section>
-<section id="lets-take-a-look-in-r-2" class="title-slide slide level1 center">
-<h1>Let’s take a look in R</h1>
-
-</section>
-<section id="plot-by-sex" class="slide level2">
-<h2>Plot by sex</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">You can plot the data by sex using these arguments in <code>aes()</code>.
-<ul>
-<li class="fragment">Plot by sex: <code>group=sex</code></li>
-<li class="fragment">Border color by sex: <code>color=sex</code></li>
-<li class="fragment">Fill color by sex: <code>fill=sex</code></li>
-</ul></li>
-<li class="fragment">Let’s take a look in R</li>
-</ul>
-</div>
-</section>
-<section id="other-plots" class="slide level2">
-<h2>Other plots</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Box plots: <code>geom_boxplot()</code></li>
-<li class="fragment">Frequency polygon: <code>geom_freqpoly()</code>
-<ul>
-<li class="fragment">like histogram but continuous</li>
-</ul></li>
-<li class="fragment">Scatter plots: <code>geom_point()</code></li>
-<li class="fragment">Error bars: <code>geom_errorbar()</code></li>
-<li class="fragment">Same <code>aes()</code> rules apply for these plots</li>
-<li class="fragment">Let’s take a look in R</li>
-</ul>
-</div>
-</section>
-<section id="putting-it-together" class="slide level2">
-<h2>Putting it together</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Remember our <code>summary_table</code></li>
-</ul>
-</div>
-<div class="fragment">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href=""></a>```{r}</span>
-<span id="cb1-2"><a href=""></a></span>
-<span id="cb1-3"><a href=""></a>summary_table &lt;- data %&gt;% summarize(count=n(), means=mean(washes), sds=sd(washes),</span>
-<span id="cb1-4"><a href=""></a>ses=sds/sqrt(count), cis=1.96*ses)</span>
-<span id="cb1-5"><a href=""></a></span>
-<span id="cb1-6"><a href=""></a>```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="fragment">
-<div class="card-list">
-<ul>
-<li class="fragment"><p>We can create a plot of means with error bars showing the 95% CIs by using <code>summary_table</code> with <code>ggplot2</code></p></li>
-<li class="fragment"><p>Let’s take a look in R</p></li>
-</ul>
-</div>
-</div>
-</section>
-<section id="section-4" class="slide level2">
-<h2></h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href=""></a>```{r}</span>
-<span id="cb2-2"><a href=""></a></span>
-<span id="cb2-3"><a href=""></a>ggplot(summary_table, aes(x=sex, y=means)) + </span>
-<span id="cb2-4"><a href=""></a></span>
-<span id="cb2-5"><a href=""></a>    geom_point() +</span>
-<span id="cb2-6"><a href=""></a></span>
-<span id="cb2-7"><a href=""></a>    geom_errorbar(aes(ymin= means - cis, ymax = means + cis))</span>
-<span id="cb2-8"><a href=""></a></span>
-<span id="cb2-9"><a href=""></a>```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section class="slide level2">
-
-<p><strong>Question</strong>: Do females in general wash their hand more often than males?</p>
-<p><strong>Methods</strong>: 25 female and 25 male volunteers were given a fitbit-like device that measured the number of times they washed their hands. The total number of times each volunteer washed their hands over the course of a week was measured. The volunteers were initially told that the devices measured “activity”, and were only told that hand washing was being measured after the experiment.</p>
-<p><strong>Deliverables</strong>: Please turn in an RMarkdown PDF file that has:</p>
+<p>As always:</p>
 <ol type="1">
-<li class="fragment">The data distributions shown as either histograms or frequency polygons (you don’t need to do both, but you can)</li>
-<li class="fragment">A boxplot of the data</li>
-<li class="fragment">A summary table with the counts, means, standard deviations, standard errors, and 95% CIs.</li>
-<li class="fragment">A plot of the means with error bars showing the 95% CIs</li>
-<li class="fragment">Your conclusion: do females in general wash their hands more than males, or is the difference likely just due to random variability?</li>
+<li>Create your lab4 folder</li>
+<li>Create your R studio project</li>
+<li>Create &amp; save your lab4.Rmd file</li>
+<li>Add the title, author, and date to the Rmd file.</li>
+<li>Load <code>tidyverse</code> and <code>ggplot2</code> using the <code>library()</code> function.</li>
 </ol>
+</div>
+</section>
+<section id="retrieval-practice" class="slide level2">
+<h2>Retrieval practice</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">Trying to retrieve information helps us learn, even if we don’t think we remember.</li>
+<li class="fragment">Without looking at your notes, try your best to answer the following questions</li>
+</ul>
+</div>
+<div class="fragment">
+<iframe src="https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg" width="100%" height="600px" style="border:0;"></iframe>
+<aside class="notes">
+<ul>
+<li>Given that the dataframe is called <code>df</code> and the column name is called <code>values</code>, what is the code for a basic histogram using ggplot2?<br>
+</li>
+<li>What is the main function of a for loop?</li>
+<li>What is the general code for a for loop?</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside class="notes">
+<p>After brain dump, ask for 5 volunteers for demonstration</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+<section id="simulate-male-heights" class="slide level2">
+<h2>Simulate male heights</h2>
+<p>Last week, we ended by simulating female heights. Now, let’s simulate 200 male heights.</p>
+<div class="card-list">
+<ul>
+<li>Average height is 69 inches</li>
+<li>Gentics contribution: randomly sample one number between -6 to 6.</li>
+<li>Nutritional contribution: randomly sample one number between -3 to 3.</li>
+<li>Third causal variable: exactly the same as what you used last week.</li>
+<li>The final height is the combination of of the average height, and all causes.</li>
+<li>Create a dataframe from this using <code>tibble()</code>. Assign it to the variable <code>df_men</code></li>
+</ul>
+</div>
+</section>
+<section id="what-are-correct-ways-to-load-data-in-this-class" class="slide level2">
+<h2>What are correct ways to load data in this class?</h2>
+<iframe src="https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg" width="100%" height="600px" style="border:0;"></iframe>
+</section>
+<section id="now-load-data" class="slide level2 scrollable">
+<h2>Now load data</h2>
+<div class="card-list">
+<ol type="1">
+<li class="fragment">Copy the heights csv file that you simulated from last week into the lab4 folder.</li>
+<li class="fragment">Load the data into lab4.Rmd using read_csv(), and assign it to the variable <code>df_women</code></li>
+</ol>
+</div>
+</section>
+<section id="combining-the-two-dataframes" class="slide level2 scrollable">
+<h2>Combining the two dataframes</h2>
+<p>We want to combine <code>df_women</code> and <code>df_men</code> into one big dataframe, while still remembering which data is for women or men.</p>
+<div class="card-list">
+<ol type="1">
+<li class="fragment">Add a new column to each dataframe to denote sex.</li>
+<li class="fragment">Combine the two dataframes</li>
+</ol>
+</div>
+</section>
+<section id="add-columns-with-mutate" class="slide level2">
+<h2>1. Add columns with <code>mutate()</code></h2>
+<div class="card-list">
+<ul>
+<li class="fragment"><p>We want to add a column title <code>sex</code> to both <code>df_women</code> and <code>df_men</code></p></li>
+<li class="fragment"><p>We use %&gt;% (called “pipes”) to apply a function to a dataframe.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>df_women <span class="ot">&lt;-</span> df_women <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">sex=</span><span class="st">'f'</span>)</span>
+<span id="cb1-2"><a href=""></a>df_men <span class="ot">&lt;-</span> df_men <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">sex=</span><span class="st">'m'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ul>
+</div>
+</section>
+<section id="combine-df_women-and-df_men-into-one-dataframe" class="slide level2">
+<h2>2. Combine <code>df_women</code> and <code>df_men</code> into one dataframe</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>df_both <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df_women, df_men)</span>
+<span id="cb2-2"><a href=""></a><span class="fu">head</span>(df_both)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  heights sex  
+    &lt;dbl&gt; &lt;chr&gt;
+1      70 f    
+2      61 f    
+3      68 f    
+4      64 f    
+5      72 f    
+6      63 f    </code></pre>
+</div>
+</div>
+<p>Make sure you have two columns</p>
+</section>
+<section id="creating-a-column-based-on-the-values-of-another-column" class="slide level2">
+<h2>Creating a column based on the values of another column</h2>
+<div class="card-list">
+<ul>
+<li class="fragment"><p>We can create a column named <code>Mean</code> that calculates the mean of heights like so:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>df_mutated <span class="ot">&lt;-</span> df_both <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Mean=</span><span class="fu">mean</span>(heights), <span class="at">heights_plus_one =</span> heights <span class="sc">+</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li class="fragment"><p>Again, we use %&gt;% (“pipes”) to apply a function to a dataframe</p></li>
+<li class="fragment"><p>What do you notice about all the numbers in the Mean column?</p></li>
+</ul>
+</div>
+<div class="fragment">
+<iframe src="https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg" width="100%" height="600px" style="border:0;"></iframe>
+</div>
+</section>
+<section id="apply-functions-to-each-group-with-group_by" class="slide level2">
+<h2>Apply functions to each group with group_by()</h2>
+<div class="card-list">
+<ul>
+<li class="fragment"><p>%&gt;% (pipes) can be chained together</p></li>
+<li class="fragment"><p>We can use pipes to add the <code>group_by()</code> before using mutate.</p></li>
+<li class="fragment"><p>Compare the following with the previous version without the group_by(). What’s the difference?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>df_mutated <span class="ot">&lt;-</span> df_both <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Mean=</span><span class="fu">mean</span>(heights))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ul>
+</div>
+<div class="fragment">
+<iframe src="https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg" width="100%" height="600px" style="border:0;"></iframe>
+</div>
+</section>
+<section id="note-the-following-two-slides-are-import-for-the-upcoming-case-study-assignment." class="slide level2">
+<h2>Note: The following two slides are import for the upcoming case study assignment.</h2>
+</section>
+<section id="descriptive-statistics" class="slide level2">
+<h2>Descriptive statistics</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">What is it?</a></li><li><a href="#tabset-1-2">Summary table</a></li><li><a href="#tabset-1-3">Histogram</a></li><li><a href="#tabset-1-4">Frequency polygon</a></li><li><a href="#tabset-1-5">Boxplot</a></li><li><a href="#tabset-1-6">Interpretations</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="card-list">
+<ul>
+<li>What is descriptive statistics?
+<ul>
+<li>Descriptive statistics describes larger trends in the data, without making claims about the true population values.</li>
+</ul></li>
+</ul>
+</div>
+<div class="iframe">
 
-</section></section>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="card-list">
+<ul>
+<li>Compare the following to the version with <code>mutate()</code>. How do they differ?</li>
+</ul>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>summary_table <span class="ot">&lt;-</span> df_both <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Mean=</span><span class="fu">mean</span>(heights))</span>
+<span id="cb6-2"><a href=""></a>summary_table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  sex   SampleSize  Mean    SD    SE
+  &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 f            200  64.3  4.04 0.286
+2 m            200  69.1  4.75 0.336</code></pre>
+</div>
+</div>
+<div class="iframe">
+
+</div>
+<div class="card-list">
+<ul>
+<li>For this class, a summary table includes SampleSize, Mean, SD, and SE (standard error).</li>
+<li>The function to calculate the sample size is just <code>n()</code></li>
+<li>The function to calculate SD is <code>sd(height)</code></li>
+<li>To calculate SE, that is SD/sqrt(SampleSize)</li>
+</ul>
+</div>
+</div>
+<div id="tabset-1-3">
+<div class="card-list">
+<ul>
+<li>Use <code>facet_warp(~sex)</code> to create a separate panel for each sex.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">ggplot</span>(...) <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-4">
+<div class="card-list">
+<ul>
+<li>Use <code>facet_warp(~sex)</code> to create a separate panel for each sex.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">ggplot</span>(...) <span class="sc">+</span> <span class="fu">geom_freqpoly</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-5">
+<div class="card-list">
+<ul>
+<li>For boxplots, you need both the x and y variable in aesthetics.</li>
+<li>What should the x and y variables be?</li>
+</ul>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="fu">ggplot</span>(...) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-6">
+<iframe src="https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg" width="100%" height="600px" style="border:0;"></iframe>
+<aside class="notes">
+<ul>
+<li>What should include for your interpretations of a histogram?
+<ul>
+<li>Whether or not there’s a difference between two groups</li>
+<li>The mean and standard deviation from a sample</li>
+<li>The general shape and spread of data</li>
+<li>It is important to describe the shape with as much detail as possible in order to be honest about the data.</li>
+<li>The correlation between two variables</li>
+</ul></li>
+<li>Common mistake: tendency to overinterpret.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</div>
+</div>
+</section>
+<section id="inferential-statistics" class="slide level2">
+<h2>Inferential statistics</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">What is it?</a></li><li><a href="#tabset-2-2">Confidence Intervals</a></li><li><a href="#tabset-2-3">Mean and CI plot</a></li><li><a href="#tabset-2-4">Interpretations</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
+<div class="card-list">
+<ul>
+<li>What is inferential statistics, and how does it differ from descriptive statistics?
+<ul>
+<li>Inferential statistics tries to guess the true population based on the sample we have.</li>
+</ul></li>
+</ul>
+</div>
+<div class="iframe">
+
+</div>
+</div>
+<div id="tabset-2-2">
+<div class="card-list">
+<ul>
+<li>You can use the summary table to calculate the confidence interval</li>
+<li>The Lower 95% CI is calculated as <code>Mean-1.96*SE</code></li>
+<li>The Upper 95% CI is calculated as <code>Mean+1.96*SE</code></li>
+<li>You can obtain just the CIs by using <code>select()</code>, with the columns you want as input.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>summary_table <span class="ot">&lt;-</span> summary_table <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">LowerCI =</span> Mean<span class="fl">-1.96</span><span class="sc">*</span>SE, <span class="at">UpperCI =</span> Mean<span class="fl">+1.96</span><span class="sc">*</span>SE)</span>
+<span id="cb11-2"><a href=""></a>CIs <span class="ot">&lt;-</span> summary_table <span class="sc">%&gt;%</span> <span class="fu">select</span>(sex, LowerCI, UpperCI)</span>
+<span id="cb11-3"><a href=""></a>CIs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  sex   LowerCI UpperCI
+  &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 f        63.8    64.9
+2 m        68.4    69.7</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-3">
+<div class="card-list">
+<ul>
+<li>Plots the mean and the CI for each group</li>
+<li>First, we plot the mean using geom_point()</li>
+<li>Then we plot CI using geom_errorbar</li>
+<li>Like for the boxplot, we need both x and y in aes(). What are they?</li>
+</ul>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">ggplot</span>(<span class="at">data=</span>summary_table, <span class="fu">aes</span>(...)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> LowerCI, <span class="at">ymax=</span>UpperCI)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-4">
+<iframe src="https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg" width="100%" height="600px" style="border:0;"></iframe>
+<aside class="notes">
+<ul>
+<li>What should you include in your CI interpretations?
+<ul>
+<li>Whether or not the CIs overlap</li>
+<li>If the p-value is below 0.05, it is a significant difference</li>
+<li>The objective answer to research question</li>
+<li>Whether or not we have proved our hypothesis correct</li>
+<li>The strength of results to support our hypothesis.</li>
+</ul></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</div>
+</div>
+</section>
+<section id="deliverables" class="slide level2 scrollable">
+<h2>Deliverables</h2>
+<p>As always, you can leave after you check in with me and submit your assignment. Double check your work with ~2 people before asking me to check your work. Then you can all wait less and leave sooner!</p>
+<div class="card-list">
+<ol type="1">
+<li>All the code we used to generate the final dataset that includes both women and men’s heights</li>
+<li>Descriptive statistics
+<ul>
+<li>Summary table</li>
+<li>Either a histogram, frequency polygon, or boxplot</li>
+<li>Interpretations</li>
+</ul></li>
+<li>Inferental statistics
+<ul>
+<li>Confidence intervals</li>
+<li>Mean and CI plot</li>
+<li>Interpretations</li>
+</ul></li>
+</ol>
+</div>
+
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

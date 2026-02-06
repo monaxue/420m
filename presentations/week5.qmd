@@ -2,9 +2,17 @@
 **Create your lab4 folder and project**
 
 ::: notes
-This week, we will plot confidence intervals, simulate (?) CIs, and go over case study expectations. But we can also do central limit theorem again and simulate using the same concept as week 3. Or maybe confidence intervals will still be covered in week 6 and won't be as important for the first case study. 
+This week, we will plot confidence intervals, simulate (?) CIs, and go over case study expectations. But we can also do central limit theorem again and simulate using the same concept as week 3. Or maybe confidence intervals will still be covered in week 6 and won't be as important for the first case study. What about simulating the null hypothesis?
+
+People learn better when getting personal feedback, even when you teach sometthing in class (think in dance). So maybe have a clear rubric, but do spend too much time teaching people how to write a report, but do that during the feedback session.
+
+Go with the "try it", then "now change this" approach.
 
 :::
+
+Two weeks ago, in someone's lab report report, someone wrote this:
+
+I understand where the confusion might come from...
 
 ## Review question
 
@@ -16,71 +24,56 @@ This week, we will plot confidence intervals, simulate (?) CIs, and go over case
 
 # Sampling distributions
 
+
+
+## Simulating normal distributions with rnorm()
+
+Because we have already demonstrated that the distribution of height becomes normally distributed via the CLT, we can now just use a function that simulates a normal distribution directly.
+
 ## rnorm(n, mean, sd)
 
 ::: card-list
 
 - "r" stands for random
 - "norm" stands for normal distribution
-- This function samples from a normal distribution randomly. 
+- This function randomly samples from a normal distribution.
 - Let's take see this in action.
 
 :::
 
-## Now you try!
+## Slido
 
-::: {.card-list .nonincremental}
+- Run the `rnorm(n, mean, sd)` function with a mean of 66 and an sd of 10, with a sample size of 200.
 
-- Run the `rnorm(n, mean, sd)` function with a mean of 100 and an sd of 10, with a sample size of 1.
-
-```{=html}
-
-<iframe src=https://wall.sli.do/event/3oY6Sijg8wvh8dq8k65iQf/?section=7c2e35e5-0092-4380-a5b1-e2828ec7cd06 width=100%, height=600></iframe>
-
-```
+::: iframe
 
 :::
 
 
-## replicate()
 
-::: card-list
-- We can run each experiment multiple times.
-- replicate(), creates a matrix of results, where each column is a single experiment.
 
-:::
+## Central limit theorem again
+Only change 2 things:
+- Simulating multiple experiments, instead of each person in an experiment.
+- Taking the mean instead of the sum.
 
-. . .
-
-````{verbatim}
 ```r
 
-matrix <- replicate(3, rnorm(5, mean = 100, sd = 10))
-matrix
+all_experiments <- c()
 
+for (experiment_number in 1:100){
+    sample_size <- 10 # sample size per experiment
+    all_heights <- rnorm(n=sample size, mean=66, sd=10) # simulates 10 people's height
+    all_experiments[experiment_number] <- mean(all_heights)
+}
 ```
-          [,1]      [,2]      [,3]
-[1,] 122.85353  98.96323  99.39199
-[2,]  85.13403  85.24940  93.66550
-[3,]  99.45157 102.84034 119.71288
-[4,] 111.03297 109.18319  84.86919
-[5,]  93.45378 109.78161 104.45262
 
-````
-
-. . .
+## What this means
+- Instead of a distribution of individual heights, we get a distribution of mean heights (from separate experiments)
+- Last time, more "causes" made the distribution more normal. This time, larger sample size makes the distribution more normal
+- Last time, we simulated how a sample distribution becomes more normally distributed. This time, we simulate how a samplING distribution becomes more normally distributed.
 
 **Let's see this in action**
-
-
-
-## Why do we want to simulate with replicate()?
-::: card-list
-- Can we just take a larger sample size?
-- It allows us to calculate summary statistics for sub-samples.
-- We can learn about the relationship between these summary statistics for smaller samples, and the "true" population.
-
-:::
 
 ## Means of means and standard errors
 
@@ -180,3 +173,41 @@ ggplot(sampling_100, aes(x=x)) + geom_freqpoly()
 ```
 
 :::
+
+## Case study rubric
+
+Overall:
+1. Sections: 
+- Research Question and Hypotheses
+- Methods Overview
+- Results and Interpretation
+- External sources
+1. Submit an html file that is formatted well and organized logically.
+
+Research Question and Hypotheses
+- Research question (1 sentence)
+- The main hypothesis (1 sentence)
+- The null hypothesis (1 sentence)
+
+Methods Overview
+Explain how the the research question informs your methdological choices, like what groups you are comparing, what statistical procedues you are conducting, what plots your are creating, etc.
+
+Results and Interpretation
+1. At least one descriptive plot
+1. At least one inferential plot
+1. At least one summary table.
+1. A main paragraph that includes:
+    - Key results (means, sd, confidence intervals)
+    - Appropriate interpretations for each result (don't "over-interpret")
+    - Appropriate interpretations for each plot (don't "over-interpret")
+    - As part of your interpretations, make sure to demonstrate an understanding of the definition of key concepts. Especially for:
+        - Confidence interval
+        - "Significance"
+1. Using your own best judgment, how strongly do you think your results support the main hypothesis? Why?
+
+External sources section:
+The case studies can be completed without using any external sources. However, if you choose to use them, you must be able to justify the choice. So, please list every line of code and statistical concept that we have not covered in class, and explain:
+1. What they do or mean
+1. Why you have chosen to use this in place of what we learned in class
+1. A link to the source, if it exists, otherwise a description is fine.
+

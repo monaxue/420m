@@ -63,6 +63,10 @@ Effects of exercise
 
 -->
 
+## Case Study 1
+
+[Case Study 1 Rubric](presentations/casestudy1.html){.filelink}
+
 ## Week 4
 
 [Slides](presentations/week4.html){.filelink}

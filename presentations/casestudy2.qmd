@@ -1,0 +1,4 @@
+As part of your interpretations, make sure to demonstrate an understanding of the definition of key concepts. Especially for:
+        - Confidence interval
+        - "Significance"
+1. Using your own best judgment, how strongly do you think your results support the main hypothesis? Why?

@@ -2,6 +2,13 @@
 # Week 6
 
 
+::: notes
+
+Cover z-scores and CI. Have people write an interpretation for CI's for their lab report. Have people revise their lab reports.
+
+:::
+
+
 ## Last week's lab
 
 ::: card-list

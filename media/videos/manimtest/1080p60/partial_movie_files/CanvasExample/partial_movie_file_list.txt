@@ -1,0 +1,10 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/monaj/dev/420m/media/videos/manimtest/1080p60/partial_movie_files/CanvasExample/3544663784_3043153463_223132457.mp4'
+file 'file:C:/Users/monaj/dev/420m/media/videos/manimtest/1080p60/partial_movie_files/CanvasExample/260329756_3649435867_4225292043.mp4'
+file 'file:C:/Users/monaj/dev/420m/media/videos/manimtest/1080p60/partial_movie_files/CanvasExample/260329756_2240210012_1691598009.mp4'
+file 'file:C:/Users/monaj/dev/420m/media/videos/manimtest/1080p60/partial_movie_files/CanvasExample/260329756_2827308748_1837558172.mp4'
+file 'file:C:/Users/monaj/dev/420m/media/videos/manimtest/1080p60/partial_movie_files/CanvasExample/260329756_607409146_2124642258.mp4'
+file 'file:C:/Users/monaj/dev/420m/media/videos/manimtest/1080p60/partial_movie_files/CanvasExample/260329756_2647878891_1842868226.mp4'
+file 'file:C:/Users/monaj/dev/420m/media/videos/manimtest/1080p60/partial_movie_files/CanvasExample/260329756_3042981106_1532742911.mp4'
+file 'file:C:/Users/monaj/dev/420m/media/videos/manimtest/1080p60/partial_movie_files/CanvasExample/260329756_1217901583_2495116640.mp4'
+file 'file:C:/Users/monaj/dev/420m/media/videos/manimtest/1080p60/partial_movie_files/CanvasExample/260329756_3364516234_2358810818.mp4'

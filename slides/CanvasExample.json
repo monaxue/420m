@@ -1,0 +1,69 @@
+{
+  "slides": [
+    {
+      "loop": false,
+      "auto_next": false,
+      "playback_rate": 1.0,
+      "reversed_playback_rate": 1.0,
+      "notes": "",
+      "dedent_notes": true,
+      "skip_animations": false,
+      "src": null,
+      "file": "slides\\files\\CanvasExample\\4e5578b8042bd4d8eafd36eaa65b8857e340e95e5f741f2ced3ddc1438931361.mp4",
+      "rev_file": "slides\\files\\CanvasExample\\4e5578b8042bd4d8eafd36eaa65b8857e340e95e5f741f2ced3ddc1438931361_reversed.mp4"
+    },
+    {
+      "loop": false,
+      "auto_next": false,
+      "playback_rate": 1.0,
+      "reversed_playback_rate": 1.0,
+      "notes": "",
+      "dedent_notes": true,
+      "skip_animations": false,
+      "src": null,
+      "file": "slides\\files\\CanvasExample\\031bab2c5daa67430dd4d5d91bb95f987d8d2b8278b4d0d5e92c86fadafc724a.mp4",
+      "rev_file": "slides\\files\\CanvasExample\\031bab2c5daa67430dd4d5d91bb95f987d8d2b8278b4d0d5e92c86fadafc724a_reversed.mp4"
+    },
+    {
+      "loop": false,
+      "auto_next": false,
+      "playback_rate": 1.0,
+      "reversed_playback_rate": 1.0,
+      "notes": "",
+      "dedent_notes": true,
+      "skip_animations": false,
+      "src": null,
+      "file": "slides\\files\\CanvasExample\\e794d59145a27f9a58ff34d76d17179d832aa6d17c6f8e4c62d184ed77ff7c4a.mp4",
+      "rev_file": "slides\\files\\CanvasExample\\e794d59145a27f9a58ff34d76d17179d832aa6d17c6f8e4c62d184ed77ff7c4a_reversed.mp4"
+    },
+    {
+      "loop": false,
+      "auto_next": false,
+      "playback_rate": 1.0,
+      "reversed_playback_rate": 1.0,
+      "notes": "",
+      "dedent_notes": true,
+      "skip_animations": false,
+      "src": null,
+      "file": "slides\\files\\CanvasExample\\300a9f017d974911497c6069182e5229b6c5be170b4e6eed849d64a18d222776.mp4",
+      "rev_file": "slides\\files\\CanvasExample\\300a9f017d974911497c6069182e5229b6c5be170b4e6eed849d64a18d222776_reversed.mp4"
+    },
+    {
+      "loop": false,
+      "auto_next": false,
+      "playback_rate": 1.0,
+      "reversed_playback_rate": 1.0,
+      "notes": "",
+      "dedent_notes": true,
+      "skip_animations": false,
+      "src": null,
+      "file": "slides\\files\\CanvasExample\\f40e426da43e21f8b3dbc7b815f7a65875338725b7d7de17c8205e3c05c15661.mp4",
+      "rev_file": "slides\\files\\CanvasExample\\f40e426da43e21f8b3dbc7b815f7a65875338725b7d7de17c8205e3c05c15661_reversed.mp4"
+    }
+  ],
+  "resolution": [
+    1920,
+    1080
+  ],
+  "background_color": "black"
+}

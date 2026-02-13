@@ -1,2 +1,5 @@
 jupyter
 ipykernel
+manim-slides[magic]
+manim
+PySide6

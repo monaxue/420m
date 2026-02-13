@@ -13,6 +13,7 @@ Go with the "try it", then "now change this" approach.
 
 ## Outline
 ::: card-list
+- Announcement: read your feedback on lab4!
 - Go over case study rubric
 - Introduce the sampling distribution
 - Go over the ties between a sampling distribution and the CLT

@@ -230,15 +230,24 @@
 </section>
 <section id="slido" class="slide level2">
 <h2>Slido</h2>
-<iframe src="https://wall.sli.do/event/qt6YkWvGsf5CsStydxx2YZ" width="100%" height="600px" style="border:0;"></iframe>
+<div class="card-list">
+<ul>
+<li class="fragment">What is a sampling distribution? Do you remember?
+<ul>
+<li class="fragment">The distribution of means across many many (infinite) number of experiments.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+
+<img data-src="assets/slido-why-do-normal-distributions-pop-up-so-much-in-psychology.png" class="r-stretch"><p>The first sentence is a technically a true statement, but the CLT is not only about the sampling distribution, and this does not answer the question.</p>
+<p>The second option is correct. With many causes, numbers tend to “average out”, so most values become centered around a mean (CLT)</p>
 <aside class="notes">
 <ul>
-<li>In lab3, there was some confusion surrounding sampling distributions.</li>
-<li>Do you remember what a sampling distribution is?
-<ul>
-<li>mean of means</li>
-</ul></li>
-<li>Why do normal distributions pop up so much in psychology?
+<li><p>In lab3, there was some confusion surrounding sampling distributions.</p></li>
+<li><p>Why do normal distributions pop up so much in psychology?</p>
 <ul>
 <li>CLT states that with larger sample sizes, the sampling distribution becomes more normal
 <ul>
@@ -486,35 +495,9 @@
 </ul>
 </div>
 </section>
-<section id="simulating-a-sampling-distribution" class="slide level2 scrollable">
+<section id="simulating-a-sampling-distribution" class="slide level2">
 <h2>Simulating a sampling distribution</h2>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Does this look familiar?</a></li><li><a href="#tabset-1-2">Slido</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
-<aside class="notes">
-<p>Compare this to our simulated heights example from lab3. - In lab3, we simulated causes, like genetics, nutrition, etc. Which variables above are analogous? - Sample size in this lab is equivalent to lab3’s __. - In lab3, we took the sum, which led to having a more normal distribution. What do we do here instead?</p>
-<ul>
-<li>Central limit theorem again
-<ul>
-<li>Only change 2 things:
-<ol type="1">
-<li>Simulating multiple experiments, instead of each person in an experiment.</li>
-<li>Taking the mean instead of the sum.</li>
-</ol></li>
-</ul></li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<p>Does this look familiar?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a></span>
 <span id="cb2-2"><a href=""></a>sim_means <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
 <span id="cb2-3"><a href=""></a></span>
@@ -528,11 +511,38 @@
 <span id="cb2-11"><a href=""></a>}</span>
 <span id="cb2-12"><a href=""></a></span>
 <span id="cb2-13"><a href=""></a>sim_means</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="slido-1" class="slide level2">
+<h2>Slido</h2>
+<p>Compare this to our simulated heights example from lab3.</p>
+<div class="card-list">
+<ul>
+<li class="fragment">In lab3, we simulated causes, like genetics, nutrition, etc. Which variables above are analogous?
+<ul>
+<li class="fragment">person1, person2, person3</li>
+</ul></li>
+<li class="fragment">Sample size in this lab is equivalent to lab3’s __.
+<ul>
+<li class="fragment">number of causes</li>
+</ul></li>
+<li class="fragment">In lab3, we took the sum, which led to having a more normal distribution. What do we do here instead?
+<ul>
+<li class="fragment">the mean</li>
+</ul></li>
+</ul>
 </div>
-<div id="tabset-1-2">
-<iframe src="https://wall.sli.do/event/qt6YkWvGsf5CsStydxx2YZ" width="100%" height="600px" style="border:0;"></iframe>
-</div>
-</div>
+</section>
+<section id="central-limit-theorem-again" class="slide level2 scrollable">
+<h2>Central limit theorem again</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">Only changed 2 things:
+<ol type="1">
+<li class="fragment">Simulating multiple experiments, instead of each person in an experiment.</li>
+<li class="fragment">Taking the mean instead of the sum.</li>
+</ol></li>
+<li class="fragment">Same effect: numbers average out, so most of the values are centered around the mean with a bell shape (CLT).</li>
+</ul>
 </div>
 </section>
 <section id="what-this-means" class="slide level2">

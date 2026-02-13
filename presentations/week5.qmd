@@ -23,14 +23,24 @@ Go with the "try it", then "now change this" approach.
 
 ## Slido
 
-::: iframe
-https://wall.sli.do/event/qt6YkWvGsf5CsStydxx2YZ
+::: card-list
+
+- What is a sampling distribution? Do you remember?
+    - The distribution of means across many many (infinite) number of experiments.
+
 :::
 
+##
+![](assets/slido-why-do-normal-distributions-pop-up-so-much-in-psychology.png)
+
+The first sentence is a technically a true statement, but the CLT is not only about the sampling distribution, and this does not answer the question.
+
+The second option is correct. With many causes, numbers tend to "average out", so most values become centered around a mean (CLT)
+
 ::: notes
+
 - In lab3, there was some confusion surrounding sampling distributions.
-- Do you remember what a sampling distribution is?
-    - mean of means
+
 - Why do normal distributions pop up so much in psychology?
     - CLT states that with larger sample sizes, the sampling distribution becomes more normal
         - True, but the CLT is not only about the sampling distribution, and this does not answer the question.
@@ -233,23 +243,7 @@ rnorm(mean=..., sd=..., n=...)
 
 ## Simulating a sampling distribution
 
-:::: panel-tabset
-
-## Does this look familiar?
-
-::: notes
-
-Compare this to our simulated heights example from lab3.
-- In lab3, we simulated causes, like genetics, nutrition, etc. Which variables above are analogous?
-- Sample size in this lab is equivalent to lab3's __.
-- In lab3, we took the sum, which led to having a more normal distribution. What do we do here instead?
-
-- Central limit theorem again
-    - Only change 2 things:
-        1. Simulating multiple experiments, instead of each person in an experiment.
-        2. Taking the mean instead of the sum.
-
-:::
+Does this look familiar?
 
 ```r
 
@@ -267,15 +261,30 @@ for (experiment in 1:100){
 sim_means
 
 ```
+
 ## Slido
 
-::: iframe
-https://wall.sli.do/event/qt6YkWvGsf5CsStydxx2YZ
+Compare this to our simulated heights example from lab3.
+
+::: card-list
+
+- In lab3, we simulated causes, like genetics, nutrition, etc. Which variables above are analogous?
+    - person1, person2, person3
+- Sample size in this lab is equivalent to lab3's __.
+    - number of causes
+- In lab3, we took the sum, which led to having a more normal distribution. What do we do here instead?
+    - the mean
+
 :::
 
+## Central limit theorem again
 
-
-::::
+::: card-list
+- Only changed 2 things:
+    1. Simulating multiple experiments, instead of each person in an experiment.
+    2. Taking the mean instead of the sum.
+- Same effect: numbers average out, so most of the values are centered around the mean with a bell shape (CLT).
+:::
 
 ## What this means
 ::: card-list
@@ -283,6 +292,7 @@ https://wall.sli.do/event/qt6YkWvGsf5CsStydxx2YZ
 - Last time, more "causes" made the distribution more normal. This time, larger sample size makes the distribution more normal
 - Last time, we simulated how a sample distribution becomes more normally distributed. This time, we simulate how a sampling (note the "ing") distribution becomes more normally distributed.
 :::
+
 
 ::: notes
 

@@ -58,7 +58,7 @@ The second option is correct. With many causes, numbers tend to "average out", s
 
 ::: card-list
 - You hold an experiment
-- N = 100 people
+- N = 20 people
 :::
 . . . 
 
@@ -85,7 +85,7 @@ ggplot(data_filtered, aes(x=Height, color=Experiment)) + geom_density(size=2) + 
 
 ::: card-list
 - You hold another experiment
-- N = 100 people
+- N = 20 people
 :::
 
 . . . 
@@ -337,4 +337,10 @@ one_experiment <- tibble(heights = rnorm(...))
     1. Intuitively, why do you think the shape/spread differs?
 - Submit your html file on Canvas
 
+:::
+
+::: notes
+Next, time, maybe a 2 single experiment plots, one with n = 20, the other with n = 100, so people don't think it has something to do with more data. Keep n = 20 so people don't think it's because the sampling distribution has a larger sample size?
+
+Also, maybe use a higher sample size in general for the deliverables, since the single experiment doesn't have a normal distribution.
 :::

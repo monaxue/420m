@@ -187,7 +187,7 @@ https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
     ```
 
 - Compare the above with the previous version without the group_by(). What's the difference?
-    - They are the within each sex, but different between
+    - They are the same within each sex, but different between
 
     
 :::

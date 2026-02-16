@@ -330,12 +330,12 @@ https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
 <pre><code># A tibble: 6 × 2
   heights sex  
     &lt;dbl&gt; &lt;chr&gt;
-1      70 f    
+1      67 f    
 2      68 f    
-3      65 f    
-4      59 f    
-5      70 f    
-6      63 f    </code></pre>
+3      67 f    
+4      58 f    
+5      64 f    
+6      62 f    </code></pre>
 </div>
 </div>
 <p>Make sure you have two columns</p>
@@ -372,7 +372,7 @@ https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>df_mutated <span class="ot">&lt;-</span> df_both <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Mean=</span><span class="fu">mean</span>(heights))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li class="fragment"><p>Compare the above with the previous version without the group_by(). What’s the difference?</p>
 <ul>
-<li class="fragment">They are the within each sex, but different between</li>
+<li class="fragment">They are the same within each sex, but different between</li>
 </ul></li>
 </ul>
 </div>
@@ -430,8 +430,8 @@ https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
 <pre><code># A tibble: 2 × 5
   sex   SampleSize  Mean    SD    SE
   &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1 f            200  64.2  4.16 0.294
-2 m            200  69.5  4.70 0.332</code></pre>
+1 f            200  64.1  4.31 0.304
+2 m            200  69.1  4.72 0.334</code></pre>
 </div>
 </div>
 </div>
@@ -489,6 +489,11 @@ https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
 </div>
 </div>
 <div id="tabset-1-6">
+<div class="card-list">
+<ul>
+<li>Common mistake: tendency to overinterpret.</li>
+</ul>
+</div>
 <p><img data-src="assets/slido-what-should-include-for-your-interpretations-of-a-histogram.png"></p>
 <aside class="notes">
 <ul>
@@ -500,7 +505,6 @@ https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
 <li>It is important to describe the shape with as much detail as possible in order to be honest about the data.</li>
 <li>The correlation between two variables</li>
 </ul></li>
-<li>Common mistake: tendency to overinterpret.</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -551,8 +555,8 @@ https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
 <pre><code># A tibble: 2 × 3
   sex   LowerCI UpperCI
   &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-1 f        63.6    64.8
-2 m        68.8    70.1</code></pre>
+1 f        63.5    64.7
+2 m        68.5    69.8</code></pre>
 </div>
 </div>
 </div>

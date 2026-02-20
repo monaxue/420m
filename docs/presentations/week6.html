@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="week6_files/libs/clipboard/clipboard.min.js"></script>
-<script src="week6_files/libs/quarto-html/tabby.min.js"></script>
-<script src="week6_files/libs/quarto-html/popper.min.js"></script>
-<script src="week6_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="week6_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="week6_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="week6_files/libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
+<link href="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/sc-sb-title-1.0.0/sc_sb_title.js" defer="true"></script>
+<link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.24">
 
-  <meta name="author" content="Mona Xue">
-  <title>week6</title>
+  <title>PSYCH 420m Lab – Week 6</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="week6_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="week6_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -28,80 +31,14 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="week6_files/libs/revealjs/dist/theme/quarto-793037751465ef36f94eeeb00878bf19.css">
-  <link href="week6_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="week6_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="week6_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="week6_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="week6_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="week6_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-793037751465ef36f94eeeb00878bf19.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -195,92 +132,304 @@
   <div class="reveal">
     <div class="slides">
 
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Week 6</h1>
+  <p class="subtitle">Case studies and CIs</p>
 
-<section>
-<section id="week-6" class="title-slide slide level1 center">
-<h1>Week 6</h1>
+<div class="quarto-title-authors">
+</div>
 
 </section>
-<section id="last-weeks-lab" class="slide level2">
-<h2>Last week’s lab</h2>
+<section class="slide level2">
+
+<aside class="notes">
+<p>Go over case studies.</p>
+<p>Cover z-scores and CI. Have people write an interpretation for CI’s for their lab report. Have people revise their lab reports.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="case-studies" class="slide level2">
+<h2>Case studies</h2>
 <div class="card-list">
 <ul>
-<li class="fragment">A lot of you made avoidable mistakes in last weeks lab. Things like forgetting to including certain means.</li>
-<li class="fragment">Make sure to double check everything before you submit.</li>
-<li class="fragment">Easy fix: double check with me before you leave.</li>
+<li class="fragment">I’m partially through grading them.</li>
+<li class="fragment">So far:
+<ul>
+<li class="fragment">There is a mix of scores</li>
+<li class="fragment">Somewhat of a bimodal distribution</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="the-good" class="slide level2">
+<h2>The good</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">Most everyone
+<ul>
+<li class="fragment">Wrote great code.</li>
+<li class="fragment">Formatted the Rmd well.</li>
+<li class="fragment">These things are hard.</li>
+<li class="fragment">Make sure to recognize your accomplishments!</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="the-struggles" class="slide level2">
+<h2>The struggles</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">Those who lost the most points:
+<ul>
+<li class="fragment">Used the wrong rubric</li>
+<li class="fragment">Missed things on the rubric</li>
+<li class="fragment">Primary tip: Make sure to double check everything on the rubric</li>
+</ul></li>
+<li class="fragment">Many of you lost points on this
+<ul>
+<li class="fragment">Interpretations</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="before-you-get-too-anxious" class="slide level2">
+<h2>Before you get too anxious…</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">You will have the opportunity to revise your case study to receive up to a score of 14.</li>
+</ul>
+</div>
+</section>
+<section id="outline" class="slide level2">
+<h2>Outline</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">I will clarify interpretations</li>
+<li class="fragment">I will finally go over confidence intervals</li>
+<li class="fragment">What I hope to accomplish: help you build some intuition about stats so you don’t feel like you need to memorize a list of annoying rules</li>
+</ul>
+</div>
+</section>
+<section>
+<section id="interpretations" class="title-slide slide level1 center">
+<h1>Interpretations</h1>
+
+</section>
+<section id="ambiguous-thinking" class="slide level2">
+<h2>“Ambiguous thinking”</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">Descriptive statistics is all about “ambiguous thinking”
+<ul>
+<li class="fragment">Shape: Is it normal? Symmentrical? Skewed (rarer than you think!)? Bimodal?</li>
+<li class="fragment">Center ~ <strong><em>Sample</em></strong> mean</li>
+<li class="fragment">Spread ~ <strong><em>Sample</em></strong> SD</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="ambiguous-thinking-1" class="slide level2">
+<h2>“Ambiguous thinking”</h2>
+
+<img data-src="week6_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
+<section id="main-purpose" class="slide level2">
+<h2>Main purpose</h2>
+<div class="columns">
+<div class="column">
+<div class="card-list">
+<ul>
+<li class="fragment"><strong>Descriptive</strong>
+<ul>
+<li class="fragment">Visualize the <strong><em>general</em></strong> shape, center, and spread of the <strong><em>sample</em></strong></li>
+<li class="fragment">“See the forest, but not the trees”</li>
+</ul></li>
+</ul>
+</div>
+</div><div class="column">
+<div class="card-list">
+<ul>
+<li class="fragment"><strong>Inferential</strong>
+<ul>
+<li class="fragment">Make inferences about the true population means</li>
+</ul></li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="what-i-saw-in-the-case-studies" class="slide level2">
+<h2>What I saw in the case studies</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">Statements that imply a population level conclusion</li>
+<li class="fragment">WRONG: “A histogram will let me compare the performance of each group”</li>
+<li class="fragment">When you talk about “performance” you are implying knowledge about the true population
+<ul>
+<li class="fragment">“Score” (noisy metric for performance) vs.&nbsp;“Performance” (true population)</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="score-neq-performance" class="slide level2">
+<h2>Score <span class="math inline">\(\neq\)</span> Performance</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">Score is the thing we can measure. “Performance” is the thing we actually care about (true population) that we hope the score represents.</li>
+<li class="fragment">More examples
+<ul>
+<li class="fragment">Number of words recalled <span class="math inline">\(\neq\)</span> Memory</li>
+<li class="fragment">IQ test score <span class="math inline">\(\neq\)</span> Intelligence</li>
+</ul></li>
+</ul>
+</div>
+<aside class="notes">
+<ul>
+<li>An IQ test wishes to measure your intelligence, but at best it only captures part of your intelligence. What it also captures includes: your education, your wealth, whether or not you were exposed to lead as a kid, etc.</li>
+<li>If you say “there is a difference in intelligence between group 1 and group 2”, then you are implying a population difference. If you say “there is a difference in sample mean of IQ test scores between group 1 and group 2”</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="correct-mean-interpretations" class="slide level2">
+<h2>Correct mean interpretations</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">Sufficient: “The <strong><em>sample</em></strong> mean of the score in group A is _ and the <strong><em>sample</em></strong> mean of the score in group B is _.”</li>
+<li class="fragment">If you want to compare:
+<ul>
+<li class="fragment">Don’t forget <strong><em>sample mean</em></strong> and <strong><em>score</em></strong> (or whatever the actual metric is in the study)</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="why-cant-we-talk-about-the-population-when-looking-at-histograms" class="slide level2">
+<h2>Why can’t we talk about the population when looking at histograms?</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">A difference in the mean could be due to sampling error</li>
+<li class="fragment">What inferential statistics does: It takes into consideration the possible sampling errors
+<ul>
+<li class="fragment">But CIs are <strong><em>not</em></strong> errors!</li>
+<li class="fragment">How? Sampling distributions provide us with the math to make a good guess</li>
+</ul></li>
 </ul>
 </div>
 </section></section>
 <section>
-<section id="case-studies" class="title-slide slide level1 center">
-<h1>Case studies</h1>
+<section id="confidence-intervals" class="title-slide slide level1 center">
+<h1>Confidence intervals</h1>
 
 </section>
-<section id="how-to-choose-what-to-show-in-a-plot" class="slide level2">
-<h2>How to choose what to show in a plot</h2>
-<p><strong>Answer will be vague</strong></p>
+<section id="the-confidence-interval-comes-from-the-sampling-distribution" class="slide level2">
+<h2>The confidence interval comes from the sampling distribution</h2>
 <div class="card-list">
 <ul>
-<li class="fragment">If you can provide a good justification, even if you are wrong, I will be more lenient in grading. You can do so in the figure descriptions.</li>
-<li class="fragment">Be intentional about what subgroups you choose. Do you think comparing certain subgroups will provide useful information? When in doubt, create plots that distinguish between all subgroups and decide which ones are worth keeping.</li>
-<li class="fragment">For histograms, it is best to plot groups in separate plots/panels. In is harder to determine shape when the different colors are stacked.</li>
+<li class="fragment">Sampling distribution: distribution of means over <span class="math inline">\(\infty\)</span> experiments
+<ul>
+<li class="fragment">Hypothetical</li>
+</ul></li>
+<li class="fragment">If we know the true mean, <span class="math inline">\(\mu\)</span>, the sampling distribution tells us what kind of samples to expect</li>
 </ul>
 </div>
 </section>
-<section id="plot-interpretation-checklist" class="slide level2">
-<h2>Plot interpretation checklist</h2>
-<ul class="task-list">
-<li class="fragment"><label><input type="checkbox">Compare results between groups.</label></li>
-<li class="fragment"><label><input type="checkbox">When comparing between groups, make sure to that the x-axes have the same range. Otherwise, you might mistakenly think two plots are more similar than they actually are.</label></li>
-<li class="fragment"><label><input type="checkbox">Provide a reason why you think a plot shows a certain outcome. This usually has to do with confidence intervals.</label></li>
-<li class="fragment"><label><input type="checkbox">Report CI values in your Results section, and explain how the CI values support your interpretation.</label></li>
-</ul>
+<section id="a-bit-of-math" class="slide level2">
+<h2>A bit of math…</h2>
+<aside class="notes">
+<p>I’m going to show some math. Try to keep up as best as you can, but don’t stress out too much about it. But there will also be a simulation at the end to hopefully make things clearer.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="plot-interpretation-checklist-1" class="slide level2">
-<h2>Plot interpretation checklist</h2>
-<ul class="task-list">
-<li class="fragment"><label><input type="checkbox">Do not “overdescribe” plots. Because samples are generated randomly, there will be variation in the plots that are not representative of the population. Instead, focus on general shapes and confidence intervals.</label>
-<ul class="task-list">
-<li class="fragment"><label><input type="checkbox">You do not need to describe every peak and valley of a histogram</label></li>
-<li class="fragment"><label><input type="checkbox">When there are overlaps in confidence intervals, avoid ranking those means.</label></li>
-</ul></li>
-<li class="fragment"><label><input type="checkbox">Is the claim I’m making valid with the analyses I have done?</label>
-<ul class="task-list">
-<li class="fragment"><label><input type="checkbox">Histograms don’t tell you if a result is significant</label></li>
-<li class="fragment"><label><input type="checkbox">Mean plots do not say anything about correlation</label></li>
-</ul></li>
-</ul>
-</section>
-<section id="confidence-interval-review" class="slide level2">
-<h2>Confidence interval review</h2>
+<section id="simulation" class="slide level2">
+<h2>Simulation</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Simulation</a></li><li><a href="#tabset-1-2">Slido</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
 <div class="card-list">
 <ul>
-<li class="fragment"><p>Explore the <a href="https://shiny.rit.albany.edu/stat/confidence/">Confidence Interval Simulator</a> (this link is also on the website).</p></li>
+<li class="fragment"><p>Explore the <a href="https://shiny.rit.albany.edu/stat/confidence/" target="_blank" rel="noopener noreferrer">Confidence Interval Simulator</a> (this link is also on the website).</p></li>
 <li class="fragment"><p>Discuss with your neighbors:</p>
 <ul>
-<li class="fragment"><p>What do you observe?</p></li>
-<li class="fragment"><p>Keep in mind: the difference between the population mean and the sample mean.</p></li>
-<li class="fragment"><p>Based on your observations, what do you think a confidence interval is?</p></li>
+<li class="fragment">What is it trying to show?</li>
+<li class="fragment">Give me an additional 2 observations</li>
 </ul></li>
+</ul>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="ifram">
+<p>https://wall.sli.do/event/qFBF9mUcZDngBd8niQpzQp</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="confidence-interval-definition" class="slide level2">
+<h2>Confidence interval definition</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">In 95% of experiments, the true mean will be in the CI of that experiment</li>
+<li class="fragment">95% of CIs will contain the true mean</li>
+<li class="fragment"><strong>Not:</strong> 95% probability that the true mean is in the CI of our experiment</li>
 </ul>
 </div>
 </section>
-<section id="what-is-a-95-confidence-interval-answer" class="slide level2">
-<h2>What is a 95% confidence interval? Answer:</h2>
+<section id="confidence-statement" class="slide level2">
+<h2>“Confidence” statement</h2>
 <div class="card-list">
 <ul>
-<li class="fragment"><p>95% of the samples generated by a population with the true mean, <span class="math inline">\(\mu\)</span>, will have a CI that contains <span class="math inline">\(\mu\)</span>.</p></li>
-<li class="fragment"><p>WRONG: There is a 95% probability that the CI contains the true mean, <span class="math inline">\(\mu\)</span>.</p>
-<ul>
-<li class="fragment">This is different from the first statement</li>
-<li class="fragment">You cannot actually calculate this probability directly, because it requires that you know the true mean, <span class="math inline">\(\mu\)</span></li>
-</ul></li>
-<li class="fragment"><p>Therefore, we instead use the term “confident”. We say that we are 95% confident that the CI contains the true mean.</p>
-<ul>
-<li class="fragment">There is a reason why it is called the confidence interval, and not the probability interval.</li>
-</ul></li>
+<li class="fragment">Since we can’t say anything about the probability in our experiment, we use the word “confident” instead</li>
+<li class="fragment">We are 95% <em>confident</em> that the true mean is in the CI of our experiment</li>
 </ul>
 </div>
+</section>
+<section id="ci-interpretations" class="slide level2">
+<h2>CI interpretations</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">Always include both the definition of a CI as well as the confidence statement.</li>
+</ul>
+</div>
+<!--
+::: card-list
+
+- 95% of the samples generated by a population with the true mean, $\mu$, will have a CI that contains $\mu$.
+
+- WRONG: There is a 95% probability that the CI contains the true mean, $\mu$.
+
+    - This is different from the first statement
+    - You cannot actually calculate this probability directly, because it requires that you know the true mean, $\mu$
+
+- Therefore, we instead use the term "confident". We say that we are 95% confident that the CI contains the true mean.
+    - There is a reason why it is called the confidence interval, and not the probability interval.
+:::
+-->
 <!--
 
 ```{=html}
@@ -288,24 +437,6 @@
 ```
 
 -->
-</section>
-<section id="important-writing-ci-interpretations" class="slide level2">
-<h2>IMPORTANT: Writing CI interpretations</h2>
-<p><strong>You want to write your CI interpretation almost exactly like the following:</strong></p>
-<p>The 95% confidence interval is [33.92, 34.88]. This means that we are 95% confident that the true mean lies within [33.92, 34.88].</p>
-<p>…</p>
-<p>Because the confidence intervals do not overlap, we can be fairly confident that the true means of females and males are different.</p>
-</section>
-<section id="how-to-format-nice-rmarkdown-files" class="slide level2">
-<h2>How to format nice RMarkdown files</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">For weekly labs, I’m more lenient on formatting of your reports.</li>
-<li class="fragment">However, for case studies, they should be more clear.</li>
-<li class="fragment">I made a case study template to help guide you. I highly recommend using it, but feel free experiment.</li>
-<li class="fragment">I encourage you to practice formatting in weekly labs as well.</li>
-</ul>
-</div>
 <!--
 
 ## Formatting Essentials
@@ -315,60 +446,40 @@
 ```
 
 -->
-</section>
-<section id="formatting-essentials" class="slide level2">
-<h2>Formatting Essentials</h2>
-<ul class="task-list">
-<li class="fragment"><label><input type="checkbox">Use Markdown text to write the main text. Comments should be restricted to notes related to the code.</label></li>
-<li class="fragment"><label><input type="checkbox">Properly format headings and sub-headings for different sections</label></li>
-<li class="fragment"><label><input type="checkbox">Make sure your code lines aren’t too long so they don’t run off the page</label></li>
-<li class="fragment"><label><input type="checkbox">Properly label graphs with <code>labs()</code>.</label></li>
-</ul>
-</section>
-<section id="advanced-formatting-options" class="slide level2">
-<h2>Advanced formatting options</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">To remove unwanted warnings and messages from the output, use these at the very top of a code block:
-<ul>
-<li class="fragment">#| warning: false</li>
-<li class="fragment">#| message: false</li>
-</ul></li>
-<li class="fragment">Use <code>knitr::kable()</code> to print nicer tables</li>
-<li class="fragment">Use <code>facet_wrap(~ group_name)</code> with ggplot to separate panels by group</li>
-<li class="fragment">Use inline r code: <code>`r `</code> to print variables in your paragraphs</li>
-<li class="fragment">Use <code>round()</code> to round to fewer decimals</li>
-<li class="fragment">Use <code>paste0()</code> to add together strings and variables.</li>
-</ul>
-</div>
-</section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href=""></a></span>
-<span id="cb1-2"><a href=""></a>```{r}</span>
-<span id="cb1-3"><a href=""></a>#| warning: false</span>
-<span id="cb1-4"><a href=""></a>#| message: false</span>
-<span id="cb1-5"><a href=""></a></span>
-<span id="cb1-6"><a href=""></a>ci &lt;- paste0("[", round(ci_min, 2), ", ", round(ci_max, 2), "]")</span>
-<span id="cb1-7"><a href=""></a>```</span>
-<span id="cb1-8"><a href=""></a>The confidence interval is `r ci`.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The confidence interval is [33.92, 34.88].</p>
-<div class="card-list">
-<p>More examples can be found in the case study template.</p>
-</div>
 </section></section>
-<section id="deliverables" class="title-slide slide level1 center">
+<section id="deliverables" class="title-slide slide level1 center scrollable">
 <h1>Deliverables</h1>
-<div class="card-list">
-<ul>
-<li class="fragment">In a nicely formatted RMarkdown file, critique your own case study by applying the concepts we learned today.
-<ul>
-<li class="fragment">Improve one of your case study plot. Explain what you changed and why.</li>
-<li class="fragment">In a paragraph, describe what you would change in your interpretation of results, e.g., This is what I said… This is what I would say now.</li>
+<ol type="1">
+<li>Write a reflection
+<ul class="task-list">
+<li><label><input type="checkbox">How you did you feel you did on this first case study? What are you proud of? What do you think you can improve upon?</label></li>
+<li><label><input type="checkbox">What are your major takeaways from today’s class?</label></li>
+<li><label><input type="checkbox">What revisions would you make on your case study? Be specific.</label></li>
+<li><label><input type="checkbox">What do you want your future self to remember when working on future case studies?</label></li>
 </ul></li>
-</ul>
-</div>
+<li>Write a CI interpretation for your Case Study 1.
+<ul class="task-list">
+<li><label><input type="checkbox">What is the main difference between a descriptive and inferential statistics?</label></li>
+<li><label><input type="checkbox">What is the definition of a CI?</label></li>
+<li><label><input type="checkbox">What does the CI say about the results? (Do you not use the word “significant”!)</label></li>
+</ul></li>
+</ol>
 
+
+<div class="reveal-header">
+<div class="header-logo">
+<img data-src="">
+</div>
+<div class="sc-title">
+<p> </p>
+</div>
+<div class="header-text">
+<p> </p>
+</div>
+<div class="sb-title">
+<p> </p>
+</div>
+</div>
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
@@ -378,20 +489,20 @@
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="week6_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="week6_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="week6_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="week6_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="week6_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="week6_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="week6_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="week6_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="week6_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="week6_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="week6_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>

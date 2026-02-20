@@ -1,8 +1,19 @@
 project:
-  title: "420m"
-  output-dir: docs
+  output-dir: docs # "docs" is an important folder name for GitHub pages
+  type: website
+  execute-dir: project
   resources:
-    - site/**
+    - data/
 
-filters:
-  - filelink.lua
+website: 
+  title: "PSYCH 420m Lab"
+  navbar: 
+    pinned: true
+    left:
+      - href: index.qmd
+        text: Slides
+      - href: files/cheatsheet.qmd
+        text: R Cheatsheet
+
+execute:
+  cache: true

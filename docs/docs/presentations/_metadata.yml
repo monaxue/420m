@@ -1,0 +1,13 @@
+format: 
+    monatheme-revealjs:
+      incremental: true
+      self-contained: false
+      smaller: true
+      scrollable: true
+      chalkboard:
+        theme: whiteboard
+      preview-links: true
+filters: 
+  - reveal-header
+
+author: "Mona Xue"

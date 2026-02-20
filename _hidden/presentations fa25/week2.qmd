@@ -1,0 +1,518 @@
+---
+title: Week 2 Lab
+
+---
+
+## Website
+:::{.card-list}
+- You can now find all lab materials on this site
+    - <https://monaxue.github.io/420m/>
+    - ![](/assets/website.png){height=200}
+
+:::
+
+## Slido
+:::::{.columns}
+:::{.column}
+:::{.card-list}
+- We will by trying Slido for attendance.
+
+- Scan the code and create a profile.
+
+- If you don't create a profile, I won't know you were here.
+
+- There's a Q&A function. We could try that and see if it works. 
+
+:::
+::::
+
+::::{.column}
+
+```{=html}
+
+<iframe src ="https://wall.sli.do/event/6ynmgcWS5imsspPsvsCZS5/?section=d9900205-0acd-4d58-a00b-1db0f08c917f" width="100%", height="600"></iframe>
+
+```
+::::
+:::::
+
+## Office hours
+:::{.card-list}
+- My office hours are Friday from 1-3pm, in SEAY 4.326A
+- Alex's office hours are Tuesday and Thursday, 1-2pm in SEAY 5.206
+:::
+
+# Coding time!
+
+## Make a folder for this class
+
+:::{.card-list}
+
+- Create a folder somewhere locally (home, documents, etc) named `420m`
+    - Inside this, create a subfolder for labs
+        - Insider this, create a subfolder for lab 1
+- The organization should look like: `…/420m/labs/lab1`
+:::
+
+## What is an RStudio project?
+
+::: {.card-list}
+- A project tells RStudio where the main folder for your project is
+- That way, when you read or save files, R will know where to find them.
+- We will be make a new project for each lab
+
+:::
+
+## Now, create an RStudio project
+
+:::{.card-list}
+- To create a project, click on `Project > New Project > Existing Directory`
+- Select your `lab1` folder
+![](/assets/make-r-project.gif)
+:::
+
+
+# RMarkdown Essentials
+
+:::{.notes}
+
+- What is a YAML header?
+- Markdown text and headings
+- What is a code block?
+- The "run" button and keyboard shortcut
+- Basic r syntax: comments, assign, variables, strings, lists, operators, print, indices
+- R coding challenge
+- Installing packages
+- Reading data
+- Knitting your RMarkdown file
+
+:::
+
+## Creat an RMarkdown file
+
+:::{.card-list}
+Create an **empty** RMarkdown file
+
+![](/assets/make-rmarkdown.gif)
+
+
+
+:::
+
+## What is a YAML header?
+````{verbatim}
+---
+# This is the YAML Header. Notice it is enclosed in "---" it is used to store information.
+
+# It includes metadata like the following:
+
+title: ...
+author: ...
+date: ...
+output: pdf_document
+---
+
+````
+
+## Markdown
+
+
+````{verbatim}
+
+# This is a heading. Notice the "#"
+
+## This is a sub-heading. Notice the "##"
+
+Markdown is a markup language that makes formatting text easier.
+
+It allows you to write normal text alongside code.
+
+````
+
+````{=html}
+
+<br></br>
+
+<h3> This is a heading. Notice the "#" </h3>
+
+<h4> This is a sub-heading. Notice the "##" </h4>
+
+<p>Markdown is a markup language that makes formatting text easier.</p>
+
+<p>It allows you to write normal text alongside code.</p>
+
+````
+
+
+
+## R Code Chunk
+
+````{verbatim}
+```{r}
+
+# This is your R code chunk.
+# This is where you write R code.
+
+```
+````
+
+## With both Markdown and R code = RMarkdown
+
+:::: {.columns}
+:::{.column width="50%"}
+
+````{verbatim}
+# This is a heading
+
+You can write text like this
+
+```{r}
+# This is a comment
+a <- 1
+b <- 2
+
+print(a)
+```
+````
+
+:::
+
+:::{.column width="50%"}
+#### This is a heading
+
+```r
+# This is a comment
+a <- 1
+b <- 2
+
+print(a)
+```
+1
+
+:::
+::::
+
+## Running your code
+
+Use "run" button or the keyboard shortcut `Ctr + Enter` or `Command + Enter`
+
+![](/assets/run-code.gif)
+
+## Basic Syntax
+
+. . . 
+
+```r
+# This is a comment. You denote it with #
+
+x # This is a variable. It can store stuff
+
+"x" # This is a string. It is just text
+
+# This is how you assign values to a variable
+x <- 1 
+
+```
+. . . 
+
+**This is how you create a vector. You use the notation `c()`**
+```r
+x <- c("a", "b", "c")
+y <- c(1, 2, 3)
+z <- 1:3 # This is the same as y. The : indicates a vector from 1 to 3
+
+```
+. . . 
+
+**To choose a specific element of a vector, you can use `[]`**
+```r
+x[2] # Outputs "b"
+y[3] # Outputs 3
+x[c(2, 3)] # Outputs "b", "c"
+x[1:2] # Outputs "a", "b"
+
+```
+. . . 
+
+**This is how you print values so that they are visible**
+```r
+print(x)
+```
+
+## Doing math
+
+. . . 
+
+```r
+1 + 1
+1 - 1
+```
+2
+
+0
+
+. . . 
+
+**Adding a single number to a vector**
+
+```r
+y + 1 # Adds the single number to all elements in the vector
+```
+2, 3, 4
+
+**Adding a vector to a vector**
+```r
+y + z # Adds the 1st to the 1st, the 2nd to the 2nd, etc.
+
+```
+. . .
+
+2, 4, 6
+
+. . . 
+
+## Other useful functions
+
+```r
+sum(y) # Adds together the elements of y
+
+mean(y) # Takes the mean of the elements of y
+
+2 * 2 # Multiplication
+
+2 / 2 # Division
+
+2^2 # To the power of 2
+
+sqrt(2) # Square root of 2
+
+(2 + 2) * 2 / (2) # Order of operations still apply, remember to use parentheses when you need to
+
+
+```
+
+
+# Coding challenge
+***Get into groups of 3-4***
+
+## 
+:::{.card-list}
+- Your friend is trying to send you a secret password, but he is worried about security. So he gives you the starting word "random", then provides you with a list instructions to decode it.
+- R Cheatsheet
+    - ![](/assets/r-cheatsheet-files.png){height="200"}
+
+:::
+
+## Part 1
+:::{.card-list}
+
+- Create vector `a` with the numbers 18, 32, 11, and 25, in that order
+- Add 3 to all of vector `a`. Then divide by 7. Then subtract 2. Assign this to vector `b`. Make sure to add parentheses everytime you do an operation
+- Sum up the numbers in vector `b` and print it
+:::
+
+:::{.notes}
+
+```r
+
+# Create vector a with the numbers 18, 32, 11, and 25, in that order
+
+a <- c(18,32,11,25)
+
+# Add 3 to all of vector `a`. Then divide by 7. Then subtract 2. Assign this to vector `b`. Make sure to add parentheses everytime you do an operation
+
+b <- ((a + 3) / 7) - 2
+
+# Sum up the numbers in vector b and print it
+
+print(sum(b))
+
+```
+
+:::
+
+##
+
+**What did you get?** (make sure you created a profile)
+
+```{=html}
+
+<iframe src ="https://wall.sli.do/event/6ynmgcWS5imsspPsvsCZS5/?section=d9900205-0acd-4d58-a00b-1db0f08c917f" width="100%", height="600"></iframe>
+
+```
+
+## Answers
+
+```r
+
+# Create vector a with the numbers 18, 32, 11, and 25, in that order
+
+a <- c(18,32,11,25)
+
+# Add 3 to all of vector `a`. Then divide by 7. Then subtract 2. Assign this to vector `b`. Make sure to add parentheses everytime you do an operation
+
+b <- ((a + 3) / 7) - 2
+
+# Sum up the numbers in vector b and print it
+
+print(sum(b))
+
+```
+
+
+## Part 2
+:::{.card-list}
+- Create a vector out of the letters of the word RANDOM using `c()`. Remember that letters are strings. Assign this vector to the variable `word1`
+- Using `[:]`, remove the letter that is in `b`'s position. Assign that to the variable `word2`
+- Insert the letter "G" to the end of the `word2`, assign that to word3
+:::
+
+:::{.notes}
+
+```r
+
+# Create a vector out of the letters of the word RANDOM using `c()`. Remember that letters are strings. Assign this vector to the variable word1
+
+word1 <- c("R", "A", "N", "D", "O", "M") 
+
+# Using `[:]`, remove the letter that is in `b`'s position. Assign that to the variable `word2`
+
+word2 <- word1[1:5]
+
+# Insert the letter "G" to the end of the `word2`, assign that to `word3`
+
+word3 <- c(word2, "G")
+```
+
+
+:::
+
+##
+
+**What did you get?**
+
+```{=html}
+
+<iframe src ="https://wall.sli.do/event/6ynmgcWS5imsspPsvsCZS5/?section=d9900205-0acd-4d58-a00b-1db0f08c917f" width="100%", height="600"></iframe>
+
+```
+
+## Answer
+
+```r
+
+# Create a vector out of the letters of the word RANDOM using `c()`. Remember that letters are strings. Assign this vector to the variable word1
+
+word1 <- c("R", "A", "N", "D", "O", "M") 
+
+# Using `[:]`, remove the letter that is in `b`'s position. Assign that to the variable `word2`
+
+word2 <- word1[1:5]
+
+# Insert the letter "G" to the end of the `word2`, assign that to `word3`
+
+word3 <- c(word2, "G")
+```
+
+## Part 3
+
+:::{.card-list}
+- Create a vector with numbers 14, 31, 9, 19, 81, 3 and name that `c`
+- Insert the sum of vector `a` and the sum of vector `b` to the end of vector `a`. Assign this to `d`
+- Subtract vector `c` from vector `d`. Make this vector `e`. Print `e`
+- Each number in vector `e` represents the position of a letter in `word3`. This position is called the index. A new word is formed when you reorder the letters based on the order specified in `e`. Print out the new word. Challenge mode: decipher the word in one line of code using `[]`
+
+:::
+
+::: {.notes}
+
+```r
+
+# Create `a` vector with numbers 14, 31, 9, 19, 81, 3 and name that `c`
+
+c <- c(14, 31, 9, 19, 81, 3)
+
+# Insert the sum of vector `a` and the sum of vector `b` to the end of vector `a`. Assign this to `d`
+
+d <- c(a,sum(a),sum(b))
+
+# Subtract vector `c` from vector `d`. Make this vector `e`. Print `e`
+
+e <- d - c
+
+print(e)
+
+# Each number in vector e represents the position of a letter in `word3`. This position is called the index. A new word is formed when you reorder the letters based on the order specified in `e`. Print out the new word. Challenge mode: decipher the word in one line of code using []
+
+print(word3[e])
+
+```
+
+:::
+
+##
+
+**What is the final answer?**
+```{=html}
+
+<iframe src ="https://wall.sli.do/event/6ynmgcWS5imsspPsvsCZS5/?section=d9900205-0acd-4d58-a00b-1db0f08c917f" width="100%", height="600"></iframe>
+
+```
+
+## Answer
+
+```r
+
+# Create `a` vector with numbers 14, 31, 9, 19, 81, 3 and name that `c`
+
+c <- c(14, 31, 9, 19, 81, 3)
+
+# Insert the sum of vector `a` and the sum of vector `b` to the end of vector `a`. Assign this to `d`
+
+d <- c(a,sum(a),sum(b))
+
+# Subtract vector `c` from vector `d`. Make this vector `e`. Print `e`
+
+e <- d - c
+
+print(e)
+
+# Each number in vector e represents the position of a letter in `word3`. This position is called the index. A new word is formed when you reorder the letters based on the order specified in `e`. Print out the new word. Challenge mode: decipher the word in one line of code using []
+
+print(word3[e])
+
+```
+
+# Moving on to other things...
+
+## Install packages
+::: {card-list}
+Install packages in the console with `install.packages("package_name")`
+
+We will install the package "tidyverse", which is used for data analysis. Go ahead and enter `install.packages("tidyverse")` in the console.
+:::
+
+![](/assets/install-package.gif)
+
+## Import data
+
+Download the data file from canvas called 2020heights.csv and put it into this folder
+
+````r
+library(tidyverse)
+
+data <- read_csv("data-folder/data.csv")
+
+````
+
+## Knit your RMarkdown file
+After you knit your Rmakdown file, upload it to canvas. You are done!
+![](/assets/knit.gif)
+
+Remember you can now find all lab materials on this site: <https://monaxue.github.io/420m/>
+
+
+
+```
+
+

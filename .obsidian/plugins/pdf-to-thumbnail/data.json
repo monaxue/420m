@@ -1,6 +1,0 @@
-{
-  "frontmatterKey": "thumbnail",
-  "outputDir": "PDFthumbnails",
-  "scale": 2,
-  "overwriteImage": true
-}

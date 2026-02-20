@@ -1,0 +1,293 @@
+---
+title: R cheat sheet
+echo: true
+---
+
+:::: panel-tabset
+
+## Basic RMarkdown
+
+### What is a YAML header?
+
+This is the YAML Header. Notice it is enclosed in "---" it is used to store information. This needs to be at the very top of the Rmd document.
+
+### It includes metadata like the following:
+
+````{verbatim}
+---
+title: Lab 2
+author: Mona Xue
+date: 2026-01-23
+---
+
+````
+
+
+### Markdown
+
+````{verbatim}
+
+# This is a heading. Notice the "#" and space afterward
+
+# This is a sub-heading. Notice the "#" and space afterward
+
+Markdown is a markup language that makes formatting text easier.
+
+It allows you to write normal text alongside code.
+
+````
+
+````{=html}
+
+<br></br>
+
+<h3> This is a heading. Notice the "#" and space afterward </h3>
+
+<h4> This is a sub-heading. Notice the "#" and space afterward </h4>
+
+<p>Markdown is a markup language that makes formatting text easier.</p>
+
+<p>It allows you to write normal text alongside code.</p>
+
+````
+
+
+
+### R Code Chunk
+
+````{verbatim}
+```{r}
+
+# This is your R code chunk.
+# This is where you write R code.
+
+```
+````
+
+Inside code blocks, you denote comments with #. Note: outside of a code block, these become headings.
+
+````{verbatim}
+```{r}
+# This is a comment. 
+
+```
+````
+
+### With both Markdown and R code = RMarkdown
+
+:::: {.columns}
+:::{.column width="50%"}
+
+````{verbatim}
+# This is a heading
+
+You can write text like this
+
+```{r}
+# This is a comment
+a <- 1
+b <- 2
+
+a
+```
+````
+
+:::
+
+:::{.column width="50%"}
+### This is a heading
+
+```{r}
+# This is a comment
+a <- 1
+b <- 2
+
+a
+```
+
+:::
+::::
+
+### Running your code
+
+Use "run" button or the keyboard shortcut `Ctr + Enter` or `Command + Enter`
+
+![](/assets/run-code.gif)
+
+## Basic Syntax
+
+### Variables
+
+This is how you assign values to a variable
+```{r}
+
+a <- 1 
+
+```
+
+### Vectors
+
+This is how you create a vector. You use the notation `c()`
+```{r}
+x <- c(a, "a")
+y <- c(1, 2, 3)
+z <- 1:3 # This is the same as y. The : indicates a vector from 1 to 3
+```
+
+To print the variable, simply run the name of the variable
+```{r}
+x
+```
+
+Notice that without quotes, `a` refers to a variable and prints the number assigned to it (1), whereas with quotes, `"a"` prints out just the letter. When things are wrapped with quotes, they are called ***strings***.
+
+To choose a specific element of a vector, you can use `[]`
+```{r}
+x[2]
+y[3]
+y[c(2, 3)]
+y[1:2]
+
+```
+
+### Vector examples
+```{r}
+a <- 1 # assigns the number 1 to the variable `a`
+b <- 1:3 # creates a list of numbers from 1 to 3 and assigns it to `b`
+c <- c(3,4,5) # creates a list that includes 3, 4, 5 and assigns it to `c`
+c[4] <- 6 # assigns the 4th element of `c` to the number 6, resulting in the list 3, 4, 5, 6
+d <- c(b,c) # combines the lists b and c, producing the list 1, 2, 3, 3, 4, 5, 6, and assigns this to `d`
+```
+
+
+## Doing math
+
+```{r}
+1 + 1
+```
+
+### Adding a single number to a vector
+
+```{r}
+y + 1 # Adds the single number to all elements in the vector
+```
+
+### Adding a vector to a vector
+```{r}
+y + z # Adds the 1st to the 1st, the 2nd to the 2nd, etc.
+
+```
+
+
+### Other useful functions
+
+```r
+sum(y) # Adds together the elements of y
+
+mean(y) # Takes the mean of the elements of y
+
+2 * 2 # Multiplication
+
+2 / 2 # Division
+
+2^2 # To the power of 2
+
+sqrt(2) # Square root of 2
+
+(2 + 2) * 2 / (2) # Order of operations still apply, remember to use parentheses when you need to
+
+
+```
+
+
+## Adv. Rmd formatting {#adv-format}
+
+### 1. Remove unwanted warnings and messages
+
+To remove unwanted warnings and messages from the output, use these at the very top of a code block. For instance, the following removes the warning messages from loading packages.
+
+````{verbatim}
+```{r}
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(ggplot2)
+
+data <- read_csv("heights.csv")
+
+```
+````
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+library(tidyverse)
+library(ggplot2)
+
+data <- read_csv("./data/heights.csv")
+
+```
+
+### 2. Print nicer dataframes and tables
+
+Use `knitr::kable()` to print nicer dataframes and tables
+
+
+```{r}
+knitr::kable(head(data))
+```
+
+```{r}
+#| echo: false
+summary_table <- data %>% group_by(sex) %>% summarize(SampleSize=n(),Mean=mean(heights), SD=sd(heights),SE=SD/sqrt(SampleSize))
+```
+
+```{r}
+knitr::kable(summary_table)
+```
+
+### 3. Round values to fewer decimals
+
+Use `round()` to round to fewer decimals. For example, the following rounds the variables `a` to two decimal places.
+
+```r
+round(a, 2)
+```
+
+```{r}
+#| echo: false
+
+CIs <- summary_table %>% mutate(CIs = paste0("[", round(Mean-1.96*SE,2), ", ", round(Mean+1.96*SE,2), "]")) %>% select(sex, CIs)
+
+```
+
+### 4. Create outputs like `r CIs[1,2]`
+
+Use `paste0()` to add together strings and variables. This is useful for reporting CIs. For instance,
+
+```r
+CIs <- CIs %>% mutate(CIs = paste0("[", round(LowerCI,2), ", ", round(UpperCI,2), "]")) %>% select(group, CIs)
+knitr::kable(CIs)
+```
+```{r}
+#| echo: false
+#| 
+knitr::kable(CIs)
+```
+
+### 5. Reference variables from r code directly in your paragraphs
+
+Use ``` `r ` ``` to use r code in your paragraphs so you can reference variables from you code chunks. For example:
+
+```{verbatim}
+The the CIs for groups one and two are `r CIs[1,2]` and `r CIs[2,2]`, respectively.
+```
+
+The the CIs for groups one and two are `r CIs[1,2]` and `r CIs[2,2]`, respectively.
+
+Note that [1,2] stands for row 1 and column 2 of the CI table, and [2,2] stands for row 2 and column 2 of the CI table.
+
+::::

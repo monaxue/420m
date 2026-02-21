@@ -1,7 +1,5 @@
 ---
-
 title: Welcome to PSYCH 420!
-
 ---
 
 ## Overview

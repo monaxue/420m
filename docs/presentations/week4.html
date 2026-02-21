@@ -13,7 +13,7 @@
 <link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.24">
 
-  <title>PSYCH 420m Lab – 6: Case studies and CIs</title>
+  <title>PSYCH 420m Lab – 4: pipes, ggplot, summary tables</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,8 +31,74 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-383b4029ee74b6945f46faa2430f4ae3.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-a4ef97242976abc0e99bd9a90ef85670.css">
   <link rel="stylesheet" href="style.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -134,7 +200,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">6: Case studies and CIs</h1>
+  <h1 class="title">4: pipes, ggplot, summary tables</h1>
 
 <div class="quarto-title-authors">
 </div>
@@ -143,8 +209,7 @@
 <section class="slide level2">
 
 <aside class="notes">
-<p>Go over case studies.</p>
-<p>Cover z-scores and CI. Have people write an interpretation for CI’s for their lab report. Have people revise their lab reports.</p>
+<p>This week as it is went over by an hour. You need to take stuff out!</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -157,144 +222,58 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="case-studies" class="slide level2">
-<h2>Case studies</h2>
+<section id="week-4-lab" class="slide level2 scrollable">
+<h2>Week 4 Lab</h2>
 <div class="card-list">
-<ul>
-<li class="fragment">I’m partially through grading them.</li>
-<li class="fragment">So far:
-<ul>
-<li class="fragment">There is a mix of scores</li>
-<li class="fragment">Somewhat of a bimodal distribution</li>
-</ul></li>
-</ul>
+<p>As always:</p>
+<ol type="1">
+<li>Create your lab4 folder</li>
+<li>Create your R studio project</li>
+<li>Create &amp; save your lab4.Rmd file</li>
+<li>Add the title, author, and date to the Rmd file.</li>
+<li>Load <code>tidyverse</code> and <code>ggplot2</code> using the <code>library()</code> function.</li>
+</ol>
 </div>
 </section>
-<section id="the-good" class="slide level2">
-<h2>The good</h2>
+<section id="retrieval-practice" class="slide level2">
+<h2>Retrieval practice</h2>
 <div class="card-list">
 <ul>
-<li class="fragment">Most everyone
-<ul>
-<li class="fragment">Wrote great code.</li>
-<li class="fragment">Formatted the Rmd well.</li>
-<li class="fragment">These things are hard.</li>
-<li class="fragment">Make sure to recognize your accomplishments!</li>
-</ul></li>
+<li class="fragment">Trying to retrieve information helps us learn, even if we don’t think we remember.</li>
+<li class="fragment">Without looking at your notes, try your best to answer the following questions</li>
 </ul>
 </div>
-</section>
-<section id="the-struggles" class="slide level2">
-<h2>The struggles</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Those who lost the most points:
-<ul>
-<li class="fragment">Used the wrong rubric</li>
-<li class="fragment">Missed things on the rubric</li>
-<li class="fragment">Primary tip: Make sure to double check everything on the rubric</li>
-</ul></li>
-<li class="fragment">Many of you lost points on this
-<ul>
-<li class="fragment">Interpretations</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="before-you-get-too-anxious" class="slide level2">
-<h2>Before you get too anxious…</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">You will have the opportunity to revise your case study to receive up to a score of 14.</li>
-</ul>
-</div>
-</section>
-<section id="outline" class="slide level2">
-<h2>Outline</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">I will clarify interpretations</li>
-<li class="fragment">I will finally go over confidence intervals</li>
-<li class="fragment">What I hope to accomplish: help you build some intuition about stats so you don’t feel like you need to memorize a list of annoying rules</li>
-</ul>
-</div>
-</section>
-<section>
-<section id="interpretations" class="title-slide slide level1 center">
-<h1>Interpretations</h1>
+<div class="fragment">
+<!--
 
-</section>
-<section id="ambiguous-thinking" class="slide level2">
-<h2>“Ambiguous thinking”</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Descriptive statistics is all about “ambiguous thinking”
-<ul>
-<li class="fragment">Shape: Is it normal? Symmentrical? Skewed (rarer than you think!)? Bimodal?</li>
-<li class="fragment">Center ~ <strong><em>Sample</em></strong> mean</li>
-<li class="fragment">Spread ~ <strong><em>Sample</em></strong> SD</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="ambiguous-thinking-1" class="slide level2">
-<h2>“Ambiguous thinking”</h2>
+::: iframe
+https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
+:::
 
-<img data-src="week6_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
-<section id="main-purpose" class="slide level2">
-<h2>Main purpose</h2>
-<div class="columns">
-<div class="column">
-<div class="card-list">
-<ul>
-<li class="fragment"><strong>Descriptive</strong>
-<ul>
-<li class="fragment">Visualize the <strong><em>general</em></strong> shape, center, and spread of the <strong><em>sample</em></strong></li>
-<li class="fragment">“See the forest, but not the trees”</li>
-</ul></li>
-</ul>
-</div>
-</div><div class="column">
-<div class="card-list">
-<ul>
-<li class="fragment"><strong>Inferential</strong>
-<ul>
-<li class="fragment">Make inferences about the true population means</li>
-</ul></li>
-</ul>
-</div>
-</div></div>
-</section>
-<section id="what-i-saw-in-the-case-studies" class="slide level2">
-<h2>What I saw in the case studies</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Statements that imply a population level conclusion</li>
-<li class="fragment">WRONG: “A histogram will let me compare the performance of each group”</li>
-<li class="fragment">When you talk about “performance” you are implying knowledge about the true population
-<ul>
-<li class="fragment">“Score” (noisy metric for performance) vs.&nbsp;“Performance” (true population)</li>
-</ul></li>
-</ul>
+-->
 </div>
 </section>
-<section id="score-neq-performance" class="slide level2">
-<h2>Score <span class="math inline">\(\neq\)</span> Performance</h2>
+<section id="section" class="slide level2">
+<h2></h2>
 <div class="card-list">
 <ul>
-<li class="fragment">Score is the thing we can measure. “Performance” is the thing we actually care about (true population) that we hope the score represents.</li>
-<li class="fragment">More examples
+<li class="fragment"><p>Given that the dataframe is called <code>df</code> and the column name is called <code>values</code>, what is the code for a basic histogram using ggplot2?</p>
 <ul>
-<li class="fragment">Number of words recalled <span class="math inline">\(\neq\)</span> Memory</li>
-<li class="fragment">IQ test score <span class="math inline">\(\neq\)</span> Intelligence</li>
+<li class="fragment"><code>ggplot(data=df, aes(x=values)) + geom_histogram()</code><br>
+</li>
 </ul></li>
+<li class="fragment"><p>What is the main function of a for loop?</p>
+<ul>
+<li class="fragment">To repeat stuff</li>
+</ul></li>
+<li class="fragment"><p>What is the general code for a for loop?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>    <span class="cf">for</span> (person <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>){</span>
+<span id="cb1-2"><a></a>        <span class="co"># code to repeat</span></span>
+<span id="cb1-3"><a></a>    }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 </div>
 <aside class="notes">
-<ul>
-<li>An IQ test wishes to measure your intelligence, but at best it only captures part of your intelligence. What it also captures includes: your education, your wealth, whether or not you were exposed to lead as a kid, etc.</li>
-<li>If you say “there is a difference in intelligence between group 1 and group 2”, then you are implying a population difference. If you say “there is a difference in sample mean of IQ test scores between group 1 and group 2”</li>
-</ul>
+<p>After brain dump, ask for 5 volunteers for demonstration</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -307,175 +286,351 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="correct-mean-interpretations" class="slide level2">
-<h2>Correct mean interpretations</h2>
+<section id="simulate-male-heights" class="slide level2">
+<h2>Simulate male heights</h2>
+<p>Last week, we ended by simulating female heights. Now, let’s simulate 200 male heights.</p>
 <div class="card-list">
 <ul>
-<li class="fragment">Sufficient: “The <strong><em>sample</em></strong> mean of the score in group A is _ and the <strong><em>sample</em></strong> mean of the score in group B is _.”</li>
-<li class="fragment">If you want to compare:
-<ul>
-<li class="fragment">Don’t forget <strong><em>sample mean</em></strong> and <strong><em>score</em></strong> (or whatever the actual metric is in the study)</li>
-</ul></li>
+<li>Average height is 69 inches</li>
+<li>Gentics contribution: randomly sample one number between -6 to 6.</li>
+<li>Nutritional contribution: randomly sample one number between -3 to 3.</li>
+<li>Third causal variable: exactly the same as what you used last week.</li>
+<li>The final height is the combination of of the average height, and all causes.</li>
+<li>Create a dataframe from this using <code>tibble()</code>. Assign it to the variable <code>df_men</code></li>
 </ul>
 </div>
 </section>
-<section id="why-cant-we-talk-about-the-population-when-looking-at-histograms" class="slide level2">
-<h2>Why can’t we talk about the population when looking at histograms?</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">A difference in the mean could be due to sampling error</li>
-<li class="fragment">What inferential statistics does: It takes into consideration the possible sampling errors
-<ul>
-<li class="fragment">But CIs are <strong><em>not</em></strong> errors!</li>
-<li class="fragment">How? Sampling distributions provide us with the math to make a good guess</li>
-</ul></li>
-</ul>
-</div>
-</section></section>
-<section>
-<section id="confidence-intervals" class="title-slide slide level1 center">
-<h1>Confidence intervals</h1>
+<section id="what-are-correct-ways-to-load-data-in-this-class" class="slide level2">
+<h2>What are correct ways to load data in this class?</h2>
 
+<img data-src="..\assets/slido-what-are-correct-ways-to-load-data-in-this-class.png" class="r-stretch"></section>
+<section id="now-load-data" class="slide level2 scrollable">
+<h2>Now load data</h2>
+<div class="card-list">
+<ol type="1">
+<li class="fragment">Copy the heights csv file that you simulated from last week into the lab4 folder.</li>
+<li class="fragment">Load the data into lab4.Rmd using read_csv(), and assign it to the variable <code>df_women</code></li>
+</ol>
+</div>
 </section>
-<section id="the-confidence-interval-comes-from-the-sampling-distribution" class="slide level2">
-<h2>The confidence interval comes from the sampling distribution</h2>
+<section id="combining-the-two-dataframes" class="slide level2 scrollable">
+<h2>Combining the two dataframes</h2>
+<p>We want to combine <code>df_women</code> and <code>df_men</code> into one big dataframe, while still remembering which data is for women or men.</p>
+<div class="card-list">
+<ol type="1">
+<li class="fragment">Add a new column to each dataframe to denote sex.</li>
+<li class="fragment">Combine the two dataframes</li>
+</ol>
+</div>
+</section>
+<section id="add-columns-with-mutate" class="slide level2">
+<h2>1. Add columns with <code>mutate()</code></h2>
 <div class="card-list">
 <ul>
-<li class="fragment">Sampling distribution: distribution of means over <span class="math inline">\(\infty\)</span> experiments
-<ul>
-<li class="fragment">Hypothetical</li>
-</ul></li>
-<li class="fragment">If we know the true mean, <span class="math inline">\(\mu\)</span>, the sampling distribution tells us what kind of samples to expect</li>
+<li class="fragment"><p>We want to add a column title <code>sex</code> to both <code>df_women</code> and <code>df_men</code></p></li>
+<li class="fragment"><p>We use %&gt;% (called “pipes”) to apply a function to a dataframe.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>df_women <span class="ot">&lt;-</span> df_women <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">sex=</span><span class="st">'f'</span>)</span>
+<span id="cb2-2"><a></a>df_men <span class="ot">&lt;-</span> df_men <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">sex=</span><span class="st">'m'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 </div>
 </section>
-<section id="a-bit-of-math" class="slide level2">
-<h2>A bit of math…</h2>
-<aside class="notes">
-<p>I’m going to show some math. Try to keep up as best as you can, but don’t stress out too much about it. But there will also be a simulation at the end to hopefully make things clearer.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<section id="combine-df_women-and-df_men-into-one-dataframe" class="slide level2">
+<h2>2. Combine <code>df_women</code> and <code>df_men</code> into one dataframe</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>df_both <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(df_women, df_men)</span>
+<span id="cb3-2"><a></a><span class="fu">head</span>(df_both)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  heights sex  
+    &lt;dbl&gt; &lt;chr&gt;
+1      63 f    
+2      63 f    
+3      73 f    
+4      70 f    
+5      60 f    
+6      65 f    </code></pre>
+</div>
+</div>
+<p>Make sure you have two columns</p>
 </section>
-<section id="simulation" class="slide level2">
-<h2>Simulation</h2>
+<section id="creating-a-column-based-on-the-values-of-another-column" class="slide level2">
+<h2>Creating a column based on the values of another column</h2>
+<div class="card-list">
+<ul>
+<li class="fragment"><p>We can create a column named <code>Mean</code> that calculates the mean of heights like so:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>df_mutated <span class="ot">&lt;-</span> df_both <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Mean=</span><span class="fu">mean</span>(heights), <span class="at">heights_plus_one =</span> heights <span class="sc">+</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li class="fragment"><p>Again, we use %&gt;% (“pipes”) to apply a function to a dataframe</p></li>
+<li class="fragment"><p>What do you notice about all the numbers in the Mean column?</p>
+<ul>
+<li class="fragment">They are the same</li>
+</ul></li>
+</ul>
+</div>
+<!--
+
+. . .
+
+::: iframe
+https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
+:::
+
+-->
+</section>
+<section id="apply-functions-to-each-group-with-group_by" class="slide level2">
+<h2>Apply functions to each group with group_by()</h2>
+<div class="card-list">
+<ul>
+<li class="fragment"><p>%&gt;% (pipes) can be chained together</p></li>
+<li class="fragment"><p>We can use pipes to add the <code>group_by()</code> before using mutate.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>df_mutated <span class="ot">&lt;-</span> df_both <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Mean=</span><span class="fu">mean</span>(heights))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li class="fragment"><p>Compare the above with the previous version without the group_by(). What’s the difference?</p>
+<ul>
+<li class="fragment">They are the same within each sex, but different between</li>
+</ul></li>
+</ul>
+</div>
+<!--
+
+. . . 
+
+::: iframe
+https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
+
+:::
+
+-->
+</section>
+<section id="note-the-following-two-slides-are-import-for-the-upcoming-case-study-assignment." class="slide level2">
+<h2>Note: The following two slides are import for the upcoming case study assignment.</h2>
+</section>
+<section id="descriptive-statistics" class="slide level2">
+<h2>Descriptive statistics</h2>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Simulation</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">What is it?</a></li><li><a href="#tabset-1-2">Summary table</a></li><li><a href="#tabset-1-3">Histogram</a></li><li><a href="#tabset-1-4">Frequency polygon</a></li><li><a href="#tabset-1-5">Boxplot</a></li><li><a href="#tabset-1-6">Interpretations</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
 <div class="card-list">
 <ul>
-<li class="fragment"><p>Explore the <a href="https://shiny.rit.albany.edu/stat/confidence/" target="_blank" rel="noopener noreferrer">Confidence Interval Simulator</a> (this link is also on the website).</p></li>
-<li class="fragment"><p>Discuss with your neighbors:</p>
+<li>What is descriptive statistics?
 <ul>
-<li class="fragment">What is it trying to show?
-<ul>
-<li class="fragment">Around 5 out of 100 times, the CI does not contain the true mean (CI highlighted in red)</li>
-</ul></li>
+<li>Descriptive statistics describes larger trends in the data, without making claims about the true population values.</li>
 </ul></li>
 </ul>
 </div>
+</div>
+<div id="tabset-1-2">
+<div class="card-list">
+<ul>
+<li><p>Compare the following to the version with <code>mutate()</code>. How do they differ?</p>
+<ul>
+<li>Note: this is an incomplete summary table. Please read more below!</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>summary_table <span class="ot">&lt;-</span> df_both <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Mean=</span><span class="fu">mean</span>(heights))</span>
+<span id="cb7-2"><a></a>summary_table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Complete summary table should fill in the following</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>summary_table <span class="ot">&lt;-</span> df_both <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Mean=</span><span class="fu">mean</span>(heights), <span class="at">SampleSize =</span> ..., <span class="at">SD =</span> ..., <span class="at">SE =</span> ...)</span>
+<span id="cb8-2"><a></a>summary_table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>SD is standard deviation and SE is standard error.</li>
+<li>The function to calculate the sample size is just <code>n()</code></li>
+<li>The function to calculate SD is <code>sd(height)</code></li>
+<li>To calculate SE, that is SD/sqrt(SampleSize)</li>
+</ul></li>
+<li><p>Output from complete code:</p></li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  sex   SampleSize  Mean    SD    SE
+  &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 f            200  64.3  4.05 0.287
+2 m            200  69.3  4.26 0.301</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-3">
+<div class="card-list">
+<ul>
+<li>Use <code>facet_warp(~sex)</code> to create a separate panel for each sex.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(...) <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-4">
+<div class="card-list">
+<ul>
+<li>Use <code>facet_warp(~sex)</code> to create a separate panel for each sex.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(...) <span class="sc">+</span> <span class="fu">geom_freqpoly</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-5">
+<div class="card-list">
+<ul>
+<li>For boxplots, you need both the x and y variable in aesthetics.</li>
+<li>What should the x and y variables be?</li>
+</ul>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(...) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-6">
+<div class="card-list">
+<ul>
+<li>Common mistake: tendency to overinterpret.</li>
+</ul>
+</div>
+<p><img data-src="..\assets/slido-what-should-include-for-your-interpretations-of-a-histogram.png"></p>
 <!--
-
-## Slido
-::: iframe
-
-https://wall.sli.do/event/qFBF9mUcZDngBd8niQpzQp
-
+::: notes
+- What should include for your interpretations of a histogram?
+    - Whether or not there's a difference between two groups
+    - The mean and standard deviation from a sample
+    - The general shape and spread of data
+    - It is important to describe the shape with as much detail as possible in order to be honest about the data.
+    - The correlation between two variables
 :::
-
 -->
 </div>
 </div>
 </div>
 </section>
-<section id="confidence-interval-definition" class="slide level2">
-<h2>Confidence interval definition</h2>
+<section id="inferential-statistics" class="slide level2">
+<h2>Inferential statistics</h2>
+<div class="panel-tabset">
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">What is it?</a></li><li><a href="#tabset-2-2">Confidence Intervals</a></li><li><a href="#tabset-2-3">Mean and CI plot</a></li><li><a href="#tabset-2-4">Interpretations</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1">
 <div class="card-list">
 <ul>
-<li class="fragment">In 95% of experiments, the true mean will be in the CI of that experiment</li>
-<li class="fragment">95% of CIs will contain the true mean</li>
-<li class="fragment"><strong>Not:</strong> 95% probability that the true mean is in the CI of our experiment</li>
+<li>What is inferential statistics, and how does it differ from descriptive statistics?
+<ul>
+<li>Inferential statistics tries to guess the true population based on the sample we have.</li>
+</ul></li>
 </ul>
 </div>
-</section>
-<section id="confidence-statement" class="slide level2">
-<h2>“Confidence” statement</h2>
+<div class="iframe">
+
+</div>
+</div>
+<div id="tabset-2-2">
 <div class="card-list">
 <ul>
-<li class="fragment">Since we can’t say anything about the probability in our experiment, we use the word “confident” instead</li>
-<li class="fragment">We are 95% <em>confident</em> that the true mean is in the CI of our experiment</li>
+<li>You can use the summary table to calculate the confidence interval</li>
+<li>The Lower 95% CI is calculated as <code>Mean-1.96*SE</code></li>
+<li>The Upper 95% CI is calculated as <code>Mean+1.96*SE</code></li>
+<li>You can obtain just the CIs by using <code>select()</code>, with the columns you want as input.</li>
 </ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>summary_table <span class="ot">&lt;-</span> summary_table <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">LowerCI =</span> Mean<span class="fl">-1.96</span><span class="sc">*</span>SE, <span class="at">UpperCI =</span> Mean<span class="fl">+1.96</span><span class="sc">*</span>SE)</span>
+<span id="cb13-2"><a></a>CIs <span class="ot">&lt;-</span> summary_table <span class="sc">%&gt;%</span> <span class="fu">select</span>(sex, LowerCI, UpperCI)</span>
+<span id="cb13-3"><a></a>CIs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  sex   LowerCI UpperCI
+  &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 f        63.7    64.8
+2 m        68.7    69.9</code></pre>
 </div>
-</section>
-<section id="ci-interpretations" class="slide level2">
-<h2>CI interpretations</h2>
+</div>
+</div>
+</div>
+<div id="tabset-2-3">
 <div class="card-list">
 <ul>
-<li class="fragment">Always include both the definition of a CI as well as the confidence statement.</li>
+<li>Plots the mean and the CI for each group</li>
+<li>First, we plot the mean using geom_point()</li>
+<li>Then we plot CI using geom_errorbar</li>
+<li>Like for the boxplot, we need both x and y in aes(). What are they?</li>
 </ul>
 </div>
-<!--
-::: card-list
-
-- 95% of the samples generated by a population with the true mean, $\mu$, will have a CI that contains $\mu$.
-
-- WRONG: There is a 95% probability that the CI contains the true mean, $\mu$.
-
-    - This is different from the first statement
-    - You cannot actually calculate this probability directly, because it requires that you know the true mean, $\mu$
-
-- Therefore, we instead use the term "confident". We say that we are 95% confident that the CI contains the true mean.
-    - There is a reason why it is called the confidence interval, and not the probability interval.
-:::
--->
-<!--
-
-```{=html}
-<iframe width="100%" height="600px" src="https://wall.sli.do/event/psqmdehPARDpce13BWS1LY/?section=b87f4381-4b7d-41fd-abd0-76f5f34870db" height=600 width=100%></iframe>
-```
-
--->
-<!--
-
-## Formatting Essentials
-
-```{=html}
-<iframe width="100%" height="600px" src="https://wall.sli.do/event/psqmdehPARDpce13BWS1LY/?section=b87f4381-4b7d-41fd-abd0-76f5f34870db" height=600 width=100%></iframe>
-```
-
--->
-</section></section>
-<section>
-<section id="deliverables" class="title-slide slide level1 center">
-<h1>Deliverables</h1>
-
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>summary_table, <span class="fu">aes</span>(...)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> LowerCI, <span class="at">ymax=</span>UpperCI)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week4_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-4">
+<p><img data-src="..\assets/slido-what-should-you-include-in-your-ci-interpretations.png"></p>
+<p>Example: The confidence intervals for male and female height do not overlap, which means that the true means are likely actually different, where the mean male height is higher than the mean female height.</p>
+<aside class="notes">
+<ul>
+<li>What should you include in your CI interpretations?
+<ul>
+<li>Whether or not the CIs overlap</li>
+<li>If the p-value is below 0.05, it is a significant difference</li>
+<li>The objective answer to research question</li>
+<li>Whether or not we have proved our hypothesis correct</li>
+<li>The strength of results to support our hypothesis.</li>
+</ul></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</div>
+</div>
 </section>
-<section id="section" class="slide level2 scrollable">
-<h2></h2>
+<section id="deliverables" class="slide level2 scrollable">
+<h2>Deliverables</h2>
+<p>As always, you can leave after you check in with me and submit your assignment. Double check your work with ~2 people before asking me to check your work. Then you can all wait less and leave sooner!</p>
+<div class="card-list">
 <ol type="1">
-<li>Write a reflection
-<ul class="task-list">
-<li><label><input type="checkbox">How you did you feel you did on this first case study? What are you proud of? What do you think you can improve upon?</label></li>
-<li><label><input type="checkbox">What are your major takeaways from today’s class?</label></li>
-<li><label><input type="checkbox">What revisions would you make on your case study? Be specific.</label></li>
-<li><label><input type="checkbox">What do you want your future self to remember when working on future case studies?</label></li>
+<li>All the code we used to generate the final dataset that includes both women and men’s heights</li>
+<li>Descriptive statistics
+<ul>
+<li>Summary table</li>
+<li>Either a histogram, frequency polygon, or boxplot</li>
+<li>Interpretations</li>
 </ul></li>
-<li>Write a CI interpretation for your Case Study 1.
-<ul class="task-list">
-<li><label><input type="checkbox">What is the main difference between a descriptive and inferential statistics?</label></li>
-<li><label><input type="checkbox">What is the definition of a CI?</label></li>
-<li><label><input type="checkbox">What does the CI say about the results? (Do you not use the word “significant”!)</label></li>
+<li>Inferental statistics
+<ul>
+<li>Confidence intervals</li>
+<li>Mean and CI plot</li>
+<li>Interpretations</li>
 </ul></li>
 </ol>
+</div>
 
 
 <div class="reveal-header">
@@ -492,7 +647,7 @@ https://wall.sli.do/event/qFBF9mUcZDngBd8niQpzQp
 <p> </p>
 </div>
 </div>
-</section></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

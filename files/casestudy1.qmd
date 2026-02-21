@@ -51,7 +51,7 @@ Include 1-2 sentences for each of the following:
 
 **Methods Overview** (2 points)
 
-- [ ] Explain how the the research question informs your methdological choices. For instance, why did you chose to compare certain groups? Are you looking for interactions or controlling for a variable? How did you come to these choices? What plots and statistical analyses will you be conducting to answer the research question? 
+- [ ] Explain how the the research question informs your methedological choices. For instance, why did you chose to compare certain groups? Are you looking for interactions or controlling for a variable? How did you come to these choices? What plots and statistical analyses will you be conducting to answer the research question? 
 
 **Results and Interpretation** (6 points)
 
@@ -84,6 +84,22 @@ The case studies can be completed without using any external sources. However, i
 
 1. Choose a single age group (6, 7, 8, etc.). Please provide a reason for the group you chose in the methods overview.
 2. To filter data for on one age group, use `data <- data %>% filter(round(Age) == your_chosen_age_group)`
+
+<!--
+Next time, make choosing the right age, and providing the right reason, extra credit.
+
+At a bare minimum, talking about choosing an age group to control for age.
+But then I would need to go over the idea of controls? Or not, because not because lecturing doesn't seem to teach people well.
+
+Maybe I need to hand out worksheets to people.
+
+Maybe make a video of the thinking process of writing up a case study.
+
+Maybe the rubric should reflect the process (including where to find code information), instead of just being a checkbox of information scattered in different places.
+
+If I make an extra video, I don't have to go over it in the lab section
+
+-->
 
 **For option 2 (Cog Psych):** To observe interactions, you will need to use `group_by` and `facet_wrap` on two variables
 

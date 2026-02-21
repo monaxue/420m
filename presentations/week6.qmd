@@ -1,6 +1,5 @@
 ---
-title: Week 6
-subtitle: Case studies and CIs
+title: "6: Case studies and CIs"
 ---
 
 
@@ -196,16 +195,20 @@ I'm going to show some math. Try to keep up as best as you can, but don't stress
 
 - Discuss with your neighbors:
     - What is it trying to show?
-    - Give me an additional 2 observations
+        - Around 5 out of 100 times, the CI does not contain the true mean (CI highlighted in red)
 
 :::
 
+<!--
+
 ## Slido
-::: ifram
+::: iframe
 
 https://wall.sli.do/event/qFBF9mUcZDngBd8niQpzQp
 
 :::
+
+-->
 
 :::::
 
@@ -268,6 +271,7 @@ https://wall.sli.do/event/qFBF9mUcZDngBd8niQpzQp
 
 # Deliverables
 
+##
 ::: nonincremental
 1. Write a reflection
     - [ ] How you did you feel you did on this first case study? What are you proud of? What do you think you can improve upon?

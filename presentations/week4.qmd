@@ -1,6 +1,5 @@
 ---
-title: Week 4 Lab
-subtitle: pipes, ggplot, summary tables
+title: "4: pipes, ggplot, summary tables"
 ---
 
 ::: notes
@@ -302,6 +301,7 @@ ggplot(df_both, aes(x=sex, y=heights)) + geom_boxplot()
 
 ![](/assets/slido-what-should-include-for-your-interpretations-of-a-histogram.png)
 
+<!--
 ::: notes
 - What should include for your interpretations of a histogram?
     - Whether or not there's a difference between two groups
@@ -310,6 +310,7 @@ ggplot(df_both, aes(x=sex, y=heights)) + geom_boxplot()
     - It is important to describe the shape with as much detail as possible in order to be honest about the data.
     - The correlation between two variables
 :::
+-->
 
 ::::
 

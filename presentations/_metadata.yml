@@ -8,5 +8,6 @@ format:
         theme: whiteboard
       preview-links: true
       sc-sb-title: true
+      css: style.css
 filters: 
   - reveal-header

@@ -69,6 +69,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="../noselect.css">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -123,13 +124,13 @@ ul.task-list li input[type="checkbox"] {
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p><strong>Developmental Psychology</strong></p>
-<p><span><a href="..\data/case_study_1_option_1_devsci.csv">Dataset for Option 1</a> · <a href="..\data/case_study_1_option_1_devsci.csv" target="_blank" title="Open in new tab">↗</a> · <a href="..\data/case_study_1_option_1_devsci.csv" download="" title="Download file">⤓</a></span></p>
+<p><a href="..\data/case_study_1_option_1_devsci.csv" class="filelink">Dataset for Option 1</a></p>
 <p>You work as a research assistant in a developmental psychology lab at UT. You’ve recently been assigned to work with one of the lab’s graduate students on a large-scale cross-cultural study, where children at many sites across the world completed a series of experimental tasks. The graduate student is making a poster to show off their preliminary work and would like your help with the descriptive analysis portion.</p>
 <p>You will focus on just one task from the larger battery, where children watched an adult build a tower out of special blocks and were subsequently asked to build their own tower. The adult’s tower had 10 distinctive features and each child’s tower was given an imitation score (0-10) based on how many of those features they incorporated into their own tower. Each child’s age was also recorded.</p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p><strong>Cognitive Psychology</strong></p>
-<p><span><a href="..\data/case_study_1_option_2_cogsci.csv">Dataset for Option 2</a> · <a href="..\data/case_study_1_option_2_cogsci.csv" target="_blank" title="Open in new tab">↗</a> · <a href="..\data/case_study_1_option_2_cogsci.csv" download="" title="Download file">⤓</a></span></p>
+<p><a href="..\data/case_study_1_option_2_cogsci.csv" class="filelink">Dataset for Option 2</a></p>
 <p>You work as a research assistant in a cognition lab at UT. You’ve recently been assigned to work with one of the lab’s graduate students on a memory study. The graduate student is making a poster to show off their preliminary work and would like your help with the descriptive analysis portion.</p>
 <p>Participants were assigned to one of two memory conditions (recognition or free recall) and had to study one of two lists of words, one made of low frequency words (e.g.&nbsp;mercurial) in the English language and one with high frequency words (e.g.&nbsp;dog). Each participant was assigned to a single combination of memory and word frequency conditions. After studying the list of words, participants in the recognition memory condition had to indicate if a subset of the old words presented to them (along with an equal number of new words) was on the list or not, while participants in the free recall condition had to write down as many words from the list as they could remember. The number of correct responses was recorded for each participant. Because each list consists of 50 total words, participants could get between 0 and 50 correct responses.</p>
 </div>
@@ -157,7 +158,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p><strong>Methods Overview</strong> (2 points)</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Explain how the the research question informs your methdological choices. For instance, why did you chose to compare certain groups? Are you looking for interactions or controlling for a variable? How did you come to these choices? What plots and statistical analyses will you be conducting to answer the research question?</label></li>
+<li><label><input type="checkbox">Explain how the the research question informs your methedological choices. For instance, why did you chose to compare certain groups? Are you looking for interactions or controlling for a variable? How did you come to these choices? What plots and statistical analyses will you be conducting to answer the research question?</label></li>
 </ul>
 <p><strong>Results and Interpretation</strong> (6 points)</p>
 <ul class="task-list">
@@ -192,6 +193,21 @@ ul.task-list li input[type="checkbox"] {
 <li>Choose a single age group (6, 7, 8, etc.). Please provide a reason for the group you chose in the methods overview.</li>
 <li>To filter data for on one age group, use <code>data &lt;- data %&gt;% filter(round(Age) == your_chosen_age_group)</code></li>
 </ol>
+<!--
+Next time, make choosing the right age, and providing the right reason, extra credit.
+
+At a bare minimum, talking about choosing an age group to control for age.
+But then I would need to go over the idea of controls? Or not, because not because lecturing doesn't seem to teach people well.
+
+Maybe I need to hand out worksheets to people.
+
+Maybe make a video of the thinking process of writing up a case study.
+
+Maybe the rubric should reflect the process (including where to find code information), instead of just being a checkbox of information scattered in different places.
+
+If I make an extra video, I don't have to go over it in the lab section
+
+-->
 <p><strong>For option 2 (Cog Psych):</strong> To observe interactions, you will need to use <code>group_by</code> and <code>facet_wrap</code> on two variables</p>
 <ul>
 <li><code>group_by(variable1, variable2)</code></li>

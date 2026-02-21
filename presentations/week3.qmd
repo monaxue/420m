@@ -1,6 +1,6 @@
 ---
-title: Week 3 Lab
-subtitle: Open up R Studio
+title: "3: for loops and central limit theorem"
+subtitle: Please open up R Studio
 ---
 
 ## Review: Where should your 420M folder be?

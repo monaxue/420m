@@ -13,7 +13,7 @@
 <link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.24">
 
-  <title>PSYCH 420m Lab – 6: Case studies and CIs</title>
+  <title>PSYCH 420m Lab – 3: for loops and central limit theorem</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,6 +31,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-383b4029ee74b6945f46faa2430f4ae3.css">
   <link rel="stylesheet" href="style.css">
@@ -134,17 +200,99 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">6: Case studies and CIs</h1>
+  <h1 class="title">3: for loops and central limit theorem</h1>
+  <p class="subtitle">Please open up R Studio</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section class="slide level2">
+<section id="review-where-should-your-420m-folder-be" class="slide level2">
+<h2>Review: Where should your 420M folder be?</h2>
 
+<img data-src="..\assets/slido-where-can-your-420m-folder-be.png" class="r-stretch"></section>
+<section id="first-we-need-to-create-our-lab3-folder" class="slide level2">
+<h2>First, we need to create our lab3 folder</h2>
+<p>Where should you create your lab3 folder?</p>
+<p>Answer: Your 420m Folder</p>
+</section>
+<section id="create-your-lab3-folder" class="slide level2">
+<h2>Create your lab3 folder</h2>
+</section>
+<section id="next-we-need-to-create-our-r-studio-project" class="slide level2">
+<h2>Next, we need to create our R studio project</h2>
+<p>Where do we create our R studio project?</p>
+
+<img data-src="..\assets/slido-where-should-you-create-your-r-studio-project-in-this-class.png" class="r-stretch"></section>
+<section id="lets-create-the-r-studio-project" class="slide level2">
+<h2>Let’s create the R studio project</h2>
+
+<img data-src="..\assets/make-r-project.gif" class="r-stretch"></section>
+<section id="now-create-an-empty-rmd-file" class="slide level2">
+<h2>Now, create an EMPTY Rmd file</h2>
+<p>Make sure it is EMPTY</p>
+
+<img data-src="..\assets/make-rmarkdown.gif" class="r-stretch"></section>
+<section id="save-the-rmd-file" class="slide level2">
+<h2>Save the Rmd file</h2>
+<p>Where do we save the Rmd file?</p>
+
+<img data-src="..\assets/slido-where-should-you-save-your-rmd-file.png" class="r-stretch"></section>
+<section id="add-the-title-author-and-date" class="slide level2">
+<h2>Add the title, author, and date</h2>
+<p>What is the proper format?</p>
+<div class="columns">
+<div class="column">
+<p><img data-src="..\assets/yml_slido.png"></p>
+</div><div class="column">
+<p><img data-src="..\assets/slido-how-do-you-properly-format-the-title-author-and-date.png"></p>
+</div></div>
+</section>
+<section id="add-the-first-code-chunk" class="slide level2">
+<h2>Add the first code chunk</h2>
+<p>What is the proper format?</p>
+<div class="columns">
+<div class="column">
+<p><img data-src="..\assets/code_block_slido.png"></p>
+</div><div class="column">
+<p><img data-src="..\assets/slido-how-do-you-properly-format-your-code-chunk.png"></p>
+</div></div>
+</section>
+<section id="simulating-height" class="slide level2">
+<h2>Simulating height</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">Today, we are going to simulate our own heights dataset, and then plot it</li>
+<li class="fragment">What is a simulation?
+<ul>
+<li class="fragment">A simulation is when we generate fake data form scratch.</li>
+<li class="fragment">Our beliefs and hypotheses inform the mechanism we use to generate the data.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="there-is-a-mechanism-that-produces-all-data" class="slide level2">
+<h2>There is a mechanism that produces all data</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">What are some factors that impact height?
+<ul>
+<li class="fragment">Genetics</li>
+<li class="fragment">Nutrition</li>
+<li class="fragment">Exercise</li>
+</ul></li>
+<li class="fragment">Let’s say that everyone’s height is determined by the average height plus or minus some of these factors.
+<ul>
+<li class="fragment">Let’s take a look in R</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>avg_height <span class="ot">&lt;-</span> <span class="dv">66</span></span>
+<span id="cb1-2"><a></a>genes <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="sc">-</span><span class="dv">10</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">1</span>) <span class="co"># randomly samples a single number from -10 to 10</span></span>
+<span id="cb1-3"><a></a>final_height <span class="ot">&lt;-</span> avg_height <span class="sc">+</span> genes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li class="fragment">We just simulated for one person. Now we want to repeat this 100 times.</li>
+</ul>
+</div>
 <aside class="notes">
-<p>Go over case studies.</p>
-<p>Cover z-scores and CI. Have people write an interpretation for CI’s for their lab report. Have people revise their lab reports.</p>
+<p>Have students raise their hands.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -157,325 +305,265 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="case-studies" class="slide level2">
-<h2>Case studies</h2>
+<section id="for-loops" class="slide level2">
+<h2>for loops</h2>
 <div class="card-list">
 <ul>
-<li class="fragment">I’m partially through grading them.</li>
-<li class="fragment">So far:
+<li class="fragment"><p>Wrap the following around the code you want to repeat</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="cf">for</span> (person <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb2-2"><a></a><span class="co"># Code to repeat goes here. This repeats the code 100 times.</span></span>
+<span id="cb2-3"><a></a><span class="co"># `person` takes the value 1 the first time, then 2 the second time, etc.</span></span>
+<span id="cb2-4"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li class="fragment"><p>Try running that block of code. Try printing <code>final_height</code>. What do you get?</p>
 <ul>
-<li class="fragment">There is a mix of scores</li>
-<li class="fragment">Somewhat of a bimodal distribution</li>
+<li class="fragment">You should only get one number.</li>
 </ul></li>
 </ul>
 </div>
-</section>
-<section id="the-good" class="slide level2">
-<h2>The good</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Most everyone
-<ul>
-<li class="fragment">Wrote great code.</li>
-<li class="fragment">Formatted the Rmd well.</li>
-<li class="fragment">These things are hard.</li>
-<li class="fragment">Make sure to recognize your accomplishments!</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="the-struggles" class="slide level2">
-<h2>The struggles</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Those who lost the most points:
-<ul>
-<li class="fragment">Used the wrong rubric</li>
-<li class="fragment">Missed things on the rubric</li>
-<li class="fragment">Primary tip: Make sure to double check everything on the rubric</li>
-</ul></li>
-<li class="fragment">Many of you lost points on this
-<ul>
-<li class="fragment">Interpretations</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="before-you-get-too-anxious" class="slide level2">
-<h2>Before you get too anxious…</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">You will have the opportunity to revise your case study to receive up to a score of 14.</li>
-</ul>
-</div>
-</section>
-<section id="outline" class="slide level2">
-<h2>Outline</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">I will clarify interpretations</li>
-<li class="fragment">I will finally go over confidence intervals</li>
-<li class="fragment">What I hope to accomplish: help you build some intuition about stats so you don’t feel like you need to memorize a list of annoying rules</li>
-</ul>
-</div>
-</section>
-<section>
-<section id="interpretations" class="title-slide slide level1 center">
-<h1>Interpretations</h1>
+<!--
 
+. . .
+
+::: iframe
+https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
+:::
+
+-->
 </section>
-<section id="ambiguous-thinking" class="slide level2">
-<h2>“Ambiguous thinking”</h2>
+<section id="you-need-to-store-all-the-numbers-from-the-simulation" class="slide level2">
+<h2>You need to store all the numbers from the simulation!</h2>
 <div class="card-list">
 <ul>
-<li class="fragment">Descriptive statistics is all about “ambiguous thinking”
-<ul>
-<li class="fragment">Shape: Is it normal? Symmentrical? Skewed (rarer than you think!)? Bimodal?</li>
-<li class="fragment">Center ~ <strong><em>Sample</em></strong> mean</li>
-<li class="fragment">Spread ~ <strong><em>Sample</em></strong> SD</li>
-</ul></li>
+<li class="fragment">If you don’t store the simulated numbers into a list, <code>final_height</code> gets over-written again and again.</li>
+<li class="fragment">So we create an empty list, then each time the for loop runs, we store the new value in the next place in the list.</li>
 </ul>
 </div>
 </section>
-<section id="ambiguous-thinking-1" class="slide level2">
-<h2>“Ambiguous thinking”</h2>
-
-<img data-src="week6_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
-<section id="main-purpose" class="slide level2">
-<h2>Main purpose</h2>
+<section id="what-goes-in-a-b-and-c" class="slide level2">
+<h2>What goes in A, B, and C?</h2>
 <div class="columns">
 <div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>avg_height <span class="ot">&lt;-</span> <span class="dv">66</span></span>
+<span id="cb3-2"><a></a>sim_heights <span class="ot">&lt;-</span> A</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a><span class="cf">for</span> (person <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb3-5"><a></a>genes <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="sc">-</span><span class="dv">10</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">1</span>)</span>
+<span id="cb3-6"><a></a>final_height <span class="ot">&lt;-</span> avg_height <span class="sc">+</span> genes</span>
+<span id="cb3-7"><a></a>sim_heights[B] <span class="ot">&lt;-</span> C</span>
+<span id="cb3-8"><a></a>}</span>
+<span id="cb3-9"><a></a></span>
+<span id="cb3-10"><a></a>sim_heights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="card-list">
 <ul>
-<li class="fragment"><strong>Descriptive</strong>
+<li class="fragment">hint: <code>person</code> goes in one of them</li>
+<li class="fragment">A = c()
 <ul>
-<li class="fragment">Visualize the <strong><em>general</em></strong> shape, center, and spread of the <strong><em>sample</em></strong></li>
-<li class="fragment">“See the forest, but not the trees”</li>
+<li class="fragment">This is am empty list to store data</li>
 </ul></li>
 </ul>
 </div>
 </div><div class="column">
 <div class="card-list">
 <ul>
-<li class="fragment"><strong>Inferential</strong>
+<li class="fragment">B = person
 <ul>
-<li class="fragment">Make inferences about the true population means</li>
+<li class="fragment">person takes the value of 1 the first time the for loop runs, and 2 the second time, 3 the third time, etc., until we reach the 100th time.</li>
+</ul></li>
+<li class="fragment">C = final_height
+<ul>
+<li class="fragment">We put the final_height of the first person in sim_heights[1], and second person in sim_heights[2], etc.</li>
 </ul></li>
 </ul>
 </div>
+<!--
+
+::: iframe
+https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
+:::
+
+-->
 </div></div>
 </section>
-<section id="what-i-saw-in-the-case-studies" class="slide level2">
-<h2>What I saw in the case studies</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Statements that imply a population level conclusion</li>
-<li class="fragment">WRONG: “A histogram will let me compare the performance of each group”</li>
-<li class="fragment">When you talk about “performance” you are implying knowledge about the true population
-<ul>
-<li class="fragment">“Score” (noisy metric for performance) vs.&nbsp;“Performance” (true population)</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="score-neq-performance" class="slide level2">
-<h2>Score <span class="math inline">\(\neq\)</span> Performance</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Score is the thing we can measure. “Performance” is the thing we actually care about (true population) that we hope the score represents.</li>
-<li class="fragment">More examples
-<ul>
-<li class="fragment">Number of words recalled <span class="math inline">\(\neq\)</span> Memory</li>
-<li class="fragment">IQ test score <span class="math inline">\(\neq\)</span> Intelligence</li>
-</ul></li>
-</ul>
-</div>
-<aside class="notes">
-<ul>
-<li>An IQ test wishes to measure your intelligence, but at best it only captures part of your intelligence. What it also captures includes: your education, your wealth, whether or not you were exposed to lead as a kid, etc.</li>
-<li>If you say “there is a difference in intelligence between group 1 and group 2”, then you are implying a population difference. If you say “there is a difference in sample mean of IQ test scores between group 1 and group 2”</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="correct-mean-interpretations" class="slide level2">
-<h2>Correct mean interpretations</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Sufficient: “The <strong><em>sample</em></strong> mean of the score in group A is _ and the <strong><em>sample</em></strong> mean of the score in group B is _.”</li>
-<li class="fragment">If you want to compare:
-<ul>
-<li class="fragment">Don’t forget <strong><em>sample mean</em></strong> and <strong><em>score</em></strong> (or whatever the actual metric is in the study)</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="why-cant-we-talk-about-the-population-when-looking-at-histograms" class="slide level2">
-<h2>Why can’t we talk about the population when looking at histograms?</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">A difference in the mean could be due to sampling error</li>
-<li class="fragment">What inferential statistics does: It takes into consideration the possible sampling errors
-<ul>
-<li class="fragment">But CIs are <strong><em>not</em></strong> errors!</li>
-<li class="fragment">How? Sampling distributions provide us with the math to make a good guess</li>
-</ul></li>
-</ul>
-</div>
-</section></section>
-<section>
-<section id="confidence-intervals" class="title-slide slide level1 center">
-<h1>Confidence intervals</h1>
-
-</section>
-<section id="the-confidence-interval-comes-from-the-sampling-distribution" class="slide level2">
-<h2>The confidence interval comes from the sampling distribution</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Sampling distribution: distribution of means over <span class="math inline">\(\infty\)</span> experiments
-<ul>
-<li class="fragment">Hypothetical</li>
-</ul></li>
-<li class="fragment">If we know the true mean, <span class="math inline">\(\mu\)</span>, the sampling distribution tells us what kind of samples to expect</li>
-</ul>
-</div>
-</section>
-<section id="a-bit-of-math" class="slide level2">
-<h2>A bit of math…</h2>
-<aside class="notes">
-<p>I’m going to show some math. Try to keep up as best as you can, but don’t stress out too much about it. But there will also be a simulation at the end to hopefully make things clearer.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="simulation" class="slide level2">
-<h2>Simulation</h2>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Simulation</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
-<div class="card-list">
-<ul>
-<li class="fragment"><p>Explore the <a href="https://shiny.rit.albany.edu/stat/confidence/" target="_blank" rel="noopener noreferrer">Confidence Interval Simulator</a> (this link is also on the website).</p></li>
-<li class="fragment"><p>Discuss with your neighbors:</p>
-<ul>
-<li class="fragment">What is it trying to show?
-<ul>
-<li class="fragment">Around 5 out of 100 times, the CI does not contain the true mean (CI highlighted in red)</li>
-</ul></li>
-</ul></li>
-</ul>
-</div>
-<!--
-
-## Slido
-::: iframe
-
-https://wall.sli.do/event/qFBF9mUcZDngBd8niQpzQp
-
-:::
-
--->
-</div>
-</div>
-</div>
-</section>
-<section id="confidence-interval-definition" class="slide level2">
-<h2>Confidence interval definition</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">In 95% of experiments, the true mean will be in the CI of that experiment</li>
-<li class="fragment">95% of CIs will contain the true mean</li>
-<li class="fragment"><strong>Not:</strong> 95% probability that the true mean is in the CI of our experiment</li>
-</ul>
-</div>
-</section>
-<section id="confidence-statement" class="slide level2">
-<h2>“Confidence” statement</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Since we can’t say anything about the probability in our experiment, we use the word “confident” instead</li>
-<li class="fragment">We are 95% <em>confident</em> that the true mean is in the CI of our experiment</li>
-</ul>
-</div>
-</section>
-<section id="ci-interpretations" class="slide level2">
-<h2>CI interpretations</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Always include both the definition of a CI as well as the confidence statement.</li>
-</ul>
-</div>
-<!--
-::: card-list
-
-- 95% of the samples generated by a population with the true mean, $\mu$, will have a CI that contains $\mu$.
-
-- WRONG: There is a 95% probability that the CI contains the true mean, $\mu$.
-
-    - This is different from the first statement
-    - You cannot actually calculate this probability directly, because it requires that you know the true mean, $\mu$
-
-- Therefore, we instead use the term "confident". We say that we are 95% confident that the CI contains the true mean.
-    - There is a reason why it is called the confidence interval, and not the probability interval.
-:::
--->
-<!--
-
-```{=html}
-<iframe width="100%" height="600px" src="https://wall.sli.do/event/psqmdehPARDpce13BWS1LY/?section=b87f4381-4b7d-41fd-abd0-76f5f34870db" height=600 width=100%></iframe>
-```
-
--->
-<!--
-
-## Formatting Essentials
-
-```{=html}
-<iframe width="100%" height="600px" src="https://wall.sli.do/event/psqmdehPARDpce13BWS1LY/?section=b87f4381-4b7d-41fd-abd0-76f5f34870db" height=600 width=100%></iframe>
-```
-
--->
-</section></section>
-<section>
-<section id="deliverables" class="title-slide slide level1 center">
-<h1>Deliverables</h1>
-
-</section>
-<section id="section" class="slide level2 scrollable">
+<section id="section" class="slide level2">
 <h2></h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>avg_height <span class="ot">&lt;-</span> <span class="dv">66</span></span>
+<span id="cb4-2"><a></a>sim_heights <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb4-3"><a></a></span>
+<span id="cb4-4"><a></a><span class="cf">for</span> (person <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb4-5"><a></a>genes <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="sc">-</span><span class="dv">10</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">1</span>)</span>
+<span id="cb4-6"><a></a>final_height <span class="ot">&lt;-</span> avg_height <span class="sc">+</span> genes</span>
+<span id="cb4-7"><a></a>sim_heights[person] <span class="ot">&lt;-</span> final_height</span>
+<span id="cb4-8"><a></a></span>
+<span id="cb4-9"><a></a>}</span>
+<span id="cb4-10"><a></a></span>
+<span id="cb4-11"><a></a>sim_heights</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="plot-the-data" class="slide level2 scrollable">
+<h2>Plot the data</h2>
+<div class="card-list">
 <ol type="1">
-<li>Write a reflection
-<ul class="task-list">
-<li><label><input type="checkbox">How you did you feel you did on this first case study? What are you proud of? What do you think you can improve upon?</label></li>
-<li><label><input type="checkbox">What are your major takeaways from today’s class?</label></li>
-<li><label><input type="checkbox">What revisions would you make on your case study? Be specific.</label></li>
-<li><label><input type="checkbox">What do you want your future self to remember when working on future case studies?</label></li>
+<li>Convert our sim_heights to a dataframe.
+<ul>
+<li>We will need to load the <code>tidyverse</code> package to do so.</li>
 </ul></li>
-<li>Write a CI interpretation for your Case Study 1.
-<ul class="task-list">
-<li><label><input type="checkbox">What is the main difference between a descriptive and inferential statistics?</label></li>
-<li><label><input type="checkbox">What is the definition of a CI?</label></li>
-<li><label><input type="checkbox">What does the CI say about the results? (Do you not use the word “significant”!)</label></li>
+<li>Plot a histogram using ggplot()
+<ul>
+<li>We will need the <code>ggplot2</code> package.</li>
 </ul></li>
 </ol>
+</div>
+
+<img data-src="..\assets/slido-how-should-you-load-the-tidyverse-package.png" class="r-stretch"></section>
+<section id="creating-a-dataframe" class="slide level2">
+<h2>Creating a dataframe</h2>
+<div class="card-list">
+<ul>
+<li class="fragment"><p>Use the following code to create a dataframe with 1 column named <code>heights</code>, populated with our simulated data:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">heights =</span> sim_heights) <span class="co"># converts the c() list to a dataframe</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li class="fragment"><p>Let’s take a look in R</p></li>
+</ul>
+</div>
+</section>
+<section id="ggplot-basics" class="slide level2">
+<h2>ggplot basics</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">Basic formulation: <code>ggplot(data, aes(x,y))</code>
+<ul>
+<li class="fragment">This doesn’t plot anything, but just provides important information, like the x and y variables, to ggplot</li>
+<li class="fragment"><code>aes</code> means “aesthetics”</li>
+<li class="fragment">You could just have <code>x</code> in aesthetics for histograms</li>
+</ul></li>
+<li class="fragment">To actually plot things, you add layers using <code>+</code></li>
+<li class="fragment">Examples of layers:
+<ul>
+<li class="fragment"><code>geom_histogram()</code> for histograms</li>
+<li class="fragment"><code>geom_freqpoly()</code> for frequency polygons (continuous versions of histograms)</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="lets-take-a-look-in-r" class="slide level2">
+<h2>Let’s take a look in R</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>avg_height <span class="ot">&lt;-</span> <span class="dv">66</span></span>
+<span id="cb6-2"><a></a>sim_heights <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb6-3"><a></a></span>
+<span id="cb6-4"><a></a><span class="cf">for</span> (person <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb6-5"><a></a>genes <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="sc">-</span><span class="dv">10</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">1</span>)</span>
+<span id="cb6-6"><a></a>sim_heights[person] <span class="ot">&lt;-</span> avg_height <span class="sc">+</span> genes</span>
+<span id="cb6-7"><a></a>}</span>
+<span id="cb6-8"><a></a></span>
+<span id="cb6-9"><a></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">heights =</span> sim_heights)</span>
+<span id="cb6-10"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>df, <span class="fu">aes</span>(<span class="at">x=</span>heights)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="run-the-simulation-multiple-times" class="slide level2">
+<h2>Run the simulation multiple times</h2>
+<p>What is the shape of your plot?</p>
+<!--
+::: iframe
+https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
+:::
+-->
+<p>Answer: they vary a lot, but overall they are flat.</p>
+
+<img data-src="week3_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<section id="lets-add-another-variable" class="slide level2">
+<h2>Let’s add another variable</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>avg_height <span class="ot">&lt;-</span> <span class="dv">66</span></span>
+<span id="cb7-2"><a></a>sim_heights <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb7-3"><a></a></span>
+<span id="cb7-4"><a></a><span class="cf">for</span> (person <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb7-5"><a></a>genes <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="sc">-</span><span class="dv">10</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size=</span><span class="dv">1</span>)</span>
+<span id="cb7-6"><a></a>nutrition <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="sc">-</span><span class="dv">5</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">size=</span><span class="dv">1</span>)</span>
+<span id="cb7-7"><a></a></span>
+<span id="cb7-8"><a></a>sim_heights[person] <span class="ot">&lt;-</span> avg_height <span class="sc">+</span> genes <span class="sc">+</span> nutrition</span>
+<span id="cb7-9"><a></a>}</span>
+<span id="cb7-10"><a></a></span>
+<span id="cb7-11"><a></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">heights =</span> sim_heights)</span>
+<span id="cb7-12"><a></a><span class="fu">ggplot</span>(<span class="at">data=</span>df, <span class="fu">aes</span>(<span class="at">x=</span>heights)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="how-has-the-shape-changed" class="slide level2">
+<h2>How has the shape changed?</h2>
+<p>Answer: With an additional variable, the shapes of the distributions are more bell shaped.</p>
+<!--
+::: iframe
+https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
+:::
+-->
+
+<img data-src="week3_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section id="many-independent-causes-bell-shaped-distribution" class="slide level2">
+<h2>Many independent causes → bell shaped distribution</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">With more independent causes, the distribution becomes more bell shaped</li>
+<li class="fragment">This approximates a normal/Gaussian distribution</li>
+<li class="fragment">This is the central limit theorem</li>
+</ul>
+</div>
+</section>
+<section id="save-you-data-with-write_csv" class="slide level2">
+<h2>Save you data with <code>write_csv</code></h2>
+<p>To save your dataset, use the function <code>write_csv()</code>. The following code saves the dataframe named <code>df</code> to a file named <code>dataset_name.csv</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">write_csv</span>(df, <span class="st">"dataset_name.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="notes-about-todays-deliverables" class="slide level2">
+<h2>Notes about today’s deliverables</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">Submit an html file to Canvas (ignore what Canvas says).</li>
+<li class="fragment">To make the process more efficient, check in with your group before you check in with me. If you check with 2 people and confirm that your lab reports look similar, then I only have to check 10 reports, rather than 30. This means you won’t have to wait as long for me to come around.</li>
+</ul>
+</div>
+</section>
+<section id="deliverables" class="slide level2 scrollable">
+<h2>Deliverables</h2>
+<div class="card-list">
+<ol type="1">
+<li>Simulate heights data for 200 people.
+<ol type="1">
+<li>This time, use women’s average height (64 inches)</li>
+<li>Include the two variables we used before.</li>
+<li>Include an additional variable of your choice.</li>
+</ol></li>
+<li>A histogram or frequency polygon of women’s heights.</li>
+<li>Save the dataset as “heights_women.csv” using <code>write_csv()</code></li>
+<li>How would you describe the shape of your distribution?
+<ul>
+<li>With three variables, the shape of the distribution is even more bell shaped.</li>
+</ul></li>
+<li>Let’s say that you look at the distribution of a dataset and see that it is not bell shaped. Based on our first simulation and what we learned about the central limit theorem, what is one possible reason why that may be?
+<ul>
+<li>There may be one (or only a few) causal factors dominating how the dataset is generated.</li>
+</ul></li>
+</ol>
+</div>
+<aside class="notes">
+
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 
 
 <div class="reveal-header">
@@ -492,7 +580,7 @@ https://wall.sli.do/event/qFBF9mUcZDngBd8niQpzQp
 <p> </p>
 </div>
 </div>
-</section></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

@@ -17,3 +17,7 @@ website:
 
 execute:
   cache: true
+
+format:
+  html:
+    css: noselect.css

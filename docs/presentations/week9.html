@@ -13,7 +13,7 @@
 <link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.24">
 
-  <title>PSYCH 420m Lab – 2: File directory and basic syntax</title>
+  <title>PSYCH 420m Lab – week9</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -199,368 +199,551 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">2: File directory and basic syntax</h1>
-  <p class="subtitle">Open the slides for today from the lab website <a href="https://monaxue.github.io/420m/" class="uri" target="_blank" rel="noopener noreferrer">https://monaxue.github.io/420m/</a></p>
 
-<div class="quarto-title-authors">
-</div>
-
+<section>
+<section id="week-9" class="title-slide slide level1 center">
+<h1>Week 9</h1>
+<p>Download <code>salsLargeN.csv</code> and <code>salsSmallN.csv</code></p>
 </section>
-<section id="office-hours" class="slide level2">
-<h2>Office hours</h2>
+<section id="goal-for-today" class="slide level2 scrollable">
+<h2>Goal for today</h2>
 <div class="card-list">
 <ul>
-<li class="fragment">My office hours will be right after class.</li>
-</ul>
-</div>
-</section>
-<section id="outline" class="slide level2 scrollable">
-<h2>Outline</h2>
-<div class="card-list">
+<li class="fragment"><p>Today, we will be seeing if there is a difference in annual salary between UT grads and Texas A&amp;M grads.</p></li>
+<li class="fragment"><p>We will look at two studies:</p>
 <ol type="1">
-<li class="fragment">File system</li>
-<li class="fragment">RMarkdown</li>
-<li class="fragment">R syntax review</li>
-<li class="fragment">Import dataset</li>
-<li class="fragment">Deliverables</li>
-</ol>
-</div>
-</section>
-<section id="make-a-folder-for-this-class" class="slide level2">
-<h2>Make a folder for this class</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Create a folder somewhere named <code>420m</code>
-<ul>
-<li class="fragment">Home, documents, desktop. etc</li>
-<li class="fragment">Do not create it in a cloud service (iCloud, OneDrive, etc.)</li>
-<li class="fragment">Do not create it in downloads</li>
-</ul></li>
+<li class="fragment">Large sample size (<code>salsLargeN.csv</code>)</li>
+<li class="fragment">Small sample size (<code>salsSmallN.csv</code>)</li>
+</ol></li>
+<li class="fragment"><p>It should be noted that these datasets are fake.</p></li>
 </ul>
 </div>
 </section>
-<section id="make-sub-folders" class="slide level2">
-<h2>Make sub-folders</h2>
+<section id="section" class="slide level2">
+<h2></h2>
+<p><strong>Since we are looking at a difference between means, what plots/analyses should we do in R?</strong></p>
 <div class="card-list">
 <ul>
-<li class="fragment">Inside <code>420m</code>, create a folder called <code>lab2</code></li>
-<li class="fragment">The organization should look like: <code>…/420m/lab2</code></li>
+<li>Frequency polygon</li>
+<li>t-test</li>
+<li>Summary table</li>
+<li>Means plot with 95% confidence interval</li>
+</ul>
+<p>Answer: All of the above.</p>
+</div>
+</section>
+<section id="t-test-review" class="slide level2">
+<h2>t-test review</h2>
+<div class="card-list">
+<ul>
+<li>`data$salary outputs a vector of salaries</li>
+<li><code>data$school == "UT"</code> outputs a vector of <code>TRUE</code> and <code>FALSE</code>.</li>
+<li><code>data$salary[data$school == "UT"]</code> outputs the data where <code>data$school == "UT"</code> is true (AKA the data for all UT grads)</li>
+<li>Therefore, <code>data$[data$school == "UT"]$salary</code> outputs the salary of all UT grads.</li>
 </ul>
 </div>
 </section>
-<section id="what-is-an-rstudio-project" class="slide level2">
-<h2>What is an RStudio project?</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">A project tells RStudio which folder is the main folder</li>
-<li class="fragment">That way, when you read or save files, R will know where to find them.</li>
-<li class="fragment">We will make a new project for each lab</li>
-</ul>
-</div>
-</section>
-<section id="now-create-an-rstudio-project" class="slide level2">
-<h2>Now, create an RStudio project</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">To create a project, click on <code>Project &gt; New Project &gt; Existing Directory</code></li>
-<li class="fragment">Select your <code>lab2</code> folder</li>
-<li class="fragment"><img data-src="..\assets/make-r-project.gif"></li>
-</ul>
-</div>
-</section>
-<section id="what-is-rmarkdown" class="slide level2">
-<h2>What is RMarkdown?</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">RMarkdown is a special type of file that combines the functions of R and Word.</li>
-<li class="fragment">This means you can format documents directly in R</li>
-<li class="fragment"><span><a href="..\assets/rmarkdown_example.html">Example</a> · <a href="..\assets/rmarkdown_example.html" target="_blank" title="Open in new tab">↗</a> · <a href="..\assets/rmarkdown_example.html" title="Download file" download="">⤓</a></span></li>
-</ul>
-</div>
-</section>
-<section id="creat-an-rmarkdown-file" class="slide level2">
-<h2>Creat an RMarkdown file</h2>
-<p>Create an <strong>empty</strong> RMarkdown file</p>
-
-<img data-src="..\assets/make-rmarkdown.gif" class="r-stretch"></section>
-<section id="save-the-file" class="slide level2">
-<h2>Save the file</h2>
-<p>Save this Rmd file in your lab2 folder. Name it something like “lab2”</p>
-
-<img data-src="..\assets/save_file.png" class="r-stretch"></section>
-<section id="experiment-with-the-symbol" class="slide level2">
-<h2>Experiment with the <code>#</code> symbol</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">On one line, write the following text: <code>Hello, my name is [fill in your name]</code></li>
-<li class="fragment">Test the following out by knitting the file
-<ul>
-<li class="fragment">What happens when you start a line with <code>#</code>?</li>
-<li class="fragment">What happens when you include/remove the space between <code>#</code> and the rest of the text?</li>
-<li class="fragment">What happens when you start a line with <code>##</code></li>
-</ul></li>
-</ul>
-</div>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><strong><code>data</code></strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>school</th>
+<th>salary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>TAMU</td>
+<td>70892</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>UT</td>
+<td>71871</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>TAMU</td>
+<td>73517</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>UT</td>
+<td>74159</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>TAMU</td>
+<td>73058</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:10%;">
+<p><span class="math inline">\(\rightarrow\)</span></p>
+</div><div class="column" style="width:20%;">
+<p><strong><code>data$salary</code></strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>salary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>70892</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>71871</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>73517</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>74159</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>73058</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:10%;">
+<p><span class="math inline">\(\rightarrow\)</span></p>
+</div><div class="column" style="width:20%;">
+<p><strong><code>data$school == "UT"</code></strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>school</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>FALSE</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>FALSE</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>TRUE</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>FALSE</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:10%;">
+<p><span class="math inline">\(\rightarrow\)</span></p>
+</div><div class="column" style="width:45%;">
+<p><strong><code>data$salary[data$school == "UT"]</code></strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>salary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>71871</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>74159</td>
+</tr>
+</tbody>
+</table>
+</div></div>
 </section>
 <section id="slido" class="slide level2">
 <h2>Slido</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">What does # Text output?
-<ul>
-<li class="fragment">A big title “Text”</li>
-</ul></li>
-<li class="fragment">What does #Text output?
-<ul>
-<li class="fragment">Plain text “#Text”</li>
-</ul></li>
-<li class="fragment">What does ## Text output?
-<ul>
-<li class="fragment">A smaller title “Text”</li>
-</ul></li>
-</ul>
-</div>
-<!--
-
-::: iframe
-https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
-:::
-
--->
+<p>In t.test, we want <code>t.test(UT_sals,TAMU_sals)</code>, where <code>UT_sals</code> is the salary of all UT grads, and <code>TAMU_sals</code> is the salary of TAMU grads. What should the code look like?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>UT_sals <span class="ot">&lt;-</span> data<span class="sc">$</span>salary[data<span class="sc">$</span>school <span class="sc">==</span> <span class="st">"UT"</span>]</span>
+<span id="cb1-2"><a></a>TAMU_sals <span class="ot">&lt;-</span> data<span class="sc">$</span>salary[data<span class="sc">$</span>school <span class="sc">==</span> <span class="st">"TAMU"</span>]</span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a><span class="fu">t.test</span>(UT_sals,TAMU_sals)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Or</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a></span>
+<span id="cb2-2"><a></a><span class="fu">t.test</span>(data<span class="sc">$</span>salary[data<span class="sc">$</span>school<span class="sc">==</span><span class="st">"UT"</span>], data<span class="sc">$</span>salary[data<span class="sc">$</span>school<span class="sc">==</span><span class="st">"TAMU"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="try-wrapping-text-with-the-following" class="slide level2">
-<h2>Try wrapping text with the following:</h2>
+<section id="create-the-plots-summary-table-and-do-a-t-test-for-both-datasets" class="slide level2">
+<h2>Create the plots, summary table, and do a t-test for both datasets</h2>
+</section>
+<section id="large-sample" class="slide level2">
+<h2>Large sample</h2>
 <div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">R code chunk</a></li><li><a href="#tabset-1-2">Backtick</a></li></ul>
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Frequency polygon</a></li><li><a href="#tabset-1-2">Summary table</a></li><li><a href="#tabset-1-3">Mean plot</a></li><li><a href="#tabset-1-4">t-test</a></li><li><a href="#tabset-1-5">Code</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a></a>```{r}</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a>text to wrap</span>
-<span id="cb1-4"><a></a>    </span>
-<span id="cb1-5"><a></a>```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="card-list">
-<ul>
-<li class="fragment">Hint: Those symbols are called a <code>backticks</code>, not <code>'quotes'</code>.</li>
-<li class="fragment">Remember to include both <code>```{r}</code> above and <code>```</code> below.</li>
-<li class="fragment">What happens when you wrap
-<ul>
-<li class="fragment">Text that starts with <code>#</code></li>
-<li class="fragment">Plain text</li>
-<li class="fragment"><code>print(1+1)</code></li>
-</ul></li>
-</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week9_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</figure>
+</div>
+</div>
 </div>
 </div>
 <div id="tabset-1-2">
-<p><img data-src="..\assets/backtick_keyboard.webp"></p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">school</th>
+<th style="text-align: right;">Count</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">CI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">TAMU</td>
+<td style="text-align: right;">50000</td>
+<td style="text-align: right;">73017.98</td>
+<td style="text-align: right;">999.7115</td>
+<td style="text-align: right;">4.470846</td>
+<td style="text-align: right;">8.762858</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">UT</td>
+<td style="text-align: right;">50000</td>
+<td style="text-align: right;">72993.73</td>
+<td style="text-align: right;">997.6009</td>
+<td style="text-align: right;">4.461407</td>
+<td style="text-align: right;">8.744358</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
-<!--
+<div id="tabset-1-3">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week9_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-4">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
 
-## Slido
-
-
-::: iframe
-https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
-:::
-
--->
-</section>
-<section id="what-happens" class="slide level2">
-<h2>What happens?</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">What happens when you wrap lines that start with <code>#</code>?
-<ul>
-<li class="fragment">They become comments.</li>
-</ul></li>
-<li class="fragment">What happens when you wrap plain text lines?
-<ul>
-<li class="fragment">The file doesn’t knit</li>
-</ul></li>
-<li class="fragment">Try wrapping that around the following text: <code>print(1+1)</code>.
-<ul>
-<li class="fragment">It prints 2</li>
-</ul></li>
-</ul>
+data:  TAMU_sals and UT_sals
+t = 3.8397, df = 99998, p-value = 0.0001233
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 11.87212 36.63092
+sample estimates:
+mean of x mean of y 
+ 73017.98  72993.73 </code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-1-5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a></span>
+<span id="cb4-2"><a></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/salsLargeN.csv"</span>)</span>
+<span id="cb4-3"><a></a></span>
+<span id="cb4-4"><a></a>hist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x=</span>salary, <span class="at">color=</span>school)) <span class="sc">+</span> <span class="fu">geom_freqpoly</span>()</span>
+<span id="cb4-5"><a></a></span>
+<span id="cb4-6"><a></a>UT_sals <span class="ot">&lt;-</span> data<span class="sc">$</span>salary[data<span class="sc">$</span>school <span class="sc">==</span> <span class="st">"UT"</span>]</span>
+<span id="cb4-7"><a></a>TAMU_sals <span class="ot">&lt;-</span> data<span class="sc">$</span>salary[data<span class="sc">$</span>school <span class="sc">==</span> <span class="st">"TAMU"</span>]</span>
+<span id="cb4-8"><a></a></span>
+<span id="cb4-9"><a></a>t_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(TAMU_sals,UT_sals)</span>
+<span id="cb4-10"><a></a></span>
+<span id="cb4-11"><a></a>summary <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(school) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Count=</span><span class="fu">n</span>(), <span class="at">Mean =</span> <span class="fu">mean</span>(salary), <span class="at">SD =</span> <span class="fu">sd</span>(salary), <span class="at">SE=</span>SD<span class="sc">/</span><span class="fu">sqrt</span>(Count), <span class="at">CI =</span> <span class="fl">1.96</span><span class="sc">*</span>SE)</span>
+<span id="cb4-12"><a></a></span>
+<span id="cb4-13"><a></a>mean_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(summary, <span class="fu">aes</span>(<span class="at">x=</span>school, <span class="at">y=</span>Mean)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>Mean<span class="sc">-</span>CI, <span class="at">ymax=</span>Mean<span class="sc">+</span>CI))</span>
+<span id="cb4-14"><a></a></span>
+<span id="cb4-15"><a></a>hist</span>
+<span id="cb4-16"><a></a>mean_plot</span>
+<span id="cb4-17"><a></a>knitr<span class="sc">::</span><span class="fu">kable</span>(summary)</span>
+<span id="cb4-18"><a></a><span class="fu">print</span>(t_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
 </div>
 </section>
-<section id="r-code-chunks" class="slide level2">
-<h2>R code chunks</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Wrapping text in <code>```{r}</code> and <code>```</code> makes them into r code. These are called r “code chunks”</li>
-<li class="fragment">To see if text has been properly wrapped, makes sure that the lines turned grey.</li>
-<li class="fragment">To run individual code chunks, click on the little triangle icon.
-<ul>
-<li class="fragment"><img data-src="..\assets/run-code.gif"></li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section>
-<section id="basic-r-code-review" class="title-slide slide level1 center">
-<h1>Basic <code>R</code> code review</h1>
-<!--
-
-## What does these output?
-
-::: iframe
-https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
-:::
-
--->
-</section>
-<section id="what-does-this-output" class="slide level2">
-<h2>What does this output?</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a></a>```{r}</span>
-<span id="cb2-2"><a></a>a &lt;- 1</span>
-<span id="cb2-3"><a></a>print(a)</span>
-<span id="cb2-4"><a></a>```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Answer: 1</p>
-</section>
-<section id="what-does-this-output-1" class="slide level2">
-<h2>What does this output</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a></a>```{r}</span>
-<span id="cb3-2"><a></a>b &lt;- 1:3</span>
-<span id="cb3-3"><a></a>print(b)</span>
-<span id="cb3-4"><a></a>```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Answer: 1, 2, 3</p>
-</section>
-<section id="what-does-this-output-2" class="slide level2">
-<h2>What does this output?</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a></a>```{r}</span>
-<span id="cb4-2"><a></a>c &lt;- c(3,4,5)</span>
-<span id="cb4-3"><a></a>print(c)</span>
-<span id="cb4-4"><a></a>```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Answer: 3, 4, 5</p>
-</section>
-<section id="what-does-this-output-3" class="slide level2">
-<h2>What does this output?</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a></a>```{r}</span>
-<span id="cb5-2"><a></a>c &lt;- c(3,4,5)</span>
-<span id="cb5-3"><a></a>c[4] &lt;- 6</span>
-<span id="cb5-4"><a></a>print(c)</span>
-<span id="cb5-5"><a></a>```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Answer: 3, 4, 5, 6</p>
-</section>
-<section id="what-does-this-output-4" class="slide level2">
-<h2>What does this output</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a></a>```{r}</span>
-<span id="cb6-2"><a></a>a &lt;- 1:4</span>
-<span id="cb6-3"><a></a>b &lt;- c(2,3,5,6)</span>
-<span id="cb6-4"><a></a>b[3] &lt;- 2</span>
-<span id="cb6-5"><a></a>c &lt;- c(a,b)</span>
-<span id="cb6-6"><a></a>print(c)</span>
-<span id="cb6-7"><a></a>```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Answer: 1, 2, 3, 4, 2, 3, 2, 6</p>
-</section>
-<section id="reading-data" class="slide level2 scrollable">
-<h2>Reading data</h2>
+<section id="small-sample" class="slide level2">
+<h2>Small sample</h2>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Instructions</a></li><li><a href="#tabset-2-2">Troubleshooting</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Frequency polygon</a></li><li><a href="#tabset-2-2">Summary table</a></li><li><a href="#tabset-2-3">Mean plot</a></li><li><a href="#tabset-2-4">t-test</a></li><li><a href="#tabset-2-5">Code</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
-<div class="card-list">
-<ol type="1">
-<li>Download <code>2020heights.csv</code> and save it you your <code>lab2</code> folder.</li>
-<li><strong>Important</strong>: Do not use the import button!</li>
-<li>Instead, we use following code to import data</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb7-1"><a></a>```{r}</span>
-<span id="cb7-2"><a></a>library(tidyverse)</span>
-<span id="cb7-3"><a></a>lab2_data &lt;- read_csv("2020heights.csv")</span>
-<span id="cb7-4"><a></a>```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li>Note: make sure to use <code>read_csv</code>, and not <code>read.csv</code></li>
-<li>Use <code>head(lab2_data)</code> to take a peak at the dataset.</li>
-</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week9_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</figure>
+</div>
+</div>
 </div>
 </div>
 <div id="tabset-2-2">
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">school</th>
+<th style="text-align: right;">Count</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">CI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">TAMU</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">73017.98</td>
+<td style="text-align: right;">999.7115</td>
+<td style="text-align: right;">316.1365</td>
+<td style="text-align: right;">619.6276</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">UT</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">72993.73</td>
+<td style="text-align: right;">997.6009</td>
+<td style="text-align: right;">315.4691</td>
+<td style="text-align: right;">618.3195</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="tabset-2-3">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week9_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-4">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  TAMU_sals and UT_sals
+t = 0.054301, df = 18, p-value = 0.9573
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -914.0476  962.5507
+sample estimates:
+mean of x mean of y 
+ 73017.98  72993.73 </code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-2-5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/salsSmallN.csv"</span>)</span>
+<span id="cb6-2"><a></a></span>
+<span id="cb6-3"><a></a>hist <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x=</span>salary, <span class="at">color=</span>school)) <span class="sc">+</span> <span class="fu">geom_freqpoly</span>(<span class="at">binwidth=</span><span class="dv">1000</span>)</span>
+<span id="cb6-4"><a></a></span>
+<span id="cb6-5"><a></a>UT_sals <span class="ot">&lt;-</span> data<span class="sc">$</span>salary[data<span class="sc">$</span>school <span class="sc">==</span> <span class="st">"UT"</span>]</span>
+<span id="cb6-6"><a></a>TAMU_sals <span class="ot">&lt;-</span> data<span class="sc">$</span>salary[data<span class="sc">$</span>school <span class="sc">==</span> <span class="st">"TAMU"</span>]</span>
+<span id="cb6-7"><a></a></span>
+<span id="cb6-8"><a></a>t_test <span class="ot">&lt;-</span> <span class="fu">t.test</span>(TAMU_sals, UT_sals)</span>
+<span id="cb6-9"><a></a></span>
+<span id="cb6-10"><a></a>summary <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(school) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Count=</span><span class="fu">n</span>(), <span class="at">Mean =</span> <span class="fu">mean</span>(salary), <span class="at">SD =</span> <span class="fu">sd</span>(salary), <span class="at">SE=</span>SD<span class="sc">/</span><span class="fu">sqrt</span>(Count), <span class="at">CI =</span> <span class="fl">1.96</span><span class="sc">*</span>SE)</span>
+<span id="cb6-11"><a></a></span>
+<span id="cb6-12"><a></a>mean_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(summary, <span class="fu">aes</span>(<span class="at">x=</span>school, <span class="at">y=</span>Mean)) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>Mean<span class="sc">-</span>CI, <span class="at">ymax=</span>Mean<span class="sc">+</span>CI))</span>
+<span id="cb6-13"><a></a></span>
+<span id="cb6-14"><a></a>hist</span>
+<span id="cb6-15"><a></a>mean_plot</span>
+<span id="cb6-16"><a></a>knitr<span class="sc">::</span><span class="fu">kable</span>(summary)</span>
+<span id="cb6-17"><a></a><span class="fu">print</span>(t_test)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="slido-1" class="title-slide slide level1 center">
+<h1>Slido</h1>
+
+</section>
+<section id="for-the-large-dataset" class="slide level2">
+<h2>For the large dataset:</h2>
 <div class="card-list">
-<ol type="1">
-<li>The number one issue comes from the incorrect file name. Did you remember to include the quotes around the file name? Does your file name match the file in the folder?</li>
-<li>Another very common issue is incorrect folder and project organization.
 <ul>
-<li>Are both heights2020.csv and lab2.Rmd in the <code>lab2</code> folder?</li>
-<li>Is your RStudio project in the folder <code>lab2</code>?</li>
-<li>Is the <code>lab2</code> folder in the <code>420m</code> folder?</li>
-<li>Do you have multiple <code>420m</code> folder and you have opened the incorrect project?</li>
+<li class="fragment">Are the frequency polygons similar or different?
+<ul>
+<li class="fragment">Similar</li>
 </ul></li>
-</ol>
-</div>
-</div>
-</div>
+<li class="fragment">What is the 95% confidence interval of the difference?
+<ul>
+<li class="fragment">[11.87212, 36.63092]</li>
+</ul></li>
+<li class="fragment">What is the t and p-value from the t-test?
+<ul>
+<li class="fragment">t = 3.8397, p-value = 0.0001233</li>
+</ul></li>
+<li class="fragment">Is the p-value larger or smaller than 0.05?
+<ul>
+<li class="fragment">Smaller</li>
+</ul></li>
+<li class="fragment">What seems “weird” about these results? Specifically, compare the frequency polygon to the p-value.
+<ul>
+<li class="fragment">The p-value is small even though the frequency polygons look similar.</li>
+</ul></li>
+</ul>
 </div>
 </section>
-<section id="what-are-the-variables-of-this-dataset" class="slide level2">
-<h2>What are the variables of this dataset?</h2>
-<!--
-
-::: iframe
-https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
-:::
-
--->
-<p>Answer: Just <code>heights</code></p>
-</section>
-<section id="add-the-title-author-date" class="slide level2">
-<h2>Add the title, author, date</h2>
+<section id="for-the-small-dataset" class="slide level2">
+<h2>For the small dataset:</h2>
 <div class="card-list">
 <ul>
-<li><p>At the <strong>very top</strong> of the document, add a section by enclosing it with <code>---</code></p></li>
-<li><p>Let me show you in R</p></li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb8-1"><a></a>---</span>
-<span id="cb8-2"><a></a>title: lab2</span>
-<span id="cb8-3"><a></a>author: Mona Xue</span>
-<span id="cb8-4"><a></a>date: 2026-01-23</span>
-<span id="cb8-5"><a></a>---</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<li class="fragment">Are the frequency polygons similar or different?
 <ul>
-<li>Note: date is in <code>yyyy-mm-dd</code> format</li>
-<li>Important: this section must be at the very top of the document, otherwise there will be an error.</li>
+<li class="fragment">Different</li>
+</ul></li>
+<li class="fragment">What is the 95% confidence interval of the difference?
+<ul>
+<li class="fragment">[-914.0476, 962.5507]</li>
+</ul></li>
+<li class="fragment">What is the t and p-value from the t-test?
+<ul>
+<li class="fragment">t = 0.054301, p-value = 0.9573</li>
+</ul></li>
+<li class="fragment">Is the p-value larger or smaller than 0.05?
+<ul>
+<li class="fragment">Larger</li>
+</ul></li>
+<li class="fragment">What seems “weird” about these results? Specifically, compare the frequency polygon to the p-value.
+<ul>
+<li class="fragment">The p-value is large even though the frequency polygons look different.</li>
+</ul></li>
 </ul>
 </div>
 </section>
-<section id="deliverables" class="slide level2 scrollable">
+<section id="whats-weird" class="slide level2">
+<h2>What’s weird?</h2>
+<div class="card-list">
+<p><strong>If we use a p-value of 0.05 as our significance threshold…</strong></p>
+<ul>
+<li class="fragment">For the large dataset
+<ul>
+<li class="fragment">The p-value is smaller than 0.05, so there is a significant difference.</li>
+<li class="fragment">But the frequency polygons look very similar!</li>
+<li class="fragment">So is this difference big enough to be an important difference?</li>
+</ul></li>
+<li class="fragment">For the small dataset
+<ul>
+<li class="fragment">The p-value is larger than 0.05, so we cannot reject the null hypothesis.</li>
+<li class="fragment">The frequency polygons look different, but since it’s a small sample, it could be do to noise.</li>
+</ul></li>
+<li class="fragment">So how can we tell if there is an important enough difference?</li>
+</ul>
+</div>
+</section>
+<section id="effect-sizes" class="slide level2">
+<h2>Effect sizes</h2>
+<div class="card-list">
+<ul>
+<li class="fragment"><p>The effect size is how many standard deviations the means are apart.</p></li>
+<li class="fragment"><p>It is a measure of signal strength, so it does not depend on sample size.</p></li>
+<li class="fragment"><p>(mean salary of TAMU - mean salary of UT) / SD of TAMU</p></li>
+<li class="fragment"><p>If you named your summary table <code>summary</code>, you can use summary[[row #,column #]] to get the values you need.</p></li>
+</ul>
+</div>
+<div class="fragment">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>effect_size <span class="ot">&lt;-</span> (summary[[<span class="dv">1</span>,<span class="dv">3</span>]] <span class="sc">-</span> summary[[<span class="dv">2</span>,<span class="dv">3</span>]]) <span class="sc">/</span> summary[[<span class="dv">1</span>,<span class="dv">4</span>]]</span>
+<span id="cb7-2"><a></a>effect_size</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.02425852</code></pre>
+</div>
+</div>
+<p>We get 2 100ths of a standard deviation - pretty small</p>
+</div>
+</section>
+<section id="intuitive-version-of-effect-size" class="slide level2">
+<h2>Intuitive version of effect size</h2>
+<div class="card-list">
+<ul>
+<li class="fragment"><p>If we select a UT grad and a TAMU grad at random, what are the chances that the UT grad makes more?</p></li>
+<li class="fragment"><p>If that comes out to around 50:50, then there probably isn’t a meaningful difference between salaries</p></li>
+<li class="fragment"><p>Plucking 1 salary from a group We can snatch one salary from a group using the <code>sample()</code> function:</p>
+<ul>
+<li class="fragment"><code>sample(data$salary[data$school == "UT"], size=1)</code></li>
+</ul></li>
+<li class="fragment"><p>Comparing 2 people’s salaries</p>
+<ul>
+<li class="fragment"><code>sample(data$salary[data$school == "UT"], size=1) &gt; sample(data$salary[data$school == "TAMU"], size=1)</code></li>
+<li class="fragment">If output <code>TRUE</code>, than means a single UT sample has a higher salary than a single TAMU sample.</li>
+</ul></li>
+<li class="fragment"><p>Then simulate this 100 times using replicate, and sum the output to count the total number of instances that UT samples are higher. Divide by 100 to get the percent.</p></li>
+</ul>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a></span>
+<span id="cb9-2"><a></a>ut_wins <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">100</span>, </span>
+<span id="cb9-3"><a></a>    <span class="fu">sample</span>(data<span class="sc">$</span>salary[data<span class="sc">$</span>school <span class="sc">==</span> <span class="st">"UT"</span>], <span class="at">size=</span><span class="dv">1</span>) <span class="sc">&gt;</span> </span>
+<span id="cb9-4"><a></a>        <span class="fu">sample</span>(data<span class="sc">$</span>salary[data<span class="sc">$</span>school <span class="sc">==</span> <span class="st">"TAMU"</span>], <span class="at">size=</span><span class="dv">1</span>))</span>
+<span id="cb9-5"><a></a></span>
+<span id="cb9-6"><a></a><span class="fu">sum</span>(ut_wins)<span class="sc">/</span><span class="dv">100</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.39</code></pre>
+</div>
+</div>
+</section>
+<section id="deliverables" class="slide level2">
 <h2>Deliverables</h2>
 <div class="card-list">
-<ol type="1">
-<li>Create a new EMPTY RMarkdown file.</li>
-<li>Add the tile, author, and date, enclosed with <code>---</code></li>
-<li>Add a large heading that says <code>Code</code>. Beneath this, include
+<p><strong>For both datasets</strong></p>
 <ul>
-<li>One <code>r</code> code chunk that:
-<ul>
-<li>starts with a comment that says “Load packages”</li>
-<li>loads the tidyverse packages using <code>library()</code></li>
-<li>imports <code>2020heights.csv</code> using <code>read_csv()</code><br>
-</li>
-</ul></li>
-<li>A second <code>r</code> code chunk. In this chunk,
-<ul>
-<li>create a list of numbers from 1 to 3. Assign this to the variable <code>a</code></li>
-<li>create a list of numbers from 4 to 9. Assign this to `b.</li>
-<li>change the 3rd element of <code>b</code> to 3.</li>
-<li>create a new list by combining <code>a</code> and <code>b</code>. Assign this to <code>c</code></li>
-<li>print the list <code>c</code> by using <code>print(c)</code></li>
-</ul></li>
-</ul></li>
-<li>Add a large heading that says <code>About me</code>. Beneath this, write a short paragraph in plain text answering the following:
-<ul>
-<li>Who are you?</li>
-<li>How would you describe your personality?</li>
-<li>What are you passionate about?</li>
-<li>What are your hobbies?</li>
-</ul></li>
-<li>Knit the file, then show it to me.</li>
-<li>Finally, sumbmit the html file to Canvas. Once you are finished, you may leave.</li>
-</ol>
+<li>Frequency polygons of the data</li>
+<li>A summary table of the results</li>
+<li>The output of a t-test</li>
+<li>The effect size</li>
+<li>The proportion or percentage of UT grads that make more than A&amp;M grads</li>
+<li>Interpretation of results using the following template:</li>
+</ul>
 </div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb11-1"><a></a></span>
+<span id="cb11-2"><a></a>The small and large sample studies actually produced [similar/different] means and standard deviations for the salaries of UT and A&amp;M grads.</span>
+<span id="cb11-3"><a></a></span>
+<span id="cb11-4"><a></a>In terms of t and p-values, the two studies yielded [similar/different] results, where the large sample had a[small/large] p-value, and the small sample had a [small/large] p-value.</span>
+<span id="cb11-5"><a></a></span>
+<span id="cb11-6"><a></a>The effects sizes showed [a small/large] difference in salary, indicating that the differences in salary between schools are [notable/not notable], despite the [small/large] p-values for the [large/small] sample study.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 <div class="reveal-header">

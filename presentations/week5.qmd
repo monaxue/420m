@@ -1,5 +1,5 @@
 ---
-title: Sampling distributions
+title: "5: Sampling distributions"
 subtitle: Create your lab5 folder, project, and lab5.Rmd
 ---
 

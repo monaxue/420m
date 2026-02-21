@@ -13,7 +13,7 @@
 <link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.24">
 
-  <title>PSYCH 420m Lab – 6: Case studies and CIs</title>
+  <title>PSYCH 420m Lab – week14</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -133,349 +133,234 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">6: Case studies and CIs</h1>
 
-<div class="quarto-title-authors">
+<section id="case-study-3-histogram" class="slide level2">
+<h2>Case study 3 histogram</h2>
+
+<img data-src="week14_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"><div class="cell">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Median</th>
+<th style="text-align: right;">SD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">12.68</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">2.474369</td>
+</tr>
+</tbody>
+</table>
 </div>
-
+</div>
 </section>
-<section class="slide level2">
-
-<aside class="notes">
-<p>Go over case studies.</p>
-<p>Cover z-scores and CI. Have people write an interpretation for CI’s for their lab report. Have people revise their lab reports.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="case-studies" class="slide level2">
-<h2>Case studies</h2>
+<section id="key-reasons-why-you-dont-get-100" class="slide level2 scrollable">
+<h2>Key reasons why you don’t get 100%</h2>
 <div class="card-list">
-<ul>
-<li class="fragment">I’m partially through grading them.</li>
-<li class="fragment">So far:
-<ul>
-<li class="fragment">There is a mix of scores</li>
-<li class="fragment">Somewhat of a bimodal distribution</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="the-good" class="slide level2">
-<h2>The good</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Most everyone
-<ul>
-<li class="fragment">Wrote great code.</li>
-<li class="fragment">Formatted the Rmd well.</li>
-<li class="fragment">These things are hard.</li>
-<li class="fragment">Make sure to recognize your accomplishments!</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="the-struggles" class="slide level2">
-<h2>The struggles</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Those who lost the most points:
-<ul>
-<li class="fragment">Used the wrong rubric</li>
-<li class="fragment">Missed things on the rubric</li>
-<li class="fragment">Primary tip: Make sure to double check everything on the rubric</li>
-</ul></li>
-<li class="fragment">Many of you lost points on this
-<ul>
-<li class="fragment">Interpretations</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="before-you-get-too-anxious" class="slide level2">
-<h2>Before you get too anxious…</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">You will have the opportunity to revise your case study to receive up to a score of 14.</li>
-</ul>
-</div>
-</section>
-<section id="outline" class="slide level2">
-<h2>Outline</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">I will clarify interpretations</li>
-<li class="fragment">I will finally go over confidence intervals</li>
-<li class="fragment">What I hope to accomplish: help you build some intuition about stats so you don’t feel like you need to memorize a list of annoying rules</li>
-</ul>
-</div>
-</section>
-<section>
-<section id="interpretations" class="title-slide slide level1 center">
-<h1>Interpretations</h1>
-
-</section>
-<section id="ambiguous-thinking" class="slide level2">
-<h2>“Ambiguous thinking”</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Descriptive statistics is all about “ambiguous thinking”
-<ul>
-<li class="fragment">Shape: Is it normal? Symmentrical? Skewed (rarer than you think!)? Bimodal?</li>
-<li class="fragment">Center ~ <strong><em>Sample</em></strong> mean</li>
-<li class="fragment">Spread ~ <strong><em>Sample</em></strong> SD</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="ambiguous-thinking-1" class="slide level2">
-<h2>“Ambiguous thinking”</h2>
-
-<img data-src="week6_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
-<section id="main-purpose" class="slide level2">
-<h2>Main purpose</h2>
-<div class="columns">
-<div class="column">
-<div class="card-list">
-<ul>
-<li class="fragment"><strong>Descriptive</strong>
-<ul>
-<li class="fragment">Visualize the <strong><em>general</em></strong> shape, center, and spread of the <strong><em>sample</em></strong></li>
-<li class="fragment">“See the forest, but not the trees”</li>
-</ul></li>
-</ul>
-</div>
-</div><div class="column">
-<div class="card-list">
-<ul>
-<li class="fragment"><strong>Inferential</strong>
-<ul>
-<li class="fragment">Make inferences about the true population means</li>
-</ul></li>
-</ul>
-</div>
-</div></div>
-</section>
-<section id="what-i-saw-in-the-case-studies" class="slide level2">
-<h2>What I saw in the case studies</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Statements that imply a population level conclusion</li>
-<li class="fragment">WRONG: “A histogram will let me compare the performance of each group”</li>
-<li class="fragment">When you talk about “performance” you are implying knowledge about the true population
-<ul>
-<li class="fragment">“Score” (noisy metric for performance) vs.&nbsp;“Performance” (true population)</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="score-neq-performance" class="slide level2">
-<h2>Score <span class="math inline">\(\neq\)</span> Performance</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Score is the thing we can measure. “Performance” is the thing we actually care about (true population) that we hope the score represents.</li>
-<li class="fragment">More examples
-<ul>
-<li class="fragment">Number of words recalled <span class="math inline">\(\neq\)</span> Memory</li>
-<li class="fragment">IQ test score <span class="math inline">\(\neq\)</span> Intelligence</li>
-</ul></li>
-</ul>
-</div>
-<aside class="notes">
-<ul>
-<li>An IQ test wishes to measure your intelligence, but at best it only captures part of your intelligence. What it also captures includes: your education, your wealth, whether or not you were exposed to lead as a kid, etc.</li>
-<li>If you say “there is a difference in intelligence between group 1 and group 2”, then you are implying a population difference. If you say “there is a difference in sample mean of IQ test scores between group 1 and group 2”</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="correct-mean-interpretations" class="slide level2">
-<h2>Correct mean interpretations</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Sufficient: “The <strong><em>sample</em></strong> mean of the score in group A is _ and the <strong><em>sample</em></strong> mean of the score in group B is _.”</li>
-<li class="fragment">If you want to compare:
-<ul>
-<li class="fragment">Don’t forget <strong><em>sample mean</em></strong> and <strong><em>score</em></strong> (or whatever the actual metric is in the study)</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="why-cant-we-talk-about-the-population-when-looking-at-histograms" class="slide level2">
-<h2>Why can’t we talk about the population when looking at histograms?</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">A difference in the mean could be due to sampling error</li>
-<li class="fragment">What inferential statistics does: It takes into consideration the possible sampling errors
-<ul>
-<li class="fragment">But CIs are <strong><em>not</em></strong> errors!</li>
-<li class="fragment">How? Sampling distributions provide us with the math to make a good guess</li>
-</ul></li>
-</ul>
-</div>
-</section></section>
-<section>
-<section id="confidence-intervals" class="title-slide slide level1 center">
-<h1>Confidence intervals</h1>
-
-</section>
-<section id="the-confidence-interval-comes-from-the-sampling-distribution" class="slide level2">
-<h2>The confidence interval comes from the sampling distribution</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Sampling distribution: distribution of means over <span class="math inline">\(\infty\)</span> experiments
-<ul>
-<li class="fragment">Hypothetical</li>
-</ul></li>
-<li class="fragment">If we know the true mean, <span class="math inline">\(\mu\)</span>, the sampling distribution tells us what kind of samples to expect</li>
-</ul>
-</div>
-</section>
-<section id="a-bit-of-math" class="slide level2">
-<h2>A bit of math…</h2>
-<aside class="notes">
-<p>I’m going to show some math. Try to keep up as best as you can, but don’t stress out too much about it. But there will also be a simulation at the end to hopefully make things clearer.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="simulation" class="slide level2">
-<h2>Simulation</h2>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Simulation</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
-<div class="card-list">
-<ul>
-<li class="fragment"><p>Explore the <a href="https://shiny.rit.albany.edu/stat/confidence/" target="_blank" rel="noopener noreferrer">Confidence Interval Simulator</a> (this link is also on the website).</p></li>
-<li class="fragment"><p>Discuss with your neighbors:</p>
-<ul>
-<li class="fragment">What is it trying to show?
-<ul>
-<li class="fragment">Around 5 out of 100 times, the CI does not contain the true mean (CI highlighted in red)</li>
-</ul></li>
-</ul></li>
-</ul>
-</div>
-<!--
-
-## Slido
-::: iframe
-
-https://wall.sli.do/event/qFBF9mUcZDngBd8niQpzQp
-
-:::
-
--->
-</div>
-</div>
-</div>
-</section>
-<section id="confidence-interval-definition" class="slide level2">
-<h2>Confidence interval definition</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">In 95% of experiments, the true mean will be in the CI of that experiment</li>
-<li class="fragment">95% of CIs will contain the true mean</li>
-<li class="fragment"><strong>Not:</strong> 95% probability that the true mean is in the CI of our experiment</li>
-</ul>
-</div>
-</section>
-<section id="confidence-statement" class="slide level2">
-<h2>“Confidence” statement</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Since we can’t say anything about the probability in our experiment, we use the word “confident” instead</li>
-<li class="fragment">We are 95% <em>confident</em> that the true mean is in the CI of our experiment</li>
-</ul>
-</div>
-</section>
-<section id="ci-interpretations" class="slide level2">
-<h2>CI interpretations</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Always include both the definition of a CI as well as the confidence statement.</li>
-</ul>
-</div>
-<!--
-::: card-list
-
-- 95% of the samples generated by a population with the true mean, $\mu$, will have a CI that contains $\mu$.
-
-- WRONG: There is a 95% probability that the CI contains the true mean, $\mu$.
-
-    - This is different from the first statement
-    - You cannot actually calculate this probability directly, because it requires that you know the true mean, $\mu$
-
-- Therefore, we instead use the term "confident". We say that we are 95% confident that the CI contains the true mean.
-    - There is a reason why it is called the confidence interval, and not the probability interval.
-:::
--->
-<!--
-
-```{=html}
-<iframe width="100%" height="600px" src="https://wall.sli.do/event/psqmdehPARDpce13BWS1LY/?section=b87f4381-4b7d-41fd-abd0-76f5f34870db" height=600 width=100%></iframe>
-```
-
--->
-<!--
-
-## Formatting Essentials
-
-```{=html}
-<iframe width="100%" height="600px" src="https://wall.sli.do/event/psqmdehPARDpce13BWS1LY/?section=b87f4381-4b7d-41fd-abd0-76f5f34870db" height=600 width=100%></iframe>
-```
-
--->
-</section></section>
-<section>
-<section id="deliverables" class="title-slide slide level1 center">
-<h1>Deliverables</h1>
-
-</section>
-<section id="section" class="slide level2 scrollable">
-<h2></h2>
 <ol type="1">
-<li>Write a reflection
-<ul class="task-list">
-<li><label><input type="checkbox">How you did you feel you did on this first case study? What are you proud of? What do you think you can improve upon?</label></li>
-<li><label><input type="checkbox">What are your major takeaways from today’s class?</label></li>
-<li><label><input type="checkbox">What revisions would you make on your case study? Be specific.</label></li>
-<li><label><input type="checkbox">What do you want your future self to remember when working on future case studies?</label></li>
+<li class="fragment">You forget to include
+<ul>
+<li class="fragment">Explanation of code from outside sources</li>
+<li class="fragment">Interpretations</li>
+<li class="fragment">Mean/CI plots</li>
 </ul></li>
-<li>Write a CI interpretation for your Case Study 1.
-<ul class="task-list">
-<li><label><input type="checkbox">What is the main difference between a descriptive and inferential statistics?</label></li>
-<li><label><input type="checkbox">What is the definition of a CI?</label></li>
-<li><label><input type="checkbox">What does the CI say about the results? (Do you not use the word “significant”!)</label></li>
+<li class="fragment">Improper interpretations
+<ul>
+<li class="fragment">Forgetting what interpretations you can draw from histograms and boxplots</li>
+<li class="fragment">Subjectivity of “significance”</li>
+<li class="fragment">Significance <span class="math inline">\(\neq\)</span> proof</li>
 </ul></li>
 </ol>
+</div>
+</section>
+<section id="by-answering-todays-slido-questions-correctly-you-will-get-a-chance-to-earn-some-points-back-on-your-case-study-3-or-extra-credit" class="slide level2">
+<h2>By answering today’s Slido questions correctly, you will get a chance to earn some points back on your Case Study 3 (or extra credit)</h2>
+<iframe src="https://wall.sli.do/event/inJn94aUXfX34w1wGUWuzj/?section=a3e6a3fb-5812-4344-a61c-f033118ae11c" width="100%" height="600px" style="border:0;"></iframe>
+<!---
+
+## What the difference between a paired and standard t-test?
+1. A standard t-test compares the means of two separate, independent groups. A paired t-test compares the difference between the means of two related groups. 
+2. A standard t-test compares the mean values of two groups. A paired t-test compares the values for each individual.
+
+## What is a confidence interval?
+
+## What is a p-value?
+
+## How do you analyze the sampling distribution?
+- You use geom_histogram() on the raw data and compare the mean to zero.
+- You use geom_histogram() on the raw data and see if the distribution contains zero.
+
+## Interpreting histograms
+
+## Compare and contrast these plots
+There is something that can be improved upon in every one of these plots. What are they?
+- [ ] Redundant information should be removed
+- [ ] Points should be unhidden
+- [ ] The scale of x-axis should be discrete
+
+- Answer: None of these are technically wrong. But:
+    - Ensure that all points are unhidden (you can use geom_jitter())
+    - It is better not to have redundant information in a plot. If a variable already is labeled on the x-axis, it is best not to color it by the same variable.
+    - We have learned in class of a similar plot, it looks like this:
+    - Notice: This plot is colored by id. You should explain why you prefer your plot over the one we learned in class.
+- 
+
+
+--->
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+
+<img data-src="..\assets/Pasted image 20251204005316.png" class="r-stretch"></section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+
+<img data-src="..\assets/Pasted image 20251204005352.png" class="r-stretch"></section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+
+<img data-src="..\assets/Pasted image 20251204135039.png" class="r-stretch"></section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+
+<img data-src="..\assets/Pasted image 20251204200739.png" class="r-stretch"></section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+
+<img data-src="..\assets/Pasted image 20251204212057.png" class="r-stretch"></section>
+<section id="actual-case-study-4-rubric" class="slide level2">
+<h2>Actual case study 4 rubric</h2>
+<p>This time, I will lay out the expectations more clearly IN TEXT</p>
+<div class="card-list">
+<ul>
+<li>Formatting
+<ul>
+<li>Rmarkdown PDF or HTML</li>
+<li>Properly labeled figures</li>
+<li>Summary tables that are printed out</li>
+<li>Descriptions for each plot</li>
+<li>Code is clearly readable and does not run off the page</li>
+</ul></li>
+<li>Sections
+<ul>
+<li>Introduction (1 point)
+<ul>
+<li>Description of the study and research question</li>
+</ul></li>
+<li>Code and plots (4 points)
+<ul>
+<li>This section includes your code, summary tables, and plots</li>
+<li>Summary table with mean and SD: 1 point</li>
+<li>Plot 1 - Histogram/Freqeuncy polygon (which one is better for a continuous variable?): 1 point</li>
+<li>Plot 2 - Regression plot: 1 point</li>
+<li>Statistical analysis (Regression): 1 points</li>
+</ul></li>
+<li>Interpretations (6 points)
+<ul>
+<li>This section includes interpretation of plots, p-values and their interpretations, confidence intervals and their interpretations, and general conclusions for the study.</li>
+<li>Plot 1 description and interpretation: 1 point</li>
+<li>Plot 2 description and interpretation: 1 point</li>
+<li>CI estimate based on <code>geom_smooth()</code> plot (does it include a slope of zero?): 1 point</li>
+<li>CI interpretations: 1 point</li>
+<li>Report p-value: 1 point</li>
+<li>p-value interpretations: 1 point</li>
+<li>General conclusions: 1 point</li>
+</ul></li>
+<li>External sources: 3 points
+<ul>
+<li>This section that lists any code, plots, or concepts that we did not learn from this class. If you did not use any external sources, still include this section, and just write “I did not use any external sources.”</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section>
+<section id="section-details" class="title-slide slide level1 center">
+<h1>Section details</h1>
+
+</section>
+<section id="interpretations" class="slide level2">
+<h2>Interpretations</h2>
+<div class="card-list">
+<ul>
+<li>Distribution plot description/interpretation
+<ul>
+<li>What is the shape of your distribution? Make sure not to over interpret your plots (see week 6)</li>
+</ul></li>
+<li>Mean/CI plots
+<ul>
+<li>Are there any overlaps? What does that mean?</li>
+<li>Again, make sure not to over interpret your plots</li>
+</ul></li>
+<li>Confidence interval interpretations (see week 6)
+<ul>
+<li>What does a CI interval represent?</li>
+<li>What does this CI tell us?</li>
+</ul></li>
+<li>If conducting a t-test:
+<ul>
+<li>p-value interpretations. What does a p-value represent? What does this</li>
+<li>If paired: what does a paired t-test do and how is it different from a standard t-test?</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="external-sources" class="slide level2">
+<h2>External sources:</h2>
+<div class="card-list">
+<ul>
+<li>For code: make sure to label your code in the “Code and plots” section with comments formatted like so: # ES1, # ES2, # ES3, etc. Then, in this section, reference your external code as ES1, ES2, ES3, etc.</li>
+<li>For plots and concepts: just make sure it’s clear what you are referring to.</li>
+<li>For each, please explain:
+<ul>
+<li>Why you chose to use it rather than existing material from class</li>
+<li>Where you learned them from. Choose from:
+<ul>
+<li>Previous class</li>
+<li>Online forum or blog post (include link)</li>
+<li>Formal documentation (include link)</li>
+<li>AI Chatbot (include type, e.g., ChatGPT, Gemini, Copilot, etc.)</li>
+<li>Other, please explain</li>
+</ul></li>
+</ul></li>
+<li>Valid examples:
+<ul>
+<li>ES1: I chose to use filter() because that lets me select data for only for “females” in fewer steps than using a combination of $ or []. I learned to use filter() from the official dplyr documentation at https://dplyr.tidyverse.org/reference/filter.html</li>
+<li>Density plot: I chose to use a density plot instead of a histogram or frequency polygon because there is a large sample size and we have a continuous variable, so it is better represented by a plot that shows a smooth, continuous line, rather than a histogram which plots discrete data, or a frequency polygon, which, although it is for continuous variables, tends to look fairly jagged. I learned to plot density plots in a previous statistics class.</li>
+</ul></li>
+<li>Problematic examples: - I used na.rm = TRUE to get rid of any missing data. - This example is problematic because there is no missing data in the case studies. Furthermore, it does not mention where they learned this line of code. - I used .groups = “drop” to drop the groups. - This is not a real explanation.</li>
+</ul>
+</div>
+</section>
+<section id="deliverables-for-today" class="slide level2">
+<h2>Deliverables for today</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">A reflection of this semester:
+<ul>
+<li class="fragment">How did you feel about your performance in this class?</li>
+<li class="fragment">What were your biggest takeaways from this class?</li>
+<li class="fragment">What could I have done to improve your learning process in this class?</li>
+<li class="fragment">If you want to gain back some points on case study 3: What revisions would you make for your case study 3?</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="its-time-to-work-on-case-study-4" class="slide level2">
+<h2>It’s time to work on Case Study 4!</h2>
+<p><strong>Useful functions</strong></p>
+<div class="card-list">
+<ul>
+<li><code>filter()</code> (Check out the <code>dplyr</code> documentation, I will now consider this as learned in class)</li>
+<li><code>facet_wrap()</code></li>
+<li><code>lm()</code> (with <code>summary()</code>)</li>
+<li><code>geom_smooth()</code></li>
+</ul>
+</div>
 
 
 <div class="reveal-header">

@@ -1,8 +1,11 @@
+---
+title: "7: t-tests"
+---
 
-
-
-# Week 7 lab
-Go to <https://monaxue.github.io/420m> and open up this presentation. You will be answering Slido questions directly in the slides.
+## {.center}
+::: {.card-list-center}
+- Go to <https://monaxue.github.io/420m> and open up this presentation. You will be answering Slido questions directly in the slides.
+:::
 
 # Part 1: Plot data
 
@@ -32,9 +35,9 @@ https://app.sli.do/event/pr7zvfTyuotunzsNJfTEii/embed/polls/7b8e3923-bb92-4b22-a
 :::
 
 
-# Part 2: Simulating data
+# Part 2: Simulating data 
 
-## 
+## {.center}
 
 ::: card-list
 

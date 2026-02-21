@@ -1,5 +1,5 @@
 ---
-title: Week 2
+title: "2: File directory and basic syntax"
 subtitle: Open the slides for today from the lab website <https://monaxue.github.io/420m/>
 ---
 

@@ -13,7 +13,7 @@
 <link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.24">
 
-  <title>PSYCH 420m Lab – 6: Case studies and CIs</title>
+  <title>PSYCH 420m Lab – 5: Sampling distributions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,6 +31,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-383b4029ee74b6945f46faa2430f4ae3.css">
   <link rel="stylesheet" href="style.css">
@@ -134,7 +200,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">6: Case studies and CIs</h1>
+  <h1 class="title">5: Sampling distributions</h1>
+  <p class="subtitle">Create your lab5 folder, project, and lab5.Rmd</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -143,8 +210,9 @@
 <section class="slide level2">
 
 <aside class="notes">
-<p>Go over case studies.</p>
-<p>Cover z-scores and CI. Have people write an interpretation for CI’s for their lab report. Have people revise their lab reports.</p>
+<p>Sampling distribution, then go over case study expectation, deliverables.</p>
+<p>People learn better when getting personal feedback, even when you teach something in class (think in dance). So maybe have a clear rubric, but do spend too much time teaching people how to write a report, but do that during the feedback session.</p>
+<p>Go with the “try it”, then “now change this” approach.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -156,144 +224,186 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section>
-<section id="case-studies" class="slide level2">
-<h2>Case studies</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">I’m partially through grading them.</li>
-<li class="fragment">So far:
-<ul>
-<li class="fragment">There is a mix of scores</li>
-<li class="fragment">Somewhat of a bimodal distribution</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="the-good" class="slide level2">
-<h2>The good</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Most everyone
-<ul>
-<li class="fragment">Wrote great code.</li>
-<li class="fragment">Formatted the Rmd well.</li>
-<li class="fragment">These things are hard.</li>
-<li class="fragment">Make sure to recognize your accomplishments!</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="the-struggles" class="slide level2">
-<h2>The struggles</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Those who lost the most points:
-<ul>
-<li class="fragment">Used the wrong rubric</li>
-<li class="fragment">Missed things on the rubric</li>
-<li class="fragment">Primary tip: Make sure to double check everything on the rubric</li>
-</ul></li>
-<li class="fragment">Many of you lost points on this
-<ul>
-<li class="fragment">Interpretations</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="before-you-get-too-anxious" class="slide level2">
-<h2>Before you get too anxious…</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">You will have the opportunity to revise your case study to receive up to a score of 14.</li>
-</ul>
-</div>
 </section>
 <section id="outline" class="slide level2">
 <h2>Outline</h2>
 <div class="card-list">
 <ul>
-<li class="fragment">I will clarify interpretations</li>
-<li class="fragment">I will finally go over confidence intervals</li>
-<li class="fragment">What I hope to accomplish: help you build some intuition about stats so you don’t feel like you need to memorize a list of annoying rules</li>
+<li class="fragment">Announcement: read your feedback on lab4!</li>
+<li class="fragment">Go over case study rubric</li>
+<li class="fragment">Introduce the sampling distribution</li>
+<li class="fragment">Go over the ties between a sampling distribution and the CLT</li>
+<li class="fragment">Simulate the sampling distribution</li>
 </ul>
 </div>
 </section>
-<section>
-<section id="interpretations" class="title-slide slide level1 center">
-<h1>Interpretations</h1>
-
-</section>
-<section id="ambiguous-thinking" class="slide level2">
-<h2>“Ambiguous thinking”</h2>
+<section id="slido" class="slide level2">
+<h2>Slido</h2>
 <div class="card-list">
 <ul>
-<li class="fragment">Descriptive statistics is all about “ambiguous thinking”
+<li class="fragment">What is a sampling distribution? Do you remember?
 <ul>
-<li class="fragment">Shape: Is it normal? Symmentrical? Skewed (rarer than you think!)? Bimodal?</li>
-<li class="fragment">Center ~ <strong><em>Sample</em></strong> mean</li>
-<li class="fragment">Spread ~ <strong><em>Sample</em></strong> SD</li>
+<li class="fragment">The distribution of means across many many (infinite) number of experiments.</li>
 </ul></li>
 </ul>
 </div>
 </section>
-<section id="ambiguous-thinking-1" class="slide level2">
-<h2>“Ambiguous thinking”</h2>
+<section id="section" class="slide level2">
+<h2></h2>
 
-<img data-src="week6_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
-<section id="main-purpose" class="slide level2">
-<h2>Main purpose</h2>
+<img data-src="..\assets/slido-why-do-normal-distributions-pop-up-so-much-in-psychology.png" class="r-stretch"><p>The first sentence is a technically a true statement, but the CLT is not only about the sampling distribution, and this does not answer the question.</p>
+<p>The second option is correct. With many causes, numbers tend to “average out”, so most values become centered around a mean (CLT)</p>
+<aside class="notes">
+<ul>
+<li><p>In lab3, there was some confusion surrounding sampling distributions.</p></li>
+<li><p>Why do normal distributions pop up so much in psychology?</p>
+<ul>
+<li>CLT states that with larger sample sizes, the sampling distribution becomes more normal
+<ul>
+<li>True, but the CLT is not only about the sampling distribution, and this does not answer the question.</li>
+</ul></li>
+<li>The brain and behavior are complex, and have many underlying causes
+<ul>
+<li>With many causes, numbers tend to “average out”, so most values become centered around a mean (CLT)</li>
+</ul></li>
+</ul></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="sampling-distributions" class="slide level2">
+<h2>Sampling distributions</h2>
+<aside class="notes">
+<ul>
+<li>Let’s say you hold an experiment,</li>
+<li>and you measure 20 people’s height.</li>
+<li>You plot the distribution.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="card-list">
+<ul>
+<li class="fragment">You hold an experiment</li>
+<li class="fragment">N = 20 people</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week5_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="sampling-distributions-1" class="slide level2">
+<h2>Sampling distributions</h2>
+<aside class="notes">
+<ul>
+<li>Now, you hold another experiment,</li>
+<li>again, with 20 people.</li>
+<li>You plot the distribution</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="card-list">
+<ul>
+<li class="fragment">You hold another experiment</li>
+<li class="fragment">N = 20 people</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week5_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="sampling-distributions-2" class="slide level2">
+<h2>Sampling distributions</h2>
+<aside class="notes">
+<ul>
+<li>Let’s say you take the means of each, and plot it on a separate graph.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="columns">
 <div class="column">
-<div class="card-list">
-<ul>
-<li class="fragment"><strong>Descriptive</strong>
-<ul>
-<li class="fragment">Visualize the <strong><em>general</em></strong> shape, center, and spread of the <strong><em>sample</em></strong></li>
-<li class="fragment">“See the forest, but not the trees”</li>
-</ul></li>
-</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week5_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
 </div>
-</div><div class="column">
+</div>
+</div>
+</div><div class="column fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week5_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
 <div class="card-list">
 <ul>
-<li class="fragment"><strong>Inferential</strong>
-<ul>
-<li class="fragment">Make inferences about the true population means</li>
-</ul></li>
+<li>Take the means</li>
 </ul>
 </div>
 </div></div>
 </section>
-<section id="what-i-saw-in-the-case-studies" class="slide level2">
-<h2>What I saw in the case studies</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Statements that imply a population level conclusion</li>
-<li class="fragment">WRONG: “A histogram will let me compare the performance of each group”</li>
-<li class="fragment">When you talk about “performance” you are implying knowledge about the true population
-<ul>
-<li class="fragment">“Score” (noisy metric for performance) vs.&nbsp;“Performance” (true population)</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="score-neq-performance" class="slide level2">
-<h2>Score <span class="math inline">\(\neq\)</span> Performance</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Score is the thing we can measure. “Performance” is the thing we actually care about (true population) that we hope the score represents.</li>
-<li class="fragment">More examples
-<ul>
-<li class="fragment">Number of words recalled <span class="math inline">\(\neq\)</span> Memory</li>
-<li class="fragment">IQ test score <span class="math inline">\(\neq\)</span> Intelligence</li>
-</ul></li>
-</ul>
-</div>
+<section id="and-repeat" class="slide level2">
+<h2>And repeat…</h2>
 <aside class="notes">
 <ul>
-<li>An IQ test wishes to measure your intelligence, but at best it only captures part of your intelligence. What it also captures includes: your education, your wealth, whether or not you were exposed to lead as a kid, etc.</li>
-<li>If you say “there is a difference in intelligence between group 1 and group 2”, then you are implying a population difference. If you say “there is a difference in sample mean of IQ test scores between group 1 and group 2”</li>
+<li>And you repeat.</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -306,53 +416,57 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section>
-<section id="correct-mean-interpretations" class="slide level2">
-<h2>Correct mean interpretations</h2>
+<div class="columns">
+<div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week5_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="week5_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
 <div class="card-list">
 <ul>
-<li class="fragment">Sufficient: “The <strong><em>sample</em></strong> mean of the score in group A is _ and the <strong><em>sample</em></strong> mean of the score in group B is _.”</li>
-<li class="fragment">If you want to compare:
+<li>Take the means</li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="sampling-distributions-3" class="slide level2">
+<h2>Sampling distributions</h2>
+<div class="card-list">
 <ul>
-<li class="fragment">Don’t forget <strong><em>sample mean</em></strong> and <strong><em>score</em></strong> (or whatever the actual metric is in the study)</li>
+<li class="fragment">What will the distribution of the <strong><em>means</em></strong> look like?
+<ul>
+<li class="fragment">Let’s find out!</li>
 </ul></li>
 </ul>
 </div>
 </section>
-<section id="why-cant-we-talk-about-the-population-when-looking-at-histograms" class="slide level2">
-<h2>Why can’t we talk about the population when looking at histograms?</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">A difference in the mean could be due to sampling error</li>
-<li class="fragment">What inferential statistics does: It takes into consideration the possible sampling errors
-<ul>
-<li class="fragment">But CIs are <strong><em>not</em></strong> errors!</li>
-<li class="fragment">How? Sampling distributions provide us with the math to make a good guess</li>
-</ul></li>
-</ul>
-</div>
-</section></section>
-<section>
-<section id="confidence-intervals" class="title-slide slide level1 center">
-<h1>Confidence intervals</h1>
-
-</section>
-<section id="the-confidence-interval-comes-from-the-sampling-distribution" class="slide level2">
-<h2>The confidence interval comes from the sampling distribution</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Sampling distribution: distribution of means over <span class="math inline">\(\infty\)</span> experiments
-<ul>
-<li class="fragment">Hypothetical</li>
-</ul></li>
-<li class="fragment">If we know the true mean, <span class="math inline">\(\mu\)</span>, the sampling distribution tells us what kind of samples to expect</li>
-</ul>
-</div>
-</section>
-<section id="a-bit-of-math" class="slide level2">
-<h2>A bit of math…</h2>
+<section id="new-function" class="slide level2">
+<h2>New function!</h2>
 <aside class="notes">
-<p>I’m going to show some math. Try to keep up as best as you can, but don’t stress out too much about it. But there will also be a simulation at the end to hopefully make things clearer.</p>
+<ul>
+<li><p>Previously,</p></li>
+<li><p>we simulated heights from many causes,</p></li>
+<li><p>which resulted in a normal distribution.</p></li>
+<li><p>Now,</p></li>
+<li><p>We can simulate a normal distribution directly</p></li>
+<li><p>without simulating all causes</p></li>
+<li><p>using the rnorm function</p></li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -364,118 +478,161 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section>
-<section id="simulation" class="slide level2">
-<h2>Simulation</h2>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Simulation</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
 <div class="card-list">
 <ul>
-<li class="fragment"><p>Explore the <a href="https://shiny.rit.albany.edu/stat/confidence/" target="_blank" rel="noopener noreferrer">Confidence Interval Simulator</a> (this link is also on the website).</p></li>
-<li class="fragment"><p>Discuss with your neighbors:</p>
+<li class="fragment">Previously
 <ul>
-<li class="fragment">What is it trying to show?
-<ul>
-<li class="fragment">Around 5 out of 100 times, the CI does not contain the true mean (CI highlighted in red)</li>
+<li class="fragment">Simulated heights with many causes</li>
+<li class="fragment">Result: normal distribution</li>
 </ul></li>
+<li class="fragment">Now
+<ul>
+<li class="fragment">Simulate normal distribution directly</li>
+<li class="fragment"><code>rnorm()</code></li>
 </ul></li>
 </ul>
 </div>
-<!--
-
-## Slido
-::: iframe
-
-https://wall.sli.do/event/qFBF9mUcZDngBd8niQpzQp
-
-:::
-
--->
-</div>
-</div>
-</div>
 </section>
-<section id="confidence-interval-definition" class="slide level2">
-<h2>Confidence interval definition</h2>
+<section id="rnorm" class="slide level2">
+<h2><code>rnorm()</code></h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">rnorm</span>(<span class="at">mean=</span>..., <span class="at">sd=</span>..., <span class="at">n=</span>...)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="card-list">
 <ul>
-<li class="fragment">In 95% of experiments, the true mean will be in the CI of that experiment</li>
-<li class="fragment">95% of CIs will contain the true mean</li>
-<li class="fragment"><strong>Not:</strong> 95% probability that the true mean is in the CI of our experiment</li>
+<li class="fragment">“r” stands for random</li>
+<li class="fragment">“norm” stands for normal distribution</li>
+<li class="fragment">This function randomly samples from a normal distribution.</li>
 </ul>
 </div>
 </section>
-<section id="confidence-statement" class="slide level2">
-<h2>“Confidence” statement</h2>
+<section id="simulating-a-sampling-distribution" class="slide level2">
+<h2>Simulating a sampling distribution</h2>
+<p>Does this look familiar?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a></span>
+<span id="cb2-2"><a></a>sim_means <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a><span class="cf">for</span> (experiment <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb2-5"><a></a>    avg_height <span class="ot">&lt;-</span> <span class="dv">64</span></span>
+<span id="cb2-6"><a></a>    person1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">mean=</span>avg_height, <span class="at">sd=</span><span class="dv">5</span>, <span class="at">n=</span><span class="dv">1</span>)</span>
+<span id="cb2-7"><a></a>    person2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">mean=</span>avg_height, <span class="at">sd=</span><span class="dv">5</span>, <span class="at">n=</span><span class="dv">1</span>)</span>
+<span id="cb2-8"><a></a>    person3 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">mean=</span>avg_height, <span class="at">sd=</span><span class="dv">5</span>, <span class="at">n=</span><span class="dv">1</span>)</span>
+<span id="cb2-9"><a></a>    mean_height <span class="ot">&lt;-</span> <span class="fu">mean</span>(person1,person2,person3)</span>
+<span id="cb2-10"><a></a>    sim_means[experiment] <span class="ot">&lt;-</span> mean_height</span>
+<span id="cb2-11"><a></a>}</span>
+<span id="cb2-12"><a></a></span>
+<span id="cb2-13"><a></a>sim_means</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="slido-1" class="slide level2">
+<h2>Slido</h2>
+<p>Compare this to our simulated heights example from lab3.</p>
 <div class="card-list">
 <ul>
-<li class="fragment">Since we can’t say anything about the probability in our experiment, we use the word “confident” instead</li>
-<li class="fragment">We are 95% <em>confident</em> that the true mean is in the CI of our experiment</li>
+<li class="fragment">In lab3, we simulated causes, like genetics, nutrition, etc. Which variables above are analogous?
+<ul>
+<li class="fragment">person1, person2, person3</li>
+</ul></li>
+<li class="fragment">Sample size in this lab is equivalent to lab3’s __.
+<ul>
+<li class="fragment">number of causes</li>
+</ul></li>
+<li class="fragment">In lab3, we took the sum, which led to having a more normal distribution. What do we do here instead?
+<ul>
+<li class="fragment">the mean</li>
+</ul></li>
 </ul>
 </div>
 </section>
-<section id="ci-interpretations" class="slide level2">
-<h2>CI interpretations</h2>
+<section id="central-limit-theorem-again" class="slide level2 scrollable">
+<h2>Central limit theorem again</h2>
 <div class="card-list">
 <ul>
-<li class="fragment">Always include both the definition of a CI as well as the confidence statement.</li>
-</ul>
-</div>
-<!--
-::: card-list
-
-- 95% of the samples generated by a population with the true mean, $\mu$, will have a CI that contains $\mu$.
-
-- WRONG: There is a 95% probability that the CI contains the true mean, $\mu$.
-
-    - This is different from the first statement
-    - You cannot actually calculate this probability directly, because it requires that you know the true mean, $\mu$
-
-- Therefore, we instead use the term "confident". We say that we are 95% confident that the CI contains the true mean.
-    - There is a reason why it is called the confidence interval, and not the probability interval.
-:::
--->
-<!--
-
-```{=html}
-<iframe width="100%" height="600px" src="https://wall.sli.do/event/psqmdehPARDpce13BWS1LY/?section=b87f4381-4b7d-41fd-abd0-76f5f34870db" height=600 width=100%></iframe>
-```
-
--->
-<!--
-
-## Formatting Essentials
-
-```{=html}
-<iframe width="100%" height="600px" src="https://wall.sli.do/event/psqmdehPARDpce13BWS1LY/?section=b87f4381-4b7d-41fd-abd0-76f5f34870db" height=600 width=100%></iframe>
-```
-
--->
-</section></section>
-<section>
-<section id="deliverables" class="title-slide slide level1 center">
-<h1>Deliverables</h1>
-
-</section>
-<section id="section" class="slide level2 scrollable">
-<h2></h2>
+<li class="fragment">Only changed 2 things:
 <ol type="1">
-<li>Write a reflection
-<ul class="task-list">
-<li><label><input type="checkbox">How you did you feel you did on this first case study? What are you proud of? What do you think you can improve upon?</label></li>
-<li><label><input type="checkbox">What are your major takeaways from today’s class?</label></li>
-<li><label><input type="checkbox">What revisions would you make on your case study? Be specific.</label></li>
-<li><label><input type="checkbox">What do you want your future self to remember when working on future case studies?</label></li>
+<li class="fragment">Simulating multiple experiments, instead of each person in an experiment.</li>
+<li class="fragment">Taking the mean instead of the sum.</li>
+</ol></li>
+<li class="fragment">Same effect: numbers average out, so most of the values are centered around the mean with a bell shape (CLT).</li>
+</ul>
+</div>
+</section>
+<section id="what-this-means" class="slide level2">
+<h2>What this means</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">Instead of a distribution of individual heights, we get a distribution of mean heights (from separate experiments)</li>
+<li class="fragment">Last time, more “causes” made the distribution more normal. This time, larger sample size makes the distribution more normal</li>
+<li class="fragment">Last time, we simulated how a sample distribution becomes more normally distributed. This time, we simulate how a sampling (note the “ing”) distribution becomes more normally distributed.</li>
+</ul>
+</div>
+<aside class="notes">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a></span>
+<span id="cb3-2"><a></a>sim_means <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a><span class="cf">for</span> (experiment <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb3-5"><a></a>    avg_height <span class="ot">=</span> <span class="dv">64</span></span>
+<span id="cb3-6"><a></a>    sample_size <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="co"># sample size per experiment</span></span>
+<span id="cb3-7"><a></a>    all_heights <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n=</span>sample size, <span class="at">mean=</span><span class="dv">64</span>, <span class="at">sd=</span><span class="dv">5</span>) <span class="co"># simulates 20 people's height</span></span>
+<span id="cb3-8"><a></a>    mean_height <span class="ot">&lt;-</span> <span class="fu">mean</span>(all_heights)</span>
+<span id="cb3-9"><a></a>    sim_means[experiment] <span class="ot">&lt;-</span> mean_heights</span>
+<span id="cb3-10"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="deliverables" class="slide level2 scrollable">
+<h2>Deliverables</h2>
+<div class="card-list">
+<p>We will simulate 100 experiments and take the mean height in each experiment. Each experiment will have a sample size of 20. We will calculate some descriptive statistics.</p>
+<ol type="1">
+<li>Use <code>rnorm(mean=...,sd=...,n=...)</code> to simulate heights
+<ul>
+<li>Instead of simulating each person indivudally with <code>person1 &lt;- rnorm(...)</code>, you can set the <code>n</code> variable to the desired sample size with <code>all_people &lt;- rnorm(n=20, ...)</code></li>
+<li>Set the mean height to be 69, and the sd to be 5</li>
+<li>Take the mean of everyone’s height</li>
 </ul></li>
-<li>Write a CI interpretation for your Case Study 1.
-<ul class="task-list">
-<li><label><input type="checkbox">What is the main difference between a descriptive and inferential statistics?</label></li>
-<li><label><input type="checkbox">What is the definition of a CI?</label></li>
-<li><label><input type="checkbox">What does the CI say about the results? (Do you not use the word “significant”!)</label></li>
+<li>Use a for loop to repeat the above
+<ul>
+<li>Remember to create an empty vector <code>sim_means</code> to store the mean heights</li>
 </ul></li>
+<li>Convert the list of means into a dataframe using <code>tibble(column_name=sim_means)</code></li>
+<li>Plot a histogram of the simulated means (sampling distribution, note the “ing”).</li>
+<li>Create a summary table of the simulated means, with SampleSize, Mean, SE
+<ul>
+<li>Hint: the definition of SE is the SD of the sampling distribution, the the calculation will be different from previous labs</li>
+</ul></li>
+<li>Next, just plot a histogram of a sample distribution (only one experiment)</li>
 </ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>one_experiment <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">heights =</span> <span class="fu">rnorm</span>(...))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Answer these questions:
+<ol type="1">
+<li>How does the shape/spread of the sampling distribution differ from the sample distribution?</li>
+<li>Intuitively, why do you think the shape/spread differs?</li>
+</ol></li>
+<li>Submit your html file on Canvas</li>
+</ul>
+</div>
+<aside class="notes">
+<p>Next, time, maybe a 2 single experiment plots, one with n = 20, the other with n = 100, so people don’t think it has something to do with more data. Keep n = 20 so people don’t think it’s because the sampling distribution has a larger sample size?</p>
+<p>Also, maybe use a higher sample size in general for the deliverables, since the single experiment doesn’t have a normal distribution.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 
 
 <div class="reveal-header">
@@ -492,7 +649,7 @@ https://wall.sli.do/event/qFBF9mUcZDngBd8niQpzQp
 <p> </p>
 </div>
 </div>
-</section></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

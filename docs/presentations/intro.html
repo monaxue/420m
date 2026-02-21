@@ -13,7 +13,7 @@
 <link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.24">
 
-  <title>PSYCH 420m Lab – 6: Case studies and CIs</title>
+  <title>PSYCH 420m Lab – Welcome to PSYCH 420!</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -134,348 +134,221 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">6: Case studies and CIs</h1>
+  <h1 class="title">Welcome to PSYCH 420!</h1>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section class="slide level2">
+<section id="overview" class="slide level2">
+<h2>Overview</h2>
+<div class="card-list">
+<ul>
+<li>Lab logistics</li>
+<li>Teaching philosophy</li>
+<li>Checking R installation</li>
+</ul>
+</div>
+</section>
+<section id="how-does-this-course-work" class="slide level2">
+<h2>How does this course work?</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">Hybrid format</li>
+<li class="fragment">There are online “content modules” and in-person labs</li>
+<li class="fragment">The topics will be related, but I do not know much about what is going on in the online modules</li>
+<li class="fragment">So if you have any questions about the online modules, email Alex, or go to his office hours.</li>
+<li class="fragment">I highly recommend going to his office hours. He’s super nice!</li>
+</ul>
+</div>
+</section>
+<section id="lab-logistics" class="slide level2">
+<h2>Lab logistics</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">In this lab section, you will learn how to 1) code in R and 2) do statistics in R.</li>
+<li class="fragment">Each week you will submit a lab report by the end of class.</li>
+<li class="fragment">I grade these labs on the spot in the lab, so you can make sure you get a full score before you submit them</li>
+<li class="fragment">You will also complete 4 case studies this semester. These are extended versions of lab reports where you will be asked to apply what you learned to analyze a novel dataset.</li>
+<li class="fragment">Detailed rubrics will be posted on the lab website</li>
+<li class="fragment">A more detailed syllubus can be found on Canvas</li>
+</ul>
+</div>
+</section>
+<section id="lab-website" class="slide level2">
+<h2>Lab website</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">We have a separate website for the lab.</li>
+<li class="fragment">Please use the lab website, and not Canvas, to download lab related materials and case study rubrics.</li>
+<li class="fragment">The lab slides will also be posted on the website.</li>
+<li class="fragment">However, assignments should be submitted through Canvas</li>
+<li class="fragment"><a href="https://monaxue.github.io/420m/" class="uri" target="_blank" rel="noopener noreferrer">https://monaxue.github.io/420m/</a></li>
+</ul>
+</div>
+</section>
+<section id="teaching-philosophy" class="slide level2">
+<h2>Teaching philosophy</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">My primary goals is to help you learn</li>
+<li class="fragment">I believe that every single one of you can can succeed in this class</li>
+<li class="fragment">That being said, this class will not be easy</li>
+<li class="fragment">The most successful students in my class are those that
+<ul>
+<li class="fragment">Actively participated in class</li>
+<li class="fragment">Asked for a lot of help</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="communication-is-key" class="slide level2">
+<h2>Communication is key</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">Don’t be afraid to reach out to me. If you have questions or are struggling with assignments, please please reach out!</li>
+<li class="fragment">I try to be an understanding person, but can only do so if you communicate with me. Please reach out to me if you have any concerns about your abilities to attend class, complete assignments, etc.</li>
+</ul>
+</div>
+</section>
+<section id="teaching-philosophy-1" class="slide level2">
+<h2>Teaching philosophy</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">I believe that the best way to learn involves 1) solving problems on your own, 2) discussing problems with peers, 3) asking for help.</li>
+<li class="fragment">Therefore, I have structured the lab section so you can
+<ul>
+<li class="fragment">Code independenty, instead of just copying what I do</li>
+<li class="fragment">Discuss questions with your peers</li>
+<li class="fragment">Get direct feedback from me on your deliverables</li>
+</ul></li>
+<li class="fragment">Because of the way I structure class, class usually takes up the full two hours.</li>
+</ul>
+</div>
+</section>
+<section id="teaching-philosophy-2" class="slide level2">
+<h2>Teaching philosophy</h2>
+<div class="card-list">
+<ul>
+<li class="fragment"><p>Again, I want to emphasize in class participation</p></li>
+<li class="fragment"><p>I will be using polls for attendance, but you are also expected to participate</p></li>
+</ul>
+</div>
+</section>
+<section id="ok-now-lets-practice" class="slide level2">
+<h2>Ok, now let’s practice!</h2>
+<!--
 
-<aside class="notes">
-<p>Go over case studies.</p>
-<p>Cover z-scores and CI. Have people write an interpretation for CI’s for their lab report. Have people revise their lab reports.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="case-studies" class="slide level2">
-<h2>Case studies</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">I’m partially through grading them.</li>
-<li class="fragment">So far:
-<ul>
-<li class="fragment">There is a mix of scores</li>
-<li class="fragment">Somewhat of a bimodal distribution</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="the-good" class="slide level2">
-<h2>The good</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Most everyone
-<ul>
-<li class="fragment">Wrote great code.</li>
-<li class="fragment">Formatted the Rmd well.</li>
-<li class="fragment">These things are hard.</li>
-<li class="fragment">Make sure to recognize your accomplishments!</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="the-struggles" class="slide level2">
-<h2>The struggles</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Those who lost the most points:
-<ul>
-<li class="fragment">Used the wrong rubric</li>
-<li class="fragment">Missed things on the rubric</li>
-<li class="fragment">Primary tip: Make sure to double check everything on the rubric</li>
-</ul></li>
-<li class="fragment">Many of you lost points on this
-<ul>
-<li class="fragment">Interpretations</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="before-you-get-too-anxious" class="slide level2">
-<h2>Before you get too anxious…</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">You will have the opportunity to revise your case study to receive up to a score of 14.</li>
-</ul>
-</div>
-</section>
-<section id="outline" class="slide level2">
-<h2>Outline</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">I will clarify interpretations</li>
-<li class="fragment">I will finally go over confidence intervals</li>
-<li class="fragment">What I hope to accomplish: help you build some intuition about stats so you don’t feel like you need to memorize a list of annoying rules</li>
-</ul>
-</div>
-</section>
-<section>
-<section id="interpretations" class="title-slide slide level1 center">
-<h1>Interpretations</h1>
+::: card-list
 
-</section>
-<section id="ambiguous-thinking" class="slide level2">
-<h2>“Ambiguous thinking”</h2>
+
+- What are your honest thoughts about ChatGPT?
+    - It’s a powerful tool that improves my productivity
+    - It’s helpful, but overhyped
+    - It’s fine, but not better than Googling or textbooks
+    - It often gives confident but wrong answers
+    - It feels risky or unethical to use for schoolwork
+    - I don’t have a strong opinion
+
+
+:::
+
+
+::: iframe
+https://wall.sli.do/event/ryk82jYqEag2H34gf42HUH
+:::
+
+-->
+
+<img data-src="..\assets/slido-what-are-your-honest-thoughts-about-chatgpt.png" class="r-stretch"></section>
+<section id="discuss" class="slide level2">
+<h2>Discuss</h2>
 <div class="card-list">
 <ul>
-<li class="fragment">Descriptive statistics is all about “ambiguous thinking”
-<ul>
-<li class="fragment">Shape: Is it normal? Symmentrical? Skewed (rarer than you think!)? Bimodal?</li>
-<li class="fragment">Center ~ <strong><em>Sample</em></strong> mean</li>
-<li class="fragment">Spread ~ <strong><em>Sample</em></strong> SD</li>
-</ul></li>
+<li class="fragment">Now find someone to talk to!</li>
+<li class="fragment">Did you have similar or different opinions?</li>
+<li class="fragment">What are your personal experiences with ChatGPT (or AI in general)</li>
 </ul>
 </div>
 </section>
-<section id="ambiguous-thinking-1" class="slide level2">
-<h2>“Ambiguous thinking”</h2>
+<section id="ai-usage" class="slide level2">
+<h2>AI usage</h2>
+<div class="card-list">
+<ul>
+<li class="fragment">Like with any other sources, I see AI as tool that can help you learn</li>
+<li class="fragment">So I allow AI only in as much that you actually understand what you are doing</li>
+<li class="fragment">If you use any external sources for your case studies, you must explain where and how you used it</li>
+<li class="fragment">Those who rely on AI to generate their lab reports and case studies do not get good grades
+<ul>
+<li class="fragment">AI generated reports are just not that good</li>
+<li class="fragment">It is clear to me when there is lack of understanding in the report</li>
+</ul></li>
+</ul>
+</div>
+<!--
+## Teaching phiolosophy
+- I won't let you stand up all the time but might use it to increase energy in the room
+- I might do things a little differently than other sections, but I promise you, by the end of the semester, you will be a master at R, no kidding
 
-<img data-src="week6_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
-<section id="main-purpose" class="slide level2">
-<h2>Main purpose</h2>
+-->
+</section>
+<section id="office-hours" class="slide level2">
+<h2>Office hours</h2>
+<p>Fill out your availability by Saturday so I can determine the best time for office hours</p>
 <div class="columns">
-<div class="column">
+<div class="column" style="width:20%;">
 <div class="card-list">
 <ul>
-<li class="fragment"><strong>Descriptive</strong>
-<ul>
-<li class="fragment">Visualize the <strong><em>general</em></strong> shape, center, and spread of the <strong><em>sample</em></strong></li>
-<li class="fragment">“See the forest, but not the trees”</li>
-</ul></li>
+<li><img data-src="..\assets/sp26_420_office_hours_timeful.app.png" height="150"></li>
 </ul>
 </div>
-</div><div class="column">
+</div><div class="column" style="width:80%;">
 <div class="card-list">
 <ul>
-<li class="fragment"><strong>Inferential</strong>
-<ul>
-<li class="fragment">Make inferences about the true population means</li>
-</ul></li>
+<li><a href="https://timeful.app/e/Fa32a" class="uri" target="_blank" rel="noopener noreferrer">https://timeful.app/e/Fa32a</a></li>
 </ul>
 </div>
 </div></div>
 </section>
-<section id="what-i-saw-in-the-case-studies" class="slide level2">
-<h2>What I saw in the case studies</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Statements that imply a population level conclusion</li>
-<li class="fragment">WRONG: “A histogram will let me compare the performance of each group”</li>
-<li class="fragment">When you talk about “performance” you are implying knowledge about the true population
-<ul>
-<li class="fragment">“Score” (noisy metric for performance) vs.&nbsp;“Performance” (true population)</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="score-neq-performance" class="slide level2">
-<h2>Score <span class="math inline">\(\neq\)</span> Performance</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Score is the thing we can measure. “Performance” is the thing we actually care about (true population) that we hope the score represents.</li>
-<li class="fragment">More examples
-<ul>
-<li class="fragment">Number of words recalled <span class="math inline">\(\neq\)</span> Memory</li>
-<li class="fragment">IQ test score <span class="math inline">\(\neq\)</span> Intelligence</li>
-</ul></li>
-</ul>
-</div>
-<aside class="notes">
-<ul>
-<li>An IQ test wishes to measure your intelligence, but at best it only captures part of your intelligence. What it also captures includes: your education, your wealth, whether or not you were exposed to lead as a kid, etc.</li>
-<li>If you say “there is a difference in intelligence between group 1 and group 2”, then you are implying a population difference. If you say “there is a difference in sample mean of IQ test scores between group 1 and group 2”</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="correct-mean-interpretations" class="slide level2">
-<h2>Correct mean interpretations</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Sufficient: “The <strong><em>sample</em></strong> mean of the score in group A is _ and the <strong><em>sample</em></strong> mean of the score in group B is _.”</li>
-<li class="fragment">If you want to compare:
-<ul>
-<li class="fragment">Don’t forget <strong><em>sample mean</em></strong> and <strong><em>score</em></strong> (or whatever the actual metric is in the study)</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="why-cant-we-talk-about-the-population-when-looking-at-histograms" class="slide level2">
-<h2>Why can’t we talk about the population when looking at histograms?</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">A difference in the mean could be due to sampling error</li>
-<li class="fragment">What inferential statistics does: It takes into consideration the possible sampling errors
-<ul>
-<li class="fragment">But CIs are <strong><em>not</em></strong> errors!</li>
-<li class="fragment">How? Sampling distributions provide us with the math to make a good guess</li>
-</ul></li>
-</ul>
-</div>
-</section></section>
-<section>
-<section id="confidence-intervals" class="title-slide slide level1 center">
-<h1>Confidence intervals</h1>
-
-</section>
-<section id="the-confidence-interval-comes-from-the-sampling-distribution" class="slide level2">
-<h2>The confidence interval comes from the sampling distribution</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Sampling distribution: distribution of means over <span class="math inline">\(\infty\)</span> experiments
-<ul>
-<li class="fragment">Hypothetical</li>
-</ul></li>
-<li class="fragment">If we know the true mean, <span class="math inline">\(\mu\)</span>, the sampling distribution tells us what kind of samples to expect</li>
-</ul>
-</div>
-</section>
-<section id="a-bit-of-math" class="slide level2">
-<h2>A bit of math…</h2>
-<aside class="notes">
-<p>I’m going to show some math. Try to keep up as best as you can, but don’t stress out too much about it. But there will also be a simulation at the end to hopefully make things clearer.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="simulation" class="slide level2">
-<h2>Simulation</h2>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Simulation</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
-<div class="card-list">
-<ul>
-<li class="fragment"><p>Explore the <a href="https://shiny.rit.albany.edu/stat/confidence/" target="_blank" rel="noopener noreferrer">Confidence Interval Simulator</a> (this link is also on the website).</p></li>
-<li class="fragment"><p>Discuss with your neighbors:</p>
-<ul>
-<li class="fragment">What is it trying to show?
-<ul>
-<li class="fragment">Around 5 out of 100 times, the CI does not contain the true mean (CI highlighted in red)</li>
-</ul></li>
-</ul></li>
-</ul>
-</div>
+<section id="poll-what-is-your-experience-with-r" class="slide level2">
+<h2>Poll: What is your experience with R?</h2>
 <!--
+- I don't have any experience with R
+- I've used R before but don't remember much
+- I know what RMarkdown is
+- I know what <- does
+- I know what %>% does
+- I know what ggplot does
+- I know what tidyverse does
 
-## Slido
+
+
 ::: iframe
 
-https://wall.sli.do/event/qFBF9mUcZDngBd8niQpzQp
+https://wall.sli.do/event/ryk82jYqEag2H34gf42HUH
 
 :::
-
 -->
-</div>
-</div>
-</div>
-</section>
-<section id="confidence-interval-definition" class="slide level2">
-<h2>Confidence interval definition</h2>
+
+<img data-src="..\assets/slido-what-is-your-experience-with-r.png" class="r-stretch"></section>
+<section id="r-installation-and-setup" class="slide level2 scrollable">
+<h2>R installation and setup</h2>
 <div class="card-list">
-<ul>
-<li class="fragment">In 95% of experiments, the true mean will be in the CI of that experiment</li>
-<li class="fragment">95% of CIs will contain the true mean</li>
-<li class="fragment"><strong>Not:</strong> 95% probability that the true mean is in the CI of our experiment</li>
-</ul>
-</div>
-</section>
-<section id="confidence-statement" class="slide level2">
-<h2>“Confidence” statement</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Since we can’t say anything about the probability in our experiment, we use the word “confident” instead</li>
-<li class="fragment">We are 95% <em>confident</em> that the true mean is in the CI of our experiment</li>
-</ul>
-</div>
-</section>
-<section id="ci-interpretations" class="slide level2">
-<h2>CI interpretations</h2>
-<div class="card-list">
-<ul>
-<li class="fragment">Always include both the definition of a CI as well as the confidence statement.</li>
-</ul>
-</div>
-<!--
-::: card-list
-
-- 95% of the samples generated by a population with the true mean, $\mu$, will have a CI that contains $\mu$.
-
-- WRONG: There is a 95% probability that the CI contains the true mean, $\mu$.
-
-    - This is different from the first statement
-    - You cannot actually calculate this probability directly, because it requires that you know the true mean, $\mu$
-
-- Therefore, we instead use the term "confident". We say that we are 95% confident that the CI contains the true mean.
-    - There is a reason why it is called the confidence interval, and not the probability interval.
-:::
--->
-<!--
-
-```{=html}
-<iframe width="100%" height="600px" src="https://wall.sli.do/event/psqmdehPARDpce13BWS1LY/?section=b87f4381-4b7d-41fd-abd0-76f5f34870db" height=600 width=100%></iframe>
-```
-
--->
-<!--
-
-## Formatting Essentials
-
-```{=html}
-<iframe width="100%" height="600px" src="https://wall.sli.do/event/psqmdehPARDpce13BWS1LY/?section=b87f4381-4b7d-41fd-abd0-76f5f34870db" height=600 width=100%></iframe>
-```
-
--->
-</section></section>
-<section>
-<section id="deliverables" class="title-slide slide level1 center">
-<h1>Deliverables</h1>
-
-</section>
-<section id="section" class="slide level2 scrollable">
-<h2></h2>
 <ol type="1">
-<li>Write a reflection
-<ul class="task-list">
-<li><label><input type="checkbox">How you did you feel you did on this first case study? What are you proud of? What do you think you can improve upon?</label></li>
-<li><label><input type="checkbox">What are your major takeaways from today’s class?</label></li>
-<li><label><input type="checkbox">What revisions would you make on your case study? Be specific.</label></li>
-<li><label><input type="checkbox">What do you want your future self to remember when working on future case studies?</label></li>
+<li>Install both R and R RStudio: https://posit.co/download/rstudio-desktop/</li>
+<li>In the console of RStudio, run these
+<ul>
+<li><code>install.packages("tidyverse")</code></li>
+<li><code>install.packages("ggplot2")</code></li>
 </ul></li>
-<li>Write a CI interpretation for your Case Study 1.
-<ul class="task-list">
-<li><label><input type="checkbox">What is the main difference between a descriptive and inferential statistics?</label></li>
-<li><label><input type="checkbox">What is the definition of a CI?</label></li>
-<li><label><input type="checkbox">What does the CI say about the results? (Do you not use the word “significant”!)</label></li>
-</ul></li>
+<li>Run the RMarkdown file, <code>test.Rmd</code>, to see if it’s working.
+<ol type="1">
+<li>Go to <a href="https://monaxue.github.io/420m/" class="uri" target="_blank" rel="noopener noreferrer">https://monaxue.github.io/420m/</a>. and download <code>test.Rmd</code>. Then open it in Rstudio.</li>
+<li>Click on the “Knit” button <img data-src="..\assets/Screenshot 2026-01-15 210009.png"></li>
+</ol></li>
+<li>When your RMarkdown file has successfully generated a <code>.html</code> file, let me know, and I will come check that it was successful. After you have shown me your file, you are free to leave.</li>
 </ol>
+</div>
 
 
 <div class="reveal-header">
@@ -492,7 +365,7 @@ https://wall.sli.do/event/qFBF9mUcZDngBd8niQpzQp
 <p> </p>
 </div>
 </div>
-</section></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -710,82 +583,6 @@ https://wall.sli.do/event/qFBF9mUcZDngBd8niQpzQp
         ]
       });
     </script>
-    
-
-    <script>
-
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
-      // slide changes (different for each slide format).
-
-      (function () {
-
-        // dispatch for htmlwidgets
-
-        function fireSlideEnter() {
-
-          const event = window.document.createEvent("Event");
-
-          event.initEvent("slideenter", true, true);
-
-          window.document.dispatchEvent(event);
-
-        }
-
-    
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          fireSlideEnter();
-
-    
-
-          // dispatch for shiny
-
-          if (window.jQuery) {
-
-            if (previousSlide) {
-
-              window.jQuery(previousSlide).trigger("hidden");
-
-            }
-
-            if (currentSlide) {
-
-              window.jQuery(currentSlide).trigger("shown");
-
-            }
-
-          }
-
-        }
-
-    
-
-        // hookup for slidy
-
-        if (window.w3c_slidy) {
-
-          window.w3c_slidy.add_observer(function (slide_num) {
-
-            // slide_num starts at position 1
-
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
-          });
-
-        }
-
-    
-
-      })();
-
-    </script>
-
-    
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

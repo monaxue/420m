@@ -3,6 +3,7 @@
 }   
 
 .transparent {
-  opacity: 0;
-  font-size: 0
-}   
+  color: transparent;
+  font-size: 1px;
+  line-height: 1px;
+}

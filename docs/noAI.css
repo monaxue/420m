@@ -1,0 +1,8 @@
+* {
+  user-select: none;
+}   
+
+.transparent {
+  opacity: 0;
+  font-size: 0
+}   

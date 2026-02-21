@@ -5,7 +5,7 @@ quarto-required: ">=1.7.0"
 contributes:
   formats:
     revealjs:
-      theme: [default, containers.scss, noselect.scss]
+      theme: [default, containers.scss, noAI.scss]
       include-after-body: 
         file: theme-bg.html
       filters:

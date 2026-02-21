@@ -5,3 +5,8 @@
 .reveal * {
   user-select: none;
 }   
+
+.reveal .transparent {
+  opacity: 0;
+  font-size: 0
+}   

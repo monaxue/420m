@@ -20,4 +20,4 @@ execute:
 
 format:
   html:
-    css: noselect.css
+    css: noAI.css

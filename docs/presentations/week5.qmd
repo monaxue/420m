@@ -3,7 +3,7 @@ title: "5: Sampling distributions"
 subtitle: Create your lab5 folder, project, and lab5.Rmd
 ---
 
-::: notes
+<!--
 
 Sampling distribution, then go over case study expectation, deliverables.
 
@@ -11,7 +11,7 @@ People learn better when getting personal feedback, even when you teach somethin
 
 Go with the "try it", then "now change this" approach.
 
-:::
+-->
 
 ## Outline
 ::: card-list

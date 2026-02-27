@@ -41,10 +41,12 @@ Effects of exercise
 
 [Slides](presentations/week8.html){.filelink}
 
+-->
+
 ## Week 7
 
-[Slides](presentations/week7.html){.filelink}
--->
+[Slides](presentations/week7.qmd){.filelink}
+
 
 ## Week 6
 
@@ -70,19 +72,19 @@ Sampling distributions
 
 ## Case Study 1
 
-[Case Study 1 Rubric](files/casestudy1.qmd){.filelink}
+[Case Study 1 Rubric](/files/casestudy1.qmd){.filelink}
 
 ## Week 4
 
 pipes, ggplot, summary tables
 
-[Slides](presentations/week4.qmd){.filelink}
+[Slides](/presentations/week4.qmd){.filelink}
 
 ## Week 3
 
 for loops, central limit theorem, histograms/frequency polygons
 
-[Slides](presentations/week3.qmd){.filelink}
+[Slides](/presentations/week3.qmd){.filelink}
 
 
 
@@ -90,19 +92,19 @@ for loops, central limit theorem, histograms/frequency polygons
 
 File directory, basic syntax, loading packages, importing data
 
-[Slides](presentations/week2.qmd){.filelink}
+[Slides](/presentations/week2.qmd){.filelink}
 
-[2020heights.csv](files/2020heights.csv){.filelink}
+[2020heights.csv](/files/2020heights.csv){.filelink}
 
-[Example deliverable](files/lab2.html){.filelink}
+[Example deliverable](/files/lab2.html){.filelink}
 
-[R cheatsheet](files/cheatsheet.qmd){.filelink}
+[R cheatsheet](/files/cheatsheet.qmd){.filelink}
 
 
 ## Week 1
 
 Lab info, R setup
 
-[Slides](presentations/intro.qmd){.filelink}
+[Slides](/presentations/intro.qmd){.filelink}
 
-[test.Rmd](_scripts/test.Rmd){.filelink}
+[test.Rmd](/_scripts/test.Rmd){.filelink}

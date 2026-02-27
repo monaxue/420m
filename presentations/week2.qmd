@@ -3,6 +3,18 @@ title: "2: File directory and basic syntax"
 subtitle: Open the slides for today from the lab website <https://monaxue.github.io/420m/>
 ---
 
+<!-- 
+
+introduce a mini for loop? for (a in 1:10){print("Hello")}
+
+probably don't have time: for (b in 1:10){print(b+1)}, for (c in 2:30){print(c-3)}
+
+Will be too much given learning RMarkdown
+
+Do demonstration, and more for loops the next week.
+
+-->
+
 ## Office hours
 :::{.card-list}
 - My office hours will be right after class.

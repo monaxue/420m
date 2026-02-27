@@ -1,256 +1,433 @@
 ---
-title: "7: t-tests"
+title: "7: p-values and t-tests"
 ---
 
-## {.center}
-::: {.card-list-center}
-- Go to <https://monaxue.github.io/420m> and open up this presentation. You will be answering Slido questions directly in the slides.
-:::
+<!--
+Goal: show relationship between CI and t-test. Maybe remove sampling distribution part?
 
-# Part 1: Plot data
+-->
+# CI review
 
-##
+## Slido question:
 
-::: {.card-list .nonincremental}
-
-1. Download from Canvas: `flyingVsDrivingFearData.csv`
-1. Group the data appropriately
-1. Create a frequency polygon
-1. Print a summary table with:
-    - Counts
-    - Means
-    - Standard deviations
-    - Standard errors
-    - 95% confidence intervals
-5. Plot means with CIs
-
-:::
-
-## Slido 1
+Which of the following represents the definition of a confidence interval?
 
 ::: iframe
 
-https://app.sli.do/event/pr7zvfTyuotunzsNJfTEii/embed/polls/7b8e3923-bb92-4b22-a3ec-54d565e5c649
+https://wall.sli.do/event/8e195uC52acMc6WW89tSS5?
 
 :::
 
 
-# Part 2: Simulating data 
-
-## {.center}
+## Terms
 
 ::: card-list
-
-- First, let us make the following assumptions:
-    - Fear scores for both driving and flying are normally distributed
-    - Driving has a true population mean of 2.84 and standard deviation of 1.028.
-    - Flying has a true population mean of 5.20 and standard deviation of 0.957.
-
-:::
-
-## Slido 1.5
-
-::: iframe
-
-https://app.sli.do/event/pr7zvfTyuotunzsNJfTEii/embed/polls/c5bb62dd-a391-476e-a887-de5c97c0e99e
+- $\mu$ is the true mean
+- $x$ is the result from a single participant
+- $\bar{x}$ is the mean from *any* experiment
+- $\bar{x}_{observed}$ is the mean that we observe from *our* particular experiment
+- The mean of the means (aka the mean of $\bar{x}$) is so close to $\mu$ that we assume they are equivalent.
+    - mean of $\bar{x} = \mu$
 
 :::
 
-##
-
-::: {.card-list .nonincremental}
-
-1. Using the assumed mean and standard deviation of `driving`, draw 25 samples from a normal distribution. Assign this to the variable `driving_sim_data`.
-1. Replicate the above "experiment" 1000 times
-1. Repeat steps 1 and 2 for `flying`.
-1. Create sampling distributions for `driving` and `flying`.
-    - Use colMeans() to take the column means of both matrices (from `replicate()`) and assign them to the variables `driving_means` and `flying_means`.
-1. Compute the difference between means using `diff_between_means <-  flying_means - driving_means`
-1. Convert `diff_between_means` into a dataframe using `tibble()` and assign this to `meanDiffsTibble`
-1. Plot `meanDiffsTibble` as a frequency polygon.
-
-:::
-
-## Slido 2
-
-::: iframe
-
-https://app.sli.do/event/pr7zvfTyuotunzsNJfTEii/embed/polls/134173ee-3dd8-440e-bb48-c7e00e5b9bf8
-
-:::
-
-# Part 3: t-test
-
-The function for conducting a t-test is `t.test()`. Use it like this:
-
-````{verbatim}
-```{r}
-
-t.test(data = data, fear ~ mode)
-
-```
-````
+---
 
 ```{r}
 
+
+library(ggplot2)
 library(tidyverse)
+library(patchwork)
 
-data <- read_csv("data/FlyingVsDrivingFearData.csv")
+area_between_norm <- function(mu, sd, alpha, minlab, meanlab, maxlab, xaxis, title){
+percent <- paste0(as.character((1-alpha)*100),"%")
 
-t.test(data = data, fear ~ mode)
+x <- seq(mu - 4*sd, mu + 4*sd, length.out = 1000)
+
+df <- tibble(
+  x = x,
+  y = dnorm(x, mu, sd)
+)
+
+lower <- qnorm(alpha/2, mu, sd)
+upper <- qnorm(1-(alpha/2), mu, sd)
+
+mid_x <- (lower + upper) / 2
+mid_y <- dnorm(mid_x, mu, sd) * 0.5
+
+ggplot(df, aes(x=x, y=y)) +
+  geom_line() +
+  geom_area(
+    aes(y = ifelse(x > lower & x < upper, y, 0)),
+    alpha = 0.2,
+    fill="steelblue"
+  ) +
+    labs(x = xaxis, title = title) +
+  geom_vline(xintercept = c(lower, mu, upper), linetype = "dashed") + 
+  scale_x_continuous(limits=c(-5,5), breaks = c(lower, mu, upper), labels = c(minlab,meanlab,maxlab)) +
+    scale_y_continuous(expand = c(0, 0)) +
+    theme_classic(base_size = 10) + 
+   theme(
+    plot.title = element_text(size = rel(1), face = "bold",
+        hjust = 0.5,margin = margin(b = rel(4))),
+    axis.title.y = element_blank(),
+    axis.text.y  = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.line.x = element_line(linewidth = 0.5),
+    axis.ticks.x = element_line(linewidth = 0.8),
+    axis.ticks.length.x = unit(4, "pt"),
+    axis.text.x = element_text(size = rel(2), margin = margin(t = rel(4))),
+    axis.title.x = element_text(size = rel(1.5), face = "bold", margin = margin(t = rel(3))),
+    plot.margin = margin(b = rel(2), r = rel(2), l=rel(2), t=rel(2)),
+    panel.background = element_rect(fill = "transparent"),
+  plot.background  = element_rect(fill = "transparent")) +
+  annotate(
+    "text",
+    x = mid_x,
+    y = mid_y,
+    label = percent,
+    size = 8
+  )
+}
+
+
+plot1 <- area_between_norm(mu=0, sd=2, alpha=0.05, minlab="a", meanlab=expression(mu), maxlab="b", xaxis=expression(bar(x) ~ "(means from experiments)"), title="1. Sampling distribution")
+
+plot2 <- area_between_norm(mu=0, sd=1, alpha=0.05, minlab="-1.96", meanlab="0", maxlab="1.96", xaxis=expression(Z == frac(bar(x) - mu, SE)), title=paste0("2. Normalize dist. Z ~ Norm(0,1)"))
+
+plot3 <- area_between_norm(mu=0, sd=2, alpha=0.05, minlab=expression(mu-1.96 %*% SE), meanlab=expression(mu), maxlab=expression(mu+1.96 %*% SE), xaxis=expression(bar(x)), title=paste0("3. Substitute from Z to get a and b"))
+
+plot1+plot2+plot3+theme(plot.margin = margin(b = 10, r = 10, l=10, t=10),)
 
 ```
 
-You should get an output like this.
+#3 is what we would *like* to know.
 
-## Slido 3
+---
 
-::: {.card-list .nonincremental}
+::::: columns
+:::: column
 
-- In the plot of CIs from Part 1, we compared the mean of driving with the mean of flying. From the `t.test()` output, can you tell what two values we are comparing?
+**Problem: we don't know the true mean, $\mu$**
 
-:::
+```{r}
+#| fig-height: 6
+#| fig-width: 5
 
-::: iframe
-
-https://app.sli.do/event/pr7zvfTyuotunzsNJfTEii/embed/polls/142b155d-47bb-437d-bfaf-243fd03043b6
-
-:::
-
-
-## Interpret the results
-
-::: {.card-list .nonincremental}
-
-- Copy and paste the following into your R Markdown file, and fill in the blanks.
-    - You can click on "Copy to Clipboard" on the top right corner.
-
-:::
-
-```{verbatim}
-
-# Interpretation of results
-
-The 95% confidence intervals (CIs) for fear of driving and fear of flying are __ and __, respectively. This means that we can be 95% ___ that ________. Looking at the plot of the means with CIs, I can see that the CIs of driving and flying __. This means we can be fairly __ that the true means are __.
-
-Furthermore, the sampling distribution of the difference is centered on __, and the majority of the distribution falls between __ and __. If people didn’t fear flying more than driving, the difference should be __, which is not included in the sampling distribution. This suggests that it is unlikely that the true difference is __.
-
-A t-test on the data confirms the above intuition. The confidence interval generated from the t-test is __. This means that we are 95% __ that ________. The range of the confidence interval is __ to the range of the sampling distribution of the difference. The p-value is __, which means that the probability of obtainting __ if our __ hypothesis is true is low. Therefore, we can conclude that ________.
+plot3
 
 ```
 
-
-## Summary of deliverables
-
-::: card-list
-
-1. Frequency polygons of the data distributions
-1. Plots of the means with 95% CIs
-1. A frequency polygon of the simulated sampling distribution of the difference
-1. The output of the t-test
-1. Interpretation of results
-
-:::
+::::
 
 
-# Slido questions and answers
+:::: column
 
 
-# Slido 1
-
-##
-
-::: {.card-list .nonincremental}
-
-- Are the frequency polynomials **literally** normally distributed?
-
-    1. Yes 
-    2. No
-
-:::
-
-##
-
-::: card-list
-    
-- **Correct answer:** No
-
-- **Explanation:** A normal distribution is a specific function that has exact values. While this function might describe the general shape of real world phenomenon, it does not perfectly reflect real world mechanisms for generating data. One property of a normal distribution is that the tails go on to infinity. This is not a property of most real world phenomenon. Real world data never perfectly match hypothetical functions that we define.
-
-:::
-
-##
-
-::: {.card-list .nonincremental}
-
-- Do you think samples are drawn from a population that approximates a normal distribution?
-    1. Likely
-    2. Unlikely
-
-:::
-
-##
+From here, there are two possibilities:
 
 ::: card-list
 
-- **Correct answer:** Likely
-- **Explanation:** The general shape of each frequency polygon appears to have a mean with more or less even spread around it. They are not really skewed (notice that any extension of lines are actually at `count = 0`). This seems reasonable because one expects that there is a central tendency that most people agree upon, and deviations from the mean comes from random "errors" that are not systematically biased, like ambiguity of the rating scale, variations in personality, mood, etc. Generally, if a research question concerns means, you can expect what gets measured will be more or less normally distributed.
+- Don't make any assumptions about $\mu$
+    - ❌ Cannot calculate probabilities 
+    - $\rightarrow$ CIs
+- Pretend that we know $\mu$
+    - ✅ Can calculate probabilities
+    - $\rightarrow$ p-values
 
 :::
+::::
+:::::
 
-##
-
-::: {.card-list .nonincremental}
-
-- What can you conclude about the differences between the two frequency polygons?
-
-    1. People have higher levels of fear for flying than for driving. The peaks of the frequency polygons are offset quite noticeably with very little overlap, suggesting that the difference likely generalizes to the true population as well as future samples.
-
-    1. In this particular dataset, there is a difference in mean ratings between the driving a flying conditions. However, we cannot conclude if this difference is generalizable to the true population or any future samples.
-
-    1. We cannot form any conclusions from this plot alone. Even though the peaks look different, we have not plotted the confidence intervals. Therefore, we cannot be sure about the difference in means for this experiment, and by extension, the true population.
-
-:::
-
-##
-
-::: card-list
-
-- **Correct answer:** 2
-- **Explanation:** The frequency polygons plot the raw data, and we can describe what we see in the raw data. However, we cannot make inferences about the likely true population differences without doing further analyses, like calculating the confidence interval or conducting a t-test. When we say that "people have different fear levels for driving and flying", we are making a general statement about people, and, therefore, the true population.
-
-:::
-
-
-# Slido 2
-
-##
-
-::: {.card-list .nonincremental}
-
-- Write a plot title that clearly describes the final plot
-    - **Example answer:** Frequency polygon of the differences between the mean fear of flying and mean fear of driving over 1000 simulated experiments
-- What is the value of the mean of the differences between means?
-    - ~ 2.3
-- Where is the bulk of the distribution? (i.e., the range of the differences in means)
-    - ~ 1.75 to 3
-
-:::
-
-# Slido 3
+# P-values
 
 ## 
 
-::: {.card-list .nonincremental}
+::: card-list
 
-1. In the t-test, which two values are being compared? Which is the null hypothesis?
-
-**Answer:** The difference between the means and 0, which is the null hypothesis.
-
-1. How does the CI from the t-test compare to the bulk of the sampling distribution of differences?
-
-**Answer**: They are fairly similar.
+- We will *pretend* to know $\mu$. What does this mean?
+- This means that we can simulate what the sampling distribution would look like if we assume our *pretend* $\mu$ is true.
+- What are good $\mu$'s to assume?
 
 :::
 
+## What $\mu$ to assume?
 
+If we are interested in proving A, we cannot assume A.
+
+::: card-list
+- A circular argument: You cannot prove something if you already assume it is true.
+- Examples of circular arguments:
+    - I trust you because you are trustworthy
+    - The scientific method works because science tells me so
+    - Calibrating a compass by only using that one compass.
+        - You need to use a second compass or known landmarks (like the stars).
+
+:::
+
+## A second compass 🧭🧭
+
+::: card-list
+- Choosing a $\mu$ is like choosing a second compass
+- You need to make sure the pretend $\mu$ is different from the one you are actually interested in "proving".
+- This is the purpose of a **null hypothesis**
+    - The "opposite" hypothesis of your main hypothesis
+:::
+
+---
+
+```{r}
+
+area_between_norm(mu=0, sd=2, alpha=0.05, minlab=expression(mu-1.96 %*% SE), meanlab=expression(mu), maxlab=expression(mu+1.96 %*% SE), xaxis=expression(bar(x)), title=paste0(""))
+
+```
+
+Interpretation: given that the true mean is 0, the probability of getting a mean that is between $0 \pm 1.96 \times SE$ is 95%.
+
+
+## {.center}
+
+::: card-list
+
+- Let's say in our experiment, we want to show that there is a difference between two groups. 
+- The opposite hypothesis would be that there is no difference between the groups. AKA the difference = 0.
+:::
+
+---
+
+We happen to observe the difference between two means (aka $\bar{x}_{observed}$) is $|1.96 \times SE|$
+
+```{r}
+
+area_between_norm(mu=0, sd=2, alpha=0.05, minlab=expression( -bar(x)[observed]), meanlab=expression(mu), maxlab=expression(bar(x)[observed]), xaxis=expression(bar(x)), title=paste0(""))
+
+```
+
+Then the probability of getting a mean that is between $\pm\bar{x}_{observed}$ is __?
+
+##
+
+```{r}
+
+area_between_norm(mu=0, sd=2, alpha=0.05, minlab=expression( -bar(x)[observed]), meanlab=expression(mu), maxlab=expression(bar(x)[observed]), xaxis=expression(bar(x)), title=paste0(""))
+
+```
+
+But this is the opposite of the hypothesis we want to "prove". What would the opposite graph of this one look like?
+
+---
+
+```{r}
+
+area_outside_norm <- function(mu, sd, alpha, minlab, meanlab, maxlab, xaxis, title){
+percent <- paste0(as.character((1-alpha)*100),"%")
+
+x <- seq(mu - 4*sd, mu + 4*sd, length.out = 1000)
+
+df <- tibble(
+  x = x,
+  y = dnorm(x, mu, sd)
+)
+
+lower <- qnorm(alpha/2, mu, sd)
+upper <- qnorm(1-(alpha/2), mu, sd)
+
+mid_x <- (lower + upper) / 2
+mid_y <- dnorm(mid_x, mu, sd) * 0.5
+
+ggplot(df, aes(x=x, y=y)) +
+  geom_line() +
+  geom_area(
+    aes(y = ifelse(x < lower | x > upper, y, 0)),
+    alpha = 0.2,
+    fill="steelblue"
+  ) +
+    labs(x = xaxis, title = title) +
+  geom_vline(xintercept = c(lower, mu, upper), linetype = "dashed") + 
+  scale_x_continuous(limits=c(-5,5), breaks = c(lower, mu, upper), labels = c(minlab,meanlab,maxlab)) +
+    scale_y_continuous(expand = c(0, 0)) +
+    theme_classic(base_size = 10) + 
+   theme(
+    plot.title = element_text(size = rel(1), face = "bold",
+        hjust = 0.5,margin = margin(b = rel(4))),
+    axis.title.y = element_blank(),
+    axis.text.y  = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.line.x = element_line(linewidth = 0.5),
+    axis.ticks.x = element_line(linewidth = 0.8),
+    axis.ticks.length.x = unit(4, "pt"),
+    axis.text.x = element_text(size = rel(1), margin = margin(t = rel(4))),
+    axis.title.x = element_text(size = rel(1.5), face = "bold", margin = margin(t = rel(3))),
+    plot.margin = margin(b = rel(2), r = rel(2), l=rel(2), t=rel(2)),
+    panel.background = element_rect(fill = "transparent"),
+  plot.background  = element_rect(fill = "transparent")) +
+  annotate(
+    "text",
+    x = mid_x,
+    y = mid_y,
+    label = percent,
+    size = 8
+  )
+}
+
+
+plot4 <- area_outside_norm(mu=0, sd=1.5, alpha=0.1, minlab=expression(-bar(x)[observed]), meanlab=expression(mu), maxlab=expression(bar(x)[observed]), xaxis=expression(bar(x)), title="A")
+
+plot5 <- area_outside_norm(mu=0, sd=1.5, alpha=0.2, minlab=expression(-bar(x)[observed]), meanlab=expression(mu), maxlab=expression(bar(x)[observed]), xaxis=expression(bar(x)), title=paste0("B"))
+
+plot6 <- area_outside_norm(mu=0, sd=1.5, alpha=0.05, minlab=expression(mu-1.96 %*% SE), meanlab=expression(mu), maxlab=expression(mu+1.96 %*% SE), xaxis=expression(bar(x)), title=paste0("C"))
+
+area_outside_norm(mu=0, sd=2, alpha=0.05, minlab=expression(-bar(x)[observed]), meanlab=expression(mu), maxlab=expression(bar(x)[observed]), xaxis=expression(bar(x)), title="")
+
+
+```
+
+
+Interpretation: given that the true mean is 0, the probability of sampling our observed $\bar{x}_{observed}$ (or something more extreme) is 100%-95% = 5%.
+
+## Definition of p-value {.center}
+
+::: card-list-center
+
+- The p-value is the probability of our observing our results (or something more extreme) given that our null hypothesis is true.
+
+:::
+
+---
+
+The p-value probabilities depend on the observations.
+
+Which of the following has the lowest p-value?
+
+```{r}
+
+plot4+plot5+plot6+theme(plot.margin = margin(b = 30, r = 30, l=30, t=30),)
+```
+
+
+
+# t-test
+
+The t-test calculates the p-value for the difference between groups.
+
+The function for conducting a t-test is `t.test()`. Use it like this:
+
+```r
+t.test(data = data, score ~ group)
+```
+
+And replace the names as needed.
+
+# Deliverables
+
+##
+
+::: {.normal-list .nonincremental}
+
+- [ ] Download [FlyingVsDrivingFearData.csv](/data/FlyingVsDrivingFearData.csv){.filelink}, and read the data into Rmd.
+- [ ] Create a summary table for the dataset, grouping by `mode`.
+- [ ] Simulate the sampling distribution, assuming that the null hypothesis is true. The null hypothesis is that the difference between driving and flying is 0.
+    - [ ] Create an empty list named `sampling_dist`
+    - [ ] Use a for loop for the following:
+    - [ ] Simulate 1000 experiments
+    - [ ] Simulate driving and flying data separately by using `rnorm()`. Use a sample size of 25, a mean of 0, and an sd of 1.
+    - [ ] Take the difference between the mean of driving and the mean of flying, and add that to the `sampling_dist` list.
+- [ ] Plot
+    - [ ] Convert `sampling_dist` to a dataframe using `tibble()`
+    - [ ] Plot a histogram and the simulated differences across experiments. Assign the plot to the variable `hist`
+    - [ ] Calculate the observed difference between driving and flying from the actual dataset by using 
+
+        ```r
+        observed_diff <- sum_table$Mean[1] - sum_table$Mean[2]
+        ```
+    - [ ] Add the observed difference by using the following code:
+
+        ```r
+        hist + geom_vline(xintercept = -abs(observed_diff)) + geom_vline(xintercept = abs(observed_diff))
+        ```
+    - [ ] Run an official t-test (see previous page)
+- [ ] Answer the following questions:
+    - [ ] What does the final plot with the vertical lines show? 
+    - [ ] If you had to guess the p-value based on the plot, what would you guess? 
+    - [ ] How does your guess compare to the p-value from the t-test? Are they consistent?
+
+:::
+
+# What your deliverables might look like
+
+---
+
+:::: panel-tabset
+
+## Raw data
+
+```{r}
+
+raw_data <- read_csv("./data/FlyingVsDrivingFearData.csv")
+head(raw_data)
+
+```
+
+## Summary table
+
+```{r}
+
+sum_table <- raw_data %>% group_by(mode) %>% summarize(SampleSize=n(), Mean=mean(fear), SD=sd(fear))
+sum_table
+```
+
+## Histogram
+
+```{r}
+
+sampling_dist <- c()
+
+for (experiment in 1:1000){
+    SampleSize=25
+    driving <- rnorm(n=SampleSize, mean=0, sd=1)
+    flying <- rnorm(n=SampleSize, mean=0, sd=1)
+    sampling_dist[experiment] <- mean(driving) - mean(flying)
+
+}
+
+sim_df <- tibble(diffs=sampling_dist)
+
+hist <- ggplot(sim_df, aes(x=diffs)) + geom_histogram()
+hist
+```
+
+## Histogram with vertical lines
+
+```{r}
+
+observed_diff <- sum_table$Mean[1] - sum_table$Mean[2]
+observed_diff
+
+hist + geom_vline(xintercept = -abs(observed_diff)) + geom_vline(xintercept = abs(observed_diff))
+
+```
+
+```{r}
+
+# Don't need this cell for students
+
+sim_sum <- sim_df %>% mutate(greaterorless = 
+    case_when(
+        diffs > abs(observed_diff) ~ "greater", 
+    diffs < -abs(observed_diff) ~ "less",
+    TRUE ~ "between")
+    ) %>% group_by(greaterorless) %>% summarize(count=n())
+
+sim_sum
+
+```
+
+## t-test output
+```{r}
+t.test(data = raw_data, fear ~ mode)
+```
+
+
+
+::::

@@ -3,6 +3,21 @@ title: "3: for loops and central limit theorem"
 subtitle: Please open up R Studio
 ---
 
+<!--
+Don't save dataset next time.
+
+Maybe show them visually what the simulation should look like (+ for loop). Show what central limit theorem looks like so they can try to understand it without the cognitive load of new code. Do this before they actually code, so when they do code, they know what they are trying to do.
+
+Try to show how excited you are about simulations.
+
+Also maybe make this your micro teaching.
+
+Also, clarify difference between real data and fake data. Students often get confused by this.
+
+Use your pretend world analogy from your old undergrad presentation.
+
+-->
+
 ## Review: Where should your 420M folder be?
 
 ![](/assets/slido-where-can-your-420m-folder-be.png)
@@ -367,7 +382,3 @@ write_csv(df, "dataset_name.csv")
     - There may be one (or only a few) causal factors dominating how the dataset is generated.
 
 ::: 
-
-::: notes
-
-:::

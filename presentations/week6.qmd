@@ -3,13 +3,15 @@ title: "6: Case studies and CIs"
 ---
 
 
-::: notes
+<!--
 
 Go over case studies.
 
 Cover z-scores and CI. Have people write an interpretation for CI's for their lab report. Have people revise their lab reports.
 
-:::
+It was a really good idea to tell them they should be proud of themselves and have them write what they feel proud of.
+
+-->
 
 ## Case studies
 
@@ -69,6 +71,8 @@ Cover z-scores and CI. Have people write an interpretation for CI's for their la
 
 
 ```{r}
+
+library(tidyverse)
 
 set.seed(1)
 
@@ -272,7 +276,7 @@ https://wall.sli.do/event/qFBF9mUcZDngBd8niQpzQp
 # Deliverables
 
 ##
-::: nonincremental
+::: {.normal-list .nonincremental}
 1. Write a reflection
     - [ ] How you did you feel you did on this first case study? What are you proud of? What do you think you can improve upon?
     - [ ] What are your major takeaways from today's class?

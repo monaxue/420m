@@ -11,4 +11,5 @@ contributes:
       filters:
         - iframe.lua
         - filelink.lua
+        - after-header-note.lua
 

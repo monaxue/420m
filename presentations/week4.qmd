@@ -2,9 +2,20 @@
 title: "4: pipes, ggplot, summary tables"
 ---
 
-::: notes
+<!--
 This week as it is went over by an hour. You need to take stuff out!
-:::
+
+Just take out the simulation part. Just give them a dataset to work with. They will simulate again next week.
+
+Next time, have them open the case study template today. Maybe they shouldn't write interpretations today. They can do that in the case study, and you can tell them ahead of time that they don't have to worry too much because they will have the opporutunity to revise the case study.
+
+It seems that summary tables are new to them, but ggplot they have a lot more experience with.
+
+Also talk about controls?
+
+It was good to separate out the descriptive statistics and inferential statistics. Maybe teach them about purpose of each, then after case study teach them about interpretations.
+
+-->
 
 ## Week 4 Lab
 

@@ -21,3 +21,6 @@ execute:
 format:
   html:
     css: noAI.css
+  
+filters: 
+  - after-header-note.lua

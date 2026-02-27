@@ -7,6 +7,7 @@ project:
 
 website: 
   title: "PSYCH 420m Lab"
+  search: false
   navbar: 
     pinned: true
     left:

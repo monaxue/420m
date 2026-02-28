@@ -15,6 +15,7 @@ website:
         text: Slides
       - href: files/cheatsheet.qmd
         text: R Cheatsheet
+      - href: files/casestudy2.qmd
 
 execute:
   cache: true
@@ -25,3 +26,4 @@ format:
   
 filters: 
   - after-header-note.lua
+  - filelink.lua

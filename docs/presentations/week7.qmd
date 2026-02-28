@@ -3,7 +3,7 @@ title: "7: p-values and t-tests"
 ---
 
 <!--
-Goal: show relationship between CI and t-test. Maybe remove sampling distribution part?
+Should add an animation of what the simulation and plotting the mean differences process looks like.
 
 -->
 # CI review
@@ -12,11 +12,7 @@ Goal: show relationship between CI and t-test. Maybe remove sampling distributio
 
 Which of the following represents the definition of a confidence interval?
 
-::: iframe
-
-https://wall.sli.do/event/8e195uC52acMc6WW89tSS5?
-
-:::
+![](/assets/slido-which-of-the-following-represents-the-ci.png)
 
 
 ## Terms
@@ -204,7 +200,11 @@ area_between_norm(mu=0, sd=2, alpha=0.05, minlab=expression( -bar(x)[observed]),
 
 ```
 
-Then the probability of getting a mean that is between $\pm\bar{x}_{observed}$ is __?
+::: card-list
+- Then the probability of getting a mean that is between $\pm\bar{x}_{observed}$ is __?
+  - Answer: 95%
+:::
+
 
 ##
 
@@ -290,22 +290,23 @@ Interpretation: given that the true mean is 0, the probability of sampling our o
 
 ::: card-list-center
 
-- The p-value is the probability of our observing our results (or something more extreme) given that our null hypothesis is true.
+- The p-value is the probability of observing our results (or something more extreme) given that our null hypothesis is true.
 
 :::
 
 ---
 
-The p-value probabilities depend on the observations.
-
-Which of the following has the lowest p-value?
+The p-value probabilities depend on the actual observations (real data). Which of the following has the lowest p-value?
 
 ```{r}
 
 plot4+plot5+plot6+theme(plot.margin = margin(b = 30, r = 30, l=30, t=30),)
 ```
 
+::: card-list
+- Answer: `A`. While `C` has the smallest area under the curve on the outside (5%), `C` is not plotting the actual observed means on the x-axis. `A` has the smallest area under the curve outside of the observed means (10%).
 
+:::
 
 # t-test
 

@@ -107,8 +107,13 @@ If I make an extra video, I don't have to go over it in the lab section
 
 **For option 2 (Cog Psych):** To observe interactions, you will need to use `group_by` and `facet_wrap` on two variables
 
-- `group_by(variable1, variable2)`
-- `facet_wrap(c(~variable1, ~variable2))`
+```r
+... %>% group_by(variable1, variable2)
+```
+
+```r
+... + facet_wrap(c(~variable1, ~variable2))
+```
 
 
 ::::

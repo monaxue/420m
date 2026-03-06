@@ -1,4 +1,9 @@
-# Week 9
+---
+title: "9: Effect sizes"
+---
+
+##
+
 Download `salsLargeN.csv` and `salsSmallN.csv`
 
 
@@ -342,7 +347,7 @@ print(t_test)
     - So is this difference big enough to be an important difference?
 - For the small dataset
     - The p-value is larger than 0.05, so we cannot reject the null hypothesis.
-    - The frequency polygons look different, but since it's a small sample, it could be do to noise.
+    - The frequency polygons look different, but since it's a small sample, it could be due to noise.
 
 - So how can we tell if there is an important enough difference?
 
@@ -396,10 +401,13 @@ We get 2 100ths of a standard deviation - pretty small
 
     
 ```r
+ut_wins <- c()
 
-ut_wins <- replicate(100, 
-    sample(data$salary[data$school == "UT"], size=1) > 
+for (sample in 1:100){
+ut_wins[sample] <- sample(data$salary[data$school == "UT"], size=1) > 
         sample(data$salary[data$school == "TAMU"], size=1))
+}
+
 
 sum(ut_wins)/100
 

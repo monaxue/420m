@@ -37,11 +37,13 @@ Effects of exercise
 
 [Slides](presentations/week9.html){.filelink}
 
+-->
+
 ## Week 8
 
-[Slides](presentations/week8.html){.filelink}
+[Slides](presentations/week8.qmd){.filelink}
 
--->
+
 
 ## Case Study 2
 

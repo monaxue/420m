@@ -348,7 +348,7 @@ head(wider_data)
 
 ::: {.normal-list .nonincremental}
 
-- [ ] Download this [dataset](data/FearWithinData.csv){.filelink}
+- [ ] Download this [dataset](/data/FearWithinData.csv){.filelink}
 - [ ] Create a `geom_jitter()` plot comparing fear across modes
     
     ```r

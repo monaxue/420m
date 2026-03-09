@@ -1,0 +1,107 @@
+---
+title: "My Presentation"
+format:
+  revealjs:
+    theme: dark
+    transition: slide
+    include-in-header:
+      text: |
+        <script>
+          // ── Required ──────────────────────────────────────────────
+          window.POLL_SUPABASE_URL   = "https://YOUR_PROJECT.supabase.co";
+          window.POLL_SUPABASE_ANON  = "YOUR_ANON_KEY";
+          window.POLL_ADMIN_PASSWORD = "your-presenter-password";
+
+          // ── Optional ──────────────────────────────────────────────
+          // Claude API key for AI grading of free-response questions
+          window.POLL_CLAUDE_API_KEY  = "sk-ant-...";
+
+          // Default timer for all polls in seconds (0 = no timer)
+          window.POLL_DEFAULT_TIMER   = 60;
+        </script>
+revealjs-plugins:
+  - poll
+---
+
+## Welcome!
+
+Open this slide deck normally to participate as audience.
+
+Presenter: click the faint 🎙 in the bottom-right corner.
+
+---
+
+## Poll with 60s timer (default)
+
+::: poll
+**What's your favourite programming language?**
+
+- R
+- Python
+- Julia
+- Something else
+:::
+
+---
+
+## Poll with correct answers marked
+
+::: poll
+**What is the powerhouse of the cell?**
+
+- Nucleus
+- Mitochondria [correct]
+- Ribosome
+- Golgi apparatus
+:::
+
+---
+
+## Poll with multiple correct answers
+
+::: {.poll data-timer="30"}
+**Which of these are measures of central tendency? (select all that apply)**
+
+- Mean [correct]
+- Variance
+- Median [correct]
+- Standard deviation
+- Mode [correct]
+:::
+
+---
+
+## Poll with no timer
+
+::: {.poll data-timer="0"}
+**Which statistical method do you use most?**
+
+- Linear regression
+- Bayesian inference
+- Machine learning
+- I just use Excel 😅
+:::
+
+---
+
+## Free response — AI graded
+
+::: freeresponse
+**In one sentence: what is the Central Limit Theorem?**
+
+[answer: As sample size increases, the sampling distribution of the mean approaches a normal distribution regardless of the population's distribution]
+:::
+
+---
+
+## Free response — no correct answer (open-ended)
+
+::: {.freeresponse data-timer="45"}
+**What is the biggest challenge you face with data visualisation?**
+:::
+
+---
+
+## Thank you!
+
+Poll results appear automatically when each poll is closed.

@@ -12,6 +12,10 @@ title: "8: Paired data and t-test"
 - Draw the definition of a CI
 - Use as many labels as you can think of
 
+## 
+
+![](/assets/CI_definition_drawing.png)
+
 <!--
 ## Outline
 1. Additional considerations for t-tests
@@ -113,12 +117,8 @@ ggplot(data, aes(x=mode, y=fear, color = id)) + geom_jitter(width = 0.1, height 
 ```
 
 - What do you notice about the data? (Hint: look at the colors!)
-
-## Slido
-
-::: iframe
-https://wall.sli.do/event/gw1wWqRHbBnyhpqAWny8f7
-:::
+    - The same colors are on similar levels in both groups.
+    - e.g., People who score lower in driving also score lower in flying
 
 <!--
 
@@ -212,6 +212,8 @@ $\rightarrow$
 |Joe |2|
 |Emma|4|
 
+<!--Next time, try to advance this line by line, or at least fill it in line by line with your pen. -->
+
 :::
 ::::
 
@@ -237,14 +239,19 @@ a+b+c
 ```
 
 - Hints: Look at x-axis. What are the main things to look for in descriptive statistics?
+    - The spread of the differences plot is smaller than the spread of the fear plots.
 
+<!-- Next time focus on visualizing the process -->
 
+<--
 
 ## Slido
 
 ::: iframe
 https://wall.sli.do/event/gw1wWqRHbBnyhpqAWny8f7
 :::
+
+-->
 
 <!--
 The SD of fear generally is `r fear_sd`. The SD for the differences is `r diff_sd`, which is much lower.
@@ -290,7 +297,9 @@ head(raw_data)
 
 - But we cannot do that with the the current dataset structure. Why?
 
-## Slido
+##
+
+<!--
 
 ::: card-list
 - What are the column names of the current dataframe?
@@ -302,13 +311,23 @@ head(raw_data)
       |Joe |4|2|2|
       |Emma|5|1|4|
 :::
-<!--
-    - What are the column names of the current dataframe?
-        - id, mode, fear
-    - What column names do we need so we can use `mutate(differences = flying - driving)`.
-        - id, flying, driving
 
 -->
+
+
+::: card-list
+- What are the column names of the current dataframe?
+    - id, mode, fear
+- What column names do we need so we can use `mutate(differences = flying - driving)`.
+    - id, flying, driving
+    - |Name|A|B|A - B|
+      |----|-|-|---|
+      |Bob |2|1|1|
+      |Amy |3|2|1|
+      |Joe |4|2|2|
+      |Emma|5|1|4|
+:::
+
 
 ## `pivot_wider()`
 

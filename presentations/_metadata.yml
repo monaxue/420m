@@ -8,5 +8,33 @@ format:
         theme: whiteboard
       preview-links: true
       sc-sb-title: true
+      include-in-header:
+        text: |
+          <script>
+            setTimeout(() => {
+              console.log("Poll divs:", document.querySelectorAll(".poll, .freeresponse").length);
+              document.querySelectorAll(".poll, .freeresponse").forEach((el, i) => {
+                console.log(`Poll ${i}:`, el.dataset.question, el.dataset.timer);
+              });
+            }, 1000);
+
+            setTimeout(() => {
+              console.log("Reveal ready:", typeof Reveal !== "undefined" && Reveal.isReady());
+              console.log("pollInit ran:", window._pollInitRan);
+            }, 1000);
+
+            // ── Required ──────────────────────────────────────────────
+            window.POLL_SUPABASE_URL   = "{{< var supabase-url >}}";
+            window.POLL_SUPABASE_ANON  = "{{< var supabase-anon >}}";
+            window.POLL_ADMIN_PASSWORD = "{{< var admin-password >}}";
+
+            // ── Optional ──────────────────────────────────────────────
+            // Claude API key for AI grading of free-response questions
+            window.POLL_CLAUDE_API_KEY  = "sk-ant-...";
+
+            // Default timer for all polls in seconds (0 = no timer)
+            window.POLL_DEFAULT_TIMER   = 60;
+          </script>
 filters: 
   - reveal-header
+  - poll

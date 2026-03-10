@@ -1,0 +1,269 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" width="100%" height="360"
+    style="font-family: Georgia, serif;">
+<defs>
+  <style>
+    @keyframes assemble {
+      from { opacity:0; transform: translate(var(--tx),var(--ty)) scale(0.5); }
+      to   { opacity:1; transform: translate(0,0) scale(1); }
+    }
+    @keyframes pop {
+      from { opacity:0; transform: scale(0.3); }
+      to   { opacity:1; transform: scale(1); }
+    }
+    @keyframes dash {
+      from { stroke-dashoffset: 200; opacity:0; }
+      to   { stroke-dashoffset: 0;   opacity:1; }
+    }
+    @keyframes shrink {
+      from { transform: scale(1) translate(0,0); }
+      to   { transform: scale(0.37) translate(-1100px, -110px); }
+    }
+    @keyframes fadein { from{opacity:0} to{opacity:1} }
+    @keyframes glow {
+      0%,100% { filter: drop-shadow(0 0 6px #a8c8f8); }
+      50%     { filter: drop-shadow(0 0 16px #a8c8f8); }
+    }
+
+    /* land fragments fly in */
+    .l1{--tx:-50px;--ty:-30px} .l2{--tx:50px;--ty:-40px}
+    .l3{--tx:-40px;--ty:40px}  .l4{--tx:40px;--ty:30px}
+    .lf { animation: assemble 0.9s cubic-bezier(.23,1,.32,1) both; }
+    .lf.l1{animation-delay:.3s} .lf.l2{animation-delay:.5s}
+    .lf.l3{animation-delay:.7s} .lf.l4{animation-delay:.8s}
+
+    /* globe base and atmosphere */
+    .gb { animation: assemble 0.8s ease .1s both; --tx:0px;--ty:-40px; }
+    .at { animation: fadein 0.6s ease 1s both; opacity:0; }
+
+    /* dots on first world */
+    .d0a{animation:pop .4s ease 1.2s both}
+    .d0b{animation:pop .4s ease 1.3s both}
+    .d0c{animation:pop .4s ease 1.4s both}
+
+    /* rule nodes */
+    .rn{animation:pop .6s cubic-bezier(.23,1,.32,1) both; opacity:0;}
+    .rn1{animation-delay:2.2s} .rn2{animation-delay:2.5s}
+    .rn3{animation-delay:2.8s} .rn4{animation-delay:3.0s}
+    .rl{stroke-dasharray:200; animation:dash .5s ease both; opacity:0;}
+    .rl1{animation-delay:2.7s} .rl2{animation-delay:2.9s}
+    .rl3{animation-delay:3.1s} .rl4{animation-delay:3.2s}
+    .rb{animation:fadein .5s ease 3.3s both; opacity:0;}
+
+    /* zoom */
+    .wz { transform-origin:380px 180px; transform-box:fill-box;
+          animation: shrink 1.2s cubic-bezier(.77,0,.18,1) 4s both; }
+
+    /* timeline */
+    .tl{stroke-dasharray:700; animation:dash 0.8s ease 5s both; opacity:0;}
+    .ta{animation:fadein .3s ease 5.7s both; opacity:0;}
+
+    /* snapshot worlds */
+    .s2{animation:pop .7s cubic-bezier(.23,1,.32,1) 5.2s both; opacity:0; transform-origin:260px 180px; transform-box:fill-box;}
+    .s3{animation:pop .7s cubic-bezier(.23,1,.32,1) 5.9s both; opacity:0; transform-origin:400px 180px; transform-box:fill-box;}
+    .s4{animation:pop .7s cubic-bezier(.23,1,.32,1) 6.6s both; opacity:0; transform-origin:540px 180px; transform-box:fill-box;}
+    .sg{animation:pop .7s cubic-bezier(.23,1,.32,1) 6.6s both, glow 2s ease-in-out 7.4s infinite; opacity:0; transform-origin:540px 180px; transform-box:fill-box;}
+
+    /* snap dots */
+    .da{animation:pop .35s ease both; opacity:0;}
+    .da1{animation-delay:5.5s} .da2{animation-delay:5.6s} .da3{animation-delay:5.7s} .da4{animation-delay:5.8s}
+    .db1{animation-delay:6.2s} .db2{animation-delay:6.3s} .db3{animation-delay:6.4s}
+    .db4{animation-delay:6.5s} .db5{animation-delay:6.6s}
+    .dc1{animation-delay:6.9s} .dc2{animation-delay:7.0s} .dc3{animation-delay:7.1s}
+    .dc4{animation-delay:7.2s} .dc5{animation-delay:7.3s} .dc6{animation-delay:7.4s}
+    .sl{stroke-dasharray:80; animation:dash .4s ease both; opacity:0;}
+    .sl2{animation-delay:5.9s} .sl3{animation-delay:6.7s} .sl4{animation-delay:7.5s}
+
+    /* end badge */
+    .eb{animation:pop .6s cubic-bezier(.23,1,.32,1) 7.4s both; opacity:0; transform-origin:540px 240px; transform-box:fill-box;}
+
+    /* cause arrows */
+    .ar{stroke-dasharray:150; animation:dash .6s ease both; opacity:0;}
+    .ar1{animation-delay:8s}  .ar2{animation-delay:8.8s}
+    .ah1{animation:fadein .2s ease 8.55s both; opacity:0;}
+    .ah2{animation:fadein .2s ease 9.35s both; opacity:0;}
+    .al1{animation:pop .5s cubic-bezier(.23,1,.32,1) 8.5s both; opacity:0; transform-origin:672px 162px; transform-box:fill-box;}
+    .al2{animation:pop .5s cubic-bezier(.23,1,.32,1) 9.3s both; opacity:0; transform-origin:672px 310px; transform-box:fill-box;}
+  </style>
+
+  <radialGradient id="g0" cx="40%" cy="35%">
+    <stop offset="0%" stop-color="#c0d8f2"/><stop offset="100%" stop-color="#7aabd8"/>
+  </radialGradient>
+  <radialGradient id="g1" cx="40%" cy="35%">
+    <stop offset="0%" stop-color="#c4dcf4"/><stop offset="100%" stop-color="#7eaedd"/>
+  </radialGradient>
+  <radialGradient id="g2" cx="40%" cy="35%">
+    <stop offset="0%" stop-color="#c8e0f5"/><stop offset="100%" stop-color="#84b2e0"/>
+  </radialGradient>
+  <radialGradient id="g3" cx="40%" cy="35%">
+    <stop offset="0%" stop-color="#d0e6f8"/><stop offset="100%" stop-color="#8ab8e4"/>
+  </radialGradient>
+
+  <clipPath id="c0"><circle cx="380" cy="180" r="108"/></clipPath>
+  <clipPath id="c1"><circle cx="120" cy="180" r="40"/></clipPath>
+  <clipPath id="c2"><circle cx="260" cy="180" r="40"/></clipPath>
+  <clipPath id="c3"><circle cx="400" cy="180" r="40"/></clipPath>
+  <clipPath id="c4"><circle cx="540" cy="180" r="40"/></clipPath>
+
+  <filter id="gf"><feGaussianBlur stdDeviation="3" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+
+<!-- subtle grid -->
+<rect width="760" height="360" fill="none"/>
+<g opacity=".08" stroke="#7799bb" stroke-width=".5">
+  <line x1="0" y1="60"  x2="760" y2="60"/>  <line x1="0" y1="120" x2="760" y2="120"/>
+  <line x1="0" y1="180" x2="760" y2="180"/> <line x1="0" y1="240" x2="760" y2="240"/>
+  <line x1="0" y1="300" x2="760" y2="300"/>
+  <line x1="80"  y1="0" x2="80"  y2="360"/> <line x1="160" y1="0" x2="160" y2="360"/>
+  <line x1="240" y1="0" x2="240" y2="360"/> <line x1="320" y1="0" x2="320" y2="360"/>
+  <line x1="400" y1="0" x2="400" y2="360"/> <line x1="480" y1="0" x2="480" y2="360"/>
+  <line x1="560" y1="0" x2="560" y2="360"/> <line x1="640" y1="0" x2="640" y2="360"/>
+  <line x1="720" y1="0" x2="720" y2="360"/>
+</g>
+
+<!-- ── MAIN WORLD (zooms to slot 1 at x=120) ── -->
+<g class="wz">
+  <circle class="gb" cx="380" cy="180" r="108" fill="url(#g0)" stroke="#7aaad0" stroke-width="1.5"/>
+  <g class="lf l1" clip-path="url(#c0)">
+    <polygon points="308,168 346,158 358,182 340,198 306,190" fill="#8ec89a"/>
+  </g>
+  <g class="lf l2" clip-path="url(#c0)">
+    <polygon points="354,152 390,146 404,164 394,180 360,176" fill="#a0d4aa"/>
+  </g>
+  <g class="lf l3" clip-path="url(#c0)">
+    <polygon points="388,166 422,162 432,184 418,196 392,194" fill="#78bc88"/>
+  </g>
+  <g class="lf l4" clip-path="url(#c0)">
+    <polygon points="326,198 354,192 360,214 342,226 322,216" fill="#70b080"/>
+  </g>
+  <circle class="at" cx="380" cy="180" r="115" fill="none" stroke="#a8c8e8" stroke-width="1" opacity=".5"/>
+  <circle class="d0a" cx="336" cy="168" r="4"   fill="#f0a080"/>
+  <circle class="d0b" cx="374" cy="152" r="3.5" fill="#f8b898"/>
+  <circle class="d0c" cx="412" cy="168" r="3"   fill="#f0a080"/>
+
+  <!-- rule nodes -->
+  <g class="rn rn1">
+    <circle cx="330" cy="148" r="14" fill="#dce8f8" stroke="#88aad8" stroke-width="1.5"/>
+    <text x="330" y="153" text-anchor="middle" font-size="10" font-family="monospace" fill="#4878b8">R₁</text>
+  </g>
+  <g class="rn rn2">
+    <circle cx="396" cy="134" r="14" fill="#dce8f8" stroke="#88aad8" stroke-width="1.5"/>
+    <text x="396" y="139" text-anchor="middle" font-size="10" font-family="monospace" fill="#4878b8">R₂</text>
+  </g>
+  <g class="rn rn3">
+    <circle cx="444" cy="162" r="14" fill="#dce8f8" stroke="#88aad8" stroke-width="1.5"/>
+    <text x="444" y="167" text-anchor="middle" font-size="10" font-family="monospace" fill="#4878b8">R₃</text>
+  </g>
+  <g class="rn rn4">
+    <circle cx="356" cy="210" r="14" fill="#dce8f8" stroke="#88aad8" stroke-width="1.5"/>
+    <text x="356" y="215" text-anchor="middle" font-size="10" font-family="monospace" fill="#4878b8">R₄</text>
+  </g>
+  <line class="rl rl1" x1="330" y1="148" x2="396" y2="134" stroke="#88aad8" stroke-width="1.2"/>
+  <line class="rl rl2" x1="396" y1="134" x2="444" y2="162" stroke="#88aad8" stroke-width="1.2"/>
+  <line class="rl rl3" x1="444" y1="162" x2="356" y2="210" stroke="#88aad8" stroke-width="1.2"/>
+  <line class="rl rl4" x1="356" y1="210" x2="330" y2="148" stroke="#88aad8" stroke-width="1.2"/>
+
+  <!-- Imaginary World badge — same style as End Result -->
+  <g style="animation:fadein .5s ease 1.5s both; opacity:0;">
+    <rect x="210" y="310" width="340" height="54" rx="6" fill="#fdf4e0" stroke="#d4a030" stroke-width="1.4"/>
+    <text x="380" y="350" text-anchor="middle" font-size="35" fill="#a07020">Imaginary World</text>
+  </g>
+
+  <g class="rb">
+    <rect x="316" y="80" width="130" height="26" rx="6" fill="#eef4fc" stroke="#88aad8" stroke-width="1"/>
+    <text x="381" y="97" text-anchor="middle" font-size="12" fill="#4878b8">Our own rules</text>
+  </g>
+
+</g>
+
+
+
+<!-- ── TIME AXIS ── -->
+<line class="tl" x1="60" y1="180" x2="700" y2="180" stroke="#88aad8" stroke-width="1"/>
+<polygon class="ta" points="700,176 712,180 700,184" fill="#88aad8" opacity=".6"/>
+
+<!-- ── SNAP 2  cx=260 — land north, 4 dots ── -->
+<g class="s2">
+  <circle cx="260" cy="180" r="40" fill="url(#g1)" stroke="#88aad8" stroke-width="1.2"/>
+  <g clip-path="url(#c2)">
+    <polygon points="248,156 272,150 280,164 268,172 246,168" fill="#90ca9c"/>
+    <polygon points="236,166 252,162 256,174 244,178 234,174" fill="#a4d4ae"/>
+  </g>
+  <circle cx="260" cy="180" r="43" fill="none" stroke="#a8c8e8" stroke-width=".8" opacity=".35"/>
+  <circle class="da da1" cx="250" cy="162" r="3"   fill="#f0a080"/>
+  <circle class="da da2" cx="263" cy="157" r="3"   fill="#f8c0a8"/>
+  <circle class="da da3" cx="275" cy="163" r="2.5" fill="#f0a080"/>
+  <circle class="da da4" cx="255" cy="173" r="2.5" fill="#f8c0a8"/>
+  <line class="sl sl2" x1="250" y1="162" x2="263" y2="157" stroke="#a8c0e0" stroke-width=".9" opacity=".6"/>
+  <line class="sl sl2" x1="263" y1="157" x2="275" y2="163" stroke="#a8c0e0" stroke-width=".9" opacity=".6"/>
+</g>
+
+<!-- ── SNAP 3  cx=400 — land south-west, 5 dots ── -->
+<g class="s3">
+  <circle cx="400" cy="180" r="40" fill="url(#g2)" stroke="#88aad8" stroke-width="1.2"/>
+  <g clip-path="url(#c3)">
+    <polygon points="378,188 398,182 406,194 398,204 376,200" fill="#98cc9e"/>
+    <polygon points="396,180 414,176 420,188 412,196 396,194" fill="#a8d4b0"/>
+  </g>
+  <circle cx="400" cy="180" r="43" fill="none" stroke="#a8c8e8" stroke-width=".8" opacity=".35"/>
+  <circle class="da db1" cx="382" cy="171" r="3.5" fill="#f0a080"/>
+  <circle class="da db2" cx="394" cy="165" r="3"   fill="#f8c0a8"/>
+  <circle class="da db3" cx="408" cy="170" r="3"   fill="#f0a080"/>
+  <circle class="da db4" cx="416" cy="179" r="2.5" fill="#f8c0a8"/>
+  <circle class="da db5" cx="390" cy="182" r="2"   fill="#f0a080"/>
+  <line class="sl sl3" x1="382" y1="171" x2="394" y2="165" stroke="#a8c0e0" stroke-width=".9" opacity=".6"/>
+  <line class="sl sl3" x1="394" y1="165" x2="408" y2="170" stroke="#a8c0e0" stroke-width=".9" opacity=".6"/>
+  <line class="sl sl3" x1="408" y1="170" x2="416" y2="179" stroke="#a8c0e0" stroke-width=".9" opacity=".6"/>
+  <line class="sl sl3" x1="382" y1="171" x2="390" y2="182" stroke="#a8c0e0" stroke-width=".8" opacity=".5"/>
+</g>
+
+<!-- ── SNAP 4  cx=540 — dense, glowing, End Result ── -->
+<g class="sg">
+  <circle cx="540" cy="180" r="40" fill="url(#g3)" stroke="#8ab8e0" stroke-width="1.4"/>
+  <g clip-path="url(#c4)">
+    <polygon points="516,168 534,162 542,172 538,184 520,188 512,180" fill="#a0d0a8"/>
+    <polygon points="538,164 556,164 562,176 552,184 538,182" fill="#b0d8b8"/>
+    <polygon points="514,184 528,190 522,202 508,198" fill="#88c094"/>
+  </g>
+  <circle cx="540" cy="180" r="43" fill="none" stroke="#b0cce8" stroke-width="1"  opacity=".5"/>
+  <circle cx="540" cy="180" r="46" fill="none" stroke="#b0cce8" stroke-width=".4" opacity=".2"/>
+  <circle class="da dc1" cx="518" cy="167" r="3.5" fill="#f0a080"/>
+  <circle class="da dc2" cx="530" cy="161" r="3"   fill="#f8c0a8"/>
+  <circle class="da dc3" cx="542" cy="164" r="3"   fill="#f0a080"/>
+  <circle class="da dc4" cx="554" cy="168" r="3"   fill="#f8c0a8"/>
+  <circle class="da dc5" cx="526" cy="176" r="2.5" fill="#f0a080"/>
+  <circle class="da dc6" cx="542" cy="174" r="2.5" fill="#f8c0a8"/>
+  <line class="sl sl4" x1="518" y1="167" x2="530" y2="161" stroke="#a8c0e0" stroke-width="1"  opacity=".6"/>
+  <line class="sl sl4" x1="530" y1="161" x2="542" y2="164" stroke="#a8c0e0" stroke-width="1"  opacity=".6"/>
+  <line class="sl sl4" x1="542" y1="164" x2="554" y2="168" stroke="#a8c0e0" stroke-width="1"  opacity=".6"/>
+  <line class="sl sl4" x1="518" y1="167" x2="526" y2="176" stroke="#a8c0e0" stroke-width=".9" opacity=".5"/>
+  <line class="sl sl4" x1="542" y1="164" x2="542" y2="174" stroke="#a8c0e0" stroke-width=".9" opacity=".5"/>
+  <line class="sl sl4" x1="526" y1="176" x2="542" y2="174" stroke="#a8c0e0" stroke-width=".9" opacity=".5"/>
+  <line class="sl sl4" x1="542" y1="174" x2="554" y2="168" stroke="#a8c0e0" stroke-width=".8" opacity=".4"/>
+</g>
+
+<!-- End Result badge -->
+<g class="eb">
+  <rect x="484" y="230" width="112" height="26" rx="6" fill="#fdf4e0" stroke="#d4a030" stroke-width="1.4"/>
+  <text x="540" y="247" text-anchor="middle" font-size="13" fill="#a07020">End Result</text>
+</g>
+
+<!-- ── CAUSE ARROWS (phase 4) ── -->
+<!-- Rules: horizontal from right -->
+<line class="ar ar1" x1="690" y1="162" x2="588" y2="162" stroke="#5890d0" stroke-width="2" stroke-linecap="round"/>
+<polygon class="ah1" points="588,157 576,162 588,167" fill="#5890d0"/>
+<g class="al1">
+  <rect x="670" y="146" width="110" height="28" rx="6" fill="#eef4fc" stroke="#88aad8" stroke-width="1.3"/>
+  <text x="726" y="164" text-anchor="middle" font-size="13" fill="#3a70b0">From our rules</text>
+</g>
+
+<!-- Laws of Probability: diagonal from lower-right -->
+<line class="ar ar2" x1="690" y1="306" x2="592" y2="224" stroke="#a888d8" stroke-width="2" stroke-linecap="round"/>
+<polygon class="ah2" points="596,218 585,227 584,215" fill="#a888d8"/>
+<g class="al2">
+  <rect x="596" y="314" width="152" height="28" rx="6" fill="#f4f0fc" stroke="#c0a0e0" stroke-width="1.3"/>
+  <text x="672" y="332" text-anchor="middle" font-size="13" fill="#8060b8">Laws of Probability</text>
+</g>
+
+</svg>

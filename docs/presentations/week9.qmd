@@ -2,173 +2,103 @@
 title: "9: Effect sizes"
 ---
 
-##
-
-Download `salsLargeN.csv` and `salsSmallN.csv`
+## Key question
 
 
-## Goal for today
+- Sometimes, there is a true difference means, but the difference is too small to be meaningful.
+- How do we know that a difference is big enough to meaningful? 
+    - Answer: Effect sizes.
+
+## Effect sizes
+
+- The effect size is how many standard deviations the means are apart. 
+    - An effect size of 1 means that the differences in means are 1 SD apart.
+    - Basically: the SD becomes the new unit
+- It is a measure of signal strength, so it does not depend on sample size.
+- To calculate, use: 
+    - (mean(x1) - mean(x2)) / sd(x2)
+- You can get the means and SD from from your summary table like this (make sure to replace the names with the appropriate values)
+
+    ```r
+    summary_table[row_number,column_number]
+
+    ```
+
+## What we will do
 
 ::: card-list
 
-- Today, we will be seeing if there is a difference in annual salary between UT grads and Texas A&M grads.
+1. Today, we will be seeing if there is a meaningful difference in annual salary between UT grads and Texas A&M grads. (Note: these are simulated, so fake, data!)
+1. We will look at a data set with a [large sample size](/data/salsLargeN.csv){.filelink}, and separately, adataset with a [small sample size](/data/salsSmallN.csv){.filelink}. Both are complete datasets.
+1. Using effect sizes, we will assess if a difference in means is meaningful, despite a small p-value.
+    
+:::
 
-- We will look at two studies:
-    1. Large sample size (`salsLargeN.csv`) 
-    2. Small sample size (`salsSmallN.csv`)
+## Review
 
-- It should be noted that these datasets are fake.
+Log in and answer directly in the slides!
+
+
+::: iframe
+
+https://app.sli.do/event/i3EEgRwm48fNt3yUXKL7ys/embed/polls/d570183d-8d17-4870-94bb-1614fa6c6378
 
 :::
 
-## 
-
-**Since we are looking at a difference between means, what plots/analyses should we do in R?**
-
-::: {.card-list .nonincremental}
-
-- Frequency polygon
-- t-test
-- Summary table
-- Means plot with 95% confidence interval
-
-Answer: All of the above.
-
-:::
-
-## t-test review
-
-::: {.card-list .nonincremental}
-
-- `data$salary outputs a vector of salaries
-- `data$school == "UT"` outputs a vector of `TRUE` and `FALSE`.
-- `data$salary[data$school == "UT"]` outputs the data where `data$school == "UT"` is true (AKA the data for all UT grads)
-- Therefore, `data$[data$school == "UT"]$salary` outputs the salary of all UT grads.
-:::
-
-##
-
-:::: {.columns}
-
-::: {.column width="30%"}
-
-**`data`**
-
-||school|salary|
-|---|---|---|
-|1|TAMU|70892|
-|2|UT|71871|
-|3|TAMU|73517|
-|4|UT|74159|
-|5|TAMU|73058|
-
-
-:::
-
-
-::: {.column width="10%"}
-
-$\rightarrow$
-
-:::
-
-::: {.column width="20%"}
-
-**`data$salary`**
-
-||salary|
-|---|---|
-|1|70892|
-|2|71871|
-|3|73517|
-|4|74159|
-|5|73058|
-
-:::
-
-::: {.column width="10%"}
-
-$\rightarrow$
-
-:::
-
-
-::: {.column width="20%"}
-
-**`data$school == "UT"`**
-
-||school|
-|---|---|
-|1|FALSE|
-|2|TRUE|
-|3|FALSE|
-|4|TRUE|
-|5|FALSE|
-
-:::
-
-::: {.column width="10%"}
-
-$\rightarrow$
-
-:::
-
-
-::: {.column width = "45%"}
-
-**`data$salary[data$school == "UT"]`**
-
-||salary|
-|---|---|
-|2|71871|
-|4|74159|
-
-:::
-
-::::
 
 ## Slido
 
-In t.test, we want `t.test(UT_sals,TAMU_sals)`, where `UT_sals` is the salary of all UT grads, and `TAMU_sals` is the salary of TAMU grads. What should the code look like?
-
-```r
-UT_sals <- data$salary[data$school == "UT"]
-TAMU_sals <- data$salary[data$school == "TAMU"]
-
-t.test(UT_sals,TAMU_sals)
-
-```
-**Or**
-
-```r
-
-t.test(data$salary[data$school=="UT"], data$salary[data$school=="TAMU"])
-
-```
-
-## Create the plots, summary table, and do a t-test for both datasets
-
-## Large sample
+Here is a sneak peak of a dataset:
 
 ```{r}
 
 library(tidyverse)
 library(ggplot2)
 
-data <- read_csv("data/salsLargeN.csv")
+data1 <- read_csv("./data/salsLargeN.csv")
+data2 <- read_csv("./data/salsSmallN.csv")
+
+head(data1)
+
+```
+
+Based on the above, what is the code to conduct a t.test?
+
+::: iframe
+
+https://app.sli.do/event/i3EEgRwm48fNt3yUXKL7ys/embed/polls/3041c270-0d66-4873-83f8-12b864440efc
+
+:::
+
+
+
+# Deliverables 
+
+Multiple slides, make sure to go to the end!
+
+## {.center}
+
+- For each dataset, create a frequency polygon, CI plot, summary table, and t-test, grouping by `school`
+
+# What your results should look like
+
+## Large sample  
+
+```{r}
+
+library(tidyverse)
+library(ggplot2)
+
+data <- data1
 
 hist <- ggplot(data, aes(x=salary, color=school)) + geom_freqpoly()
 
-UT_sals <- data$salary[data$school == "UT"]
-TAMU_sals <- data$salary[data$school == "TAMU"]
+t_test <- t.test(data=data, salary ~ school)
 
-t_test <- t.test(TAMU_sals,UT_sals)
-
-summary <- data %>% group_by(school) %>% summarize(Count=n(), Mean = mean(salary), SD = sd(salary), SE=SD/sqrt(Count), CI = 1.96*SE)
+summary <- data %>% group_by(school) %>% summarize(SampleSize=n(), Mean = mean(salary), SD = sd(salary), SE=SD/sqrt(SampleSize), LowerCI = Mean-1.96*SE, UpperCI = Mean+1.96*SE)
 
 
-
-mean_plot <- ggplot(summary, aes(x=school, y=Mean)) + geom_point() + geom_errorbar(aes(ymin=Mean-CI, ymax=Mean+CI))
+mean_plot <- ggplot(summary, aes(x=school, y=Mean)) + geom_point() + geom_errorbar(aes(ymin=LowerCI, ymax=UpperCI))  
 
 ```
 
@@ -198,30 +128,6 @@ mean_plot
 
 ```{r}
 
-print(t_test)
-
-```
-
-## Code
-
-```r
-
-data <- read_csv("data/salsLargeN.csv")
-
-hist <- ggplot(data, aes(x=salary, color=school)) + geom_freqpoly()
-
-UT_sals <- data$salary[data$school == "UT"]
-TAMU_sals <- data$salary[data$school == "TAMU"]
-
-t_test <- t.test(TAMU_sals,UT_sals)
-
-summary <- data %>% group_by(school) %>% summarize(Count=n(), Mean = mean(salary), SD = sd(salary), SE=SD/sqrt(Count), CI = 1.96*SE)
-
-mean_plot <- ggplot(summary, aes(x=school, y=Mean)) + geom_point() + geom_errorbar(aes(ymin=Mean-CI, ymax=Mean+CI))
-
-hist
-mean_plot
-knitr::kable(summary)
 print(t_test)
 
 ```
@@ -231,18 +137,15 @@ print(t_test)
 ## Small sample
 
 ```{r}
-data <- read_csv("data/salsSmallN.csv")
+data <- data2
 
 hist <- ggplot(data, aes(x=salary, color=school)) + geom_freqpoly(binwidth=1000)
 
-UT_sals <- data$salary[data$school == "UT"]
-TAMU_sals <- data$salary[data$school == "TAMU"]
+t_test<- t.test(data=data, salary ~ school)
 
-t_test <- t.test(TAMU_sals, UT_sals)
+summary <- data %>% group_by(school) %>% summarize(SampleSize=n(), Mean = mean(salary), SD = sd(salary), SE=SD/sqrt(SampleSize), LowerCI = Mean-1.96*SE, UpperCI = Mean+1.96*SE)
 
-summary <- data %>% group_by(school) %>% summarize(Count=n(), Mean = mean(salary), SD = sd(salary), SE=SD/sqrt(Count), CI = 1.96*SE)
-
-mean_plot <- ggplot(summary, aes(x=school, y=Mean)) + geom_point() + geom_errorbar(aes(ymin=Mean-CI, ymax=Mean+CI))
+mean_plot <- ggplot(summary, aes(x=school, y=Mean)) + geom_point() + geom_errorbar(aes(ymin=LowerCI, ymax=UpperCI))
 
 ```
 
@@ -276,176 +179,70 @@ print(t_test)
 
 ```
 
-## Code
-
-```r
-data <- read_csv("data/salsSmallN.csv")
-
-hist <- ggplot(data, aes(x=salary, color=school)) + geom_freqpoly(binwidth=1000)
-
-UT_sals <- data$salary[data$school == "UT"]
-TAMU_sals <- data$salary[data$school == "TAMU"]
-
-t_test <- t.test(TAMU_sals, UT_sals)
-
-summary <- data %>% group_by(school) %>% summarize(Count=n(), Mean = mean(salary), SD = sd(salary), SE=SD/sqrt(Count), CI = 1.96*SE)
-
-mean_plot <- ggplot(summary, aes(x=school, y=Mean)) + geom_point() + geom_errorbar(aes(ymin=Mean-CI, ymax=Mean+CI))
-
-hist
-mean_plot
-knitr::kable(summary)
-print(t_test)
-
-```
-
 ::::
 
-# Slido
 
-## For the large dataset:
-
-::: card-list
-- Are the frequency polygons similar or different? 
-    - Similar
-- What is the 95% confidence interval of the difference? 
-    - [11.87212, 36.63092]
-- What is the t and p-value from the t-test?
-    - t = 3.8397, p-value = 0.0001233
-- Is the p-value larger or smaller than 0.05?
-    - Smaller
-- What seems "weird" about these results? Specifically, compare the frequency polygon to the p-value.
-    - The p-value is small even though the frequency polygons look similar.
-
-:::
-
-## For the small dataset:
+## For the large dataset, answer the following
 
 ::: card-list
 - Are the frequency polygons similar or different?
-    - Different
-- What is the 95% confidence interval of the difference?
-    - [-914.0476, 962.5507]
-- What is the t and p-value from the t-test?
-    - t = 0.054301, p-value = 0.9573
-- Is the p-value larger or smaller than 0.05?
-    - Larger
-- What seems "weird" about these results? Specifically, compare the frequency polygon to the p-value.
-    - The p-value is large even though the frequency polygons look different. 
+- Does the confidence interval include zero? Or is it above/below?
+- Is the p-value "small" or "big"?
+- Visually compare the *sample* means between schools in the frequency polygon (not population!). Is this difference "small" or "big"?
+- Compare this difference in means to the p-value/CI. What is "weird" about these results? Where there are "/", choose the right words for following
+
+    ```{verbatim}
+    The p-value is "small/big" and the sample mean difference is "small/big". 
+    The p-value shows "strong/weak" evidence for a difference, 
+    and the frequency polygon shows "strong/weak" evidence for a difference. 
+    So p-value and frequency polygon are "consisistent/inconsistent" with each other.
+    ```
 
 :::
+
+## For the small dataset, answer the following
+
+- Are the frequency polygons similar or different?
+- Does the confidence interval include zero? Or is it above/below?
+- Is the p-value "small" or "big"?
+- Visually compare the *sample* means between schools in the frequency polygon (not population!). Is this difference "small" or "big"?
+- Compare this difference in means to the p-value/CI. What is "weird" about these results? Where there are "/", choose the right words for following
+
+    ```{verbatim}
+    The p-value is "small/big" and the sample mean difference is "small/big". 
+    The p-value shows "strong/weak" evidence for a difference, 
+    and the frequency polygon shows "strong/weak" evidence for a difference. 
+    So p-value and frequency polygon are "consisistent/inconsistent" with each other.
+    ```
+
+<!--
 
 ## What's weird?
 
 ::: card-list
 
-**If we use a p-value of 0.05 as our significance threshold...**
-
 - For the large dataset
-    - The p-value is smaller than 0.05, so there is a significant difference.
+    - The p-value is very small, this means that the probability of getting this difference, given the null is true, is small. This provides evidence that there is a true difference.
     - But the frequency polygons look very similar!
-    - So is this difference big enough to be an important difference?
+    - Key question: So is this difference big enough to be an important difference?
 - For the small dataset
-    - The p-value is larger than 0.05, so we cannot reject the null hypothesis.
+    - The p-value is larger, so we cannot reject the null hypothesis.
     - The frequency polygons look different, but since it's a small sample, it could be due to noise.
 
-- So how can we tell if there is an important enough difference?
+- When our p-value/CI suggest a true difference, how can we determine if that difference is big enough to be meaningful?
 
 :::
 
-## Effect sizes
-
-::: card-list
-
-- The effect size is how many standard deviations the means are apart. 
-
-- It is a measure of signal strength, so it does not depend on sample size.
-
-- (mean salary of TAMU - mean salary of UT) / SD of TAMU
-
-- If you named your summary table `summary`, you can use summary[[row #,column #]] to get the values you need.
-
-:::
-
-. . .
-
-```r
-effect_size <- (summary[[1,3]] - summary[[2,3]]) / summary[[1,4]]
-effect_size
-
-```
-
-```{r}
-effect_size <- (summary[[1,3]] - summary[[2,3]]) / summary[[1,4]]
-effect_size
-
-```
-
-We get 2 100ths of a standard deviation - pretty small
-
-## Intuitive version of effect size
-
-::: card-list
-
-- If we select a UT grad and a TAMU grad at random, what are the chances that the UT grad makes more?
-- If that comes out to around 50:50, then there probably isn’t a meaningful difference between salaries
-
-- Plucking 1 salary from a group We can snatch one salary from a group using the `sample()` function:
-    - `sample(data$salary[data$school == "UT"], size=1)`
-- Comparing 2 people's salaries
-    - `sample(data$salary[data$school == "UT"], size=1) > sample(data$salary[data$school == "TAMU"], size=1)`
-    - If output `TRUE`, than means a single UT sample has a higher salary than a single TAMU sample.
-- Then simulate this 100 times using replicate, and sum the output to count the total number of instances that UT samples are higher. Divide by 100 to get the percent.
-
-:::
-
-    
-```r
-ut_wins <- c()
-
-for (sample in 1:100){
-ut_wins[sample] <- sample(data$salary[data$school == "UT"], size=1) > 
-        sample(data$salary[data$school == "TAMU"], size=1))
-}
+-->
 
 
-sum(ut_wins)/100
+##
 
-```
-```{r}
-ut_wins <- replicate(100, 
-    sample(data$salary[data$school == "UT"], size=1) > 
-        sample(data$salary[data$school == "TAMU"], size=1))
-
-sum(ut_wins)/100
-
-```
+- Calculate the effect size for the large dataset. 
+- What is the effect size, and in your opinion, is this big or small? (Think about how effect size relate to standard deviation)
+- What is your main takeaway from today's lab?
 
 
 
-## Deliverables
-
-::: {.card-list .nonincremental}
-
-**For both datasets**
-
-- Frequency polygons of the data
-- A summary table of the results
-- The output of a t-test
-- The effect size
-- The proportion or percentage of UT grads that make more than A&M grads
-- Interpretation of results using the following template:
-
-:::
-
-```{verbatim}
-
-The small and large sample studies actually produced [similar/different] means and standard deviations for the salaries of UT and A&M grads.
-
-In terms of t and p-values, the two studies yielded [similar/different] results, where the large sample had a[small/large] p-value, and the small sample had a [small/large] p-value.
-
-The effects sizes showed [a small/large] difference in salary, indicating that the differences in salary between schools are [notable/not notable], despite the [small/large] p-values for the [large/small] sample study.
-
-```
 
 

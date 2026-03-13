@@ -33,11 +33,12 @@ Effects of exercise
 
 [Slides](presentations/week12.html){.filelink}
 
+-->
+
 ## Week 9
 
-[Slides](presentations/week9.html){.filelink}
+[Slides](presentations/week9.qmd){.filelink}
 
--->
 
 ## Week 8
 

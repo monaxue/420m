@@ -3,3 +3,4 @@ ipykernel
 manim-slides[magic]
 manim
 PySide6
+jupyter-cache

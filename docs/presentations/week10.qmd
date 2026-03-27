@@ -1,0 +1,451 @@
+---
+title: "10: Precision"
+
+---
+
+## Goals
+- What is precision?
+- How does precision relate to sample size?
+- How does precision relate to SD?
+
+
+## Review
+
+::: iframe
+
+https://wall.sli.do/event/dHrUNcA6HQFhszkEDJZsyW
+
+:::
+
+<!--
+- How do you measure width/spread of a sample distribution?
+    - SD
+- What's the difference between a sample distribution and a sampling distribution?
+    - A sample distribution is the histogram of data from a single experiment.
+    - A sampling distribution is the histogram of means from multiple experiments.
+- How does SE relate to SD?
+    - The SE is the SD of a sampling distribution
+
+-->
+
+# Precision
+
+## Definitions
+- Precision = how *narrow* a sampling distribution is
+    - The narrower sampling distribution, the higher the precision
+- SE is the measure of how *wide* the sampling distribution is, so precision is a measure of how *narrow* a sampling distribution is
+- Therefore, precision is the opposite of SE
+    - $\text{Precision} = \frac{1}{\text{SE}}$
+
+
+## {.center}
+
+|Width of a Sample Dist| Width of Sampling Dist. | Narrowness of a Sampling Dist.|
+|---|---|---|
+|SD|SE|Precision = 1/SE|
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(patchwork)
+
+```
+
+<!--
+
+##
+
+```{r}
+
+library(tidyverse)
+library(ggplot2)
+library(patchwork)
+
+df = tibble(x= seq(-4, 4, length.out = 1000), y=dnorm(x=seq(-4, 4, length.out = 1000)))
+
+plot1 <- ggplot(df, aes(x=x, y=y)) + geom_line() + geom_vline(xintercept=0, color="steelblue") + theme_classic() + labs(title="A: Width of Sample Dist.") + scale_y_continuous(expand = c(0, 0))
+plot2 <- ggplot(df, aes(x=x, y=y)) + geom_line() + geom_vline(xintercept=0, color="steelblue") + theme_classic() + labs(title="B: Width of Sampling Dist.") + scale_y_continuous(expand = c(0, 0))
+plot3 <- ggplot(df, aes(x=x, y=y)) + geom_line() + geom_vline(xintercept=0, color="steelblue") + theme_classic() + labs(title="C: Narrowness of Sampling Dist.") + scale_y_continuous(expand = c(0, 0))
+
+plot1 + plot2 + plot3
+
+```
+
+-->
+
+# Deliverables
+
+## Deliverables Summary
+
+::: nonincremental
+- Sampling distribution plots
+    1. Constant sample size and SD
+    1. Varied sample size and constant SD
+    1. Constant sample size and varied SD
+- Plot of precision vs. sample size
+- Plot of precision vs. sample standard deviation
+- Interpretations
+:::
+
+
+## 1. Sampling distribution simulation
+
+:::::: panel-tabset
+
+
+## Code Puzzle
+
+::::: {.code-puzzle}
+
+::: static
+
+SampleSize <- 49
+SD <- 12
+Mean <- 3
+AllExperiments <- 1:5000
+
+:::
+
+simulated_means <- {{c()}}
+
+::: indent
+for (experiment in {{AllExperiments}}){
+    
+    simulated_data <- {{rnorm(n = SampleSize, mean = Mean, sd = SD)}}
+    simulated_means[experiment] <- mean(simulated_data)
+
+} 
+:::
+
+sampling_distribution <- tibble(Means={{simulated_means}})
+
+:::: flex
+
+::: free
+plot <- ggplot({{{data=sampling_distribution OR sampling_distribution}}}, {{{aes(x = Means)}}}) + 
+    geom_histogram(binwidth=0.1) + geom_vline(xintercept = 0) + xlim(c(-20,20))
+show(plot)
+:::
+
+::: free
+
+{{{summary_table <- sampling_distribution}}} %>% 
+    summarize(SE = {{sd(Means)}}, Precision = {{1/SE}})
+
+summary_table
+
+:::
+
+::::
+
+:::::
+
+<!--
+
+## Instructions
+
+Do the following all in one code block:
+
+::: {.normal-list .nonincremental}
+
+- [ ] Define variables: SampleSize, SD, Mean, AllExperiments at the top of your code block
+    - [ ] `SampleSize <- 49`
+    - [ ] `SD <- 12`
+    - [ ] `Mean <- 3`
+    - [ ] `AllExperiments <- 1:5000`
+- [ ] Set up your simulation
+    - [ ] Create an empty list named `simulated_means` to store simulation results
+    - [ ] Create your `for loop` to repeat experiments
+
+    ```r
+    for (experiment in AllExperiments){
+        ...
+
+    }
+    ```
+
+- [ ] Inside your `for loop`
+    - [ ] Sample data from a normal distribution using `rnorm(n = ..., mean = ..., sd = ...)`
+    - [ ] The means of each experiment is saved to the variable `simulated_means`
+
+- [ ] Create a dataframe named `sampling_distribution` using `tibble(Means = ...)`
+- [ ] Plot a histogram of the sampling distribution using:
+
+    ```r
+        ggplot(...) + geom_histogram(binwidth=0.1) + geom_vline(xintercept = 0) + xlim(c(-20,20))
+    ```
+
+    - Notes: `geom_vline(xintercept = 0)` plots a vertical line at 0, and `xlim(c(-20,20))` makes sure the x-axis ranges from -2- to 20.
+- [ ] Create a summary table with just `SE` and `Precision`
+- [ ] Make sure everything on this page is in a single code block
+
+:::
+-->
+
+## Plot
+
+```{r}
+
+SampleSize <- 49
+SD <- 12
+Mean <- 3
+AllExperiments <- 1:5000
+simulated_means <- c()
+for (experiment in AllExperiments){
+    simulated_data <- rnorm(n = SampleSize, mean = Mean, sd = SD)
+    simulated_means[experiment] <- mean(simulated_data)
+}
+sampling_distribution <- tibble(Means=simulated_means)
+summary_table <- sampling_distribution %>%
+summarize(SE = sd(Means), Precision = 1/SE)
+summary_table
+plot <- ggplot(sampling_distribution, aes(x=Means)) +
+geom_histogram(binwidth=0.1) + geom_vline(xintercept = 0) + xlim(c(-20,20))
+show(plot)
+
+```
+
+
+
+::::::
+
+## Simulating multiple sampling distributions
+
+- To create multiple sampling distributions, we need to use another `for loop` to repeat the process of creating sampling distributions. There are 2 things to add.
+    1. Repeat each simulation by wrapping our code in another `for loop`
+    2. Save the precisions from each sampling distribution
+
+## 2. Sampling distributions for multiple sample sizes
+
+:::::: panel-tabset
+
+## Code Puzzle
+
+::::: code-puzzle
+
+::: static
+
+AllSampleSizes <- c(9, 25, 49, 81, 121)
+SD <- 12
+AllPrecisions <- {{c()}}
+
+:::
+
+::: indent
+for ({{SampleSize in AllSampleSizes}}){
+
+   
+    # Code from first simulation, starting from line 4 ...
+
+    AllPrecisions <- {{c(AllPrecisions, summary_table$Precision)}}
+
+}
+:::
+
+:::::
+
+<!--
+
+## Instructions
+
+::: {.nonincremental .normal-list}
+
+- [ ] Define some variables
+
+    ```r
+    AllSampleSizes <- c(9, 25, 49, 81, 121)
+    SD <- 12
+    AllPrecisions <- c() # Empty list to store all precision calculations
+    ```
+
+- [ ] Repeat the simulation: 
+    - [ ] Create a new `for loop`
+
+        ```r
+        for (SampleSize in AllSampleSizes){
+            ...
+        }
+        ```
+
+    - [ ] Copy the code from the `Sampling distribution simulation` slide into the `for loop`
+- [ ] To store the simulated precisions, add the following to the end of the `for loop`
+
+    ```r
+    AllPrecisions <- c(AllPrecisions, summary_table$Precision)
+    ```
+
+:::
+
+-->
+
+## Plots
+
+```{r}
+
+AllSampleSizes <- c(9, 25, 49, 81, 121)
+SD <- 12
+AllPrecisions <- c()
+for (SampleSize in AllSampleSizes){
+    AllExperiments <- 1:5000
+simulated_means <- c()
+for (experiment in AllExperiments){
+    simulated_data <- rnorm(n = SampleSize, mean = Mean, sd = SD)
+    simulated_means[experiment] <- mean(simulated_data)
+}
+sampling_distribution <- tibble(Means=simulated_means)
+summary_table <- sampling_distribution %>%
+summarize(SE = sd(Means), Precision = 1/SE)
+summary_table
+plot <- ggplot(sampling_distribution, aes(x=Means)) +
+geom_histogram(binwidth=0.1) + geom_vline(xintercept = 0) + xlim(c(-20,20))
+show(plot)
+    AllPrecisions <- c(AllPrecisions, summary_table$Precision)
+}
+
+```
+
+
+::::::
+
+## 4. Plot precision vs. sample size
+
+:::::: panel-tabset
+
+## Code Puzzle
+
+::::: code-puzzle
+::: free
+precision_v_samplesize <- tibble(
+    SampleSize={{{AllSampleSizes}}}, 
+    Precision={{{AllPrecisions}}})
+:::
+
+::: free
+ggplot({{precision_v_samplesize}}, aes(x={{SampleSize}}, y={{Precision}})) + 
+    {{geom_point() + geom_line()}}
+:::
+
+:::::
+
+## Plot
+
+```{r}
+
+
+precision_v_samplesize <- tibble(
+SampleSize=AllSampleSizes,
+Precision=AllPrecisions)
+ggplot(precision_v_samplesize, aes(x=SampleSize, y=Precision)) +
+geom_point() + geom_line()
+
+
+```
+
+::::::
+
+## 5. Simulate sampling distributions for multiple standard deviations
+
+:::::: panel-tabset
+
+## Code Puzzle
+
+Same as above, we need to repeat the simulation, but this time for multiple SDs
+
+::::: code-puzzle
+
+::: static
+SampleSize <- 49
+AllSDs <- c(4, 8, 12, 16, 20)
+AllPrecisions <- {{{c()}}}
+:::
+
+::: indent
+for ({{SD}} in {{AllSDs}}){
+    # Code from first simulation, starting from line 4
+    {{{AllPrecisions}}} <- c(AllPrecisions, summary_table$Precision)
+}
+:::
+
+:::::
+
+## Plots
+
+```{r}
+
+SampleSize <- 49
+AllSDs <- c(4, 8, 12, 16, 20)
+AllPrecisions <- c()
+for (SD in AllSDs){
+    AllExperiments <- 1:5000
+simulated_means <- c()
+for (experiment in AllExperiments){
+    simulated_data <- rnorm(n = SampleSize, mean = Mean, sd = SD)
+    simulated_means[experiment] <- mean(simulated_data)
+}
+sampling_distribution <- tibble(Means=simulated_means)
+summary_table <- sampling_distribution %>%
+summarize(SE = sd(Means), Precision = 1/SE)
+summary_table
+plot <- ggplot(sampling_distribution, aes(x=Means)) +
+geom_histogram(binwidth=0.1) + geom_vline(xintercept = 0) + xlim(c(-20,20))
+show(plot)
+    AllPrecisions <- c(AllPrecisions, summary_table$Precision)
+}
+
+```
+
+
+::::::
+
+## 6. Plot precision vs. sample standard deviation
+
+:::::: panel-tabset
+
+## Code Puzzle
+
+::::: code-puzzle
+
+::: free
+precision_v_sd <- tibble(
+    SD={{{AllSDs}}}, 
+    Precision={{{AllPrecisions}}})
+
+:::
+
+::: free
+ggplot({{precision_v_sd}}, aes(x={{SD}}, y={{Precision}})) + 
+    {{geom_point() + geom_line()}}
+
+:::
+
+:::::
+
+## Plot
+
+```{r}
+
+
+precision_v_sd <- tibble(
+SD=AllSDs,
+Precision=AllPrecisions)
+ggplot(precision_v_sd, aes(x=SD, y=Precision)) +
+geom_point() + geom_line()
+
+
+```
+
+::::::
+
+## Deliverables checklist
+
+::: {.normal-list .nonincremental}
+- [ ] Sampling distribution plot with sample size = 49; SD = 12
+- [ ] Sampling distribution plot with sample size between 9, 25, 49, 81, 121; SD = 12
+- [ ] Plot of precision vs. sample size
+- [ ] Sampling distribution plot with sample size = 49; vary SD between 4, 8, 12, 16, 20
+- [ ] Plot of precision vs. sample standard deviation
+- [ ] Answers to the following questions:
+    - [ ] What is the relationship between sample size and precision? Why?
+    - [ ] What is the relationship between SD and precision? Why?
+        - Hint: Higher SD $\rightarrow$ Higher/Lower __ $\rightarrow$ Higher/Lower __ $\rightarrow$ Higher/Lower Precision
+:::

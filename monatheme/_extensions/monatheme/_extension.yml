@@ -12,4 +12,5 @@ contributes:
         - iframe.lua
         - filelink.lua
         - after-header-note.lua
+        - code-puzzle.lua
 

@@ -35,12 +35,19 @@ Effects of exercise
 
 -->
 
+## Week 10
+Precision
+
+[Slides](presentations/week10.qmd){.filelink}
+
 ## Week 9
+Effect sizes
 
 [Slides](presentations/week9.qmd){.filelink}
 
 
 ## Week 8
+Paired data and t-test
 
 [Slides](presentations/week8.qmd){.filelink}
 
@@ -52,11 +59,13 @@ Effects of exercise
 
 
 ## Week 7
+p-values and t-tests
 
 [Slides](presentations/week7.qmd){.filelink}
 
 
 ## Week 6
+Confidence intervals
 
 [Slides](presentations/week6.qmd){.filelink}
 

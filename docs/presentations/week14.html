@@ -10,7 +10,9 @@
 <script src="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.js" defer="true"></script>
 <link href="../site_libs/quarto-contrib/reveal-header-1.0.0/add_header.css" rel="stylesheet">
 <script src="../site_libs/quarto-contrib/sc-sb-title-1.0.0/sc_sb_title.js" defer="true"></script>
-<link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet"><meta charset="utf-8">
+<link href="../site_libs/quarto-contrib/grid-no-htext-1.0.0/grid_no_htext.css" rel="stylesheet">
+<script src="../site_libs/quarto-contrib/poll-2.0.0/poll.js"></script>
+<link href="../site_libs/quarto-contrib/poll-2.0.0/poll.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.24">
 
   <title>PSYCH 420m Lab – week14</title>
@@ -127,6 +129,31 @@
       margin-right: 0; 
     }
   </style>
+  <script>
+    setTimeout(() => {
+      console.log("Poll divs:", document.querySelectorAll(".poll, .freeresponse").length);
+      document.querySelectorAll(".poll, .freeresponse").forEach((el, i) => {
+        console.log(`Poll ${i}:`, el.dataset.question, el.dataset.timer);
+      });
+    }, 1000);
+
+    setTimeout(() => {
+      console.log("Reveal ready:", typeof Reveal !== "undefined" && Reveal.isReady());
+      console.log("pollInit ran:", window._pollInitRan);
+    }, 1000);
+
+    // ── Required ──────────────────────────────────────────────
+    window.POLL_SUPABASE_URL   = "https://brcxrlemrwkginqwpoft.supabase.co";
+    window.POLL_SUPABASE_ANON  = "sb_publishable_heHWIVXubteFFVLFK50eGA_GRqMnXBp";
+    window.POLL_ADMIN_PASSWORD = "iammona";
+
+    // ── Optional ──────────────────────────────────────────────
+    // Claude API key for AI grading of free-response questions
+    window.POLL_CLAUDE_API_KEY  = "sk-ant-...";
+
+    // Default timer for all polls in seconds (0 = no timer)
+    window.POLL_DEFAULT_TIMER   = 60;
+  </script>
 </head>
 <body class="quarto-light">
   <div class="reveal">

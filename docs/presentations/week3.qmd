@@ -4,6 +4,8 @@ subtitle: Please open up R Studio
 ---
 
 <!--
+See 'demo.qmd' for more updated portions of the slides
+
 Don't save dataset next time.
 
 Maybe show them visually what the simulation should look like (+ for loop). Show what central limit theorem looks like so they can try to understand it without the cognitive load of new code. Do this before they actually code, so when they do code, they know what they are trying to do.

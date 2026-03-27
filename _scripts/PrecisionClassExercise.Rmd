@@ -1,0 +1,295 @@
+---
+title: "In-Lab exercise for precision"
+output:
+  html_notebook: default
+  pdf_document: default
+---
+
+## Goals
+Today, we are going to do some simulations demonstrating the concepts of statistical precision. We're not really going to be writing any code, just modifying some things like sample size to see what effect the change has.
+
+Statistical precision is really just another way to think about the width of the sampling distribution. It is perhaps more intuitive; compare these statements:
+
+* "this estimate has a high precision"
+* "the sampling distribution associated with this estimate is narrow"
+* "this estimate has a small standard error"
+
+They all mean the same thing, but only first one is likely to be understood by people who haven't recently taken a statistics class!
+
+## Deliverables
+You should submit a lab report including the following:
+
+* plot of standard error vs. sample size
+* plot of precision vs. sample size
+* a few sentences summarizing the relationship between 
+    - sample size and precision
+    - sample size and standard error
+* plot of standard error vs. sample standard deviation
+* plot of precision vs. sample standard deviation
+* a few sentences summarizing the relationship between
+    - sample standard deviation and precision
+    - sample standard deviation and standard error
+* a few sentences summarizing the relationships among precision, standard error, sample standard deviation, and sample size.
+
+## 0. Using this notebook
+The file you are looking at right now is called an "R Notebook". It's great because it allows you to run chunks of code and see the output right beneath it.
+
+Here is a chunk of code - you run it by hitting the little "play" triangle at the top-right corner of the chunk.
+```{r}
+# hit the little play triangle now
+1 + 1 
+```
+
+To load the tidyverse, hit the play (run) triangle for this chunk:
+```{r}
+library(tidyverse)
+```
+
+NOw we can even make plots! Run this chunk to see a plot!
+```{r}
+absXLim = 3.5
+z <-  1.5
+xAx <- tibble(x = c(-absXLim, absXLim)) # x axis limits
+  # make foundational plot
+  basePlot <- ggplot(xAx, aes(x = x)) + 
+    stat_function(fun = dnorm)
+  # make shaded area
+  theXLim <- c(z, absXLim)
+  fullPlot <- basePlot + 
+      stat_function(fun = dnorm,
+                    xlim = theXLim, 
+                    geom = "area",
+                    fill = "pink", alpha = 0.5)
+show(fullPlot)
+```
+  
+Now that we know how to work a notebook, let's play!
+
+For the following, we're going to look at introvert/extrovert scores in a sample of people. The test we're using yields a -50 if someone is an extreme introvert (like lives in a cave in the mountains), a +50 is someone is an extreme extrovert (like has a panic attack if they are alone), and a 0 if they are neutral. By design, the test should yield a mean score of 0 on a "typical" sample of people representative of the population at large.
+
+Our default or "null" hypothesis is that a random sample of people will be neutral. That is, if our sample is truly random and representative of the whole population, we'll get a lot of people scoring near the middle, and that any extreme scores we get from introverts and extroverts will mostly cancel one another out.
+
+If, however, we grab our sample from people at a popular club on a weekend night, we might expect that the average score shifts towards extroverts - an "alternative" hypothesis.
+
+## 1. Precision - effect of sample size
+As you know from class, "precision" is directly related to the width of the standard error: the skinnier the sampling distribution, the higher the precision. In fact, one common and intuitive definition of precision is just the reciprocal of the standard error. In other words, precision = 1 / std.err.
+
+Because precision is directly related to the standard error, we know that it is affected by two things:
+
+* the sample size
+* the sample standard deviation
+
+### Look at standard error and precision for various sample sizes
+We will use the following (very small) block of code to adjust these things. Go ahead and run this chunk with the values provided - we'll come back and change sample size in a minute.
+```{r}
+samp_size <- 49
+samp_std_dev <- 12
+```
+
+Here are the code chunks we will use to simulate a bunch of experiments, plot the result, and compute the standard error and precision. You don't have to touch the code, you just have to hit the run buttons. But we encourage you to look through the code and see if you can figure out what it's doing!
+
+Simulate 5000 experiments:
+```{r}
+sampMean <- 3
+sampData <- replicate(5000, rnorm(samp_size, mean = sampMean, sd = samp_std_dev))
+samplingMeans <- colMeans(sampData)
+```
+
+Plot the means from all the experiments. In other words, plot the sampling distribution!
+```{r}
+smpMeanTib <- tibble(samplingMeans)
+basicPlot <- ggplot() +
+    geom_histogram(data = smpMeanTib,
+                   aes(x = samplingMeans, fill = after_stat(x > 0)), 
+                   binwidth = 0.2, 
+                   color = "black")
+                   
+fullPlot <- basicPlot +
+  geom_vline(xintercept = 0)
+
+show(fullPlot)
+```
+Notice that the green area shows mean scores that were in the extrovert direction, and the red area shows the scores that were in the introvert direction.
+
+Compute the standard error and the precision, which we'll define as 1/std.err:
+```{r}
+OurStdErr <- sd(samplingMeans)
+OurPrecision <- 1/OurStdErr
+
+print(sprintf("For an n of %.2f", samp_size))
+print(sprintf("Standard error is %.2f", OurStdErr))
+print(sprintf("Precision is %.2f", OurPrecision))
+```
+Jot these numbers down!
+
+Next, go back and run all the above code for sample sizes of 9, 25, 49, 81, and 121 Each time you run the code, write down (or type down, haha) the standard error and the precision you get. Also, make a mental note of the relative sizes of the green (our sample mean is extroverted) and red (our sample mean is not extroverted) areas.
+
+### Plot the relationships between standard error and precision vs. sample size
+Enter the standard errors and values for precision you obtained (and wrote down!) in the `allStdErrs` and `allPrecisions` variables below (replace the letters in the `c()` parentheses).
+```{r}
+allSampSizes <- c(9, 25, 49, 81, 121)
+allStdErrs <- c(a, b, c, d, e)
+allPrecisions <- c(f, g, h, i, j)
+```
+Once you've entered the numbers for all the sample sizes, we can move on and make some plots.
+
+#### Plot of standard error vs. sample size
+Now let's plot the relationships! First, the relationship of standard error vs. sample size:
+```{r}
+stdErrTib <- tibble(allSampSizes = allSampSizes, allStdErrs = allStdErrs)
+
+stdErrPlot <- stdErrTib %>% 
+  ggplot(aes(x = allSampSizes, y = allStdErrs)) + 
+  geom_point(size = 4) + 
+  geom_line() + 
+  xlab("Sample Size") +
+  ylab("Standard Error")
+show(stdErrPlot)
+```
+
+Pro tip: You can save this plot for your lab report by right-clicking or two-finger-tapping on it!
+
+#### Plot of precision vs. sample size
+And, next, let's plot the relationship between precision and sample size:
+```{r}
+precisionTib <- tibble(allSampSizes = allSampSizes, allStdErrs = allStdErrs)
+
+precisionPlot <- stdErrTib %>% 
+  ggplot(aes(x = allSampSizes, y = allPrecisions)) + 
+  geom_point(size = 4) + 
+  geom_line() + 
+  xlab("Sample Size") +
+  ylab("Precision")
+show(precisionPlot)
+```
+(remember, you can save this plot by right-clicking or two-fingered-tapping)
+
+---
+
+## 2. Precison - effects of sample standard deviation
+Now we are going to repeat essentially the same steps, but we are going to vary the sample standard deviation instead.
+
+You might be thinking that this is just an intellectual exercise because, in the real world, how can we vary sample standard deviation? Isn't it just an intrinsic property of whatever we are studying?
+
+While it's true that, in principle, any phenomenon has some true intrinsic variability, ***we never get to see that directly***! We always - always - measure it via ***experiments***. And experiments will always add to the variability we see in our data.
+
+This implies something very important: better experiments yield smaller sample standard deviations!
+
+### Look at standard error and precision for various standard deviations
+As above, we'll change a value here and then run the code below. This time, however, we'll leave sample size alone and vary sample standard deviation. Go ahead and run the chunk with these values, then we'll circle back with different standard deviations.
+```{r}
+samp_size <- 49
+samp_std_dev <- 10
+```
+
+Here are the code chunks we will use to simulate, plot, and compute the standard error and precision. It's actually identical to the code above, we're just feeding it different standard deviations now.
+
+Simulate 5000 experiments:
+```{r}
+sampMean <- 3
+sampData <- replicate(5000, rnorm(samp_size, mean = sampMean, sd = samp_std_dev))
+samplingMeans <- colMeans(sampData)
+```
+
+Plot the means from all the experiments. In other words, plot the sampling distribution!
+```{r}
+smpMeanTib <- tibble(samplingMeans)
+basicPlot <- ggplot() +
+    geom_histogram(data = smpMeanTib,
+                   aes(x = samplingMeans, fill = after_stat(x > 0)), 
+                   binwidth = 0.2, 
+                   color = "black")
+                   
+fullPlot <- basicPlot +
+  geom_vline(xintercept = 0)
+
+show(fullPlot)
+```
+Again, the green area shows mean scores that were in the extrovert direction, and the red area shows the scores that were in the introvert direction.
+
+Compute the standard error and the precision:
+```{r}
+OurStdErr <- sd(samplingMeans)
+OurPrecision <- 1/OurStdErr
+
+print(sprintf("For an sd of %.2f", samp_std_dev))
+print(sprintf("Standard error is %.2f", OurStdErr))
+print(sprintf("Precision is %.2f", OurPrecision))
+```
+Jot these numbers down!
+
+Next, go back and run all the above code for sample standard deviations of 4, 8, 12, 16, and 20. Each time you run the code, jot down the standard error and the precision you get. Also, make a mental note of the relative sizes of the green (our sample mean is extroverted) and red (our sample mean is not extroverted) areas.
+
+### Plot the relationships between standard error and precision vs. sample standard deviation
+As before, enter the standard errors and values for precision you obtained (and wrote down!) in the `allStdErrs` and `allPrecisions` variables below (replace the letters in the `c()` parentheses).
+```{r}
+allSampSDs <- c(4, 8, 12, 16, 20)
+allStdErrs <- c(a, b, c, d, e)
+allPrecisions <- c(f, g, h, i, j)
+```
+Once you've entered the numbers for all the sample sizes, we can move on and make some plots.
+
+#### Plot of standard error vs. sample standard deviation
+Now let's plot the relationships! First, the relationship of standard error vs. sample standard deviation:
+```{r}
+stdErrTib <- tibble(allSampSizes = allSampSizes, allStdErrs = allStdErrs)
+
+stdErrPlot <- stdErrTib %>% 
+  ggplot(aes(x = allSampSizes, y = allStdErrs)) + 
+  geom_point(size = 4) + 
+  geom_line() + 
+  xlab("Sample Standard Deviation") +
+  ylab("Standard Error")
+show(stdErrPlot)
+```
+
+Pro tip: You can save this plot for your lab report by right-clicking or two-finger-tapping on it!
+
+#### Plot of precision vs. sample standard deviation
+
+And, next, let's plot the relationship between precision and sample standard deviation:
+```{r}
+precisionTib <- tibble(allSampSizes = allSampSizes, allStdErrs = allStdErrs)
+
+precisionPlot <- stdErrTib %>% 
+  ggplot(aes(x = allSampSizes, y = allPrecisions)) + 
+  geom_point(size = 4) + 
+  geom_line() + 
+  xlab("Sample Standard Deviation") +
+  ylab("Precision")
+show(precisionPlot)
+```
+(remember, you can save this plot by right-clicking or two-fingered-tapping)
+
+## 3. Summary
+Once you've exported your 4 figures, write a few sentences summarizing what we learned - what are the relationships between precision, standard error, sample standard deviation, and sample size. If you were doing an experiment, what relative (e.g. larger or smaller) values of n and sd would you want, and why? 
+
+## 4. Cheat sheet
+Even though you didn't have to write any code for this lab, here's a glossery of the commands used for those of you who are curious.
+
+New commands:
+
+* `c()` - concatenate multiple values into a single object
+* `stat_function()` - draw a function, like a normal curve, onto a plot
+* `geom_vline()` - draw a vertical line onto a plot 
+* `sprintf()` - format a mix of text and values into a text-only string for printing
+
+Familiar commands:
+
+* `library()` - load a package (usually the tidyverse)
+* `tibble()` - make a plane R data object into a tidyverse tibble
+* `ggplot()` - define data mappings for a plot
+* `show()` - show an object (often a plot)
+* `replicate()` - do something many times
+* `rnorm()` - generate normally distributed random numbers (simulated data!)
+* `colMeans()` - compute the means of columns of a data matrix
+* `geom_histogram()` - add a histogram to a `ggplot()` plot
+* `sd()` - compute the standard deviation
+* `print()` - print things to the console
+* `geom_point()` - plot data points
+* `geom_line()` - connect data points with a line
+* `xlab()`, `ylab()` - label the x and y axes
+
+
+
+

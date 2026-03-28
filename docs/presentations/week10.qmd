@@ -9,13 +9,18 @@ title: "10: Precision"
 - How does precision relate to SD?
 
 
+## Review {.center}
+
+- How do you measure the width of a sample distribution?
+    - SD
+
 ## Review
 
-::: iframe
+![](/assets/slido-what-s-the-difference-between-a-sample-distribution-and-sampling-distribution.png)
 
-https://wall.sli.do/event/dHrUNcA6HQFhszkEDJZsyW
+## Review
 
-:::
+![](/assets/slido-how-does-sd-relate-to-se.png)
 
 <!--
 - How do you measure width/spread of a sample distribution?

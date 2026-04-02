@@ -35,6 +35,10 @@ Effects of exercise
 
 -->
 
+## Case study 3
+
+[Case Study 3 Rubric](files/casestudy3.qmd)
+
 ## Week 10
 Precision
 

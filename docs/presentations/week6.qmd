@@ -231,6 +231,8 @@ https://wall.sli.do/event/qFBF9mUcZDngBd8niQpzQp
 - We are 95% *confident* that the true mean is in the CI of our experiment
 :::
 
+<!-- next time, make sure to have a slide that emphasizes that language is important, and that they need to choose words that do not imply probability. Likely is a word that implies probability. Have them pracitce coming up with different ways of interpreting results, which I have done in week 12-->
+
 ## CI interpretations
 
 ::: card-list

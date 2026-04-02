@@ -1,0 +1,595 @@
+---
+title: "11: Power"
+---
+
+```{r}
+
+library(tidyverse)
+library(ggplot2)
+
+df1 <- tibble(group=c("A","B"), Means=c(1,2), LowerCI = c(0.6,1.6), UpperCI=c(1.4, 2.4))
+df2 <- tibble(group=c("A","B"), Means=c(1,2), LowerCI = c(0.6,1.4), UpperCI=c(1.6, 2.4))
+plot1 <- ggplot(df1, aes(x=group, y=Means)) + geom_point() + geom_errorbar(aes(ymin=LowerCI, ymax=UpperCI))
+plot2 <- ggplot(df2, aes(x=group, y=Means)) + geom_point() + geom_errorbar(aes(ymin=LowerCI, ymax=UpperCI))
+```
+
+
+## Outline
+- Case study 2
+- Review p-values
+- Introduce power
+- Compare power to p-values
+
+
+## Case study 2
+- Overall: Huge improvement from Case Study 1
+- 
+- Still challenging: CI interpretations
+
+# Confidence Interval Interpreations
+
+## Precise language is important
+
+- Do confidence intervals imply probability?
+- The terms you choose to use in your interpretations must demonstrate this understanding
+- Which of these terms imply probability?
+    - Likely
+    - Confident
+    - Probable
+
+## 3 questions to ask yourself
+
+1. Do they overlap? And what does that mean?
+2. Are your interpretations precise? 
+3. What does this say about the true population?
+
+## Practice
+
+::: iframe
+https://wall.sli.do/event/ib94xnXY8hNMrXtzmNjiHx
+:::
+
+<!--
+
+Write a CI interpretation for the following.
+
+Is there a difference between the two means?
+
+```{r}
+
+plot1
+
+```
+
+- Since the confidence intervals don't overlap, we are confident that the the true means are different.
+
+## Practice
+
+Write a CI interpretation for the following.
+
+Is there a difference between the two means?
+
+```{r}
+
+plot2
+
+```
+
+- Since the confidence intervals do overlap, we are not confident that the the true means are different.
+
+
+## Practice
+
+Write a CI interpretation for the following.
+
+Is group A different from a threshold value of 0.8?
+
+```{r}
+
+plot1 + geom_hline(yintercept=0.8, color="firebrick", linetype=2)
+
+```
+
+- Since the CI overlaps with/includes the threshold value of 0.5, we cannot be confident that true mean of group A is didfferent from 0.5.
+
+## Practice
+
+Write a CI interpretation for the following.
+
+Is group A different from a threshold value of 1.5?
+
+```{r}
+
+plot1
+
+```
+
+- Since CI does not overlap with/includes the threshold value of 0.5, we can be confident that true mean of group A is didfferent from 1.5.
+
+-->
+
+# Power
+
+# p-value review
+
+## Draw the p-value
+
+## 
+
+1. Assumes null hypothesis is true
+2. Create a sampling distribution from the null hypothesis
+3. Compare actual observed difference to the null sampling distribution
+4. The area under the curve *outside* of the observed differences line is the p-value
+
+
+# Power
+
+## 
+
+- Power is the opposite of a p-value
+
+. . . 
+
+| p-value | Power |
+|---|---|
+|Assume null hypothesis|Assume alternative hypothesis|
+
+- p-value: probability of observing a difference if the null hypothesis is true
+- power: probability of observing a difference if the alternative hypothesis is true
+
+
+## Remember circular reasoning?
+- Probability of observing a difference if we assume a difference $\leftarrow$ circular (power)
+- Probability of observing a difference if we assume the null $\leftarrow$ not circular (p-value)
+
+
+- This is why we cannot use power as evidence for our hypothesis.
+
+
+
+# So what we can use power for?
+
+- If we compare the actual observed difference with the alternative hypothesis, that is circular.
+- So 
+
+- Power lets us deterime what sample size to use for our experiment
+- If we want to detect a difference of [insert number], what sample size do we need?
+
+
+# Summary
+
+:::::: columns
+
+::::: column
+
+
+p-value
+- Null hypothesis: The difference is 0 $\leftarrow$ assumed to be true
+- Alternative hypothesis: There is a difference
+
+:::::
+
+::::: column
+
+Power
+- Null hypothesis: The difference is 0
+- Alternative hypothesis: The difference is [pre-defined number of meaningful size] $\leftarrow$ assumed to be true
+
+:::::
+
+::::::
+
+
+
+
+## Goals
+Today, we are going to do some simulations demonstrating the concepts of statistical power and how we make decisions after an experiment. Like in the lab on precision, we're not really going to be writing any code, just modifying some things like sample size to see what effect the change has.
+
+Power, simply put, is the probability of detecting an effect that is actually there. It's basically the opposite of the p-value. Let's unpack that:
+
+To compute a p-value, we:
+
+* Assume that the null hypothesis is true
+* Compute the probability that we'll be wrong if we declare an effect is there
+
+To compute power, we:
+* Assume a specific alternative hypothesis is true
+* Compute the probability that we'll be right if we declare an effect is there
+
+So, yeah, pretty much opposite.
+
+The key thing about power - the true power of power - is that you can compute it before you do an experiment. This allows you to play "what if?" games to make sure that you can: 
+
+* likely detect an important effect should it be there
+* be fairly confident that no important effect actually exists should you not find one
+
+In order to make an intelligent decision based on data, you have to know both of these things.
+
+In this lab, we'll play around with sample size and see how it affects power, p-value, and chances we'll make a correct decision.
+
+## Deliverables
+You should submit a lab report including the following:
+
+* a plot of power vs. sample size
+* a plot of alpha (predicted p-value) vs. sample size
+* a few sentences summarizing the two plots including what you would do if each observation:
+  - was very expensive to collect
+  - cost almost nothing
+
+
+## 1. Visualizing power
+In order to compute power, we need to know four things:
+
+* a null hypothesis (what does the default population do?)
+* the size of effect we consider "important" (not "significant"!!!) - a specific alternative hypothesis
+* the (likely) standard deviation of our sample(s)
+* our (proposed) sample size
+
+Going in reverse order...
+
+#### sample size
+The last one is easy; we can just "try on" different sample sizes and see what happens in our "what-if?" scenarios.
+
+#### the sample standard deviation
+The penultimate one is a bit more tricky. How do we know the standard deviation of data we haven't collected yet? There are two main ways:
+
+* look at similar studies that have already been done
+* collect some pilot data
+
+"Pilot" is used in the same sense here as a pilot TV show - it's an initial test to see what happens. Just like people who make TV shows produce a pilot episode to see if people might like the show, scientist often run pilot experiments to see if the real experiment is worth doing. So pilot studies can give you an idea of what your standard errors are likely to be when you run the "real" experiment.
+
+But we can also see if a good estimate of the standard deviation is already available in published studies.
+
+#### the null hypothesis
+This one is usually pretty easy. The null hypothesis is always "no effect" or "my experimental group is going to look just like the control group."
+
+#### the size of an important effect
+This one is perhaps the most fun but also, unfortunately, the one people sometimes skip. To figure out what effect you consider important, you can't just run the experiment and look at the p-value; you actually have to **think** about what you are doing and what your experiment means. You have to be an actual scientist, and not just a person that does experiments!
+
+### coming up with a specific alternative hypothesis
+Let's figure out a specific alternative hypothesis - an effect of a size that we would consider to be on the boundary between "important" and "I don't really care" - using something that is in some way important (unfortunately) to all of us: **money**.
+
+Let's say we were curious about whether college graduates that have four-year degrees earn more on average than people that have two-year degrees (like from a community college). The null hypothesis would of course be that both groups earn about the same. The general alternative hypothesis would be that people with a four-year degree earn more than people with a two-year degree. 
+
+But, hold on, what do we mean by "earn more"?
+
+The average annual income in Austin, TX is around $65,000 with a standard deviation of about $20,000...
+
+If four-year people earn \$100,000 more (\$165,000 vs.\$65,000!), that's obviously a big, huge, giant deal! If that were the effect, we would want be sure and detect it (and it would be super easy).
+
+But what about a difference of \$1? Even if it were true that four-years earned a dollar more on average, *who cares*??? This is an effect that it would not be worth our time or effort to find. We want our specific alternative hypothesis to be in the zone between what we consider important and not important.
+
+So what is that number? \$1000? \$5000? \$10,000? There's no single correct answer and, in fact, it's something you can play with a little when doing "what if" scenarios.
+ 
+For today, we'll say that \$5000 more per year would definitely be important to find, and anything less that isn't so important.
+
+### 1.1 Visualizing the situation
+
+Load the needed libraries
+```{r}
+library(tidyverse)
+library(patchwork)
+```
+
+Set some key numbers for now. We'll get the salaries of 2000 people from each group in each of our two hypothetical universes.
+```{r}
+### generate example samples from a null and minimal important effect
+avg_Aus_income <- 65000  # ave Austin income in US$
+sd_Aus_income <- 20000
+
+# minimally interesting potential diff between 2 and 4 year degree
+cool_effect <- 5000
+big_Aus_income <- avg_Aus_income + cool_effect
+
+# sample size - the main variables we'll play with
+samp_size <- 2000
+```
+
+Now let's visualize an experiment from each of our two possible universes: 
+
+* the minimally-important alternative universe in which four-year people make \$5000 more per year that two-year people, and
+* the null universe in which the two groups make the same
+
+You just have to run this code, not understand it. But feel free to look through it if you're curious!
+```{r}
+## need 3 columns: $, degree, universe (null or alt)
+# incomes: var name is of form degree_universe
+two_null <- rnorm(samp_size, mean = avg_Aus_income, sd = sd_Aus_income)
+four_null <- rnorm(samp_size, mean = avg_Aus_income, sd = sd_Aus_income)
+two_alt <- rnorm(samp_size, mean = avg_Aus_income, sd = sd_Aus_income)
+four_alt <- rnorm(samp_size, mean = big_Aus_income, sd = sd_Aus_income)
+
+incomes <- c(two_null, four_null, two_alt, four_alt)
+
+# degree... 
+degree <- rep(rep(c("two", "four"), times = 2), each = samp_size)
+
+# universe...
+universe <- rep(c("null", "alt"), each = 2*samp_size)
+
+# assemble le tibble
+income_sim <- tibble(incomes, degree, universe)
+
+## plotting of our samples
+samples_plot <- income_sim %>% 
+  ggplot(aes(x = incomes, color = degree)) +
+  geom_freqpoly(binwidth = 5000) +
+  facet_grid(universe ~ .)
+
+show(samples_plot)
+
+```
+The top plot shows data from our hypothetical minimally-important universe where four-year people do make, on average, exactly \$5000 more than two-year people. The lower plot shows data the null universe (notice that, in this particular sample, the two-year people may actually make a little more - how could that be?)
+
+## 1.2 Visualizing the sampling distributions of the means
+Now, to see how reliably we could detect our **mean** effect, let's leave *sample* land and go through the portal to **sampling** distribution land.
+
+First we'll compute some summary numbers like we always do (this code should look very familiar to all of you).
+```{r}
+## compute means, ses, etc.
+my_summary <- income_sim %>% 
+  group_by(universe, degree) %>% 
+  summarize(
+    s_size = n(),
+    my_means = mean(incomes), 
+    my_sds = sd(incomes)) %>% 
+  mutate(
+    my_ses = my_sds/sqrt(s_size),
+    my_CIs = my_ses * 1.96)
+```
+
+And now let's plot the **sampling** distributions of the mean for our n=2000.
+```{r}
+# tibble just for setting up x-axis of plot
+my_XLim = c(60000, 75000)
+xAx <- tibble(x = my_XLim) # x axis limits
+
+### alternate universe first
+# basic plot
+altPlot <- ggplot(xAx, aes(x = x)) + 
+  stat_function(fun = dnorm, 
+                args = list(mean = my_summary[[2, 4]], sd = my_summary[[2, 6]]), color = "blue") +
+  stat_function(fun = dnorm, 
+                args = list(mean = my_summary[[1, 4]], sd = my_summary[[1, 6]]), color = "red")
+# add goodies
+altPlot <- altPlot +
+  xlab("Income") +
+  ylab("# households") +
+  ggtitle("Alternative Universe") +
+  annotate("text", x = avg_Aus_income +1000, y = .00075, label = "Two", color = "blue") + 
+  annotate("text", x = big_Aus_income +2000, y = .00075, label = "Four", color = "red")
+
+### null universe now
+nullPlot <- ggplot(xAx, aes(x = x)) + 
+  stat_function(fun = dnorm, 
+                args = list(mean = my_summary[[4, 4]], sd = my_summary[[4, 6]]), color = "blue") +
+  stat_function(fun = dnorm, 
+                args = list(mean = my_summary[[3, 4]], sd = my_summary[[3, 6]]), color = "red")
+# level up with goodies
+nullPlot <- nullPlot +
+  xlab("Income") +
+  ylab("# households") +
+  ggtitle("Null Universe")
+
+show(altPlot / nullPlot)
+```
+The upper plot shows the sampling distribution - the fuzzyness associated with out means - for the alternative universe sample with an n=2000. The distributions barely overlab at all! So *t* would huge, p would be basically zero, and our experment would detect this difference every time. In other words, this experiment has *very high power*.
+
+The lower plot shows the same experiment done in the null universe. The very high power of this experiment allows it to "detect" effects that are smaller than the one we declared "minimally important", whether real or spurious. Note that somebody who was either sloppy or unethical might try to claim that two-year degree holders earn more based on these data (don't ever be that person).
+
+## 1.3 Visualizing the distributions of the differences between means
+
+In statistics, we generally simplify the situation by looking at the *differences* between the means in each universe. In other words, imaging going into the null universe and doing a huge number of experiments. After each experiment, we subtract the two means and store that number. Finally, we plot that distribution of differences. Because we're in the *null* universe, we expect the differences to be centered on zero (hence the name "null"). 
+
+Conversely, we expect the differences from the alternative universe to be centered on 5000 (or whatever our specific alternative hypothesis was).
+
+Let's look at these distributions given a sample size of of n=500 and a minimally-important difference of \$5000.
+```{r}
+# re-define here because we'll be playing with these
+sd_Aus_income <- 20000 # mainly to remind myself
+cool_effect <- 5000
+criterion <- cool_effect/2
+samp_size <- 500
+
+# standard error of the difference
+se_diff <- sqrt(2)*(sd_Aus_income)/sqrt(samp_size)
+
+# tibble just for setting up x-axis of plot
+x_ax_min <- -3*se_diff
+x_ax_max <- cool_effect+3*se_diff
+my_XLim = c(x_ax_min, x_ax_max)
+xAx <- tibble(x = my_XLim) # x axis limits
+
+### alternate universe first
+# basic plot
+altPlot <- ggplot(xAx, aes(x = x)) + 
+  stat_function(fun = dnorm, 
+                args = list(mean = cool_effect, sd = se_diff), color = "green")
+
+# add goodies
+altPlot <- altPlot +
+  xlab("Income") +
+  ylab("# households") +
+  ggtitle("Alternative Universe")
+
+### null universe now
+nullPlot <- ggplot(xAx, aes(x = x)) + 
+  stat_function(fun = dnorm, 
+                args = list(mean = 0, sd = se_diff), color = "pink")
+#  goodies
+nullPlot <- nullPlot +
+  xlab("Income") +
+  ylab("# households") +
+  ggtitle("Null Universe")
+
+show(altPlot / nullPlot)
+```
+The top plot shows the alternative universe and the bottom shows the null; the distributions are centered on 5000 and 0, just as we expected. Our job as decision makers (whether in science or business or whatever) is to take our data - our difference between means - and decide which distribution it came from. If you got a 7000, obviously you would to with alternative, because there's no way a 7000 came from the null. Ditto a -500 in the other direction. But what about a 2650? Or a 2425? What would you pick?
+
+It turns out that there is a "best" place to place our decision criterion - the line where if we get a difference above it, we say "four-years probably make at least \$5000 more", and if we get a difference below it, we say "eh, if four-years do make more, it's not enough to care about".
+
+It turns out that line is half way between the two distributions. This the line that maximizes the chances that you'll be right when you ditch the null when the alterative is true, and not ditch the null when it is true.
+
+ Here's what that looks like:
+```{r}
+# re-define here because we'll be playing with these
+sd_Aus_income <- 20000 # mainly to remind myself
+cool_effect <- 5000
+criterion <- cool_effect/2
+samp_size <- 500
+
+# standard error of the difference
+se_diff <- sqrt(2)*(sd_Aus_income)/sqrt(samp_size)
+
+# tibble just for setting up x-axis of plot
+x_ax_min <- -3*se_diff
+x_ax_max <- cool_effect+3*se_diff
+my_XLim = c(x_ax_min, x_ax_max)
+xAx <- tibble(x = my_XLim) # x axis limits
+
+### alternate universe first
+# basic plot
+altPlot <- ggplot(xAx, aes(x = x)) + 
+  geom_vline(xintercept = criterion) +
+  stat_function(fun = dnorm, 
+                args = list(mean = cool_effect, sd = se_diff), color = "green")
+# fill false alarm rate
+x_lim_fill <- c(criterion, x_ax_max)
+altPlot <- altPlot +
+  stat_function(fun = dnorm,
+                args = list(mean = cool_effect, sd = se_diff), 
+                xlim = x_lim_fill, 
+                geom = "area",
+                fill = "green", alpha = 0.2)
+# add goodies
+altPlot <- altPlot +
+  xlab("Income") +
+  ylab("# households") +
+  ggtitle("Alternative Universe")
+
+### null universe now
+nullPlot <- ggplot(xAx, aes(x = x)) + 
+  geom_vline(xintercept = criterion) +
+  stat_function(fun = dnorm, 
+                args = list(mean = 0, sd = se_diff), color = "pink")
+x_lim_fill <- c(criterion, x_ax_max)
+nullPlot <- nullPlot +
+  stat_function(fun = dnorm,
+                args = list(mean = 0, sd = se_diff), 
+                xlim = x_lim_fill, 
+                geom = "area",
+                fill = "pink", alpha = 0.5)
+#  goodies
+nullPlot <- nullPlot +
+  xlab("Income") +
+  ylab("# households") +
+  ggtitle("Null Universe")
+
+show(altPlot / nullPlot)
+```
+
+So, if we use this optimal criterion and the alternative hypothesis is true, what are the chances that we'll detect it (i.e. get a value above our criterion)? That's the shaded green area and, as you know, it is called "**power**" (silly word, but what can we do?). It is the expected hit rate of our experiment.
+
+On the other hand, what are the chances we'll get a false positive - a value above the criterion when the null is true - and therefore make a false alarm? That is the shaded pink area and is called "**alpha**" - it is the p-value corresponding to our criterion, the expected false alarm rate.
+
+Well, now we have the situation in hand. For this experiment of n=500 and our specific minimally-important alternative hypothesis, we can see exactly what our power is, exactly what our expected false alarm rate (alpha) is, as well as the complements of both of these (the expected rates for misses and correct rejections).
+
+>Quick quiz! which areas correspond to Type I and Type II errors in the above figure?
+
+Let's compute the exact power and alpha:
+```{r}
+my_power <- pnorm(criterion, mean = cool_effect, sd = se_diff, lower.tail = FALSE)
+my_alpha <- pnorm(criterion, mean = 0, sd = se_diff, lower.tail = FALSE)
+
+print(sprintf("For an n of %i", samp_size))
+print(sprintf("Power is %.2f", my_power))
+print(sprintf("Alpha is %.2f", my_alpha))
+```
+So, not too bad. If salaries were indeed \$5000 more for four year grads, we would spot it 98 times out of 100. If the null were instead true, we would get fooled about 2 times out of 100.
+
+## 2.0 Playing "what if" with different sample sizes
+
+### 2.1 Find a candidate range of sample sizes
+Okay, now it's your turn to play! Change the `samp_size` variable at the top of the code below, and run the code block to see what the situation looks like, and what the hit and false alarm rates are (i.e. power and alpha). Play around to find at least 5 different sample sizes that result in a roughly evenly spaced range of powers from 0.8 to 0.99 (the spacing doesn't have to be perfect!).
+
+Write down you sample sizes and your powers!
+```{r, message=FALSE}
+samp_size <- 500 # change me!
+
+library(tidyverse)
+library(patchwork)
+
+# re-define here because we'll be playing with these
+sd_Aus_income <- 20000 # mainly to remind myself
+cool_effect <- 5000
+criterion <- cool_effect/2
+
+
+# standard error of the difference
+se_diff <- sqrt(2)*(sd_Aus_income)/sqrt(samp_size)
+
+# tibble just for setting up x-axis of plot
+x_ax_min <- -3*se_diff
+x_ax_max <- cool_effect+3*se_diff
+my_XLim = c(x_ax_min, x_ax_max)
+xAx <- tibble(x = my_XLim) # x axis limits
+
+### alternate universe first
+# basic plot
+altPlot <- ggplot(xAx, aes(x = x)) + 
+  geom_vline(xintercept = criterion) +
+  stat_function(fun = dnorm, 
+                args = list(mean = cool_effect, sd = se_diff), color = "green")
+# fill false alarm rate
+x_lim_fill <- c(criterion, x_ax_max)
+altPlot <- altPlot +
+  stat_function(fun = dnorm,
+                args = list(mean = cool_effect, sd = se_diff), 
+                xlim = x_lim_fill, 
+                geom = "area",
+                fill = "green", alpha = 0.2)
+# add goodies
+altPlot <- altPlot +
+  xlab("Income") +
+  ylab("# households") +
+  ggtitle("Alternative Universe")
+
+### null universe now
+nullPlot <- ggplot(xAx, aes(x = x)) + 
+  geom_vline(xintercept = criterion) +
+  stat_function(fun = dnorm, 
+                args = list(mean = 0, sd = se_diff), color = "pink")
+x_lim_fill <- c(criterion, x_ax_max)
+nullPlot <- nullPlot +
+  stat_function(fun = dnorm,
+                args = list(mean = 0, sd = se_diff), 
+                xlim = x_lim_fill, 
+                geom = "area",
+                fill = "pink", alpha = 0.5)
+#  goodies
+nullPlot <- nullPlot +
+  xlab("Income") +
+  ylab("# households") +
+  ggtitle("Null Universe")
+
+show(altPlot / nullPlot)
+
+my_power <- pnorm(criterion, mean = cool_effect, sd = se_diff, lower.tail = FALSE)
+my_alpha <- pnorm(criterion, mean = 0, sd = se_diff, lower.tail = FALSE)
+
+print(sprintf("For an n of %i", samp_size))
+print(sprintf("Power is %.2f", my_power))
+print(sprintf("Alpha is %.2f", my_alpha))
+```
+
+### 2.2 Make some plots!
+
+Once you've found 5 or 6 values for sample size that span the power range from roughly 0.8 (does't have to be exact) to 0.99 in roughly evenly spaced increments, use your `ggplot()` skills to make a plot of 
+
+* power (y-axis) vs. sample size, and
+* alpha vs. sample size.
+
+### 2.3 Interpretation 
+Write a paragraph covering the effect of sample size. How does it affect power and alpha? What is the relationship between power and alpha as sample size varies?
+
+For the situation described above, how would you change your sample size depending on the cost of each observation? At what sample size do you think the experiment would not be worth doing?

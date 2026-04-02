@@ -1,6 +1,13 @@
 # Week 12
 **Download `depAndSocMed.csv` from Canvas.**
 
+## Review
+
+- Precision is the opposite of __
+- The alternative hypothesis is the opposite of __
+- Power is the opposite of __
+
+
 
 ## What ggplot code would you use to reproduce this plot?
 

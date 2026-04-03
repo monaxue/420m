@@ -35,6 +35,10 @@ Effects of exercise
 
 -->
 
+## Week 11
+
+[Slides](presentations/week11.qmd){.filelink}
+
 ## Case study 3
 
 [Case Study 3 Rubric](files/casestudy3.qmd)

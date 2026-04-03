@@ -148,7 +148,7 @@ window.Quarto = {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../files/casestudy3.html"> 
-<span class="menu-text">Case Study 2</span></a>
+<span class="menu-text">Case Study 3</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -444,7 +444,7 @@ Do the following all in one code block:
 <pre><code># A tibble: 1 × 2
      SE Precision
   &lt;dbl&gt;     &lt;dbl&gt;
-1  1.68     0.597</code></pre>
+1  1.69     0.590</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(sampling_distribution, <span class="fu">aes</span>(<span class="at">x=</span>Means)) <span class="sc">+</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_histogram</span>(<span class="at">binwidth=</span><span class="fl">0.1</span>) <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>) <span class="sc">+</span> <span class="fu">xlim</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">20</span>,<span class="dv">20</span>))</span>

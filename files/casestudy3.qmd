@@ -54,24 +54,24 @@ Include 1-2 sentences for each of the following:
 - [ ] What is the purpose of a null hypothesis, and how does it relate to the main hypothesis?
 - [ ] What plots and statistical analyses will you be conducting to answer the research question? Why did you choose them?
 
-**Results and Interpretation** (6 points)
+**Results and Interpretation** (8 points)
 
 - [ ] At least one summary table, including sample sizes, means, SDs, SEs. (1 point)
 - [ ] At least one descriptive plot (1 point)
 - [ ] One inferential plot (1 point)
 - [ ] A few sentences reporting key results, i.e., the means, sd, confidence intervals, p-values. (1 point)
-- [ ] Interpretations (2 points)
+- [ ] Interpretations (3 points)
     - [ ] What is the *main* purpose of descriptive vs. inferential statistics?
     - [ ] Include appropriate interpretations for your plots (don't overinterpret!)
     - [ ] Based on the data, what conclusions can you draw about the population?
     - [ ] Support your conclusions using the proper statistical concepts. 
         - [ ] Correctly define each statistical concept.
-        - [ ] Interpret your results based on these statistical concept. Make sure to use precise language. For example, do not use terms that imply probability when that is not part of the definition of the concept.
+        - [ ] Interpret your results based on these statistical concept and its definition. Make sure to use precise language. For example, do not use terms that imply probability when that is not part of the definition of the concept.
     - [ ] Do not use the term "significant"!
  - [ ] Make the proper effect size recommendation, and explain your reasoning. See hints. (1 point)
 
 
-**External sources section** (3 points)
+**External sources section** (2 points)
 
 The case studies can be completed without using any external sources. However, if you choose to use them, you must be able to justify the choice. Points will be deducted if you use content not covered in class and do not explain them in this section. 
 
@@ -96,8 +96,8 @@ The case studies can be completed without using any external sources. However, i
 - Descriptive vs. Inferential statistics: [Lab 4](/presentations/week4.qmd), [Lab 6](/presentations/week6.qmd)
 - Plots: [Lab 4](/presentations/week4.qmd)
 - Histogram interpretations: [Lab 4](/presentations/week4.qmd), [Lab 6](/presentations/week6.qmd)
-- CI calculation and interpretations: [Lab 4](/presentations/week4.qmd), [Lab 6](/presentations/week6.qmd), [Lab 7](/presentations/week7.qmd), [Online simulation](https://shiny.rit.albany.edu/stat/confidence/)
-- p-value calculation and interpretations: [Lab 7](/presentations/week7.qmd)
+- CI calculation and interpretations: [Lab 4](/presentations/week4.qmd), [Lab 6](/presentations/week6.qmd), [Lab 7](/presentations/week7.qmd), [Online simulation](https://shiny.rit.albany.edu/stat/confidence/), [Lab11](/presentations/week11.qmd)
+- p-value calculation and interpretations: [Lab 7](/presentations/week7.qmd), [Lab11](/presentations/week11.qmd)
 - Paired t-test: [Lab 8](/presentations/week8.qmd)
 - Effect size calculation: [Lab 9](/presentations/week9.qmd)
 

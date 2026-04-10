@@ -28,7 +28,7 @@ y = mx + b
 $$ 
 
 $$ 
-\text{Depression} = \beta \times \text{Addiction} + \text{Noise} 
+\text{Depression} = \beta \times \text{Addiction} + \text{Error} 
 $$
 
 . . .
@@ -58,10 +58,10 @@ Definition: 95% of experiments will produce CIs that include the true regression
 
 ::: {.card-list .nonincremental}
 
-1. Noise ~ normally distributed, mean = 0, sd = 8, with sample size 100
+1. Error ~ normally distributed, mean = 0, sd = 8, with sample size 100
 2. Addiction ~ normally distributed, mean = 20, sd = 10, with sample size 100
 3. Choose a $\beta$ 
-4. Calculate $\text{Depression} = \beta \times \text{Social Media Addiction} + \text{noise}$
+4. Calculate $\text{Depression} = \beta \times \text{Social Media Addiction} + \text{Error}$
 5. Plot a scatter plot of Depression vs. Addiction
 
 :::
@@ -71,12 +71,12 @@ Definition: 95% of experiments will produce CIs that include the true regression
 :::: code-puzzle
 
 ::: static
-Noise <- rnorm(n = {{{100}}}, mean = {{{0}}}, sd = {{{8}}})
+Error <- rnorm(n = {{{100}}}, mean = {{{0}}}, sd = {{{8}}})
 x <- {{{rnorm(n = 100, mean = 20, sd = 10) OR rnorm(mean = 20, sd = 10, n = 100)}}}
 {{beta}} <- # choose your own number
 :::
 
-{{y}} <- beta*{{x}} + {{Noise}}
+{{y}} <- beta*{{x}} + {{Error}}
 
 df <- tibble(Depression = {{{y}}}, Addiction = {{{x}}})
 
@@ -97,10 +97,10 @@ ggplot(...) + geom_point() + geom_smooth(method = "lm")
 
 ```{r}
 
-Noise <- rnorm(n = 100, mean = 0, sd = 8)
+Error <- rnorm(n = 100, mean = 0, sd = 8)
 x <- rnorm(n=100, mean=20, sd=10)
 beta <- 0.2 # choose your own number between 0 and 1
-y <- beta*x + Noise
+y <- beta*x + Error
 df <- tibble(Depression = y, Addiction = x)
 ggplot(df, aes(x=Addiction, y=Depression)) + geom_point() + geom_smooth(method = "lm")
 
@@ -147,10 +147,10 @@ Your plot may look different, especially if you chose a different `beta`.
 
 ```{r}
 
-Noise <- rnorm(n = 100, mean = 0, sd = 8)
+Error <- rnorm(n = 100, mean = 0, sd = 8)
 x <- rnorm(n=100, mean=6, sd=2)
 beta <- -0.2
-y <- beta*x + Noise
+y <- beta*x + Error
 df <- tibble(Depression = y, Time = x)
 ggplot(df, aes(x=Time, y=Depression)) + geom_point() + geom_smooth(method = "lm")
 

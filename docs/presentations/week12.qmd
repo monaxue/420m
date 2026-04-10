@@ -156,6 +156,14 @@ ggplot(df, aes(x=Time, y=Depression)) + geom_point() + geom_smooth(method = "lm"
 
 ```
 
+## Regression summary results
+
+```{r}
+lm <- lm(Depression ~ Time, data=df)
+lm # gets basic info
+summary(lm) # gets more info
+```
+
 ::::::
 
 ## Write a CI definition {.center}

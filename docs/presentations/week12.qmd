@@ -73,7 +73,7 @@ Definition: 95% of experiments will produce CIs that include the true regression
 ::: static
 Error <- rnorm(n = {{{100}}}, mean = {{{0}}}, sd = {{{8}}})
 x <- {{{rnorm(n = 100, mean = 20, sd = 10) OR rnorm(mean = 20, sd = 10, n = 100)}}}
-{{beta}} <- # choose your own number
+{{beta}} <- # choose your own number between 0 and 1
 :::
 
 {{y}} <- beta*{{x}} + {{Error}}

@@ -1,95 +1,180 @@
-# Week 12
-**Download `depAndSocMed.csv` from Canvas.**
+---
+title: "12: Linear Regression"
+---
+
 
 ## Review
 
-- Precision is the opposite of __
-- The alternative hypothesis is the opposite of __
-- Power is the opposite of __
+::: iframe
 
+https://wall.sli.do/event/6n7e4Q8wUpUnkD2KFfhw3q
 
+:::
 
-## What ggplot code would you use to reproduce this plot?
+<!--
+
+- Precision is the opposite of __. The alternative hypothesis is the opposite of __. Power is the opposite of __.
+    - SE, null hypothesis, p-value/alpha
+ --> 
+
+## What is the relationship between depression and addiction to social media?
+
+We are going to simulate some data, and plot it.
+
+## Remember this?
+
+$$ 
+y = mx + b 
+$$ 
+
+$$ 
+\text{Depression} = \beta \times \text{Addiction} + \text{Noise} 
+$$
+
+. . .
+
+🖊️
+
+## CI for regression plot
 
 ```{r}
-
 library(tidyverse)
 library(ggplot2)
 
 data <- read_csv("data/depAndSocMed.csv")
 
-ggplot(data, aes(x=addic, y=dep)) + geom_point()
-
+ggplot(data, aes(x=time, y=dep)) + geom_point() + geom_smooth(method="lm")
 ```
 
-**Answer:** `ggplot(raw, aes(x=addic, y=dep)) + geom_point()`
+Definition: 95% of experiments will produce CIs that include the true regression line.
 
-<!--##
+# Deliverables
 
-::: iframe
+## Simple simulation of Depression vs. Addiction
 
-https://wall.sli.do/event/uEK2jHiAiKEvwPckneSgMt/?section=d3e4e3b6-a11b-40e7-80e9-e9091034cc4c
+:::::: panel-tabset
+
+## Instructions
+
+::: {.card-list .nonincremental}
+
+1. Noise ~ normally distributed, mean = 0, sd = 8, with sample size 100
+2. Addiction ~ normally distributed, mean = 20, sd = 10, with sample size 100
+3. Choose a $\beta$ 
+4. Calculate $\text{Depression} = \beta \times \text{Social Media Addiction} + \text{noise}$
+5. Plot a scatter plot of Depression vs. Addiction
 
 :::
 
--->
+## Code Puzzle
 
-## New ggplot function! `geom_smooth()`
+:::: code-puzzle
 
+::: static
+Noise <- rnorm(n = {{{100}}}, mean = {{{0}}}, sd = {{{8}}})
+x <- {{{rnorm(n = 100, mean = 20, sd = 10) OR rnorm(mean = 20, sd = 10, n = 100)}}}
+{{beta}} <- # choose your own number
+:::
+
+{{y}} <- beta*{{x}} + {{Noise}}
+
+df <- tibble(Depression = {{{y}}}, Addiction = {{{x}}})
+
+ggplot({{{df}}}, {{{aes(x = Addiction, y = Depression) OR aes(y = Depression, x = Addiction)}}}) + {{geom_point()}}
+
+
+
+::::
+
+
+## Best fit line and CI
+
+To plot best fit line and CI, use `geom_smooth()`
 
 ```r
-ggplot(data, aes(x=addic, y=dep)) + geom_point() + geom_smooth(method = "lm")
+ggplot(...) + geom_point() + geom_smooth(method = "lm")
 ```
 
 ```{r}
 
-ggplot(data, aes(x=addic, y=dep)) + geom_point() + geom_smooth(method = "lm")
+Noise <- rnorm(n = 100, mean = 0, sd = 8)
+x <- rnorm(n=100, mean=20, sd=10)
+beta <- 0.2 # choose your own number between 0 and 1
+y <- beta*x + Noise
+df <- tibble(Depression = y, Addiction = x)
+ggplot(df, aes(x=Addiction, y=Depression)) + geom_point() + geom_smooth(method = "lm")
 
 ```
 
-## `lm()` function
+Your plot will look slightly different
+
+## Regression summary
+
+Find the estimated regression values using `lm()` function
+
 "lm" stands for "linear model". Use this function to conduct a regression analysis
 
 ```r
-lm <- lm(dep ~ addic, data=data)
-lm
+lm <- lm(Depression ~ Addiction, data=df)
+lm # gets basic info
+summary(lm) # gets more info
 ```
 ```{r}
-lm <- lm(dep ~ addic, data=data)
-lm
+lm <- lm(Depression ~ Addiction, data=df)
+lm # gets basic info
+summary(lm) # gets more info
 ```
 
-## Which number is the slope of the regression plot?
+::::::
 
-**Answer:** 0.22837
+## Simple simulation of Depression vs. time spent on social media
 
-<!-- ::: iframe
+:::::: panel-tabset
 
-https://wall.sli.do/event/uEK2jHiAiKEvwPckneSgMt/?section=d3e4e3b6-a11b-40e7-80e9-e9091034cc4c
+## Instructions
+
+::: {.card-list .nonincremental}
+
+- Same as before, but instead of Addiction, we now have the variable "Time"
+- The mean time on social media is 6 hours. The standard deviation is 2.
+- Choose your own `beta` again. Do you think time spent on social media, when someone is not addicted to it, is positively or negatively correlated with depression? The value should be between -1 and 1.
 
 :::
 
--->
+## Final plot
 
-## Get more info from `lm()`
-
-```r
-summary(lm)
-```
+Your plot may look different, especially if you chose a different `beta`.
 
 ```{r}
-summary(lm)
+
+Noise <- rnorm(n = 100, mean = 0, sd = 8)
+x <- rnorm(n=100, mean=6, sd=2)
+beta <- -0.2
+y <- beta*x + Noise
+df <- tibble(Depression = y, Time = x)
+ggplot(df, aes(x=Time, y=Depression)) + geom_point() + geom_smooth(method = "lm")
+
 ```
 
-## Deliverables
+::::::
 
-::: card-list
+## Write a CI definition {.center}
 
-- A graph of depression vs. addiction score
-- A graph of depression vs. time on social media
-- Regression summaries for each of those two relationships
-- A brief summary of your findings
+In your own words, what is the definition of a CI for a regression line?
+
+## Final deliverables checklist
+
+::: {.normal-list .nonincremental}
+
+- [ ] Depression vs. social media addiction score
+    - [ ] Simulation code
+    - [ ] A graph that includes the scatter plot, best fit line, and CI
+    - [ ] Regression summary
+- [ ] Depression vs. time on social media
+    - [ ] Simulation code
+    - [ ] A graph that includes scatter plot, best fit line, and CI
+    - [ ] Regression summary
+- [ ] Definition of a CI for a regression line, in your own words
 
 :::
-
 

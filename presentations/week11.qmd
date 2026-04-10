@@ -1,6 +1,6 @@
 ---
 title: "11: Power"
-subtitle: "Take two note cards"
+subtitle: "plus CI/p-value interpretations"
 ---
 
 ```{r}
@@ -14,6 +14,7 @@ plot1 <- ggplot(df1, aes(x=group, y=Means)) + geom_point() + geom_errorbar(aes(y
 plot2 <- ggplot(df2, aes(x=group, y=Means)) + geom_point() + geom_errorbar(aes(ymin=LowerCI, ymax=UpperCI))
 ```
 
+## Please take two note cards
 
 ## Outline
 - Case study 2

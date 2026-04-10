@@ -1,6 +1,6 @@
 ---
 title: "11: Power"
-subtitle: "Take two note cards"
+subtitle: "plus CI/p-value interpretations"
 ---
 
 ```{r}
@@ -14,6 +14,7 @@ plot1 <- ggplot(df1, aes(x=group, y=Means)) + geom_point() + geom_errorbar(aes(y
 plot2 <- ggplot(df2, aes(x=group, y=Means)) + geom_point() + geom_errorbar(aes(ymin=LowerCI, ymax=UpperCI))
 ```
 
+## Please take two note cards
 
 ## Outline
 - Case study 2
@@ -156,9 +157,9 @@ Write your name on a note card. Draw the definition of a p-value. Pass them back
 
 # p-value interpretaions
 
-1. The is a __ probability that
-2. we observe our result, or more extreme
-3. assuming that the null hypothesis is true
+1. What's the probability?
+2. Probability of what? 
+3. Assuming the null.
 
 # Practice
 

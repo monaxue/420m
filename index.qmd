@@ -7,15 +7,13 @@ Use this website for everything lab-related in PSYCH 420m.
 ---
 
 <!--
-## Week 14
+### 14: 
 
 [Slides](presentations/week14.html){.filelink}
 
-## Week 13
+### 13: Effects of exercise
 
-Effects of exercise
-
-[Slides](presentations/week13.html){.filelink}
+[Slides](presentations/week13.qmd){.filelink}
 
 [Rmd file](r_demos/420m/comparingPolyFitsTA.Rmd){.filelink}
 
@@ -25,17 +23,16 @@ Effects of exercise
 
 [prodVsHours.csv](r_demos/420m/prodVsHours.csv){.filelink}
 
-
-
-
-
-## Week 12
-
-[Slides](presentations/week12.html){.filelink}
-
 -->
 
-## Week 11
+## 12: Linear Regression
+
+[Slides](presentations/week12.qmd){.filelink}
+
+
+## 11: Power
+
+Includes Case Study 2 takeaways and how to write CI/p-value interpretations
 
 [Slides](presentations/week11.qmd){.filelink}
 
@@ -43,37 +40,32 @@ Effects of exercise
 
 [Case Study 3 Rubric](files/casestudy3.qmd)
 
-## Week 10
-Precision
+## 10: Precision
 
 [Slides](presentations/week10.qmd){.filelink}
 
-## Week 9
-Effect sizes
+## 9: Effect sizes
 
 [Slides](presentations/week9.qmd){.filelink}
 
 
-## Week 8
-Paired data and t-test
+## 8: Paired data and t-test
 
 [Slides](presentations/week8.qmd){.filelink}
-
-
 
 ## Case Study 2
 
 [Case Study 2 Rubric](files/casestudy2.qmd){.filelink}
 
 
-## Week 7
-p-values and t-tests
+## 7: p-values and t-tests
 
 [Slides](presentations/week7.qmd){.filelink}
 
 
-## Week 6
-Confidence intervals
+## 6: Confidence intervals
+
+Includes Case Study 1 takeaways and discussion of descriptive vs. inferential statistics
 
 [Slides](presentations/week6.qmd){.filelink}
 
@@ -87,10 +79,7 @@ Confidence intervals
 [Case study template example PDF](r_demos/case_study_template.pdf){.filelink} -->
 
 
-
-## Week 5
-
-Sampling distributions
+## 5: Sampling distributions
 
 [Slides](presentations/week5.qmd){.filelink}
 
@@ -100,23 +89,17 @@ Sampling distributions
 
 [Case Study 1 Rubric](/files/casestudy1.qmd){.filelink}
 
-## Week 4
-
-pipes, ggplot, summary tables
+## 4: pipes, ggplot, summary tables
 
 [Slides](/presentations/week4.qmd){.filelink}
 
-## Week 3
+## 3: Simulations and the Central Limit Theorem
 
-for loops, central limit theorem, histograms/frequency polygons
+Includes how to plot histograms, frequency polygons, and boxplots
 
 [Slides](/presentations/week3.qmd){.filelink}
 
-
-
-## Week 2
-
-File directory, basic syntax, loading packages, importing data
+## 2: File directory and basic RMarkdown
 
 [Slides](/presentations/week2.qmd){.filelink}
 
@@ -127,9 +110,7 @@ File directory, basic syntax, loading packages, importing data
 [R cheatsheet](/files/cheatsheet.qmd){.filelink}
 
 
-## Week 1
-
-Lab info, R setup
+## 1: Lab info, R setup
 
 [Slides](/presentations/intro.qmd){.filelink}
 

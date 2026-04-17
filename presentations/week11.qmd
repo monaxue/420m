@@ -7,6 +7,7 @@ subtitle: "plus CI/p-value interpretations"
 
 library(tidyverse)
 library(ggplot2)
+library(patchwork)
 
 df1 <- tibble(group=c("A","B"), Means=c(1,2), LowerCI = c(0.6,1.6), UpperCI=c(1.4, 2.4))
 df2 <- tibble(group=c("A","B"), Means=c(1,2), LowerCI = c(0.6,1.4), UpperCI=c(1.6, 2.4))

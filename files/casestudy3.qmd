@@ -126,7 +126,7 @@ wider1
 After using `pivot_wider()`
 
 ```{r}
-wider1 %>% pivot_wider(values_from = Mean_reaction_time, names_from = condition)
+wider1 %>% pivot_wider(values_from = mean_reaction_time, names_from = condition)
 ```
 
 

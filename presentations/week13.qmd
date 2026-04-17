@@ -1,6 +1,6 @@
 --- 
 title: Week 13
-fig-align: center
+center: true
 ---
 
 ## Review

@@ -1,0 +1,16 @@
+{
+    "workbench.panel.defaultLocation": "right",
+    "workbench.panel.showLabels": false,
+    "claudeCode.useTerminal": true,
+    "claudeCode.environmentVariables": [
+        
+
+    { "name": "ANTHROPIC_BASE_URL", "value": "http://localhost:8082" },
+    { "name": "ANTHROPIC_AUTH_TOKEN", "value": "freecc" }
+    ],
+    "claudeCode.disableLoginPrompt": true,
+    "claudeCode.hideOnboarding": true,
+    "positron.assistant.consoleActions.enable": false,
+    "positron.assistant.gitIntegration.enable": false,
+    "positron.assistant.provider.anthropic.enable": false
+}  

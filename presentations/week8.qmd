@@ -178,13 +178,8 @@ $\rightarrow$
 
 :::: {.columns}
 
-::: {.column width="20%"}
 
-
-:::
-
-
-::: {.column width="25%"}
+::: {.column width="40%"}
 
 |Name|A|B|
 |----|-|-|
@@ -196,14 +191,14 @@ $\rightarrow$
 :::
 
 
-::: {.column width="10%"}
+::: {.column width="20%"}
 
 $\rightarrow$
 
 :::
 
 
-::: {.column width="25%"}
+::: {.column width="40%"}
 
 |Name|A - B|
 |----|-----|
@@ -243,7 +238,6 @@ a+b+c
 
 <!-- Next time focus on visualizing the process -->
 
-<--
 
 ## Slido
 

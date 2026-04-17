@@ -1,0 +1,21 @@
+<script>
+var defaultBg = '#ffffff';
+var lastBgColor = defaultBg;
+
+function applyBG() {
+  Reveal.getSlides().forEach(function(slide) {
+    var bg = slide.getAttribute('data-background-color');
+    if (bg) {
+      lastBgColor = bg;
+      slide.style.setProperty('--bg', bg, 'important');
+    } else {
+      slide.setAttribute('data-background-color', lastBgColor);
+      slide.style.setProperty('--bg', lastBgColor, 'important');
+    }
+  });
+  
+  Reveal.sync();
+}
+
+Reveal.on('ready', applyBG);
+</script>

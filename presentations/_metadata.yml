@@ -1,40 +1,71 @@
-format: 
-    monatheme-revealjs:
-      incremental: true
-      self-contained: false
-      smaller: true
-      scrollable: true
-      chalkboard:
-        theme: whiteboard
-      preview-links: true
-      sc-sb-title: true
-      include-in-header:
-        text: |
-          <script>
-            setTimeout(() => {
-              console.log("Poll divs:", document.querySelectorAll(".poll, .freeresponse").length);
-              document.querySelectorAll(".poll, .freeresponse").forEach((el, i) => {
-                console.log(`Poll ${i}:`, el.dataset.question, el.dataset.timer);
-              });
-            }, 1000);
+ #background-colors:
+ # - "rgba(246, 252, 237, 1)"
+ # - "rgba(237, 251, 255, 1)"
+ # - "rgba(254, 248, 237, 1)"
+ # - "rgba(252, 237, 247, 1)"
 
-            setTimeout(() => {
-              console.log("Reveal ready:", typeof Reveal !== "undefined" && Reveal.isReady());
-              console.log("pollInit ran:", window._pollInitRan);
-            }, 1000);
-
-            // ── Required ──────────────────────────────────────────────
-            window.POLL_SUPABASE_URL   = "{{< var supabase-url >}}";
-            window.POLL_SUPABASE_ANON  = "{{< var supabase-anon >}}";
-            window.POLL_ADMIN_PASSWORD = "{{< var admin-password >}}";
-
-            // ── Optional ──────────────────────────────────────────────
-            // Claude API key for AI grading of free-response questions
-            window.POLL_CLAUDE_API_KEY  = "sk-ant-...";
-
-            // Default timer for all polls in seconds (0 = no timer)
-            window.POLL_DEFAULT_TIMER   = 60;
-          </script>
+format:
+  containerstheme-revealjs:
+    center: false
+    touch: true
+    incremental: true
+    self-contained: false
+    smaller: true
+    scrollable: true
+    fig-align: center
+    chalkboard:
+      theme: whiteboard
+    preview-links: true
+    #sc-sb-title: true
+    conditional:
+      admin-password: "mona420m"
+    title-slide-attributes:
+        data-state: "hide-menubar"
+        data-background-color: "rgba(254, 248, 237, 1)"
+    transition: slide
+    section-divs: false
+    menu: true
+    simplemenu:
+      barhtml:
+        header: "<div class='menubar'><ul class='menu'></ul></div>"
+      scale: 0.50
+    filters:
+      - patches/iframe.lua
+      - patches/filelink.lua
+      - patches/no-prompt.lua
+      - patches/code-puzzle.lua
+    #include-in-header:
+    #  text: |
+    #    <script>
+    #      setTimeout(() => {
+    #        console.log("Poll divs:", document.querySelectorAll(".poll, .freeresponse").length);
+    #        document.querySelectorAll(".poll, .freeresponse").forEach((el, i) => {
+    #          console.log(`Poll ${i}:`, el.dataset.question, el.dataset.timer);
+    #        });
+    #      }, 1000);
+#
+    #      setTimeout(() => {
+    #        console.log("Reveal ready:", typeof Reveal !== "undefined" && Reveal.isReady());
+    #        console.log("pollInit ran:", window._pollInitRan);
+    #      }, 1000);
+#
+    #      // ── Required ──────────────────────────────────────────────
+    #      window.POLL_SUPABASE_URL   = "{{< var supabase-url >}}";
+    #      window.POLL_SUPABASE_ANON  = "{{< var supabase-anon >}}";
+    #      window.POLL_ADMIN_PASSWORD = "{{< var admin-password >}}";
+#
+    #      // ── Optional ──────────────────────────────────────────────
+    #      // Claude API key for AI grading of free-response questions
+    #      window.POLL_CLAUDE_API_KEY  = "sk-ant-...";
+#
+    #      // Default timer for all polls in seconds (0 = no timer)
+    #      window.POLL_DEFAULT_TIMER   = 60;
+    #    </script>
+revealjs-plugins:
+  - simplemenu
+  - tabset
+  #- conditional-reveal
 filters: 
-  - reveal-header
   - poll
+  #- reveal-header
+

@@ -11,19 +11,11 @@ Use this website for everything lab-related in PSYCH 420m.
 
 [Slides](presentations/week14.html){.filelink}
 
+-->
+
 ### 13: Effects of exercise
 
 [Slides](presentations/week13.qmd){.filelink}
-
-[Rmd file](r_demos/420m/comparingPolyFitsTA.Rmd){.filelink}
-
-[shapeVsHours.csv](r_demos/420m/shapeVsHours.csv){.filelink}
-
-[bpmVsHours.csv](r_demos/420m/bpmVsHours.csv){.filelink}
-
-[prodVsHours.csv](r_demos/420m/prodVsHours.csv){.filelink}
-
--->
 
 ## 12: Linear Regression
 

@@ -393,11 +393,11 @@ y = mx + b
 .cpz-result.fail{color:#c62828}
 .cpz-tip{font-size:11px;color:#aaa;margin-top:6px}
 </style>
-<div class="cpz" id="cp9241641"><div class="cpz-layout"><div><div class="cpz-col-label">Code — drag to reorder · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp9241641-linenums"></div><div class="cpz-code" id="cp9241641-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp9241641-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp9241641-actions"></div></div><script>
+<div class="cpz" id="cp8097681"><div class="cpz-layout"><div><div class="cpz-col-label">Code — drag to reorder · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp8097681-linenums"></div><div class="cpz-code" id="cp8097681-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp8097681-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp8097681-actions"></div></div><script>
 (function(){
 try{
-var ID="cp9241641";
-var BLOCKS=[{"lines":[{"indent":0,"parts":[{"value":"Error <- rnorm(n = ","type":"text"},{"answers":["100"],"type":"free"},{"value":", mean = ","type":"text"},{"answers":["0"],"type":"free"},{"value":", sd = ","type":"text"},{"answers":["8"],"type":"free"},{"value":")","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"x <- ","type":"text"},{"answers":["rnorm(n = 100, mean = 20, sd = 10)","rnorm(mean = 20, sd = 10, n = 100)"],"type":"free"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"answers":["beta"],"type":"wb"},{"value":" <- # choose your own number between 0 and 1","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"answers":["y"],"type":"wb"},{"value":" <- beta*","type":"text"},{"answers":["x"],"type":"wb"},{"value":" + ","type":"text"},{"answers":["Error"],"type":"wb"}]}],"kind":"drag","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"df <- tibble(Depression = ","type":"text"},{"answers":["y"],"type":"free"},{"value":", Addiction = ","type":"text"},{"answers":["x"],"type":"free"},{"value":")","type":"text"}]}],"kind":"drag","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"ggplot(","type":"text"},{"answers":["df"],"type":"free"},{"value":", ","type":"text"},{"answers":["aes(x = Addiction, y = Depression)","aes(y = Depression, x = Addiction)"],"type":"free"},{"value":") + ","type":"text"},{"answers":["geom_point()"],"type":"wb"}]}],"kind":"drag","indentDepth":0}];
+var ID="cp8097681";
+var BLOCKS=[{"indentDepth":0,"lines":[{"parts":[{"value":"Error <- rnorm(n = ","type":"text"},{"answers":["100"],"type":"free"},{"value":", mean = ","type":"text"},{"answers":["0"],"type":"free"},{"value":", sd = ","type":"text"},{"answers":["8"],"type":"free"},{"value":")","type":"text"}],"indent":0}],"kind":"fixed"},{"indentDepth":0,"lines":[{"parts":[{"value":"x <- ","type":"text"},{"answers":["rnorm(n = 100, mean = 20, sd = 10)","rnorm(mean = 20, sd = 10, n = 100)"],"type":"free"}],"indent":0}],"kind":"fixed"},{"indentDepth":0,"lines":[{"parts":[{"answers":["beta"],"type":"wb"},{"value":" <- # choose your own number between 0 and 1","type":"text"}],"indent":0}],"kind":"fixed"},{"indentDepth":0,"lines":[{"parts":[{"answers":["y"],"type":"wb"},{"value":" <- beta*","type":"text"},{"answers":["x"],"type":"wb"},{"value":" + ","type":"text"},{"answers":["Error"],"type":"wb"}],"indent":0}],"kind":"drag"},{"indentDepth":0,"lines":[{"parts":[{"value":"df <- tibble(Depression = ","type":"text"},{"answers":["y"],"type":"free"},{"value":", Addiction = ","type":"text"},{"answers":["x"],"type":"free"},{"value":")","type":"text"}],"indent":0}],"kind":"drag"},{"indentDepth":0,"lines":[{"parts":[{"value":"ggplot(","type":"text"},{"answers":["df"],"type":"free"},{"value":", ","type":"text"},{"answers":["aes(x = Addiction, y = Depression)","aes(y = Depression, x = Addiction)"],"type":"free"},{"value":") + ","type":"text"},{"answers":["geom_point()"],"type":"wb"}],"indent":0}],"kind":"drag"}];
 var WB=["beta","y","x","Error","geom_point()"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -1062,7 +1062,7 @@ lm(formula = Depression ~ Addiction, data = df)
 
 Coefficients:
 (Intercept)    Addiction  
-     0.5847       0.1707  </code></pre>
+    -1.8689       0.2917  </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1071,18 +1071,18 @@ lm(formula = Depression ~ Addiction, data = df)
 
 Residuals:
      Min       1Q   Median       3Q      Max 
--20.7440  -5.9144  -0.1239   5.4725  16.2930 
+-17.8475  -5.2069  -0.7182   4.7542  22.7029 
 
 Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)  
-(Intercept)   0.5847     1.9128   0.306   0.7605  
-Addiction     0.1707     0.0937   1.821   0.0716 .
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -1.86893    1.82202  -1.026 0.307535    
+Addiction    0.29169    0.08062   3.618 0.000472 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 8.224 on 98 degrees of freedom
-Multiple R-squared:  0.03274,   Adjusted R-squared:  0.02287 
-F-statistic: 3.317 on 1 and 98 DF,  p-value: 0.07161</code></pre>
+Residual standard error: 7.864 on 98 degrees of freedom
+Multiple R-squared:  0.1178,    Adjusted R-squared:  0.1088 
+F-statistic: 13.09 on 1 and 98 DF,  p-value: 0.0004717</code></pre>
 </div>
 </div>
 </div>
@@ -1130,7 +1130,7 @@ lm(formula = Depression ~ Time, data = df)
 
 Coefficients:
 (Intercept)         Time  
-     2.4636      -0.6055  </code></pre>
+     0.4706      -0.5096  </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1139,18 +1139,16 @@ lm(formula = Depression ~ Time, data = df)
 
 Residuals:
      Min       1Q   Median       3Q      Max 
--20.6296  -5.1250   0.4034   3.9787  21.2049 
+-11.5855  -6.0305   0.5767   4.3798  21.6916 
 
 Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)  
-(Intercept)   2.4636     2.2714   1.085   0.2807  
-Time         -0.6055     0.3608  -1.678   0.0965 .
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+            Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)   0.4706     2.3599   0.199    0.842
+Time         -0.5096     0.3880  -1.313    0.192
 
-Residual standard error: 7.641 on 98 degrees of freedom
-Multiple R-squared:  0.02794,   Adjusted R-squared:  0.01802 
-F-statistic: 2.817 on 1 and 98 DF,  p-value: 0.09648</code></pre>
+Residual standard error: 7.608 on 98 degrees of freedom
+Multiple R-squared:  0.0173,    Adjusted R-squared:  0.007268 
+F-statistic: 1.725 on 1 and 98 DF,  p-value: 0.1921</code></pre>
 </div>
 </div>
 </div>

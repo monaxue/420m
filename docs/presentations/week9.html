@@ -261,7 +261,7 @@
 <div class="card-list">
 <ol type="1">
 <li class="fragment">Today, we will be seeing if there is a meaningful difference in annual salary between UT grads and Texas A&amp;M grads. (Note: these are simulated, so fake, data!)</li>
-<li class="fragment">We will look at a data set with a <span><a href="..\data/salsLargeN.csv" target="_blank" rel="noopener noreferrer">large sample size</a> · <a href="..\data/salsLargeN.csv" target="_blank" title="Open in new tab" rel="noopener noreferrer">↗</a> · <a href="..\data/salsLargeN.csv" download="" title="Download file" target="_blank" rel="noopener noreferrer">⤓</a></span>, and separately, adataset with a <span><a href="..\data/salsSmallN.csv" target="_blank" rel="noopener noreferrer">small sample size</a> · <a href="..\data/salsSmallN.csv" target="_blank" title="Open in new tab" rel="noopener noreferrer">↗</a> · <a href="..\data/salsSmallN.csv" download="" title="Download file" target="_blank" rel="noopener noreferrer">⤓</a></span>. Both are complete datasets.</li>
+<li class="fragment">We will look at a data set with a <span><a href="..\data/salsLargeN.csv" target="_blank" rel="noopener noreferrer">large sample size</a> · <a href="..\data/salsLargeN.csv" title="Open in new tab" target="_blank" rel="noopener noreferrer">↗</a> · <a href="..\data/salsLargeN.csv" download="" title="Download file" target="_blank" rel="noopener noreferrer">⤓</a></span>, and separately, adataset with a <span><a href="..\data/salsSmallN.csv" target="_blank" rel="noopener noreferrer">small sample size</a> · <a href="..\data/salsSmallN.csv" title="Open in new tab" target="_blank" rel="noopener noreferrer">↗</a> · <a href="..\data/salsSmallN.csv" download="" title="Download file" target="_blank" rel="noopener noreferrer">⤓</a></span>. Both are complete datasets.</li>
 <li class="fragment">Using effect sizes, we will assess if a difference in means is meaningful, despite a small p-value.</li>
 </ol>
 </div>
@@ -364,12 +364,11 @@
 <thead>
 <tr class="header">
 <th style="text-align: left;">school</th>
-<th style="text-align: right;">SampleSize</th>
+<th style="text-align: right;">Count</th>
 <th style="text-align: right;">Mean</th>
 <th style="text-align: right;">SD</th>
 <th style="text-align: right;">SE</th>
-<th style="text-align: right;">LowerCI</th>
-<th style="text-align: right;">UpperCI</th>
+<th style="text-align: right;">CI</th>
 </tr>
 </thead>
 <tbody>
@@ -379,8 +378,7 @@
 <td style="text-align: right;">73017.98</td>
 <td style="text-align: right;">999.7115</td>
 <td style="text-align: right;">4.470846</td>
-<td style="text-align: right;">73009.22</td>
-<td style="text-align: right;">73026.75</td>
+<td style="text-align: right;">8.762858</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">UT</td>
@@ -388,8 +386,7 @@
 <td style="text-align: right;">72993.73</td>
 <td style="text-align: right;">997.6009</td>
 <td style="text-align: right;">4.461407</td>
-<td style="text-align: right;">72984.99</td>
-<td style="text-align: right;">73002.48</td>
+<td style="text-align: right;">8.744358</td>
 </tr>
 </tbody>
 </table>
@@ -456,12 +453,11 @@ mean in group TAMU   mean in group UT
 <thead>
 <tr class="header">
 <th style="text-align: left;">school</th>
-<th style="text-align: right;">SampleSize</th>
+<th style="text-align: right;">Count</th>
 <th style="text-align: right;">Mean</th>
 <th style="text-align: right;">SD</th>
 <th style="text-align: right;">SE</th>
-<th style="text-align: right;">LowerCI</th>
-<th style="text-align: right;">UpperCI</th>
+<th style="text-align: right;">CI</th>
 </tr>
 </thead>
 <tbody>
@@ -471,8 +467,7 @@ mean in group TAMU   mean in group UT
 <td style="text-align: right;">73017.98</td>
 <td style="text-align: right;">999.7115</td>
 <td style="text-align: right;">316.1365</td>
-<td style="text-align: right;">72398.36</td>
-<td style="text-align: right;">73637.61</td>
+<td style="text-align: right;">619.6276</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">UT</td>
@@ -480,8 +475,7 @@ mean in group TAMU   mean in group UT
 <td style="text-align: right;">72993.73</td>
 <td style="text-align: right;">997.6009</td>
 <td style="text-align: right;">315.4691</td>
-<td style="text-align: right;">72375.41</td>
-<td style="text-align: right;">73612.05</td>
+<td style="text-align: right;">618.3195</td>
 </tr>
 </tbody>
 </table>
@@ -505,14 +499,14 @@ mean in group TAMU   mean in group UT
 <pre><code>
     Welch Two Sample t-test
 
-data:  salary by school
+data:  TAMU_sals and UT_sals
 t = 0.054301, df = 18, p-value = 0.9573
-alternative hypothesis: true difference in means between group TAMU and group UT is not equal to 0
+alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
  -914.0476  962.5507
 sample estimates:
-mean in group TAMU   mean in group UT 
-          73017.98           72993.73 </code></pre>
+mean of x mean of y 
+ 73017.98  72993.73 </code></pre>
 </div>
 </div>
 </div>

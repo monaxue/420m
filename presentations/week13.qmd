@@ -3,6 +3,28 @@ title: Week 13
 center: true
 ---
 
+<!--
+
+For deliverables next time, only include 2 datasets (the first and third maybe, one for order 1 and one for order 2. People were having a hard time keeping track of the multiple datasets and plots.)
+
+Conceptual confusions:
+
+- People thought they had to use poly for geom_smooth in the order 2 residuals plot. Clarify that by showing that subtracting a curvey model from a curvey data results in a straight line plot.
+- People didn't realize for order 2 residuals, they needed to input the residuals from the order two linear model
+
+Technical struggles
+- Organizing code and keeping track of datasets (major)
+- Misupderstandings about what is on x vs. what is on y (minor)
+- When variables are "overwritten"
+
+Provide students with tips at the beginning for how to organize their code. 
+- Teach them how to organize their code in RMarkdown, and tell them the best way to do it in this assignment
+
+Give them a little code puzzles (maybe as hint tools, rather than starting with it)
+
+Tell them how many plots they should have at the end, and maybe give the the ability to check off each plot (maybe a separate delibervables checkbox page.)
+-->
+
 ## Review
 
 ::: iframe

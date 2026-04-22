@@ -15,7 +15,7 @@ website:
         text: Slides
       - href: files/cheatsheet.qmd
         text: R Cheatsheet
-      - href: files/casestudy3.qmd
+      - href: files/casestudy4.qmd
 
 execute:
   cache: true

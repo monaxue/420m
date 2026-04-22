@@ -13,7 +13,11 @@ Use this website for everything lab-related in PSYCH 420m.
 
 -->
 
-### 13: Effects of exercise
+## Case study 4
+
+[Case Study 4 Rubric](files/casestudy4.qmd)
+
+## 13: Effects of exercise
 
 [Slides](presentations/week13.qmd){.filelink}
 

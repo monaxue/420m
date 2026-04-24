@@ -17,7 +17,7 @@ Use this website for everything lab-related in PSYCH 420m.
 
 [Case Study 4 Rubric](files/casestudy4.qmd)
 
-## 13: Effects of exercise
+## 13: Residuals and polynomial curve fitting
 
 [Slides](presentations/week13.qmd){.filelink}
 

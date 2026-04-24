@@ -56,9 +56,9 @@ conclusions about each patient’s cognitive status.
 
 Include 1-2 sentences for each of the following:
 
-- [ ] The research questions (there are two)
-- [ ] The main hypotheses
-- [ ] The null hypotheses
+- [ ] The research question
+- [ ] The main hypothesis
+- [ ] The null hypothesis
 
 **Methods Overview** (2 points)
 

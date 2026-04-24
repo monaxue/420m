@@ -15,7 +15,7 @@ format:
     fig-align: center
     chalkboard:
       theme: whiteboard
-    preview-links: true
+    preview-links: false
     #sc-sb-title: true
     conditional:
       admin-password: "mona420m"

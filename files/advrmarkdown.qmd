@@ -1,0 +1,157 @@
+---
+title: Adv. Rmd formatting
+toc: true
+df_print: kable
+---
+
+### Themes
+
+Go to the following link to learn about different themes for RMarkdown!
+
+<https://rpubs.com/ranydc/rmarkdown_themes>{.filelink}
+
+### Add a table of contents
+
+```{verbatim}
+---
+title: Lab
+author: Your Name
+output:
+    html_document:
+        toc: true
+        toc_float:
+            collapsed: true
+---
+```
+![](/assets/toc.png)
+
+### Print nicer dataframes and tables
+
+To create tables with pages, use the following in your yaml.
+
+```{verbatim}
+---
+title: Lab
+author: Your Name
+output:
+    html_document:
+        df_print: paged
+---
+
+```
+
+![](/assets/paged_table.png)
+
+To create nice tables *without* pages, use the following in your yaml.
+
+```{verbatim}
+---
+title: Lab
+author: Your Name
+output:
+    html_document:
+        df_print: kable
+---
+
+```
+
+![](/assets/kable_table.png)
+
+
+### Tabsets
+
+To create tabsets, use the following code:
+
+````{verbatim}
+## Title of page with tabs {.tabset}
+
+### Title of tab 1
+
+Some tab content
+
+### Title of tab 2
+
+```{r}
+# Some code here
+```
+````
+
+![](/assets/tabs.png)
+
+
+### Remove unwanted warnings and messages
+
+To remove unwanted warnings and messages from the output, use these at the very top of a code block. For instance, the following removes the warning messages from loading packages.
+
+````{verbatim}
+```{r}
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(ggplot2)
+
+data <- read_csv("heights.csv")
+
+```
+````
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+library(tidyverse)
+library(ggplot2)
+
+data <- read_csv("./data/heights.csv")
+
+```
+
+
+### Round values to fewer decimals
+
+Use `round()` to round to fewer decimals. For example, the following rounds the variables `a` to two decimal places.
+
+```r
+round(a, 2)
+```
+
+```{r}
+#| echo: false
+
+summary_table <- data %>% group_by(sex) %>% summarize(count=n(), Mean=mean(heights), SE = sd(heights)/count)
+
+CIs <- summary_table %>% mutate(CIs = paste0("[", round(Mean-1.96*SE,2), ", ", round(Mean+1.96*SE,2), "]")) %>% select(sex, CIs)
+
+```
+
+
+
+### Create outputs like `r CIs[1,2]`
+
+Use `paste0()` to add together strings and variables. This is useful for reporting CIs. For instance,
+
+```r
+CIs <- CIs %>% mutate(CIs = paste0("[", round(LowerCI,2), ", ", round(UpperCI,2), "]")) %>% select(group, CIs)
+CIs
+```
+
+```{r}
+#| echo: false
+#| 
+CIs
+```
+
+### Reference variables from r code directly in your paragraphs
+
+Use ``` `r ` ``` to use r code in your paragraphs so you can reference variables from you code chunks. For example:
+
+```{verbatim}
+The the CIs for groups one and two are `r CIs[1,2]` and `r CIs[2,2]`, respectively.
+```
+
+The the CIs for groups one and two are `r CIs[1,2]` and `r CIs[2,2]`, respectively.
+
+Note that [1,2] stands for row 1 and column 2 of the CI table, and [2,2] stands for row 2 and column 2 of the CI table.
+

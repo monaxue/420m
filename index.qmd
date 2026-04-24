@@ -6,12 +6,11 @@ Use this website for everything lab-related in PSYCH 420m.
 
 ---
 
-<!--
-### 14: 
 
-[Slides](presentations/week14.html){.filelink}
+## 14: Last lab
 
--->
+[Slides](presentations/week14.qmd){.filelink}
+
 
 ## Case study 4
 

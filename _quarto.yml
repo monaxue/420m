@@ -16,6 +16,12 @@ website:
       - href: files/cheatsheet.qmd
         text: R Cheatsheet
       - href: files/casestudy4.qmd
+  announcement: 
+    icon: info-circle
+    dismissable: false
+    content: "**Alert** - Case Study 4 due date changed to Wed. 4-29. Please email me if another date works better for you!"
+    type: primary
+    position: below-navbar
 
 execute:
   cache: true

@@ -5,6 +5,8 @@ warning: false
 
 ## Case Study 4
 
+Because so many people have finals on Monday, I have moved the Case Study due date to **Wed. April 29th**. If your finals schedule makes that difficult, feel free to email me.
+
 :::: panel-tabset
 
 ## Memory Decline
@@ -96,7 +98,8 @@ The case studies can be completed without using any external sources. However, i
 
 ## Hints
 
-The inferential plot will be different than usual.
+1. The inferential plot will be different than usual.
+2. You will need to use `filter()` to get the right p-values.
 
 ### Relevant slides
 

@@ -1,0 +1,64 @@
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(patchwork)
+data <- read_csv("data/CaseStudy3_StroopEffect.csv")
+
+grouped <- data %>% group_by(id, condition) %>% summarize(mean_reaction_time=mean(reaction_time))
+grouped
+
+wider <- grouped %>% pivot_wider(values_from = mean_reaction_time, names_from = condition)
+wider
+
+independent1 <- grouped %>% group_by(condition) %>% mutate(Mean=mean(mean_reaction_time), diff=mean_reaction_time-Mean) %>% ungroup() %>% summarize(N = n(), Mean= diff(Mean), SD = sd(diff), SE = SD/sqrt(N), LowerCI = Mean-1.96*SE, UpperCI = Mean+1.96*SE) %>% ungroup() 
+independent1
+
+
+independent1 <- grouped %>% group_by(condition) %>% summarize(N=n(), Mean=mean(mean_reaction_time), SD = sd(mean_reaction_time), SE = SD/sqrt(N), LowerCI = Mean-1.96*SE, UpperCI = Mean+1.96*SE) %>% ungroup() 
+independent1
+
+independent2 <- independent1 %>% summarize(N=mean(N), Mean=diff(Mean), SD = sqrt(sum(SD^2)), SE=SD/sqrt(N), LowerCI=Mean-1.96*SE, UpperCI = Mean+1.96*SE)
+independent2
+
+
+t.test(mean_reaction_time ~ condition, data=grouped)
+
+
+
+paired1 <- wider %>% ungroup() %>% mutate(diff=incongruent-congruent)
+paired1 
+
+paired2 <- paired1 %>% summarize(N=n(), Mean=abs(mean(diff)), SD=sd(diff), SE=SD/sqrt(N), LowerCI = Mean-1.96*SE, UpperCI = Mean+1.96*SE)
+paired2
+
+t.test(wider$congruent, wider$incongruent, data=wider, paired = TRUE)
+
+ggplot(paired1, aes(x=diff-min(abs(diff)))) + geom_freqpoly() 
+
+
+# These paired t-tests shouldn't run unless student has an old computer and an old version of R
+
+# t.test(reaction_time ~ condition, data=data1, paired=TRUE)
+# t.test(mean_reaction_time ~ condition, data=grouped, paired=TRUE)
+
+
+avg_error_diffs <- tibble(x1=rnorm(mean=0,sd=2, n=1000), x2=rnorm(mean=0,sd=3, n=1000))
+
+p1 <- ggplot(avg_error_diffs, aes(x=x1-x2)) + geom_histogram()
+p2 <- ggplot(avg_error_diffs, aes(x=x1+x2)) + geom_histogram()
+
+p1+p2
+
+avg_error_diffs %>% summarize(Mean=mean(x1-x2), SD = sd(x1-x2))
+avg_error_diffs %>% summarize(Mean=mean(x1+x2), SD = sd(x1+x2))
+
+range= seq(from = -4.5, to = 4.5, by = 0.1)
+
+first <- tibble(x=range, y=dnorm(range, mean=0, sd=1))
+second <- tibble(x=range, y= dnorm(range, mean=0, sd=1))
+joint <- tibble(x=range, y1=first$y, y2=second$y, y3=first$y*second$y)
+joint <- joint %>% pivot_longer(cols=c(y1,y2,y3), names_to= "dist", values_to="prob")
+
+ggplot(joint, aes(x=x, y=prob, color=dist)) + geom_line()
+
+```

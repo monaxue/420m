@@ -6,6 +6,9 @@ Use this website for everything lab-related in PSYCH 420m.
 
 ---
 
+[Case study 3 feedback and announcement](files/casestudy3announcement.qmd)
+
+---
 
 ## 14: Last lab
 

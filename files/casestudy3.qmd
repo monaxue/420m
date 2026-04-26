@@ -119,14 +119,15 @@ data2 <- read_csv("data/CaseStudy3_MemoryDecline.csv")
 Before using `pivot_wider()`
 
 ```{r}
-wider1 <- data1 %>% group_by(id, condition) %>% summarize(mean_reaction_time=mean(reaction_time))
-wider1
+grouped1 <- data1 %>% group_by(id, condition) %>% summarize(mean_reaction_time=mean(reaction_time))
+grouped1
 ```
 
 After using `pivot_wider()`
 
 ```{r}
-wider1 %>% pivot_wider(values_from = mean_reaction_time, names_from = condition)
+wider1 <- grouped1 %>% pivot_wider(values_from = mean_reaction_time, names_from = condition)
+wider1
 ```
 
 
@@ -135,15 +136,17 @@ wider1 %>% pivot_wider(values_from = mean_reaction_time, names_from = condition)
 Before using `pivot_wider()`
 
 ```{r}
-wider2 <- data2 %>% group_by(ID, Visit) %>% summarize(TotalRecalled = sum(Recalled))
+grouped2 <- data2 %>% group_by(ID, Visit) %>% summarize(TotalRecalled = sum(Recalled))
 wider2
 ```
 
 After using `pivot_wider()`
 
 ```{r}
-wider2 %>% pivot_wider(values_from = TotalRecalled, names_from = Visit)
+wider2 <- grouped2 %>% pivot_wider(values_from = TotalRecalled, names_from = Visit)
+wider2
 ```
+
 
 
 ### Relevant slides

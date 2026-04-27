@@ -101,7 +101,7 @@ The case studies can be completed without using any external sources. However, i
 1. Descriptive plot: don't over think it. It's the same type of plot we always plot.
 1. Inferential plot: this will be different than usual.
 1. CI interpretations: Looking at your regression plot with CIs, if you imagine drawing many lines within the CI, do any of the lines have a slope of 0?
-1. To obtain p-values for each individual: you will need to use `filter()`
+1. To obtain p-values for each individual: you will need to use `filter()` (we used them in Case Study 1)
 
 ### Relevant slides
 

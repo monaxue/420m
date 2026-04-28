@@ -98,21 +98,14 @@ The case studies can be completed without using any external sources. However, i
 
 ## Hints
 
-1. Descriptive plot: don't over think it. It's the same type of plot we always plot.
+1. Descriptive plot: don't over think it. It's the **same type** of plot we always plot.
 1. Inferential plot: this will be different than usual.
+    - You will **NOT** need to calculate exact CIs for this assignment
 1. CI interpretations: Looking at your regression plot with CIs, if you imagine drawing many lines within the CI, do any of the lines have a slope of 0?
 1. To obtain p-values for each individual: you will need to use `filter()` (we used them in Case Study 1)
 
 ### Relevant slides
-
-- Hypothesis generation: [Lab 7](/presentations/week7.qmd)
-- Descriptive vs. Inferential statistics: [Lab 4](/presentations/week4.qmd), [Lab 6](/presentations/week6.qmd)
-- Plots: [Lab 4](/presentations/week4.qmd)
-- Histogram interpretations: [Lab 4](/presentations/week4.qmd), [Lab 6](/presentations/week6.qmd)
-- CI calculation and interpretations: [Lab 4](/presentations/week4.qmd), [Lab 6](/presentations/week6.qmd), [Lab 7](/presentations/week7.qmd), [Online simulation](https://shiny.rit.albany.edu/stat/confidence/), [Lab11](/presentations/week11.qmd)
-- p-value calculation and interpretations: [Lab 7](/presentations/week7.qmd), [Lab11](/presentations/week11.qmd)
-- Paired t-test: [Lab 8](/presentations/week8.qmd)
-- Effect size calculation: [Lab 9](/presentations/week9.qmd)
+- Histogram, frequency polygons, boxplots: [Lab 4](/presentations/week4.qmd)
 - Regression: [Lab 12](/presentations/week12.qmd); [Lab 13](/presentations/week13.qmd)
 
 ::::

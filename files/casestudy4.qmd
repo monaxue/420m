@@ -106,6 +106,6 @@ The case studies can be completed without using any external sources. However, i
 
 ### Relevant slides
 - Histogram, frequency polygons, boxplots: [Lab 4](/presentations/week4.qmd)
-- Regression: [Lab 12](/presentations/week12.qmd); [Lab 13](/presentations/week13.qmd)
+- Regression: [Lab 12](/presentations/week12.qmd)
 
 ::::

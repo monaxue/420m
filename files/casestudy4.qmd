@@ -73,7 +73,7 @@ Include 1-2 sentences for each of the following:
 - [ ] One summary table, including sample sizes, means, SDs, SEs. (1 point)
 - [ ] One descriptive plot (1 point)
 - [ ] One inferential plot (1 point)
-- [ ] A few sentences reporting key results, i.e., the means, sd, confidence intervals, p-values. (1 point)
+- [ ] A few sentences reporting key results, i.e., the means, sd, ~~confidence intervals~~, p-values. (1 point)
 - [ ] Interpretations (3 points)
     - [ ] What is the *main* purpose of descriptive vs. inferential statistics?
     - [ ] Include appropriate interpretations for your plots (don't overinterpret!)

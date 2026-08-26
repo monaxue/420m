@@ -5,6 +5,8 @@ subtitle: Open the slides for today from the lab website <https://monaxue.github
 
 <!-- 
 
+Emphasize import data function instead of using buttons
+
 introduce a mini for loop? for (a in 1:10){print("Hello")}
 
 probably don't have time: for (b in 1:10){print(b+1)}, for (c in 2:30){print(c-3)}

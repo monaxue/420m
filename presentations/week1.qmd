@@ -5,10 +5,14 @@ title: Welcome to PSYCH 420!
 ## Welcome to PSYCH 420!
 
 **Attendance**
-
+<!--
 ::: iframe
 https://wall.sli.do/event/d35sArEpryyz2JVeVjSHwt?section=fdeecb9f-4add-43f9-bc87-31818e0b6c22&integration=shared-present-mode&utm_source=slidoadmin
 :::
+
+-->
+
+![](/assets/slido-are-you-an-early-bird-or-night-ow.png)
 
 ## Overview
 
@@ -154,11 +158,15 @@ Fill out your availability by Saturday so I can determine the best time for offi
 
 -->
 
+<!--
 ::: iframe
 
 https://wall.sli.do/event/d35sArEpryyz2JVeVjSHwt?section=fdeecb9f-4add-43f9-bc87-31818e0b6c22&integration=shared-present-mode&utm_source=slidoadmin
 
 :::
+-->
+
+![](/assets/slido-what-is-your-experience-with-r_fa26.png)
 
 
 
@@ -230,16 +238,35 @@ https://wall.sli.do/event/d35sArEpryyz2JVeVjSHwt?section=fdeecb9f-4add-43f9-bc87
 
 ## Complete Part 1: Slido questions
 
+<!--
+
 ::: iframe
 
 https://wall.sli.do/event/d35sArEpryyz2JVeVjSHwt?section=fdeecb9f-4add-43f9-bc87-31818e0b6c22&integration=shared-present-mode&utm_source=slidoadmin
 
 :::
 
+-->
+
+![](/assets/slido-what-does-lab-1-output.png)
+![](/assets/slido-what-does-file-structure.png)
+![](/assets/slido-what-does-part-1.png)
+![](/assets/slido-what-does-wrapping-text-with-or-do.png)
+![](/assets/assets/slido-r-example-1.png)
+![](/assets/slido-r-1-1.png)
+![](/assets/slido-what-does-a-code-block-do-and-how-do-you-create-a-code-block.png)
+![](/assets/slido-a-1-a.png)
+![](/assets/slido-a-c-3-4-5-a.png)
+![](/assets/slido-a-c-3-4-5-a-3.png)
+
 ## Complete Part 2: Viewing data
 1. Now complete Part 2 of the lab assignment.
 1. If you were having trouble with your R installation, this is the time to troubleshoot.
 1. After you have completed the lab assignment, let me know, and I will come check your work. After you have shown me your file, you are free to leave.
+
+## Running one chunk of code without knitting
+
+![](/assets/run-code.gif)
 
 # Extra
 

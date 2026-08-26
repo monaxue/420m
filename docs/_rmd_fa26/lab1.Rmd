@@ -60,7 +60,7 @@ a[3]
 
 library(tidyverse)
 
-#numbers_data <- read_csv("")
+numbers_data <- read_csv("")
 
 ```
 3. What name did the dataset get assigned to?
@@ -72,12 +72,11 @@ library(tidyverse)
 ```{r}
 
 
-
 ```
 
 **Answer:** Your answer here.
 
-5. Using using the format `dataset_name$column_name`, assign the list of numbers in the column `digits` to the variable `a`. Make sure to replace `dataset_name` and `column_name` with the actual names.
+5. Using the format `dataset_name$column_name`, assign the list of numbers in the column `digits` to the variable `a`. Make sure to replace `dataset_name` and `column_name` with the actual names.
 
 ```{r}
 

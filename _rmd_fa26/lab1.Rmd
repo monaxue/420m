@@ -1,0 +1,108 @@
+---
+title: "First R Studio Project Lab"
+author: "your name here"
+date: "2026-08-13"
+output: html_document
+---
+
+# Lab 1
+
+#File structure
+
+First, follow the instructions on the slides to create your folders and RStudio project. Then, you will complete the following:
+
+## Part 1: Slido questions
+
+1. Make sure that this lab1.Rmd file is in your lab1 folder.
+
+2. Knit this file.
+
+3. Look at the **output**, and answer the *Slido questions*.
+
+**Code Block 1**
+
+```{r}
+
+# Example 1
+
+1+1
+
+```
+
+**Code Block 2**
+
+```{r}
+
+# Example 2
+
+a <- 1
+a
+
+# Example 3
+
+a <- c(3,4,5)
+a
+
+# Example 4
+
+a <- c(3,4,5)
+a[3]
+
+```
+
+## Part 2: Viewing data
+
+1. Download the data file `firstData.csv` from the lab website at `monaxue.github.io/420m` and put it in your `lab1` folder.
+
+2. Load the dataset by completing the following code chunk (and remove comments if needed). Between the quotes inside the function `read_csv()`, input the name of the file (along with `.csv`).
+
+```{r}
+
+library(tidyverse)
+
+#numbers_data <- read_csv("")
+
+```
+3. What name did the dataset get assigned to?
+
+**Answer:** Your answer here.
+
+4. What is the column name of the dataset? Use the function `head(numbers_data)` to take a peak at the top of the dataset.
+
+```{r}
+
+
+
+```
+
+**Answer:** Your answer here.
+
+5. Using using the format `dataset_name$column_name`, assign the list of numbers in the column `digits` to the variable `a`. Make sure to replace `dataset_name` and `column_name` with the actual names.
+
+```{r}
+
+
+```
+
+
+6. Using the following code chunk, print the 1st, 6th and 12th values of 
+the dataset using the `[]` notation.
+
+```{r}
+
+
+```
+
+7. Introduce yourself! What are your hobbies? How do you feel about statistics and coding?
+
+**Answer**: 
+
+8. Knit and submit this project as an html file on Canvas.
+
+
+
+
+
+
+
+

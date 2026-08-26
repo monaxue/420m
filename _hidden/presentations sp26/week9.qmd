@@ -1,0 +1,248 @@
+---
+title: "9: Effect sizes"
+---
+
+## Key question
+
+
+- Sometimes, there is a true difference means, but the difference is too small to be meaningful.
+- How do we know that a difference is big enough to meaningful? 
+    - Answer: Effect sizes.
+
+## Effect sizes
+
+- The effect size is how many standard deviations the means are apart. 
+    - An effect size of 1 means that the differences in means are 1 SD apart.
+    - Basically: the SD becomes the new unit
+- It is a measure of signal strength, so it does not depend on sample size.
+- To calculate, use: 
+    - (mean(x1) - mean(x2)) / sd(x2)
+- You can get the means and SD from from your summary table like this (make sure to replace the names with the appropriate values)
+
+    ```r
+    summary_table[row_number,column_number]
+
+    ```
+
+## What we will do
+
+::: card-list
+
+1. Today, we will be seeing if there is a meaningful difference in annual salary between UT grads and Texas A&M grads. (Note: these are simulated, so fake, data!)
+1. We will look at a data set with a [large sample size](/data/salsLargeN.csv){.filelink}, and separately, adataset with a [small sample size](/data/salsSmallN.csv){.filelink}. Both are complete datasets.
+1. Using effect sizes, we will assess if a difference in means is meaningful, despite a small p-value.
+    
+:::
+
+## Review
+
+Log in and answer directly in the slides!
+
+
+::: iframe
+
+https://app.sli.do/event/i3EEgRwm48fNt3yUXKL7ys/embed/polls/d570183d-8d17-4870-94bb-1614fa6c6378
+
+:::
+
+
+## Slido
+
+Here is a sneak peak of a dataset:
+
+```{r}
+
+library(tidyverse)
+library(ggplot2)
+
+data1 <- read_csv("./data/salsLargeN.csv")
+data2 <- read_csv("./data/salsSmallN.csv")
+
+head(data1)
+
+```
+
+Based on the above, what is the code to conduct a t.test?
+
+::: iframe
+
+https://app.sli.do/event/i3EEgRwm48fNt3yUXKL7ys/embed/polls/3041c270-0d66-4873-83f8-12b864440efc
+
+:::
+
+
+
+# Deliverables 
+
+Multiple slides, make sure to go to the end!
+
+## {.center}
+
+- For each dataset, create a frequency polygon, CI plot, summary table, and t-test, grouping by `school`
+
+# What your results should look like
+
+## Large sample  
+
+```{r}
+
+library(tidyverse)
+library(ggplot2)
+
+data <- data1
+
+hist <- ggplot(data, aes(x=salary, color=school)) + geom_freqpoly()
+
+t_test <- t.test(data=data, salary ~ school)
+
+summary <- data %>% group_by(school) %>% summarize(SampleSize=n(), Mean = mean(salary), SD = sd(salary), SE=SD/sqrt(SampleSize), LowerCI = Mean-1.96*SE, UpperCI = Mean+1.96*SE)
+
+
+mean_plot <- ggplot(summary, aes(x=school, y=Mean)) + geom_point() + geom_errorbar(aes(ymin=LowerCI, ymax=UpperCI))  
+
+```
+
+:::: panel-tabset
+
+## Frequency polygon
+
+```{r}
+hist
+```
+
+## Summary table
+```{r}
+
+knitr::kable(summary)
+
+
+```
+
+## Mean plot
+
+```{r}
+mean_plot
+```
+
+## t-test
+
+```{r}
+
+print(t_test)
+
+```
+
+::::
+
+## Small sample
+
+```{r}
+data <- data2
+
+hist <- ggplot(data, aes(x=salary, color=school)) + geom_freqpoly(binwidth=1000)
+
+t_test<- t.test(data=data, salary ~ school)
+
+summary <- data %>% group_by(school) %>% summarize(SampleSize=n(), Mean = mean(salary), SD = sd(salary), SE=SD/sqrt(SampleSize), LowerCI = Mean-1.96*SE, UpperCI = Mean+1.96*SE)
+
+mean_plot <- ggplot(summary, aes(x=school, y=Mean)) + geom_point() + geom_errorbar(aes(ymin=LowerCI, ymax=UpperCI))
+
+```
+
+:::: panel-tabset
+
+## Frequency polygon
+
+```{r}
+hist
+```
+
+## Summary table
+```{r}
+
+knitr::kable(summary)
+
+
+```
+
+## Mean plot
+
+```{r}
+mean_plot
+```
+
+## t-test
+
+```{r}
+
+print(t_test)
+
+```
+
+::::
+
+
+## For the large dataset, answer the following
+
+::: card-list
+- Are the frequency polygons similar or different?
+- Does the confidence interval include zero? Or is it above/below?
+- Is the p-value "small" or "big"?
+- Visually compare the *sample* means between schools in the frequency polygon (not population!). Is this difference "small" or "big"?
+- Compare this difference in means to the p-value/CI. What is "weird" about these results? Where there are "/", choose the right words for following
+
+    ```{verbatim}
+    The p-value is "small/big" and the sample mean difference is "small/big". 
+    The p-value shows "strong/weak" evidence for a difference, 
+    and the frequency polygon shows "strong/weak" evidence for a difference. 
+    So p-value and frequency polygon are "consisistent/inconsistent" with each other.
+    ```
+
+:::
+
+## For the small dataset, answer the following
+
+- Are the frequency polygons similar or different?
+- Does the confidence interval include zero? Or is it above/below?
+- Is the p-value "small" or "big"?
+- Visually compare the *sample* means between schools in the frequency polygon (not population!). Is this difference "small" or "big"?
+- Compare this difference in means to the p-value/CI. What is "weird" about these results? Where there are "/", choose the right words for following
+
+    ```{verbatim}
+    The p-value is "small/big" and the sample mean difference is "small/big". 
+    The p-value shows "strong/weak" evidence for a difference, 
+    and the frequency polygon shows "strong/weak" evidence for a difference. 
+    So p-value and frequency polygon are "consisistent/inconsistent" with each other.
+    ```
+
+<!--
+
+## What's weird?
+
+::: card-list
+
+- For the large dataset
+    - The p-value is very small, this means that the probability of getting this difference, given the null is true, is small. This provides evidence that there is a true difference.
+    - But the frequency polygons look very similar!
+    - Key question: So is this difference big enough to be an important difference?
+- For the small dataset
+    - The p-value is larger, so we cannot reject the null hypothesis.
+    - The frequency polygons look different, but since it's a small sample, it could be due to noise.
+
+- When our p-value/CI suggest a true difference, how can we determine if that difference is big enough to be meaningful?
+
+:::
+
+-->
+
+
+##
+
+- Calculate the effect size for the large dataset. 
+- What is the effect size, and in your opinion, is this big or small? (Think about how effect size relate to standard deviation)
+- What is your main takeaway from today's lab?
+
+
+
+
+

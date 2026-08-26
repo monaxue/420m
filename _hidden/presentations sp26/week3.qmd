@@ -1,0 +1,386 @@
+---
+title: "3: for loops and central limit theorem"
+subtitle: Please open up R Studio
+---
+
+<!--
+See 'demo.qmd' for more updated portions of the slides
+
+Don't save dataset next time.
+
+Maybe show them visually what the simulation should look like (+ for loop). Show what central limit theorem looks like so they can try to understand it without the cognitive load of new code. Do this before they actually code, so when they do code, they know what they are trying to do.
+
+Try to show how excited you are about simulations.
+
+Also maybe make this your micro teaching.
+
+Also, clarify difference between real data and fake data. Students often get confused by this.
+
+Use your pretend world analogy from your old undergrad presentation.
+
+-->
+
+## Review: Where should your 420M folder be?
+
+![](/assets/slido-where-can-your-420m-folder-be.png)
+
+
+## First, we need to create our lab3 folder
+
+Where should you create your lab3 folder?
+
+Answer: Your 420m Folder
+
+. . .
+
+## Create your lab3 folder
+
+## Next, we need to create our R studio project
+Where do we create our R studio project?
+
+![](/assets/slido-where-should-you-create-your-r-studio-project-in-this-class.png)
+
+## Let's create the R studio project
+
+![](/assets/make-r-project.gif)
+
+
+## Now, create an EMPTY Rmd file
+
+Make sure it is EMPTY
+
+![](/assets/make-rmarkdown.gif)
+
+
+## Save the Rmd file
+
+Where do we save the Rmd file?
+
+![](/assets/slido-where-should-you-save-your-rmd-file.png)
+
+## Add the title, author, and date
+What is the proper format?
+
+:::: columns
+::: column
+![](/assets/yml_slido.png)
+:::
+
+::: column
+![](/assets/slido-how-do-you-properly-format-the-title-author-and-date.png)
+:::
+::::
+
+## Add the first code chunk
+What is the proper format?
+
+:::: columns
+
+::: column
+![](/assets/code_block_slido.png)
+:::
+
+::: column
+![](/assets/slido-how-do-you-properly-format-your-code-chunk.png)
+:::
+::::
+
+## Simulating height
+::: card-list
+- Today, we are going to simulate our own heights dataset, and then plot it
+- What is a simulation?
+    - A simulation is when we generate fake data form scratch.
+    - Our beliefs and hypotheses inform the mechanism we use to generate the data.
+:::
+
+## There is a mechanism that produces all data
+
+:::: card-list
+- What are some factors that impact height?
+    - Genetics
+    - Nutrition
+    - Exercise
+- Let's say that everyone's height is determined by the average height plus or minus some of these factors. 
+    - Let's take a look in R
+    ```r
+    avg_height <- 66
+    genes <- sample(-10:10, size=1) # randomly samples a single number from -10 to 10
+    final_height <- avg_height + genes
+    ```
+- We just simulated for one person. Now we want to repeat this 100 times.
+::::
+
+::: notes
+Have students raise their hands.
+
+:::
+
+## for loops
+
+::: card-list
+- Wrap the following around the code you want to repeat
+
+    ```r
+    for (person in 1:100){
+    # Code to repeat goes here. This repeats the code 100 times.
+    # `person` takes the value 1 the first time, then 2 the second time, etc.
+    }
+    ```
+- Try running that block of code. Try printing `final_height`. What do you get?
+    - You should only get one number.
+:::
+
+<!--
+
+. . .
+
+::: iframe
+https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
+:::
+
+-->
+
+## You need to store all the numbers from the simulation!
+::: card-list
+- If you don't store the simulated numbers into a list, `final_height` gets over-written again and again.
+- So we create an empty list, then each time the for loop runs, we store the new value in the next place in the list.
+:::
+
+## What goes in A, B, and C?
+
+
+::::: columns
+
+:::: column
+
+```r
+avg_height <- 66
+sim_heights <- A
+
+for (person in 1:100){
+genes <- sample(-10:10, size=1)
+final_height <- avg_height + genes
+sim_heights[B] <- C
+}
+
+sim_heights
+```
+::: card-list
+- hint: `person` goes in one of them
+- A = c()
+    - This is am empty list to store data
+:::
+::::
+
+:::: column
+
+::: card-list
+- B = person
+    - person takes the value of 1 the first time the for loop runs, and 2 the second time, 3 the third time, etc., until we reach the 100th time.
+- C = final_height
+    - We put the final_height of the first person in sim_heights[1], and second person in sim_heights[2], etc.
+:::
+
+
+<!--
+
+::: iframe
+https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
+:::
+
+-->
+
+::::
+:::::
+
+##
+
+```r
+avg_height <- 66
+sim_heights <- c()
+
+for (person in 1:100){
+genes <- sample(-10:10, size=1)
+final_height <- avg_height + genes
+sim_heights[person] <- final_height
+
+}
+
+sim_heights
+```
+
+::: notes
+
+:::
+
+## Plot the data
+::: {.card-list .nonincremental}
+
+1. Convert our sim_heights to a dataframe.
+    - We will need to load the `tidyverse` package to do so.
+1. Plot a histogram using ggplot()
+    - We will need the `ggplot2` package.
+:::
+
+
+![](/assets/slido-how-should-you-load-the-tidyverse-package.png)
+
+## Creating a dataframe
+::: card-list
+- Use the following code to create a dataframe with 1 column named `heights`, populated with our simulated data:
+
+    ```r
+    df <- tibble(heights = sim_heights) # converts the c() list to a dataframe
+    ```
+- Let's take a look in R
+:::
+
+## ggplot basics
+
+::: {.card-list}
+
+- Basic formulation: `ggplot(data, aes(x,y))`
+    - This doesn't plot anything, but just provides important information, like the x and y variables, to ggplot
+    - `aes` means "aesthetics"
+    - You could just have `x` in aesthetics for histograms
+- To actually plot things, you add layers using `+`
+- Examples of layers:
+    - `geom_histogram()` for histograms
+    - `geom_freqpoly()` for frequency polygons (continuous versions of histograms)
+
+::: 
+
+## Let's take a look in R
+
+```r
+avg_height <- 66
+sim_heights <- c()
+
+for (person in 1:100){
+genes <- sample(-10:10, size=1)
+sim_heights[person] <- avg_height + genes
+}
+
+df <- tibble(heights = sim_heights)
+ggplot(data=df, aes(x=heights)) + geom_histogram()
+
+```
+
+## Run the simulation multiple times
+
+What is the shape of your plot?
+
+<!--
+::: iframe
+https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
+:::
+-->
+
+Answer: they vary a lot, but overall they are flat.
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+```
+
+```{r}
+avg_height <- 66
+all_sims <- list()
+
+for (j in 1:6){
+    sim_heights <- c()
+    for (person in 1:100){
+    genes <- sample(-10:10, size=1)
+    sim_heights[person] <- avg_height + genes
+    }
+    df <- tibble(heights = sim_heights, sim=rep(x = j, times=100))
+    all_sims[[j]] <- df
+}
+
+df <- bind_rows(all_sims)
+
+ggplot(data=df, aes(x=heights)) + geom_histogram() + facet_wrap(~sim)
+```
+
+## Let's add another variable
+
+```r
+avg_height <- 66
+sim_heights <- c()
+
+for (person in 1:100){
+genes <- sample(-10:10, size=1)
+nutrition <- sample(-5:5, size=1)
+
+sim_heights[person] <- avg_height + genes + nutrition
+}
+
+df <- tibble(heights = sim_heights)
+ggplot(data=df, aes(x=heights)) + geom_histogram()
+```
+
+## How has the shape changed?
+
+Answer: With an additional variable, the shapes of the distributions are more bell shaped.
+
+<!--
+::: iframe
+https://wall.sli.do/event/wjkrscKYtK3h27S9foCpEN
+:::
+-->
+
+```{r}
+avg_height <- 66
+all_sims <- list()
+
+for (j in 1:6){
+    sim_heights <- c()
+    for (person in 1:100){
+        genes <- sample(-10:10, size=1)
+        nutrition <- sample(-5:5, size=1)
+        sim_heights[person] <- avg_height + genes + nutrition
+    }
+    df <- tibble(heights = sim_heights, sim=rep(x = j, times=100))
+    all_sims[[j]] <- df
+}
+
+df <- bind_rows(all_sims)
+
+ggplot(data=df, aes(x=heights)) + geom_histogram() + facet_wrap(~sim)
+```
+
+## Many independent causes → bell shaped distribution
+::: card-list
+- With more independent causes, the distribution becomes more bell shaped
+- This approximates a normal/Gaussian distribution
+- This is the central limit theorem
+:::
+
+## Save you data with `write_csv`
+
+To save your dataset, use the function `write_csv()`. The following code saves the dataframe named `df` to a file named `dataset_name.csv`:
+
+```r
+write_csv(df, "dataset_name.csv")
+```
+
+## Notes about today's deliverables
+::: card-list
+- Submit an html file to Canvas (ignore what Canvas says).
+- To make the process more efficient, check in with your group before you check in with me. If you check with 2 people and confirm that your lab reports look similar, then I only have to check 10 reports, rather than 30. This means you won't have to wait as long for me to come around.
+:::
+
+## Deliverables
+::: {.card-list .nonincremental}
+1. Simulate heights data for 200 people. 
+    1. This time, use women's average height (64 inches)
+    1. Include the two variables we used before.
+    1. Include an additional variable of your choice. 
+1. A histogram or frequency polygon of women's heights.
+1. Save the dataset as "heights_women.csv" using `write_csv()`
+1. How would you describe the shape of your distribution?
+    - With three variables, the shape of the distribution is even more bell shaped.
+1. Let's say that you look at the distribution of a dataset and see that it is not bell shaped. Based on our first simulation and what we learned about the central limit theorem, what is one possible reason why that may be?
+    - There may be one (or only a few) causal factors dominating how the dataset is generated.
+
+::: 

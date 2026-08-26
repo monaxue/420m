@@ -1,0 +1,94 @@
+---
+title: "Boxplots and Confidence Intervals"
+author: "your name here"
+date: "2026-08-14"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.width = 5,        # Default width of plots in inches
+  fig.height = 4,       # Default height of plots in inches
+  fig.align = 'center' # Center-align plots: 'center', 'left', or 'right'
+)
+```
+
+## Research question for this lab: 
+Hand washing is one of the most important things that humans can do to prevent 
+the spread of many infectious diseases, such as the flu and various forms of
+coronaviruses. Do females in general wash their hands more often than males?
+
+## Methods:
+25 female and 25 male volunteers were given a fitbit-like device that measured 
+the number of times they washed their hands. The total number of times each
+volunteer washed their hands over the course of a week was measured. The 
+volunteers were initially told that the devices measured “activity”, and were 
+only told that hand washing was being measured after the experiment. 
+
+### In this lab, you will
+
+1. Make a path/folder for this lab (e.g. `.../420/labs/lab3`) on 
+your class folder and create a new R project on that path/folder.
+
+2. Download the data file `HandWashingData.csv` from Canvas and add it to that 
+new folder.
+
+3. In the following code chunk, load the `tidyverse` package and read the 
+`HandWashingData.csv` data (you can use the `read_csv()` function).
+
+```{r read-data}
+
+```
+
+4. Make a histogram of the number of `washes` by `sex` with a ``good'' binwidth.
+Describe these distributions (*i.e.* how are they alike/different? Do they 
+suggest any differences between the sexes?).
+
+```{r histogram}
+
+```
+
+**Ans:** 
+
+5. Make a frequency polygon of the number of `washes` by `sex`. What are the 
+similarities/differences between the frequency polygon and the histogram?
+
+```{r polygon}
+
+```
+
+**Ans:**
+
+6. Make a boxplot of the number of `washes` by `sex`. Between these boxplots and
+the previous summary plots, which one do you find easier to interpret and why?
+When might we prefer to use one type vs another?
+
+```{r box-plot}
+
+```
+
+**Ans:**
+
+7. Create a table that contains the sample size, mean, standard deviation, 
+standard error of the mean, and the width of the confidence interval of the 
+number of `washes` by`sex` (result should only have 2 rows). Print the result
+using the following code chunk.
+
+```{r table}
+
+```
+
+8. Make a plot that displays the mean and confidence interval of the mean number 
+of `washes` by `sex` (**hint:** you can use the functions `geom_point()` and 
+`geom_errorbar()`).
+
+```{r mean-ci-plot}
+
+```
+
+9. Write a short interpretation of the results of this experiment. What should 
+we conclude about the hand washing behavior between the sexes? Should we think
+they are the same-ish, or different? How can we justify our conclusion?
+
+**Ans:**

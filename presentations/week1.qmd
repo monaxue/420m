@@ -1,0 +1,252 @@
+---
+title: Welcome to PSYCH 420!
+---
+
+## Welcome to PSYCH 420!
+
+**Attendance**
+
+::: iframe
+https://wall.sli.do/event/d35sArEpryyz2JVeVjSHwt?section=fdeecb9f-4add-43f9-bc87-31818e0b6c22&integration=shared-present-mode&utm_source=slidoadmin
+:::
+
+## Overview
+
+::: {.card-list .nonincremental}
+1. Course logistics
+1. Teaching philosophy
+1. R Markdown basics
+:::
+
+## How does this course work? 
+::: {.card-list}
+- Hybrid format
+- There are online "content modules" and in-person labs
+
+:::
+
+## Online content vs. in-person labs
+
+::::: columns
+
+:::: column
+### Online modules
+- Learn **statistical concepts**
+- Content that will be relevant for in-person **quizzes** (more on this later)
+- All content is on **Canvas**
+
+::::
+
+:::: column
+### In-person labs
+- Learn to **code in R**
+- Content that will be relevant for **Case Studies** projects
+- All content is on the **lab website** (but you will turn things in on Canvas)
+
+::::
+:::::
+
+
+## Lab website
+::: card-list
+- We have a separate website for the lab. 
+    - <https://monaxue.github.io/420m/>
+- Please use the lab website, and not Canvas, to download lab related materials.
+    - They will be more up-to-date and easier to follow.
+- The lab slides will also be posted on the website.
+- However, assignments should be submitted through Canvas
+
+:::
+
+## Major assessments
+
+:::: panel-tabset
+
+
+## Quizzes
+
+- Quizzes will assess your knowledge of statistical concepts that you have learned in the online modules. 
+- They will occur in-person during the second half of the lab, and will take one hour to complete.
+- They are closed notes except for a handwritten cheatsheet that you create (which can be counted towards extra credit).
+- There will be 3 quizzes throughout the semester.
+
+## Case studies
+
+- Cases studies are like large lab reports. They will assess the skills that you have learned from the in-person labs. 
+- They will occur in-person during lab and will take the full two hours.
+- Case studies can be completed using previous labs as reference.
+- There will be 3 case studies throughout the semester.
+
+::::
+
+## Office hours
+
+Fill out your availability by Saturday so I can determine the best time for office hours
+
+::::: {.columns}
+
+:::: {.column width="20%"}
+:::{.card-list .nonincremental}
+- ![](/assets/fa26_qrcode_timeful.app.png){height="150"}
+:::
+::::
+
+:::: {.column width="80%"}
+:::{.card-list .nonincremental}
+- <https://timeful.app/e/3A6DF>
+:::
+::::
+
+:::::
+
+
+## Teaching philosophy
+
+- My primary goals is to help you learn
+- I believe that every single one of you can can succeed in this class
+- That being said, this class will not be easy
+- The most successful students in my class are those that
+    - Actively participated in class
+    - Asked for a lot of help
+
+
+## Communication is key
+
+
+- Don't be afraid to reach out to me. If you have questions or are struggling with assignments, please please reach out!
+- I try to be an understanding person, but can only do so if you communicate with me. Please reach out to me if you have any concerns about your abilities to attend class, complete assignments, etc. 
+
+
+
+## Teaching philosophy
+
+- I believe that the best way to learn involves 
+    1. Solving problems on your own
+    1. Discussing problems with peers
+    1. Asking for help
+
+## Teaching philosophy {transition="none"}
+
+- Therefore, I have structured the lab section so you can
+    - Code independenty, instead of just copying what I do
+    - Discuss questions with your peers
+    - Get direct feedback from me on your lab assignments
+- Because of the way I structure class, class usually takes up the full two hours.
+
+
+## Teaching philosophy {transition="none"}
+
+- Again, I want to emphasize in class participation
+- Participation not only helps you learn, it helps create a classroom environment that helps everyone learn
+- Polls will be used for attendance
+
+## Ok, now let's practice!
+
+<!--
+**Poll: What is your experience with R?**
+- I don't have any experience with R
+- I've used R before but don't remember much
+- I know what RMarkdown is
+- I know what <- does
+- I know what %>% does
+- I know what ggplot does
+- I know what tidyverse does
+
+-->
+
+::: iframe
+
+https://wall.sli.do/event/d35sArEpryyz2JVeVjSHwt?section=fdeecb9f-4add-43f9-bc87-31818e0b6c22&integration=shared-present-mode&utm_source=slidoadmin
+
+:::
+
+
+
+# File directory
+
+
+## Make a folder for this class
+
+::: {.nonincremental}
+
+1. Create a folder somewhere named `420m`
+    - Ok places: Home, Documents, Desktop. etc
+    - Do not create it in a cloud service (iCloud, OneDrive, etc.)
+    - Do not create it in Downloads
+2. Inside `420m`, create a folder called `lab1`
+3. The organization should look like: `…/420m/lab1`
+
+:::
+
+# RStudio
+
+## What is an RStudio project?
+
+::: {.card-list}
+- A project tells RStudio which folder is the main folder
+- That way, when you read or save files, R will know where to find them.
+- We will make a new project for each lab
+:::
+
+## Install R and create RStudio project
+::::: {.columns}
+:::: {.column .nonincremental}
+
+::: {.nonincremental}
+
+1. Install R: <https://cloud.r-project.org/>
+1. Install RStudio: <https://docs.posit.co/ide/user/#install-links>
+1. Create an RStudio project in RStudio
+    - In RStudio click on `Project > New Project > Existing Directory`
+    - Select your `lab1` folder
+:::
+::::
+
+:::: {.column .nonincremental}
+::: nonincremental
+- ![](/assets/make-r-project.gif)
+- If you cannot complete these steps in allotted time, please find a someone who has successfully installed R to complete Part 1 of the lab. We will have time to troubleshoot at the end of class.
+:::
+::::
+
+:::::
+# Introduction to RMarkdown
+
+## What is RMarkdown?
+
+::: card-list
+
+- RMarkdown is a special type of file that combines the functions of R and Word.
+- This means you can format documents directly in R
+- [Example](/assets/rmarkdown_example.html){.filelink}
+
+:::
+
+## Download Lab 1
+
+- Go to <https://monaxue.github.io/420m/> and download `lab1.Rmd`
+- Move `lab1.Rmd` into your `lab1` folder.
+
+
+## Complete Part 1: Slido questions
+
+::: iframe
+
+https://wall.sli.do/event/d35sArEpryyz2JVeVjSHwt?section=fdeecb9f-4add-43f9-bc87-31818e0b6c22&integration=shared-present-mode&utm_source=slidoadmin
+
+:::
+
+## Complete Part 2: Viewing data
+1. Now complete Part 2 of the lab assignment.
+1. If you were having trouble with your R installation, this is the time to troubleshoot.
+1. After you have completed the lab assignment, let me know, and I will come check your work. After you have shown me your file, you are free to leave.
+
+# Extra
+
+## Where is the backtick on your keyboard
+
+![](/assets/backtick_keyboard.webp)
+
+## Creating R Studio Project
+
+![](/assets/make-r-project.gif)

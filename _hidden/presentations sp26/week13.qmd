@@ -1,0 +1,399 @@
+--- 
+title: Week 13
+center: true
+---
+
+<!--
+
+For deliverables next time, only include 2 datasets (the first and third maybe, one for order 1 and one for order 2. People were having a hard time keeping track of the multiple datasets and plots.)
+
+Conceptual confusions:
+
+- People thought they had to use poly for geom_smooth in the order 2 residuals plot. Clarify that by showing that subtracting a curvey model from a curvey data results in a straight line plot.
+- People didn't realize for order 2 residuals, they needed to input the residuals from the order two linear model
+
+Technical struggles
+- Organizing code and keeping track of datasets (major)
+- Misupderstandings about what is on x vs. what is on y (minor)
+- When variables are "overwritten"
+
+Provide students with tips at the beginning for how to organize their code. 
+- Teach them how to organize their code in RMarkdown, and tell them the best way to do it in this assignment
+
+Give them a little code puzzles (maybe as hint tools, rather than starting with it)
+
+Tell them how many plots they should have at the end, and maybe give the the ability to check off each plot (maybe a separate delibervables checkbox page.)
+-->
+
+## Review
+
+::: iframe
+
+https://wall.sli.do/event/txEdPh4n3SJx3cncrE92th?section=9008987a-b2f6-4f4e-beb6-639ff0aca4b3&integration=shared-present-mode&utm_source=slidoadmin
+
+:::
+
+<!--
+
+## Answer {.conditional data-admin="true" data-date="2026-04-18"}
+
+```r
+model1 <- lm(reported_shape ~ hours, data = data)
+model1
+```
+```{r}
+
+library(tidyverse)
+
+data1 <- read_csv("./data/shapeVsHours.csv")
+
+model1 <- lm(reported_shape ~ hours, data = data1)
+
+model1
+```
+
+## Plotting the line
+
+::: {.conditional data-admin="true" data-date="2026-04-18"}
+
+```r
+ggplot(data=..., aes(x=..., y=...)) + geom_point() + geom_smooth(method="lm")
+```
+
+```{r}
+
+ggplot(data=data1, aes(x=hours, y=reported_shape)) + geom_point() + geom_smooth(method="lm")
+
+```
+
+:::
+-->
+
+## Outline
+
+<ol class="menu"></ol>
+
+# Residuals {data-stack-name="Residuals"}
+
+
+## How residuals work
+
+::::: panel-tabset
+
+### The gist
+::: card-list-center
+
+- Residuals = Estimated "errors" from our predicted model.
+
+- $\text{Data} =  \underbrace{\text{Slope} \times x + \text{Intercept}}_\text{Predicted Line} + \text{Residuals}$
+
+- $\text{Residuals} = \text{Data} - \text{Predicted Line}$
+
+:::
+
+```{=html}
+
+<div style="height:200px"></div>
+
+```
+
+### Illustration
+
+![](/assets/regression_to_residuals.gif){fig-align="center" fig-alt="Residuals = Data - Predicted Line"}
+
+### Implication
+
+What can residuals tell us about our predicted model?
+
+- The estimated "errors" from our predicted model are called residuals.
+    - Since the true errors are random (by definition), if our predicted model is correct, the residuals should also be random.
+
+<!--
+
+### Slightly more accurate
+
+$y_\text{model} = \text{intercept}_\text{model} + \text{slope}_\text{model} \times x_\text{data points}$
+
+$y_\text{data points} =  y_\text{model} + \text{errors}_\text{model}$
+
+$\text{errors}_\text{model} = y_\text{data points} - y_\text{model}$
+
+-->
+
+::::::
+
+## Getting residuals with `lm()`
+The `lm()` function in R automatically calculates the residuals for you. 
+
+```r
+predicted_model <- lm(... ~ ..., data = ...)
+residuals <- predicted_model$residuals
+residuals
+```
+
+```{r}
+model1 <- lm(reported_shape ~ hours, data = data1)
+residuals <- model1$residuals
+residuals
+```
+
+## Residual plots
+
+```r
+data <- data %>% mutate(residudals = predicted_model$residuals)
+ggplot(data=data, aes(x=..., y=residuals)) + geom_point() + geom_smooth(method="lm")
+```
+
+```{r}
+#| fig-align: "center"
+
+data1 <- data1 %>% mutate(resids = model1$residuals)
+
+ggplot(data=data1, aes(x=hours, y=resids)) + geom_point() + geom_smooth(method="lm", color = "firebrick")
+
+```
+
+Because residuals are noise, they should look random (no slope or pattern). Something is likely wrong with the analysis if the residuals don't look random (slope is 0).
+
+
+## 
+
+Compare these plots plots.
+
+:::: columns
+::: {.column .nonincremental}
+
+**Dataset 1: Reported shape vs. hours**
+
+```{r}
+
+ggplot(data=data1, aes(x=hours, y=reported_shape)) + geom_point() + geom_smooth(method="lm") + labs(title="Regression")
+
+```
+
+```{r}
+
+data1 <- data1 %>% mutate(resids = model1$residuals)
+
+ggplot(data=data1, aes(x=hours, y=resids)) + geom_point() + geom_smooth(method="lm", color = "firebrick") + labs(title="Residuals")
+
+```
+
+:::
+
+::: {.column .nonincremental}
+
+**Dataset 2: Heart rate vs. hours**
+
+```{r}
+
+data2 <- read_csv("./data/bpmVsHours.csv")
+ggplot(data=data2, aes(x=hours, y=bpm)) + geom_point() + geom_smooth(method="lm") + labs(title="Regression")
+
+```
+
+```{r}
+
+model2 <- lm(bpm ~ hours, data=data2)
+data2 <- data2 %>% mutate(resids = model2$residuals)
+
+ggplot(data=data2, aes(x=hours, y=resids)) + geom_point() + geom_smooth(method="lm", color = "firebrick") + labs(title="Residuals")
+
+```
+
+:::
+::::
+
+## Interpretation
+
+::: nonincremental
+
+- We can see that in the second dataset, there is still a pattern in the residual plot. Specifically, there is an clear curve in residuals. This means that the straight line model that we have fitted to the data is not accounting for all systematic variance. Ideally, we want a model that can capture the true relationship between two variables, so a better model should be chosen to account for more of the systematic patterns. When our chosen model is more similar to the true model, the residuals should appear more randomly scattered.
+
+:::
+
+# Polynomial curve fitting {data-stack-name="Polynomial curve fitting"}
+
+## Fitting curved lines using polynomials
+
+:::::: columns
+::::: {.column .nonincremental}
+
+::: nonincremental
+- Order 1: $y \sim x$
+- Order 2: $y \sim x^2$
+- Order 3: $y \sim x^3$
+:::
+
+:::::
+
+::::: {.column .nonincremental}
+
+```{r}
+#| fig-height: 10
+
+x = seq(0, 10, by = 0.01)
+
+`y = x` <- x
+
+`y = x^2` <- x^2
+
+`y = x^3` <- x^3
+
+poly <- tibble(x=x, `y = x`=`y = x`, `y = x^2` = `y = x^2`, `y = x^3` = `y = x^3`)
+
+poly <- poly %>% pivot_longer(names_to = "order", values_to = "y", cols = c(2,3,4))
+
+ggplot(data=poly, aes(x=x, y=y, color = order)) + geom_line() + ylim(0,100)
+
+```
+
+:::::
+
+::::::
+
+## 
+
+:::::: panel-tabset
+
+## `poly()` function
+
+::: nonincremental
+- Fits a model with an order 1 polynomial
+    - 
+        
+        ```r
+        lm(data$y ~ poly(data$x, 1))
+        ```
+    - Equivalent are standard regression models
+
+- Fits a model with an order 2 polynomial
+    - 
+
+        ```r
+        lm(data$y ~ poly(data$x, 2))
+        ```
+
+:::
+
+```{=html}
+<div style="height:100px"></div>
+
+```
+
+## Plotting a curved line
+
+```r
+ggplot(data=data2, aes(x=..., y=...)) + geom_point() + 
+    geom_smooth(method="lm", formula = y ~ poly(x, 2))
+```
+
+```{r}
+#| fig-height: 4
+
+ggplot(data=data2, aes(x=hours, y=bpm)) + geom_point() + geom_smooth(method="lm", formula = y ~ poly(x, 2))
+
+```
+
+::::::
+
+## Deliverables {.scrollable}
+
+::: nonincremental
+- [ ] Download these datasets: [shapeVsHours.csv](/data/shapeVsHours.csv){.filelink}; [bpmVsHours.csv](/data/bpmVsHours.csv){.filelink}; [prodVsHours.csv](/data/prodVsHours.csv){.filelink}
+- For all 3 datasets:
+    1. Straight line plots
+        - [ ] Model fit plots
+        - [ ] Residual plots
+    2. 2nd order plots
+        - [ ] Model fit plots
+        - [ ] Residual plots
+- [ ] Compare the plots. Which ones are described well by the 1st order fit? Which plots do better with a 2nd order fit? Explain why (support your answer using residual plots)
+
+:::
+
+## Straight line plots
+
+:::::: panel-tabset
+
+## Model fit plots
+
+```{r}
+library(patchwork)
+
+data1 <- read_csv("./data/shapeVsHours.csv")
+data2 <- read_csv("./data/bpmVsHours.csv")
+data3 <- read_csv("./data/prodVsHours.csv")
+
+plot1 <- ggplot(data1, aes(x=hours,y=reported_shape)) + geom_point() + geom_smooth(method="lm")
+
+plot2 <- ggplot(data2, aes(x=hours,y=bpm)) + geom_point() + geom_smooth(method="lm")
+
+plot3 <- ggplot(data3, aes(x=hours,y=productivity)) + geom_point() + geom_smooth(method="lm")
+
+
+model1 <- lm(reported_shape ~ hours, data = data1)
+model2 <- lm(bpm ~ hours, data = data2)
+model3 <- lm(productivity ~ hours, data = data3)
+
+data1 <- data1 %>% mutate(resids = model1$residuals)
+data2 <- data2 %>% mutate(resids = model2$residuals)
+data3 <- data3 %>% mutate(resids = model3$residuals)
+
+resids1 <- ggplot(data1, aes(x=hours,y=resids)) + geom_point() + geom_smooth(method="lm")
+
+resids2 <- ggplot(data2, aes(x=hours,y=resids)) + geom_point() + geom_smooth(method="lm")
+
+resids3 <- ggplot(data3, aes(x=hours,y=resids)) + geom_point() + geom_smooth(method="lm")
+
+plot1 + plot2 + plot3
+
+```
+
+## Residual plots
+
+```{r}
+
+resids1+resids2+resids3
+
+```
+
+::::::
+
+## 2nd order plots
+
+:::::: panel-tabset
+
+## Model fit plots
+
+```{r}
+model1.2 <- lm(data1$reported_shape ~ poly(data1$hours, 2))
+model2.2 <- lm(data2$bpm ~ poly(data2$hours, 2))
+model3.2 <- lm(data3$productivity ~ poly(data3$hours, 2))
+
+data1 <- data1 %>% mutate(resids2 = model1.2$residuals)
+data2 <- data2 %>% mutate(resids2 = model2.2$residuals)
+data3 <- data3 %>% mutate(resids2 = model3.2$residuals)
+
+plot1.2 <- ggplot(data1, aes(x=hours,y=reported_shape)) + geom_point() + geom_smooth(method="lm", formula = y ~ poly(x,2))
+
+plot2.2 <- ggplot(data2, aes(x=hours,y=bpm)) + geom_point() + geom_smooth(method="lm", formula = y ~ poly(x,2))
+
+plot3.2 <- ggplot(data3, aes(x=hours,y=productivity)) + geom_point() + geom_smooth(method="lm", formula = y ~ poly(x,2))
+
+resids1.2 <- ggplot(data1, aes(x=hours,y=resids2)) + geom_point() + geom_smooth(method="lm")
+
+resids2.2 <- ggplot(data2, aes(x=hours,y=resids2)) + geom_point() + geom_smooth(method="lm")
+
+resids3.2 <- ggplot(data3, aes(x=hours,y=resids2)) + geom_point() + geom_smooth(method="lm")
+
+plot1.2 + plot2.2 + plot3.2
+
+```
+## Residual plots
+
+```{r}
+resids1.2 + resids2.2 + resids3.2
+
+```
+::::::

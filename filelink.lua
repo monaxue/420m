@@ -13,6 +13,20 @@ local function has_class(el, class)
   return false
 end
 
+local function clean_url(url)
+  -- Fix Windows path separators in leading ./ or ../
+  url = url:gsub("^%.\\", "./")
+  url = url:gsub("^%.%.\\", "../")
+  -- Remove pandoc's backslash-escaping of remaining characters (e.g. \_ -> _)
+  url = url:gsub("\\(.)", "%1")
+  return url
+end
+
+local function basename(url)
+  -- Extract filename from URL (after last / or \)
+  return url:match("[^/\\]+$") or ""
+end
+
 function Link(el)
   -- Only transform links with .filelink
   if not has_class(el, "filelink") then
@@ -23,7 +37,8 @@ function Link(el)
     return el
   end
 
-  local url = el.target
+  local url = clean_url(el.target)
+  local filename = basename(url)
   local text = el.content
 
   -- Original text link (normal)
@@ -47,8 +62,8 @@ function Link(el)
     download_icon,
     url,
     "",
-    {
-      download = "",
+     {
+      download = filename,
       title = "Download file"
     }
   )

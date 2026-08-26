@@ -1,0 +1,117 @@
+---
+title: Container Theme
+subtitle: Mona Xue
+---
+
+## Outline
+<ol class="menu"><ol>
+
+# Some Lists {data-stack-name="Some Lists"}
+
+## Slide 1 
+
+- One
+    - Two 
+        - Three
+        - Four
+    - Five
+
+## Slide 2 
+
+::: {.nonincremental}
+
+1. One
+    1. Two
+    1. Three
+    1. Four
+1. Five
+
+:::
+
+# Panels and Columns {data-stack-name="Panels and Columns"}
+
+## Panel tabset 
+
+:::::: {.panel-tabset}
+
+## Code Puzzle
+
+:::: code-puzzle
+
+::: static
+Error <- rnorm(n = {{{100}}}, mean = {{{0}}}, sd = {{{8}}})
+x <- {{{rnorm(n = 100, mean = 20, sd = 10) OR rnorm(mean = 20, sd = 10, n = 100)}}}
+{{beta}} <- # choose your own number between 0 and 1
+:::
+
+{{y}} <- beta*{{x}} + {{Error}}
+
+df <- tibble(Depression = {{{y}}}, Addiction = {{{x}}})
+
+ggplot({{{df}}}, {{{aes(x = Addiction, y = Depression) OR aes(y = Depression, x = Addiction)}}}) + {{geom_point()}}
+
+::::
+
+## Plot
+
+```{r}
+#| fig-height: 3.5
+#| fig-width: 6
+#| fig-align: center
+library(tidyverse)
+library(ggplot2)
+
+data <- read_csv("data/depAndSocMed.csv")
+
+ggplot(data, aes(x=time, y=dep)) + geom_point() + geom_smooth(method="lm")
+```
+
+::::::
+
+## Centered slide {.center}
+
+::: card-list-center
+
+- Some centered cards!
+    - Inner cards!
+- Next line!
+
+:::
+
+## Columns
+
+
+:::::: columns
+
+::::: {.column width = "33%" .nonincremental}
+
+- Item 1
+    - Item 2
+- Item 3
+    - Item 4
+
+:::::
+
+::::: {.column width = "33%"}
+
+1. Item 1
+    1. Item 2
+
+:::::
+
+::::: {.column width = "33%"}
+
+
+- [ ] Item 1
+    - [ ] Item 2
+- [ ] Item 3
+
+:::::
+
+::::::
+
+# Thanks!
+
+::: {.card-list-center .nonincremental}
+- More info at <https://github.com/monaxue/>{.filelink}
+:::

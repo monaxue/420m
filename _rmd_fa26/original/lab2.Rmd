@@ -1,0 +1,81 @@
+---
+title: "Histograms and Z-Scores"
+author: "your name here"
+date: "2026-08-14"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.width = 5,        # Default width of plots in inches
+  fig.height = 4,       # Default height of plots in inches
+  fig.align = 'center' # Center-align plots: 'center', 'left', or 'right'
+)
+```
+
+### In this lab, you will
+
+1. Make a path/folder for this lab (e.g. `.../420/labs/lab2`) on 
+your class folder and create a new R project in that folder.
+
+2. Download the data file `2020heights.csv` from canvas ans move it to the new
+folder.
+
+3. In the following code chunk, load the `tidyverse` package and read the 
+`2020heights.csv` data (you can use the `read_csv()` function).
+
+```{r read-data}
+
+```
+
+4. Make a histogram of using the default bins.
+
+```{r default-bins}
+
+```
+
+5. Make a histogram with too many bins (too narrow bin width)
+
+```{r narrow-bins}
+
+```
+
+6. Make a histogram with too few bins (too big bin width)
+
+```{r big-bins}
+
+```
+
+7. Make a histogram with ``good'' number of bins.
+
+```{r good-bins}
+
+```
+
+8. Make a pretty histogram (e.g., colors for borders/fill) using the 
+``Goldilocks'' bin size.
+
+```{r pretty-bins}
+
+```
+
+9. Briefly summarize each of the distributions.
+
+**ANS:** 
+
+10. In the following code chunk, calculate the z-score of each value.
+
+```{r z-score}
+
+```
+
+11. Identify the observations with the largest z-score magnitudes 
+(i.e., biggest z-scores in absolute value) you can print the values using the 
+following code chunk.
+
+```{r largest-z}
+
+```
+
+**ANS:** 

@@ -1,0 +1,294 @@
+---
+title: "6: Case studies and CIs"
+---
+
+
+<!--
+
+Go over case studies.
+
+Cover z-scores and CI. Have people write an interpretation for CI's for their lab report. Have people revise their lab reports.
+
+It was a really good idea to tell them they should be proud of themselves and have them write what they feel proud of.
+
+-->
+
+## Case studies
+
+::: card-list
+
+- I'm partially through grading them.
+- So far:
+    - There is a mix of scores
+    - Somewhat of a bimodal distribution
+:::
+
+## The good
+::: card-list
+- Most everyone 
+    - Wrote great code.
+    - Formatted the Rmd well.
+    - These things are hard.
+    - Make sure to recognize your accomplishments!
+:::
+
+## The struggles
+::: card-list
+- Those who lost the most points:
+    - Used the wrong rubric
+    - Missed things on the rubric
+    - Primary tip: Make sure to double check everything on the rubric
+- Many of you lost points on this
+    - Interpretations
+
+:::
+
+## Before you get too anxious...
+::: card-list
+- You will have the opportunity to revise your case study to receive up to a score of 14. 
+:::
+
+## Outline
+::: card-list
+- I will clarify interpretations
+- I will finally go over confidence intervals
+- What I hope to accomplish: help you build some intuition about stats so you don't feel like you need to memorize a list of annoying rules
+:::
+
+# Interpretations
+
+## "Ambiguous thinking"
+
+
+::: card-list
+- Descriptive statistics is all about "ambiguous thinking"
+    - Shape: Is it normal? Symmentrical? Skewed (rarer than you think!)? Bimodal?
+    - Center ~ ***Sample*** mean
+    - Spread ~ ***Sample*** SD
+:::
+
+## "Ambiguous thinking"
+
+
+```{r}
+
+library(tidyverse)
+
+set.seed(1)
+
+n=50
+x = c()
+experiment = c()
+
+for (i in 1:3){
+    x = c(x, rbinom(n=n, size = 20, prob = 0.5))
+    experiment <- c(experiment, rep(i, times=n))
+}
+
+df <- tibble(x=x, experiment=experiment)
+
+ggplot(df, aes(x=x)) + geom_histogram() + facet_wrap(~experiment)
+
+```
+
+## Main purpose
+
+
+::::: columns
+
+:::: column
+
+::: card-list
+- **Descriptive**
+    - Visualize the ***general*** shape, center, and spread of the ***sample***
+    - "See the forest, but not the trees"
+:::
+
+::::
+
+:::: column
+
+
+::: card-list
+- **Inferential**
+    - Make inferences about the true population means
+
+:::
+::::
+:::::
+
+
+
+## What I saw in the case studies
+
+
+::: card-list
+
+- Statements that imply a population level conclusion
+- WRONG: "A histogram will let me compare the performance of each group"
+- When you talk about "performance" you are implying knowledge about the true population
+    - "Score" (noisy metric for performance) vs. "Performance" (true population)
+
+:::
+
+## Score $\neq$ Performance
+
+
+::: card-list
+
+- Score is the thing we can measure. "Performance" is the thing we actually care about (true population) that we hope the score represents.
+- More examples
+    - Number of words recalled $\neq$ Memory 
+    - IQ test score $\neq$ Intelligence
+
+:::
+
+::: notes
+- An IQ test wishes to measure your intelligence, but at best it only captures part of your intelligence. What it also captures includes: your education, your wealth, whether or not you were exposed to lead as a kid, etc.
+- If you say "there is a difference in intelligence between group 1 and group 2", then you are implying a population difference. If you say "there is a difference in sample mean of IQ test scores between group 1 and group 2"
+:::
+
+## Correct mean interpretations
+
+::: card-list
+- Sufficient: "The ***sample*** mean of the score in group A is _ and the ***sample*** mean of the score in group B is _."
+- If you want to compare: 
+    - Don't forget ***sample mean*** and ***score*** (or whatever the actual metric is in the study)
+
+:::
+
+## Why can't we talk about the population when looking at histograms?
+
+
+::: card-list
+
+- A difference in the mean could be due to sampling error
+- What inferential statistics does: It takes into consideration the possible sampling errors
+    - But CIs are ***not*** errors!
+    - How? Sampling distributions provide us with the math to make a good guess
+
+:::
+
+# Confidence intervals
+
+## The confidence interval comes from the sampling distribution
+
+::: card-list
+- Sampling distribution: distribution of means over $\infty$ experiments
+    - Hypothetical
+- If we know the true mean, $\mu$, the sampling distribution tells us what kind of samples to expect
+
+:::
+
+## A bit of math...
+
+::: notes
+I'm going to show some math. Try to keep up as best as you can, but don't stress out too much about it. But there will also be a simulation at the end to hopefully make things clearer.
+
+:::
+
+## Simulation
+
+::::: panel-tabset
+
+## Simulation
+
+::: card-list
+
+- Explore the [Confidence Interval Simulator](https://shiny.rit.albany.edu/stat/confidence/) (this link is also on the website).
+
+- Discuss with your neighbors:
+    - What is it trying to show?
+        - Around 5 out of 100 times, the CI does not contain the true mean (CI highlighted in red)
+
+:::
+
+<!--
+
+## Slido
+::: iframe
+
+https://wall.sli.do/event/qFBF9mUcZDngBd8niQpzQp
+
+:::
+
+-->
+
+:::::
+
+## Confidence interval definition
+
+::: card-list
+
+- In 95% of experiments, the true mean will be in the CI of that experiment
+- 95% of CIs will contain the true mean
+- **Not:** 95% probability that the true mean is in the CI of our experiment
+:::
+
+## "Confidence" statement
+::: card-list
+- Since we can't say anything about the probability in our experiment, we use the word "confident" instead
+- We are 95% *confident* that the true mean is in the CI of our experiment
+:::
+
+<!-- next time, make sure to have a slide that emphasizes that language is important, and that they need to choose words that do not imply probability. Likely is a word that implies probability. Have them pracitce coming up with different ways of interpreting results, which I have done in week 12-->
+
+## CI interpretations
+
+::: card-list
+- Always include both the definition of a CI as well as the confidence statement.
+
+:::
+
+<!--
+::: card-list
+
+- 95% of the samples generated by a population with the true mean, $\mu$, will have a CI that contains $\mu$.
+
+- WRONG: There is a 95% probability that the CI contains the true mean, $\mu$.
+
+    - This is different from the first statement
+    - You cannot actually calculate this probability directly, because it requires that you know the true mean, $\mu$
+
+- Therefore, we instead use the term "confident". We say that we are 95% confident that the CI contains the true mean.
+    - There is a reason why it is called the confidence interval, and not the probability interval.
+:::
+-->
+
+
+<!--
+
+```{=html}
+<iframe src="https://wall.sli.do/event/psqmdehPARDpce13BWS1LY/?section=b87f4381-4b7d-41fd-abd0-76f5f34870db" height=600 width=100%></iframe>
+```
+
+-->
+
+<!--
+
+## Formatting Essentials
+
+```{=html}
+<iframe src="https://wall.sli.do/event/psqmdehPARDpce13BWS1LY/?section=b87f4381-4b7d-41fd-abd0-76f5f34870db" height=600 width=100%></iframe>
+```
+
+-->
+
+
+# Deliverables
+
+##
+::: {.normal-list .nonincremental}
+1. Write a reflection
+    - [ ] How you did you feel you did on this first case study? What are you proud of? What do you think you can improve upon?
+    - [ ] What are your major takeaways from today's class?
+    - [ ] What revisions would you make on your case study? Be specific.
+    - [ ] What do you want your future self to remember when working on future case studies? 
+2. Write a CI interpretation for your Case Study 1.
+    - [ ] What is the main difference between a descriptive and inferential statistics?
+    - [ ] What is the definition of a CI?
+    - [ ] What does the CI say about the results? (Do you not use the word "significant"!)
+
+:::
+
+

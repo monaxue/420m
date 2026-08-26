@@ -1,0 +1,85 @@
+---
+title: "Sampling Distributions"
+author: "your name here"
+date: "2026-08-15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.width = 5,        # Default width of plots in inches
+  fig.height = 4,       # Default height of plots in inches
+  fig.align = 'center' # Center-align plots: 'center', 'left', or 'right'
+)
+```
+
+
+1. Make a path/folder for this lab (e.g. `.../420/labs/lab4`) on 
+your class folder and create a new R project on that path/folder and load the 
+`tidyverse` package.
+
+```{r load-tidy}
+
+```
+
+
+2. Use the `rnorm()` function to simulate data from a single experiment. The
+experiment should have a sample size of 25, a mean of 100, and a standard 
+deviation of 10.
+
+```{r simulation1}
+
+```
+
+3. Make a plot of the frequency polygon from the data of your simulated 
+experiment.
+
+```{r plot-sim1}
+
+```
+
+4. Use the `replicate()` function to simulate 1000 repetitions of your 
+experiment (remember that the replicate function has 2 main arguments, `n` 
+which indicates the number of replications, and `expr` which takes the r 
+function that will be replicated).
+
+```{r many-exp}
+
+```
+
+5. Using the function `colMeans()` calculate the mean of each experiment that 
+you simulated in step 4.
+
+```{r mean-many}
+
+```
+
+6. Make a frequency plot of the sampling distribution of the means of all 1000
+experiments. Additionally, print the standard error of this sampling 
+distribution.
+
+```{r plot-mean-many}
+
+```
+
+7. Repeat step 4 for this time simulate 1000 repetitions of an experiment with 
+a sample size of 100, you can use the same mean and standard deviation as 
+before.
+
+```{r many-exp2}
+
+```
+
+8. Make a frequency plot of the sampling distribution of the means of all 1000
+experiments with a sample size of 100. Additionally, print the standard error 
+of this sampling distribution.
+
+```{r plot-mean-many2}
+
+``` 
+
+9. Compare the sampling distribution of the mean of the two experiments you 
+just simulated. What are the similarities and differences between them?
+
+**Ans:**

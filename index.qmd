@@ -2,11 +2,11 @@
 
 Use this website for everything lab-related in PSYCH 420m.
 
-**Lab time:** Friday, 12-2pm | **TA:** Mona Xue | **Email:** [monaxue\@utexas.edu](mailto:monaxue@utexas.edu){.email} | **Office hours:** Friday, 2pm
+**Lab time:** Wednesdays, 8-10am | **TA:** Mona Xue | **Email:** [monaxue\@utexas.edu](mailto:monaxue@utexas.edu){.email} | Office Hours: TBD
 
 ---
 
-[Case study 3 feedback and announcement](files/casestudy3announcement.qmd)
+<!-- [Case study 3 feedback and announcement](files/casestudy3announcement.qmd)
 
 ---
 
@@ -69,6 +69,8 @@ Includes Case Study 1 takeaways and discussion of descriptive vs. inferential st
 
 [Confidence interval simulation](https://shiny.rit.albany.edu/stat/confidence/)
 
+-->
+
 <!--
 [Advanced Rmd formatting](cheatsheet.qmd#adv-format)
 
@@ -76,6 +78,7 @@ Includes Case Study 1 takeaways and discussion of descriptive vs. inferential st
 
 [Case study template example PDF](r_demos/case_study_template.pdf){.filelink} -->
 
+<!--
 
 ## 5: Sampling distributions
 
@@ -107,9 +110,12 @@ Includes how to plot histograms, frequency polygons, and boxplots
 
 [R cheatsheet](/files/cheatsheet.qmd){.filelink}
 
+-->
 
 ## 1: Lab info, R setup
 
-[Slides](/presentations/intro.qmd){.filelink}
+[Slides](/presentations/week1.qmd){.filelink}
 
-[test.Rmd](/_scripts/test.Rmd){.filelink}
+[lab1.Rmd](_rmd_fa26/lab1.Rmd){.filelink}
+
+[firstData.csv](/data/firstData.csv){.filelink}

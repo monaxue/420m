@@ -1,0 +1,185 @@
+---
+title: "12: Linear Regression"
+---
+
+
+## Review
+
+![](/assets/slido-precision-is-the-opposite-of-the-alternative-hypothesis-is-the-opposite-of-power-is-the-opposite-of.png)
+
+<!--
+
+- Precision is the opposite of __. The alternative hypothesis is the opposite of __. Power is the opposite of __.
+    - SE, null hypothesis, p-value/alpha
+ --> 
+
+## What is the relationship between depression and addiction to social media?
+
+We are going to simulate some data, and plot it.
+
+## Remember this?
+
+$$ 
+y = mx + b 
+$$ 
+
+$$ 
+\text{Depression} = \beta \times \text{Addiction} + \text{Error} 
+$$
+
+. . .
+
+🖊️
+
+## CI for regression plot
+
+Definition: 95% of experiments will produce CIs that include the true regression line.
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+
+data <- read_csv("data/depAndSocMed.csv")
+
+ggplot(data, aes(x=time, y=dep)) + geom_point() + geom_smooth(method="lm")
+```
+
+
+# Deliverables
+
+## Simple simulation of Depression vs. Addiction
+
+:::::: panel-tabset
+
+## Instructions
+
+::: {.card-list .nonincremental}
+
+1. Error ~ normally distributed, mean = 0, sd = 8, with sample size 100
+2. Addiction ~ normally distributed, mean = 20, sd = 10, with sample size 100
+3. Choose a $\beta$ 
+4. Calculate $\text{Depression} = \beta \times \text{Social Media Addiction} + \text{Error}$
+5. Plot a scatter plot of Depression vs. Addiction
+
+:::
+
+## Code Puzzle
+
+:::: code-puzzle
+
+::: static
+Error <- rnorm(n = {{{100}}}, mean = {{{0}}}, sd = {{{8}}})
+x <- {{{rnorm(n = 100, mean = 20, sd = 10) OR rnorm(mean = 20, sd = 10, n = 100)}}}
+{{beta}} <- # choose your own number between 0 and 1
+:::
+
+{{y}} <- beta*{{x}} + {{Error}}
+
+df <- tibble(Depression = {{{y}}}, Addiction = {{{x}}})
+
+ggplot({{{df}}}, {{{aes(x = Addiction, y = Depression) OR aes(y = Depression, x = Addiction)}}}) + {{geom_point()}}
+
+
+
+::::
+
+
+## Best fit line and CI
+
+To plot best fit line and CI, use `geom_smooth()`
+
+```r
+ggplot(...) + geom_point() + geom_smooth(method = "lm")
+```
+
+```{r}
+
+Error <- rnorm(n = 100, mean = 0, sd = 8)
+x <- rnorm(n=100, mean=20, sd=10)
+beta <- 0.2 # choose your own number between 0 and 1
+y <- beta*x + Error
+df <- tibble(Depression = y, Addiction = x)
+ggplot(df, aes(x=Addiction, y=Depression)) + geom_point() + geom_smooth(method = "lm")
+
+```
+
+Your plot will look slightly different
+
+## Regression summary
+
+Find the estimated regression values using `lm()` function
+
+"lm" stands for "linear model". Use this function to conduct a regression analysis
+
+```r
+lm <- lm(Depression ~ Addiction, data=df)
+lm # gets basic info
+summary(lm) # gets more info
+```
+```{r}
+lm <- lm(Depression ~ Addiction, data=df)
+lm # gets basic info
+summary(lm) # gets more info
+```
+
+::::::
+
+## Simple simulation of Depression vs. time spent on social media
+
+:::::: panel-tabset
+
+## Instructions
+
+::: {.card-list .nonincremental}
+
+- Same as before, but instead of Addiction, we now have the variable "Time"
+- The mean time on social media is 6 hours. The standard deviation is 2.
+- Choose your own `beta` again. Do you think time spent on social media, when someone is not addicted to it, is positively or negatively correlated with depression? The value should be between -1 and 1.
+
+:::
+
+## Final plot
+
+Your plot may look different, especially if you chose a different `beta`.
+
+```{r}
+
+Error <- rnorm(n = 100, mean = 0, sd = 8)
+x <- rnorm(n=100, mean=6, sd=2)
+beta <- -0.2
+y <- beta*x + Error
+df <- tibble(Depression = y, Time = x)
+ggplot(df, aes(x=Time, y=Depression)) + geom_point() + geom_smooth(method = "lm")
+
+```
+
+## Regression summary results
+
+```{r}
+lm <- lm(Depression ~ Time, data=df)
+lm # gets basic info
+summary(lm) # gets more info
+```
+
+::::::
+
+## Write a CI definition {.center}
+
+In your own words, what is the definition of a CI for a regression line?
+
+## Final deliverables checklist
+
+::: {.normal-list .nonincremental}
+
+- [ ] Depression vs. social media addiction score
+    - [ ] Simulation code
+    - [ ] A graph that includes the scatter plot, best fit line, and CI
+    - [ ] Regression summary
+- [ ] Depression vs. time on social media
+    - [ ] Simulation code
+    - [ ] A graph that includes scatter plot, best fit line, and CI
+    - [ ] Regression summary
+- [ ] Definition of a CI for a regression line, in your own words
+
+:::
+

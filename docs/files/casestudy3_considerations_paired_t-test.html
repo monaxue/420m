@@ -111,15 +111,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Slides</span></a>
+<span class="menu-text">Labs</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../files/cheatsheet.html"> 
 <span class="menu-text">R Cheatsheet</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../files/casestudy4.html"> 
-<span class="menu-text">Case Study 4</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -127,9 +123,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <div id="quarto-announcement" data-announcement-id="81b6c0cc36d5447e85cbf44a01bfa396" class="alert alert-primary hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p><strong>Alert</strong> - Case Study 4 due date changed to Wed. 4-29. Please email me if another date works better for you!</p>
-</div></div>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
@@ -145,7 +138,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/CaseStudy3_StroopEffect.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/CaseStudy3_StroopEffect.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 720 Columns: 5
 ── Column specification ────────────────────────────────────────────────────────
@@ -311,12 +305,49 @@ mean difference
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># t.test(mean_reaction_time ~ condition, data=grouped, paired=TRUE)</span></span>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>avg_error_diffs <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span><span class="fu">rnorm</span>(<span class="dv">0</span>,<span class="dv">1</span>) <span class="sc">-</span> <span class="fu">rnorm</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(avg_error_diffs, <span class="fu">aes</span>(<span class="at">x=</span>x)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>avg_error_diffs <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x1=</span><span class="fu">rnorm</span>(<span class="at">mean=</span><span class="dv">0</span>,<span class="at">sd=</span><span class="dv">2</span>, <span class="at">n=</span><span class="dv">1000</span>), <span class="at">x2=</span><span class="fu">rnorm</span>(<span class="at">mean=</span><span class="dv">0</span>,<span class="at">sd=</span><span class="dv">3</span>, <span class="at">n=</span><span class="dv">1000</span>))</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(avg_error_diffs, <span class="fu">aes</span>(<span class="at">x=</span>x1<span class="sc">-</span>x2)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(avg_error_diffs, <span class="fu">aes</span>(<span class="at">x=</span>x1<span class="sc">+</span>x2)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>p1<span class="sc">+</span>p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="casestudy3_considerations_paired_t-test_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>avg_error_diffs <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Mean=</span><span class="fu">mean</span>(x1<span class="sc">-</span>x2), <span class="at">SD =</span> <span class="fu">sd</span>(x1<span class="sc">-</span>x2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+     Mean    SD
+    &lt;dbl&gt; &lt;dbl&gt;
+1 -0.0839  3.68</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>avg_error_diffs <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">Mean=</span><span class="fu">mean</span>(x1<span class="sc">+</span>x2), <span class="at">SD =</span> <span class="fu">sd</span>(x1<span class="sc">+</span>x2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+    Mean    SD
+   &lt;dbl&gt; &lt;dbl&gt;
+1 0.0189  3.67</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>range<span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="fl">4.5</span>, <span class="at">to =</span> <span class="fl">4.5</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>first <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span>range, <span class="at">y=</span><span class="fu">dnorm</span>(range, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">1</span>))</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>second <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span>range, <span class="at">y=</span> <span class="fu">dnorm</span>(range, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">1</span>))</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>joint <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x=</span>range, <span class="at">y1=</span>first<span class="sc">$</span>y, <span class="at">y2=</span>second<span class="sc">$</span>y, <span class="at">y3=</span>first<span class="sc">$</span>y<span class="sc">*</span>second<span class="sc">$</span>y)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>joint <span class="ot">&lt;-</span> joint <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(y1,y2,y3), <span class="at">names_to=</span> <span class="st">"dist"</span>, <span class="at">values_to=</span><span class="st">"prob"</span>)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(joint, <span class="fu">aes</span>(<span class="at">x=</span>x, <span class="at">y=</span>prob, <span class="at">color=</span>dist)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="casestudy3_considerations_paired_t-test_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

@@ -1,0 +1,348 @@
+---
+title: "5: Sampling distributions"
+subtitle: Create your lab5 folder, project, and lab5.Rmd
+---
+
+<!--
+
+Sampling distribution, then go over case study expectation, deliverables.
+
+People learn better when getting personal feedback, even when you teach something in class (think in dance). So maybe have a clear rubric, but do spend too much time teaching people how to write a report, but do that during the feedback session.
+
+Go with the "try it", then "now change this" approach.
+
+-->
+
+## Outline
+::: card-list
+- Announcement: read your feedback on lab4!
+- Go over case study rubric
+- Introduce the sampling distribution
+- Go over the ties between a sampling distribution and the CLT
+- Simulate the sampling distribution
+
+:::
+
+## Slido
+
+::: card-list
+
+- What is a sampling distribution? Do you remember?
+    - The distribution of means across many many (infinite) number of experiments.
+
+:::
+
+##
+![](/assets/slido-why-do-normal-distributions-pop-up-so-much-in-psychology.png)
+
+The first sentence is a technically a true statement, but the CLT is not only about the sampling distribution, and this does not answer the question.
+
+The second option is correct. With many causes, numbers tend to "average out", so most values become centered around a mean (CLT)
+
+::: notes
+
+- In lab3, there was some confusion surrounding sampling distributions.
+
+- Why do normal distributions pop up so much in psychology?
+    - CLT states that with larger sample sizes, the sampling distribution becomes more normal
+        - True, but the CLT is not only about the sampling distribution, and this does not answer the question.
+    - The brain and behavior are complex, and have many underlying causes
+        - With many causes, numbers tend to "average out", so most values become centered around a mean (CLT)
+:::
+
+
+## Sampling distributions
+::: notes
+- Let's say you hold an experiment, 
+- and you measure 20 people's height. 
+- You plot the distribution.
+:::
+
+::: card-list
+- You hold an experiment
+- N = 20 people
+:::
+. . . 
+
+```{r}
+
+library(tidyverse)
+set.seed(5)
+data <- tibble(Height=c(rnorm(mean=66, sd=5, n=20),rnorm(mean=66, sd=5, n=20)), Experiment=c(rep("1",times=20),rep("2",times=20)))
+
+data_filtered <- data %>% filter(Experiment == "1")
+
+```
+
+```{r}
+ggplot(data_filtered, aes(x=Height, color=Experiment)) + geom_density(size=2) + theme_classic() + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), axis.title.y = element_blank(), legend = element_blank(), legend.position = "none")
+```
+
+## Sampling distributions
+::: notes
+- Now, you hold another experiment, 
+- again, with 20 people.
+- You plot the distribution
+:::
+
+::: card-list
+- You hold another experiment
+- N = 20 people
+:::
+
+. . . 
+
+```{r}
+
+ggplot(data, aes(x=Height, color=Experiment)) + geom_density(size=2) + theme_classic() + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), axis.title.y = element_blank(), legend = element_blank(), legend.position = "none")
+
+
+```
+
+## Sampling distributions
+::: notes
+- Let's say you take the means of each, and plot it on a separate graph.
+
+:::
+
+::::: columns
+:::: {.column}
+
+```{r}
+#| fig-height: 10
+
+ggplot(data, aes(x=Height, color=Experiment)) + geom_density(size=5) + theme_classic() + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), axis.title.y = element_blank(), legend = element_blank(), legend.position = "none")
+
+
+```
+
+::::
+
+:::: {.column .fragment}
+
+
+
+```{r}
+#| fig-height: 10
+
+data <- data %>% group_by(Experiment) %>% mutate(Means=mean(Height), y=0.01)
+
+
+ggplot(data, aes(x=Height, color=Experiment)) + geom_density(color="white") + geom_point(aes(x=Means, y=y), size=6) + theme_classic() + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), axis.title.y = element_blank(),legend.position = "none")
+
+
+```
+
+::: {.card-list .nonincremental}
+- Take the means
+:::
+
+::::
+
+:::::
+
+
+## And repeat...
+::: notes
+- And you repeat.
+
+:::
+
+
+```{r}
+
+more_data <- tibble(Height=c(rnorm(mean=66, sd=5, n=20), rnorm(mean=66, sd=5, n=20), rnorm(mean=66, sd=5, n=20)), Experiment=c(rep("3", times=20),rep("4", times=20),rep("5", times=20)))
+
+data <- bind_rows(data, more_data)
+
+data <- data %>% group_by(Experiment) %>% mutate(Means=mean(Height), y=0.01)
+
+
+```
+
+::::: columns
+:::: {.column}
+
+```{r}
+#| fig-height: 10
+
+ggplot(data, aes(x=Height, color=Experiment)) + geom_density(size=5) + theme_classic() + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), axis.title.y = element_blank(), legend = element_blank(), legend.position = "none")
+
+
+```
+
+::::
+
+:::: {.column}
+
+
+
+```{r}
+#| fig-height: 10
+
+data <- data %>% group_by(Experiment) %>% mutate(Means=mean(Height), y=0.01)
+
+
+ggplot(data, aes(x=Height, color=Experiment)) + geom_density(color="white") + geom_point(aes(x=Means, y=y), size=6) + theme_classic() + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), axis.title.y = element_blank(),legend.position = "none")
+
+
+```
+
+::: {.card-list .nonincremental}
+- Take the means
+:::
+
+::::
+
+:::::
+
+## Sampling distributions
+
+::: card-list
+
+- What will the distribution of the ***means*** look like?
+    - Let's find out!
+:::
+
+
+
+## New function!
+::: notes
+- Previously, 
+- we simulated heights from many causes,
+- which resulted in a normal distribution.
+
+- Now,
+- We can simulate a normal distribution directly
+- without simulating all causes
+- using the rnorm function
+:::
+
+::: card-list
+- Previously
+    - Simulated heights with many causes
+    - Result: normal distribution
+- Now
+    - Simulate normal distribution directly
+    - `rnorm()`
+:::
+
+## `rnorm()`
+
+```r
+rnorm(mean=..., sd=..., n=...)
+
+```
+::: card-list
+
+- "r" stands for random
+- "norm" stands for normal distribution
+- This function randomly samples from a normal distribution.
+
+:::
+
+
+
+## Simulating a sampling distribution
+
+Does this look familiar?
+
+```r
+
+sim_means <- c()
+
+for (experiment in 1:100){
+    avg_height <- 64
+    person1 <- rnorm(mean=avg_height, sd=5, n=1)
+    person2 <- rnorm(mean=avg_height, sd=5, n=1)
+    person3 <- rnorm(mean=avg_height, sd=5, n=1)
+    mean_height <- mean(person1,person2,person3)
+    sim_means[experiment] <- mean_height
+}
+
+sim_means
+
+```
+
+## Slido
+
+Compare this to our simulated heights example from lab3.
+
+::: card-list
+
+- In lab3, we simulated causes, like genetics, nutrition, etc. Which variables above are analogous?
+    - person1, person2, person3
+- Sample size in this lab is equivalent to lab3's __.
+    - number of causes
+- In lab3, we took the sum, which led to having a more normal distribution. What do we do here instead?
+    - the mean
+
+:::
+
+## Central limit theorem again
+
+::: card-list
+- Only changed 2 things:
+    1. Simulating multiple experiments, instead of each person in an experiment.
+    2. Taking the mean instead of the sum.
+- Same effect: numbers average out, so most of the values are centered around the mean with a bell shape (CLT).
+:::
+
+## What this means
+::: card-list
+- Instead of a distribution of individual heights, we get a distribution of mean heights (from separate experiments)
+- Last time, more "causes" made the distribution more normal. This time, larger sample size makes the distribution more normal
+- Last time, we simulated how a sample distribution becomes more normally distributed. This time, we simulate how a sampling (note the "ing") distribution becomes more normally distributed.
+:::
+
+
+::: notes
+
+```r
+
+sim_means <- c()
+
+for (experiment in 1:100){
+    avg_height = 64
+    sample_size <- 20 # sample size per experiment
+    all_heights <- rnorm(n=sample size, mean=64, sd=5) # simulates 20 people's height
+    mean_height <- mean(all_heights)
+    sim_means[experiment] <- mean_heights
+}
+```
+
+:::
+
+## Deliverables
+
+::: {.card-list .nonincremental}
+We will simulate 100 experiments and take the mean height in each experiment. Each experiment will have a sample size of 20. We will calculate some descriptive statistics.
+
+1. Use `rnorm(mean=...,sd=...,n=...)` to simulate heights
+    - Instead of simulating each person indivudally with `person1 <- rnorm(...)`, you can set the `n` variable to the desired sample size with `all_people <- rnorm(n=20, ...)`
+    - Set the mean height to be 69, and the sd to be 5
+    - Take the mean of everyone's height
+1. Use a for loop to repeat the above
+    - Remember to create an empty vector `sim_means` to store the mean heights
+1. Convert the list of means into a dataframe using `tibble(column_name=sim_means)`
+1. Plot a histogram of the simulated means (sampling distribution, note the "ing").
+1. Create a summary table of the simulated means, with SampleSize, Mean, SE
+    - Hint: the definition of SE is the SD of the sampling distribution, the the calculation will be different from previous labs
+1. Next, just plot a histogram of a sample distribution (only one experiment)
+
+```r
+one_experiment <- tibble(heights = rnorm(...))
+```
+
+- Answer these questions:
+    1. How does the shape/spread of the sampling distribution differ from the sample distribution?
+    1. Intuitively, why do you think the shape/spread differs?
+- Submit your html file on Canvas
+
+:::
+
+::: notes
+Next, time, maybe a 2 single experiment plots, one with n = 20, the other with n = 100, so people don't think it has something to do with more data. Keep n = 20 so people don't think it's because the sampling distribution has a larger sample size?
+
+Also, maybe use a higher sample size in general for the deliverables, since the single experiment doesn't have a normal distribution.
+:::

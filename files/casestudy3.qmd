@@ -137,7 +137,7 @@ Before using `pivot_wider()`
 
 ```{r}
 grouped2 <- data2 %>% group_by(ID, Visit) %>% summarize(TotalRecalled = sum(Recalled))
-wider2
+grouped2
 ```
 
 After using `pivot_wider()`

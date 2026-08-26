@@ -1,0 +1,42 @@
+---
+title: "First R Studio Project Lab"
+author: "your name here"
+date: "2026-08-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### In this lab, you will
+
+1. Make a path/folder for this lab (e.g. `home/thisSemester/420/labs/lab1`) on 
+your class folder.
+
+2. Create a new RStudio project in this folder.
+
+3. Download the data file `firstData.csv` from Canvas and put it in the folder.
+
+4. Import the data into RStudio. You can use the `Import Dataset` button found 
+at the top of the environment tab.
+
+5. In the following code chunk, copy and paste the code shown in your console 
+that appears after you import the data.
+
+```{r load-data, eval=FALSE}
+
+```
+
+6. Using the following code chunk print the first, sixth and twelve values on 
+the data-set (you should use the `[` `]` notation)
+
+```{r print-values}
+
+```
+
+7. Knit and submit this project as an html file, you can use the button that 
+appears under the open file name in Rstudio.
+
+

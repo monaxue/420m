@@ -1,0 +1,33 @@
+---
+title: Week 14
+subtitle: "We made it!"
+
+---
+
+
+## Case study 3
+- Everyone's case studies have improved tremendously over the semester!
+- Detailed feedback for case studies will be posted latest on Saturday
+
+
+## Deliverables for today
+
+::: {.normal-list .nonincremental}
+- [ ] A reflection on this semester: 
+	- [ ] How do you feel about your performance in this class? What did you do well on? What were some challenges?
+	- [ ] What were your biggest takeaways from this class? 
+	- [ ] How long did the case studies generally take to complete?
+	- [ ] What could I have done to improve your learning process in this class?
+:::
+::: {.card-list .nonincremental}
+- [ ] Fill out the course evaluations for this class (this is optional, but I would really appreciate it!)
+- [ ] Choose your own journey!	
+	1. Complete the *actual* lab assignment for today. [Slides](/assets/HormoneBehaviorLab.pdf){.filelink} [Dataset](/data/hormoneData.csv){.filelink}
+	2. Find an article on <https://datacolada.org/>{.filelink}, summarize it and write a brief reflection on it. 
+	3. (Not stats) Stylize your lab report. Change at least four styling options on one of your lab reports/case studies.
+		- [Themes for Rmd](https://rpubs.com/ranydc/rmarkdown_themes){.filelink}
+		- [Advanced Rmd Formatting](/files/advrmarkdown.qmd){.filelink}
+		- [ggtheme](https://jrnold.github.io/ggthemes/){.filelink}
+		- Use [custom css](https://yihui.org/rmarkdown-cookbook/html-css){.filelink} (or use AI to generate one!)
+		- Or use whatever source is available!
+:::

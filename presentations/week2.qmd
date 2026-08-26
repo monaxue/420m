@@ -29,50 +29,11 @@ Do demonstration, and more for loops the next week.
 5. Deliverables
 :::
 
-## Make a folder for this class
-
-:::{.card-list}
-
-- Create a folder somewhere named `420m`
-    - Home, documents, desktop. etc
-    - Do not create it in a cloud service (iCloud, OneDrive, etc.)
-    - Do not create it in downloads
-
-:::
-
-## Make sub-folders
-
-::: card-list
-- Inside `420m`, create a folder called `lab2`
-- The organization should look like: `…/420m/lab2`
-:::
-
-## What is an RStudio project?
-
-::: {.card-list}
-- A project tells RStudio which folder is the main folder
-- That way, when you read or save files, R will know where to find them.
-- We will make a new project for each lab
-:::
-
-## Now, create an RStudio project
-
-:::{.card-list}
-- To create a project, click on `Project > New Project > Existing Directory`
-- Select your `lab2` folder
-- ![](/assets/make-r-project.gif)
-:::
 
 
-## What is RMarkdown?
 
-::: card-list
 
-- RMarkdown is a special type of file that combines the functions of R and Word.
-- This means you can format documents directly in R
-- [Example](/assets/rmarkdown_example.html){.filelink}
 
-:::
 
 ## Creat an RMarkdown file
 

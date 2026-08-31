@@ -240,7 +240,7 @@ https://wall.sli.do/event/d35sArEpryyz2JVeVjSHwt?section=fdeecb9f-4add-43f9-bc87
 
 **Reverse engineering** is a skill that will not only help you learn to code, but will also help you *learn to learn* to code (even beyond this class). These Slido questions will help you practice the skill of reverse engineering.
 
-<!-- Next time I should give an example of what this process looks like -->
+<!-- Next time I should give an example of what this process looks like. Also, next time I should clearly distinguish the difference between *output* and *render* -->
 
 <!--
 

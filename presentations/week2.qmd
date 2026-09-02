@@ -3,16 +3,7 @@ title: "2: Histograms and z-scores"
 ---
 
 <!-- 
-
-Emphasize import data function instead of using buttons
-
-introduce a mini for loop? for (a in 1:10){print("Hello")}
-
-probably don't have time: for (b in 1:10){print(b+1)}, for (c in 2:30){print(c-3)}
-
-Will be too much given learning RMarkdown
-
-Do demonstration, and more for loops the next week.
+Changes next time: only three questions at a time, or don't do a single quiz question per question. People were working on the Rmd file pre-emptively instead of staying focused in class.
 
 -->
 
@@ -47,19 +38,25 @@ Do demonstration, and more for loops the next week.
 
 :::
 
+<!--
+
 ::: iframe
 
 https://wall.sli.do/event/jSr27kKv5FzL29qzbYK57A?section=1a784310-5fec-4e79-9035-ffb2b1485392&integration=shared-present-mode&utm_source=slidoadmin
 
 :::
 
-<!--
-Where do you make your lab2 folder?
-    420m
-    Downloads
-    iCloud or OneDrive
-
 -->
+
+::: nonincremental
+
+- ❓ Where do you make your lab2 folder?
+
+    - **420m (correct)**
+    - Downloads
+    - iCloud or OneDrive
+:::
+
 
 
 ## Step 2: Create an R project
@@ -78,30 +75,61 @@ Where do you make your lab2 folder?
 ::::
 
 ## RMarkdown review
-
+<!--
 ::: iframe
 
 https://wall.sli.do/event/jSr27kKv5FzL29qzbYK57A?section=1a784310-5fec-4e79-9035-ffb2b1485392&integration=shared-present-mode&utm_source=slidoadmin
 
 :::
-
-<!-- 
-What's the difference between .r and .Rmd?
-How do you create a title named "Title"?
-    #Title
-    # Title
-    **Title**
-    Either #Title or # Title
-How do you write a comment?
-    #Comment
-    # Comment
-    **Comment**
-    Either #Comment or # Comment
-What's the main difference between a title and a comment?
-    - 
-What is a code chunk and how do you create one?
-
 -->
+
+
+## ❓ What's the difference between .r and .Rmd?
+
+::: nonincremental
+
+- **They are the same file types, but just different names (correct)**
+- .r can only take R code whereas .Rmd combines the functionality of document editing and R code
+- You can use more complex R code in .Rmd than in .r files
+
+:::
+
+
+## ❓ How do you create a title named "Title"?
+
+::: nonincremental
+- #Title
+- **\# Title (correct)**
+- \*\*Title\*\* 
+- Either #Title or # Title
+:::
+
+## ❓ How do you write a comment?
+
+::: nonincremental
+- #Comment
+- \# Comment
+- \*\*Comment\*\*
+- **Either #Comment or # Comment (correct)**
+:::
+
+
+## ❓ What's the main difference between a title and a comment?
+::: nonincremental
+- **A title is outside a code block whereas a comment is inside a code block (correct)**
+- A title is inside a code block whereas a comment is outside a code block
+- People use different terms, but they are actually the same thing because they both use #
+:::
+
+
+## ❓ What is a code chunk and how do you create one?
+::: nonincremental
+- A code block is any section in an Rmd file. As long as you are in a Rmd file, you are in a code block.
+- A code block is any section in the Rmd file that outputs code. You create it by denoting it with \*\*Code block\*\*.
+- A code block is any section in the Rmd file that you can write code in. You create it by denoting it with \*\*Code block\*\*.
+- **A code block is any section that you can write code in. You create it by wrapping code with \`\`\`\{r\} \`\`\`. (correct)**
+:::
+
 
 # Loading packages and importing data {data-stack-name="Importing packages and data"}
 
@@ -112,36 +140,55 @@ What is a code chunk and how do you create one?
 
 . . .
 
+<!--
+
 ::: iframe
 
 https://wall.sli.do/event/jSr27kKv5FzL29qzbYK57A?section=1a784310-5fec-4e79-9035-ffb2b1485392&integration=shared-present-mode&utm_source=slidoadmin
 
 :::
 
-<!--
-
-What is the function that is used to load the package `tidyverse`?
-    install.packages()
-    library()
-What is the function that is used to import the dataset `firstData.csv`?
-    There is no function, we used the import button
-    read.csv()
-    read_csv()
-How would I write code to load the package `ggplot2`?
-    you click on it
-    library(ggplot2)
-    library("ggplot2")
-How would I write code to import the dataset `sample_heights.csv`?
-    read_csv(sample_heights)
-    read_csv(sample_heights.csv)
-    read_csv("sample_heights.csv")
-    read.csv("sample_heights.csv")
-What is the code to take a peak at a dataset named "table_name"?
-    head(table_name)
-    head(table_name.csv)
-    head("table_name")
-
 -->
+
+
+## ❓ What is the function that is used to load the package `tidyverse`?
+::: nonincremental
+- install.packages()
+- **library() (correct)**
+:::
+
+## ❓ What is the function that is used to import the dataset `firstData.csv`?
+::: nonincremental
+- There is no function, we used the import button
+- read.csv()
+- **read_csv() (correct)**
+:::
+
+## ❓ How would I write code to load the package `ggplot2`?
+::: nonincremental
+- you click on it
+- **library(ggplot2) (correct)**
+- library("ggplot2")
+:::
+
+## ❓ How would I write code to import the dataset `sample_heights.csv`?
+
+::: nonincremental
+- read_csv(sample_heights)
+- read_csv(sample_heights.csv)
+- **read_csv("sample_heights.csv") (correct)**
+- read.csv("sample_heights.csv")
+:::
+
+## ❓ What is the code to take a peak at a dataset named "table_name"?
+
+::: nonincremental
+- **head(table_name) (correct)**
+- head(table_name.csv)
+- head("table_name")
+:::
+
+
 
 # Introduction to `ggplot()` {data-stack-name="ggplot()"}
 
@@ -203,27 +250,23 @@ ggplot(table_name, aes(x=column1, y=column2)) + geom_point()
 ::::
 :::::
 
-## 
+## ❓ Which produces a valid histogram?
 
+<!--
 ::: iframe
 
 https://wall.sli.do/event/jSr27kKv5FzL29qzbYK57A?section=1a784310-5fec-4e79-9035-ffb2b1485392&integration=shared-present-mode&utm_source=slidoadmin
 
 :::
 
-<!--
-
-Which produces a valid histogram?
-
-ggplot(table_name, x=column1, y=count1) + geom_histogram()
-
-ggplot(aes(x=column1)) + geom_histogram()
-
-ggplot(table_name, aes(x=column1)) + geom_histogram()
-
-ggplot(table_name, aes(x=column1, y=column2)) + geom_histogram()
-
 -->
+::: nonincremental
+- ggplot(table_name, x=column1, y=count1) + geom_histogram()
+- ggplot(aes(x=column1)) + geom_histogram()
+- **ggplot(table_name, aes(x=column1)) + geom_histogram() (correct)**
+- ggplot(table_name, aes(x=column1, y=column2)) + geom_histogram()
+    - Histograms do not plot a y variable, the only variable is x, on the y-axis shows the counts for x.
+:::
 
 # Deliverables {data-stack-name="Deliverables"}
 

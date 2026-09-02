@@ -18,11 +18,11 @@ In the following code chunk, do the following:
 
 ```
 
-2. What table name was the imported data assigned to?
+5. What table name was the imported data assigned to?
 
 **Answer:** Your answer here.
 
-3. What are column name(s) of the dataset?
+6. What are column name(s) of the dataset?
 
 **Answer:** 
 

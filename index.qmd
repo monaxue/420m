@@ -101,23 +101,21 @@ Includes Case Study 1 takeaways and discussion of descriptive vs. inferential st
 Includes how to plot histograms, frequency polygons, and boxplots
 
 [Slides](/presentations/week3.qmd){.filelink}
+-->
 
-## 2: File directory and basic RMarkdown
+## 2: Histograms and z-scores
 
 [Slides](/presentations/week2.qmd){.filelink}
 
-[2020heights.csv](/files/2020heights.csv){.filelink}
+[lab2.Rmd](/_rmd_fa26/lab2.Rmd){.filelink}
 
-[Example deliverable](/files/lab2.html){.filelink}
+[sample_heights.csv](/data/sample_heights.csv){.filelink}
 
-[R cheatsheet](/files/cheatsheet.qmd){.filelink}
 
--->
-
-## 1: Lab info, R setup
+## 1: Lab info, file structure, and RMarkdown
 
 [Slides](/presentations/week1.qmd){.filelink}
 
-[lab1.Rmd](_rmd_fa26/lab1.Rmd){.filelink}
+[lab1.Rmd](/_rmd_fa26/lab1.Rmd){.filelink}
 
 [firstData.csv](/data/firstData.csv){.filelink}

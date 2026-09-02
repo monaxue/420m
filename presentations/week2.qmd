@@ -1,6 +1,5 @@
 ---
-title: "2: File directory and basic syntax"
-subtitle: Open the slides for today from the lab website <https://monaxue.github.io/420m/>
+title: "2: Histograms and z-scores"
 ---
 
 <!-- 
@@ -17,300 +16,305 @@ Do demonstration, and more for loops the next week.
 
 -->
 
+# Announcements
+
 ## Office hours
-:::{.card-list}
-- My office hours will be right after class.
-:::
+- Tuesdays 1-3pm
+- Location will be posted on the website
+    - Zoom for the majority of weeks
+    - I might make some in-person before quizzes/case studies.
 
-## Outline
-::: card-list
-1. File system
-2. RMarkdown
-3. R syntax review
-4. Import dataset
-5. Deliverables
-:::
+## Online modules
+- Remember to keep up with online content modules
+- Quizzes will be based on online content modules, not lab sessions
+- Practice quizzes will be extremely helpful
+    - The real quizzes will be very similar to the practice quizzes
 
+## Overview
+<ol class="menu"><ol>
 
+# Review {data-stack-name="Review"}
 
+## File system review
 
+:::: panel-tabset
 
+## Step 1: Make a new lab folder
 
+::: nonincremental
 
-## Creat an RMarkdown file
-
-
-Create an **empty** RMarkdown file
-
-![](/assets/make-rmarkdown.gif)
-
-## Save the file
-
-Save this Rmd file in your lab2 folder. Name it something like "lab2"
-
-![](/assets/save_file.png)
-
-## Experiment with the `#` symbol
-::: card-list
-
-- On one line, write the following text: `Hello, my name is [fill in your name]`
-- Test the following out by knitting the file
-    - What happens when you start a line with `#`?
-    - What happens when you include/remove the space between `#` and the rest of the text?
-    - What happens when you start a line with `##`
+- Step #1 in every lab: make a new lab folder
 
 :::
 
-## Slido
+::: iframe
 
-
-::: card-list
-- What does # Text output?
-    - A big title "Text"
-- What does #Text output?
-    - Plain text "#Text"
-- What does ## Text output?
-    - A smaller title "Text"
+https://wall.sli.do/event/jSr27kKv5FzL29qzbYK57A?section=1a784310-5fec-4e79-9035-ffb2b1485392&integration=shared-present-mode&utm_source=slidoadmin
 
 :::
 
 <!--
-
-::: iframe
-https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
-:::
+Where do you make your lab2 folder?
+    420m
+    Downloads
+    iCloud or OneDrive
 
 -->
 
-## Try wrapping text with the following:
 
-:::: panel-tabset
+## Step 2: Create an R project
 
-## R code chunk
+- In RStudio click on `Project > New Project > Existing Directory`
+    - Select your `lab2` folder
+- ![](/assets/make-r-project.gif)
 
-````{verbatim}
-```{r}
 
-text to wrap
-    
-```
-````
+## Step 3: Download lab materials
 
-::: card-list
-
-- Hint: Those symbols are called a `backticks`, not `'quotes'`.
-- Remember to include both ` ```{r} ` above and ` ``` ` below.
-- What happens when you wrap
-    - Text that starts with `#`
-    - Plain text
-    - `print(1+1)`
-:::
-
-## Backtick
-
-![](/assets/backtick_keyboard.webp)
+- Download lab materials and put it in your lab2 folder
+    1. [lab2.Rmd](_rmd_fa26/lab2.Rmd){.filelink}
+    2. [sample_heights.csv](data/sample_heights.csv){.filelink}
 
 ::::
 
-<!--
-
-## Slido
-
+## RMarkdown review
 
 ::: iframe
-https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
+
+https://wall.sli.do/event/jSr27kKv5FzL29qzbYK57A?section=1a784310-5fec-4e79-9035-ffb2b1485392&integration=shared-present-mode&utm_source=slidoadmin
+
 :::
+
+<!-- 
+What's the difference between .r and .Rmd?
+How do you create a title named "Title"?
+    #Title
+    # Title
+    **Title**
+    Either #Title or # Title
+How do you write a comment?
+    #Comment
+    # Comment
+    **Comment**
+    Either #Comment or # Comment
+What's the main difference between a title and a comment?
+    - 
+What is a code chunk and how do you create one?
 
 -->
 
-## What happens?
+# Loading packages and importing data {data-stack-name="Importing packages and data"}
 
-::: card-list
-- What happens when you wrap lines that start with `#`?
-    - They become comments.
-- What happens when you wrap plain text lines?
-    - The file doesn't knit
-- Try wrapping that around the following text: `print(1+1)`.
-    - It prints 2
-:::
+##
 
-## R code chunks
+1. **Important**: Do not use the import button! We will use code instead.
+1. Take a look at lab1.Rmd from last week and answer the following questions:
 
-::: card-list
+. . .
 
-- Wrapping text in ` ```{r} ` and ` ``` ` makes them into r code. These are called r "code chunks"
-- To see if text has been properly wrapped, makes sure that the lines turned grey.
-- To run individual code chunks, click on the little triangle icon.
-    - ![](/assets/run-code.gif)
+::: iframe
+
+https://wall.sli.do/event/jSr27kKv5FzL29qzbYK57A?section=1a784310-5fec-4e79-9035-ffb2b1485392&integration=shared-present-mode&utm_source=slidoadmin
 
 :::
-
-# Basic `R` code review
 
 <!--
 
-## What does these output?
-
-::: iframe
-https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
-:::
+What is the function that is used to load the package `tidyverse`?
+    install.packages()
+    library()
+What is the function that is used to import the dataset `firstData.csv`?
+    There is no function, we used the import button
+    read.csv()
+    read_csv()
+How would I write code to load the package `ggplot2`?
+    you click on it
+    library(ggplot2)
+    library("ggplot2")
+How would I write code to import the dataset `sample_heights.csv`?
+    read_csv(sample_heights)
+    read_csv(sample_heights.csv)
+    read_csv("sample_heights.csv")
+    read.csv("sample_heights.csv")
+What is the code to take a peak at a dataset named "table_name"?
+    head(table_name)
+    head(table_name.csv)
+    head("table_name")
 
 -->
 
-## What does this output?
+# Introduction to `ggplot()` {data-stack-name="ggplot()"}
 
-````{verbatim}
-```{r}
-a <- 1
-print(a)
+## ggplot layers
+
+- ggplot is a package for making plots
+- ggplot uses layers. Each layer is added with the `+` symbol
+    - Layer1 + Layer2 + Layer3
+    - Every layer adds something new to the plot
+
+##
+
+::::: columns
+:::: column
+
+#### Layer 1: basic info
+::: nonincremental
+1. Specify the data table
+2. Specify the x and y variables in `aes()`
+:::
+```r
+ggplot(table_name, aes(x=column1, y=column2))
 ```
-````
 
-Answer: 1
-
-## What does this output
-
-````{verbatim}
-```{r}
-b <- 1:3
-print(b)
-```
-````
-
-Answer: 1, 2, 3
-
-
-## What does this output?
-
-````{verbatim}
-```{r}
-c <- c(3,4,5)
-print(c)
-```
-````
-
-Answer: 3, 4, 5
-
-## What does this output?
-
-````{verbatim}
-```{r}
-c <- c(3,4,5)
-c[4] <- 6
-print(c)
-```
-````
-
-Answer: 3, 4, 5, 6
-
-## What does this output
-
-````{verbatim}
-```{r}
-a <- 1:4
-b <- c(2,3,5,6)
-b[3] <- 2
-c <- c(a,b)
-print(c)
-```
-````
-
-Answer: 1, 2, 3, 4, 2, 3, 2, 6
-
-## Reading data
-
-:::: panel-tabset
-
-## Instructions
-
-::: {.card-list .nonincremental}
-
-1. Download `2020heights.csv` and save it you your `lab2` folder.
-1. **Important**: Do not use the import button!
-1. Instead, we use following code to import data
-
-````{verbatim}
 ```{r}
 library(tidyverse)
-lab2_data <- read_csv("2020heights.csv")
+library(ggplot2)
+
+table_name <- tibble(column1=rnorm(10,2,n=100), column2 = column1*2 + rnorm(0,1,n=100))
+ggplot(table_name, aes(x=column1, y=column2))
 ```
-````
-
-- Note: make sure to use `read_csv`, and not `read.csv`
-- Use `head(lab2_data)` to take a peak at the dataset.
-
-:::
-
-## Troubleshooting
-
-::: {.card-list .nonincremental}
-1. The number one issue comes from the incorrect file name. Did you remember to include the quotes around the file name? Does your file name match the file in the folder?
-2. Another very common issue is incorrect folder and project organization.
-    - Are both heights2020.csv and lab2.Rmd in the `lab2` folder?
-    - Is your RStudio project in the folder `lab2`?
-    - Is the `lab2` folder in the `420m` folder?
-    - Do you have multiple `420m` folder and you have opened the incorrect project?
-
-:::
-
 ::::
 
-## What are the variables of this dataset?
+:::: column
+#### Layer 2: actual plot
+
+::: nonincremental
+- geom_histogram() adds histogram layer
+- geom_point() adds scatter plot layer
+:::
+```r
+# Histogram
+ggplot(...) + geom_histogram()
+```
+
+```{r}
+ggplot(table_name, aes(x=column1)) + geom_histogram()
+```
+
+```r
+# Scatter plot
+ggplot(...) + geom_point()
+
+```
+
+```{r}
+ggplot(table_name, aes(x=column1, y=column2)) + geom_point()
+```
+::::
+:::::
+
+## 
+
+::: iframe
+
+https://wall.sli.do/event/jSr27kKv5FzL29qzbYK57A?section=1a784310-5fec-4e79-9035-ffb2b1485392&integration=shared-present-mode&utm_source=slidoadmin
+
+:::
 
 <!--
 
-::: iframe
-https://wall.sli.do/event/6rHvxkU74cKLRinjZHrsGz
-:::
+Which produces a valid histogram?
+
+ggplot(table_name, x=column1, y=count1) + geom_histogram()
+
+ggplot(aes(x=column1)) + geom_histogram()
+
+ggplot(table_name, aes(x=column1)) + geom_histogram()
+
+ggplot(table_name, aes(x=column1, y=column2)) + geom_histogram()
 
 -->
 
-Answer: Just `heights`
+# Deliverables {data-stack-name="Deliverables"}
 
-## Add the title, author, date
-::: {.card-list .nonincremental}
-
-- At the **very top** of the document, add a section by enclosing it with `---`
-
-- Let me show you in R
-
-````{verbatim}
----
-title: lab2
-author: Mona Xue
-date: 2026-01-23
----
-````
-
-- Note: date is in `yyyy-mm-dd` format
-- Important: this section must be at the very top of the document, otherwise there will be an error.
-
-:::
+Now it's time to work on your lab2.Rmd file!
 
 ## Deliverables
 
-::: {.card-list .nonincremental}
-1. Create a new EMPTY RMarkdown file.
-1. Add the tile, author, and date, enclosed with `---`
-1. Add a large heading that says `Code`. Beneath this, include
-    - One `r` code chunk that:
-        - starts with a comment that says "Load packages"
-        - loads the tidyverse packages using `library()`
-        - imports `2020heights.csv` using `read_csv()`     
-    - A second `r` code chunk. In this chunk,
-        - create a list of numbers from 1 to 3. Assign this to the variable `a`
-        - create a list of numbers from 4 to 9. Assign this to `b.
-        - change the 3rd element of `b` to 3.
-        - create a new list by combining `a` and `b`. Assign this to `c`
-        - print the list `c` by using `print(c)`
-1. Add a large heading that says `About me`. Beneath this, write a short paragraph in plain text answering the following:
-    - Who are you? 
-    - How would you describe your personality? 
-    - What are you passionate about? 
-    - What are your hobbies?
-1. Knit the file, then show it to me.
-1. Finally, sumbmit the html file to Canvas. Once you are finished, you may leave.
+::::: panel-tabset
+
+## Reminders
+
+1. I am always here to answer questions! But do try to troubleshoot with people around you before asking me so I can help you all more efficiently!
+1. As you go through the file, try to hand-type all the code, instead of copy-and-pasting. It might seem tedious now, but this simple change will help you work faster during case studies.
+1. Always try to guess an answer before looking it up. Even if you guess wrong, you will remember it better next time.
+
+## Part 1 output
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+
+set.seed(3)
+
+mean_height = 65
+x = 25:105
+sample_size = 25
+n_samples = 4
+
+density <- round(dnorm(x=x, mean= 65, sd=2)*n_samples*sample_size)
+
+Heights <- numeric(0)
+
+for (i in 1:length(x)){
+Heights <- c(Heights, rep(x[i], times = density[i]))
+}
+
+RandomSample <- numeric(0)
+for (i in 1:n_samples){
+    RandomSample <- c(RandomSample, rep(paste0("RandomSample", i), times = sample_size))
+}
+
+sample_heights <- tibble(Heights=sample(Heights), RandomSample = RandomSample)
+
+#write_csv(sample_heights, "data/sample_heights.csv")
+
+head(sample_heights)
+
+```
+
+## Part 2 plots
+
+
+:::: columns
+::: column
+
+```{r}
+ggplot(sample_heights, aes(x=Heights)) + geom_histogram()
+```
+
 :::
+::: column
+
+```{r}
+ggplot(sample_heights, aes(x=Heights)) + geom_histogram() + facet_wrap(~RandomSample)
+```
+:::
+::::
+
+## Part 3 plots
+:::: columns
+::: column
+```{r}
+
+sample_heights <- sample_heights %>% mutate(ShiftedHeights = Heights - 65)
+
+ggplot(sample_heights, aes(x=ShiftedHeights)) + geom_histogram()
+
+```
+:::
+::: column
+
+```{r}
+
+sample_heights <- sample_heights %>% mutate(TransformedHeights = ShiftedHeights/2)
+
+ggplot(sample_heights, aes(x=TransformedHeights)) + geom_histogram()
+
+```
+:::
+::::
+:::::
 
 
 

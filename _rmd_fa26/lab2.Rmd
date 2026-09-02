@@ -1,0 +1,159 @@
+---
+title: "Histograms and Z-Scores"
+author: "your name here"
+date: "2026-09-02"
+output: html_document
+---
+
+## Part 1: Load packages and import data
+
+In the following code chunk, do the following:
+
+1. Load the package called `tidyverse`
+2. Load the package called `ggplot2`
+3. Import `sample_heights.csv` and assign it to the variable `heights_table`
+4. Use the `head()` function to take a peak at your data table
+
+```{r}
+
+```
+
+2. What table name was the imported data assigned to?
+
+**Answer:** 
+
+3. What are column name(s) of the dataset?
+
+**Answer:** 
+
+## Part 2: Plotting histograms
+
+1. Make a histogram of all of the heights data. This is the *true* distribution of heights. 
+
+Fill in the `...` with the following, and replace `column_name` and `table_name` with the correct names. Remember to uncomment the code if necessary.
+
+- aes(x=column_name)
+- table_name
+- geom_histogram()
+
+
+```{r}
+
+# ggplot(..., ...) + ...
+
+```
+
+2. Interpret and describe the distribution. What's the shape? Is there any skew? 
+
+**Answer:** 
+
+3. Now lets add another layer to our histogram plot, facet_wrap(). 
+
+3a. In the following code block, replace the `...` with the histogram code from above.
+
+Remember to uncomment the code if necessary.
+
+```{r}
+# ... + facet_wrap(~RandomSample)
+```
+
+3b. What does facet_wrap(~RandomSample) do?
+
+**Answer**: 
+
+3c. What is the relationship between the smaller histogram and the first large histogram?
+
+**Answer:** 
+
+4. Describe the differences you see between the 4 histograms. Specifically, describe differences in shape/skew and width.
+
+**Answer:** 
+
+5. Why might the very fine details of a histogram, like jaggedness or small differences in skew/width, NOT be worth interpreting in a case study? *Hint:* The keyword here is "random".
+
+**Answer:** 
+
+6. Can you draw definitive conclusions about the *true mean* (in the first histogram) based on any given RandomSample histogram? Why or why not?
+
+**Answer:** 
+
+## Part 3: Transforming the histogram
+
+In part 3, we will transform Heights so it has a mean of 0 and an SD of 1.
+
+### A. Shift the entire histogram left to have a mean of 0.
+
+1. Take a look at the first histogram. What is the mean of the Heights?
+
+**Answer:** Your answer here.
+
+2. In order to shift all the data points of Heights down a constant value, what operation do you need to do to the data? Addition, subtraction, multiplication, or division? 
+
+**Answer:** 
+
+
+3. For the mean to be at 0, what constant value do you need to use?
+
+**Answer:** 
+
+
+4. In the following code chunk, shift the data to the left to have a mean of 0. Replace the `...` with the mathematical expression that uses `Heights` and the constant value you identified.
+
+
+```{r}
+
+# heights_table <- heights_table %>% mutate(ShiftedHeights = ...)
+
+```
+
+5. Use the `head()` to take a look at heights_table. What does the `mutate()` function do?
+
+```{r}
+
+```
+
+**Answer**: 
+
+6. Plot the ShiftedHeights as a histogram
+
+```{r}
+
+```
+
+### B. Make the histogram narrower to have an SD of 1.
+
+7. In order to narrow the ShiftedHeights histogram by a constant factor, what operation do you need to do to the data? Addition, subtraction, multiplication, or division? 
+
+*Hint*: What's an operation that makes both positive and negative numbers closer to zero without changing their sign?
+
+**Answer:** 
+
+8. The SD of the histogram is 2. What constant factor should you use to reduce the SD of histogram from 2 to 1?
+
+**Answer:** 
+
+9. In the following code chunk, make the data narrower to have an SD of 1. Replace the `...` with the mathematical expression that uses ShiftedHeights and the constant factor you identified.
+
+```{r}
+
+# heights_table <- heights_table %>% mutate(TransformedHeights = ...)
+
+```
+
+10. Plot TransformedHeights as a histogram
+
+```{r}
+
+```
+
+11. In A and B, we transformed Heights to have a mean of 0 and a SD of 1. There is a name for this particular transformation. What is the name for this score?
+
+*Hint:* You should have learned about this from the online modules. 
+
+**Answer:** 
+
+12. Write the full equation for this score using the following variables: `mean`, `SD`, and `x` (the value of each data point). Make sure to use parentheses properly!
+
+**Answer:** 
+
+13. Once you have completed all steps and checked your answers, knit the file and submit your html file output to Canvas.

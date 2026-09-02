@@ -1,5 +1,5 @@
 ---
-title: Welcome to PSYCH 420!
+title: "1: Welcome to PSYCH 420!"
 ---
 
 ## Welcome to PSYCH 420!
@@ -16,11 +16,9 @@ https://wall.sli.do/event/d35sArEpryyz2JVeVjSHwt?section=fdeecb9f-4add-43f9-bc87
 
 ## Overview
 
-::: {.card-list .nonincremental}
-1. Course logistics
-1. Teaching philosophy
-1. R Markdown basics
-:::
+<ol class="menu"><ol>
+
+# Course logistics {data-stack-name="Course logistics"}
 
 ## How does this course work? 
 ::: {.card-list}
@@ -104,7 +102,9 @@ Fill out your availability by Saturday so I can determine the best time for offi
 :::::
 
 
-## Teaching philosophy
+# Teaching philosophy {data-stack-name="Teaching philosophy"}
+
+##
 
 - My primary goals is to help you learn
 - I believe that every single one of you can can succeed in this class
@@ -122,14 +122,14 @@ Fill out your availability by Saturday so I can determine the best time for offi
 
 
 
-## Teaching philosophy
+##
 
 - I believe that the best way to learn involves 
     1. Solving problems on your own
     1. Discussing problems with peers
     1. Asking for help
 
-## Teaching philosophy {transition="none"}
+##
 
 - Therefore, I have structured the lab section so you can
     - Code independenty, instead of just copying what I do
@@ -138,7 +138,7 @@ Fill out your availability by Saturday so I can determine the best time for offi
 - Because of the way I structure class, class usually takes up the full two hours.
 
 
-## Teaching philosophy {transition="none"}
+##
 
 - Again, I want to emphasize in class participation
 - Participation not only helps you learn, it helps create a classroom environment that helps everyone learn
@@ -170,7 +170,7 @@ https://wall.sli.do/event/d35sArEpryyz2JVeVjSHwt?section=fdeecb9f-4add-43f9-bc87
 
 
 
-# File directory
+# File directory {data-stack-name="R Markdown basics"}
 
 
 ## Make a folder for this class
@@ -186,7 +186,7 @@ https://wall.sli.do/event/d35sArEpryyz2JVeVjSHwt?section=fdeecb9f-4add-43f9-bc87
 
 :::
 
-# RStudio
+## RStudio
 
 ## What is an RStudio project?
 
@@ -218,7 +218,7 @@ https://wall.sli.do/event/d35sArEpryyz2JVeVjSHwt?section=fdeecb9f-4add-43f9-bc87
 ::::
 
 :::::
-# Introduction to RMarkdown
+## Introduction to RMarkdown
 
 ## What is RMarkdown?
 

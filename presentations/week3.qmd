@@ -85,6 +85,37 @@ What is the proper format?
 :::
 ::::
 
+# Manipulating data tables {data-stack-name="Manipulating data tables`"}
+
+## pipes `%>%`
+
+- Applies functions to data tables
+- The following are equivalent
+
+```r
+print(table_name)
+table_name %>% print()
+```
+## Why use pipes? 
+
+- They allow you to chain multiple functions together
+
+```r
+
+table_name %>% groub_by(...) %>% mutate(...) %>% summarize(...)
+
+```
+
+## `mutate()` function
+
+- Adds or changes columns in a data table
+
+```r
+
+table_name %>% mutate(new_column = column_1 - column_2)
+
+```
+
 ## Simulating height
 ::: card-list
 - Today, we are going to simulate our own heights dataset, and then plot it

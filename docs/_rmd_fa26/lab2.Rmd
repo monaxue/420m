@@ -20,7 +20,7 @@ In the following code chunk, do the following:
 
 2. What table name was the imported data assigned to?
 
-**Answer:** 
+**Answer:** Your answer here.
 
 3. What are column name(s) of the dataset?
 
@@ -85,7 +85,7 @@ In part 3, we will transform Heights so it has a mean of 0 and an SD of 1.
 
 1. Take a look at the first histogram. What is the mean of the Heights?
 
-**Answer:** Your answer here.
+**Answer:** 
 
 2. In order to shift all the data points of Heights down a constant value, what operation do you need to do to the data? Addition, subtraction, multiplication, or division? 
 

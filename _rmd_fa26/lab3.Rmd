@@ -1,0 +1,102 @@
+---
+title: "Descriptive vs. inferential statistics"
+author: "your name here"
+date: "2026-09-08"
+output: html_document
+---
+## Part 1: Basics of data manipulation
+
+1. In the following code block, load the two packages we always need (`tidyverse` and `ggplot2`) and import data
+`HandWashingData.csv` data, assigning it to the variable `washes_data`.
+
+```{r}
+
+```
+
+2. Use `mutate()` to find the mean of `washes`
+
+```{r}
+
+```
+
+3. Use `summarize()` to find the mean of `washes`
+
+```{r}
+
+```
+
+4. Use `group_by()` to group the data by sex, then use `summarize()` to find the mean of `washes`.
+
+```{r}
+
+```
+
+
+## Part 2: Case study practice
+
+### Research question
+
+Hand washing is one of the most important things that humans can do to prevent 
+the spread of many infectious diseases, such as the flu and various forms of
+coronaviruses. Do females in general wash their hands more often than males?
+
+### Methods
+
+25 female and 25 male volunteers were given a fitbit-like device that measured 
+the number of times they washed their hands. The total number of times each
+volunteer washed their hands over the course of a week was measured. The 
+volunteers were initially told that the devices measured “activity”, and were 
+only told that hand washing was being measured after the experiment. 
+
+
+### Load packages and import data
+
+```{r}
+
+```
+
+### Descriptive statistics
+
+1. What are the 3 types of descriptive plots?
+
+**Answer:**
+
+2. Create all three types of descriptive plots. Make sure create separate sub-plots for each sex.
+
+```{r}
+
+```
+
+
+3. What are the statistics to include in a descriptive summary table? 
+
+**Answer:**
+
+
+4. Create a descriptive summary table and assign it to the variable `summary_table`. Then print it.
+
+```{r}
+
+```
+
+5. Interpret your descriptive plots. How are the plots alike/different? Based on this plot alone, can you if females in general wash their hands more than males?
+
+**Answer:** 
+
+### Inferential statistics
+
+1. Calculate the lower and upper confidence intervals for both groups. Hint: use the summary table from above.
+
+```{r}
+
+```
+
+2. Create a mean plot with 95% CIs.
+
+```{r}
+
+```
+
+3. Why do we need inferential statistics? What does it allow us to conclude that descriptive statistics alone cannot?
+
+**Answer**

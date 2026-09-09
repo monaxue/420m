@@ -2,6 +2,7 @@
 title: "4: pipes, ggplot, summary tables"
 ---
 
+
 <!--
 This week as it is went over by an hour. You need to take stuff out!
 
@@ -16,6 +17,19 @@ Also talk about controls?
 It was good to separate out the descriptive statistics and inferential statistics. Maybe teach them about purpose of each, then after case study teach them about interpretations.
 
 -->
+
+## Sampling distribution of means vs. sampling distribution of CIs
+- Remember in week two we plotted random samples of a distribution...
+
+... focus on using summary tables to calculate means and CIs of different samples
+
+## Z-scores
+
+<!-- z score animation -->
+
+## Why are z-scores useful?
+
+
 
 ## Week 4 Lab
 
@@ -126,40 +140,40 @@ head(df_both)
 
 ```{r}
 
-library(tidyverse)
-library(ggplot2)
-
-height_sims <- c()
-
-for (person in 1:200){
-  avg_height <- 64
-  genetics <- sample(-5:5,size=1)
-  nutrition <- sample(-2:2, size=1)
-  exercise <- sample(-3:3, size=1)
-  height_sims[person] <- sum(avg_height, genetics, nutrition, exercise)
-  
-}
-
-df_women <- tibble(heights=height_sims)
-
-height_sims <- c()
-
-for (person in 1:200){
-  avg_height <- 69
-  genetics <- sample(-6:6,size=1)
-  nutrition <- sample(-3:3, size=1)
-  exercise <- sample(-3:3, size=1)
-  height_sims[person] <- sum(avg_height, genetics, nutrition, exercise)
-  
-}
-
-df_men <- tibble(heights=height_sims)
-
-df_women <- df_women %>% mutate(sex='f')
-df_men <- df_men %>% mutate(sex='m')
-
-df_both <- bind_rows(df_women, df_men)
-head(df_both)
+#library(tidyverse)
+#library(ggplot2)
+#
+#height_sims <- c()
+#
+#for (person in 1:200){
+#  avg_height <- 64
+#  genetics <- sample(-5:5,size=1)
+#  nutrition <- sample(-2:2, size=1)
+#  exercise <- sample(-3:3, size=1)
+#  height_sims[person] <- sum(avg_height, genetics, nutrition, exercise)
+#  
+#}
+#
+#df_women <- tibble(heights=height_sims)
+#
+#height_sims <- c()
+#
+#for (person in 1:200){
+#  avg_height <- 69
+#  genetics <- sample(-6:6,size=1)
+#  nutrition <- sample(-3:3, size=1)
+#  exercise <- sample(-3:3, size=1)
+#  height_sims[person] <- sum(avg_height, genetics, nutrition, exercise)
+#  
+#}
+#
+#df_men <- tibble(heights=height_sims)
+#
+#df_women <- df_women %>% mutate(sex='f')
+#df_men <- df_men %>% mutate(sex='m')
+#
+#df_both <- bind_rows(df_women, df_men)
+#head(df_both)
 ```
 
 Make sure you have two columns
@@ -190,75 +204,6 @@ https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
 
 -->
 
-## Apply functions to each group with group_by()
-
-::: card-list
-- %>% (pipes) can be chained together
-- We can use pipes to add the `group_by()` before using mutate.
-
-    ```r
-    df_mutated <- df_both %>% group_by(sex) %>% mutate(Mean=mean(heights))
-    ```
-
-- Compare the above with the previous version without the group_by(). What's the difference?
-    - They are the same within each sex, but different between
-
-    
-:::
-
-<!--
-
-. . . 
-
-::: iframe
-https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
-
-:::
-
--->
-
-## Note: The following two slides are import for the upcoming case study assignment. 
-
-## Descriptive statistics
-:::: panel-tabset
-
-## What is it?
-
-::: {.card-list .nonincremental}
-- What is descriptive statistics?
-    - Descriptive statistics describes larger trends in the data, without making claims about the true population values.
-:::
-
-## Summary table
-
-::: {.card-list .nonincremental}
-- Compare the following to the version with `mutate()`. How do they differ?
-    - Note: this is an incomplete summary table. Please read more below!
-
-    ```r
-    summary_table <- df_both %>% group_by(sex) %>% summarize(Mean=mean(heights))
-    summary_table
-    ```
-
-- Complete summary table should fill in the following
-
-    ```r
-    summary_table <- df_both %>% group_by(sex) %>% summarize(Mean=mean(heights), SampleSize = ..., SD = ..., SE = ...)
-    summary_table
-    ```
-
-    - SD is standard deviation and SE is standard error.
-    - The function to calculate the sample size is just `n()`
-    - The function to calculate SD is `sd(height)`
-    - To calculate SE, that is SD/sqrt(SampleSize)
-
-- Output from complete code:
-```{r}
-summary_table <- df_both %>% group_by(sex) %>% summarize(SampleSize=n(),Mean=mean(heights), SD = sd(heights), SE=SD/sqrt(SampleSize))
-summary_table
-```
-
-:::
 
 
 ## Histogram
@@ -270,35 +215,13 @@ ggplot(...) + geom_histogram() + facet_wrap(~sex)
 ```
 ```{r}
 
-ggplot(df_both, aes(x=heights)) + geom_histogram() + facet_wrap(~sex)
-```
-
-::: transparent
-
-No actually, you should use base R's hist() instead.
-
-:::
-
-::::
-
-## Frequency polygon
-::: {.card-list .nonincremental}
-- Use `facet_warp(~sex)` to create a separate panel for each sex.
- 
-```r
-ggplot(...) + geom_freqpoly() + facet_wrap(~sex)
-```
-:::
-
-```{r}
-ggplot(df_both, aes(x=heights)) + geom_freqpoly() + facet_wrap(~sex)
+#ggplot(df_both, aes(x=heights)) + geom_histogram() + facet_wrap(~sex)
 ```
 
 ## Boxplot
 
 ::: {.card-list .nonincremental}
-- For boxplots, you need both the x and y variable in aesthetics.
-- What should the x and y variables be?
+
 :::
 
 ```r
@@ -307,7 +230,7 @@ ggplot(...) + geom_boxplot()
 
 
 ```{r}
-ggplot(df_both, aes(x=sex, y=heights)) + geom_boxplot()
+#ggplot(df_both, aes(x=sex, y=heights)) + geom_boxplot()
 ```
 
 ## Interpretations
@@ -367,9 +290,9 @@ CIs
 ```
 
 ```{r}
-summary_table <- summary_table %>% mutate(LowerCI = Mean-1.96*SE, UpperCI = Mean+1.96*SE)
-CIs <- summary_table %>% select(sex, LowerCI, UpperCI)
-CIs
+#summary_table <- summary_table %>% mutate(LowerCI = Mean-1.96*SE, UpperCI = Mean+1.96*SE)
+#CIs <- summary_table %>% select(sex, LowerCI, UpperCI)
+#CIs
 ```
 
 :::
@@ -388,7 +311,7 @@ ggplot(data=summary_table, aes(...)) + geom_point() + geom_errorbar(aes(ymin = L
 ```
 
 ```{r}
-ggplot(summary_table, aes(x=sex,y=Mean)) + geom_point() + geom_errorbar(aes(ymin = LowerCI, ymax=UpperCI))
+#ggplot(summary_table, aes(x=sex,y=Mean)) + geom_point() + geom_errorbar(aes(ymin = LowerCI, ymax=UpperCI))
 ```
 
 ## Interpretations

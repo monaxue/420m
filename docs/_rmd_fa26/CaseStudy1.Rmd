@@ -1,0 +1,77 @@
+---
+title: "Case study 1"
+author: "your name here"
+date: "enter the date here"
+output: html_document
+---
+
+## Instructions
+Read the background provided below and complete each deliverable. You may work with a partner on this assignment, but each student must submit their own set of deliverables. If you choose to work with a partner you must go to Canvas and set up your group on the `People` tab. If you get stuck, try looking back at the code used in previous lab assignments.
+
+## Background
+You work as a research assistant in a developmental psychology lab at UT. You’ve recently been assigned to work with one of the lab’s graduate students on a large-scale cross-cultural study, where children at many sites across the world completed a series of experimental tasks. The graduate student is making a poster to show off their preliminary work and would like your help with the descriptive analysis portion.
+
+You will focus on just one task from the larger battery, where children watched an adult build a tower out of special blocks and were subsequently asked to build their own tower. The adult’s tower had 10 distinctive features and each child’s tower was given an imitation score (0-10) based on how many of those features they incorporated into their own tower. Each child’s age was also recorded.
+
+**Research question:** how does the cultural group of a child impact their tendency to imitate?
+
+## Deliverables
+
+### 1. Load any necessary packages and import the data. [1 point]
+
+```{r}
+
+```
+
+
+### 2. Based on the research question, which variable is your dependent variable? When is your independent/grouping variable?  [1 point]
+
+**Answer:**
+
+
+### 3. Create a summary table, and group by the column that is appropriate for the research question. [1 point]
+
+```{r}
+
+```
+
+### 4. Produce a descriptive plot, and group by the column that is appropriate for the research question. [2 points]
+
+```{r}
+
+```
+
+
+### 5. Calculate the 95% confidence intervals. [1 points]
+
+```{r}
+
+```
+
+### 6. Graph the mean imitation score per fieldsite (including 95% confidence intervals). [2 points]
+
+```{r}
+
+```
+
+
+### 7. In a few sentences, report the sample size, mean, and standard deviation, standard error, and CIs for each group [1 point]
+
+**Answer:**
+
+### 8. Interpret the descriptive plot. [2 points]
+
+**Answer:**
+
+### 9. Interpret the CI plot. [2 points]
+
+**Answer:**
+
+
+### Extra credit: It is actually better to do the above analyses only for one age group. Why might that be the case? Produce a histogram of ages grouped by field site. Based on this histogram, if you could only choose one age group for your previous analyses, which would that be? Why? [1 point]
+
+```{r}
+
+```
+
+**Answer:**

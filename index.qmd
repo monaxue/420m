@@ -95,13 +95,16 @@ Includes Case Study 1 takeaways and discussion of descriptive vs. inferential st
 ## 4: pipes, ggplot, summary tables
 
 [Slides](/presentations/week4.qmd){.filelink}
+-->
+## 3: Descriptive vs. inferential statistics
 
-## 3: Simulations and the Central Limit Theorem
-
-Includes how to plot histograms, frequency polygons, and boxplots
+Includes how to create summary tables, calculate CIs, and how to create various plots
 
 [Slides](/presentations/week3.qmd){.filelink}
--->
+
+[lab3.Rmd](/_rmd_fa26/lab2.Rmd){.filelink}
+
+[HandWashingData.csv](/data/HandWashingData.csv){.filelink}
 
 ## 2: Histograms and z-scores
 

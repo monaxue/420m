@@ -282,6 +282,8 @@ Now it's time to work on your lab2.Rmd file!
 1. As you go through the file, try to hand-type all the code, instead of copy-and-pasting. It might seem tedious now, but this simple change will help you work faster during case studies.
 1. Always try to guess an answer before looking it up. Even if you guess wrong, you will remember it better next time.
 
+<!-- Next time, add an animation of what I mean by transforming the histogram by shifting and narrowing. -->
+
 ## Part 1 output
 
 ```{r}

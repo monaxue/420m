@@ -10,7 +10,7 @@
     ],
     "claudeCode.disableLoginPrompt": true,
     "claudeCode.hideOnboarding": true,
-    "positron.assistant.consoleActions.enable": false,
     "positron.assistant.gitIntegration.enable": false,
-    "positron.assistant.provider.anthropic.enable": false
+    "positron.assistant.provider.anthropic.enable": false,
+    "console.assistantActions.enabled": false
 }  

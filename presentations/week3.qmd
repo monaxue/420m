@@ -53,29 +53,32 @@ What you do to the data before you plot it
 - Go to Part 1 of your `lab3.Rmd` file.
 - Try to use `... %>% mutate(Mean = mean(washes))` on your dataset.
 - ❓ What did `mutate(Mean = mean(washes))` do?
+    - It calculated the mean of washes and replaced every value in the washes column with that mean.
+    - **It created a new column called Mean, and in each row, it calculated the average of the entire column of washes. (correct)**
+    - It created a new column called Mean, and for each row, it calculated the average of that row.
 
-. . .
 
-<!-- 
-
-It calculated the mean of washes and replaced every value in the washes column with that mean.
-It created a new column called Mean, and in each row, it calculated the average of the entire column of washes.
-It created a new column called Mean, and for each row, it calculated the average of that row.
--->
+<!--
 
 ::: iframe
 
 https://wall.sli.do/event/svJsdsn6gh1fzGkA76YVCv?section=9a2f41e7-317b-4de0-b355-fd79899b3503&integration=shared-present-mode&utm_source=slidoadmin
 
 :::
-    
+
+-->
 
 ## `summarize()` function {#summarize}
 
 - `table_name %>% summarize(Mean=mean(washes))`
 - ❓ Compare `summarize()` with `mutate()`. How do they differ?
+    - summarize() deletes rows with missing data
+    - summarize() adds up all the rows so only one is left
+    - **summarize() aggregates the values and removes redundant rows (correct)**
 
 . . .
+
+<!--
 
 ::: iframe
 
@@ -83,10 +86,9 @@ https://wall.sli.do/event/svJsdsn6gh1fzGkA76YVCv?section=9a2f41e7-317b-4de0-b355
 
 :::
 
+-->
+
 <!-- 
-summarize() deletes rows with missing data
-summarize() adds up all the rows so only one is left
-summarize() aggregates the values and removes redundant rows
 
 -->
 
@@ -94,7 +96,13 @@ summarize() aggregates the values and removes redundant rows
 
 - We can use pipes to add the `group_by()` before using summarize.
 - `table_name %>% group_by(sex) %>% summarize(Mean=mean(washes))`
+- You can group by multiple groups, like so: `group_by(column1, column2, column3)`
 - ❓ Compare `summarize()` with `group_by()` to the to the previous version without it. What's the difference?
+    - **summarize() alone produces one summary for the full dataset, while group_by() followed by summarize() produces a separate summary for each group. (correct)**
+    - group_by() sorts the dataset, and summarize() then reports the first value in each group.
+    - group_by() removes duplicate rows before summarize() calculates the mean.
+
+<!--
 
 . . .
 
@@ -104,9 +112,8 @@ https://wall.sli.do/event/svJsdsn6gh1fzGkA76YVCv?section=9a2f41e7-317b-4de0-b355
 
 :::
 
-<!-- - Answer: They are the same within each sex, but different between -->
+-->
 
-- You can group by multiple groups, like so: `group_by(column1, column2, column3)`
 
 
 ## Summary table {#sum_table}
@@ -197,11 +204,11 @@ ggplot(df, aes(x=`Performance Score`)) + geom_histogram() + facet_wrap(~experime
     - In all three samples, the score is centered at around 10.
     - Note: Performance ***score***, not just performance.
 
-## ❓ Practice: Which interpretation is the best? 
+## ❓ Which interpretation is the best? 
 
-::::: columns
+:::::: panel-tabset
 
-:::: column
+## Histograms
 
 ```{r}
 
@@ -228,6 +235,32 @@ ggplot(df, aes(x=`Memory Score`)) + geom_histogram(binwidth=2) + facet_wrap(~exp
 
 ```
 
+## Answer options
+
+::: nonincremental
+
+1. **Both plots are bell shaped, with the second plot being slightly more skewed. The first plot is slightly narrower than the second. The score is centered at around 5 for the first plot, whereas it is centered at around 7 for the second plot. (correct)**
+2. The second plot is significantly more skewed than the first plot. It is also significantly wider. Both plots are bell shaped. Memory levels for the second group is higher, with a mean of 7, than for the first group, with a mean of 5.
+3. Both plots are rather bell shaped, though the second plot may be more skewed and is slightly wider than the first plot. The memory levels for the second group is higher than for the first group, at about 7, whereas the first group has a lower memory level, at about 5.
+4. **Both plots are bell shaped. The second plot is slightly wider and slightly more skewed than the first plot. (correct)**
+
+:::
+
+## Explanations
+
+- 1 includes talking about the shape, spread, and center, without making claims about the popultion.
+- 2 is wrong because it uses the word "signficant", which implies a population level conclusion.
+- 3 is wrong because it makes a strong statement about a group difference. Without specifying that the difference is in the the score, not just memory levels, it doesn't specify that it is only in these samples. 
+- 4 avoids any issues with interpreting the "center" by not talking about it at all. Remember that in this class, describing the "center" is optional for descriptive plots.
+
+
+
+<!--
+
+::::: columns
+
+:::: column
+
 ::::
 
 :::: column
@@ -242,15 +275,10 @@ https://wall.sli.do/event/svJsdsn6gh1fzGkA76YVCv?section=9a2f41e7-317b-4de0-b355
 
 :::::
 
-<!--
-
-1. Both plots are bell shaped, with the second plot being slightly more skewed. The first plot is slightly narrower than the second. The score is centered at around 5 for the first plot, whereas it is centered at around 7 for the second plot.
-2. The second plot is significantly more skewed than the first plot. It is also significantly wider. Both plots are bell shaped. Memory levels for the second group is higher, with a mean of 7, than for the first group, with a mean of 5.
-3. Both plots are rather bell shaped, though the second plot may be more skewed and is slightly wider than the first plot. The memory levels for the second group is higher than for the first group, at about 7, whereas the first group has a lower memory level, at about 5.
-4. Both plots are bell shaped. The second plot is slightly wider and slightly more skewed than the first plot.
-
-
 -->
+
+::::::
+
 
 # Inferential statistics
 
@@ -348,43 +376,63 @@ In case studies, descriptive statistics always includes the following components
 
 ::: nonincremental
 
-
 - A table that shows sample size, mean, standard deviation and standard error
     - `summary_table <- table_name %>% group_by(...) %>% summarize(SampleSize = n(), Mean = ..., SD = ..., SE = ...)`
-- To calculate the sample size of each group, just set SampleSize to the function `n()`
+- To calculate the sample size of each group, just set SampleSize to the function `n()` (nothing needs to go in the parentheses)
 - To calculate SE, use the function `SD/sqrt(SampleSize)`
+
+:::
 
 ```{r}
 summary_table <- washes_data %>% group_by(sex) %>% summarize(SampleSize = n(), Mean = mean(washes), SD = sd(washes), SE = SD/sqrt(SampleSize))
 
 summary_table
 ```
-:::
 
 
-## Histogram and frequency polygon{#histogram-freqpoly}
+
+## Histogram/frequency polygon{#histogram-freqpoly}
 
 ::: nonincremental
 
 - Counts the number of individuals (y-axis) for the variable on the x-axis.
-- Histogram
-    - `ggplot(..., aes(x=...)) + geom_histogram()`
-- Frequency polygon: continuous version of histogram
-    - `ggplot(..., aes(x=...)) + geom_freqpoly()`
+
+:::
+
+::::: columns
+:::: {.column .nonincremental}
+
+**Histogram**
+
+::: nonincremental
+
+- `ggplot(..., aes(x=...)) + geom_histogram()`
+- ggplot calculates the counts, so only x is needed.
 
 :::
 
 ```{r}
-
 data <- read_csv("data/HandWashingData.csv")
-
-plot1 <- ggplot(data, aes(x=washes)) + geom_histogram()
-plot2 <- ggplot(data, aes(x=washes)) + geom_freqpoly()
-
-plot1+plot2
-
+ggplot(data, aes(x=washes)) + geom_histogram()
 ```
+::::
 
+:::: {.column .nonincremental}
+
+**Frequency polygon**    
+
+::: nonincremental
+
+- `ggplot(..., aes(x=...)) + geom_freqpoly()`
+- This is the continuous version of the histogram
+
+:::
+
+```{r}
+ggplot(data, aes(x=washes)) + geom_freqpoly()
+```
+::::
+:::::
 
 ## Boxplot {#boxplot}
 
@@ -400,7 +448,6 @@ plot1+plot2
 ggplot(data, aes(x=sex, y=washes)) + geom_boxplot()
 
 ```
-
 
 
 ## Interpretations
@@ -442,8 +489,13 @@ ggplot(data, aes(x=sex, y=washes)) + geom_boxplot()
 ::: nonincremental
 
 - `ggplot(CIs, aes(x=grouping_variable, y=Mean)) + geom_errorbar(aes(ymin = LowerCI, ymax=UpperCI))`
-
+- `grouping_variable`: Make sure to replace `grouping_variable` with the actual correct variable.
 :::
+
+- If we are looking at difference in washes between the sexes, what variable should go in place of the `grouping_variable`? Hint: print out your CI table at find the column name that makes the most sense.
+    - Answer: `sex`
+
+
 
 ```{r}
 data <- read_csv("data/HandWashingData.csv")
@@ -461,11 +513,11 @@ We will go over this next week.
 ::::::
 
 
-# Deliverables {data-stack-name="Deliverables"}
-
-All the code you need are on the slides. Remember: try to always manually type the code instead of copying and pasting.
+# Cheatsheet {data-stack-name="Cheatsheet"}
 
 ## Cheat sheet for deliverables
+
+All the code you need are on the slides. Remember: try to always manually type the code instead of copying and pasting.
 
 :::::: panel-tabset
 

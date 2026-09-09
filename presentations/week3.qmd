@@ -435,7 +435,7 @@ ggplot(data, aes(x=sex, y=washes)) + geom_boxplot()
 
 - Mean $\pm$ 1.96*SE for 95% CI
 - In R, calculate using summary table
-    - `CIs <- summary_table %>% summarize(LowerCI = Mean - 1.96*SE, UpperCI = Mean + 1.96*SE)`
+    - `CIs <- summary_table %>% mutate(LowerCI = Mean - 1.96*SE, UpperCI = Mean + 1.96*SE)`
 :::
 ## CI plot {#ci-plot}
 

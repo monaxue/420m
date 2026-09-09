@@ -722,7 +722,7 @@ summarize() aggregates the values and removes redundant rows
 <li>Mean <span class="math inline">\(\pm\)</span> 1.96*SE for 95% CI</li>
 <li>In R, calculate using summary table
 <ul>
-<li><code>CIs &lt;- summary_table %&gt;% summarize(LowerCI = Mean - 1.96*SE, UpperCI = Mean + 1.96*SE)</code></li>
+<li><code>CIs &lt;- summary_table %&gt;% mutate(LowerCI = Mean - 1.96*SE, UpperCI = Mean + 1.96*SE)</code></li>
 </ul></li>
 </ul>
 </div>

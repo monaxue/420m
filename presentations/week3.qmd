@@ -441,7 +441,7 @@ ggplot(data, aes(x=sex, y=washes)) + geom_boxplot()
 
 ::: nonincremental
 
-- `ggplot(summary_table, aes(x=grouping_variable, y=Mean)) + geom_errorbar(aes(ymin = LowerCI, ymax=UpperCI))`
+- `ggplot(CIs, aes(x=grouping_variable, y=Mean)) + geom_errorbar(aes(ymin = LowerCI, ymax=UpperCI))`
 
 :::
 

@@ -7,6 +7,9 @@ title: "Descriptive vs. inferential statistics"
 - Quiz next week!
 - Work on your practice quizzes, they will be very similar to the actual quiz.
 - Bring a handwritten cheat sheet (letter size) for extra credit.
+- While the quiz is on Canvas, you must be in person to take it.
+- The first half of lab will be a short, normal lab. You will have the second half of lab to complete the quiz.
+- The quiz is timed and will be 40 minutes long.
 
 ## Overview
 <ol class="menu"><ol>
@@ -45,7 +48,13 @@ What you do to the data before you plot it
 - Example
     - `table_name %>% mutate(Mean = mean(washes))`
 
-## ❓ What did `mutate(Mean = mean(washes))` do?
+##
+
+- Go to Part 1 of your `lab3.Rmd` file.
+- Try to use `... %>% mutate(Mean = mean(washes))` on your dataset.
+- ❓ What did `mutate(Mean = mean(washes))` do?
+
+. . .
 
 <!-- 
 
@@ -62,7 +71,6 @@ https://wall.sli.do/event/svJsdsn6gh1fzGkA76YVCv?section=9a2f41e7-317b-4de0-b355
     
 
 ## `summarize()` function {#summarize}
-
 
 - `table_name %>% summarize(Mean=mean(washes))`
 - ❓ Compare `summarize()` with `mutate()`. How do they differ?
@@ -474,42 +482,17 @@ All the code you need are on the slides. Remember: try to always manually type t
 
 ::: nonincremental
 
-- Basic usage: `ggplot(...) + geom_...() + facet_wrap(~...)`
-- Remember to use `+` between layers.
-:::
-
-::::: {.columns}
-
-:::: {.column .nonincremental}
-
-**Layer 1: info layer**
-
-::: nonincremental
-
-- `ggplot(table_name, aes(x=column_x, y=column_y))`
-
-:::
-
-::::
-
-:::: {.column .nonincremental}
-**Layer 2 and up**
-
-::: nonincremental
-
+- Basic usage
+    - $\underbrace{\text{ggplot(table_name, aes(x=...y=...))}}_{\text{Info layer}} + \underbrace{\text{geom_...()}}_{\text{Plot layer}} + \underbrace{\text{facet_wrap(~...)}}_{\text{Grouping layer}}$
 - Plot layers
     - `geom_histogram()`: histogram.
     - `geom_freqpoly()`: frequency polygon.
     - `geom_boxplot()`: boxplot.
     - `geom_errorbar()`: "error" bars or CI bars
-- `facet_wrap(~column_name)`: Divides the plot into smaller plots based on the groups in `column_name`
-
 :::
 
-::::
-:::::
-
 ## Data manipuation and summary tables
+
 ::: nonincremental
 - `%>%`: an operator that allows you to change together functions.
 - `group_by()`: groups data by a column that you specify.

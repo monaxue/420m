@@ -102,7 +102,7 @@ Includes how to create summary tables, calculate CIs, and how to create various 
 
 [Slides](/presentations/week3.qmd){.filelink}
 
-[lab3.Rmd](/_rmd_fa26/lab2.Rmd){.filelink}
+[lab3.Rmd](/_rmd_fa26/lab3.Rmd){.filelink}
 
 [HandWashingData.csv](/data/HandWashingData.csv){.filelink}
 

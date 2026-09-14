@@ -2,37 +2,48 @@
 title: "Descriptive vs. inferential statistics"
 ---
 
-## Announcements
+## Overview
+<ol class="menu"><ol>
+
+# Quiz info {data-stack-name="Quiz info"}
+
+## Quiz info
+::: nonincremental
 
 - Quiz next week!
+- No coding questions, just statistical theory and calculations from the online videos.
 - Work on your practice quizzes, they will be very similar to the actual quiz.
-- Bring a handwritten cheat sheet (letter size) for extra credit.
+- Bring a handwritten cheat sheet for extra credit.
+    - One side on a letter size piece of paper
+    - Only formulas allowed
+    - Must be handwritten
 - While the quiz is on Canvas, you must be in person to take it.
 - The first half of lab will be a short, normal lab. You will have the second half of lab to complete the quiz.
 - The quiz is timed and will be 40 minutes long.
 
-## Overview
-<ol class="menu"><ol>
+:::
 
 ## What are the first three steps for every lab?
 
+::: nonincremental
 1. Create lab folder
 2. Create R project
 3. Download and move Rmd and CSV files into lab folder from **lab website**
+:::
 
 # Data manipulation {data-stack-name="Data manipulation"}
-
 What you do to the data before you plot it
 
+::: nonincremental
 - Essential operators and functions
     - Pipes: `%>%`
     - `mutate()`
     - `summarize()`
     - `group_by()`
-
+:::
 
 ## Pipes: `%>%` {#pipes}
-
+::: nonincremental
 - Applies functions to data tables
 - The following are equivalent
     - `head(table_name)`
@@ -40,24 +51,33 @@ What you do to the data before you plot it
 - Why use pipes? 
     - They allow you to chain multiple functions together
     - `table_name %>% mutate(...) %>% head()`
-
+:::
 ## `mutate()` function {#mutate}
-
+::: nonincremental
 - Adds or changes columns in a data table
     - `table_name %>% mutate(new_column = ...)`
 - Example
     - `table_name %>% mutate(Mean = mean(washes))`
 
-##
+```{r}
+library(tidyverse)
 
+washes_data <- read_csv("data/HandWashingData.csv")
+
+washes_data %>% mutate(Mean=mean(washes))
+```
+
+:::
+
+##
+::: nonincremental
 - Go to Part 1 of your `lab3.Rmd` file.
 - Try to use `... %>% mutate(Mean = mean(washes))` on your dataset.
 - ❓ What did `mutate(Mean = mean(washes))` do?
     - It calculated the mean of washes and replaced every value in the washes column with that mean.
     - **It created a new column called Mean, and in each row, it calculated the average of the entire column of washes. (correct)**
     - It created a new column called Mean, and for each row, it calculated the average of that row.
-
-
+:::
 <!--
 
 ::: iframe
@@ -69,16 +89,23 @@ https://wall.sli.do/event/svJsdsn6gh1fzGkA76YVCv?section=9a2f41e7-317b-4de0-b355
 -->
 
 ## `summarize()` function {#summarize}
-
+::: nonincremental
 - `table_name %>% summarize(Mean=mean(washes))`
+
+```{r}
+washes_data %>% summarize(Mean=mean(washes))
+```
+
 - ❓ Compare `summarize()` with `mutate()`. How do they differ?
     - summarize() deletes rows with missing data
     - summarize() adds up all the rows so only one is left
     - **summarize() aggregates the values and removes redundant rows (correct)**
-
-. . .
+:::
 
 <!--
+. . .
+
+
 
 ::: iframe
 
@@ -93,15 +120,20 @@ https://wall.sli.do/event/svJsdsn6gh1fzGkA76YVCv?section=9a2f41e7-317b-4de0-b355
 -->
 
 ##  group_by() {#group-by}
-
+::: nonincremental
 - We can use pipes to add the `group_by()` before using summarize.
 - `table_name %>% group_by(sex) %>% summarize(Mean=mean(washes))`
 - You can group by multiple groups, like so: `group_by(column1, column2, column3)`
+
+```{r}
+washes_data %>% group_by(sex) %>% summarize(Mean=mean(washes))
+```
+
 - ❓ Compare `summarize()` with `group_by()` to the to the previous version without it. What's the difference?
     - **summarize() alone produces one summary for the full dataset, while group_by() followed by summarize() produces a separate summary for each group. (correct)**
     - group_by() sorts the dataset, and summarize() then reports the first value in each group.
     - group_by() removes duplicate rows before summarize() calculates the mean.
-
+:::
 <!--
 
 . . .
@@ -118,21 +150,14 @@ https://wall.sli.do/event/svJsdsn6gh1fzGkA76YVCv?section=9a2f41e7-317b-4de0-b355
 
 ## Summary table {#sum_table}
 
-
+::: nonincremental
 - When we used `group_by()` with `summarize()`, we created a summary table.
 - Generally, we have the form:
-
-. . .
-
-```r
-summary_table <- table_name %>% group_by(...) %>% summarize(...)
-```
+    - `summary_table <- table_name %>% group_by(...) %>% summarize(...)`
+:::
+<!-- . . .-->
 
 ```{r}
-library(tidyverse)
-
-washes_data <- read_csv("data/HandWashingData.csv")
-
 summary_table <- washes_data %>% group_by(sex) %>% summarize(SampleSize = n(), Mean = mean(washes), SD = sd(washes), SE = SD/sqrt(SampleSize))
 
 summary_table
@@ -144,32 +169,32 @@ summary_table
 
 ::::: columns
 
-:::: column
-
+:::: {.column .nonincremental}
+::: nonincremental
 - **Descriptive**
     - Visualize the ***general*** shape, center, and spread of the ***sample***
     - "See the forest, but not the trees"
-
+:::
 ::::
 
-:::: column
+:::: {.column .nonincremental}
 
-
+::: nonincremental
 - **Inferential**
     - Make inferences about the true population means
-
+:::
 ::::
 :::::
 
 
 # Descriptive statistics
-
+::: nonincremental
 - Larger trends in the data, without making claims about the true population values.
 - "Ambiguous thinking"
     - Shape: Is it normal? Symmentrical? Skewed (rarer than you think!)? Bimodal?
     - Center ~ ***Sample*** mean
     - Spread ~ ***Sample*** SD
-
+:::
 ## "Ambiguous thinking"
 
 
@@ -195,7 +220,7 @@ ggplot(df, aes(x=`Performance Score`)) + geom_histogram() + facet_wrap(~experime
 ```
 
 ## Interpreting descriptive statistics {#descriptive-interpret}
-
+::: nonincremental
 1. Shape (skew)
     - All three samples are somewhat bell shaped. There is no clear skew in any of the plots.
 1. Spread
@@ -203,7 +228,7 @@ ggplot(df, aes(x=`Performance Score`)) + geom_histogram() + facet_wrap(~experime
 1. Center (optional)
     - In all three samples, the score is centered at around 10.
     - Note: Performance ***score***, not just performance.
-
+:::
 ## ❓ Which interpretation is the best? 
 
 :::::: panel-tabset
@@ -247,13 +272,13 @@ ggplot(df, aes(x=`Memory Score`)) + geom_histogram(binwidth=2) + facet_wrap(~exp
 :::
 
 ## Explanations
-
+::: nonincremental
 - 1 includes talking about the shape, spread, and center, without making claims about the popultion.
-- 2 is wrong because it uses the word "signficant", which implies a population level conclusion.
+- 2 is wrong because it uses the word "significant", which implies a population level conclusion.
 - 3 is wrong because it makes a strong statement about a group difference. Without specifying that the difference is in the the score, not just memory levels, it doesn't specify that it is only in these samples. 
 - 4 avoids any issues with interpreting the "center" by not talking about it at all. Remember that in this class, describing the "center" is optional for descriptive plots.
 
-
+:::
 
 <!--
 
@@ -281,16 +306,16 @@ https://wall.sli.do/event/svJsdsn6gh1fzGkA76YVCv?section=9a2f41e7-317b-4de0-b355
 
 
 # Inferential statistics
-
+::: nonincrmental
 - What can we infer about the population from the sample?
-
+:::
 ##
-
+::: nonincremental
 - Guessing game: I have take a random sample from either Population A or Population B. Which population does this random sample come from?
     - "Population" = The true distribution
-
-<!-- Just do a raise hand poll. who thinks it comes from distribution A? Who thinks it comes form distribution B? -->
-. . . 
+:::
+<!-- Just do a raise hand poll. who thinks it comes from distribution A? Who thinks it comes form distribution B?
+. . .  -->
 
 ```{r}
 
@@ -347,13 +372,13 @@ pop + sample2
 <!-- - Actual answer: An answer that doesn't make as much sense. -->
 
 ## Statistical tests must be used
-
+::: nonincremental
 - It can be hard to tell which population the sample came from!
 - Instead of asking, "do we know for sure which distribution the sample comes from?", can we instead ask "what is the probability that the sample comes from A or B?"
     - Kind of. There isn't a way to exactly calculate the probability, but we can still capture this intution with the idea of "confidence".
 - We must use some sort of *test*, like confidence intervals or t-tests, to infer something about the true population (more on CIs next week)
-
-# Doing statistics in your Case Studies {data-stack-name="Doing statistics in your Case Studies"}
+:::
+# Case study checklist and code {data-stack-name="Case study checklist and code"}
 
 How to do descriptive and inferential statistics in your case studies?
 
@@ -490,11 +515,9 @@ ggplot(data, aes(x=sex, y=washes)) + geom_boxplot()
 
 - `ggplot(CIs, aes(x=grouping_variable, y=Mean)) + geom_errorbar(aes(ymin = LowerCI, ymax=UpperCI))`
 - `grouping_variable`: Make sure to replace `grouping_variable` with the actual correct variable.
-:::
-
 - If we are looking at difference in washes between the sexes, what variable should go in place of the `grouping_variable`? Hint: print out your CI table at find the column name that makes the most sense.
     - Answer: `sex`
-
+:::
 
 
 ```{r}

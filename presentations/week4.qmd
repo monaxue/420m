@@ -1,348 +1,623 @@
 ---
-title: "4: pipes, ggplot, summary tables"
+title: "4: Sampling distributions and CIs"
+revealjs:
+    transition: none
+    background-transition: none
 ---
 
+## Agenda
 
-<!--
-This week as it is went over by an hour. You need to take stuff out!
+- 8:00am Lecture
+- 8:30am Deliverables (due Friday)
+- 9:00am Quiz
 
-Just take out the simulation part. Just give them a dataset to work with. They will simulate again next week.
+# Announcements
 
-Next time, have them open the case study template today. Maybe they shouldn't write interpretations today. They can do that in the case study, and you can tell them ahead of time that they don't have to worry too much because they will have the opporutunity to revise the case study.
+## Quiz cheatsheet
+- Make sure your cheat sheet only as one side
+- Make sure there are only formulas on them
 
-It seems that summary tables are new to them, but ggplot they have a lot more experience with.
+## Case study next week
+- Groups of 2-3 people.
+- Create groups on Canvas.
+- You can work on your own if you prefer.
 
-Also talk about controls?
+## Outline
+<ol class="menu"><ol>
 
-It was good to separate out the descriptive statistics and inferential statistics. Maybe teach them about purpose of each, then after case study teach them about interpretations.
+# Sampling distributions {data-stack-name="Sampling distributions"}
 
--->
-
-## Sampling distribution of means vs. sampling distribution of CIs
-- Remember in week two we plotted random samples of a distribution...
-
-... focus on using summary tables to calculate means and CIs of different samples
-
-## Z-scores
-
-<!-- z score animation -->
-
-## Why are z-scores useful?
-
-
-
-## Week 4 Lab
-
-::: {.card-list .nonincremental}
-As always:
-
-1. Create your lab4 folder
-1. Create your R studio project
-1. Create & save your lab4.Rmd file
-1. Add the title, author, and date to the Rmd file.
-1. Load `tidyverse` and `ggplot2` using the `library()` function.
+## Sampling distributions {transition="none"}
+::: notes
+- Let's say you hold an experiment, 
+- and you measure 20 people's height. 
+- You plot the distribution.
 :::
 
-## Retrieval practice
 ::: card-list
-- Trying to retrieve information helps us learn, even if we don't think we remember.
-- Without looking at your notes, try your best to answer the following questions
+- You hold an experiment with a sample size of 20 people.
+:::
+. . . 
+
+```{r}
+
+library(tidyverse)
+set.seed(5)
+data <- tibble(Height=c(rnorm(mean=66, sd=5, n=20),rnorm(mean=66, sd=5, n=20)), Experiment=c(rep("1",times=20),rep("2",times=20)))
+
+data_filtered <- data %>% filter(Experiment == "1")
+
+```
+
+```{r}
+ggplot(data_filtered, aes(x=Height, color=Experiment)) + geom_density(size=2) + theme_classic() + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), axis.title.y = element_blank(), legend = element_blank(), legend.position = "none")
+```
+
+## Sampling distributions {transition="none"}
+::: notes
+- Now, you hold another experiment, 
+- again, with 20 people.
+- You plot the distribution
 :::
 
-. . .
-
-<!--
-
-::: iframe
-https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
+::: card-list
+- You hold another experiment
 :::
 
--->
+. . . 
+
+```{r}
+
+ggplot(data, aes(x=Height, color=Experiment)) + geom_density(size=2) + theme_classic() + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), axis.title.y = element_blank(), legend = element_blank(), legend.position = "none")
+
+
+```
+
+## Sampling distributions {transition="none"}
+::: notes
+- Let's say you take the means of each, and plot it on a separate graph.
+
+:::
+
+::::: columns
+:::: {.column}
+
+```{r}
+#| fig-height: 10
+
+ggplot(data, aes(x=Height, color=Experiment)) + geom_density(size=5) + theme_classic() + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), axis.title.y = element_blank(), legend = element_blank(), legend.position = "none")
+
+
+```
+
+::::
+
+:::: {.column .fragment}
+
+
+
+```{r}
+#| fig-height: 10
+
+data <- data %>% group_by(Experiment) %>% mutate(Means=mean(Height), y=0.01)
+
+
+ggplot(data, aes(x=Height, color=Experiment)) + geom_density(color="white") + geom_point(aes(x=Means, y=y), size=6) + theme_classic() + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), axis.title.y = element_blank(),legend.position = "none")
+
+
+```
+
+::: {.nonincremental}
+- Take the means
+:::
+
+::::
+
+:::::
+
+
+## And repeat... {transition="none"}
+::: notes
+- And you repeat.
+
+:::
+
+
+```{r}
+
+more_data <- tibble(Height=c(rnorm(mean=66, sd=5, n=20), rnorm(mean=66, sd=5, n=20), rnorm(mean=66, sd=5, n=20)), Experiment=c(rep("3", times=20),rep("4", times=20),rep("5", times=20)))
+
+data <- bind_rows(data, more_data)
+
+data <- data %>% group_by(Experiment) %>% mutate(Means=mean(Height), y=0.01)
+
+
+```
+
+::::: columns
+:::: {.column}
+
+```{r}
+#| fig-height: 10
+
+ggplot(data, aes(x=Height, color=Experiment)) + geom_density(size=5) + theme_classic() + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), axis.title.y = element_blank(), legend = element_blank(), legend.position = "none")
+
+
+```
+
+::::
+
+:::: {.column}
+
+
+
+```{r}
+#| fig-height: 10
+
+data <- data %>% group_by(Experiment) %>% mutate(Means=mean(Height), y=0.01)
+
+
+ggplot(data, aes(x=Height, color=Experiment)) + geom_density(color="white") + geom_point(aes(x=Means, y=y), size=6) + theme_classic() + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), axis.title.y = element_blank(),legend.position = "none")
+
+
+```
+
+::: {.nonincremental}
+- Take the means
+:::
+
+::::
+
+:::::
+
+## Sampling distribution {transition="none"}
+
+- The histogram of means across many experiments.
+- Gives us a way to calculate probability of obtaining our results.
+
+## Sampling distribution {transition="none"}
+- ❓ What is the probability that the mean of an experiment is between a and b given the true mean produced this sampling distribution?
+- ![](/assets/sampling_distribution.jpg)
 
 ##
 
-::: card-list
-
-- Given that the dataframe is called `df` and the column name is called `values`, what is the code for a basic histogram using ggplot2?
-    - `ggplot(data=df, aes(x=values)) + geom_histogram()`    
-- What is the main function of a for loop?
-    - To repeat stuff
-- What is the general code for a for loop?
-    
-    ```r
-        for (person in 1:3){
-            # code to repeat
-        }
-    ```
-:::
-
-::: notes
-
-After brain dump, ask for 5 volunteers for demonstration
-
-:::
-
-
-
-## Simulate male heights
-Last week, we ended by simulating female heights. Now, let's simulate 200 male heights.
-
-::: {.card-list .nonincremental} 
-- Average height is 69 inches
-- Gentics contribution: randomly sample one number between -6 to 6.
-- Nutritional contribution: randomly sample one number between -3 to 3.
-- Third causal variable: exactly the same as what you used last week.
-- The final height is the combination of of the average height, and all causes.
-- Create a dataframe from this using `tibble()`. Assign it to the variable `df_men`
-:::
-
-## What are correct ways to load data in this class?
-
-![](/assets/slido-what-are-correct-ways-to-load-data-in-this-class.png)
-
-## Now load data
-
-::: card-list
-1. Copy the heights csv file that you simulated from last week into the lab4 folder.
-1. Load the data into lab4.Rmd using read_csv(), and assign it to the variable `df_women`
-:::
-
-## Combining the two dataframes
-We want to combine `df_women` and `df_men` into one big dataframe, while still remembering which data is for women or men.
-
-::: card-list
-1. Add a new column to each dataframe to denote sex.
-2. Combine the two dataframes
-
-:::
-
-## 1. Add columns with `mutate()`
-
-::: card-list
-- We want to add a column title `sex` to both `df_women` and `df_men`
-- We use %>% (called "pipes") to apply a function to a dataframe. 
-
-    ```r
-    df_women <- df_women %>% mutate(sex='f')
-    df_men <- df_men %>% mutate(sex='m')
-
-    ```
-
-:::
-
-## 2. Combine `df_women` and `df_men` into one dataframe
-
-```r
-df_both <- bind_rows(df_women, df_men)
-head(df_both)
-```
-
-
-```{r}
-
-#library(tidyverse)
-#library(ggplot2)
-#
-#height_sims <- c()
-#
-#for (person in 1:200){
-#  avg_height <- 64
-#  genetics <- sample(-5:5,size=1)
-#  nutrition <- sample(-2:2, size=1)
-#  exercise <- sample(-3:3, size=1)
-#  height_sims[person] <- sum(avg_height, genetics, nutrition, exercise)
-#  
-#}
-#
-#df_women <- tibble(heights=height_sims)
-#
-#height_sims <- c()
-#
-#for (person in 1:200){
-#  avg_height <- 69
-#  genetics <- sample(-6:6,size=1)
-#  nutrition <- sample(-3:3, size=1)
-#  exercise <- sample(-3:3, size=1)
-#  height_sims[person] <- sum(avg_height, genetics, nutrition, exercise)
-#  
-#}
-#
-#df_men <- tibble(heights=height_sims)
-#
-#df_women <- df_women %>% mutate(sex='f')
-#df_men <- df_men %>% mutate(sex='m')
-#
-#df_both <- bind_rows(df_women, df_men)
-#head(df_both)
-```
-
-Make sure you have two columns
-
-
-## Creating a column based on the values of another column
-
-::: card-list
-- We can create a column named `Mean` that calculates the mean of heights like so:
-
-    ```r
-    df_mutated <- df_both %>% mutate(Mean=mean(heights), heights_plus_one = heights + 1)
-    ```
-
-- Again, we use %>% ("pipes") to apply a function to a dataframe
-- What do you notice about all the numbers in the Mean column?
-    - They are the same
-
-:::
-
-<!--
-
-. . .
-
 ::: iframe
-https://wall.sli.do/event/hyYKBnnVdyaKSNij3VurBg
-:::
 
--->
-
-
-
-## Histogram
-:::: {.card-list .nonincremental}
-- Use `facet_warp(~sex)` to create a separate panel for each sex.
-    
-```r
-ggplot(...) + geom_histogram() + facet_wrap(~sex)
-```
-```{r}
-
-#ggplot(df_both, aes(x=heights)) + geom_histogram() + facet_wrap(~sex)
-```
-
-## Boxplot
-
-::: {.card-list .nonincremental}
+https://wall.sli.do/event/7s4HktkKUR44wrcixkoDLn?section=a72d2798-cd11-4357-884d-69cfb09ecfb0&integration=shared-present-mode&utm_source=slidoadmin
 
 :::
-
-```r
-ggplot(...) + geom_boxplot()
-```
-
-
-```{r}
-#ggplot(df_both, aes(x=sex, y=heights)) + geom_boxplot()
-```
-
-## Interpretations
-
-::: {.card-list .nonincremental}
-- Common mistake: tendency to overinterpret.
-:::
-
-::: transparent
-
-This is exactly what you should say: The CI of this plot is overlapping, and therefore we cannot say anything.
-
-:::
-
-![](/assets/slido-what-should-include-for-your-interpretations-of-a-histogram.png)
 
 <!--
-::: notes
-- What should include for your interpretations of a histogram?
-    - Whether or not there's a difference between two groups
-    - The mean and standard deviation from a sample
-    - The general shape and spread of data
-    - It is important to describe the shape with as much detail as possible in order to be honest about the data.
-    - The correlation between two variables
-:::
+- 68%
+- 16%
+- 32%
+
 -->
+# Confidence intervals {data-stack-name="Confidence intervals"}
+
+## Confidence intervals {transition="none"}
+::::: columns
+:::: {.column .nonincremental}
+![](/assets/Samp-dist-to-CIs.jpg){height=300}
+::::
+:::: {.column .nonincremental}
+- Using the sampling distribution, we know that:
+    - If the true mean is $\mu$, then there is a 95% chance that $\bar{x}$ is between $\mu - 1.96 \times SE$ and $\mu + 1.96 \times SE$.
+- But we can't calculate $\mu \pm 1.96 \times SE$ because we don't know $\mu$.
+::::
+:::::
+
+
+
+## Confidence intervals {transition="none"}
+- Assuming that the true mean is $\mu$
+- $P(\mu - 1.96SE < \bar{x} < \mu + 1.96SE) = P(\bar{x} - 1.96SE < \mu < \bar{x} + 1.96SE)$
+
+::::: {.columns}
+
+:::: {.column}
+
+![](/assets/Samp-dist-to-CIs.jpg)
 
 ::::
 
+:::: {.column}
 
-## Inferential statistics
+![](/assets/CIs-derive.jpg)
 
-:::: panel-tabset
+::::
 
-## What is it?
+:::::
 
-::: {.card-list .nonincremental}
-- What is inferential statistics, and how does it differ from descriptive statistics?
-    - Inferential statistics tries to guess the true population based on the sample we have.
-:::
+## Confidence intervals {transition="none"}
 
 ::: iframe
+
+https://shiny.rit.albany.edu/stat/confidence/
+
 :::
 
-## Confidence Intervals
+[Link to CI simulator](https://shiny.rit.albany.edu/stat/confidence/){.filelink}
 
-::: {.card-list .nonincremental}
-- You can use the summary table to calculate the confidence interval
-- The Lower 95% CI is calculated as `Mean-1.96*SE`
-- The Upper 95% CI is calculated as `Mean+1.96*SE`
-- You can obtain just the CIs by using `select()`, with the columns you want as input.
 
-```r
-summary_table <- summary_table %>% mutate(LowerCI = Mean-1.96*SE, UpperCI = Mean+1.96*SE)
-CIs <- summary_table %>% select(sex, LowerCI, UpperCI)
+# CI interpretations {data-stack-name="CI interpretations"}
+
+## Precise language is important
+
+- Because we do not know $\mu$, we cannot actually calculate probability.
+- Therefore, when we talk about CIs, we cannot imply probability.
+- The terms you choose to use in your interpretations must demonstrate this understanding
+- Which of these terms imply probability?
+    - Likely
+    - Confident
+    - Probable
+    - Suggests
+    - Chance
+
+## 3 questions when interpreting CIs
+
+1. Do CI(s) overlap? And what does that mean?
+2. Are your interpretations precise? 
+3. What does this say about the true population?
+
+## Example CI interpretation {transition="none"}
+
+```{r}
+
+library(tidyverse)
+library(ggplot2)
+library(patchwork)
+
+df1 <- tibble(group=c("A","B"), Means=c(1,2), LowerCI = c(0.6,1.6), UpperCI=c(1.4, 2.4))
+df2 <- tibble(group=c("A","B"), Means=c(1,2), LowerCI = c(0.6,1.4), UpperCI=c(1.6, 2.4))
+plot1 <- ggplot(df1, aes(x=group, y=Means)) + geom_point() + geom_errorbar(aes(ymin=LowerCI, ymax=UpperCI))
+plot2 <- ggplot(df2, aes(x=group, y=Means)) + geom_point() + geom_errorbar(aes(ymin=LowerCI, ymax=UpperCI))
+```
+
+```{r}
+
+plot1
+
+```
+- Is there a difference between the two means?
+- Since the confidence intervals don't overlap, we are confident that the the true means are different.
+
+## Example CI interpretation {transition="none"}
+
+```{r}
+
+plot2
+
+```
+- Is there a difference between the two means?
+- Since the confidence intervals do overlap, we are not confident that the the true means are different.
+
+
+## Example CI interpretation {transition="none"}
+
+```{r}
+
+plot1 + geom_hline(yintercept=0.8, color="firebrick", linetype=2)
+
+```
+
+- Is group A different from a threshold value of 0.8?
+- Since the CI overlaps with/includes the threshold value of 0.5, we cannot be confident that true mean of group A is didfferent from 0.5.
+
+## Example CI interpretation {transition="none"}
+
+```{r}
+
+plot1
+
+```
+::: nonincremental
+- ❓ Is group A different from a threshold value of 1.5?
+<!-- - Since CI does not overlap with/includes the threshold value of 0.5, we can be confident that true mean of group A is didfferent from 1.5. -->
+:::
+## {transition="none"}
+
+::: iframe
+https://wall.sli.do/event/7s4HktkKUR44wrcixkoDLn?section=a72d2798-cd11-4357-884d-69cfb09ecfb0&integration=shared-present-mode&utm_source=slidoadmin
+:::
+
+
+# Deliverables {data-stack-name="Deliverables"}
+
+##
+
+- Due on Friday
+- Make groups
+- Move seats
+
+## Part 1
+
+:::::: {.panel-tabset}
+
+## 1
+
+Load the two packages that we need in every class.
+
+:::: {.code-puzzle}
+::: {.static}
+library({{tidyverse}})
+{{{library(ggplot2)}}}
+:::
+::::
+
+## 2
+
+Now let's take a random sample from a normal distribution as a single experiment. The experiment should have a sample size of 25, a true population mean of 100, and a true standard deviation of 10. Use the `rnorm()` function and assign the simulated data to the variable `single_experiment`.
+
+:::: code-puzzle
+::: static
+
+single_experiment <- rnorm(n={{{25}}}, mean={{{100}}}, sd={{{10}}})
+
+:::
+::::
+
+```{r}
+
+single_experiment <- rnorm(n=25, mean=100, sd=10)
+
+```
+
+## 3
+
+Uncomment the code below and run the code block. You ***do not*** need to understand how the code works here. I have just converted `single_experiment` into a usable data table format. Observe the output and pay attention to the column names.
+
+
+```{r}
+
+single_experiment_table <- tibble(data = single_experiment)
+
+head(single_experiment_table)
+
+```
+
+## 4
+
+Make a histogram from the data of your simulated experiment.
+
+:::: code-puzzle
+
+::: static
+
+ggplot({{single_experiment_table}}, {{aes}}(x={{data}})) + 
+{{{geom_histogram()}}}
+
+:::
+
+::::
+
+```{r}
+
+ggplot(single_experiment_table, aes(x=data)) + geom_histogram()
+
+```
+
+::::::
+
+## Part 2
+
+:::::: panel-tabset
+
+## 1
+Use the `replicate()` function to simulate 100 repetitions of your experiment (remember that the replicate function has 2 main arguments, `n` which indicates the number of replications, and `expr` which takes the r function that will be replicated).
+
+:::: code-puzzle
+
+::: static
+
+more_experiments <- replicate(n={{{100}}}, expr=rnorm(n={{25}}, mean={{100}}, 
+sd={{10}}))
+
+:::
+
+::::
+
+```{r}
+
+more_experiments <- replicate(n=100, expr=rnorm(n=25, mean=100, sd=10))
+
+```
+
+## 2
+
+Uncomment the code below and run the code block. You ***do not*** need to understand how the code works. I have transformed `more_experiments` data into a usable data table format for you. Take a look at the resulting table and pay attention to its column names.
+
+```{r}
+
+colnames(more_experiments) <- 1:100
+
+more_experiments_table <- more_experiments %>% as_tibble() %>% pivot_longer(cols = everything(), names_to ="experiment", values_to="data") %>% mutate(experiment = as.integer(experiment)) %>% arrange(experiment)
+
+head(more_experiments_table)
+
+```
+
+## 3
+
+Create a summary table of `more_experiments_table`, grouping by experiment. Assign it to the variable `summary_table`. Don't forget to print it.
+
+:::: code-puzzle
+
+::: static
+
+{{summary_table}} <- {{more_experiments_table}} %>% group_by({{experiment}}) %>% summarize(
+    SampleSize = {{n()}}, Mean={{{mean(data)}}}, 
+    SD={{sd}}({{data}}), SE={{SD}}/{{sqrt(SampleSize)}})
+
+summary_table
+
+:::
+
+
+::::
+
+```{r}
+
+summary_table <- more_experiments_table %>% group_by(experiment) %>% summarize(SampleSize = n(), Mean=mean(data), SD=sd(data), SE=SD/sqrt(SampleSize))
+
+summary_table
+
+```
+
+## 4
+
+What does the sampling distribution plot? And is this value stored in `more_experiments_table` or `summary_table`?
+
+
+## 5
+
+Make a histogram of the sampling distribution, using the table you identified above as the data table in ggplot().
+
+:::: code-puzzle
+
+::: static
+
+ggplot({{{summary_table}}}, {{{aes}}}(x={{{Mean}}})) + geom_histogram()
+
+
+:::
+
+::::
+
+```{r}
+
+ggplot(summary_table, aes(x=Mean)) + geom_histogram()
+
+```
+
+## 6
+
+Calculate the confidence interval for each group using summary_table and assigning the results to CIs (exactly the same as what we did last week). Then print CIs.
+
+:::: code-puzzle
+
+::: static
+
+{{CIs}} <- {{summary_table}} %>% {{mutate}}(LowerCI = {{Mean - 1.96*SE}}, 
+
+UpperCI = {{Mean + 1.96*SE}})
+
 CIs
-```
 
-```{r}
-#summary_table <- summary_table %>% mutate(LowerCI = Mean-1.96*SE, UpperCI = Mean+1.96*SE)
-#CIs <- summary_table %>% select(sex, LowerCI, UpperCI)
-#CIs
-```
-
-:::
-
-## Mean and CI plot
-
-::: {.card-list .nonincremental}
-- Plots the mean and the CI for each group
-- First, we plot the mean using geom_point()
-- Then we plot CI using geom_errorbar
-- Like for the boxplot, we need both x and y in aes(). What are they?
-:::
-
-```r
-ggplot(data=summary_table, aes(...)) + geom_point() + geom_errorbar(aes(ymin = LowerCI, ymax=UpperCI)) 
-```
-
-```{r}
-#ggplot(summary_table, aes(x=sex,y=Mean)) + geom_point() + geom_errorbar(aes(ymin = LowerCI, ymax=UpperCI))
-```
-
-## Interpretations
-
-![](/assets/slido-what-should-you-include-in-your-ci-interpretations.png)
-
-Example: The confidence intervals for male and female height do not overlap, which means that the true means are likely actually different, where the mean male height is higher than the mean female height.
-
-::: notes
-- What should you include in your CI interpretations?
-    - Whether or not the CIs overlap
-    - If the p-value is below 0.05, it is a significant difference
-    - The objective answer to research question
-    - Whether or not we have proved our hypothesis correct
-    - The strength of results to support our hypothesis.
 :::
 
 ::::
 
+```{r}
 
-## Deliverables
-As always, you can leave after you check in with me and submit your assignment. Double check your work with ~2 people before asking me to check your work. Then you can all wait less and leave sooner!
+CIs <- summary_table %>% mutate(LowerCI = Mean - 1.96*SE, UpperCI = Mean + 1.96*SE)
 
-::: {.card-list .nonincremental}
-1. All the code we used to generate the final dataset that includes both women and men's heights
-2. Descriptive statistics
-    - Summary table
-    - Either a histogram, frequency polygon, or boxplot
-    - Interpretations
-3. Inferental statistics
-    - Confidence intervals
-    - Mean and CI plot
-    - Interpretations
+CIs
+
+```
+
+## 7
+
+Now create a mean/CI plot for each experiment (exactly the same as what we did last week). Then assign the plot to the variable CIplot and show the plot by printing it.
+
+:::: code-puzzle
+
+::: static
+
+{{CIplot}} <- ggplot({{CIs}}, {{{aes}}}(y={{Mean}}, x={{experiment}})) + 
+geom_{{errorbar}}({{aes}}(ymin={{LowerCI}}, ymax={{UpperCI}}))
+
+CIplot
+
 :::
+
+::::
+
+```{r}
+
+CIplot <- ggplot(CIs, aes(y=Mean, x=experiment)) + geom_errorbar(aes(ymin=LowerCI, ymax=UpperCI))
+
+CIplot
+
+```
+
+## 8
+
+Uncomment the code below and run it. You don't have the understand the code, but I basically just added some colors to your original CI plot so things are easier to see.
+
+```{r}
+
+CIplot + geom_hline(yintercept=100, color="blue") + geom_errorbar(aes(ymin = LowerCI, ymax = UpperCI, color = (LowerCI > 100 | UpperCI < 100))) +  scale_color_manual(values = c("FALSE" = "black", "TRUE" = "red"),labels = c("Yes", "No"),name = "Overlap with 100")
+
+```
+
+
+## 9
+How many experiments have CIs that do NOT overlap with the population mean? What percent of the exerpiments is that?
+
+
+## 10
+
+The SEs you have calculated in summary_table is just an estimated SE. The true SE is actually the sd  of the sampling distribution of the means. Use `mutate()` to add a new variable to the summary_table called `TrueSE`, and calculate it by taking the sd of the means.
+
+:::: code-puzzle
+
+::: static
+
+summary_table <- {{summary_table}} %>% {{mutate}}(TrueSE = {{{sd(Mean)}}})
+
+summary_table
+
+:::
+
+::::
+
+```{r}
+
+summary_table <- summary_table %>% mutate(TrueSE = sd(Mean))
+
+summary_table
+
+```
+
+## 11
+
+Fill in the blanks below by replacing the bolded text (but keep your answers bolded).
+
+:::: code-puzzle
+::: static
+The population mean is {{{100}}}. 
+We simulated {{{100}}} experiments, 
+where each experiment had a sample size of {{{25}}}. 
+
+The sample distribution is created by plotting the 
+
+histogram of {{raw values}} of a single experiment, 
+
+whereas the sampling distribution is created by  plotting the 
+
+histogram of {{mean values}} across all experiments. 
+
+The 95% confidence interval is calculated such that 
+
+in 100 experiments, about {{{95}}} of them would 
+
+contain the {{true mean}}. 
+
+Confidence intervals do not tell us anything about {{probability}}, 
+but it tells us about the {{confidence}} that we have.
+:::
+::::
+## 12
+
+Write interpretations for the mean/CI plot from last week's lab. 
+
+::::::
+
+# Quiz {data-stack-name="Quiz"}
+
+##
+
+- Once you start the quiz, you have 40 minutes to complete the quiz.
+- You can use a calculator on your laptop.
+

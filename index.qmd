@@ -92,10 +92,14 @@ Includes Case Study 1 takeaways and discussion of descriptive vs. inferential st
 
 [Case Study 1 Rubric](/files/casestudy1.qmd){.filelink}
 
-## 4: pipes, ggplot, summary tables
+-->
+
+## 4: Sampling distribution and CIs
 
 [Slides](/presentations/week4.qmd){.filelink}
--->
+
+[lab4.Rmd](/_rmd_fa26/lab4.Rmd){.filelink}
+
 ## 3: Descriptive vs. inferential statistics
 
 Includes how to create summary tables, calculate CIs, and how to create various plots

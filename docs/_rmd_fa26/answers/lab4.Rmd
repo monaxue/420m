@@ -1,0 +1,151 @@
+---
+title: "Sampling Distributions and CIs"
+author: "your name here"
+date: "2026-08-15"
+output: html_document
+---
+
+## Part 1: single simulation experiment
+
+#### 1. Load the two packages that we need in every class.
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+```
+
+#### 2. Now let's take a random sample from a normal distribution as a single experiment. The experiment should have a sample size of 25, a true population mean of 100, and a true standard deviation of 10. Use the `rnorm()` function and assign the simulated data to the variable `single_experiment`.
+
+```{r}
+
+single_experiment <- rnorm(n=25, mean=100, sd=10)
+
+```
+
+#### 3. Uncomment the code below and run the code block. You ***do not*** need to understand how the code works here. I have just converted `single_experiment` into a usable data table format. Observe the output and pay attention to the column names.
+
+```{r}
+
+single_experiment_table <- tibble(data = single_experiment)
+
+head(single_experiment_table)
+
+```
+
+#### 4. Make a histogram from the data of your simulated experiment.
+
+```{r}
+
+ggplot(single_experiment_table, aes(x=data)) + geom_histogram()
+
+```
+
+## Part 2: 100 simulation experiments
+
+#### 1. Use the `replicate()` function to simulate 100 repetitions of your experiment (remember that the replicate function has 2 main arguments, `n` which indicates the number of replications, and `expr` which takes the r function that will be replicated).
+
+```{r}
+
+more_experiments <- replicate(n=100, expr=rnorm(n=25, mean=100, sd=10))
+
+```
+
+#### 2. Uncomment the code below and run the code block. You ***do not*** need to understand how the code works. I have transformed `more_experiments` data into a usable data table format for you. Take a look at the resulting table and pay attention to its column names.
+
+```{r}
+
+colnames(more_experiments) <- 1:100
+
+more_experiments_table <- more_experiments %>% as_tibble() %>% pivot_longer(cols = everything(), names_to ="experiment", values_to="data") %>% mutate(experiment = as.integer(experiment)) %>% arrange(experiment)
+
+head(more_experiments_table)
+
+```
+
+#### 3. Create a summary table of `more_experiments_table`, grouping by experiment. Assign it to the variable `summary_table`. Don't forget to print it.
+
+```{r}
+
+summary_table <- more_experiments_table %>% group_by(experiment) %>% summarize(SampleSize = n(), Mean=mean(data), SD=sd(data), SE=SD/sqrt(SampleSize))
+
+summary_table
+
+```
+
+
+#### 4. What does the sampling distribution plot? And is this value stored in `more_experiments_table` or `summary_table`?
+
+**Answer:** The mean of each experiment. summary_table.
+
+#### 5. Make a histogram of the sampling distribution, using the table you identified above as the data table in ggplot().
+
+```{r}
+
+ggplot(summary_table, aes(x=Mean)) + geom_histogram()
+
+```
+
+#### 6. Calculate the confidence interval for each group using summary_table and assigning the results to CIs (exactly the same as what we did last week). Then print CIs.
+
+```{r}
+
+CIs <- summary_table %>% mutate(LowerCI = Mean - 1.96*SE, UpperCI = Mean + 1.96*SE)
+
+CIs
+
+```
+
+#### 7. Now create a mean/CI plot for each experiment (exactly the same as what we did last week). Then assign the plot to the variable CIplot and show the plot by printing it.
+
+```{r}
+
+CIplot <- ggplot(CIs, aes(y=Mean, x=experiment)) + geom_errorbar(aes(ymin=LowerCI, ymax=UpperCI))
+
+CIplot
+
+```
+
+#### 8. Uncomment the code below and run it. You don't have the understand the code, but I basically just added some colors to your original CI plot so things are easier to see.
+
+```{r}
+
+CIplot + geom_hline(yintercept=100, color="blue") + geom_errorbar(aes(ymin = LowerCI, ymax = UpperCI, color = (LowerCI > 100 | UpperCI < 100))) +  scale_color_manual(values = c("FALSE" = "black", "TRUE" = "red"),labels = c("Yes", "No"),name = "Overlap with 100")
+
+```
+
+#### 9. How many experiments have CIs that do NOT overlap with the population mean? What percent of the exerpiments is that?
+
+**Answer:**
+
+
+#### 10. The SEs you have calculated in summary_table is just an estimated SE. The true SE is actually the sd  of the sampling distribution of the means. Use `mutate()` to add a new variable to the summary_table called `TrueSE`, and calculate it by taking the sd of the means.
+
+```{r}
+
+summary_table <- summary_table %>% mutate(TrueSE = sd(Mean))
+
+summary_table
+
+```
+
+#### 11. Fill in the blanks below by replacing the bolded text (but keep your answers bolded).
+
+**number** is free response.
+
+Use the word bank to fill in **answer**:
+- probability
+- raw values
+- true mean
+- confidence
+- sample means
+
+
+The population mean is **number**. We simulated **number** experiments, where each experiment had a sample size of **number**. 
+
+The sample distribution is created by plotting the histogram of **answer** of a single experiment, whereas the sampling distribution is created by plotting the histogram of **answer** across all experiments. 
+
+The 95% confidence interval is calculated such that in 100 experiments, about **number** of them would contain the **answer**. Confidence intervals do not tell us anything about **answer**, but it tells us about the **answer** that we have.
+
+#### 12. Write interpretations for the mean/CI plot from last week's lab. 
+
+**Answer**: 

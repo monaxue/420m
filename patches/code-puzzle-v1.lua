@@ -1,4 +1,4 @@
--- code-puzzle.lua  v8
+-- code-puzzle.lua  v7
 --
 -- Usage in .qmd:
 --
@@ -31,15 +31,8 @@
 --   :::::
 --
 -- Slot syntax:
---   {{answer OR answer2}}   word-bank drag slot (duplicates allowed)
+--   {{answer OR answer2}}   word-bank drag slot
 --   {{{answer}}}            free-text input (whitespace-insensitive)
---
--- A puzzle may contain only free-text slots; no word bank is required.
---
--- Optional classes on the code-puzzle div:
---   .answers   show "Show answers" button
---   .hint      highlight mistakes after first check
---   .copy      show "Copy code" button after the puzzle is solved
 --
 -- Section markers:
 --   ::: static :::   each line fixed, not draggable
@@ -79,9 +72,6 @@ local function json_encode(val)
   end
   return "null"
 end
-
--- Module-level warning flags (persist across Div calls in one pandoc run)
-local _header_warned = false
 
 -- ── helpers ───────────────────────────────────────────────────────────────────
 
@@ -192,10 +182,13 @@ local function parse_blocks(source)
     lines[#lines+1] = line
   end
 
-  local wb_list = {}
+  local wb_set, wb_list = {}, {}
 
   local function add_wb(ans)
-    wb_list[#wb_list+1] = ans
+    if not wb_set[ans] then
+      wb_set[ans] = true
+      wb_list[#wb_list+1] = ans
+    end
   end
 
   local function parsed_line(raw)
@@ -359,7 +352,6 @@ local function make_css()
 .cpz{font-family:monospace;font-size:13px;color:#222;padding:14px;
      border:1px solid #ddd;border-radius:6px;background:#fff;margin:10px 0}
 .cpz-layout{display:grid;grid-template-columns:1fr 200px;gap:18px;align-items:start}
-.cpz-layout.nowb{grid-template-columns:1fr}
 .cpz-col-label{font-size:10px;color:#999;text-transform:uppercase;
                letter-spacing:1px;margin-bottom:6px}
 .cpz-linenums{padding:6px 0 6px 4px;font-family:monospace;
@@ -454,42 +446,22 @@ end
 
 -- ── HTML scaffold ─────────────────────────────────────────────────────────────
 
-local function make_html(id, has_wb, has_drag)
-  local label
-  if has_drag and has_wb then
-    label = "Code &mdash; drag to reorder &middot; drop tokens onto blanks"
-  elseif has_drag then
-    label = "Code &mdash; drag to reorder"
-  elseif has_wb then
-    label = "Code &middot; drop tokens onto blanks"
-  else
-    label = "Code"
-  end
-
-  local wb_col = ""
-  if has_wb then
-    wb_col = table.concat({
-      '<div>',
-        '<div class="cpz-col-label">Word Bank</div>',
-        '<div class="cpz-wb-wrap"><div id="', id, '-wb"></div></div>',
-        '<div class="cpz-tip">Drag onto a blank &middot; click a filled blank to clear &middot; drag blanks to swap</div>',
-      '</div>',
-    })
-  end
-
-  local layout_cls = has_wb and "cpz-layout" or "cpz-layout nowb"
-
+local function make_html(id)
   return table.concat({
     '<div class="cpz" id="', id, '">',
-      '<div class="', layout_cls, '">',
+      '<div class="cpz-layout">',
         '<div>',
-          '<div class="cpz-col-label">', label, '</div>',
+          '<div class="cpz-col-label">Code &mdash; drag to reorder &middot; drop tokens onto blanks</div>',
           '<div style="display:flex">',
             '<div class="cpz-linenums" id="', id, '-linenums"></div>',
             '<div class="cpz-code" id="', id, '-code"></div>',
           '</div>',
         '</div>',
-        wb_col,
+        '<div>',
+          '<div class="cpz-col-label">Word Bank</div>',
+          '<div class="cpz-wb-wrap"><div id="', id, '-wb"></div></div>',
+          '<div class="cpz-tip">Drag onto a blank &middot; click a filled blank to clear &middot; drag blanks to swap</div>',
+        '</div>',
       '</div>',
       '<div class="cpz-actions" id="', id, '-actions"></div>',
     '</div>',
@@ -500,7 +472,7 @@ end
 -- Uses string concatenation throughout to avoid any ]] sequences
 -- that could terminate a Lua long string.
 
-local function make_js(id, blocks_json, wb_json, show_answers, show_hint, show_copy)
+local function make_js(id, blocks_json, wb_json, show_answers, show_hint)
   local parts = {}
   local function p(s) parts[#parts+1] = s end
 
@@ -510,7 +482,6 @@ local function make_js(id, blocks_json, wb_json, show_answers, show_hint, show_c
   p('var WB=')     p(wb_json)     p(';\n')
   p('var SHOW_ANSWERS=') p(show_answers and 'true' or 'false') p(';\n')
   p('var SHOW_HINT=')    p(show_hint    and 'true' or 'false') p(';\n')
-  p('var SHOW_COPY=')    p(show_copy    and 'true' or 'false') p(';\n')
 
   p([==[
 var order,slotVals;
@@ -652,7 +623,6 @@ function init(){
       var d=document.createElement('div');d.textContent=i;L.appendChild(d);
     }
   }
-  shuffle_arr(WB);
   render();
 }
 
@@ -672,12 +642,8 @@ function ssv(bi,li,si,v){
 }
 function used_words(){
   var u={};
-  for(var bi=0;bi<BLOCKS.length;bi++){
-    iter_slots(bi,function(bi,li,si,p){
-      if(p.type==='wb'){
-        var v=gsv(bi,li,si);if(v)u[v]=(u[v]||0)+1;
-      }
-    });
+  for(var bi in slotVals)for(var li in slotVals[bi])for(var si in slotVals[bi][li]){
+    var v=slotVals[bi][li][si];if(v)u[v]=(u[v]||0)+1;
   }
   return u;
 }
@@ -988,26 +954,19 @@ function make_free_input(bi,li,si,p){
 
 // ── Word bank ─────────────────────────────────────────────────────────────────
 function render_wb(){
-  var wb=document.getElementById(ID+'-wb');
-  if(!wb)return;
-  var used=used_words();
-  wb.innerHTML='';
-  var seen={};
+  var wb=document.getElementById(ID+'-wb'),used=used_words();wb.innerHTML='';
   WB.forEach(function(word){
-    var s=(seen[word]||0);
-    var isUsed=s<(used[word]||0);
     var tok=document.createElement('span');
-    tok.className='cpz-wb-token'+(isUsed?' cpz-used':'');
-    tok.textContent=word;tok.draggable=!isUsed;
+    tok.className='cpz-wb-token'+(used[word]?' cpz-used':'');
+    tok.textContent=word;tok.draggable=!used[word];
     tok.addEventListener('dragstart',function(e){
-      if(isUsed){e.preventDefault();return;}
+      if(used[word]){e.preventDefault();return;}
       dragWbWord=word;dragBi=null;dragSlotRef=null;
       e.dataTransfer.effectAllowed='copy';
       setTimeout(function(){tok.classList.add('cpz-drag-active');},0);
     });
     tok.addEventListener('dragend',function(){tok.classList.remove('cpz-drag-active');dragWbWord=null;});
     wb.appendChild(tok);
-    seen[word]=s+1;
   });
 }
 
@@ -1096,7 +1055,7 @@ function render_actions(){
   if(feedbackShown){
     var msg=document.createElement('span');msg.className=lastMsgCls;msg.textContent=lastMsg;
     A.appendChild(msg);
-    if(SHOW_COPY && all_ok()){
+    if(all_ok()){
       var cp=document.createElement('button');cp.className='cpz-btn';
       cp.textContent='Copy code';
       cp.addEventListener('click',function(){
@@ -1207,12 +1166,12 @@ local ast_parse_section
 
 -- ast_parse_section: processes a list of Pandoc blocks into puzzle blocks.
 -- flex_group, parent_id, depth: same semantics as text-based parser.
-ast_parse_section = function(pandoc_blocks, wb_list, flex_group, parent_id, depth)
+ast_parse_section = function(pandoc_blocks, wb_set, wb_list, flex_group, parent_id, depth)
   local blocks = {}
   depth = depth or 0
 
   local function add_wb(ans)
-    wb_list[#wb_list+1] = ans
+    if not wb_set[ans] then wb_set[ans]=true; wb_list[#wb_list+1]=ans end
   end
 
   local function parsed_line(raw)
@@ -1295,7 +1254,7 @@ ast_parse_section = function(pandoc_blocks, wb_list, flex_group, parent_id, dept
         -- Recurse with a shared flex group id
         local fid = uid()
         local child_blocks = ast_parse_section(
-          pblock.content, wb_list, fid, parent_id, depth)
+          pblock.content, wb_set, wb_list, fid, parent_id, depth)
         for _, cb in ipairs(child_blocks) do blocks[#blocks+1] = cb end
 
       elseif has_class(pblock, "indent") or has_class(pblock, "indent-include") then
@@ -1345,7 +1304,7 @@ ast_parse_section = function(pandoc_blocks, wb_list, flex_group, parent_id, dept
               }
             end
             local child_blocks = ast_parse_section(
-              fake_blocks, wb_list, nil, indent_id, depth + 1)
+              fake_blocks, wb_set, wb_list, nil, indent_id, depth + 1)
             for _, cb in ipairs(child_blocks) do blocks[#blocks+1] = cb end
           end
         end
@@ -1353,16 +1312,11 @@ ast_parse_section = function(pandoc_blocks, wb_list, flex_group, parent_id, dept
       else
         -- Unknown div class: recurse and emit contents at same level
         local child_blocks = ast_parse_section(
-          pblock.content, wb_list, flex_group, parent_id, depth)
+          pblock.content, wb_set, wb_list, flex_group, parent_id, depth)
         for _, cb in ipairs(child_blocks) do blocks[#blocks+1] = cb end
       end
-    elseif t == "Header" then
-      if not _header_warned then
-        io.stderr:write("[code-puzzle] Warning: a Header was found inside a code-puzzle div. This usually means an unclosed fenced div; slides after the puzzle may be silently dropped.\n")
-        _header_warned = true
-      end
     end
-    -- All other Pandoc block types (HorizontalRule, etc.) ignored
+    -- All other Pandoc block types (Header, HorizontalRule, etc.) ignored
   end
 
   return blocks
@@ -1375,9 +1329,8 @@ function Div(div)
 
   local show_answers = div.classes:includes("answers")
   local show_hint    = div.classes:includes("hint")
-  local show_copy    = div.classes:includes("copy")
 
-  local wb_list = {}
+  local wb_set, wb_list = {}, {}
   local blocks
 
   local source = nil
@@ -1388,7 +1341,7 @@ function Div(div)
   if source then
     blocks, wb_list = parse_blocks(source)
   else
-    blocks = ast_parse_section(div.content, wb_list, nil, nil, 0)
+    blocks = ast_parse_section(div.content, wb_set, wb_list, nil, nil, 0)
   end
 
   if not blocks or #blocks == 0 then
@@ -1396,62 +1349,9 @@ function Div(div)
     return nil
   end
 
-  -- A lone draggable block has nothing to reorder, so fix it in place.
-  local drag_count = 0
-  local single_drag_idx = nil
-  for i, b in ipairs(blocks) do
-    local k = b.kind
-    if k == "drag" or k == "free" or k == "indent" then
-      drag_count = drag_count + 1
-      if k == "drag" or k == "free" then single_drag_idx = i end
-    end
-  end
-  if drag_count == 1 and single_drag_idx then
-    blocks[single_drag_idx].kind = "fixed"
-  end
-
-  local has_wb = #wb_list > 0
-  local has_drag = false
-  for _, b in ipairs(blocks) do
-    if b.kind == "drag" or b.kind == "free" or b.kind == "indent" then
-      has_drag = true; break
-    end
-  end
-
-  -- Warn if puzzle text collides with Quarto shortcodes ({{< ... >}})
-  local function contains_shortcode(s)
-    return (s or ""):find("{{<", 1, true) ~= nil
-  end
-  for _, b in ipairs(blocks) do
-    local lines = {}
-    if b.kind == "indent" then
-      if b.header then table.insert(lines, b.header) end
-      if b.footer then table.insert(lines, b.footer) end
-    elseif b.lines then
-      lines = b.lines
-    end
-    for _, line in ipairs(lines) do
-      for _, p in ipairs(line.parts) do
-        if p.type == "text" and contains_shortcode(p.value) then
-          io.stderr:write("[code-puzzle] Warning: puzzle text contains '{{<' which collides with Quarto shortcodes.\n")
-        elseif p.type == "wb" then
-          for _, a in ipairs(p.answers) do
-            if string.sub(a, 1, 1) == "<" then
-              io.stderr:write("[code-puzzle] Warning: word-bank answer '" .. a .. "' starts with '<'; the slot '{{" .. a .. "}}' collides with Quarto shortcodes. Consider writing it unbracketed.\n")
-            end
-          end
-        end
-      end
-    end
-  end
-
   local id          = uid()
   local blocks_json = json_encode(blocks)
-
-  -- Encode wb_list as an explicit array so empty list becomes [] instead of {}
-  local wb_arr = {}
-  for _, w in ipairs(wb_list) do wb_arr[#wb_arr+1] = json_encode(w) end
-  local wb_json     = "[" .. table.concat(wb_arr, ",") .. "]"
+  local wb_json     = json_encode(wb_list)
 
   local result = {}
 
@@ -1463,7 +1363,7 @@ function Div(div)
 
   -- Puzzle div and script as a separate RawBlock
   result[#result+1] = pandoc.RawBlock("html",
-    make_html(id, has_wb, has_drag) .. make_js(id, blocks_json, wb_json, show_answers, show_hint, show_copy))
+    make_html(id) .. make_js(id, blocks_json, wb_json, show_answers, show_hint))
 
   return result
 end

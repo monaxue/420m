@@ -6,21 +6,28 @@ revealjs:
 ---
 
 ## Agenda
-
+::: nonincremental
 - 8:00am Lecture
 - 8:30am Deliverables (due Friday)
 - 9:00am Quiz
+:::
 
 # Announcements
 
 ## Quiz cheatsheet
+
+::: nonincremental
 - Make sure your cheat sheet only as one side
 - Make sure there are only formulas on them
+:::
 
 ## Case study next week
+
+::: nonincremental
 - Groups of 2-3 people.
 - Create groups on Canvas.
 - You can work on your own if you prefer.
+:::
 
 ## Outline
 <ol class="menu"><ol>
@@ -34,7 +41,7 @@ revealjs:
 - You plot the distribution.
 :::
 
-::: card-list
+::: nonincremental
 - You hold an experiment with a sample size of 20 people.
 :::
 . . . 
@@ -60,7 +67,7 @@ ggplot(data_filtered, aes(x=Height, color=Experiment)) + geom_density(size=2) + 
 - You plot the distribution
 :::
 
-::: card-list
+::: nonincremental
 - You hold another experiment
 :::
 
@@ -79,8 +86,8 @@ ggplot(data, aes(x=Height, color=Experiment)) + geom_density(size=2) + theme_cla
 
 :::
 
-::::: columns
-:::: {.column}
+::::: {.columns .nonincremental}
+:::: {.column .nonincremental}
 
 ```{r}
 #| fig-height: 10
@@ -102,7 +109,7 @@ ggplot(data, aes(x=Height, color=Experiment)) + geom_density(size=5) + theme_cla
 data <- data %>% group_by(Experiment) %>% mutate(Means=mean(Height), y=0.01)
 
 
-ggplot(data, aes(x=Height, color=Experiment)) + geom_density(color="white") + geom_point(aes(x=Means, y=y), size=6) + theme_classic() + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), axis.title.y = element_blank(),legend.position = "none")
+ggplot(data, aes(x=Height, fill=Experiment)) + geom_density(color="white") + geom_histogram(aes(x=Means), size=6) + theme_classic() + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), axis.title.y = element_blank(),legend.position = "none")
 
 
 ```
@@ -134,8 +141,8 @@ data <- data %>% group_by(Experiment) %>% mutate(Means=mean(Height), y=0.01)
 
 ```
 
-::::: columns
-:::: {.column}
+::::: {.columns .nonincremental}
+:::: {.column .nonincremental}
 
 ```{r}
 #| fig-height: 10
@@ -157,7 +164,7 @@ ggplot(data, aes(x=Height, color=Experiment)) + geom_density(size=5) + theme_cla
 data <- data %>% group_by(Experiment) %>% mutate(Means=mean(Height), y=0.01)
 
 
-ggplot(data, aes(x=Height, color=Experiment)) + geom_density(color="white") + geom_point(aes(x=Means, y=y), size=6) + theme_classic() + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), axis.title.y = element_blank(),legend.position = "none")
+ggplot(data, aes(x=Height, fill=Experiment)) + geom_density(color="white") + geom_histogram(aes(x=Means), size=6) + theme_classic() + theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), axis.title.y = element_blank(),legend.position = "none")
 
 
 ```
@@ -172,13 +179,32 @@ ggplot(data, aes(x=Height, color=Experiment)) + geom_density(color="white") + ge
 
 ## Sampling distribution {transition="none"}
 
+::: nonincremental
 - The histogram of means across many experiments.
 - Gives us a way to calculate probability of obtaining our results.
+:::
+
+```{r}
+
+library(tidyverse)
+
+Means <- colMeans(replicate(n=1000,rnorm(mean=100, n=25, sd=10)))
+
+data <- tibble(`Means from different experiments`= Means )
+
+ggplot(data, aes(x=`Means from different experiments`)) + geom_histogram()
+
+```
 
 ## Sampling distribution {transition="none"}
+::: nonincremental
 - ❓ What is the probability that the mean of an experiment is between a and b given the true mean produced this sampling distribution?
 - ![](/assets/sampling_distribution.jpg)
-
+    - **68% (correct)**
+    - 16%
+    - 32%
+:::
+<!--
 ##
 
 ::: iframe
@@ -186,19 +212,16 @@ ggplot(data, aes(x=Height, color=Experiment)) + geom_density(color="white") + ge
 https://wall.sli.do/event/7s4HktkKUR44wrcixkoDLn?section=a72d2798-cd11-4357-884d-69cfb09ecfb0&integration=shared-present-mode&utm_source=slidoadmin
 
 :::
-
-<!--
-- 68%
-- 16%
-- 32%
-
 -->
+
+
 # Confidence intervals {data-stack-name="Confidence intervals"}
 
 ## Confidence intervals {transition="none"}
-::::: columns
+::::: {.columns .nonincremental}
 :::: {.column .nonincremental}
 ![](/assets/Samp-dist-to-CIs.jpg){height=300}
+<!-- Next time you need to draw this out to slow the lecture down -->
 ::::
 :::: {.column .nonincremental}
 - Using the sampling distribution, we know that:
@@ -210,19 +233,21 @@ https://wall.sli.do/event/7s4HktkKUR44wrcixkoDLn?section=a72d2798-cd11-4357-884d
 
 
 ## Confidence intervals {transition="none"}
+::: nonincremental
 - Assuming that the true mean is $\mu$
 - $P(\mu - 1.96SE < \bar{x} < \mu + 1.96SE) = P(\bar{x} - 1.96SE < \mu < \bar{x} + 1.96SE)$
+:::
 
 ::::: {.columns}
 
 :::: {.column}
-
+<!-- Next time you need to draw this out to slow the lecture down -->
 ![](/assets/Samp-dist-to-CIs.jpg)
 
 ::::
 
 :::: {.column}
-
+<!-- Next time you need to draw this out to slow the lecture down -->
 ![](/assets/CIs-derive.jpg)
 
 ::::
@@ -244,6 +269,7 @@ https://shiny.rit.albany.edu/stat/confidence/
 
 ## Precise language is important
 
+::: nonincremental
 - Because we do not know $\mu$, we cannot actually calculate probability.
 - Therefore, when we talk about CIs, we cannot imply probability.
 - The terms you choose to use in your interpretations must demonstrate this understanding
@@ -253,12 +279,14 @@ https://shiny.rit.albany.edu/stat/confidence/
     - Probable
     - Suggests
     - Chance
+:::
 
 ## 3 questions when interpreting CIs
-
+::: nonincremental
 1. Do CI(s) overlap? And what does that mean?
 2. Are your interpretations precise? 
 3. What does this say about the true population?
+:::
 
 ## Example CI interpretation {transition="none"}
 
@@ -279,8 +307,10 @@ plot2 <- ggplot(df2, aes(x=group, y=Means)) + geom_point() + geom_errorbar(aes(y
 plot1
 
 ```
+::: nonincremtnal
 - Is there a difference between the two means?
 - Since the confidence intervals don't overlap, we are confident that the the true means are different.
+:::
 
 ## Example CI interpretation {transition="none"}
 
@@ -289,9 +319,10 @@ plot1
 plot2
 
 ```
+::: nonincremental
 - Is there a difference between the two means?
 - Since the confidence intervals do overlap, we are not confident that the the true means are different.
-
+:::
 
 ## Example CI interpretation {transition="none"}
 
@@ -300,9 +331,10 @@ plot2
 plot1 + geom_hline(yintercept=0.8, color="firebrick", linetype=2)
 
 ```
-
+::: nonincremental
 - Is group A different from a threshold value of 0.8?
-- Since the CI overlaps with/includes the threshold value of 0.5, we cannot be confident that true mean of group A is didfferent from 0.5.
+- Since the CI overlaps with/includes the threshold value of 0.8, we cannot be confident that true mean of group A is didfferent from 0.8.
+:::
 
 ## Example CI interpretation {transition="none"}
 
@@ -313,22 +345,26 @@ plot1
 ```
 ::: nonincremental
 - ❓ Is group A different from a threshold value of 1.5?
-<!-- - Since CI does not overlap with/includes the threshold value of 0.5, we can be confident that true mean of group A is didfferent from 1.5. -->
+- Since CI does not overlap with/includes the threshold value of 0.5, we can be confident that true mean of group A is didfferent from 1.5. -->
 :::
+
+<!--
 ## {transition="none"}
 
 ::: iframe
 https://wall.sli.do/event/7s4HktkKUR44wrcixkoDLn?section=a72d2798-cd11-4357-884d-69cfb09ecfb0&integration=shared-present-mode&utm_source=slidoadmin
 :::
-
+-->
 
 # Deliverables {data-stack-name="Deliverables"}
 
 ##
 
+::: nonincremental
 - Due on Friday
 - Make groups
 - Move seats
+:::
 
 ## Part 1
 
@@ -617,7 +653,7 @@ Write interpretations for the mean/CI plot from last week's lab.
 # Quiz {data-stack-name="Quiz"}
 
 ##
-
+::: nonincremental
 - Once you start the quiz, you have 40 minutes to complete the quiz.
 - You can use a calculator on your laptop.
-
+:::

@@ -410,8 +410,8 @@ Use the `replicate()` function to simulate 100 repetitions of your experiment (r
 
 ::: static
 
-more_experiments <- replicate(n={{{100}}}, expr={{rnorm}}(n={{25}}, mean={{100}}, 
-sd={{10}}))
+more_experiments <- replicate(n={{{100}}}, 
+expr={{rnorm}}(n={{25}}, mean={{100}}, sd={{10}}))
 
 :::
 

@@ -1,0 +1,30 @@
+# Case Study 1
+
+## 
+
+::: iframe
+https://wall.sli.do/event/om5HxL3pkVeUCYVb1zEhQp?section=5dd4e8e7-7ea7-42e0-827c-93a5ec278615&integration=shared-present-mode&utm_source=slidoadmin
+:::
+
+<!--
+
+Where can you find information about how to write descriptive and inferential plot interpretations?
+
+- Slides from the lab website
+- Canvas
+- The internet
+- AI
+
+-->
+
+
+##
+
+1. Move desks forward
+1. Make groups on Canvas
+1. Download and work on Case Study 1
+
+##
+
+1. You can use previous labs from this class and slides from the lab website
+1. I will be available to help with bugs

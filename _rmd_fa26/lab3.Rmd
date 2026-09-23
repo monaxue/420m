@@ -78,7 +78,7 @@ only told that hand washing was being measured after the experiment.
 
 ```
 
-#### 5. Interpret your descriptive plots. How are the plots alike/different? Based on this plot alone, can you infer if females in general wash their hands more than males?
+#### 5. Interpret your descriptive plots. How are the plots for each sex alike/different? Based on this plot alone, can you infer if females in general wash their hands more than males? Why or why not?
 
 **Answer:** 
 

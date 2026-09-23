@@ -23,39 +23,35 @@ You will focus on just one task from the larger battery, where children watched 
 
 ```
 
-
-### 2. Based on the research question, which variable is your dependent variable? When is your independent/grouping variable?  [1 point]
+### 2. Based on the research question, which variable is your dependent variable? Which is your independent/grouping variable?  [2 point]
 
 **Answer:**
 
-
-### 3. Create a summary table, and group by the column that is appropriate for the research question. [1 point]
-
-```{r}
-
-```
-
-### 4. Produce a descriptive plot, and group by the column that is appropriate for the research question. [2 points]
+### 3. Create and print summary table, and group by the column that is appropriate for the research question. [3 point]
 
 ```{r}
 
 ```
 
-
-### 5. Calculate the 95% confidence intervals. [1 points]
-
-```{r}
-
-```
-
-### 6. Graph the mean imitation score per fieldsite (including 95% confidence intervals). [2 points]
+### 4. Produce a descriptive plot, and group by the column that is appropriate for the research question. [3 points]
 
 ```{r}
 
 ```
 
+### 5. Calculate the 95% confidence intervals. [2 points]
 
-### 7. In a few sentences, report the sample size, mean, and standard deviation, standard error, and CIs for each group [1 point]
+```{r}
+
+```
+
+### 6. Graph the mean imitation score per fieldsite (including 95% confidence intervals). [3 points]
+
+```{r}
+
+```
+
+### 7. In a few sentences, report the sample size, mean, and standard deviation, standard error, and CIs for each group [2 point]
 
 **Answer:**
 
@@ -68,7 +64,7 @@ You will focus on just one task from the larger battery, where children watched 
 **Answer:**
 
 
-### Extra credit: It is actually better to do the above analyses only for one age group. Why might that be the case? Produce a histogram of ages grouped by field site. Based on this histogram, if you could only choose one age group for your previous analyses, which would that be? Why? [1 point]
+### Extra credit [1 point]: It is actually better to do the above analyses only for one age group. Why might that be the case? Produce a histogram of ages grouped by field site. Based on this histogram, if you could only choose one age group for your previous analyses, which would that be? Why? 
 
 ```{r}
 

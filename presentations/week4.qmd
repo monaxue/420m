@@ -41,6 +41,8 @@ revealjs:
 - You plot the distribution.
 :::
 
+<!-- You need to draw this out next time -->
+
 ::: nonincremental
 - You hold an experiment with a sample size of 20 people.
 :::

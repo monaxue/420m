@@ -96,7 +96,7 @@ Includes Case Study 1 takeaways and discussion of descriptive vs. inferential st
 
 [CaseStudy1.Rmd](/_rmd_fa26/CaseStudy1.Rmd){.filelink}
 
-[case_study_1_option_1_devsci.csv](/data/data\case_study_1_option_1_devsci.csv){.filelink}
+[case_study_1_option_1_devsci.csv](/data/case_study_1_option_1_devsci.csv){.filelink}
 
 
 ## 4: Sampling distribution and CIs

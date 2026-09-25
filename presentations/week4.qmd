@@ -3,6 +3,8 @@ title: "4: Sampling distributions and CIs"
 revealjs:
     transition: none
     background-transition: none
+execute: 
+    echo: false
 ---
 
 ## Agenda
@@ -309,7 +311,7 @@ plot2 <- ggplot(df2, aes(x=group, y=Means)) + geom_point() + geom_errorbar(aes(y
 plot1
 
 ```
-::: nonincremtnal
+::: nonincremental
 - Is there a difference between the two means?
 - Since the confidence intervals don't overlap, we are confident that the the true means are different.
 :::

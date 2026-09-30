@@ -643,11 +643,11 @@ Should add an animation of what the simulation and plotting the mean differences
 .cpz-result.fail{color:#c62828}
 .cpz-tip{font-size:11px;color:#aaa;margin-top:6px}
 </style>
-<div class="cpz" id="cp6172271"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp6172271-linenums"></div><div class="cpz-code" id="cp6172271-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp6172271-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp6172271-actions"></div></div><script>
+<div class="cpz" id="cp9332491"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp9332491-linenums"></div><div class="cpz-code" id="cp9332491-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp9332491-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp9332491-actions"></div></div><script>
 (function(){
 try{
-var ID="cp6172271";
-var BLOCKS=[{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"free","answers":["library(tidyverse)"]}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"free","answers":["library(ggplot2)"]}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"wb","answers":["raw_data"]},{"type":"text","value":" <- "},{"type":"wb","answers":["read_csv"]},{"type":"text","value":"("},{"type":"free","answers":["\"FlyingVsDrivingFearData.csv\""]},{"type":"text","value":")"}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"head(raw_data)"}],"indent":0}]}];
+var ID="cp9332491";
+var BLOCKS=[{"lines":[{"indent":0,"parts":[{"answers":["library(tidyverse)"],"type":"free"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"answers":["library(ggplot2)"],"type":"free"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"answers":["raw_data"],"type":"wb"},{"value":" <- ","type":"text"},{"answers":["read_csv"],"type":"wb"},{"value":"(","type":"text"},{"answers":["\"FlyingVsDrivingFearData.csv\""],"type":"free"},{"value":")","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"head(raw_data)","type":"text"}]}],"kind":"fixed","indentDepth":0}];
 var WB=["raw_data","read_csv"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -1312,11 +1312,11 @@ init();
 </div>
 <div id="tabset-1-2">
 <p>Create a summary table of the data, comparinge fear of flying to driving. Make sure to print it.</p>
-<div class="cpz" id="cp1533222"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp1533222-linenums"></div><div class="cpz-code" id="cp1533222-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp1533222-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp1533222-actions"></div></div><script>
+<div class="cpz" id="cp3722552"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp3722552-linenums"></div><div class="cpz-code" id="cp3722552-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp3722552-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp3722552-actions"></div></div><script>
 (function(){
 try{
-var ID="cp1533222";
-var BLOCKS=[{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"free","answers":["summary_table"]},{"type":"text","value":" <- "},{"type":"wb","answers":["raw_data"]},{"type":"text","value":" %>%"}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"group_by("},{"type":"wb","answers":["mode"]},{"type":"text","value":") %>%"}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"summarize(SampleSize = "},{"type":"wb","answers":["n()"]},{"type":"text","value":","}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"Mean="},{"type":"free","answers":["mean(fear)"]},{"type":"text","value":","}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"SD = "},{"type":"free","answers":["sd(fear)"]},{"type":"text","value":","}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"SE = "},{"type":"wb","answers":["SD"]},{"type":"text","value":"/"},{"type":"wb","answers":["sqrt(SampleSize)"]},{"type":"text","value":")"}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"summary_table"}],"indent":0}]}];
+var ID="cp3722552";
+var BLOCKS=[{"lines":[{"indent":0,"parts":[{"answers":["summary_table"],"type":"free"},{"value":" <- ","type":"text"},{"answers":["raw_data"],"type":"wb"},{"value":" %>%","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"group_by(","type":"text"},{"answers":["mode"],"type":"wb"},{"value":") %>%","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"summarize(SampleSize = ","type":"text"},{"answers":["n()"],"type":"wb"},{"value":",","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"Mean=","type":"text"},{"answers":["mean(fear)"],"type":"free"},{"value":",","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"SD = ","type":"text"},{"answers":["sd(fear)"],"type":"free"},{"value":",","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"SE = ","type":"text"},{"answers":["SD"],"type":"wb"},{"value":"/","type":"text"},{"answers":["sqrt(SampleSize)"],"type":"wb"},{"value":")","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"summary_table","type":"text"}]}],"kind":"fixed","indentDepth":0}];
 var WB=["raw_data","mode","n()","SD","sqrt(SampleSize)"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -1981,11 +1981,11 @@ init();
 </div>
 <div id="tabset-1-4">
 <p>Calculate CIs</p>
-<div class="cpz" id="cp9517423"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp9517423-linenums"></div><div class="cpz-code" id="cp9517423-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp9517423-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp9517423-actions"></div></div><script>
+<div class="cpz" id="cp5294693"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp5294693-linenums"></div><div class="cpz-code" id="cp5294693-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp5294693-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp5294693-actions"></div></div><script>
 (function(){
 try{
-var ID="cp9517423";
-var BLOCKS=[{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"wb","answers":["CIs"]},{"type":"text","value":" <- "},{"type":"wb","answers":["summary_table"]},{"type":"text","value":" %>%"}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"wb","answers":["mutate"]},{"type":"text","value":"("},{"type":"wb","answers":["LowerCI"]},{"type":"text","value":" = "},{"type":"free","answers":["Mean - 1.96SE"]},{"type":"text","value":","}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"UpperCI = "},{"type":"free","answers":["Mean + 1.96SE"]},{"type":"text","value":")"}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"CIs"}],"indent":0}]}];
+var ID="cp5294693";
+var BLOCKS=[{"lines":[{"indent":0,"parts":[{"answers":["CIs"],"type":"wb"},{"value":" <- ","type":"text"},{"answers":["summary_table"],"type":"wb"},{"value":" %>%","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"answers":["mutate"],"type":"wb"},{"value":"(","type":"text"},{"answers":["LowerCI"],"type":"wb"},{"value":" = ","type":"text"},{"answers":["Mean - 1.96SE"],"type":"free"},{"value":",","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"UpperCI = ","type":"text"},{"answers":["Mean + 1.96SE"],"type":"free"},{"value":")","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"CIs","type":"text"}]}],"kind":"fixed","indentDepth":0}];
 var WB=["CIs","summary_table","mutate","LowerCI"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -2646,11 +2646,11 @@ init();
 </div>
 <div id="tabset-1-5">
 <p>Make Mean/CI plots for each condition in the experiment.</p>
-<div class="cpz" id="cp9240604"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp9240604-linenums"></div><div class="cpz-code" id="cp9240604-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp9240604-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp9240604-actions"></div></div><script>
+<div class="cpz" id="cp3104114"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp3104114-linenums"></div><div class="cpz-code" id="cp3104114-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp3104114-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp3104114-actions"></div></div><script>
 (function(){
 try{
-var ID="cp9240604";
-var BLOCKS=[{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"ggplot("},{"type":"wb","answers":["CIs"]},{"type":"text","value":", "},{"type":"free","answers":["aes"]},{"type":"text","value":"(x="},{"type":"wb","answers":["mode"]},{"type":"text","value":", y="},{"type":"wb","answers":["Mean"]},{"type":"text","value":")) +"}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"wb","answers":["geom_errorbar"]},{"type":"text","value":"("}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"aes(ymin="},{"type":"wb","answers":["LowerCI"]},{"type":"text","value":", ymax="},{"type":"wb","answers":["UpperCI"]},{"type":"text","value":"))"}],"indent":0}]}];
+var ID="cp3104114";
+var BLOCKS=[{"lines":[{"indent":0,"parts":[{"value":"ggplot(","type":"text"},{"answers":["CIs"],"type":"wb"},{"value":", ","type":"text"},{"answers":["aes"],"type":"free"},{"value":"(x=","type":"text"},{"answers":["mode"],"type":"wb"},{"value":", y=","type":"text"},{"answers":["Mean"],"type":"wb"},{"value":")) +","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"answers":["geom_errorbar"],"type":"wb"},{"value":"(","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"aes(ymin=","type":"text"},{"answers":["LowerCI"],"type":"wb"},{"value":", ymax=","type":"text"},{"answers":["UpperCI"],"type":"wb"},{"value":"))","type":"text"}]}],"kind":"fixed","indentDepth":0}];
 var WB=["CIs","mode","Mean","geom_errorbar","LowerCI","UpperCI"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -3323,11 +3323,11 @@ init();
 </div>
 <div id="tabset-1-9">
 <p>Make a simulation of 1000 replications of driving. Use a sample size of 25. Assign your results to the variable <code>driving</code>.</p>
-<div class="cpz" id="cp7305195"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp7305195-linenums"></div><div class="cpz-code" id="cp7305195-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp7305195-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp7305195-actions"></div></div><script>
+<div class="cpz" id="cp6535405"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp6535405-linenums"></div><div class="cpz-code" id="cp6535405-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp6535405-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp6535405-actions"></div></div><script>
 (function(){
 try{
-var ID="cp7305195";
-var BLOCKS=[{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"wb","answers":["driving"]},{"type":"text","value":" <- "},{"type":"wb","answers":["replicate"]},{"type":"text","value":"("}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"exp="},{"type":"wb","answers":["rnorm"]},{"type":"text","value":"(n="},{"type":"wb","answers":["25"]},{"type":"text","value":",mean="},{"type":"wb","answers":["0"]},{"type":"text","value":",sd="},{"type":"wb","answers":["1"]},{"type":"text","value":"),"}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"n="},{"type":"wb","answers":["1000"]},{"type":"text","value":")"}],"indent":0}]}];
+var ID="cp6535405";
+var BLOCKS=[{"lines":[{"indent":0,"parts":[{"answers":["driving"],"type":"wb"},{"value":" <- ","type":"text"},{"answers":["replicate"],"type":"wb"},{"value":"(","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"exp=","type":"text"},{"answers":["rnorm"],"type":"wb"},{"value":"(n=","type":"text"},{"answers":["25"],"type":"wb"},{"value":",mean=","type":"text"},{"answers":["0"],"type":"wb"},{"value":",sd=","type":"text"},{"answers":["1"],"type":"wb"},{"value":"),","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"n=","type":"text"},{"answers":["1000"],"type":"wb"},{"value":")","type":"text"}]}],"kind":"fixed","indentDepth":0}];
 var WB=["driving","replicate","rnorm","25","0","1","1000"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -3979,11 +3979,11 @@ init();
 </div>
 <div id="tabset-1-10">
 <p>Make a simulation of 1000 replications of flying. Use a sample size of 25. Assign your results to the variable <code>flying</code>.</p>
-<div class="cpz" id="cp5131576"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp5131576-linenums"></div><div class="cpz-code" id="cp5131576-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp5131576-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp5131576-actions"></div></div><script>
+<div class="cpz" id="cp9645456"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp9645456-linenums"></div><div class="cpz-code" id="cp9645456-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp9645456-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp9645456-actions"></div></div><script>
 (function(){
 try{
-var ID="cp5131576";
-var BLOCKS=[{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"wb","answers":["flying"]},{"type":"text","value":" <- "},{"type":"free","answers":["replicate"]},{"type":"text","value":"("}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"exp="},{"type":"free","answers":["rnorm"]},{"type":"text","value":"(n="},{"type":"wb","answers":["25"]},{"type":"text","value":",mean="},{"type":"wb","answers":["0"]},{"type":"text","value":",sd="},{"type":"wb","answers":["1"]},{"type":"text","value":"),"}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"n="},{"type":"wb","answers":["1000"]},{"type":"text","value":")"}],"indent":0}]}];
+var ID="cp9645456";
+var BLOCKS=[{"lines":[{"indent":0,"parts":[{"answers":["flying"],"type":"wb"},{"value":" <- ","type":"text"},{"answers":["replicate"],"type":"free"},{"value":"(","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"exp=","type":"text"},{"answers":["rnorm"],"type":"free"},{"value":"(n=","type":"text"},{"answers":["25"],"type":"wb"},{"value":",mean=","type":"text"},{"answers":["0"],"type":"wb"},{"value":",sd=","type":"text"},{"answers":["1"],"type":"wb"},{"value":"),","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"n=","type":"text"},{"answers":["1000"],"type":"wb"},{"value":")","type":"text"}]}],"kind":"fixed","indentDepth":0}];
 var WB=["flying","25","0","1","1000"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -4677,11 +4677,11 @@ init();
 <div id="tabset-2-2">
 <p>Create the sampling distribution for both the flying and driving columns by using <code>summarize()</code> and <code>group_by()</code>. Name the new columns MeanFlying and MeanDriving. Assign this to the variable <code>sampling_distribution</code>.</p>
 <p><em>Hint: what value are is a sampling distribution composed of? You did this in week 4.</em></p>
-<div class="cpz" id="cp3509807"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp3509807-linenums"></div><div class="cpz-code" id="cp3509807-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp3509807-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp3509807-actions"></div></div><script>
+<div class="cpz" id="cp3766447"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp3766447-linenums"></div><div class="cpz-code" id="cp3766447-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp3766447-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp3766447-actions"></div></div><script>
 (function(){
 try{
-var ID="cp3509807";
-var BLOCKS=[{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"wb","answers":["sampling_distribution"]},{"type":"text","value":" <-"}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"driving_and_flying %>%"}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"group_by("},{"type":"wb","answers":["experiment"]},{"type":"text","value":") %>%"}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"wb","answers":["summarize"]},{"type":"text","value":"("}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"wb","answers":["MeanFlying"]},{"type":"text","value":"="},{"type":"wb","answers":["mean(flying)"]},{"type":"text","value":","}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"wb","answers":["MeanDriving"]},{"type":"text","value":"="},{"type":"wb","answers":["mean(driving)"]},{"type":"text","value":")"}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"sampling_distribution"}],"indent":0}]}];
+var ID="cp3766447";
+var BLOCKS=[{"lines":[{"indent":0,"parts":[{"answers":["sampling_distribution"],"type":"wb"},{"value":" <-","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"driving_and_flying %>%","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"group_by(","type":"text"},{"answers":["experiment"],"type":"wb"},{"value":") %>%","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"answers":["summarize"],"type":"wb"},{"value":"(","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"answers":["MeanFlying"],"type":"wb"},{"value":"=","type":"text"},{"answers":["mean(flying)"],"type":"wb"},{"value":",","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"answers":["MeanDriving"],"type":"wb"},{"value":"=","type":"text"},{"answers":["mean(driving)"],"type":"wb"},{"value":")","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"sampling_distribution","type":"text"}]}],"kind":"fixed","indentDepth":0}];
 var WB=["sampling_distribution","experiment","summarize","MeanFlying","mean(flying)","MeanDriving","mean(driving)"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -5351,11 +5351,11 @@ init();
 </div>
 <div id="tabset-2-3">
 <p>Compute the sampling distribution of the difference by subtracting the mean of driving from flying using <code>mutate()</code>. Name both the column and variable name <code>differences</code>.</p>
-<div class="cpz" id="cp3547998"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp3547998-linenums"></div><div class="cpz-code" id="cp3547998-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp3547998-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp3547998-actions"></div></div><script>
+<div class="cpz" id="cp3361988"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp3361988-linenums"></div><div class="cpz-code" id="cp3361988-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp3361988-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp3361988-actions"></div></div><script>
 (function(){
 try{
-var ID="cp3547998";
-var BLOCKS=[{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"wb","answers":["differences"]},{"type":"text","value":" <- "},{"type":"wb","answers":["sampling_distribution"]},{"type":"text","value":" %>%"}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"mutate(differences = "},{"type":"free","answers":["MeanFlying - MeanDriving"]},{"type":"text","value":")"}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"differences"}],"indent":0}]}];
+var ID="cp3361988";
+var BLOCKS=[{"lines":[{"indent":0,"parts":[{"answers":["differences"],"type":"wb"},{"value":" <- ","type":"text"},{"answers":["sampling_distribution"],"type":"wb"},{"value":" %>%","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"mutate(differences = ","type":"text"},{"answers":["MeanFlying - MeanDriving"],"type":"free"},{"value":")","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"value":"differences","type":"text"}]}],"kind":"fixed","indentDepth":0}];
 var WB=["differences","sampling_distribution"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -6025,11 +6025,11 @@ init();
 </div>
 <div id="tabset-2-4">
 <p>Plot the sampling distribution of the difference between means.</p>
-<div class="cpz" id="cp7151579"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp7151579-linenums"></div><div class="cpz-code" id="cp7151579-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp7151579-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp7151579-actions"></div></div><script>
+<div class="cpz" id="cp1941159"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp1941159-linenums"></div><div class="cpz-code" id="cp1941159-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp1941159-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp1941159-actions"></div></div><script>
 (function(){
 try{
-var ID="cp7151579";
-var BLOCKS=[{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"ggplot("},{"type":"wb","answers":["differences"]},{"type":"text","value":", "},{"type":"free","answers":["aes"]},{"type":"text","value":"(x="},{"type":"wb","answers":["differences"]},{"type":"text","value":")) +"}],"indent":0}]},{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"free","answers":["geom_histogram()"]}],"indent":0}]}];
+var ID="cp1941159";
+var BLOCKS=[{"lines":[{"indent":0,"parts":[{"value":"ggplot(","type":"text"},{"answers":["differences"],"type":"wb"},{"value":", ","type":"text"},{"answers":["aes"],"type":"free"},{"value":"(x=","type":"text"},{"answers":["differences"],"type":"wb"},{"value":")) +","type":"text"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"answers":["geom_histogram()"],"type":"free"}]}],"kind":"fixed","indentDepth":0}];
 var WB=["differences","differences"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -6695,11 +6695,11 @@ init();
 <div id="tabset-2-6">
 <p>Now perform a t-test on the original dataset. Provide the function with the raw data, and set the score variable as a function of the grouping variable.</p>
 <p><code>t.test(data=..., score_variable ~ grouping_variable)</code></p>
-<div class="cpz" id="cp92707710"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp92707710-linenums"></div><div class="cpz-code" id="cp92707710-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp92707710-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp92707710-actions"></div></div><script>
+<div class="cpz" id="cp60795510"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp60795510-linenums"></div><div class="cpz-code" id="cp60795510-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp60795510-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp60795510-actions"></div></div><script>
 (function(){
 try{
-var ID="cp92707710";
-var BLOCKS=[{"indentDepth":0,"kind":"fixed","lines":[{"parts":[{"type":"text","value":"t.test(data = "},{"type":"wb","answers":["raw_data"]},{"type":"text","value":", "},{"type":"wb","answers":["fear"]},{"type":"text","value":" ~ "},{"type":"wb","answers":["mode"]},{"type":"text","value":")"}],"indent":0}]}];
+var ID="cp60795510";
+var BLOCKS=[{"lines":[{"indent":0,"parts":[{"value":"t.test(data = ","type":"text"},{"answers":["raw_data"],"type":"wb"},{"value":", ","type":"text"},{"answers":["fear"],"type":"wb"},{"value":" ~ ","type":"text"},{"answers":["mode"],"type":"wb"},{"value":")","type":"text"}]}],"kind":"fixed","indentDepth":0}];
 var WB=["raw_data","fear","mode"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -7365,7 +7365,7 @@ mean in group driving  mean in group flying
 </div>
 </div>
 <div id="tabset-2-7">
-<p>Briefly summarize your findings. Do the p-value you identified in 15 and the one from 16 match? Do they match your conclusion from the CI plot from 4? Why?</p>
+<p>Briefly summarize your findings. Do the p-values you identified in 15 and the one from 16 match? Do they match your conclusion from the CI plot from 4? Why?</p>
 <p><strong>Answer:</strong></p>
 </div>
 <div id="tabset-2-8">

@@ -518,11 +518,11 @@ head(driving_and_flying)
 colnames(flying) <- 1:1000
 colnames(driving) <- 1:1000
 
-flying <- flying %>% as_tibble() %>% pivot_longer(cols = everything(), names_to ="experiment", values_to="flying") %>% mutate(experiment = as.integer(experiment)) %>% arrange(experiment)
+flying_tib <- flying %>% as_tibble() %>% pivot_longer(cols = everything(), names_to ="experiment", values_to="flying") %>% mutate(experiment = as.integer(experiment)) %>% arrange(experiment)
 
-driving <- driving %>% as_tibble() %>% pivot_longer(cols = everything(), names_to ="experiment", values_to="driving") %>% mutate(experiment = as.integer(experiment)) %>% arrange(experiment)
+driving_tib <- driving %>% as_tibble() %>% pivot_longer(cols = everything(), names_to ="experiment", values_to="driving") %>% mutate(experiment = as.integer(experiment)) %>% arrange(experiment)
 
-driving_and_flying <- merge(flying, driving, by="experiment")
+driving_and_flying <- flying_tib %>% mutate(driving=driving_tib$driving)
 
 head(driving_and_flying)
 

@@ -13,12 +13,13 @@ Should add an animation of what the simulation and plotting the mean differences
 
 ## ❓ Slido
 
-::: iframe
-https://wall.sli.do/event/ib94xnXY8hNMrXtzmNjiHx?section=1008f2fe-2eb5-4749-abe5-51bc37f95740&integration=shared-present-mode&utm_source=slidoadmin
-:::
-
 <!--
+::: iframe
 
+:::
+-->
+
+::: nonincremental
 - What is a sampling distribution? Do you remember?
     - The distribution of individual observations in one sample collected from a population.
     - **The distribution of means from many experiments.(correct)**
@@ -28,8 +29,7 @@ https://wall.sli.do/event/ib94xnXY8hNMrXtzmNjiHx?section=1008f2fe-2eb5-4749-abe5
   - The CI is the range of values that the true mean is likely to be in
   - If 100 experiments are conducted, about 5 experiments will contain the true mean.
   - **5% of experiments will produce CI's that do not contain the true mean. (correct)**
-
--->
+:::
 
 ## Outline
 
@@ -39,10 +39,12 @@ https://wall.sli.do/event/ib94xnXY8hNMrXtzmNjiHx?section=1008f2fe-2eb5-4749-abe5
 
 ## Recall
 
+::: nonincremental
 - CI calculations assume we know the true mean ($\mu$)
 - If actually we knew what $\mu$ is, then we can calculate probability of experiment 
 - However, we don't actually know $\mu$, so we can't actually calculate probability.
 - This is why we can't use probability words in our CI interpretations
+:::
 
 ## Solution: pretend we know $\mu$
 
@@ -57,7 +59,7 @@ https://wall.sli.do/event/ib94xnXY8hNMrXtzmNjiHx?section=1008f2fe-2eb5-4749-abe5
 
 ## 
 
-::: card-list
+::: nonincremental
 
 - We will *pretend* to know $\mu$. What does this mean?
 - This means that we can simulate what the sampling distribution would look like if we assume our *pretend* $\mu$ is true.
@@ -81,10 +83,12 @@ If we are interested in proving A, we cannot assume A.
 
 ## Null hypothesis testing
 
+::: nonincremental
 - You need to make sure the pretend $\mu$ is different from the one you are actually interested in "proving".
 - This is the purpose of a **null hypothesis**
     - The "opposite" hypothesis of your main hypothesis
 - If our results are very different from the null hypothesis, then we falsify it.
+:::
 
 ## Plot sampling distribution of the null hypothesis
 
@@ -153,46 +157,67 @@ Interpretation: given that the true mean is 0, the probability of getting a mean
 
 ## {.center}
 
-::: card-list
+::: nonincremental
 
 - Let's say in our experiment, we want to show that there is a difference between two groups. 
-- The opposite hypothesis would be that there is no difference between the groups. AKA the difference = 0.
+- Alternative hypothesis: there is a difference between groups.
+- The opposite of the alternative hypothesis would be that there is no difference between the groups. AKA the difference = 0.
+- The opposite of the alternative hypothesis is the null hypothesis.
 :::
 
 
 ##
 
+
 We happen to observe the difference between two means (aka $\bar{x}_{observed}$) is $|1.96 \times SE|$.
+
+❓ What's the probability that we get an experimental result that is the "same" as the null hypothesis?
+
+::::: {.columns .nonincremental}
+:::: {.column .nonincremental width="70%"}
+
 
 ```{r}
 
 area_between_norm(mu=0, sd=2, alpha=0.05, minlab=expression( -bar(x)[observed]), meanlab=expression(mu), maxlab=expression(bar(x)[observed]), xaxis=expression(bar(x)), title=paste0(""))
 
 ```
+::::
 
-❓ What's the probability that we get an experimental result that the "same" as the null hypothesis?
+:::: {.column .nonincremental width="30%"}
+
+::: nonincremental
+
 <!--
+
+::: iframe
+
+:::
+
+::: note
+need to change width so slido shows better
+:::
+
+-->
+
+
 - **95% (correct)**
 - 5%
 - 2.5%
 - 97.5%
--->
+
+:::
+
+::::
+:::::
+
 
 ##
 
-::: iframe
-https://wall.sli.do/event/ib94xnXY8hNMrXtzmNjiHx?section=1008f2fe-2eb5-4749-abe5-51bc37f95740&integration=shared-present-mode&utm_source=slidoadmin
-:::
+::::: {.columns .nonincremental}
+:::: {.column .nonincremental}
 
-<!--
-
-::: card-list
-- Then the probability of getting a mean that is between $\pm\bar{x}_{observed}$ is __?
-  - Answer: 95%
-:::
--->
-
-##
+Probability of getting a null result. Not what we are interested in.
 
 ```{r}
 
@@ -200,9 +225,12 @@ area_between_norm(mu=0, sd=2, alpha=0.05, minlab=expression( -bar(x)[observed]),
 
 ```
 
-But the null hypothesis is not the hypothesis we want to "prove". We want the opposite of the null hypothesis. What would the opposite graph of this one look like?
 
----
+
+::::
+:::: {.column .nonincremental}
+
+Probability of NOT getting a null result (alternative result).
 
 ```{r}
 
@@ -269,6 +297,18 @@ area_outside_norm(mu=0, sd=2, alpha=0.05, minlab=expression(-bar(x)[observed]), 
 
 ```
 
+::::
+:::::
+
+::: nonincremental
+- Both graphs plot the sampling distribution of the null hypothesis
+:::
+
+##
+
+```{r}
+area_outside_norm(mu=0, sd=2, alpha=0.05, minlab=expression(-bar(x)[observed]), meanlab=expression(mu), maxlab=expression(bar(x)[observed]), xaxis=expression(bar(x)), title="")
+```
 
 Interpretation: given that the true mean is 0, the probability of sampling our observed $\bar{x}_{observed}$ (or something more extreme) is 100%-95% = 5%.
 
@@ -289,39 +329,43 @@ Interpretation: given that the true mean is 0, the probability of sampling our o
 plot4+plot5+plot6+theme(plot.margin = margin(b = 30, r = 30, l=30, t=30),)
 ```
 
+<!--
+
 ##
 
 ::: iframe
 
-https://wall.sli.do/event/ib94xnXY8hNMrXtzmNjiHx?section=1008f2fe-2eb5-4749-abe5-51bc37f95740&integration=shared-present-mode&utm_source=slidoadmin
-
 :::
-
-<!--
+-->
 
 - Answer: `A`. While `C` has the smallest area under the curve on the outside (5%), `C` is not plotting the actual observed means on the x-axis. `A` has the smallest area under the curve outside of the observed means (10%).
 
---->
 
 ## p-value summary
 
+::: nonincremental
 1. Assumes null hypothesis is true
 2. Create a sampling distribution from the null hypothesis
 3. Compare actual observed difference to the *opposite* sampling distribution (null sampling distribution)
 4. The area under the curve *outside* of the observed differences line is the p-value
+:::
 
 # p-value interpretaions {data-stack-name="p-value interpretaions"}
 
+::: nonincremental
 1. What's the probability?
 2. Probability of what? 
 3. Assuming the null.
+:::
 
 ## Examples
 
+::: nonincremental
 - Write an interpretation for when the p-value is 0.005
   - If the null hypothesis is true, then there is a 0.005 probability that we observe a value this extreme.
 - Write an interpretation for when the p-value is 0.9
   - There is a 90% chance that we observe a value this extreme given that the null hypothesis is true.
+:::
 
 # Deliverables {data-stack-name="Deliverables"}
 
@@ -627,7 +671,7 @@ t.test(data = raw_data, fear ~ mode)
 
 ## 17
 
-Briefly summarize your findings. Do the p-values you identified in 15 and the one from 16 match? Do they match your conclusion from the CI plot from 4? Why?
+Briefly summarize your findings. Do the p-values you identified in 15 and the one from 16 match? Do they match your conclusion from the CI plot from 5? Why?
 
 **Answer:**
 

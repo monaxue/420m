@@ -1,251 +1,640 @@
 ---
-title: "6: Case studies and CIs"
+title: "6: p-values and t-tests"
+execute:
+  echo: false
+  warning: false
+  message: false
 ---
 
-
 <!--
-
-Go over case studies.
-
-Cover z-scores and CI. Have people write an interpretation for CI's for their lab report. Have people revise their lab reports.
-
-It was a really good idea to tell them they should be proud of themselves and have them write what they feel proud of.
+Should add an animation of what the simulation and plotting the mean differences process looks like.
 
 -->
 
-## Case studies
+## ❓ Slido
 
-::: card-list
-
-- I'm partially through grading them.
-- So far:
-    - There is a mix of scores
-    - Somewhat of a bimodal distribution
+::: iframe
+https://wall.sli.do/event/ib94xnXY8hNMrXtzmNjiHx?section=1008f2fe-2eb5-4749-abe5-51bc37f95740&integration=shared-present-mode&utm_source=slidoadmin
 :::
 
-## The good
-::: card-list
-- Most everyone 
-    - Wrote great code.
-    - Formatted the Rmd well.
-    - These things are hard.
-    - Make sure to recognize your accomplishments!
-:::
+<!--
 
-## The struggles
-::: card-list
-- Those who lost the most points:
-    - Used the wrong rubric
-    - Missed things on the rubric
-    - Primary tip: Make sure to double check everything on the rubric
-- Many of you lost points on this
-    - Interpretations
+- What is a sampling distribution? Do you remember?
+    - The distribution of individual observations in one sample collected from a population.
+    - **The distribution of means from many experiments.(correct)**
+    - The distribution of means from many experiments.
+- Which of the following represents the definition of a confidence interval?
+  - There is a 95% chance that the true mean lies within the interval
+  - The CI is the range of values that the true mean is likely to be in
+  - If 100 experiments are conducted, about 5 experiments will contain the true mean.
+  - **5% of experiments will produce CI's that do not contain the true mean. (correct)**
 
-:::
-
-## Before you get too anxious...
-::: card-list
-- You will have the opportunity to revise your case study to receive up to a score of 14. 
-:::
+-->
 
 ## Outline
-::: card-list
-- I will clarify interpretations
-- I will finally go over confidence intervals
-- What I hope to accomplish: help you build some intuition about stats so you don't feel like you need to memorize a list of annoying rules
-:::
 
-# Interpretations
+<ol class="menu"><ol>
 
-## "Ambiguous thinking"
+# p-values {data-stack-name="p-values"}
 
+## Recall
 
-::: card-list
-- Descriptive statistics is all about "ambiguous thinking"
-    - Shape: Is it normal? Symmentrical? Skewed (rarer than you think!)? Bimodal?
-    - Center ~ ***Sample*** mean
-    - Spread ~ ***Sample*** SD
-:::
+- CI calculations assume we know the true mean ($\mu$)
+- If actually we knew what $\mu$ is, then we can calculate probability of experiment 
+- However, we don't actually know $\mu$, so we can't actually calculate probability.
+- This is why we can't use probability words in our CI interpretations
 
+## Solution: pretend we know $\mu$
 
+- Don't make any assumptions about $\mu$
+    - ❌ Cannot calculate probabilities 
+    - $\rightarrow$ CIs
+- Pretend that we know $\mu$
+    - ✅ Can calculate probabilities
+    - $\rightarrow$ p-values
 
-## Main purpose
+# P-values
 
-
-
-
-
-
-## What I saw in the case studies
-
+## 
 
 ::: card-list
 
-- Statements that imply a population level conclusion
-- WRONG: "A histogram will let me compare the performance of each group"
-- When you talk about "performance" you are implying knowledge about the true population
-    - "Score" (noisy metric for performance) vs. "Performance" (true population)
+- We will *pretend* to know $\mu$. What does this mean?
+- This means that we can simulate what the sampling distribution would look like if we assume our *pretend* $\mu$ is true.
+- What are good $\mu$'s to assume?
 
 :::
 
-## Score $\neq$ Performance
+## What $\mu$ to assume?
 
+If we are interested in proving A, we cannot assume A.
 
 ::: card-list
-
-- Score is the thing we can measure. "Performance" is the thing we actually care about (true population) that we hope the score represents.
-- More examples
-    - Number of words recalled $\neq$ Memory 
-    - IQ test score $\neq$ Intelligence
-
-:::
-
-::: notes
-- An IQ test wishes to measure your intelligence, but at best it only captures part of your intelligence. What it also captures includes: your education, your wealth, whether or not you were exposed to lead as a kid, etc.
-- If you say "there is a difference in intelligence between group 1 and group 2", then you are implying a population difference. If you say "there is a difference in sample mean of IQ test scores between group 1 and group 2"
-:::
-
-## Correct mean interpretations
-
-::: card-list
-- Sufficient: "The ***sample*** mean of the score in group A is _ and the ***sample*** mean of the score in group B is _."
-- If you want to compare: 
-    - Don't forget ***sample mean*** and ***score*** (or whatever the actual metric is in the study)
+- A circular argument: You cannot prove something if you already assume it is true.
+- Examples of circular arguments:
+    - I trust you because you are trustworthy
+    - The scientific method works because science tells me so
+    - Calibrating a compass by only using that one compass.
+        - You need to use a second compass or known landmarks (like the stars).
 
 :::
 
-## Why can't we talk about the population when looking at histograms?
+## Null hypothesis testing
 
+- You need to make sure the pretend $\mu$ is different from the one you are actually interested in "proving".
+- This is the purpose of a **null hypothesis**
+    - The "opposite" hypothesis of your main hypothesis
+- If our results are very different from the null hypothesis, then we falsify it.
 
-::: card-list
+## Plot sampling distribution of the null hypothesis
 
-- A difference in the mean could be due to sampling error
-- What inferential statistics does: It takes into consideration the possible sampling errors
-    - But CIs are ***not*** errors!
-    - How? Sampling distributions provide us with the math to make a good guess
+```{r}
 
-:::
+library(tidyverse)
+library(ggplot2)
 
-# Confidence intervals
+area_between_norm <- function(mu, sd, alpha, minlab, meanlab, maxlab, xaxis, title){
+percent <- paste0(as.character((1-alpha)*100),"%")
 
-## The confidence interval comes from the sampling distribution
+x <- seq(mu - 4*sd, mu + 4*sd, length.out = 1000)
 
-::: card-list
-- Sampling distribution: distribution of means over $\infty$ experiments
-    - Hypothetical
-- If we know the true mean, $\mu$, the sampling distribution tells us what kind of samples to expect
+df <- tibble(
+  x = x,
+  y = dnorm(x, mu, sd)
+)
 
-:::
+lower <- qnorm(alpha/2, mu, sd)
+upper <- qnorm(1-(alpha/2), mu, sd)
 
-## A bit of math...
+mid_x <- (lower + upper) / 2
+mid_y <- dnorm(mid_x, mu, sd) * 0.5
 
-::: notes
-I'm going to show some math. Try to keep up as best as you can, but don't stress out too much about it. But there will also be a simulation at the end to hopefully make things clearer.
+ggplot(df, aes(x=x, y=y)) +
+  geom_line() +
+  geom_area(
+    aes(y = ifelse(x > lower & x < upper, y, 0)),
+    alpha = 0.2,
+    fill="steelblue"
+  ) +
+    labs(x = xaxis, title = title) +
+  geom_vline(xintercept = c(lower, mu, upper), linetype = "dashed") + 
+  scale_x_continuous(limits=c(-5,5), breaks = c(lower, mu, upper), labels = c(minlab,meanlab,maxlab)) +
+    scale_y_continuous(expand = c(0, 0)) +
+    theme_classic(base_size = 10) + 
+   theme(
+    plot.title = element_text(size = rel(1), face = "bold",
+        hjust = 0.5,margin = margin(b = rel(4))),
+    axis.title.y = element_blank(),
+    axis.text.y  = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.line.x = element_line(linewidth = 0.5),
+    axis.ticks.x = element_line(linewidth = 0.8),
+    axis.ticks.length.x = unit(4, "pt"),
+    axis.text.x = element_text(size = rel(2), margin = margin(t = rel(4))),
+    axis.title.x = element_text(size = rel(1.5), face = "bold", margin = margin(t = rel(3))),
+    plot.margin = margin(b = rel(2), r = rel(2), l=rel(2), t=rel(2)),
+    panel.background = element_rect(fill = "transparent"),
+  plot.background  = element_rect(fill = "transparent")) +
+  annotate(
+    "text",
+    x = mid_x,
+    y = mid_y,
+    label = percent,
+    size = 8
+  )
+}
 
-:::
+area_between_norm(mu=0, sd=2, alpha=0.05, minlab=expression(mu-1.96 %*% SE), meanlab=expression(mu), maxlab=expression(mu+1.96 %*% SE), xaxis=expression(bar(x)), title=paste0(""))
 
-## Simulation
-
-::::: panel-tabset
-
-## Simulation
-
-::: card-list
-
-- Explore the [Confidence Interval Simulator](https://shiny.rit.albany.edu/stat/confidence/) (this link is also on the website).
-
-- Discuss with your neighbors:
-    - What is it trying to show?
-        - Around 5 out of 100 times, the CI does not contain the true mean (CI highlighted in red)
-
-:::
-
-<!--
-
-## Slido
-::: iframe
-
-https://wall.sli.do/event/qFBF9mUcZDngBd8niQpzQp
-
-:::
-
--->
-
-:::::
-
-## Confidence interval definition
-
-::: card-list
-
-- In 95% of experiments, the true mean will be in the CI of that experiment
-- 95% of CIs will contain the true mean
-- **Not:** 95% probability that the true mean is in the CI of our experiment
-:::
-
-## "Confidence" statement
-::: card-list
-- Since we can't say anything about the probability in our experiment, we use the word "confident" instead
-- We are 95% *confident* that the true mean is in the CI of our experiment
-:::
-
-<!-- next time, make sure to have a slide that emphasizes that language is important, and that they need to choose words that do not imply probability. Likely is a word that implies probability. Have them pracitce coming up with different ways of interpreting results, which I have done in week 12-->
-
-## CI interpretations
-
-::: card-list
-- Always include both the definition of a CI as well as the confidence statement.
-
-:::
-
-<!--
-::: card-list
-
-- 95% of the samples generated by a population with the true mean, $\mu$, will have a CI that contains $\mu$.
-
-- WRONG: There is a 95% probability that the CI contains the true mean, $\mu$.
-
-    - This is different from the first statement
-    - You cannot actually calculate this probability directly, because it requires that you know the true mean, $\mu$
-
-- Therefore, we instead use the term "confident". We say that we are 95% confident that the CI contains the true mean.
-    - There is a reason why it is called the confidence interval, and not the probability interval.
-:::
--->
-
-
-<!--
-
-```{=html}
-<iframe src="https://wall.sli.do/event/psqmdehPARDpce13BWS1LY/?section=b87f4381-4b7d-41fd-abd0-76f5f34870db" height=600 width=100%></iframe>
 ```
 
--->
-
-<!--
-
-## Formatting Essentials
-
-```{=html}
-<iframe src="https://wall.sli.do/event/psqmdehPARDpce13BWS1LY/?section=b87f4381-4b7d-41fd-abd0-76f5f34870db" height=600 width=100%></iframe>
-```
-
--->
+Interpretation: given that the true mean is 0, the probability of getting a mean that is between $0 \pm 1.96 \times SE$ is 95%.
 
 
-# Deliverables
+## {.center}
+
+::: card-list
+
+- Let's say in our experiment, we want to show that there is a difference between two groups. 
+- The opposite hypothesis would be that there is no difference between the groups. AKA the difference = 0.
+:::
+
 
 ##
-::: {.normal-list .nonincremental}
-1. Write a reflection
-    - [ ] How you did you feel you did on this first case study? What are you proud of? What do you think you can improve upon?
-    - [ ] What are your major takeaways from today's class?
-    - [ ] What revisions would you make on your case study? Be specific.
-    - [ ] What do you want your future self to remember when working on future case studies? 
-2. Write a CI interpretation for your Case Study 1.
-    - [ ] What is the main difference between a descriptive and inferential statistics?
-    - [ ] What is the definition of a CI?
-    - [ ] What does the CI say about the results? (Do you not use the word "significant"!)
+
+We happen to observe the difference between two means (aka $\bar{x}_{observed}$) is $|1.96 \times SE|$.
+
+```{r}
+
+area_between_norm(mu=0, sd=2, alpha=0.05, minlab=expression( -bar(x)[observed]), meanlab=expression(mu), maxlab=expression(bar(x)[observed]), xaxis=expression(bar(x)), title=paste0(""))
+
+```
+
+❓ What's the probability that we get an experimental result that the "same" as the null hypothesis?
+<!--
+- **95% (correct)**
+- 5%
+- 2.5%
+- 97.5%
+-->
+
+##
+
+::: iframe
+https://wall.sli.do/event/ib94xnXY8hNMrXtzmNjiHx?section=1008f2fe-2eb5-4749-abe5-51bc37f95740&integration=shared-present-mode&utm_source=slidoadmin
+:::
+
+<!--
+
+::: card-list
+- Then the probability of getting a mean that is between $\pm\bar{x}_{observed}$ is __?
+  - Answer: 95%
+:::
+-->
+
+##
+
+```{r}
+
+area_between_norm(mu=0, sd=2, alpha=0.05, minlab=expression( -bar(x)[observed]), meanlab=expression(mu), maxlab=expression(bar(x)[observed]), xaxis=expression(bar(x)), title=paste0(""))
+
+```
+
+But the null hypothesis is not the hypothesis we want to "prove". We want the opposite of the null hypothesis. What would the opposite graph of this one look like?
+
+---
+
+```{r}
+
+area_outside_norm <- function(mu, sd, alpha, minlab, meanlab, maxlab, xaxis, title){
+percent <- paste0(as.character((1-alpha)*100),"%")
+
+x <- seq(mu - 4*sd, mu + 4*sd, length.out = 1000)
+
+df <- tibble(
+  x = x,
+  y = dnorm(x, mu, sd)
+)
+
+lower <- qnorm(alpha/2, mu, sd)
+upper <- qnorm(1-(alpha/2), mu, sd)
+
+mid_x <- (lower + upper) / 2
+mid_y <- dnorm(mid_x, mu, sd) * 0.5
+
+ggplot(df, aes(x=x, y=y)) +
+  geom_line() +
+  geom_area(
+    aes(y = ifelse(x < lower | x > upper, y, 0)),
+    alpha = 0.2,
+    fill="steelblue"
+  ) +
+    labs(x = xaxis, title = title) +
+  geom_vline(xintercept = c(lower, mu, upper), linetype = "dashed") + 
+  scale_x_continuous(limits=c(-5,5), breaks = c(lower, mu, upper), labels = c(minlab,meanlab,maxlab)) +
+    scale_y_continuous(expand = c(0, 0)) +
+    theme_classic(base_size = 10) + 
+   theme(
+    plot.title = element_text(size = rel(1), face = "bold",
+        hjust = 0.5,margin = margin(b = rel(4))),
+    axis.title.y = element_blank(),
+    axis.text.y  = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.line.x = element_line(linewidth = 0.5),
+    axis.ticks.x = element_line(linewidth = 0.8),
+    axis.ticks.length.x = unit(4, "pt"),
+    axis.text.x = element_text(size = rel(1), margin = margin(t = rel(4))),
+    axis.title.x = element_text(size = rel(1.5), face = "bold", margin = margin(t = rel(3))),
+    plot.margin = margin(b = rel(2), r = rel(2), l=rel(2), t=rel(2)),
+    panel.background = element_rect(fill = "transparent"),
+  plot.background  = element_rect(fill = "transparent")) +
+  annotate(
+    "text",
+    x = mid_x,
+    y = mid_y,
+    label = percent,
+    size = 8
+  )
+}
+
+
+plot4 <- area_outside_norm(mu=0, sd=1.5, alpha=0.1, minlab=expression(-bar(x)[observed]), meanlab=expression(mu), maxlab=expression(bar(x)[observed]), xaxis=expression(bar(x)), title="A")
+
+plot5 <- area_outside_norm(mu=0, sd=1.5, alpha=0.2, minlab=expression(-bar(x)[observed]), meanlab=expression(mu), maxlab=expression(bar(x)[observed]), xaxis=expression(bar(x)), title=paste0("B"))
+
+plot6 <- area_outside_norm(mu=0, sd=1.5, alpha=0.05, minlab=expression(mu-1.96 %*% SE), meanlab=expression(mu), maxlab=expression(mu+1.96 %*% SE), xaxis=expression(bar(x)), title=paste0("C"))
+
+area_outside_norm(mu=0, sd=2, alpha=0.05, minlab=expression(-bar(x)[observed]), meanlab=expression(mu), maxlab=expression(bar(x)[observed]), xaxis=expression(bar(x)), title="")
+
+
+```
+
+
+Interpretation: given that the true mean is 0, the probability of sampling our observed $\bar{x}_{observed}$ (or something more extreme) is 100%-95% = 5%.
+
+## Definition of p-value {.center}
+
+::: card-list-center
+
+- The p-value is the probability of observing our results (or something more extreme) given that our null hypothesis is true.
 
 :::
 
+---
 
+❓ The p-value probabilities depend on the actual observations (real data). Which of the following has the lowest p-value? 
+
+```{r}
+
+plot4+plot5+plot6+theme(plot.margin = margin(b = 30, r = 30, l=30, t=30),)
+```
+
+##
+
+::: iframe
+
+https://wall.sli.do/event/ib94xnXY8hNMrXtzmNjiHx?section=1008f2fe-2eb5-4749-abe5-51bc37f95740&integration=shared-present-mode&utm_source=slidoadmin
+
+:::
+
+<!--
+
+- Answer: `A`. While `C` has the smallest area under the curve on the outside (5%), `C` is not plotting the actual observed means on the x-axis. `A` has the smallest area under the curve outside of the observed means (10%).
+
+--->
+
+## p-value summary
+
+1. Assumes null hypothesis is true
+2. Create a sampling distribution from the null hypothesis
+3. Compare actual observed difference to the *opposite* sampling distribution (null sampling distribution)
+4. The area under the curve *outside* of the observed differences line is the p-value
+
+# p-value interpretaions {data-stack-name="p-value interpretaions"}
+
+1. What's the probability?
+2. Probability of what? 
+3. Assuming the null.
+
+## Examples
+
+- Write an interpretation for when the p-value is 0.005
+  - If the null hypothesis is true, then there is a 0.005 probability that we observe a value this extreme.
+- Write an interpretation for when the p-value is 0.9
+  - There is a 90% chance that we observe a value this extreme given that the null hypothesis is true.
+
+# Deliverables {data-stack-name="Deliverables"}
+
+## Deliverables
+
+:::::: panel-tabset
+
+## 1
+
+Read in required packages and data. Name your dataset `raw_data`.
+
+:::: code-puzzle
+::: static
+
+{{{library(tidyverse)}}}
+{{{library(ggplot2)}}}
+
+{{raw_data}} <- {{read_csv}}({{{"FlyingVsDrivingFearData.csv"}}})
+
+head(raw_data)
+
+:::
+::::
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+
+raw_data <- read_csv("data/FlyingVsDrivingFearData.csv")
+
+head(raw_data)
+```
+
+## 2
+
+Create a summary table of the data, comparinge fear of flying to driving. Make sure to print it.
+
+:::: code-puzzle
+::: static
+
+{{{summary_table}}} <- {{raw_data}} %>%
+ group_by({{mode}}) %>% 
+ summarize(SampleSize = {{n()}}, 
+ Mean={{{mean(fear)}}}, 
+ SD = {{{sd(fear)}}}, 
+ SE = {{SD}}/{{sqrt(SampleSize)}})
+
+summary_table
+
+:::
+::::
+
+```{r}
+
+summary_table <- raw_data %>% group_by(mode) %>% summarize(SampleSize = n(), Mean=mean(fear), SD = sd(fear), SE = SD/sqrt(SampleSize))
+
+summary_table
+
+```
+
+## 3
+
+What is the difference between the two means?
+
+**Answer**: 
+
+## 4
+
+Calculate CIs
+
+:::: code-puzzle
+::: static
+{{CIs}} <- {{summary_table}} %>% 
+{{mutate}}({{LowerCI}} = {{{Mean - 1.96*SE}}}, 
+UpperCI = {{{Mean + 1.96*SE}}})
+
+CIs
+:::
+::::
+
+```{r}
+CIs <- summary_table %>% mutate(LowerCI = Mean - 1.96*SE, UpperCI = Mean + 1.96*SE)
+
+CIs
+
+```
+
+## 5
+
+Make Mean/CI plots for each condition in the experiment.
+
+:::: code-puzzle
+::: static
+ggplot({{CIs}}, {{{aes}}}(x={{mode}}, y={{Mean}})) + 
+{{geom_errorbar}}(
+  aes(ymin={{LowerCI}}, ymax={{UpperCI}}))
+:::
+::::
+
+```{r}
+
+ggplot(CIs, aes(x=mode, y=Mean)) + geom_errorbar(aes(ymin=LowerCI, ymax=UpperCI))
+
+```
+
+## 6
+
+If we wanted to simulate data to test our to our actual data against it, what kind of hypothesis should we assume?
+
+**Answer**:
+
+## 7
+
+Based on the type of hypothesis you identified, what should we assume as the mean difference?
+
+**Answer**:
+
+## 8
+
+We happen to know that the true standard deviations for both groups is 1. If we wanted to simulate the null hypothesis, what should we make sure we choose for the means? Why?
+
+**Answer**:
+
+
+## 9
+
+Make a simulation of 1000 replications of driving. Use a sample size of 25. Assign your results to the variable `driving`.
+
+:::: code-puzzle
+::: static
+
+{{driving}} <- {{replicate}}(
+  exp={{rnorm}}(n={{25}},mean={{0}},sd={{1}}), 
+  n={{1000}})
+
+:::
+::::
+
+```{r}
+
+driving <- replicate(exp=rnorm(n=25,mean=1,sd=1), n=1000)
+
+```
+
+
+## 10
+
+Make a simulation of 1000 replications of flying. Use a sample size of 25. Assign your results to the variable `flying`.
+
+:::: code-puzzle
+::: static
+
+{{flying}} <- {{{replicate}}}(
+  exp={{{rnorm}}}(n={{25}},mean={{0}},sd={{1}}), 
+  n={{1000}})
+
+:::
+::::
+
+
+```{r}
+
+flying <- replicate(exp=rnorm(n=25,mean=1,sd=1), n=1000)
+
+```
+
+::::::
+
+## Deliverables
+
+:::::: panel-tabset
+
+## 11
+
+Uncomment the code below and run the code block. I have transformed created data table called driving_and_flying with all your simulated data.
+
+```r
+
+colnames(flying) <- 1:1000
+colnames(driving) <- 1:1000
+
+flying <- flying %>% as_tibble() %>% pivot_longer(cols = everything(), names_to ="experiment", values_to="flying") %>% mutate(experiment = as.integer(experiment)) %>% arrange(experiment)
+
+driving <- driving %>% as_tibble() %>% pivot_longer(cols = everything(), names_to ="experiment", values_to="driving") %>% mutate(experiment = as.integer(experiment)) %>% arrange(experiment)
+
+driving_and_flying <- merge(flying, driving, by="experiment")
+
+head(driving_and_flying)
+
+```
+
+```{r}
+
+colnames(flying) <- 1:1000
+colnames(driving) <- 1:1000
+
+flying <- flying %>% as_tibble() %>% pivot_longer(cols = everything(), names_to ="experiment", values_to="flying") %>% mutate(experiment = as.integer(experiment)) %>% arrange(experiment)
+
+driving <- driving %>% as_tibble() %>% pivot_longer(cols = everything(), names_to ="experiment", values_to="driving") %>% mutate(experiment = as.integer(experiment)) %>% arrange(experiment)
+
+driving_and_flying <- merge(flying, driving, by="experiment")
+
+head(driving_and_flying)
+
+```
+
+## 12
+
+Create the sampling distribution for both the flying and driving columns by using `summarize()` and `group_by()`. Name the new columns MeanFlying and MeanDriving. Assign this to the variable `sampling_distribution`.
+
+*Hint: what value are is a sampling distribution composed of? You did this in week 4.*
+
+:::: code-puzzle
+::: static
+
+{{sampling_distribution}} <- 
+driving_and_flying %>% 
+group_by({{experiment}}) %>% 
+{{summarize}}(
+  {{MeanFlying}}={{mean(flying)}}, 
+  {{MeanDriving}}={{mean(driving)}})
+
+sampling_distribution
+
+:::
+::::
+
+```{r}
+
+sampling_distribution <- driving_and_flying %>% group_by(experiment) %>% summarize(MeanFlying=mean(flying), MeanDriving=mean(driving))
+
+sampling_distribution
+
+```
+
+## 13
+
+Compute the sampling distribution of the difference by subtracting the mean of driving from flying using `mutate()`. Name both the column and variable name `differences`.
+
+:::: code-puzzle
+::: static
+
+{{differences}} <- {{sampling_distribution}} %>% 
+mutate(differences = {{{MeanFlying - MeanDriving}}})
+
+differences
+
+:::
+::::
+
+```{r}
+
+differences <- sampling_distribution %>% mutate(differences = MeanFlying - MeanDriving)
+
+differences
+
+```
+
+## 14
+
+Plot the sampling distribution of the difference between means.
+
+:::: code-puzzle
+::: static
+
+ggplot({{differences}}, {{{aes}}}(x={{differences}})) + 
+{{{geom_histogram()}}}
+
+:::
+::::
+
+```{r}
+
+ggplot(differences, aes(x=differences)) + geom_histogram()
+
+```
+
+## 15
+
+According the the sampling distribution of differences plot above, if we assume that null hypothesis is true, what is th probability that we sample a mean as different or larger than what you identified in question 3? How did you come to this conclusion?
+
+**Answer**:
+
+## 16
+
+Now perform a t-test on the original dataset. Provide the function with the raw data, and set the score variable as a function of the grouping variable.
+
+`t.test(data=..., score_variable ~ grouping_variable)`
+
+:::: code-puzzle
+::: static
+
+t.test(data = {{raw_data}}, {{fear}} ~ {{mode}})
+
+:::
+::::
+
+```{r}
+
+t.test(data = raw_data, fear ~ mode)
+
+```
+
+## 17
+
+Briefly summarize your findings. Do the p-value you identified in 10 and the one from 11 match? Do they match your conclusion from the CI plot from 4? Why?
+
+**Answer:**
+
+## 18
+
+Write interpretations for the CI plot and for your p-values.
+
+**Answer:**
+
+::::::

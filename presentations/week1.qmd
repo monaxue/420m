@@ -1,5 +1,9 @@
 ---
 title: "1: Welcome to PSYCH 420!"
+execute:
+    echo: false
+    warning: false
+    message: false
 ---
 
 ## Welcome to PSYCH 420!

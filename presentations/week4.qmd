@@ -5,6 +5,8 @@ revealjs:
     background-transition: none
 execute: 
     echo: false
+    warning: false
+    message: false
 ---
 
 ## Agenda

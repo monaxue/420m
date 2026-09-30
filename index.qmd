@@ -90,9 +90,15 @@ Includes Case Study 1 takeaways and discussion of descriptive vs. inferential st
 
 -->
 
-## Case Study 1
+## p-values and t-tests
 
-[Slides](/presentations/casestudy1.qmd){.filelink}
+[Slides](/presentations/week6.qmd){.filelink}
+
+[lab6.Rmd](/_rmd_fa26/lab6.Rmd){.filelink}
+
+[FlyingVsDrivingFearData.csv](/data/FlyingVsDrivingFearData.csv){.filelink}
+
+## Case Study 1
 
 [CaseStudy1.Rmd](/_rmd_fa26/CaseStudy1.Rmd){.filelink}
 

@@ -1,0 +1,117 @@
+---
+title: "Fear of Flying"
+author: "your name here"
+date: "2026-08-15"
+output: html_document
+---
+
+
+#### 1. Read in required packages and data. Name your dataset `raw_data`.
+
+```{r}
+
+```
+
+#### 2. Create a summary table of the data, comparinge fear of flying to driving. Make sure to print it.
+
+```{r}
+
+```
+
+#### 3. What is the difference between the two means?
+
+**Answer**: 
+
+#### 4. Calculate CIs
+
+```{r}
+
+```
+
+#### 5. Make Mean/CI plots for each condition in the experiment.
+
+```{r}
+
+```
+
+#### 6. If we wanted to simulate data to test our to our actual data against it, what kind of hypothesis should we assume?
+
+**Answer**:
+
+#### 7. Based on the type of hypothesis you identified, what should we assume as the mean difference?
+
+**Answer**:
+
+#### 8. We happen to know that the true standard deviations for both groups is 1. If we wanted to simulate the null hypothesis, what should we make sure we choose for the means? Why?
+
+**Answer**:
+
+
+#### 9. Make a simulation of 1000 replications of driving. Use a sample size of 25. Assign your results to the variable `driving`.
+
+```{r}
+
+```
+
+#### 10. Make a simulation of 1000 replications of flying. Use a sample size of 25. Assign your results to the variable `flying`.
+
+```{r}
+
+```
+
+#### 11. Uncomment the code below and run the code block. I have transformed created data table called driving_and_flying with all your simulated data.
+
+```{r}
+
+colnames(flying) <- 1:1000
+colnames(driving) <- 1:1000
+
+flying <- flying %>% as_tibble() %>% pivot_longer(cols = everything(), names_to ="experiment", values_to="flying") %>% mutate(experiment = as.integer(experiment)) %>% arrange(experiment)
+
+driving <- driving %>% as_tibble() %>% pivot_longer(cols = everything(), names_to ="experiment", values_to="driving") %>% mutate(experiment = as.integer(experiment)) %>% arrange(experiment)
+
+driving_and_flying <- merge(flying, driving, by="experiment")
+
+head(driving_and_flying)
+
+```
+
+#### 12. Create the sampling distribution for both the flying and driving columns by using `summarize()` and `group_by()`. Name the new columns MeanFlying and MeanDriving. Assign this to the variable `sampling_distribution`.
+
+*Hint: what value are is a sampling distribution composed of? You did this in week 4.*
+
+```{r}
+
+```
+
+#### 13. Compute the sampling distribution of the difference by subtracting the mean of driving from flying using `mutate()`. Name both the column and variable name `differences`.
+
+```{r}
+
+```
+
+#### 14. Plot the sampling distribution of the difference between means.
+
+```{r}
+
+```
+
+#### 15. According the the sampling distribution of differences plot above, if we assume that null hypothesis is true, what is th probability that we sample a mean as different or larger than what you identified in question 3? How did you come to this conclusion?
+
+**Answer**:
+
+#### 16. Now perform a t-test on the original dataset. Provide the function with the raw data, and set the score variable as a function of the grouping variable.
+
+t.test(data=..., score_variable ~ grouping_variable)
+
+```{r}
+
+```
+
+#### 17. Briefly summarize your findings. Do the p-value you identified in 10 and the one from 11 match? Do they match your conclusion from the CI plot from 4? Why?
+
+**Answer:**
+
+#### 18. Write interpretations for the CI plot and for your p-values.
+
+**Answer:**

@@ -1,0 +1,91 @@
+---
+title: "Fear of Flying"
+author: "your name here"
+date: "2026-08-15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.width = 5,        # Default width of plots in inches
+  fig.height = 4,       # Default height of plots in inches
+  fig.align = 'center' # Center-align plots: 'center', 'left', or 'right'
+)
+```
+
+1. Make a path/folder for this lab (e.g. `.../420/labs/lab5`) on 
+your class folder, create a new R project on that path/folder, download the data
+file `FlyingVsDrivingFearData.csv` from canvas and move it to that folder.
+
+2. In the following code chunk, load the `tidyverse` package and read the 
+`FlyingVsDrivingFearData.csv` data (you can use the `read_csv()` function).
+
+```{r load}
+
+```
+
+3. Use the functions `group_by()`, `summarize()`, and `mutate()` to get a 
+summary tibble of the data that includes means and 95% CIs.
+
+```{r summary}
+
+```
+
+4. Using the summary of the data in 3 make a plot of the mean and error bars of
+each condition in the experiment (hint: you should have an example of this
+plot in lab3).
+
+```{r mean-error-plot}
+
+```
+
+5. Make a simulation of 1000 replications of the fear of driving condition. You 
+can use the values of sample size, mean, and standard deviation (rounded to 2 
+decimal places) from the data. Compute the mean of each simulated replication.
+
+```{r simulate-driving}
+
+```
+
+6. Make a simulation of 1000 replications of the fear of flying condition. You 
+can use the values of sample size, mean, and standard deviation (rounded to 2 
+decimal places) from the data. Compute the mean of each simulated replication.
+
+```{r simulate-flying}
+
+```
+
+7. Compute the sampling distribution of the difference between sample means from 
+the simulated experiments.
+
+```{r difference-sampling}
+
+```
+
+8. Plot the sampling distribution of the difference between means (hint: try to 
+make the sampling distribution of the difference between means into a tibble 
+before making the plot).
+
+```{r plot-diff}
+
+```
+
+9. Perform a t-test on the difference between fear of driving and fear of 
+flying. You can use the `t.test()` function which has 2 arguments, `data` which 
+should be equal to the name of the variable that contains the experimental data
+(the variable used when the data was originally loaded). The second argument 
+is `formula` and it should be equal to `y ~ x` where y should be replaced with 
+the name of the measurement and x with the name of the variable that has the 
+condition.
+
+```{r ttest}
+
+```
+
+10. Briefly summarize your findings. Do the values of t and p intuitively agree
+with the plot of means $\pm$ 95\% CIs? Also, compare the 95\% CI on the 
+difference from the t-test with your plot of the simulated differences between 
+the means, do they seem to agree?
+
+**Ans:**

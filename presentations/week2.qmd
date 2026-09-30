@@ -1,5 +1,9 @@
 ---
 title: "2: Histograms and z-scores"
+execute:
+    echo: false
+    warning: false
+    message: false
 ---
 
 <!-- 

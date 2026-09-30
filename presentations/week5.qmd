@@ -23,14 +23,6 @@ Go with the "try it", then "now change this" approach.
 
 :::
 
-## Slido
-
-::: card-list
-
-- What is a sampling distribution? Do you remember?
-    - The distribution of means across many many (infinite) number of experiments.
-
-:::
 
 ##
 ![](/assets/slido-why-do-normal-distributions-pop-up-so-much-in-psychology.png)

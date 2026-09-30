@@ -1,5 +1,9 @@
 ---
 title: "Descriptive vs. inferential statistics"
+execute:
+    echo: false
+    warning: false
+    message: false
 ---
 
 ## Overview

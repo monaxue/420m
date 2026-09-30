@@ -149,24 +149,6 @@ Write your name on a note card. Draw the definition of a p-value. Pass them back
 
 
 
-## 
-
-1. Assumes null hypothesis is true
-2. Create a sampling distribution from the null hypothesis
-3. Compare actual observed difference to the null sampling distribution
-4. The area under the curve *outside* of the observed differences line is the p-value
-
-# p-value interpretaions
-
-1. What's the probability?
-2. Probability of what? 
-3. Assuming the null.
-
-# Practice
-
-::: iframe
-https://wall.sli.do/event/ib94xnXY8hNMrXtzmNjiHx
-:::
 
 # Power
 

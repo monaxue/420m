@@ -140,7 +140,7 @@ t.test(data = raw_data, fear ~ mode)
 
 ```
 
-#### 17. Briefly summarize your findings. Do the p-value you identified in 10 and the one from 11 match? Do they match your conclusion from the CI plot from 4? Why?
+#### 17. Briefly summarize your findings. Do the p-value you identified in 15 and the one from 16 match? Do they match your conclusion from the CI plot from 4? Why?
 
 **Answer:**
 

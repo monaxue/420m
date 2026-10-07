@@ -52,6 +52,17 @@ if (show_percent==TRUE){
     y = dnorm(x, mu, sd)
   )
 
+  if (is.na(alpha) && length(bounds) == 0) {
+  return(
+    ggplot(df, aes(x = x, y = y)) +
+      geom_line() +
+      labs(x = NULL, y = NULL) +
+      scale_x_continuous(breaks = NULL) +
+      scale_y_continuous(breaks = NULL, expand = c(0, 0)) +
+      theme_classic(base_size = 10)
+  )
+}
+
   center_lab <- parse(text=deparse(substitute(mu)))
   vals <- c()
 
@@ -155,3 +166,106 @@ if (show_percent==TRUE){
 
   return(plot)
 }
+
+
+area_outside_norm <- function(mu, sd, alpha, minlab, meanlab, maxlab, xaxis, title){
+  percent <- paste0(as.character((1-alpha)*100),"%")
+
+  x <- seq(mu - 4*sd, mu + 4*sd, length.out = 1000)
+
+  df <- tibble(
+    x = x,
+    y = dnorm(x, mu, sd)
+  )
+
+  lower <- qnorm(alpha/2, mu, sd)
+  upper <- qnorm(1-(alpha/2), mu, sd)
+
+  mid_x <- (lower + upper) / 2
+  mid_y <- dnorm(mid_x, mu, sd) * 0.5
+
+  ggplot(df, aes(x=x, y=y)) +
+    geom_line() +
+    geom_area(
+      aes(y = ifelse(x < lower | x > upper, y, 0)),
+      alpha = 0.2,
+      fill="steelblue"
+    ) +
+      labs(x = xaxis, title = title) +
+    geom_vline(xintercept = c(lower, mu, upper), linetype = "dashed") + 
+    scale_x_continuous(limits=c(-5,5), breaks = c(lower, mu, upper), labels = c(minlab,meanlab,maxlab)) +
+      scale_y_continuous(expand = c(0, 0)) +
+      theme_classic(base_size = 10) + 
+    theme(
+      plot.title = element_text(size = rel(1), face = "bold",
+          hjust = 0.5,margin = margin(b = rel(4))),
+      axis.title.y = element_blank(),
+      axis.text.y  = element_blank(),
+      axis.ticks.y = element_blank(),
+      axis.line.x = element_line(linewidth = 0.5),
+      axis.ticks.x = element_line(linewidth = 0.8),
+      axis.ticks.length.x = unit(4, "pt"),
+      axis.text.x = element_text(size = rel(1), margin = margin(t = rel(4))),
+      axis.title.x = element_text(size = rel(1.5), face = "bold", margin = margin(t = rel(3))),
+      plot.margin = margin(b = rel(2), r = rel(2), l=rel(2), t=rel(2)),
+      panel.background = element_rect(fill = "transparent"),
+    plot.background  = element_rect(fill = "transparent")) +
+    annotate(
+      "text",
+      x = mid_x,
+      y = mid_y,
+      label = percent,
+      size = 8
+    )
+}
+
+area_between_norm <- function(mu, sd, alpha, minlab, meanlab, maxlab, xaxis, title){
+  percent <- paste0(as.character((1-alpha)*100),"%")
+
+  x <- seq(mu - 4*sd, mu + 4*sd, length.out = 1000)
+
+  df <- tibble(
+    x = x,
+    y = dnorm(x, mu, sd)
+  )
+
+  lower <- qnorm(alpha/2, mu, sd)
+  upper <- qnorm(1-(alpha/2), mu, sd)
+
+  mid_x <- (lower + upper) / 2
+  mid_y <- dnorm(mid_x, mu, sd) * 0.5
+
+  ggplot(df, aes(x=x, y=y)) +
+    geom_line() +
+    geom_area(
+      aes(y = ifelse(x > lower & x < upper, y, 0)),
+      alpha = 0.2,
+      fill="steelblue"
+    ) +
+      labs(x = xaxis, title = title) +
+    geom_vline(xintercept = c(lower, mu, upper), linetype = "dashed") + 
+    scale_x_continuous(limits=c(-5,5), breaks = c(lower, mu, upper), labels = c(minlab,meanlab,maxlab)) +
+      scale_y_continuous(expand = c(0, 0)) +
+      theme_classic(base_size = 10) + 
+    theme(
+      plot.title = element_text(size = rel(1), face = "bold",
+          hjust = 0.5,margin = margin(b = rel(4))),
+      axis.title.y = element_blank(),
+      axis.text.y  = element_blank(),
+      axis.ticks.y = element_blank(),
+      axis.line.x = element_line(linewidth = 0.5),
+      axis.ticks.x = element_line(linewidth = 0.8),
+      axis.ticks.length.x = unit(4, "pt"),
+      axis.text.x = element_text(size = rel(2), margin = margin(t = rel(4))),
+      axis.title.x = element_text(size = rel(1.5), face = "bold", margin = margin(t = rel(3))),
+      plot.margin = margin(b = rel(2), r = rel(2), l=rel(2), t=rel(2)),
+      panel.background = element_rect(fill = "transparent"),
+    plot.background  = element_rect(fill = "transparent")) +
+    annotate(
+      "text",
+      x = mid_x,
+      y = mid_y,
+      label = percent,
+      size = 8
+    )
+  }

@@ -1,434 +1,771 @@
 ---
-title: "7: p-values and t-tests"
+title: "7: Paired data and t-tests"
+execute:
+  echo: false
+  warning: false
+  message: false
 ---
+
+# Announcements
+
+
+## Quiz
+- Quiz next week!
+- No lab report next week!
+- Cheatsheet can only contain formulas
+- Do your practice quizzes and problem sets
+
+## Quiz topics
+
+::: nonincremental
+
+1. Population and samples review
+2. Sampling distribution review
+3. p-values review
+4. Skew, central tendency
+5. Variability
+6. Student's t
+7. One-sample t
+8. Pooled variance
+9. Independent t and p
+10. Paired t
+11. Effect size
+
+:::
+
+
+# Paired t-tests
+
+## Jitter plot, colored by `id`
+
+```{r}
+
+library(tidyverse)
+library(ggplot2)
+
+raw_data <- read_csv("data/FearWithinData.csv")
+
+```
+
+```{r}
+
+my_jitter <- position_jitter(width = 0.1, height = 0.1, seed = 42)
+
+ggplot(raw_data, aes(x=mode, y=fear)) + geom_point(aes(color = id), position = my_jitter)
+
+```
+
+## ❓ What do you notice?
+
+*Hint:* look at the colors!
+
+::: iframe
+https://wall.sli.do/event/seE7FxjbKBE55v5k77ud1G?section=7e94a248-0f4a-4876-b281-78a3cfca6226&integration=shared-present-mode&utm_source=slidoadmin
+:::
+
+## ❓ What do you notice?
+
+*Hint:* look at the colors!
+
+```{r}
+
+first_five_ids <- unique(raw_data$id)[c(1, 6, 12, 22, 25)]
+raw_data$show_line <- ifelse(raw_data$id %in% first_five_ids, raw_data$id, NA)
+
+paired_diff <- ggplot(raw_data, aes(y=fear, x= mode)) + geom_point(position = my_jitter, aes(color = id)) + geom_path(aes(group=id, color = show_line), position = my_jitter) +  scale_color_discrete(na.value = "transparent")
+
+paired_diff
+
+```
 
 <!--
-Should add an animation of what the simulation and plotting the mean differences process looks like.
-
+    - The same colors are on similar levels in both groups.
+    - e.g., People who score lower in driving also score lower in flying
 -->
-# CI review
 
-## Slido question:
-
-Which of the following represents the definition of a confidence interval?
-
-![](/assets/slido-which-of-the-following-represents-the-ci.png)
-
-
-## Terms
-
-::: card-list
-- $\mu$ is the true mean
-- $x$ is the result from a single participant
-- $\bar{x}$ is the mean from *any* experiment
-- $\bar{x}_{observed}$ is the mean that we observe from *our* particular experiment
-- The mean of the means (aka the mean of $\bar{x}$) is so close to $\mu$ that we assume they are equivalent.
-    - mean of $\bar{x} = \mu$
-
-:::
-
----
-
-```{r}
-
-
-library(ggplot2)
-library(tidyverse)
-library(patchwork)
-
-area_between_norm <- function(mu, sd, alpha, minlab, meanlab, maxlab, xaxis, title){
-percent <- paste0(as.character((1-alpha)*100),"%")
-
-x <- seq(mu - 4*sd, mu + 4*sd, length.out = 1000)
-
-df <- tibble(
-  x = x,
-  y = dnorm(x, mu, sd)
-)
-
-lower <- qnorm(alpha/2, mu, sd)
-upper <- qnorm(1-(alpha/2), mu, sd)
-
-mid_x <- (lower + upper) / 2
-mid_y <- dnorm(mid_x, mu, sd) * 0.5
-
-ggplot(df, aes(x=x, y=y)) +
-  geom_line() +
-  geom_area(
-    aes(y = ifelse(x > lower & x < upper, y, 0)),
-    alpha = 0.2,
-    fill="steelblue"
-  ) +
-    labs(x = xaxis, title = title) +
-  geom_vline(xintercept = c(lower, mu, upper), linetype = "dashed") + 
-  scale_x_continuous(limits=c(-5,5), breaks = c(lower, mu, upper), labels = c(minlab,meanlab,maxlab)) +
-    scale_y_continuous(expand = c(0, 0)) +
-    theme_classic(base_size = 10) + 
-   theme(
-    plot.title = element_text(size = rel(1), face = "bold",
-        hjust = 0.5,margin = margin(b = rel(4))),
-    axis.title.y = element_blank(),
-    axis.text.y  = element_blank(),
-    axis.ticks.y = element_blank(),
-    axis.line.x = element_line(linewidth = 0.5),
-    axis.ticks.x = element_line(linewidth = 0.8),
-    axis.ticks.length.x = unit(4, "pt"),
-    axis.text.x = element_text(size = rel(2), margin = margin(t = rel(4))),
-    axis.title.x = element_text(size = rel(1.5), face = "bold", margin = margin(t = rel(3))),
-    plot.margin = margin(b = rel(2), r = rel(2), l=rel(2), t=rel(2)),
-    panel.background = element_rect(fill = "transparent"),
-  plot.background  = element_rect(fill = "transparent")) +
-  annotate(
-    "text",
-    x = mid_x,
-    y = mid_y,
-    label = percent,
-    size = 8
-  )
-}
-
-
-plot1 <- area_between_norm(mu=0, sd=2, alpha=0.05, minlab="a", meanlab=expression(mu), maxlab="b", xaxis=expression(bar(x) ~ "(means from experiments)"), title="1. Sampling distribution")
-
-plot2 <- area_between_norm(mu=0, sd=1, alpha=0.05, minlab="-1.96", meanlab="0", maxlab="1.96", xaxis=expression(Z == frac(bar(x) - mu, SE)), title=paste0("2. Normalize dist. Z ~ Norm(0,1)"))
-
-plot3 <- area_between_norm(mu=0, sd=2, alpha=0.05, minlab=expression(mu-1.96 %*% SE), meanlab=expression(mu), maxlab=expression(mu+1.96 %*% SE), xaxis=expression(bar(x)), title=paste0("3. Substitute from Z to get a and b"))
-
-plot1+plot2+plot3+theme(plot.margin = margin(b = 10, r = 10, l=10, t=10),)
-
-```
-
-#3 is what we would *like* to know.
-
----
-
-::::: columns
-:::: column
-
-**Problem: we don't know the true mean, $\mu$**
-
-```{r}
-#| fig-height: 6
-#| fig-width: 5
-
-plot3
-
-```
-
-::::
-
-
-:::: column
-
-
-From here, there are two possibilities:
-
-::: card-list
-
-- Don't make any assumptions about $\mu$
-    - ❌ Cannot calculate probabilities 
-    - $\rightarrow$ CIs
-- Pretend that we know $\mu$
-    - ✅ Can calculate probabilities
-    - $\rightarrow$ p-values
-
-:::
-::::
-:::::
-
-# P-values
 
 ## 
 
-::: card-list
-
-- We will *pretend* to know $\mu$. What does this mean?
-- This means that we can simulate what the sampling distribution would look like if we assume our *pretend* $\mu$ is true.
-- What are good $\mu$'s to assume?
-
-:::
-
-## What $\mu$ to assume?
-
-If we are interested in proving A, we cannot assume A.
-
-::: card-list
-- A circular argument: You cannot prove something if you already assume it is true.
-- Examples of circular arguments:
-    - I trust you because you are trustworthy
-    - The scientific method works because science tells me so
-    - Calibrating a compass by only using that one compass.
-        - You need to use a second compass or known landmarks (like the stars).
-
-:::
-
-## A second compass 🧭🧭
-
-::: card-list
-- Choosing a $\mu$ is like choosing a second compass
-- You need to make sure the pretend $\mu$ is different from the one you are actually interested in "proving".
-- This is the purpose of a **null hypothesis**
-    - The "opposite" hypothesis of your main hypothesis
-:::
-
----
+**Mean differences between the two groups as a whole**
 
 ```{r}
 
-area_between_norm(mu=0, sd=2, alpha=0.05, minlab=expression(mu-1.96 %*% SE), meanlab=expression(mu), maxlab=expression(mu+1.96 %*% SE), xaxis=expression(bar(x)), title=paste0(""))
+raw_data <- raw_data %>% group_by(mode) %>% mutate(Mean=mean(fear))
+
+mean_diff <- ggplot(raw_data, aes(y=fear, x= mode)) + geom_point(position = my_jitter, aes(color = id)) + geom_point(aes(y=Mean)) + geom_path(aes(y=Mean, group = 1)) 
+
+mean_diff
 
 ```
 
-Interpretation: given that the true mean is 0, the probability of getting a mean that is between $0 \pm 1.96 \times SE$ is 95%.
-
-
-## {.center}
-
-::: card-list
-
-- Let's say in our experiment, we want to show that there is a difference between two groups. 
-- The opposite hypothesis would be that there is no difference between the groups. AKA the difference = 0.
+::: nonincremental
+- Less certainty
 :::
-
----
-
-We happen to observe the difference between two means (aka $\bar{x}_{observed}$) is $|1.96 \times SE|$
-
-```{r}
-
-area_between_norm(mu=0, sd=2, alpha=0.05, minlab=expression( -bar(x)[observed]), meanlab=expression(mu), maxlab=expression(bar(x)[observed]), xaxis=expression(bar(x)), title=paste0(""))
-
-```
-
-::: card-list
-- Then the probability of getting a mean that is between $\pm\bar{x}_{observed}$ is __?
-  - Answer: 95%
-:::
-
 
 ##
 
-```{r}
+::::: {.columns .nonincremental}
+:::: {.column .nonincremental}
 
-area_between_norm(mu=0, sd=2, alpha=0.05, minlab=expression( -bar(x)[observed]), meanlab=expression(mu), maxlab=expression(bar(x)[observed]), xaxis=expression(bar(x)), title=paste0(""))
+**Less certainty**
+
+```{r}
+mean_diff
+```
+
+- More spread
+- Higher SE
+- Wider CIs
+
+::::
+:::: {.column .nonincremental}
+
+**More certainty**
+
+```{r}
+paired_diff
+```
+
+- Differences have less spread
+- Lower SE
+- Narrower CI
+
+::::
+:::::
+
+##  How do we get lower SE?
+
+Remember: SEs are the SDs of the **sampling distribution**
+
+```{r}
+source("_scripts/area_under_norm.R")
+
+normal <- area_under_norm(mu=0, sd=1) + xlim(c(-3,3)) + ylim(c(0,1))
+wider_ci <- ggplot() + geom_errorbar(aes(y = 0, x= 0, ymin=-2, ymax=2)) + ylim(c(-5,5)) + xlim(c(-1,1))
+
+paired <- area_under_norm(mu=0, sd=0.5) + xlim(c(-3,3)) + ylim(c(0,1))
+narrower_ci <- ggplot() + geom_errorbar(aes(y = 0, x= 0, ymin=-1, ymax=1)) + ylim(c(-5,5)) + xlim(c(-1,1))
 
 ```
 
-But this is the opposite of the hypothesis we want to "prove". What would the opposite graph of this one look like?
-
----
+::::: {.columns .nonincremental}
+:::: {.column .nonincremental}
+**Unpaired differences**
 
 ```{r}
 
-area_outside_norm <- function(mu, sd, alpha, minlab, meanlab, maxlab, xaxis, title){
-percent <- paste0(as.character((1-alpha)*100),"%")
-
-x <- seq(mu - 4*sd, mu + 4*sd, length.out = 1000)
-
-df <- tibble(
-  x = x,
-  y = dnorm(x, mu, sd)
-)
-
-lower <- qnorm(alpha/2, mu, sd)
-upper <- qnorm(1-(alpha/2), mu, sd)
-
-mid_x <- (lower + upper) / 2
-mid_y <- dnorm(mid_x, mu, sd) * 0.5
-
-ggplot(df, aes(x=x, y=y)) +
-  geom_line() +
-  geom_area(
-    aes(y = ifelse(x < lower | x > upper, y, 0)),
-    alpha = 0.2,
-    fill="steelblue"
-  ) +
-    labs(x = xaxis, title = title) +
-  geom_vline(xintercept = c(lower, mu, upper), linetype = "dashed") + 
-  scale_x_continuous(limits=c(-5,5), breaks = c(lower, mu, upper), labels = c(minlab,meanlab,maxlab)) +
-    scale_y_continuous(expand = c(0, 0)) +
-    theme_classic(base_size = 10) + 
-   theme(
-    plot.title = element_text(size = rel(1), face = "bold",
-        hjust = 0.5,margin = margin(b = rel(4))),
-    axis.title.y = element_blank(),
-    axis.text.y  = element_blank(),
-    axis.ticks.y = element_blank(),
-    axis.line.x = element_line(linewidth = 0.5),
-    axis.ticks.x = element_line(linewidth = 0.8),
-    axis.ticks.length.x = unit(4, "pt"),
-    axis.text.x = element_text(size = rel(1), margin = margin(t = rel(4))),
-    axis.title.x = element_text(size = rel(1.5), face = "bold", margin = margin(t = rel(3))),
-    plot.margin = margin(b = rel(2), r = rel(2), l=rel(2), t=rel(2)),
-    panel.background = element_rect(fill = "transparent"),
-  plot.background  = element_rect(fill = "transparent")) +
-  annotate(
-    "text",
-    x = mid_x,
-    y = mid_y,
-    label = percent,
-    size = 8
-  )
-}
-
-
-plot4 <- area_outside_norm(mu=0, sd=1.5, alpha=0.1, minlab=expression(-bar(x)[observed]), meanlab=expression(mu), maxlab=expression(bar(x)[observed]), xaxis=expression(bar(x)), title="A")
-
-plot5 <- area_outside_norm(mu=0, sd=1.5, alpha=0.2, minlab=expression(-bar(x)[observed]), meanlab=expression(mu), maxlab=expression(bar(x)[observed]), xaxis=expression(bar(x)), title=paste0("B"))
-
-plot6 <- area_outside_norm(mu=0, sd=1.5, alpha=0.05, minlab=expression(mu-1.96 %*% SE), meanlab=expression(mu), maxlab=expression(mu+1.96 %*% SE), xaxis=expression(bar(x)), title=paste0("C"))
-
-area_outside_norm(mu=0, sd=2, alpha=0.05, minlab=expression(-bar(x)[observed]), meanlab=expression(mu), maxlab=expression(bar(x)[observed]), xaxis=expression(bar(x)), title="")
-
+normal
 
 ```
 
+$\downarrow$
 
-Interpretation: given that the true mean is 0, the probability of sampling our observed $\bar{x}_{observed}$ (or something more extreme) is 100%-95% = 5%.
+```{r}
 
-## Definition of p-value {.center}
+wider_ci
 
-::: card-list-center
+```
 
-- The p-value is the probability of observing our results (or something more extreme) given that our null hypothesis is true.
+Higher SE and wider CI
+
+
+
+::::
+:::: {.column .nonincremental}
+
+**Paired differences**
+
+```{r}
+
+paired
+
+```
+
+$\downarrow$
+
+```{r}
+
+narrower_ci
+
+```
+
+Lower SE and narrower CI
+
+::::
+:::::
+
+## Key to produce different sampling distributions
+
+::::: columns
+:::: column
+### Unpaired
+
+1. Simulate 2 sampling distributions
+1. Take differences
+
+
+
+::::
+:::: column
+
+### Paired
+
+1. Take differences
+1. Simulate single sampling distribution
+
+::::
+:::::
+
+## Unpaired
+
+:::::: columns
+::::: column
+**(1) Calculate SD**
+
+|  Group  |     Mean    |   SD  |
+| ------- | ----------- | ----- |
+| driving | $\bar{x_1}$ | $s_1$ |
+| flying  | $\bar{x_2}$ | $s_2$ |
+:::::
+::::: column
+
+**(2) Simulate sampling distributions**
+
+`rnorm(`$\bar{x_1}$, $s_1$`)` and `rnorm(`$\bar{x_2}$, $s_2$`)`
+
+```{r}
+flying <- ggplot() + xlim(-4, 4) +  geom_function(fun = dnorm) + xlab("Flying")
+driving <- ggplot() + xlim(-4, 4) +  geom_function(fun = dnorm) + xlab("Driving")
+differences <- ggplot() + xlim(-4, 4) +  geom_function(fun = dnorm) + xlab("Differences") 
+
+flying + driving
+```
+
+:::::
+::::::
+
+:::::: columns
+::::: column
+
+**(3) Take differences**
+
+:::: columns
+::: {.column width="45%"}
+
+```{r}
+flying
+```
+Flying
+:::
+
+::: {.column width="10%"}
+ 
+
+$-$
 
 :::
 
----
-
-The p-value probabilities depend on the actual observations (real data). Which of the following has the lowest p-value?
+::: {.column width="45%"}
 
 ```{r}
-
-plot4+plot5+plot6+theme(plot.margin = margin(b = 30, r = 30, l=30, t=30),)
+driving
 ```
-
-::: card-list
-- Answer: `A`. While `C` has the smallest area under the curve on the outside (5%), `C` is not plotting the actual observed means on the x-axis. `A` has the smallest area under the curve outside of the observed means (10%).
-
+Driving
 :::
+::::
 
-# t-test
+:::::
+::::: column
 
-The t-test calculates the p-value for the difference between groups.
+**(4) Get SE**
 
-The function for conducting a t-test is `t.test()`. Use it like this:
+```{r}
+differences + geom_vline(xintercept = 0) + geom_segment(aes(x = 0, y = 0.242, xend = 1, yend = 0.242), color = "blue")
 
-```r
-t.test(data = data, score ~ group)
 ```
 
-And replace the names as needed.
+:::::
+::::::
+
+## Paired
+
+:::::: columns
+::::: column
+**(1) Take differences**
+
+|  id  | flying | driving | differences |
+| ---- | ------ | ------- | ----------- |
+| Bob  |   2    |    1    |      1      |
+| Amy  |   3    |    2    |      1      |
+| ...  |  ...   |   ...   |     ...     |
+
+
+:::::
+::::: column
+
+**(2) Calculate SD**
+
+|  Group  |     Mean    |   SD  |
+| ------- | ----------- | ----- |
+| differences | $\bar{x_\Delta}$ | $s_\Delta$ |
+
+
+:::::
+::::::
+
+:::::: columns
+::::: column
+
+**(3) Simulate sampling distribution**
+
+`rnorm(`$\bar{x_\Delta}$, $s_\Delta$`)`
+
+```{r}
+differences
+```
+
+:::::
+::::: column
+
+**(4) Get SE**
+
+SD of sampling distribution
+
+```{r}
+differences + geom_vline(xintercept = 0) + geom_segment(aes(x = 0, y = 0.242, xend = 1, yend = 0.242), color = "blue")
+
+```
+
+:::::
+::::::
+
+
+
 
 # Deliverables
 
-##
 
-::: {.normal-list .nonincremental}
+## Part 1
 
-- [ ] Download [FlyingVsDrivingFearData.csv](/data/FlyingVsDrivingFearData.csv){.filelink}, and read the data into Rmd.
-- [ ] Create a summary table for the dataset, grouping by `mode`.
-- [ ] Simulate the sampling distribution, assuming that the null hypothesis is true. The null hypothesis is that the difference between driving and flying is 0.
-    - [ ] Create an empty list named `sampling_dist`
-    - [ ] Use a for loop for the following:
-    - [ ] Simulate 1000 experiments
-    - [ ] Simulate driving and flying data separately by using `rnorm()`. Use a sample size of 25, a mean of 0, and an sd of 1.
-    - [ ] Take the difference between the mean of driving and the mean of flying, and add that to the `sampling_dist` list.
-- [ ] Plot
-    - [ ] Convert `sampling_dist` to a dataframe using `tibble()`
-    - [ ] Plot a histogram and the simulated differences across experiments. Assign the plot to the variable `hist`
-    - [ ] Calculate the observed difference between driving and flying from the actual dataset by using 
+:::::: panel-tabset
 
-        ```r
-        observed_diff <- sum_table$Mean[1] - sum_table$Mean[2]
-        ```
-    - [ ] Add the observed difference by using the following code:
+## 1
 
-        ```r
-        hist + geom_vline(xintercept = -abs(observed_diff)) + geom_vline(xintercept = abs(observed_diff))
-        ```
-    - [ ] Run an official t-test (see previous page)
-- [ ] Answer the following questions:
-    - [ ] What does the final plot with the vertical lines show? 
-    - [ ] If you had to guess the p-value based on the plot, what would you guess? 
-    - [ ] How does your guess compare to the p-value from the t-test? Are they consistent?
+Load the necessary packages and dataset. Assign the dataset to the variable `raw_data`. Take a peek at the data using `head()`.
 
+:::: code-puzzle
+::: static
+{{{library(tidyverse)}}}
+{{{library(ggplot2)}}}
+
+raw_data <- {{{read_csv("FearWithinData.csv")}}}
+
+head({{{raw_data}}})
 :::
 
-# What your deliverables might look like
-
----
-
-:::: panel-tabset
-
-## Raw data
+::::
 
 ```{r}
 
-raw_data <- read_csv("./data/FlyingVsDrivingFearData.csv")
+library(tidyverse)
+library(ggplot2)
+
+raw_data <- read_csv("data/FearWithinData.csv")
 head(raw_data)
 
 ```
 
-## Summary table
+## 2
+
+Make a frequency polygon plot of the data of fear as a function of mode of transportation. Use the `color` argument in `aes()`, instead of `facet_wrap()` to separate out the groups this time. In `geom_freqpoly()`, set binwidth equal to 1.
+
+:::: code-puzzle
+::: static
+ggplot({{{raw_data}}}, {{{aes}}}({{{x}}} = {{fear}}, 
+{{color}} = {{mode}})) + {{geom_freqpoly}}(binwidth = 1)
+:::
+::::
 
 ```{r}
 
-sum_table <- raw_data %>% group_by(mode) %>% summarize(SampleSize=n(), Mean=mean(fear), SD=sd(fear))
-sum_table
+ggplot(raw_data, aes(x=fear, color=mode)) + geom_freqpoly(binwidth=1)
+
 ```
 
-## Histogram
+## 3
 
+Approximately what is the combined width of the two frequency polygons?
+
+**Answer**:
+
+## 4
+
+### `geom_jitter()`
+
+`geom_jitter()` is very similar to `geom_point()`, but it pushes the points around a bit so it's more visible. 
+
+::::: {.columns .nonincremental}
+:::: {.column .nonincremental}
+`geom_point()`
 ```{r}
 
-sampling_dist <- c()
-
-for (experiment in 1:1000){
-    SampleSize=25
-    driving <- rnorm(n=SampleSize, mean=0, sd=1)
-    flying <- rnorm(n=SampleSize, mean=0, sd=1)
-    sampling_dist[experiment] <- mean(driving) - mean(flying)
-
-}
-
-sim_df <- tibble(diffs=sampling_dist)
-
-hist <- ggplot(sim_df, aes(x=diffs)) + geom_histogram()
-hist
-```
-
-## Histogram with vertical lines
-
-```{r}
-
-observed_diff <- sum_table$Mean[1] - sum_table$Mean[2]
-observed_diff
-
-hist + geom_vline(xintercept = -abs(observed_diff)) + geom_vline(xintercept = abs(observed_diff))
+ggplot(raw_data, aes(x=mode, y=fear, color = id)) + geom_point()
 
 ```
-
-```{r}
-
-# Don't need this cell for students
-
-sim_sum <- sim_df %>% mutate(greaterorless = 
-    case_when(
-        diffs > abs(observed_diff) ~ "greater", 
-    diffs < -abs(observed_diff) ~ "less",
-    TRUE ~ "between")
-    ) %>% group_by(greaterorless) %>% summarize(count=n())
-
-sim_sum
-
-```
-
-## t-test output
-```{r}
-t.test(data = raw_data, fear ~ mode)
-```
-
-
 
 ::::
+
+:::: {.column .nonincremental}
+`geom_jitter()`
+
+```{r}
+
+ggplot(raw_data, aes(x=mode, y=fear, color = id)) + geom_jitter(width = 0.1, height = 0.1)
+
+```
+
+::::
+:::::
+
+
+## 5
+
+Make a jitter plot showing all the participants' responses, where the y axis is the ratings, and the x axis is the group. Make sure the color each partipants responses.
+
+`ggplot(..., aes(..., color = ...)) + geom_jitter(width = 0.1, height = 0.1)`
+
+:::: code-puzzle
+::: static
+ggplot({{{raw_data}}}, {{{aes}}}(x = {{{mode}}}, y = {{{fear}}}, color = {{{id}}})) + 
+{{{geom_jitter}}}(width = 0.1, height = 0.1)
+:::
+::::
+
+
+```{r}
+
+ggplot(raw_data, aes(x=mode, y=fear, color = id)) + geom_jitter(width = 0.1, height = 0.1)
+
+```
+
+
+## 6
+
+What are the column names of the current data table?
+
+**Answer:**
+
+## 7
+
+We want to compute differences between flying and driving with `mutate(differences = flying - driving)`, but currently the format of the data makes it difficult. What columns names do we need in order to compute the differences? 
+
+*Hint:*
+
+|  id  | flying | driving | differences |
+| ---- | ------ | ------- | ----------- |
+| Bob  |   2    |    1    |      1      |
+| Amy  |   3    |    2    |      1      |
+| Joe  |   4    |    2    |      2      |
+| Emma |   5    |    1    |      4      |
+
+**Answer:**
+
+## 8
+
+### `pivot_wider()`
+
+The pivot wider function takes a column of group names and a column of scores, and creates separate columns for each group where the rows of that column are populated by the scores.
+
+::::: {.columns .nonincremental}
+:::: {.column .nonincremental}
+
+From this:
+
+|  id  |   mode  | fear |
+| ---- | ------- | ---- |
+| Bob  | flying  |  2   |
+| Amy  | flying  |  3   |
+| Joe  | flying  |  4   |
+| Emma | flying  |  5   |
+| Bob  | driving |  1   |
+| Amy  | driving |  2   |
+| Joe  | driving |  2   |
+| Emma | driving |  1   |
+
+::::
+:::: {.column .nonincremental}
+
+To this:
+
+|  id  | flying | driving |
+| ---- | ------ | ------- |
+| Bob  |   2    |    1    |
+| Amy  |   3    |    2    |
+| Joe  |   4    |    2    |
+| Emma |   5    |    1    |
+
+::::
+
+:::::
+
+
+## 9
+
+Use `pivot_wider()` to reformat `raw_data `, and assign the new table to `wider`. Take a peak with `head()`.
+
+`pivot_wider(names_from = column_with_group_names, values_from=column_with_ratings)`
+
+:::: code-puzzle
+::: static
+{{{wider}}} <- {{{raw_data}}} %>% pivot_wider(names_from = {{{mode}}}, values_from = {{{fear}}})
+
+head({{{wider}}})
+:::
+::::
+
+
+```{r}
+
+wider <- raw_data %>% pivot_wider(names_from = mode, values_from=fear)
+head(wider)
+
+```
+
+
+## 10
+
+Add a new column that computes flying minus driving.
+
+:::: code-puzzle
+::: static
+{{{wider}}} <- wider %>% mutate({{{differences}}} = {{{flying - driving}}})
+:::
+::::
+
+```{r}
+
+wider <- wider %>% mutate(differences = flying - driving)
+
+```
+
+## 11
+
+Make a frequency plot of the difference between ratings with binwidth = 1
+
+:::: code-puzzle
+::: static
+ggplot({{{wider}}}, aes({{{x}}} = {{{differences}}})) + 
+geom_{{freq}}{{poly}}({{binwidth = 1}})
+:::
+::::
+
+```{r}
+
+ggplot(wider, aes(x=differences)) + geom_freqpoly(binwidth = 1)
+
+```
+
+## 12
+
+What is the approximate width of this frequency polygon?
+
+**Answer:**
+
+::::::
+
+## Part 2
+
+:::::: panel-tabset
+
+## 1
+
+Create a summary table of the *differences* between ratings that includes sample size, mean, standard deviation, standard error.
+
+:::: code-puzzle
+::: static
+
+summary_table <- {{{wider}}} %>% {{{summarize}}}(SampleSize = {{{n()}}}, 
+Mean = {{{mean(differences)}}}, SD = {{sd(differences)}}, 
+SE = {{SD}}/{{sqrt}}({{SampleSize}}))
+
+{{{summary_table}}}
+
+
+:::
+::::
+
+```{r}
+
+summary_table <- wider %>% summarize(SampleSize = n(), Mean = mean(differences), SD = sd(differences), SE = SD/sqrt(SampleSize))
+
+summary_table
+
+```
+
+## 2
+
+Calculate the CI of differences.
+
+:::: code-puzzle
+::: static
+
+CIs <- {{{summary_table}}} %>% {{{mutate}}}(LowerCI = {{{Mean}}} - 1.96\*{{{SE}}}, 
+UpperCI = {{{Mean}}} + 1.96\*{{{SE}}})
+
+{{{CIs}}}
+
+:::
+::::
+
+
+
+```{r}
+
+CIs <- summary_table %>% mutate(LowerCI = Mean - 1.96*SE, UpperCI = Mean + 1.96*SE)
+
+CIs
+
+```
+
+## 3
+
+What is the difference between the Upper and Lower CI, and is this narrower or wider than the CIs from the previous lab?
+
+**Answer:**
+
+
+## 4 
+
+Simulate 1000 replications of the difference between ratings using the sample size and standard deviation from your summary table. Assign this to `simulated_data`.
+
+:::: code-puzzle
+::: static
+
+simulated_differences <- {{replicate}}(n = {{1000}}, 
+exp={{rnorm}}(n = {{25}}, mean = 0, sd = {{0.4899}}))
+
+:::
+::::
+
+```{r}
+
+simulated_differences <- replicate(exp=rnorm(n = 25, mean = 0, sd = 0.4899), n = 1000)
+
+
+```
+## 5 
+
+Magic code that you don't need to worry about to transform your `simulated_differences` to a more usable format. This new table is called `simulated_differences_table`.
+
+```r
+
+colnames(simulated_differences) <- 1:1000
+
+simulated_differences_table <- simulated_differences %>% as_tibble() %>% pivot_longer(cols = everything(), names_to ="experiment", values_to="differences") %>% mutate(experiment = as.integer(experiment)) %>% arrange(experiment)
+
+head(simulated_differences_table)
+
+```
+
+```{r}
+
+colnames(simulated_differences) <- 1:1000
+
+simulated_differences_table <- simulated_differences %>% as_tibble() %>% pivot_longer(cols = everything(), names_to ="experiment", values_to="differences") %>% mutate(experiment = as.integer(experiment)) %>% arrange(experiment)
+
+head(simulated_differences_table)
+
+```
+
+
+## 6 
+
+Create a summary table of `simulated_differences_table` that includes SampleSize, Mean, SD, and SE of `differences` for each experiment. Assign it to `simulation_summary`.
+
+:::: code-puzzle
+::: static
+
+simulation_summary <- simulated_differences_table %>% 
+{{{group_by}}}({{{experiment}}}) %>% 
+{{{summarize}}}(SampleSize = {{{n()}}}, 
+Mean = {{{mean(differences)}}}, SD = {{{sd(differences)}}}, 
+SE = {{{SD/sqrt(SampleSize)}}})
+
+{{{simulation_summary}}}
+
+:::
+::::
+
+```{r}
+
+simulation_summary <- simulated_differences_table %>% group_by(experiment) %>% summarize(SampleSize = n(), Mean = mean(differences), SD = sd(differences), SE = SD/sqrt(SampleSize))
+
+simulation_summary
+
+```
+
+## 7 
+
+Make a histogram of the sampling distribution using the values in `simulation_summary`.
+
+:::: code-puzzle
+::: static
+
+{{{ggplot}}}({{{simulation_summary}}}, aes(x = {{{Mean}}})) + {{{geom_histogram()}}}
+
+:::
+::::
+
+```{r}
+
+ggplot(simulation_summary, aes(x = Mean)) + geom_histogram()
+
+```
+
+## 8 
+
+Compare this distribution with the one we obtained in the previous lab. What are the similarities and differences between the two?
+
+**Answer:**
+
+## 9 
+
+Recall that last week, we compared the actual observed mean difference in the original dataset (2.36) to the sampling distribution. If we do the same thing with today's sampling distribution, does today's null sampling distribution "theoretically" provide a larger or smaller p-value than the one from last week? Why?
+
+**Answer:**
+
+
+## 10 
+
+Compute the t-test. For the paired t-test, we specify the paired lists of ratings as data vectors, and we set the paired argument to TRUE. Compare the p-value with the one from the previous lab. 
+
+*Hint:* How many zeros come before the decimal point? Look at the value after "e"
+
+`t.test(wider$column1, wider$column2, paired = TRUE)`
+
+:::: code-puzzle
+::: static
+
+t.test({{{wider}}}\${{{driving OR flying}}}, {{{wider}}}\${{{flying OR driving}}}, paired = {{{TRUE}}})
+
+:::
+::::
+
+```{r}
+
+t.test(wider$driving, wider$flying, paired = TRUE)
+
+```
+
+**Answer:**
+
+## 11
+
+What is the main point of this lab? Fill in the bolded sections.
+
+::: nonincremental
+- SE is just the **(fill in)** of the sampling distribution. When we calculate paired differences, that **increases/decreases** our SD, which **increases/decreases** our SE, resulting in a **wider/narrower** CI and **smaller/larger** p-value. This means we are **more/less** certain that there is a true difference between the groups.
+
+:::
+
+::::::

@@ -1,0 +1,123 @@
+---
+title: "Fear of Flying Paired Data"
+author: "your name here"
+date: "2026-08-17"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.width = 5,        # Default width of plots in inches
+  fig.height = 4,       # Default height of plots in inches
+  fig.align = 'center' # Center-align plots: 'center', 'left', or 'right'
+)
+```
+
+As in the previous lab, we are going to look at the fear of flying vs. driving
+data. In this case though, we are going to ask for fear ratings for both modes 
+of transportation from the *same people*. The idea is that if people are really 
+scared of driving, they are likely really scared of flying as well. If we can
+somehow get rid of this "general fear of hurling around in metal contraptions",
+then we can get a more precise estimate of the difference in fear between flying
+and driving.
+
+## The data
+
+The data are (simulated but realistic) ratings of how much each of 25 randomly
+selected people fear flying and driving; each person rated both on a 10 pt. 
+scale. The file contains three variables:
+
+- id: a letter between a and y identifying the subject
+- mode: "flying" or "driving"
+- fear: a rating between 1 and 10.
+
+1. Make a path/folder for this lab (e.g. `.../420/labs/lab6`) on 
+your class folder, create a new R project on that path/folder, download the data
+file `FearWithinData.csv` from canvas and move it to that folder.
+
+2. In the following code chunk, load the `tidyverse` package and read the 
+`FearWithinData.csv` data.
+
+```{r load-data}
+
+```
+
+3. Make a frequency polygon plot of the data of fear as a function of mode of 
+transportation.
+
+```{r freq}
+
+```
+
+4. Make a plot of fear as a function of mode of transportation with the 
+participants color-coded. You can use the `geom_jitter()` function to make
+identical data points plot near to (rather than on top of) one another. Write a 
+short comment on what you can see in the plot, are there ant ``general'' 
+trends?
+
+```{r fear-part}
+
+```
+
+**Ans:**
+
+5. Compute the difference in fear rating for each person by subtracting their 
+fear of flying from their fear of driving.
+
+```{r calc-diff}
+
+```
+
+6. Make a frequency polygon plot of the difference between ratings.
+
+```{r freq-diff}
+
+```
+
+7. Create a summary tibble of the difference between ratings that includes
+sample size, mean, standard deviation, standard error, and the width of the 
+confidence interval.
+
+```{r summ}
+
+```
+
+8. Simulate 1000 replications of the difference between ratings using the sample
+size, mean and standard deviation from 7. Use the `colMeans()` function to 
+calculate the mean of each replication of the experiment.
+
+```{r sim}
+
+```
+
+9. Make a frequency plot of the mean of each of the 1000 replications of the 
+experiment that we obtained in 8. Compare this distribution with the one we 
+obtained in the previous lab (`lab5.html`). What are the similarities and 
+differences between the two?
+
+```{r freq-diff-sim}
+
+```
+
+**Ans:**
+
+10. Compute the t-test. For the paired t-test, we specify the paired lists of
+ratings as data vectors, and we set the paired argument to TRUE. Compare the 
+results with the results of the previous lab (`lab5.html`).
+
+```{r paired-t}
+
+```
+
+**Ans:**
+
+11. Write a short interpretation of the results. What do the results tell us 
+about the comparison of the fear for each mode of transportation?
+
+**Ans:**
+
+
+
+
+

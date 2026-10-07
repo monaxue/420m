@@ -1,0 +1,216 @@
+---
+title: "Fear of Flying Paired Data"
+author: "your name here"
+date: "2026-08-17"
+output: html_document
+---
+
+## Part 1
+
+As in the previous lab, we are going to look at the fear of flying vs. driving data. In this case though, we are going to ask for fear ratings for both modes of transportation from the *same people*. The idea is that if people are really scared of driving, they are likely really scared of flying as well. If we can somehow get rid of this "general fear of hurling around in metal contraptions", then we can get a more precise estimate of the difference in fear between flying and driving.
+
+## The data
+
+The data are (simulated but realistic) ratings of how much each of 25 randomly selected people fear flying and driving; each person rated both on a 10 pt. scale. The file contains three variables:
+
+- id: a letter between a and y identifying the subject
+- mode: "flying" or "driving"
+- fear: a rating between 1 and 10.
+
+
+#### 1. Load the necessary packages and dataset. Assign the dataset to the variable `raw_data`. Take a peek at the data using `head()`.
+
+```{r}
+
+
+
+```
+
+#### 2. Make a frequency polygon plot of the data of fear as a function of mode of transportation. Use the `color` argument in `aes()`, instead of `facet_wrap()` to separate out the groups this time. In `geom_freqpoly()`, set binwidth equal to 1.
+
+```{r}
+
+
+
+```
+
+#### 3. Approximately what is the combined width of the two frequency polygons?
+
+**Answer:**
+
+#### 4. `geom_jitter()`
+
+`geom_jitter()` is very similar to `geom_point()`, but it pushes the points around a bit so it's more visible. 
+
+
+#### 5. Make a jitter plot showing all the participants' responses, where the y axis is the ratings, and the x axis is the group. Make sure the color each partipants responses.
+
+ggplot(..., aes(..., color = ...)) + geom_jitter(width = 0.1, height = 0.1)
+
+```{r}
+
+
+
+```
+
+#### 6. What are the column names of the current data table?
+
+**Answer:**
+
+#### 7. We want to compute differences between flying and driving with `mutate(differences = flying - driving)`, but currently the format of the data makes it difficult. What columns names do we need in order to compute the differences? 
+
+*Hint:*
+
+|  id  | flying | driving | differences |
+| ---- | ------ | ------- | ----------- |
+| Bob  |   2    |    1    |      1      |
+| Amy  |   3    |    2    |      1      |
+| Joe  |   4    |    2    |      2      |
+| Emma |   5    |    1    |      4      |
+
+**Answer:**
+
+#### 8. `pivot_wider()`
+
+The pivot wider function takes a column of group names and a column of scores, and creates separate columns for each group where the rows of that column are populated by the scores.
+
+From this:
+
+|  id  |   mode  | fear |
+| ---- | ------- | ---- |
+| Bob  | flying  |  2   |
+| Amy  | flying  |  3   |
+| Joe  | flying  |  4   |
+| Emma | flying  |  5   |
+| Bob  | driving |  1   |
+| Amy  | driving |  2   |
+| Joe  | driving |  2   |
+| Emma | driving |  1   |
+
+To this:
+
+|  id  | flying | driving |
+| ---- | ------ | ------- |
+| Bob  |   2    |    1    |
+| Amy  |   3    |    2    |
+| Joe  |   4    |    2    |
+| Emma |   5    |    1    |
+
+#### 9. Use `pivot_wider()` to reformat `raw_data `, and assign the new table to `wider`. Take a peak with `head()`.
+
+`pivot_wider(names_from = column_with_group_names, values_from=column_with_ratings)`
+
+```{r}
+
+
+
+```
+
+#### 10. Add a new column that computes flying minus driving.
+
+```{r}
+
+
+
+```
+
+#### 11. Make a frequency plot of the difference between ratings with binwidth = 1
+
+```{r}
+
+
+
+```
+
+#### 12. What is the approximate width of this frequency polygon?
+
+**Answer:**
+
+## Part 2
+
+#### 1. Create a summary table of the *differences* between ratings that includes sample size, mean, standard deviation, standard error.
+
+```{r}
+
+
+
+```
+
+#### 2. Calculate the CI of differences.
+
+```{r}
+
+
+
+```
+
+#### 3. What is the difference between the Upper and Lower CI, and is this narrower or wider than the CIs from the previous lab?
+
+**Answer:**
+
+#### 4. Simulate 1000 replications of the difference between ratings using the sample size and standard deviation from your summary table. Assign this to `simulated_data`.
+
+```{r}
+
+
+
+
+```
+#### 5. Magic code that you don't need to worry about to transform your `simulated_differences` to a more usable format. This new table is called `simulated_differences_table`.
+
+```{r}
+
+colnames(simulated_differences) <- 1:1000
+
+simulated_differences_table <- simulated_differences %>% as_tibble() %>% pivot_longer(cols = everything(), names_to ="experiment", values_to="differences") %>% mutate(experiment = as.integer(experiment)) %>% arrange(experiment)
+
+head(simulated_differences_table)
+
+```
+
+#### 6. Create a summary table of `simulated_differences_table` that includes SampleSize, Mean, SD, and SE of `differences` for each experiment. Assign it to `simulation_summary`.
+
+```{r}
+
+
+
+```
+
+#### 7. Make a histogram of the sampling distribution using the values in `simulation_summary`.
+
+```{r}
+
+
+
+```
+
+#### 8. Compare this distribution with the one we obtained in the previous lab. What are the similarities and differences between the two?
+
+**Answer:**
+
+#### 9. Recall that last week, we compared the actual observed mean difference in the original dataset (2.36) to the sampling distribution. If we do the same thing with today's sampling distribution, does today's null sampling distribution "theoretically" provide a larger or smaller p-value than the one from last week? Why?
+
+**Answer:**
+
+#### 10. Compute the t-test. For the paired t-test, we specify the paired lists of ratings as data vectors, and we set the paired argument to TRUE. Compare the p-value with the one from the previous lab. 
+
+*Hint:* How many zeros come before the decimal point? Look at the value after "e".
+
+`t.test(wider$column1, wider$column2, paired = TRUE)`
+
+```{r}
+
+
+
+```
+
+**Answer:**
+
+#### 11. What is the main point of this lab? Fill in the bolded sections.
+
+SE is just the **(fill in)** of the sampling distribution. When we calculate paired differences, that **increases/decreases** our SD, which **increases/decreases** our SE, resulting in a **wider/narrower** CI and **smaller/larger** p-value. This means we are **more/less** certain that there is a true difference between the groups.
+
+
+
+
+

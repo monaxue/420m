@@ -194,7 +194,7 @@ head(simulated_differences_table)
 
 #### 10. Compute the t-test. For the paired t-test, we specify the paired lists of ratings as data vectors, and we set the paired argument to TRUE. Compare the p-value with the one from the previous lab. 
 
-*Hint:* How many zeros come before the decimal point? Look at the value after "e".
+*Hint:* How many zeros come after the decimal point? Look at the value after "e".
 
 `t.test(wider$column1, wider$column2, paired = TRUE)`
 

@@ -58,7 +58,7 @@ my_jitter <- position_jitter(width = 0.1, height = 0.1, seed = 42)
 ggplot(raw_data, aes(x=mode, y=fear)) + geom_point(aes(color = id), position = my_jitter)
 
 ```
-
+<!--
 ## ❓ What do you notice?
 
 *Hint:* look at the colors!
@@ -66,6 +66,8 @@ ggplot(raw_data, aes(x=mode, y=fear)) + geom_point(aes(color = id), position = m
 ::: iframe
 https://wall.sli.do/event/seE7FxjbKBE55v5k77ud1G?section=7e94a248-0f4a-4876-b281-78a3cfca6226&integration=shared-present-mode&utm_source=slidoadmin
 :::
+
+-->
 
 ## ❓ What do you notice?
 
@@ -81,16 +83,18 @@ paired_diff <- ggplot(raw_data, aes(y=fear, x= mode)) + geom_point(position = my
 paired_diff
 
 ```
+::: nonincremental
 
-<!--
-    - The same colors are on similar levels in both groups.
-    - e.g., People who score lower in driving also score lower in flying
--->
+- The same colors are on similar levels in both groups.
+- e.g., People who score lower in driving also score lower in flying
 
+:::
 
 ## 
 
 **Mean differences between the two groups as a whole**
+
+<!-- Next time also show plot with geom_points are black, then show that ids turned out to be scrambled per group, so per individual trends can counter per group trends. When only looking at per group trends, the per individual trends can be all sorts of directions (aligned, misaligned, scrambled). So if per individual trends are aligned, we are more certain of the differences. -->
 
 ```{r}
 
@@ -743,7 +747,7 @@ Recall that last week, we compared the actual observed mean difference in the or
 
 Compute the t-test. For the paired t-test, we specify the paired lists of ratings as data vectors, and we set the paired argument to TRUE. Compare the p-value with the one from the previous lab. 
 
-*Hint:* How many zeros come before the decimal point? Look at the value after "e"
+*Hint:* How many zeros come after the decimal point? Look at the value after "e"
 
 `t.test(wider$column1, wider$column2, paired = TRUE)`
 

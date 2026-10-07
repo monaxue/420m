@@ -6,16 +6,20 @@ execute:
   message: false
 ---
 
-# Announcements
+## Outline
+
+<ol class="menu"><ol>
+
+# Quiz 2 info {data-stack-name="Quiz 2"}
 
 
-## Quiz
+## Quiz 2
 - Quiz next week!
 - No lab report next week!
 - Cheatsheet can only contain formulas
 - Do your practice quizzes and problem sets
 
-## Quiz topics
+## Quiz 2 topics
 
 ::: nonincremental
 
@@ -34,7 +38,7 @@ execute:
 :::
 
 
-# Paired t-tests
+# Paired t-tests {data-stack-name="Paired t-tests"}
 
 ## Jitter plot, colored by `id`
 
@@ -342,7 +346,7 @@ differences + geom_vline(xintercept = 0) + geom_segment(aes(x = 0, y = 0.242, xe
 
 
 
-# Deliverables
+# Deliverables {data-stack-name="Deliverables"}
 
 
 ## Part 1

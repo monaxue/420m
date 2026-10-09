@@ -255,7 +255,7 @@ flying + driving
 :::::: columns
 ::::: column
 
-**(3) Take differences**
+**(3) Take overall differences**
 
 :::: columns
 ::: {.column width="45%"}
@@ -287,6 +287,10 @@ Driving
 
 **(4) Get SE**
 
+<!-- I think the derivation for the overall SD of unpaired data is just whatever actual single SD gets the SE of the differences of the two sampling distributions. Worth double checking. -->
+
+SD of sampling distribution is **wider**
+
 ```{r}
 differences + geom_vline(xintercept = 0) + geom_segment(aes(x = 0, y = 0.242, xend = 1, yend = 0.242), color = "blue")
 
@@ -299,7 +303,7 @@ differences + geom_vline(xintercept = 0) + geom_segment(aes(x = 0, y = 0.242, xe
 
 :::::: columns
 ::::: column
-**(1) Take differences**
+**(1) Take individual differences**
 
 |  id  | flying | driving | differences |
 | ---- | ------ | ------- | ----------- |
@@ -337,7 +341,7 @@ differences
 
 **(4) Get SE**
 
-SD of sampling distribution
+SD of sampling distribution is **narrower**
 
 ```{r}
 differences + geom_vline(xintercept = 0) + geom_segment(aes(x = 0, y = 0.242, xend = 1, yend = 0.242), color = "blue")
@@ -348,7 +352,35 @@ differences + geom_vline(xintercept = 0) + geom_segment(aes(x = 0, y = 0.242, xe
 ::::::
 
 
+## Summary
 
+::: nonincremental
+1. When you calculate the **overall difference** between the samples, that leads to a **wider** sampling distribution.
+1. When you calculate **individual differences** first, it leads to a **narrower** sampling distribution.
+1. This matches our intuition that when we only calculate **overall difference**, it leads to **less certainty**, and when we calculate the **individual differences**, it leads to **more certainty**.
+
+:::
+
+::::: {.columns .nonincremental}
+:::: {.column .nonincremental}
+
+**Overall differences $\rightarrow$ less certainty**
+
+```{r}
+mean_diff
+```
+
+::::
+:::: {.column .nonincremental}
+
+**Individual differences $\rightarrow$ more certainty**
+
+```{r}
+paired_diff
+```
+
+::::
+:::::
 
 # Deliverables {data-stack-name="Deliverables"}
 

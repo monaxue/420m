@@ -9,7 +9,7 @@ format:
     center: false
     touch: true
     incremental: true
-    self-contained: false
+    self-contained: false #allows this to work with chalkboard
     smaller: true
     scrollable: true
     fig-align: center

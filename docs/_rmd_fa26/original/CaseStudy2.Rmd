@@ -1,0 +1,83 @@
+---
+title: "Case study 2"
+author: "your name here"
+date: "enter the date here"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.width = 5,        # Default width of plots in inches
+  fig.height = 4,       # Default height of plots in inches
+  fig.align = 'center'  # Center-align plots: 'center', 'left', or 'right'
+)
+```
+
+## Instructions
+Read the background provided below and complete each deliverable. You may work with a partner on this assignment, but each student must submit their own set of deliverables. If you choose to work with a partner you must go to Canvas and set up your group on the `People` tab. If you get stuck, try looking back at the code used in previous lab assignments.
+
+## Background
+
+You work as a data scientist for a clinic that received a grant to study the potential for testosterone replacement therapy to raise cortisol levels. Practitioners are concerned that a commonly used treatment could increase serum cortisol, a stress related hormone. High levels of cortisol (above 25 mcg/dL) have been shown to be associated with weight gain, insomnia, and high blood pressure.
+
+The clinic has run a randomized study in which people were assigned to one of two conditions, a placebo condition and a drug condition. After two weeks of treatment, participants returned to the clinic and a fasting blood sample was taken in the morning. The blood sample was used to measure the levels of cortisol for each participant. Your primary objective is to test if participants who received the drug treatment have higher levels of serum cortisol in comparison to the placebo condition. 
+
+## Deliverables
+
+### 1. In your own words, describe the goal of this analysis. [2 points]
+
+**ANS:**
+
+### 2. Read in the data and load any necessary packages. [1 point]
+
+```{r read-data}
+
+```
+
+### 3. Identify how many subjects were assigned to each of the two conditions. [1 points]
+
+```{r sample-size}
+
+```
+
+
+### 4. Produce histograms that display the sample cortisol leves for each condition. [2 points]
+
+```{r histograms}
+
+```
+
+### 5. Caculate the mean cortisol level for each condition along with 95% confidence intervals. [2 points]
+
+```{r mean-cis}
+
+```
+
+### 6. Graph the mean cortisol level per condition (including 95% confidence intervals). [2 points]
+
+```{r mean-cis-graph}
+
+```
+
+### 7. Perform a two-sided t-test comparing the cortisol levels of the two conditions. [2 points]
+
+```{r t-test}
+
+```
+
+### 8. Calculate and interpret an effect size comparing the two conditions. [2 points]
+```{r effect-size}
+
+```
+
+
+### 9. Based on the limits of your 95% confidence interval, does the treatment group meet the definition of "high" cortisol levels on average? [2 points] 
+(Hint: Refer back to the background information provided)
+**ANS:**
+
+### 10. Summarize your results in the context of the experiment (what should we take away from this data?). [2 points]
+**ANS:**
+
+### 11. Thoroughly comment all of your code above so that your clinic supervisor could follow along with your work. [2 points]
+

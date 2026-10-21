@@ -1,0 +1,127 @@
+---
+title: "Case study 2"
+author: "your name here"
+date: "enter the date here"
+output: html_document
+---
+
+
+## Instructions
+Read the background provided below and complete each deliverable. You may work with a partner on this assignment, but each student must submit their own set of deliverables. If you choose to work with a partner you must go to Canvas and set up your group on the `People` tab. If you get stuck, try looking back at the code used in previous lab assignments.
+
+## Background
+
+You work as a data scientist for a clinic that received a grant to study the potential for testosterone replacement therapy to raise cortisol levels. Practitioners are concerned that a commonly used treatment could increase serum cortisol, a stress related hormone. High levels of cortisol (above 25 mcg/dL) have been shown to be associated with weight gain, insomnia, and high blood pressure.
+
+The clinic has run a randomized study in which people were assigned to one of two conditions, a placebo condition and a drug condition. After two weeks of treatment, participants returned to the clinic and a fasting blood sample was taken in the morning. The blood sample was used to measure the levels of cortisol for each participant. **Your primary objective is to test if participants who received the drug treatment have higher levels of serum cortisol in comparison to the placebo condition.**
+
+## Deliverables
+
+### 1. Read in the data and load any necessary packages. [1 point]
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+
+data <- read_csv("data/CaseStudy2_TestosteroneReplacement.csv")
+data
+```
+
+### 2. What are the independent an dependent variables?. [1 point]
+
+**Answer:** Independent variable: condition (treatment, placebo). Dependent variable: cortisol levels.
+
+
+### 3. What is the alternative hypothesis? What is the null hypothesis? [2 points]
+
+**Answer:** Alternative: there is a difference between placebo and treatment conditions. Null: There is no difference between placebo and treatment conditions.
+
+### 4. Create and print a summary table, and group by the independent variable. [1 point]
+
+```{r}
+
+summary_table <- data %>% group_by(condition) %>% summarize(SampleSize = n(), Mean = mean(cortisol_mg), SD = sd(cortisol_mg), SE = SD/sqrt(SampleSize))
+
+summary_table
+
+```
+
+### 5. Produce a descriptive plot, and grouping by the independent variable. [2 points]
+
+```{r}
+
+ggplot(data, aes(x=cortisol_mg)) + geom_histogram() + facet_wrap(~condition)
+
+```
+
+### 6. Interpret your descriptive plot. [2 points]
+
+**Answer:** Both are somewhat bell shaped, with the placebo condition with a more obvsious skew. They are about the same width.
+
+### 7. Calculate the 95% confidence intervals of the dependent variable. [1 point]
+
+```{r}
+
+CIs <- summary_table %>% mutate(LowerCI = Mean - SE*1.96, UpperCI = Mean+1.96*SE)
+
+```
+
+### 8. In a few sentences, report the sample size, mean, and standard deviation, standard error, and CIs for each group [1 point]
+
+**Answer:**
+
+### 9. Produce an inferential plot (including the mean of the dependent variable and the 95% confidence intervals). [2 points]
+
+```{r}
+
+ggplot(CIs, aes(x=condition, y=Mean)) + geom_point() + geom_errorbar(aes(ymin=LowerCI, ymax=UpperCI))
+
+```
+
+### 10. Interpret your inferential plot. [2 points]
+
+**Answer:** Because the CIs don't overlap, we are confident that there is a difference between the drug and placebo conditions.
+
+### 11. When performing a t-test, should this t-test be paired? Why or why not? [1 point]
+
+**Answer:** No, because each individual is only measured once. And all individuals are independent from each other.
+
+### 12. Now perform this t-test. [1 point]
+
+```{r}
+
+t.test(data = data, cortisol_mg ~ condition)
+
+```
+
+### 13. Interpret the results from your t-test. [2 points]
+
+**Answer:** There is a 0.001666 probability that we see a difference as extreme as `{r} 14.14-12.88` given that the null hypothesis is true.
+
+### 14. The effect size is difference between the groups per standard deviation. Calculate and report the effect size comparing the two conditions. Make sure to use the pooled standard deviation defined below. [1 point]
+
+sp <- sqrt(((n1-1)*s1^2 + (n2-1)*s2^2)/(n1+n2-2))
+
+*Hint:* You will need to to use your summary table to calculate each groups standard deviation, sample size, and mean. Here are some examples:
+
+s1 <- summary_table$SD[1]
+s2 <- summary_table$SD[2]
+n1 <- summary_table$SampleSize[1]
+
+```{r}
+s1 <- summary_table$SD[1]
+s2 <- summary_table$SD[2]
+n1 <- summary_table$SampleSize[1]
+n2 <- summary_table$SampleSize[2]
+mean1 <- summary_table$Mean[1]
+mean2 <- summary_table$Mean[2]
+
+sp <- sqrt(((n1-1)*s1^2 + (n2-1)*s2^2)/(n1+n2-2))
+
+(mean1-mean2)/sp
+
+```
+
+### 15. Based on the CI plot, does either group reach the threshold cortisol level associated with weight gain, insomnia, and high blood pressure? How did you reach your conclusion? [1 point]
+
+**Answer:** Both groups have CIs that are below 25mg. Since there is no overlap, we can be confident that the groups have cortisol levels below the threshold cortisol level for weight gain, insomnia, and high blood pressure.

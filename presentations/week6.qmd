@@ -367,6 +367,8 @@ plot4+plot5+plot6+theme(plot.margin = margin(b = 30, r = 30, l=30, t=30),)
   - There is a 90% chance that we observe a value this extreme given that the null hypothesis is true.
 :::
 
+<!--Add section on why we don't use the word significant-->
+
 # Deliverables {data-stack-name="Deliverables"}
 
 ## Deliverables

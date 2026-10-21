@@ -27,7 +27,7 @@ You will focus on just one task from the larger battery, where children watched 
 
 **Answer:**
 
-### 3. Create and print summary table, and group by the column that is appropriate for the research question. [3 point]
+### 3. Create and print a summary table, and group by the column that is appropriate for the research question. [3 point]
 
 ```{r}
 

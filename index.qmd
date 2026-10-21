@@ -44,17 +44,15 @@ Includes Case Study 2 takeaways and how to write CI/p-value interpretations
 
 [Slides](presentations/week10.qmd){.filelink}
 
+-->
 
 ## 9: Case Study 2
 
-[Slides](presentations/week8.qmd){.filelink}
+[CaseStudy2.Rmd](/_rmd_fa26/CaseStudy2.Rmd){.filelink}
+
+[CaseStudy2_TestosteroneReplacement.csv](/data/CaseStudy2_TestosteroneReplacement.csv){.filelink}
 
 ## 8: Quiz
-
-[Case Study 2 Rubric](files/casestudy2.qmd){.filelink}
-
--->
-
 
 ## 7: Paired data and t-tests
 

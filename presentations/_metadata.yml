@@ -22,7 +22,7 @@ format:
     title-slide-attributes:
         data-state: "hide-menubar"
         data-background-color: "rgba(254, 248, 237, 1)"
-    transition: slide
+    transition: none
     section-divs: false
     menu: true
     simplemenu:

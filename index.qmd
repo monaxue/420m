@@ -39,12 +39,13 @@ Includes Case Study 2 takeaways and how to write CI/p-value interpretations
 ## Case study 3
 
 [Case Study 3 Rubric](files/casestudy3.qmd)
+-->
 
-## 10: Precision
+## 10: Power
 
 [Slides](presentations/week10.qmd){.filelink}
 
--->
+[lab10.Rmd](/_rmd_fa26/lab10.Rmd){.filelink}
 
 ## 9: Case Study 2
 

@@ -437,4 +437,4 @@ and correct rejections).
 
 ### 23. How does alpha change with power?
 
-**Answer:** Alpha increases as power decreases.
+**Answer:** Power increases as alpha decreases.

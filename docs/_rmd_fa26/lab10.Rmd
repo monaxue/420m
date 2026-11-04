@@ -427,6 +427,6 @@ and correct rejections).
 
 **Answer:**
 
-### 23. How does alpha change with power?
+### 23. How does power change with power?
 
 **Answer:**

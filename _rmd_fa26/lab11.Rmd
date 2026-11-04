@@ -1,0 +1,99 @@
+---
+title: "Social Media and Depression"
+author: "your name here"
+date: "2026-08-20"
+output: html_document
+---
+
+In this lab, we'll analyze simulated data based on the findings of  
+Banjanin, N. et al. (2015) *Relationship between internet use and depression*.
+Computers in Human Behavior 43, 308–312. <doi:10.1016/j.chb.2014.11.013>
+
+They found that depression was positively correlated with an "internet addiction
+score" - a questionnaire that indicated how important social media is to people.
+Surprisingly, though, they found that depression was *unrelated* to how much 
+time people spent on the internet.
+
+
+### 1. Load in the packages and data you need. Take a peak at the dataset.
+
+```{r}
+
+```
+
+### 2. What are the variables in this data set? What values can those variables take? 
+
+**Answer:**
+
+### 3. Make a scatter plot of depression (y-axis) vs. time (x-axis). Include a linear trend line.
+
+- Using `geom_point()` plots the scatter plot of the raw data.
+- Adding the layer `geom_smooth(method="lm")` plots a line using a straight line, AKA linear model ("lm" stands for "linear model").
+
+```{r}
+
+
+```
+
+### 4. What is the the definition of a confidence interval in the context of linear regression?
+
+**Answer:** 
+
+
+### 5. What is the null hypothesis in terms of the slope?
+
+**Answer:** 
+
+### 6. Does the shaded region in your plot overlap with your null hypothesis? Explain your reasoning.
+
+**Answer:** 
+
+### 7. Write an interpretation for the relationship between deppression and time. Can you be confident that time have an impact on depression? Use your scatter plot with the CI bands to back up your claim.
+
+**Answer:** 
+
+### 8. Fit a linear model to the data using the `lm()` function
+
+The `lm()` function in R helps us fit a linear model through our data ("lm" stands for "linear model"). It works like this:
+
+- lm(dependent_variable ~ independent_variable, data=data_name)
+- Then use `%>%` to apply the function `summary()`. Doing so will output more information about the model you fitted.
+
+Run a linear regression of depression as a function of time spent on the internet using the `lm()` function.
+
+*Hint:* You would need to replace the names dependent_variable, independent_variable, and data_name as necessary.
+
+```{r}
+
+
+```
+
+
+### 9. What is the estimated intercept and slope? What is the p-value of the slope?
+
+**Answer:**
+
+
+### 10. Make a scatter plot of depression (y-axis) vs. addiction (x-axis). Include a linear trend line.
+
+```{r}
+
+```
+
+### 11. Write an interpretation for the relationship between depression and addiction. Can you be confident that addiction have an impact on depression? Use your scatter plot with the CI bands to back up your claim.
+
+**Answer:**
+
+### Run a linear regression of depression as a function of addiction score using the `lm()` function. 
+
+```{r}
+
+```
+
+### 12. What is the p-value for the slope for addiction?
+
+**Answer:** 
+
+### 13. Write an interpretation for your p-value.
+
+**Answer:**

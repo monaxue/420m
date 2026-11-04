@@ -1,0 +1,91 @@
+---
+title: "Social Media and Depression"
+author: "your name here"
+date: "2026-08-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.width = 5,        # Default width of plots in inches
+  fig.height = 4,       # Default height of plots in inches
+  fig.align = 'center' # Center-align plots: 'center', 'left', or 'right'
+)
+```
+
+In this lab, we'll analyze simulated data based on the findings of  
+Banjanin, N. et al. (2015) *Relationship between internet use and depression*.
+Computers in Human Behavior 43, 308–312. <doi:10.1016/j.chb.2014.11.013>
+
+They found that depression was positively correlated with an "internet addiction
+score" - a questionnaire that indicated how important social media is to people.
+Surprisingly, though, they found that depression was *unrelated* to how much 
+time people spent on the internet.
+
+1. Make a path/folder for this lab (e.g. `.../420/labs/lab11`) on 
+your class folder, create a new R project on that path/folder, download the data
+file `depAnsSocMed.csv` from canvas and move it to that folder.
+
+2. Load the `tidyverse` package and load the data `depAnsSocMed.csv`.
+
+```{r load}
+
+```
+
+3. What are the variables in this data set? What values can those variables 
+take? 
+
+**Ans:**
+
+4. Make a scatter plot of depression (y-axis) vs. time (x-axis). Include a 
+linear trend line.
+
+```{r scatter-dep-time}
+
+```
+
+5. Describe what can you see in the plot.
+
+**Ans:**
+
+6. Run a linear regression of depression as a function of time spent on the 
+internet using the `lm()` function. What are the estimated intercept and slope
+and their associated 95\%  confidence intervals?
+
+```{r lm-dep-time}
+
+```
+
+**Ans:**
+
+7. Write as brief interpretation of the results found in 6 under the context of 
+this experiment.
+
+**Ans:**
+
+8. Make a scatter plot of depression (y-axis) vs. addiction (x-axis). Include a 
+linear trend line.
+
+```{r scatter-dep-add}
+
+```
+
+9. Describe what you can see in the plot.
+
+**Ans:**
+
+10. Run a linear regression of depression as a function of addiction score using
+the `lm()` function. What are the estimated values of the intercept and slope
+and their associated 95\% confidence interval?
+
+```{r lm-dep-add}
+
+```
+
+**Ans:**
+
+11. Write a brief interpretations of the results in 10 under the context of the 
+experiment.
+
+**Ans:**

@@ -255,3 +255,7 @@ altPlot <- altPlot +
 
 show(nullPlot / altPlot)
 ```
+
+##
+
+![](assets/power-errors.png)

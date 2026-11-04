@@ -28,18 +28,17 @@ Use this website for everything lab-related in PSYCH 420m.
 ## 12: Linear Regression
 
 [Slides](presentations/week12.qmd){.filelink}
+-->
+
+## 11: Regression
 
 
-## 11: Power
-
-Includes Case Study 2 takeaways and how to write CI/p-value interpretations
 
 [Slides](presentations/week11.qmd){.filelink}
 
-## Case study 3
+[lab11.Rmd](/_rmd_fa26/lab11.Rmd){.filelink}
 
-[Case Study 3 Rubric](files/casestudy3.qmd)
--->
+[depAndSocMed.csv](/data/depAndSocMed.csv){.filelink}
 
 ## 10: Power
 

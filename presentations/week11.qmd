@@ -1,0 +1,83 @@
+---
+title: "11: Linear Regression"
+---
+
+
+## Power review
+![](assets/power-errors.png)
+
+## CI Review
+
+::: iframe
+
+https://wall.sli.do/event/pL63TNKaPv1Wrdwc1qERJw?section=b8417ffa-92b3-4dd6-94bb-65c2cf8f73cf&integration=shared-present-mode&utm_source=slidoadmin
+
+:::
+
+## Remember this?
+
+$$ 
+y = mx + b 
+$$ 
+
+$$ 
+\text{Depression} = \beta \times \text{Addiction} + \text{Intercept} 
+$$
+![](assets/linear-regression.png)
+
+
+## CI for regression plot
+
+Definition: 95% of experiments will produce CIs that include the true regression line.
+
+🖊️
+
+
+![](assets/CI-bands-regression.png)
+
+
+## Deliverables
+
+Some help with new functions.
+
+::::: panel-tabset
+
+## Make a scatter plot with fitted line
+
+::: nonincremental
+
+- Using `geom_point()` plots the scatter plot of the raw data.
+- Adding the layer `geom_smooth(method="lm")` plots a line using a straight line, AKA linear model ("lm" stands for "linear model").
+
+:::
+
+The dependent variable is `score`, the independent variable is `time`, and the dataset name is "raw_data". How would create scatter plot with a fitted line?
+
+:::: code-puzzle
+::: static
+ggplot({{{raw_data}}}, aes(x={{time}}, y={{score}})) + {{geom_point()}} + {{geom_smooth(method="lm")}}
+:::
+::::
+
+
+## Fit a linear model
+
+::: nonincremental
+
+The `lm()` function in R helps us fit a linear model through our data ("lm" stands for "linear model"). It works like this:
+
+- lm(dependent_variable ~ independent_variable, data=data_name)
+- Then use `%>%` to apply the function `summary()`. Doing so will output more information about the model you fitted.
+
+The dependent variable is `score`, the independent variable is `time`, and the dataset name is "raw_data". How would you fit a linear model?
+:::
+
+:::: code-puzzle
+::: static
+
+lm({{score}} ~ {{time}}, data = {{raw_data}}) %>% {{summary()}}
+
+:::
+::::
+
+:::::

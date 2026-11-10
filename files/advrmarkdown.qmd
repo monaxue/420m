@@ -8,7 +8,7 @@ df_print: kable
 
 Go to the following link to learn about different themes for RMarkdown!
 
-<https://rpubs.com/ranydc/rmarkdown_themes>{.filelink}
+<https://rpubs.com/ranydc/rmarkdown_themes>
 
 ### Add a table of contents
 

@@ -1,0 +1,144 @@
+---
+title: "Polynomial (linear) fitting"
+author: "your name here"
+date: "2026-08-20"
+output: html_document
+---
+
+We are going to look at some simulated data on how the number of hours per day 
+somebody spends working out is related to:
+
+- How "in shape" people report they feel
+- Resting heart rate (lower is considered more healthy)
+
+There are two data sets. For each, the first variable is average hours per day
+spent working out. The second variable is, for each data set in turn:
+
+- A self-report of how "in shape" each person feels on a scale of 0 to 10
+- Average resting heart rate in beats per minute (bpm)
+
+#### 1. Load the packages you need and the *two* data sets.
+
+```{r}
+
+```
+
+#### 2. Make a scatter plot of self reported shape as a function of the average number of hours spent working out per day. Fit a linear line to the plot.
+
+```{r}
+
+```
+
+#### 3. Does the data follow a linear trend or curved trend? Does it have a positive, negative, or 0 slope?
+
+**Answer:**
+
+#### 4. Using the `lm()` function, fit a linear function to the data. Assign the resulting linear model to the variable "lm_shape". You do not need to apply the summary function on it.
+
+```{r}
+
+```
+
+#### 5. The residuals are stored in lm output under the name `residuals.` Get the residuals of `lm_shape` and assign it to the variable "shape_resids".
+
+```{r}
+
+```
+
+#### 6. Add the residuals as a new column in your shapes dataset, and assign it to the column name "residuals". Make sure you save the shapes dataset back to its original name.
+
+```{r}
+
+```
+
+
+#### 7. Make a scatter plot of the residuals as a function of the average number of hours. Do not add a linear line to the plot.
+
+```{r}
+
+```
+
+
+#### 8. Do the residuals follow a linear or curved trend? What is the slope?
+
+**Answer:**
+
+#### 9. Make a scatter plot of average resting heart rate as a function of average number of hours spent working out. Fit a linear line to the plot
+
+```{r}
+
+```
+
+
+#### 10. Is your data linear or curved?
+
+**Answer:**
+
+#### 11. Using the `lm()` function, fit a linear function to the data. Assign the resulting linear model to the variable "lm_bpm". You do not need to apply the summary function on it.
+
+```{r}
+
+```
+
+#### 12. Get the residuals of `lm_bpm` and assign it to the variable "bpm_resids".
+
+```{r}
+
+```
+
+#### 13. Add the residuals as a new column in your bpm dataset, and assign it to the column name "residuals". Make sure you save the shapes dataset back to its original name.
+
+```{r}
+
+```
+
+#### 14. Make a scatter plot of the residuals for bpm as a function of hours. Don't add a linear function.
+
+```{r}
+
+```
+
+
+#### 15. What is the shape of the residuals?
+
+**Answer:**
+
+#### 16. Using the `lm()` and `poly()` functions, fit a second degree polynomial of the average number of hours to the resting heart rate data. Assign the resulting linear model to the variable "lm_bpm_poly".
+
+```{r}
+
+```
+
+#### 17. Get the residuals of `lm_bpm_poly` and assign it to the variable "bpm_poly_resids".
+
+```{r}
+
+```
+
+#### 18. Add the residuals as a new column in your bpm dataset, and assign it to the column name "poly_residuals". Make sure you save the shapes dataset back to its original name.
+
+```{r}
+
+```
+
+#### 19. Make a scatter plot of `poly_residuals` as a function of average number of hours. 
+
+```{r}
+
+```
+
+#### 20. Is the data linear or curved? What is the slope?
+
+**Answer:**
+
+#### 21. Explain why fitting bpm ~ poly(hours) resulted in the shape and slope of the residuals in the previous question. 
+
+*Hint:* What is the relationship between the residuals, the original data, and the predicted line from `lm()`?
+
+**Answer:**
+
+
+#### 22. Based on the two residual plots for bpm, which linear model is the best fit for bpm? Why?
+
+**Answer:**
+

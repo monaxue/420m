@@ -2,9 +2,9 @@
 
 Use this website for everything lab-related in PSYCH 420m.
 
-**Lab time:** Wednesdays, 8-10am at PMA 6.112 | **TA:** Mona Xue | **Email:** [monaxue\@utexas.edu](mailto:monaxue@utexas.edu){.email}
+**Lab time:** Wednesdays, 8-10am at PMA 6.112 | **TA:** Mona Xue | **Email:** [monaxue\@utexas.edu](mailto:monaxue@utexas.edu){.email filelink=false}
 
-**Office hours:** Tuesdays 1-3pm. Location this week: **Zoom** | In-person location: SEAY 4.326A | Zoom link: <https://utexas.zoom.us/j/81079280372> 
+**Office hours:** Tuesdays 1-3pm. Location this week: **Zoom** | In-person location: SEAY 4.326A | Zoom link: <https://utexas.zoom.us/j/81079280372>{filelink=false} 
 
 ---
 
@@ -14,7 +14,7 @@ Use this website for everything lab-related in PSYCH 420m.
 
 ## 14: Last lab
 
-[Slides](presentations/week14.qmd){.filelink}
+[Slides](presentations/week14.qmd)
 
 
 ## Case study 4
@@ -23,88 +23,98 @@ Use this website for everything lab-related in PSYCH 420m.
 
 ## 13: Residuals and polynomial curve fitting
 
-[Slides](presentations/week13.qmd){.filelink}
+[Slides](presentations/week13.qmd)
 
-## 12: Linear Regression
-
-[Slides](presentations/week12.qmd){.filelink}
 -->
+
+## 12: Residuals and polynomial fitting
+
+[Slides](presentations/week12.qmd)
+
+[lab12.Rmd](/_rmd_fa26/lab12.Rmd)
+
+[shapeVsHours.csv](/data/shapeVsHours.csv)
+
+[bpmVsHours.csv](/data/bpmVsHours.csv)
+
+
 
 ## 11: Regression
 
 
+[Slides](presentations/week11.qmd)
 
-[Slides](presentations/week11.qmd){.filelink}
+[lab11.Rmd](/_rmd_fa26/lab11.Rmd)
 
-[lab11.Rmd](/_rmd_fa26/lab11.Rmd){.filelink}
-
-[depAndSocMed.csv](/data/depAndSocMed.csv){.filelink}
+[depAndSocMed.csv](/data/depAndSocMed.csv)
 
 ## 10: Power
 
-[Slides](presentations/week10.qmd){.filelink}
+[Slides](presentations/week10.qmd)
 
-[lab10.Rmd](/_rmd_fa26/lab10.Rmd){.filelink}
+[lab10.Rmd](/_rmd_fa26/lab10.Rmd)
 
 ## 9: Case Study 2
 
-[CaseStudy2.Rmd](/_rmd_fa26/CaseStudy2.Rmd){.filelink}
+[CaseStudy2.Rmd](/_rmd_fa26/CaseStudy2.Rmd)
 
-[CaseStudy2_TestosteroneReplacement.csv](/data/CaseStudy2_TestosteroneReplacement.csv){.filelink}
+[CaseStudy2_TestosteroneReplacement.csv](/data/CaseStudy2_TestosteroneReplacement.csv)
 
 ## 8: Quiz
 
 ## 7: Paired data and t-tests
 
-[Slides](presentations/week7.qmd){.filelink}
+[Slides](presentations/week7.qmd)
 
-[lab7.Rmd](/_rmd_fa26/lab7.Rmd){.filelink}
+[lab7.Rmd](/_rmd_fa26/lab7.Rmd)
 
-[FearWithinData.csv](/data/FearWithinData.csv){.filelink}
+[FearWithinData.csv](/data/FearWithinData.csv)
 
 
 ## 6: p-values and t-tests
 
-[Slides](/presentations/week6.qmd){.filelink}
+[Slides](/presentations/week6.qmd)
 
-[lab6.Rmd](/_rmd_fa26/lab6.Rmd){.filelink}
+[lab6.Rmd](/_rmd_fa26/lab6.Rmd)
 
-[FlyingVsDrivingFearData.csv](/data/FlyingVsDrivingFearData.csv){.filelink}
+[FlyingVsDrivingFearData.csv](/data/FlyingVsDrivingFearData.csv)
 
 ## 5: Case Study 1
 
-[CaseStudy1.Rmd](/_rmd_fa26/CaseStudy1.Rmd){.filelink}
+[CaseStudy1.Rmd](/_rmd_fa26/CaseStudy1.Rmd)
 
-[case_study_1_option_1_devsci.csv](/data/case_study_1_option_1_devsci.csv){.filelink}
+[case_study_1_option_1_devsci.csv](/data/case_study_1_option_1_devsci.csv)
 
 ## 4: Sampling distribution and CIs
 
-[Slides](/presentations/week4.qmd){.filelink}
+[Slides](/presentations/week4.qmd)
 
-[lab4.Rmd](/_rmd_fa26/lab4.Rmd){.filelink}
+[lab4.Rmd](/_rmd_fa26/lab4.Rmd)
 
 ## 3: Descriptive vs. inferential statistics
 
 Includes how to create summary tables, calculate CIs, and how to create various plots
 
-[Slides](/presentations/week3.qmd){.filelink}
+[Slides](/presentations/week3.qmd)
 
-[lab3.Rmd](/_rmd_fa26/lab3.Rmd){.filelink}
+[Case Study Checklist and Code](/presentations/casestudychecklist.qmd)
 
-[HandWashingData.csv](/data/HandWashingData.csv){.filelink}
+[lab3.Rmd](/_rmd_fa26/lab3.Rmd)
+
+[HandWashingData.csv](/data/HandWashingData.csv)
 
 ## 2: Histograms and z-scores
 
-[Slides](/presentations/week2.qmd){.filelink}
+[Slides](/presentations/week2.qmd)
 
-[lab2.Rmd](/_rmd_fa26/lab2.Rmd){.filelink}
+[lab2.Rmd](/_rmd_fa26/lab2.Rmd)
 
-[sample_heights.csv](/data/sample_heights.csv){.filelink}
+[sample_heights.csv](/data/sample_heights.csv)
 
 ## 1: Lab info, file structure, and RMarkdown
 
-[Slides](/presentations/week1.qmd){.filelink}
+[Slides](/presentations/week1.qmd)
 
-[lab1.Rmd](/_rmd_fa26/lab1.Rmd){.filelink}
+[lab1.Rmd](/_rmd_fa26/lab1.Rmd)
 
-[firstData.csv](/data/firstData.csv){.filelink}
+[firstData.csv](/data/firstData.csv)

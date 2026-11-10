@@ -8,7 +8,7 @@ project:
 
 website: 
   title: "PSYCH 420m Lab"
-  search: false
+  search: true
   navbar: 
     pinned: true
     left:
@@ -26,10 +26,29 @@ website:
 execute:
   cache: true
 
-format:
-  html:
-    css: noAI.css
+#format:
+  #html:
+    #css: noAI.css
   
 filters: 
-  - after-header-note.lua
-  - filelink.lua
+  #- patches/after-header-note.lua
+  - patches/filelink.lua
+
+format:
+  html:
+    code-copy: false
+    include-in-header:
+      - text: |
+          <style>
+          /* Disables text selection across the entire website */
+          * {
+            -webkit-user-select: none !important;  /* Safari */
+            -ms-user-select: none !important;      /* IE/Edge */
+            user-select: none !important;          /* Standard */
+          }
+          /* Keep form fields usable (e.g., poll free-response boxes) */
+          input, textarea, select, [contenteditable] {
+            -webkit-user-select: text !important;
+            user-select: text !important;
+          }
+          </style>

@@ -73,8 +73,8 @@ https://wall.sli.do/event/jSr27kKv5FzL29qzbYK57A?section=1a784310-5fec-4e79-9035
 ## Step 3: Download lab materials
 
 - Download lab materials and put it in your lab2 folder
-    1. [lab2.Rmd](_rmd_fa26/lab2.Rmd){.filelink}
-    2. [sample_heights.csv](data/sample_heights.csv){.filelink}
+    1. [lab2.Rmd](_rmd_fa26/lab2.Rmd)
+    2. [sample_heights.csv](data/sample_heights.csv)
 
 ::::
 
@@ -325,15 +325,15 @@ head(sample_heights)
 ## Part 2 plots
 
 
-:::: columns
-::: column
+:::: {.columns .nonincremental}
+::: {.column .nonincremental}
 
 ```{r}
 ggplot(sample_heights, aes(x=Heights)) + geom_histogram()
 ```
 
 :::
-::: column
+::: {.column .nonincremental}
 
 ```{r}
 ggplot(sample_heights, aes(x=Heights)) + geom_histogram() + facet_wrap(~RandomSample)
@@ -342,8 +342,8 @@ ggplot(sample_heights, aes(x=Heights)) + geom_histogram() + facet_wrap(~RandomSa
 ::::
 
 ## Part 3 plots
-:::: columns
-::: column
+:::: {.columns .nonincremental}
+::: {.column .nonincremental}
 ```{r}
 
 sample_heights <- sample_heights %>% mutate(ShiftedHeights = Heights - 65)
@@ -352,7 +352,7 @@ ggplot(sample_heights, aes(x=ShiftedHeights)) + geom_histogram()
 
 ```
 :::
-::: column
+::: {.column .nonincremental}
 
 ```{r}
 

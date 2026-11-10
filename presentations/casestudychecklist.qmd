@@ -1,0 +1,247 @@
+## Case study checklist and code {data-name="Outline"}
+
+
+::: {.callout-important}
+All the code you need are on the slides. Remember: try to always manually type the code instead of copying and pasting. This is the most effective way to help you learn and complete assignments quickly!
+:::
+
+<ol class="menu"><ol>
+
+
+
+## Basic setup {data-name="Basic Setup"}
+
+
+::: nonincremental
+- Loading packages and importing data
+    - `library()`: loads packages
+    - `read_csv("name-of-file.csv")`: imports data from `name-of-file.csv`. Always remembering to assign it to a variable with `<-`
+
+:::
+
+## Plots with ggplot() {data-name="Plots with ggplot()"}
+
+::: nonincremental
+
+
+<span style="font-size: 90%;">$\underbrace{\text{ggplot(table_name, aes(x=...y=...))}}_{\text{Info layer}} + \underbrace{\text{geom_...()}}_{\text{Plot layer}} + \underbrace{\text{facet_wrap(~grouping_variable)}}_{\text{Grouping layer}}$</span>
+
+::: panel-tabset
+
+## Info layer
+- table_name: the raw dataset that you are plotting
+- x: the column name in `table_name` you want on the x axis
+- y: the column name in `table_name` you want on the y axis
+    - Setting `y` is optional depending on the type of plot
+
+## Plot layers
+- `geom_histogram()`: histogram.
+- `geom_freqpoly()`: frequency polygon.
+- `geom_boxplot()`: boxplot.
+- `geom_errorbar()`: "error" bars or CI bars
+
+## Grouping layer
+- Make sure to include the `~` in `facet_wrap()`
+- Splits the plot into subplots by `grouping_variable`
+- Make sure to replace `grouping_variable` as necessary. `grouping_variable` is the column name you want to make comparisons across
+
+:::
+
+:::
+
+## Descriptive statistcis {data-name="Descriptive statistics"}
+
+:::::: panel-tabset
+
+## What to include
+
+In case studies, descriptive statistics always includes the following components
+
+::: nonincremental
+1. Summary table
+1. Plot: histogram, frequency polygon, or boxplot
+1. Interpretations
+:::
+
+
+## Summary table
+
+::: nonincremental
+
+- A table that shows **sample size**, **mean**, **standard deviation** and **standard error**
+
+```r
+ summary_table <- table_name %>% group_by(grouping_variable) %>% 
+    summarize(SampleSize = n(), Mean = mean(...), SD = sd(...), SE = SD/sqrt(SampleSize)
+ 
+```
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+
+washes_data <- read_csv("data/HandWashingData.csv")
+
+summary_table <- washes_data %>% group_by(sex) %>% summarize(SampleSize = n(), Mean = mean(washes), SD = sd(washes), SE = SD/sqrt(SampleSize))
+
+summary_table
+```
+
+- Make sure to replace `grouping_variable` as necessary. `grouping_variable` is the column name you want to make comparisons across
+- `n()` counts the number of rows in each group
+- Fill in the `...` with the appropriate column name of `table_name.`
+- `%>%`: an operator that allows you to change together functions.
+- `group_by()`: groups data by a column that you specify.
+- `summarize()`: summarizes data across the dataset or group. Similar to `mutate()`, which adds or changes a column.
+
+:::
+
+
+## Histogram/frequency polygon{#histogram-freqpoly}
+
+::: nonincremental
+
+- Counts the number of individuals (y-axis) for the variable on the x-axis.
+
+::: {.callout-important}
+
+You may have to add a **grouping layer**. See the "Plots with ggplot()" section in these slides for more info.
+
+:::
+
+
+
+:::
+
+
+::::: columns
+:::: {.column .nonincremental}
+
+**Histogram**
+
+::: nonincremental
+
+- ggplot calculates the counts, so only x is needed.
+
+:::
+
+```r
+ggplot(..., aes(x=...)) + geom_histogram()
+```
+```{r}
+data <- read_csv("data/HandWashingData.csv")
+ggplot(data, aes(x=washes)) + geom_histogram()
+```
+::::
+
+:::: {.column .nonincremental}
+
+**Frequency polygon**    
+
+::: nonincremental
+
+- This is the continuous version of the histogram
+
+:::
+
+```r
+ggplot(..., aes(x=...)) + geom_freqpoly()
+```
+```{r}
+ggplot(data, aes(x=washes)) + geom_freqpoly()
+```
+::::
+:::::
+
+## Boxplot {#boxplot}
+
+::: callout-note
+
+Needs both x and y variables, where x is the grouping variable.
+
+:::
+
+```r
+ggplot(..., aes(x=..., y=...)) + geom_boxplot()
+```
+```{r}
+
+ggplot(data, aes(x=sex, y=washes)) + geom_boxplot()
+
+```
+
+
+## Interpretations
+
+::: nonincremental
+- Important for your case study!
+- Include comparison of rough shape (bell shaped or skewed), width, and optionally center (if done right!)
+- Please review [Week 3 Slides](/presentations/week3.qmd) for examples
+:::
+::::::
+
+## Inferential statistics {data-name="Inferential statistics"}
+
+:::::: panel-tabset
+
+## What to include
+
+::: nonincremental
+
+
+1. Calculate confidence intervals (CIs)
+1. CI plot
+1. p-values (Case Studies 2 and 3)
+1. Interpretations
+:::
+
+## Calculate CI
+
+::: nonincremental
+
+
+- Mean $\pm$ 1.96*SE for 95% CI
+- In R, calculate using summary table
+
+```r
+CIs <- summary_table %>% mutate(LowerCI = Mean - 1.96*SE, UpperCI = Mean + 1.96*SE)
+```
+
+:::
+## CI plot {#ci-plot}
+
+::: nonincremental
+
+```r
+ggplot(CIs, aes(x=grouping_variable, y=Mean)) + geom_errorbar(aes(ymin = LowerCI, ymax=UpperCI))
+```
+```{r}
+data <- read_csv("data/HandWashingData.csv")
+
+summary_table <- data %>% group_by(sex) %>% summarize(Mean = mean(washes), SD = sd(washes), SE = SD/sqrt(n()), LowerCI= mean(washes) - 1.96*SE, UpperCI = mean(washes) + 1.96*SE)
+
+ggplot(summary_table, aes(x=sex, y=Mean)) + geom_errorbar(aes(ymin = LowerCI, ymax=UpperCI))
+
+```
+
+- Make sure to replace `grouping_variable` with the actual correct variable.
+- If we are looking at difference in washes between the sexes, what variable should go in place of the `grouping_variable`? Hint: print out your CI table at find the column name that makes the most sense.
+    - Answer: `sex`
+:::
+
+
+## p-values (Case Studies 2 & 3)
+
+See [Week 6 Slides](/presentations/week6.qmd) and [Week 7 Slides](/presentations/week7.qmd)
+
+## Interpretations
+
+::: nonincremental
+
+- What are the three things to remember about CI interpretations?
+    - See [Week 4 Slides](/presentations/week4.qmd)
+- Case studies 2 and 3: What are the three things to remember about p-value interpretaions?
+    - See [Week 6 Slides](/presentations/week6.qmd) and [Week 7 Slides](/presentations/week7.qmd)
+:::
+
+::::::

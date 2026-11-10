@@ -1,12 +1,30 @@
 title: Containers Theme
 author: Mona Xue
-version: 1.0.0
+version: 1.1.0
 quarto-required: ">=1.7.0"
 contributes:
   formats:
     revealjs:
       theme: [default, containers.scss]
-      include-after-body:
-        - file: bg.html
+      center: true
+      scrollable: true
+      touch: true
+      transition: none
+      smaller: true
       filters:
       - column-card.lua
+      - containers-bake.lua
+      - containers-animate.lua
+      include-in-header:
+        text: |
+          <style>
+          .reveal section img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+          }
+          </style>
+  revealjs-plugins:
+    - name: ContainersScrollable
+      script:
+        - containers-scrollable.js

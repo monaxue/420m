@@ -6,7 +6,7 @@
 
 ### Developmental Psychology
 
-[Dataset for Option 1](/data/case_study_1_option_1_devsci.csv){.filelink}
+[Dataset for Option 1](/data/case_study_1_option_1_devsci.csv)
 
 You work as a research assistant in a developmental psychology lab at UT. You’ve recently been assigned to work with one of the lab’s graduate students on a large-scale cross-cultural study, where children at many sites across the world completed a series of experimental tasks. The graduate student is making a poster to show off their preliminary work and would like your help with the descriptive analysis portion. 
 
@@ -17,7 +17,7 @@ You will focus on just one task from the larger battery, where children watched 
 
 ### Cognitive Psychology
 
-[Dataset for Option 2](/data/case_study_1_option_2_cogsci.csv){.filelink}
+[Dataset for Option 2](/data/case_study_1_option_2_cogsci.csv)
 
 You work as a research assistant in a cognition lab at UT. You’ve recently been assigned to work with one of the lab’s graduate students on a memory study. The graduate student is making a poster to show off their preliminary work and would like your help with the descriptive
 analysis portion.

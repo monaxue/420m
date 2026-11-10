@@ -6,13 +6,8 @@ execute:
   message: false
 ---
 
-## Outline
 
-<ol class="menu"><ol>
-
-# Power {data-stack-names="Power"}
-
-##
+## {data-name="Power"}
 
 You sample a difference of 0.1 (black line). Which sampling distribution did this come from?
 
@@ -150,7 +145,7 @@ ggplot() +
 :::
 
 
-## Power is the opposite of a p-value
+## Power is the opposite of a p-value {data-name="Summary"}
 
 
 |   | p-value | Power |
@@ -168,7 +163,7 @@ Power can't prove anything! It cannot be used to test a hypothesis.
 
 
 
-## {transition="none"}
+## {transition="none" data-name="Areas under the curve"}
 
 ```{r}
 

@@ -1,0 +1,75 @@
+---
+title: "Hormones and behavior lab"
+author: "your name"
+date: "your date"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## The data
+
+The data consist of mating approaches of female rats following injection with one of 4 hormone types (n=42 per group):
+
+- Oxytocin
+- Progesterone
+- Vehicle (i.e., Control)
+- Estrogen
+
+1. Make a path/folder for this lab (e.g. `.../420/labs/lab13`) on 
+your class folder, create a new R project on that path/folder, download the data
+file `hormoneData.csv` from canvas and move it to that folder.
+
+2. In the following code chunk, load the `tidyverse` package and read the 
+`hormoneData.csv` data.
+
+```{r load-data}
+
+```
+
+
+
+3. Make a frequency polygon plot of approaches as a function of hormone received.
+
+```{r freq}
+
+```
+
+4. Make a boxplot showing the approach data as a function of hormone, adding jittered raw data points.
+
+```{r boxplot}
+
+```
+
+
+5. Produce a graph showing the mean number of approaches as a function of hormone, with 95% confidence intervals. 
+
+```{r mean-cis}
+
+```
+
+
+6. Perform a one-way ANOVA to compare the groups. What can you conclude about the differences in approaching behavior across hormone groups?
+
+```{r anova}
+
+```
+
+**ANS:**
+
+7. Recode the data into control (vehicle) vs treatment (all others). (Hint: case_when may be useful here.) Perform a t-test comparing treatment and control. 
+
+```{r treat-control}
+
+```
+
+8. Now compare two of the treatment groups, Estrogen and Oxytocin, with a t-test and interpret the results.
+
+```{r e-o}
+
+```
+
+**ANS:**

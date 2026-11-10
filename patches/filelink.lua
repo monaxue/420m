@@ -1,7 +1,7 @@
 -- filelink.lua
--- For any link with class "filelink", generate:
+-- All links get the filelink treatment by default:
 --   [Original text] · [↗] · [⤓]
--- Icons have tooltips: "Open in new tab" and "Download file".
+-- Opt out per-link with: {filelink=false}
 
 local function has_class(el, class)
   if not el.classes then return false end
@@ -13,43 +13,70 @@ local function has_class(el, class)
   return false
 end
 
+local function clean_url(url)
+  -- Fix Windows path separators in leading ./ or ../
+  url = url:gsub("^%.\\", "./")
+  url = url:gsub("^%.%.\\", "../")
+  -- Remove pandoc's backslash-escaping of remaining characters (e.g. \_ -> _)
+  url = url:gsub("\\(.)", "%1")
+  return url
+end
+
+local function basename(url)
+  -- Extract filename from URL (after last / or \)
+  return url:match("[^/\\]+$") or ""
+end
+
 function Link(el)
-  -- Only transform links with .filelink
-  if not has_class(el, "filelink") then
-    -- Add target="_blank" while preserving everything else
+  -- Never re-transform links we already produced.
+  if has_class(el, "fl-generated") then
+    return el
+  end
+
+  -- Opt out: {filelink=false}
+  if (el.attributes or {}).filelink == "false" then
     el.attributes = el.attributes or {}
     el.attributes.target = "_blank"
     el.attributes.rel = "noopener noreferrer"
     return el
   end
 
-  local url = el.target
+  local url = clean_url(el.target)
+  local filename = basename(url)
   local text = el.content
 
-  -- Original text link (normal)
-  local main_link = pandoc.Link(text, url)
+  -- Main text link: plain on website, new tab on revealjs
+  local main_attrs = { class = "fl-generated" }
+  if FORMAT and FORMAT:match("revealjs") then
+    main_attrs.target = "_blank"
+    main_attrs.rel = "noopener noreferrer"
+  end
+  local main_link = pandoc.Link(text, url, "", main_attrs)
 
-  -- "Open in new tab" icon 🔗
-  local open_icon = { pandoc.Str("↗") }
+  -- "Open in new tab" icon ↗
   local open_link = pandoc.Link(
-    open_icon,
-    url,
-    "",  -- no separate title arg; use attributes instead
-    {
-      target = "_blank",
-      title = "Open in new tab"
-    }
-  )
-
-  -- "Download file" icon ⬇
-  local download_icon = { pandoc.Str("⤓") }
-  local download_link = pandoc.Link(
-    download_icon,
+    { pandoc.Str("↗") },
     url,
     "",
     {
-      download = "",
-      title = "Download file"
+      target = "_blank",
+      rel = "noopener noreferrer",
+      title = "Open in new tab",
+      class = "fl-generated"
+    }
+  )
+
+  -- "Download file" icon ⤓
+  local download_link = pandoc.Link(
+    { pandoc.Str("⤓") },
+    url,
+    "",
+    {
+      download = filename,
+      title = "Download file",
+      target = "_blank",
+      rel = "noopener noreferrer",
+      class = "fl-generated"
     }
   )
 

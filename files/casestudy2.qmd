@@ -6,7 +6,7 @@
 
 ### Natural Light and Depression
 
-[Dataset for Option 1](/data/CaseStudy2_NaturalLightDepression.csv){.filelink}
+[Dataset for Option 1](/data/CaseStudy2_NaturalLightDepression.csv)
 
 You work at a data science consulting firm and your biggest client is Dell Inc., a large technology corporation located in the Austin area. Dell has publicly committed to their employees’ mental well-being and have been examining their workplace policies to identify any potentially problematic practices. To that end, each Dell employee has been asked to anonymously fill out Beck’s Depression Inventory, which contains 21 questions and results in a depression score ranging from 0 to 63. Anyone scoring 14 points or higher is considered to have at least mild symptoms of depression.
 
@@ -21,7 +21,7 @@ Do the employees from either type of office appear to reach the threshold to be 
 
 ### Testosterone Replacement and Stress
 
-[Dataset for Option 2](/data/CaseStudy2_TestosteroneReplacement.csv){.filelink}
+[Dataset for Option 2](/data/CaseStudy2_TestosteroneReplacement.csv)
 
 You work as a data scientist for a clinic that recently received a grant to study the potential for testosterone replacement therapy to boost cortisol levels. Practitioners are concerned that a commonly used treatment could increase in serum cortisol, a stress related hormone. High levels of cortisol (above 25 mcg/dL) have been shown to be associated with weight gain, insomnia, and high blood pressure.
 
@@ -121,7 +121,7 @@ You will receive one extra credit if you do a t-test for you second hypothesis.
 
 - `mu` specifies your null hypothesis (threshold value).
 - `alternative` specifies your main hypothesis. It can take the value of "two.sided", "less", or "greater".
-    - "two.sided" means the main hypothesis is "outside" (on either side) of the null hypothesis (what we did in [Lab 7](/presentations/week7.qmd){.filelinke}). This is the default value for `alternative` if you don't     specify a value.
+    - "two.sided" means the main hypothesis is "outside" (on either side) of the null hypothesis (what we did in [Lab 7](/presentations/week7.qmd)). This is the default value for `alternative` if you don't     specify a value.
     - "less" means that the main hypothesis is less than the null hypothesis.
     - "greater" means that the main hypotehsis is greater than the null hypothesis.
 

@@ -36,7 +36,9 @@ https://wall.sli.do/event/d35sArEpryyz2JVeVjSHwt?section=fdeecb9f-4add-43f9-bc87
 ::::: columns
 
 :::: column
+
 ### Online modules
+
 - Learn **statistical concepts**
 - Content that will be relevant for in-person **quizzes** (more on this later)
 - All content is on **Canvas**
@@ -44,7 +46,9 @@ https://wall.sli.do/event/d35sArEpryyz2JVeVjSHwt?section=fdeecb9f-4add-43f9-bc87
 ::::
 
 :::: column
+
 ### In-person labs
+
 - Learn to **code in R**
 - Content that will be relevant for **Case Studies** projects
 - All content is on the **lab website** (but you will turn things in on Canvas)
@@ -230,7 +234,7 @@ https://wall.sli.do/event/d35sArEpryyz2JVeVjSHwt?section=fdeecb9f-4add-43f9-bc87
 
 - RMarkdown is a special type of file that combines the functions of R and Word.
 - This means you can format documents directly in R
-- [Example](/assets/rmarkdown_example.html){.filelink}
+- [Example](/assets/rmarkdown_example.html)
 
 :::
 

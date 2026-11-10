@@ -22,12 +22,12 @@ subtitle: "We made it!"
 ::: {.card-list .nonincremental}
 - [ ] Fill out the course evaluations for this class (this is optional, but I would really appreciate it!)
 - [ ] Choose your own journey!	
-	1. Complete the *actual* lab assignment for today. [Slides](/assets/HormoneBehaviorLab.pdf){.filelink} [Dataset](/data/hormoneData.csv){.filelink}
-	2. Find an article on <https://datacolada.org/>{.filelink}, summarize it and write a brief reflection on it. 
+	1. Complete the *actual* lab assignment for today. [Slides](/assets/HormoneBehaviorLab.pdf) [Dataset](/data/hormoneData.csv)
+	2. Find an article on <https://datacolada.org/>, summarize it and write a brief reflection on it. 
 	3. (Not stats) Stylize your lab report. Change at least four styling options on one of your lab reports/case studies.
-		- [Themes for Rmd](https://rpubs.com/ranydc/rmarkdown_themes){.filelink}
-		- [Advanced Rmd Formatting](/files/advrmarkdown.qmd){.filelink}
-		- [ggtheme](https://jrnold.github.io/ggthemes/){.filelink}
-		- Use [custom css](https://yihui.org/rmarkdown-cookbook/html-css){.filelink} (or use AI to generate one!)
+		- [Themes for Rmd](https://rpubs.com/ranydc/rmarkdown_themes)
+		- [Advanced Rmd Formatting](/files/advrmarkdown.qmd)
+		- [ggtheme](https://jrnold.github.io/ggthemes/)
+		- Use [custom css](https://yihui.org/rmarkdown-cookbook/html-css) (or use AI to generate one!)
 		- Or use whatever source is available!
 :::

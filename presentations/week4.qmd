@@ -268,7 +268,7 @@ https://shiny.rit.albany.edu/stat/confidence/
 
 :::
 
-[Link to CI simulator](https://shiny.rit.albany.edu/stat/confidence/){.filelink}
+[Link to CI simulator](https://shiny.rit.albany.edu/stat/confidence/)
 
 
 # CI interpretations {data-stack-name="CI interpretations"}

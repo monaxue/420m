@@ -1,0 +1,123 @@
+---
+title: "Polynomial (linear) fitting"
+author: "your name here"
+date: "2026-08-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  fig.width = 5,        # Default width of plots in inches
+  fig.height = 4,       # Default height of plots in inches
+  fig.align = 'center' # Center-align plots: 'center', 'left', or 'right'
+)
+```
+
+We are going to look at some simulated data on how the number of hours per day 
+somebody spends working out is related to:
+
+- How "in shape" people report they feel
+- Resting heart rate (lower is considered more healthy)
+
+There are two data sets. For each, the first variable is average hours per day
+spent working out. The second variable is, for each data set in turn:
+
+- A self-report of how "in shape" each person feels on a scale of 0 to 10
+- Average resting heart rate in beats per minute (bpm)
+
+1. Make a path/folder for this lab (e.g. `.../420/labs/lab12`) on 
+your class folder, create a new R project on that path/folder, download the 
+data sets `shapeVsHours.csv`, and `bpmVsHours.csv` from canvas and move them 
+to that folder.
+
+2. Load the `tidyverse` package and the two data sets.
+
+```{r load}
+
+```
+
+3. Make a scatter plot of self reported shape as a function of the average
+number of hours spent working out per day. Add a linear function to the plot.
+
+```{r shape-hour}
+
+```
+
+4. Briefly comment what can you see in this plot, does the data seem to follow
+a linear relation?
+
+**Ans:**
+
+5. Using the `lm()` function fit a linear function to the data, then create a 
+table with two variables, the average number of hours and the residuals. 
+Remember that the residuals are the difference between the regression line and 
+each observation, you can get these values by using the dollar sign notation 
+and the name `residuals`.
+
+```{r lm-shape-hour}
+
+```
+
+6. Make a scatter plot of the residuals as a function of the average number 
+of hours. What can you see in the plot? Are there any particular trends in the 
+residuals?
+
+```{r res-shape-hour}
+
+```
+
+**Ans:**
+
+7. Make a scatter plot of average resting heart rate as a function of average 
+number of hours spent working out. Add a linear function to the plot. What can 
+you see in this plot? Are there any particular trends in the plot?
+
+```{r scatter-bpm-hr}
+
+```
+
+**Ans:**
+
+8. Using the `lm()` function fit a linear function to the data, then create a
+table that contains the average number of hours and the residuals of this 
+regression. 
+
+```{r lm-bpm-hr}
+
+```
+
+9. Make a scatter plot of the residuals obtained in 8 as a function of 
+average number of hours. What can you see in the plot? Are there any particular
+trends in the residuals?
+
+```{r res-bpm-hr}
+
+```
+
+**Ans:**
+
+10. Using the `lm()` and `poly()` functions, fit a second degree polynomial of
+the average number of hours to the resting heart rate data and create a table 
+that contains the average number of hours and the residuals of this new fit.
+
+```{r poly-bpm-hr}
+
+```
+
+11. Make a scatter plot of the residuals found in 10 as a function of average
+number of hours. What can you see in the plot? Are there any particular
+trends in the residuals?
+
+```{r res-poly-bpm-hr}
+
+```
+
+**Ans:** 
+
+12. Write a short paragraph summarizing the big picture. Are all the data
+described by straight lines? Do all data necessarily increase or decrease
+overall? What information do residuals give you?
+
+**Ans:**
+

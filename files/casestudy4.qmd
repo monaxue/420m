@@ -11,7 +11,7 @@ Because so many people have finals on Monday, I have moved the Case Study due da
 
 ## Memory Decline
 
-[Dataset](/data/mental-rotation.csv){.filelink}
+[Dataset](/data/mental-rotation.csv)
 
 You work as a statistical consultant for a medical care corporation, and part of your job is to
 assess patients’ cognitive abilities. Your company is testing out a perceptual task that involves

@@ -113,5 +113,5 @@ ggplot(data, aes(x=time, y=dep)) + geom_point() + geom_smooth(method="lm")
 # Thanks!
 
 ::: {.card-list-center .nonincremental}
-- More info at <https://github.com/monaxue/>{.filelink}
+- More info at <https://github.com/monaxue/>
 :::

@@ -11,7 +11,7 @@ warning: false
 
 ### The Stroop Effect
 
-[Dataset for Option 1](/data/CaseStudy3_StroopEffect.csv){.filelink}
+[Dataset for Option 1](/data/CaseStudy3_StroopEffect.csv)
 
 You are interested in people's ability to ignore irrelevant visual information when under time pressure. To this end, you have run an experiment in which you presented participants with color words written in various ink colors and asked them to report the ink color of each word as quickly as possible. There are two conditions in the experiment: First, a congruent condition in which the word presented is written in the same color ink, for example, the word “red” is written in red (red). Second is the incongruent condition, in which the word presented is written in different colored ink, for example, the word “red” written in blue (red). The stimuli in the study consisted of 4 colors (red, blue, yellow and green) that could be used for both the written words and the ink. Each stimulus was presented 3 times in the congruent condition and 3 times in the incongruent condition (once in each color different from the word). For each presentation of a stimulus, the experimenters recorded the time it took the participant to verbally produce the color of ink that the word was written in. So when presented with the word “red” written in blue ink (red), the participant should say “blue.” 
 
@@ -21,7 +21,7 @@ You have hypothesized that it takes additional effort for people to inhibit the 
 
 ### Memory Decline
 
-[Dataset for Option 2](/data/CaseStudy3_MemoryDecline.csv){.filelink}
+[Dataset for Option 2](/data/CaseStudy3_MemoryDecline.csv)
 
 You are studying how human memory declines as we age. You have data from a longitudinal study that tested participants’ ability to remember a list of words at various points in their life: Participants were tested once at 25 years of age and again at 65 years of age. In the experiment, you presented participants with a list of 15 words that they must memorize. 24 hours later they are brought back to the lab and asked to reproduce from memory the entire list of words. If a word is recalled it is recorded as Recalled=1 and if not it is recorded as Recalled=0. 
 

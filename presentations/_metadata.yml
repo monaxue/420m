@@ -1,41 +1,51 @@
- #background-colors:
- # - "rgba(246, 252, 237, 1)"
- # - "rgba(237, 251, 255, 1)"
- # - "rgba(254, 248, 237, 1)"
- # - "rgba(252, 237, 247, 1)"
+containers-bg-default: "rgba(254, 248, 237, 1)"
+containers-auto-animate: false
+
+#background-colors:
+# - "rgba(246, 252, 237, 1)"
+# - "rgba(237, 251, 255, 1)"
+# - "rgba(254, 248, 237, 1)"
+# - "rgba(252, 237, 247, 1)"
 
 format:
   containerstheme-revealjs:
-    center: false
-    touch: true
-    incremental: true
+    auto-animate: false
+    excalidraw:
+        useLocalStorage: true
+        button: false
+    code-copy: false
     self-contained: false #allows this to work with chalkboard
-    smaller: true
-    scrollable: true
-    fig-align: center
     chalkboard:
       theme: whiteboard
     preview-links: false
     #sc-sb-title: true
     conditional:
       admin-password: "mona420m"
-    title-slide-attributes:
-        data-state: "hide-menubar"
-        data-background-color: "rgba(254, 248, 237, 1)"
-    transition: none
     section-divs: false
     menu: true
     simplemenu:
       barhtml:
         header: "<div class='menubar'><ul class='menu'></ul></div>"
       scale: 0.50
+      flat: true
     filters:
       - patches/iframe.lua
-      - patches/filelink.lua
-      - patches/no-prompt.lua
       - patches/code-puzzle.lua
+    include-in-header:
+      - text: |
+          <style>
+          /* Disables text selection across the entire presentation */
+          .reveal, 
+          .reveal section, 
+          .reveal pre, 
+          .reveal code {
+            -webkit-user-select: none !important;  /* Safari */
+            -ms-user-select: none !important;      /* IE/Edge */
+            user-select: none !important;          /* Standard */
+          }
+          </style>
     #include-in-header:
-    #  text: |
+    #  - text: |
     #    <script>
     #      setTimeout(() => {
     #        console.log("Poll divs:", document.querySelectorAll(".poll, .freeresponse").length);
@@ -64,8 +74,12 @@ format:
 revealjs-plugins:
   - simplemenu
   - tabset
+  - excalidraw
+  - containerstheme
   #- conditional-reveal
 filters: 
   - poll
   #- reveal-header
+execute:
+  echo: false
 

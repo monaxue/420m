@@ -3,7 +3,7 @@ title: "11: Linear Regression"
 ---
 
 
-## Power review
+## Power review {data-name="Review"}
 ![](assets/power-errors.png)
 
 ## CI Review
@@ -14,7 +14,7 @@ https://wall.sli.do/event/pL63TNKaPv1Wrdwc1qERJw?section=b8417ffa-92b3-4dd6-94bb
 
 :::
 
-## Remember this?
+## Remember this? {data-name="Regression"}
 
 $$ 
 y = mx + b 
@@ -32,11 +32,21 @@ Definition: 95% of experiments will produce CIs that include the true regression
 
 🖊️
 
+<!-- Next time, actually draw out a bunch of experiments and their 95% CI
+
+
+
+There was the student who had trouble connecting "CIs are" with the definition above that seems to contain CI as a definition. So phrasing it like this helped them understand it better:
+
+CIs are the calculations that allow 95% of experiments to produce intervals that contain the true regression line
+ -->
+
+<!-- Remind people the difference between definition and "confidence interpretations", and why we use the word "confidence" in the interpretation instead of likely -->
 
 ![](assets/CI-bands-regression.png)
 
 
-## Deliverables
+## Deliverables {data-name="Deliverables"}
 
 Some help with new functions.
 

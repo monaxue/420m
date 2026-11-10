@@ -206,7 +206,7 @@ https://wall.sli.do/event/jSr27kKv5FzL29qzbYK57A?section=1a784310-5fec-4e79-9035
 ##
 
 ::::: {.columns}
-:::: {.column .nonincremental}
+:::: {.column}
 
 #### Layer 1: basic info
 

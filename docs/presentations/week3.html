@@ -35,7 +35,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-ffa0d8292bb919c7c9d7bd99cbd128e6.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-d3e801d455d5e01803a1237582fed831.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -493,7 +493,7 @@ https://wall.sli.do/event/svJsdsn6gh1fzGkA76YVCv?section=9a2f41e7-317b-4de0-b355
 <section id="ambiguous-thinking" class="slide level2 center" data-background-color="rgba(254, 248, 237, 1)">
 <h2>“Ambiguous thinking”</h2>
 
-<img data-src="week3_files/figure-html/unnamed-chunk-5-1.png" width="672" class="r-stretch"></section>
+<img data-src="week3_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
 <section id="descriptive-interpret" class="slide level2 center scrollable" data-background-color="rgba(254, 248, 237, 1)">
 <h2>Interpreting descriptive statistics</h2>
 <ol type="1">
@@ -522,7 +522,7 @@ https://wall.sli.do/event/svJsdsn6gh1fzGkA76YVCv?section=9a2f41e7-317b-4de0-b355
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week3_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
+<p><img data-src="week3_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -588,13 +588,13 @@ https://wall.sli.do/event/svJsdsn6gh1fzGkA76YVCv?section=9a2f41e7-317b-4de0-b355
 <!-- Just do a raise hand poll. who thinks it comes from distribution A? Who thinks it comes form distribution B?
 . . .  -->
 
-<img data-src="week3_files/figure-html/unnamed-chunk-7-1.png" width="672" class="r-stretch"></section>
+<img data-src="week3_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
 <section id="section-2" class="slide level2 center" data-background-color="rgba(254, 248, 237, 1)">
 <h2></h2>
 <p>I took a second random sample from either Population A or Population B. Which distribution does this random sample come from?</p>
 
 <!-- - Actual answer: An answer that doesn't make as much sense. -->
-<img data-src="week3_files/figure-html/unnamed-chunk-8-1.png" width="672" class="r-stretch"></section>
+<img data-src="week3_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
 <section id="statistical-tests-must-be-used" class="slide level2 center" data-background-color="rgba(254, 248, 237, 1)">
 <h2>Statistical tests must be used</h2>
 <ul>
@@ -614,7 +614,7 @@ https://wall.sli.do/event/svJsdsn6gh1fzGkA76YVCv?section=9a2f41e7-317b-4de0-b355
 <section id="deliverables-1" class="slide level2 center" data-background-color="rgba(254, 248, 237, 1)">
 <h2>Deliverables</h2>
 <ul>
-<li>Check out <span><a href="../presentations/casestudychecklist.html" class="fl-generated" target="_blank" rel="noopener noreferrer">Case Study Checklist and Code</a> · <a href="../presentations/casestudychecklist.html" class="fl-generated" target="_blank" title="Open in new tab" rel="noopener noreferrer">↗</a> · <a href="../presentations/casestudychecklist.html" class="fl-generated" rel="noopener noreferrer" title="Download file" target="_blank" download="casestudychecklist.qmd">⤓</a></span> for help on today’s deliverables!</li>
+<li>Check out <span><a href="../presentations/casestudychecklist.html" class="fl-generated" target="_blank" rel="noopener noreferrer">Case Study Checklist and Code</a> · <a href="../presentations/casestudychecklist.html" class="fl-generated" target="_blank" rel="noopener noreferrer" title="Open in new tab">↗</a> · <a href="../presentations/casestudychecklist.html" class="fl-generated" target="_blank" title="Download file" download="casestudychecklist.qmd" rel="noopener noreferrer">⤓</a></span> for help on today’s deliverables!</li>
 </ul>
 
 
@@ -845,6 +845,82 @@ https://wall.sli.do/event/svJsdsn6gh1fzGkA76YVCv?section=9a2f41e7-317b-4de0-b355
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

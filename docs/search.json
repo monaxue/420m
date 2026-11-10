@@ -291,7 +291,7 @@
     "href": "presentations/week7.html#part-2",
     "title": "7: Paired data and t-tests",
     "section": "Part 2",
-    "text": "Part 2\n\n1234567891011\n\n\nCreate a summary table of the differences between ratings that includes sample size, mean, standard deviation, standard error.\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap\n\n\n# A tibble: 1 × 4\n  SampleSize  Mean    SD     SE\n       &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n1         25  2.36 0.490 0.0980\n\n\n\n\nCalculate the CI of differences.\nCode\n\n\n# A tibble: 1 × 6\n  SampleSize  Mean    SD     SE LowerCI UpperCI\n       &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n1         25  2.36 0.490 0.0980    2.17    2.55\n\n\n\n\nWhat is the difference between the Upper and Lower CI, and is this narrower or wider than the CIs from the previous lab?\nAnswer:\n\n\nSimulate 1000 replications of the difference between ratings using the sample size and standard deviation from your summary table. Assign this to simulated_data.\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap\n\n\nMagic code that you don’t need to worry about to transform your simulated_differences to a more usable format. This new table is called simulated_differences_table.\n\ncolnames(simulated_differences) &lt;- 1:1000\n\nsimulated_differences_table &lt;- simulated_differences %&gt;% as_tibble() %&gt;% pivot_longer(cols = everything(), names_to =\"experiment\", values_to=\"differences\") %&gt;% mutate(experiment = as.integer(experiment)) %&gt;% arrange(experiment)\n\nhead(simulated_differences_table)\n\n\n# A tibble: 6 × 2\n  experiment differences\n       &lt;int&gt;       &lt;dbl&gt;\n1          1       0.140\n2          1       0.176\n3          1      -0.488\n4          1       0.385\n5          1       0.260\n6          1       1.38 \n\n\n\n\nCreate a summary table of simulated_differences_table that includes SampleSize, Mean, SD, and SE of differences for each experiment. Assign it to simulation_summary.\nCode\n\n\n# A tibble: 1,000 × 5\n   experiment SampleSize     Mean    SD     SE\n        &lt;int&gt;      &lt;int&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n 1          1         25  0.167   0.530 0.106 \n 2          2         25  0.0775  0.427 0.0853\n 3          3         25 -0.0372  0.341 0.0682\n 4          4         25  0.00221 0.543 0.109 \n 5          5         25 -0.148   0.360 0.0720\n 6          6         25  0.0925  0.454 0.0908\n 7          7         25  0.0232  0.560 0.112 \n 8          8         25  0.0386  0.558 0.112 \n 9          9         25  0.0546  0.535 0.107 \n10         10         25  0.0104  0.585 0.117 \n# ℹ 990 more rows\n\n\n\n\nMake a histogram of the sampling distribution using the values in simulation_summary.\nCode\n\n\n\n\n\n\n\n\n\n\n\nCompare this distribution with the one we obtained in the previous lab. What are the similarities and differences between the two?\nAnswer:\n\n\nRecall that last week, we compared the actual observed mean difference in the original dataset (2.36) to the sampling distribution. If we do the same thing with today’s sampling distribution, does today’s null sampling distribution “theoretically” provide a larger or smaller p-value than the one from last week? Why?\nAnswer:\n\n\nCompute the t-test. For the paired t-test, we specify the paired lists of ratings as data vectors, and we set the paired argument to TRUE. Compare the p-value with the one from the previous lab.\nHint: How many zeros come after the decimal point? Look at the value after “e”\nt.test(wider$column1, wider$column2, paired = TRUE)\nCode\n\n\n\n    Paired t-test\n\ndata:  wider$driving and wider$flying\nt = -24.087, df = 24, p-value &lt; 2.2e-16\nalternative hypothesis: true mean difference is not equal to 0\n95 percent confidence interval:\n -2.56222 -2.15778\nsample estimates:\nmean difference \n          -2.36 \n\n\nAnswer:\n\n\nWhat is the main point of this lab? Fill in the bolded sections.\n\nSE is just the (fill in) of the sampling distribution. When we calculate paired differences, that increases/decreases our SD, which increases/decreases our SE, resulting in a wider/narrower CI and smaller/larger p-value. This means we are more/less certain that there is a true difference between the groups."
+    "text": "Part 2\n\n1234567891011\n\n\nCreate a summary table of the differences between ratings that includes sample size, mean, standard deviation, standard error.\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap\n\n\n# A tibble: 1 × 4\n  SampleSize  Mean    SD     SE\n       &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n1         25  2.36 0.490 0.0980\n\n\n\n\nCalculate the CI of differences.\nCode\n\n\n# A tibble: 1 × 6\n  SampleSize  Mean    SD     SE LowerCI UpperCI\n       &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n1         25  2.36 0.490 0.0980    2.17    2.55\n\n\n\n\nWhat is the difference between the Upper and Lower CI, and is this narrower or wider than the CIs from the previous lab?\nAnswer:\n\n\nSimulate 1000 replications of the difference between ratings using the sample size and standard deviation from your summary table. Assign this to simulated_data.\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap\n\n\nMagic code that you don’t need to worry about to transform your simulated_differences to a more usable format. This new table is called simulated_differences_table.\n\ncolnames(simulated_differences) &lt;- 1:1000\n\nsimulated_differences_table &lt;- simulated_differences %&gt;% as_tibble() %&gt;% pivot_longer(cols = everything(), names_to =\"experiment\", values_to=\"differences\") %&gt;% mutate(experiment = as.integer(experiment)) %&gt;% arrange(experiment)\n\nhead(simulated_differences_table)\n\n\n# A tibble: 6 × 2\n  experiment differences\n       &lt;int&gt;       &lt;dbl&gt;\n1          1      0.288 \n2          1     -0.275 \n3          1     -0.0555\n4          1      0.142 \n5          1      0.370 \n6          1     -0.621 \n\n\n\n\nCreate a summary table of simulated_differences_table that includes SampleSize, Mean, SD, and SE of differences for each experiment. Assign it to simulation_summary.\nCode\n\n\n# A tibble: 1,000 × 5\n   experiment SampleSize    Mean    SD     SE\n        &lt;int&gt;      &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n 1          1         25 -0.196  0.399 0.0797\n 2          2         25  0.135  0.475 0.0949\n 3          3         25 -0.132  0.469 0.0938\n 4          4         25 -0.152  0.562 0.112 \n 5          5         25  0.139  0.390 0.0780\n 6          6         25 -0.0401 0.395 0.0790\n 7          7         25 -0.0916 0.387 0.0773\n 8          8         25 -0.248  0.442 0.0885\n 9          9         25 -0.101  0.528 0.106 \n10         10         25 -0.0511 0.458 0.0917\n# ℹ 990 more rows\n\n\n\n\nMake a histogram of the sampling distribution using the values in simulation_summary.\nCode\n\n\n\n\n\n\n\n\n\n\n\nCompare this distribution with the one we obtained in the previous lab. What are the similarities and differences between the two?\nAnswer:\n\n\nRecall that last week, we compared the actual observed mean difference in the original dataset (2.36) to the sampling distribution. If we do the same thing with today’s sampling distribution, does today’s null sampling distribution “theoretically” provide a larger or smaller p-value than the one from last week? Why?\nAnswer:\n\n\nCompute the t-test. For the paired t-test, we specify the paired lists of ratings as data vectors, and we set the paired argument to TRUE. Compare the p-value with the one from the previous lab.\nHint: How many zeros come after the decimal point? Look at the value after “e”\nt.test(wider$column1, wider$column2, paired = TRUE)\nCode\n\n\n\n    Paired t-test\n\ndata:  wider$driving and wider$flying\nt = -24.087, df = 24, p-value &lt; 2.2e-16\nalternative hypothesis: true mean difference is not equal to 0\n95 percent confidence interval:\n -2.56222 -2.15778\nsample estimates:\nmean difference \n          -2.36 \n\n\nAnswer:\n\n\nWhat is the main point of this lab? Fill in the bolded sections.\n\nSE is just the (fill in) of the sampling distribution. When we calculate paired differences, that increases/decreases our SD, which increases/decreases our SE, resulting in a wider/narrower CI and smaller/larger p-value. This means we are more/less certain that there is a true difference between the groups."
   },
   {
     "objectID": "presentations/week1.html#welcome-to-psych-420",
@@ -879,14 +879,14 @@
     "href": "presentations/week4.html#part-1",
     "title": "4: Sampling distributions and CIs",
     "section": "Part 1",
-    "text": "Part 1\n\n1234\n\n\nLoad the two packages that we need in every class.\n\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap\n\n\nNow let’s take a random sample from a normal distribution (rnorm()) as a single experiment. The experiment should have a sample size of 25, a true population mean of 100, and a true standard deviation of 10. Use the rnorm() function and assign the simulated data to the variable single_experiment.\nCode\n\n\nUncomment the code below and run the code block. You do not need to understand how the code works here. I have just converted single_experiment into a usable data table format. Observe the output and pay attention to the column names.\n\n\n# A tibble: 6 × 1\n   data\n  &lt;dbl&gt;\n1 102. \n2  91.7\n3  99.4\n4  93.0\n5 111. \n6 114. \n\n\n\n\nMake a histogram from the data of your simulated experiment.\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap"
+    "text": "Part 1\n\n1234\n\n\nLoad the two packages that we need in every class.\n\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap\n\n\nNow let’s take a random sample from a normal distribution (rnorm()) as a single experiment. The experiment should have a sample size of 25, a true population mean of 100, and a true standard deviation of 10. Use the rnorm() function and assign the simulated data to the variable single_experiment.\nCode\n\n\nUncomment the code below and run the code block. You do not need to understand how the code works here. I have just converted single_experiment into a usable data table format. Observe the output and pay attention to the column names.\n\n\n# A tibble: 6 × 1\n   data\n  &lt;dbl&gt;\n1  98.9\n2  97.0\n3 110. \n4  92.2\n5 103. \n6 104. \n\n\n\n\nMake a histogram from the data of your simulated experiment.\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap"
   },
   {
     "objectID": "presentations/week4.html#part-2",
     "href": "presentations/week4.html#part-2",
     "title": "4: Sampling distributions and CIs",
     "section": "Part 2",
-    "text": "Part 2\n\n123456789101112\n\n\nUse the replicate() function to simulate 100 repetitions of your experiment (remember that the replicate function has 2 main arguments, n which indicates the number of replications, and expr which takes the r function that will be replicated).\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap\n\n\nUncomment the code below and run the code block. You do not need to understand how the code works. I have transformed more_experiments data into a usable data table format for you. Take a look at the resulting table and pay attention to its column names.\n\n\n# A tibble: 6 × 2\n  experiment  data\n       &lt;int&gt; &lt;dbl&gt;\n1          1 101. \n2          1 109. \n3          1  84.8\n4          1 116. \n5          1 117. \n6          1  93.3\n\n\n\n\nCreate a summary table of more_experiments_table, grouping by experiment. Assign it to the variable summary_table. Don’t forget to print it.\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap\n\n\n# A tibble: 100 × 5\n   experiment SampleSize  Mean    SD    SE\n        &lt;int&gt;      &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1          1         25 102.  10.1   2.02\n 2          2         25  98.3 10.6   2.12\n 3          3         25  99.0  9.46  1.89\n 4          4         25 101.   8.19  1.64\n 5          5         25  96.6  9.74  1.95\n 6          6         25 102.   9.91  1.98\n 7          7         25 100.  11.3   2.27\n 8          8         25  99.4 11.9   2.38\n 9          9         25  98.9  9.52  1.90\n10         10         25  96.0  8.90  1.78\n# ℹ 90 more rows\n\n\n\n\nWhat does the sampling distribution plot? And is this value stored in more_experiments_table or summary_table?\n\n\nMake a histogram of the sampling distribution, using the table you identified above as the data table in ggplot().\nCode\n\n\n\n\n\n\n\n\n\n\n\nCalculate the confidence interval for each group using summary_table and assigning the results to CIs (exactly the same as what we did last week). Then print CIs.\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap\n\n\n# A tibble: 100 × 7\n   experiment SampleSize  Mean    SD    SE LowerCI UpperCI\n        &lt;int&gt;      &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n 1          1         25 102.  10.1   2.02    98.4   106. \n 2          2         25  98.3 10.6   2.12    94.1   102. \n 3          3         25  99.0  9.46  1.89    95.3   103. \n 4          4         25 101.   8.19  1.64    97.9   104. \n 5          5         25  96.6  9.74  1.95    92.8   100. \n 6          6         25 102.   9.91  1.98    98.3   106. \n 7          7         25 100.  11.3   2.27    95.7   105. \n 8          8         25  99.4 11.9   2.38    94.8   104. \n 9          9         25  98.9  9.52  1.90    95.1   103. \n10         10         25  96.0  8.90  1.78    92.5    99.4\n# ℹ 90 more rows\n\n\n\n\nNow create a mean/CI plot for each experiment (exactly the same as what we did last week). Then assign the plot to the variable CIplot and show the plot by printing it.\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap\n\n\n\n\n\n\n\n\n\n\n\nUncomment the code below and run it. You don’t have the understand the code, but I basically just added some colors to your original CI plot so things are easier to see.\n\n\n\n\n\n\n\n\n\n\n\nHow many experiments have CIs that do NOT overlap with the population mean? What percent of the exerpiments is that?\n\n\nThe SEs you have calculated in summary_table is just an estimated SE. The true SE is actually the sd of the sampling distribution of the means. Use mutate() to add a new variable to the summary_table called TrueSE, and calculate it by taking the sd of the means.\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap\n\n\n# A tibble: 100 × 6\n   experiment SampleSize  Mean    SD    SE TrueSE\n        &lt;int&gt;      &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n 1          1         25 102.  10.1   2.02   2.00\n 2          2         25  98.3 10.6   2.12   2.00\n 3          3         25  99.0  9.46  1.89   2.00\n 4          4         25 101.   8.19  1.64   2.00\n 5          5         25  96.6  9.74  1.95   2.00\n 6          6         25 102.   9.91  1.98   2.00\n 7          7         25 100.  11.3   2.27   2.00\n 8          8         25  99.4 11.9   2.38   2.00\n 9          9         25  98.9  9.52  1.90   2.00\n10         10         25  96.0  8.90  1.78   2.00\n# ℹ 90 more rows\n\n\n\n\nFill in the blanks below by replacing the bolded text (but keep your answers bolded).\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap\n\n\nWrite interpretations for the mean/CI plot from last week’s lab."
+    "text": "Part 2\n\n123456789101112\n\n\nUse the replicate() function to simulate 100 repetitions of your experiment (remember that the replicate function has 2 main arguments, n which indicates the number of replications, and expr which takes the r function that will be replicated).\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap\n\n\nUncomment the code below and run the code block. You do not need to understand how the code works. I have transformed more_experiments data into a usable data table format for you. Take a look at the resulting table and pay attention to its column names.\n\n\n# A tibble: 6 × 2\n  experiment  data\n       &lt;int&gt; &lt;dbl&gt;\n1          1  98.8\n2          1  82.0\n3          1  95.2\n4          1  91.2\n5          1  65.0\n6          1  96.2\n\n\n\n\nCreate a summary table of more_experiments_table, grouping by experiment. Assign it to the variable summary_table. Don’t forget to print it.\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap\n\n\n# A tibble: 100 × 5\n   experiment SampleSize  Mean    SD    SE\n        &lt;int&gt;      &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1          1         25  97.8 11.5   2.30\n 2          2         25  98.3 10.5   2.10\n 3          3         25 101.   7.73  1.55\n 4          4         25 102.   9.83  1.97\n 5          5         25  94.2  9.87  1.97\n 6          6         25 100.  10.5   2.11\n 7          7         25 102.  10.8   2.17\n 8          8         25  99.1 11.0   2.20\n 9          9         25 103.   9.70  1.94\n10         10         25  97.9 10.6   2.13\n# ℹ 90 more rows\n\n\n\n\nWhat does the sampling distribution plot? And is this value stored in more_experiments_table or summary_table?\n\n\nMake a histogram of the sampling distribution, using the table you identified above as the data table in ggplot().\nCode\n\n\n\n\n\n\n\n\n\n\n\nCalculate the confidence interval for each group using summary_table and assigning the results to CIs (exactly the same as what we did last week). Then print CIs.\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap\n\n\n# A tibble: 100 × 7\n   experiment SampleSize  Mean    SD    SE LowerCI UpperCI\n        &lt;int&gt;      &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n 1          1         25  97.8 11.5   2.30    93.3   102. \n 2          2         25  98.3 10.5   2.10    94.1   102. \n 3          3         25 101.   7.73  1.55    97.9   104. \n 4          4         25 102.   9.83  1.97    98.2   106. \n 5          5         25  94.2  9.87  1.97    90.4    98.1\n 6          6         25 100.  10.5   2.11    96.3   105. \n 7          7         25 102.  10.8   2.17    97.6   106. \n 8          8         25  99.1 11.0   2.20    94.8   103. \n 9          9         25 103.   9.70  1.94    99.5   107. \n10         10         25  97.9 10.6   2.13    93.8   102. \n# ℹ 90 more rows\n\n\n\n\nNow create a mean/CI plot for each experiment (exactly the same as what we did last week). Then assign the plot to the variable CIplot and show the plot by printing it.\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap\n\n\n\n\n\n\n\n\n\n\n\nUncomment the code below and run it. You don’t have the understand the code, but I basically just added some colors to your original CI plot so things are easier to see.\n\n\n\n\n\n\n\n\n\n\n\nHow many experiments have CIs that do NOT overlap with the population mean? What percent of the exerpiments is that?\n\n\nThe SEs you have calculated in summary_table is just an estimated SE. The true SE is actually the sd of the sampling distribution of the means. Use mutate() to add a new variable to the summary_table called TrueSE, and calculate it by taking the sd of the means.\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap\n\n\n# A tibble: 100 × 6\n   experiment SampleSize  Mean    SD    SE TrueSE\n        &lt;int&gt;      &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n 1          1         25  98.9 10.0   2.00   2.01\n 2          2         25  99.4 10.8   2.17   2.01\n 3          3         25 102.   8.89  1.78   2.01\n 4          4         25 103.   7.74  1.55   2.01\n 5          5         25  97.8 11.5   2.30   2.01\n 6          6         25  98.3 10.5   2.10   2.01\n 7          7         25 101.   7.73  1.55   2.01\n 8          8         25 102.   9.83  1.97   2.01\n 9          9         25  94.2  9.87  1.97   2.01\n10         10         25 100.  10.5   2.11   2.01\n# ℹ 90 more rows\n\n\n\n\nFill in the blanks below by replacing the bolded text (but keep your answers bolded).\nCode · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap\n\n\nWrite interpretations for the mean/CI plot from last week’s lab."
   },
   {
     "objectID": "presentations/week4.html#section-17",
@@ -1216,5 +1216,264 @@
     "title": "PSYCH 420m Lab",
     "section": "Inferential statistics",
     "text": "Inferential statistics\n\nWhat to includeCalculate CICI plotp-values (Case Studies 2 & 3)Interpretations\n\n\n\nCalculate confidence intervals (CIs)\nCI plot\np-values (Case Studies 2 and 3)\nInterpretations\n\n\n\n\nMean \\(\\pm\\) 1.96*SE for 95% CI\nIn R, calculate using summary table\n\nCIs &lt;- summary_table %&gt;% mutate(LowerCI = Mean - 1.96*SE, UpperCI = Mean + 1.96*SE)\n\n\nggplot(CIs, aes(x=grouping_variable, y=Mean)) + geom_errorbar(aes(ymin = LowerCI, ymax=UpperCI))\n\n\n\n\n\n\n\n\n\n\nMake sure to replace grouping_variable with the actual correct variable.\nIf we are looking at difference in washes between the sexes, what variable should go in place of the grouping_variable? Hint: print out your CI table at find the column name that makes the most sense.\n\nAnswer: sex\n\n\n\n\nSee Week 6 Slides · ↗ · ⤓ and Week 7 Slides · ↗ · ⤓\n\n\n\nWhat are the three things to remember about CI interpretations?\n\nSee Week 4 Slides · ↗ · ⤓\n\nCase studies 2 and 3: What are the three things to remember about p-value interpretaions?\n\nSee Week 6 Slides · ↗ · ⤓ and Week 7 Slides · ↗ · ⤓"
+  },
+  {
+    "objectID": "presentations/week5.html#outline",
+    "href": "presentations/week5.html#outline",
+    "title": "5: Sampling distributions",
+    "section": "Outline",
+    "text": "Outline\n\n\nAnnouncement: read your feedback on lab4!\nGo over case study rubric\nIntroduce the sampling distribution\nGo over the ties between a sampling distribution and the CLT\nSimulate the sampling distribution"
+  },
+  {
+    "objectID": "presentations/week5.html#section",
+    "href": "presentations/week5.html#section",
+    "title": "5: Sampling distributions",
+    "section": "",
+    "text": "The first sentence is a technically a true statement, but the CLT is not only about the sampling distribution, and this does not answer the question.\nThe second option is correct. With many causes, numbers tend to “average out”, so most values become centered around a mean (CLT)\n\n\nIn lab3, there was some confusion surrounding sampling distributions.\nWhy do normal distributions pop up so much in psychology?\n\nCLT states that with larger sample sizes, the sampling distribution becomes more normal\n\nTrue, but the CLT is not only about the sampling distribution, and this does not answer the question.\n\nThe brain and behavior are complex, and have many underlying causes\n\nWith many causes, numbers tend to “average out”, so most values become centered around a mean (CLT)"
+  },
+  {
+    "objectID": "presentations/week5.html#new-function",
+    "href": "presentations/week5.html#new-function",
+    "title": "5: Sampling distributions",
+    "section": "New function!",
+    "text": "New function!\n\n\nPreviously,\nwe simulated heights from many causes,\nwhich resulted in a normal distribution.\nNow,\nWe can simulate a normal distribution directly\nwithout simulating all causes\nusing the rnorm function\n\n\n\n\nPreviously\n\nSimulated heights with many causes\nResult: normal distribution\n\nNow\n\nSimulate normal distribution directly\nrnorm()"
+  },
+  {
+    "objectID": "presentations/week5.html#rnorm",
+    "href": "presentations/week5.html#rnorm",
+    "title": "5: Sampling distributions",
+    "section": "rnorm()",
+    "text": "rnorm()\nrnorm(mean=..., sd=..., n=...)\n\n\n“r” stands for random\n“norm” stands for normal distribution\nThis function randomly samples from a normal distribution."
+  },
+  {
+    "objectID": "presentations/week5.html#simulating-a-sampling-distribution",
+    "href": "presentations/week5.html#simulating-a-sampling-distribution",
+    "title": "5: Sampling distributions",
+    "section": "Simulating a sampling distribution",
+    "text": "Simulating a sampling distribution\nDoes this look familiar?\n\nsim_means &lt;- c()\n\nfor (experiment in 1:100){\n    avg_height &lt;- 64\n    person1 &lt;- rnorm(mean=avg_height, sd=5, n=1)\n    person2 &lt;- rnorm(mean=avg_height, sd=5, n=1)\n    person3 &lt;- rnorm(mean=avg_height, sd=5, n=1)\n    mean_height &lt;- mean(person1,person2,person3)\n    sim_means[experiment] &lt;- mean_height\n}\n\nsim_means"
+  },
+  {
+    "objectID": "presentations/week5.html#slido",
+    "href": "presentations/week5.html#slido",
+    "title": "5: Sampling distributions",
+    "section": "Slido",
+    "text": "Slido\nCompare this to our simulated heights example from lab3.\n\n\nIn lab3, we simulated causes, like genetics, nutrition, etc. Which variables above are analogous?\n\nperson1, person2, person3\n\nSample size in this lab is equivalent to lab3’s __.\n\nnumber of causes\n\nIn lab3, we took the sum, which led to having a more normal distribution. What do we do here instead?\n\nthe mean"
+  },
+  {
+    "objectID": "presentations/week5.html#central-limit-theorem-again",
+    "href": "presentations/week5.html#central-limit-theorem-again",
+    "title": "5: Sampling distributions",
+    "section": "Central limit theorem again",
+    "text": "Central limit theorem again\n\n\nOnly changed 2 things:\n\nSimulating multiple experiments, instead of each person in an experiment.\nTaking the mean instead of the sum.\n\nSame effect: numbers average out, so most of the values are centered around the mean with a bell shape (CLT)."
+  },
+  {
+    "objectID": "presentations/week5.html#what-this-means",
+    "href": "presentations/week5.html#what-this-means",
+    "title": "5: Sampling distributions",
+    "section": "What this means",
+    "text": "What this means\n\n\nInstead of a distribution of individual heights, we get a distribution of mean heights (from separate experiments)\nLast time, more “causes” made the distribution more normal. This time, larger sample size makes the distribution more normal\nLast time, we simulated how a sample distribution becomes more normally distributed. This time, we simulate how a sampling (note the “ing”) distribution becomes more normally distributed.\n\n\n\n\nsim_means &lt;- c()\n\nfor (experiment in 1:100){\n    avg_height = 64\n    sample_size &lt;- 20 # sample size per experiment\n    all_heights &lt;- rnorm(n=sample size, mean=64, sd=5) # simulates 20 people's height\n    mean_height &lt;- mean(all_heights)\n    sim_means[experiment] &lt;- mean_heights\n}"
+  },
+  {
+    "objectID": "presentations/week5.html#deliverables",
+    "href": "presentations/week5.html#deliverables",
+    "title": "5: Sampling distributions",
+    "section": "Deliverables",
+    "text": "Deliverables\n\nWe will simulate 100 experiments and take the mean height in each experiment. Each experiment will have a sample size of 20. We will calculate some descriptive statistics.\n\nUse rnorm(mean=...,sd=...,n=...) to simulate heights\n\nInstead of simulating each person indivudally with person1 &lt;- rnorm(...), you can set the n variable to the desired sample size with all_people &lt;- rnorm(n=20, ...)\nSet the mean height to be 69, and the sd to be 5\nTake the mean of everyone’s height\n\nUse a for loop to repeat the above\n\nRemember to create an empty vector sim_means to store the mean heights\n\nConvert the list of means into a dataframe using tibble(column_name=sim_means)\nPlot a histogram of the simulated means (sampling distribution, note the “ing”).\nCreate a summary table of the simulated means, with SampleSize, Mean, SE\n\nHint: the definition of SE is the SD of the sampling distribution, the the calculation will be different from previous labs\n\nNext, just plot a histogram of a sample distribution (only one experiment)\n\none_experiment &lt;- tibble(heights = rnorm(...))\n\nAnswer these questions:\n\nHow does the shape/spread of the sampling distribution differ from the sample distribution?\nIntuitively, why do you think the shape/spread differs?\n\nSubmit your html file on Canvas\n\n\n\nNext, time, maybe a 2 single experiment plots, one with n = 20, the other with n = 100, so people don’t think it has something to do with more data. Keep n = 20 so people don’t think it’s because the sampling distribution has a larger sample size?\nAlso, maybe use a higher sample size in general for the deliverables, since the single experiment doesn’t have a normal distribution."
+  },
+  {
+    "objectID": "presentations/test.html#outline",
+    "href": "presentations/test.html#outline",
+    "title": "Container Theme",
+    "section": "Outline",
+    "text": "Outline"
+  },
+  {
+    "objectID": "presentations/test.html#slide-1",
+    "href": "presentations/test.html#slide-1",
+    "title": "Container Theme",
+    "section": "Slide 1",
+    "text": "Slide 1\n\nOne\n\nTwo\n\nThree\nFour\n\nFive"
+  },
+  {
+    "objectID": "presentations/test.html#slide-2",
+    "href": "presentations/test.html#slide-2",
+    "title": "Container Theme",
+    "section": "Slide 2",
+    "text": "Slide 2\n\nOne\n\nTwo\nThree\nFour\n\nFive"
+  },
+  {
+    "objectID": "presentations/test.html#panel-tabset",
+    "href": "presentations/test.html#panel-tabset",
+    "title": "Container Theme",
+    "section": "Panel tabset",
+    "text": "Panel tabset\n\nCode PuzzlePlot\n\n\n\nCode — drag to reorder · drop tokens onto blanksWord BankDrag onto a blank · click a filled blank to clear · drag blanks to swap"
+  },
+  {
+    "objectID": "presentations/test.html#centered-slide",
+    "href": "presentations/test.html#centered-slide",
+    "title": "Container Theme",
+    "section": "Centered slide",
+    "text": "Centered slide\n\n\nSome centered cards!\n\nInner cards!\n\nNext line!"
+  },
+  {
+    "objectID": "presentations/test.html#columns",
+    "href": "presentations/test.html#columns",
+    "title": "Container Theme",
+    "section": "Columns",
+    "text": "Columns\n\n\n\n\nItem 1\n\nItem 2\n\nItem 3\n\nItem 4\n\n\n\n\n\n\nItem 1\n\nItem 2\n\n\n\n\n\n\nItem 1\n\nItem 2\n\nItem 3"
+  },
+  {
+    "objectID": "presentations/demo.html#slido",
+    "href": "presentations/demo.html#slido",
+    "title": "3: Simulations and the Central Limit Theorem",
+    "section": "Slido",
+    "text": "Slido"
+  },
+  {
+    "objectID": "presentations/demo.html#outline",
+    "href": "presentations/demo.html#outline",
+    "title": "3: Simulations and the Central Limit Theorem",
+    "section": "Outline",
+    "text": "Outline\n\nWhat are simulations?\nPurpose of simulations\nHow to create a simulation\nDemonstrate the Central Limit Theorem"
+  },
+  {
+    "objectID": "presentations/demo.html#what-is-a-simulation",
+    "href": "presentations/demo.html#what-is-a-simulation",
+    "title": "3: Simulations and the Central Limit Theorem",
+    "section": "What is a simulation?",
+    "text": "What is a simulation?"
+  },
+  {
+    "objectID": "presentations/demo.html#what-is-a-simulation-1",
+    "href": "presentations/demo.html#what-is-a-simulation-1",
+    "title": "3: Simulations and the Central Limit Theorem",
+    "section": "What is a simulation?",
+    "text": "What is a simulation?\n\n\n\n\nWe create our own imaginary world\n\n\n\n\n\n\n\n\n\nWe get to create our own rules\nThen we can observe what happens\nWhat happens is only caused by 1. Our own rules and 2. The laws of probability."
+  },
+  {
+    "objectID": "presentations/demo.html#purpose-of-simulations",
+    "href": "presentations/demo.html#purpose-of-simulations",
+    "title": "3: Simulations and the Central Limit Theorem",
+    "section": "Purpose of simulations",
+    "text": "Purpose of simulations\nStatistics asks:\n\nBased on what we observe in our imaginary world, what are the laws of probability?\nIf you observe my world without knowing my rules, can you use probability to guess my rules?"
+  },
+  {
+    "objectID": "presentations/demo.html#lets-build-our-own-simulation",
+    "href": "presentations/demo.html#lets-build-our-own-simulation",
+    "title": "3: Simulations and the Central Limit Theorem",
+    "section": "Let’s build our own simulation!",
+    "text": "Let’s build our own simulation!"
+  },
+  {
+    "objectID": "presentations/demo.html#section",
+    "href": "presentations/demo.html#section",
+    "title": "3: Simulations and the Central Limit Theorem",
+    "section": "",
+    "text": "We will be using a simulation of how heights in a population become normally distributed\nThis will demonstrate a key law in statistics: the Central Limit Theorem (CLT)"
+  },
+  {
+    "objectID": "presentations/demo.html#first-a-puzzle",
+    "href": "presentations/demo.html#first-a-puzzle",
+    "title": "3: Simulations and the Central Limit Theorem",
+    "section": "First, a puzzle",
+    "text": "First, a puzzle\n\nPuzzle: why are there are so many normally distributed data in the world?"
+  },
+  {
+    "objectID": "presentations/demo.html#section-1",
+    "href": "presentations/demo.html#section-1",
+    "title": "3: Simulations and the Central Limit Theorem",
+    "section": "",
+    "text": "Even in vastly different domains, the normal distribution shows up a lot.\nIs there a shared process that can explain them all?\nAnswer: The Central Limit Theorem (CLT)"
+  },
+  {
+    "objectID": "presentations/demo.html#central-limit-theorem-clt-basic-idea",
+    "href": "presentations/demo.html#central-limit-theorem-clt-basic-idea",
+    "title": "3: Simulations and the Central Limit Theorem",
+    "section": "Central Limit Theorem (CLT): Basic idea",
+    "text": "Central Limit Theorem (CLT): Basic idea\n\nExplains how data can become normally distributed.\n\n\n✑"
+  },
+  {
+    "objectID": "presentations/demo.html#first-lets-think-mechanistically",
+    "href": "presentations/demo.html#first-lets-think-mechanistically",
+    "title": "3: Simulations and the Central Limit Theorem",
+    "section": "First, let’s think mechanistically",
+    "text": "First, let’s think mechanistically\n\nWhat are some factors that cause differences in height?\n\nTry to think of direct causes, not just correlation.\n\n\n\n✑"
+  },
+  {
+    "objectID": "presentations/demo.html#impact-of-these-factors",
+    "href": "presentations/demo.html#impact-of-these-factors",
+    "title": "3: Simulations and the Central Limit Theorem",
+    "section": "Impact of these factors",
+    "text": "Impact of these factors\n\nHow much do these factors impact height? \\(\\pm\\) how many inches?\n\nDoesn’t have to be accurate!\n\n\n\n✑"
+  },
+  {
+    "objectID": "presentations/demo.html#building-the-simulation-structure",
+    "href": "presentations/demo.html#building-the-simulation-structure",
+    "title": "3: Simulations and the Central Limit Theorem",
+    "section": "Building the simulation structure",
+    "text": "Building the simulation structure\nI propose, that in my imaginary world, this is the “truth” of how height is constructed:\n\nThere’s an average height\nThen, for each person, we sample some values for all the factors\nThe final height for a person is the sum of the average height and their sampled factor values.\n\n\nA person’s final height = Avg. Height + Genetics + Nutrition + Exercise"
+  },
+  {
+    "objectID": "presentations/demo.html#live-demonstration-of-the-simulation",
+    "href": "presentations/demo.html#live-demonstration-of-the-simulation",
+    "title": "3: Simulations and the Central Limit Theorem",
+    "section": "Live demonstration of the simulation",
+    "text": "Live demonstration of the simulation"
+  },
+  {
+    "objectID": "presentations/demo.html#your-turn",
+    "href": "presentations/demo.html#your-turn",
+    "title": "3: Simulations and the Central Limit Theorem",
+    "section": "Your turn!",
+    "text": "Your turn!\n\n\nFill in the ? and put the items in the correct order. The first item is given.\n\n\n\n\n\n  \n    \n      Steps — drag to reorder, drop words onto blanks\n      \n        1.\n        simulated_heights = empty_list\n        (given)\n      \n      \n    \n    \n      Word Bank\n      \n      Drag onto a blank, or click a filled blank to remove it."
+  },
+  {
+    "objectID": "presentations/demo.html#slido-1",
+    "href": "presentations/demo.html#slido-1",
+    "title": "3: Simulations and the Central Limit Theorem",
+    "section": "Slido",
+    "text": "Slido"
+  },
+  {
+    "objectID": "presentations/demo.html#what-happens-when-we-add-more-factors",
+    "href": "presentations/demo.html#what-happens-when-we-add-more-factors",
+    "title": "3: Simulations and the Central Limit Theorem",
+    "section": "What happens when we add more factors?",
+    "text": "What happens when we add more factors?"
+  },
+  {
+    "objectID": "presentations/demo.html#importance-of-central-limit-theorem-clt",
+    "href": "presentations/demo.html#importance-of-central-limit-theorem-clt",
+    "title": "3: Simulations and the Central Limit Theorem",
+    "section": "Importance of Central Limit Theorem (CLT)",
+    "text": "Importance of Central Limit Theorem (CLT)\n\nWe will use the CLT in future classes to derive the Confidence Interval and p-values, which allows us to infer something about the real, “unknown rules” (more formally, the “population”)."
+  },
+  {
+    "objectID": "presentations/demo.html#key-takeaways",
+    "href": "presentations/demo.html#key-takeaways",
+    "title": "3: Simulations and the Central Limit Theorem",
+    "section": "Key takeaways",
+    "text": "Key takeaways\n\n\n\nSimulations are imaginary worlds where we create our own rules\nWe can use simulations to demonstrate laws in statistics; these laws used to infer the invisible rules\nCentral Limit Theorem: Many independent causes → normal distribution"
+  },
+  {
+    "objectID": "presentations/casestudy1.html#section-1",
+    "href": "presentations/casestudy1.html#section-1",
+    "title": "PSYCH 420m Lab",
+    "section": "",
+    "text": "Move desks forward\nMake groups on Canvas\nDownload and work on Case Study 1"
+  },
+  {
+    "objectID": "presentations/casestudy1.html#section-2",
+    "href": "presentations/casestudy1.html#section-2",
+    "title": "PSYCH 420m Lab",
+    "section": "",
+    "text": "You can use previous labs from this class and slides from the lab website\nI will be available to help with bugs"
+  },
+  {
+    "objectID": "presentations/manimtest.html#second-page",
+    "href": "presentations/manimtest.html#second-page",
+    "title": "PSYCH 420m Lab",
+    "section": "Second page",
+    "text": "Second page"
   }
 ]

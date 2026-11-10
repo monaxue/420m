@@ -35,7 +35,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-ffa0d8292bb919c7c9d7bd99cbd128e6.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-d3e801d455d5e01803a1237582fed831.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -199,7 +199,7 @@
 <h2></h2>
 <p>You sample a difference of 0.1 (black line). Which sampling distribution did this come from?</p>
 
-<img data-src="week10_files/figure-html/unnamed-chunk-1-1.png" width="576" class="r-stretch"></section>
+<img data-src="week10_files/figure-revealjs/unnamed-chunk-1-1.png" width="576" class="r-stretch"></section>
 <section id="section-1" class="slide level2 center" data-background-color="rgba(254, 248, 237, 1)">
 <h2></h2>
 <ul>
@@ -208,7 +208,7 @@
 <li>Type II error: you sample something that suggests NO difference, but there is</li>
 </ul>
 
-<img data-src="week10_files/figure-html/unnamed-chunk-2-1.png" width="576" class="r-stretch"></section>
+<img data-src="week10_files/figure-revealjs/unnamed-chunk-2-1.png" width="576" class="r-stretch"></section>
 <section id="section-2" class="slide level2 center" data-background-color="rgba(254, 248, 237, 1)">
 <h2></h2>
 <div class="columns">
@@ -222,7 +222,7 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week10_files/figure-html/unnamed-chunk-3-1.png" width="576"></p>
+<p><img data-src="week10_files/figure-revealjs/unnamed-chunk-3-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -238,7 +238,7 @@
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week10_files/figure-html/unnamed-chunk-4-1.png" width="576"></p>
+<p><img data-src="week10_files/figure-revealjs/unnamed-chunk-4-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -328,15 +328,15 @@
 <section id="section-4" class="slide level2 center" data-transition="none" data-name="Areas under the curve" data-background-color="rgba(254, 248, 237, 1)">
 <h2></h2>
 
-<img data-src="week10_files/figure-html/unnamed-chunk-6-1.png" width="672" class="r-stretch"></section>
+<img data-src="week10_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
 <section id="section-5" class="slide level2 center" data-transition="none" data-background-color="rgba(254, 248, 237, 1)">
 <h2></h2>
 
-<img data-src="week10_files/figure-html/unnamed-chunk-7-1.png" width="672" class="r-stretch"></section>
+<img data-src="week10_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
 <section id="section-6" class="slide level2 center" data-transition="none" data-background-color="rgba(254, 248, 237, 1)">
 <h2></h2>
 
-<img data-src="week10_files/figure-html/unnamed-chunk-8-1.png" width="672" class="r-stretch"></section>
+<img data-src="week10_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
 <section id="section-7" class="slide level2 center" data-background-color="rgba(254, 248, 237, 1)">
 <h2></h2>
 
@@ -569,6 +569,82 @@
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

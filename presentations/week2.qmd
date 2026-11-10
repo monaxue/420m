@@ -205,14 +205,16 @@ https://wall.sli.do/event/jSr27kKv5FzL29qzbYK57A?section=1a784310-5fec-4e79-9035
 
 ##
 
-::::: columns
-:::: column
+::::: {.columns}
+:::: {.column .nonincremental}
 
 #### Layer 1: basic info
+
 ::: nonincremental
 1. Specify the data table
 2. Specify the x and y variables in `aes()`
 :::
+
 ```r
 ggplot(table_name, aes(x=column1, y=column2))
 ```
@@ -226,13 +228,14 @@ ggplot(table_name, aes(x=column1, y=column2))
 ```
 ::::
 
-:::: column
+:::: {.column}
 #### Layer 2: actual plot
 
 ::: nonincremental
 - geom_histogram() adds histogram layer
 - geom_point() adds scatter plot layer
 :::
+
 ```r
 # Histogram
 ggplot(...) + geom_histogram()
@@ -252,6 +255,7 @@ ggplot(...) + geom_point()
 ggplot(table_name, aes(x=column1, y=column2)) + geom_point()
 ```
 ::::
+
 :::::
 
 ## ❓ Which produces a valid histogram?
@@ -265,6 +269,7 @@ https://wall.sli.do/event/jSr27kKv5FzL29qzbYK57A?section=1a784310-5fec-4e79-9035
 
 -->
 ::: nonincremental
+
 - ggplot(table_name, x=column1, y=count1) + geom_histogram()
 - ggplot(aes(x=column1)) + geom_histogram()
 - **ggplot(table_name, aes(x=column1)) + geom_histogram() (correct)**

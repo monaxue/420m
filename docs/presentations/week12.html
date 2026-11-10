@@ -697,11 +697,11 @@ $\text{errors}_\text{model} = y_\text{data points} - y_\text{model}$
 .cpz-result.fail{color:#c62828}
 .cpz-tip{font-size:11px;color:#aaa;margin-top:6px}
 </style>
-<div class="cpz" id="cp4739621"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp4739621-linenums"></div><div class="cpz-code" id="cp4739621-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp4739621-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp4739621-actions"></div></div><script>
+<div class="cpz" id="cp7156101"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp7156101-linenums"></div><div class="cpz-code" id="cp7156101-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp7156101-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp7156101-actions"></div></div><script>
 (function(){
 try{
-var ID="cp4739621";
-var BLOCKS=[{"lines":[{"indent":0,"parts":[{"type":"text","value":"ggplot("},{"type":"wb","answers":["shape"]},{"type":"text","value":", aes(x="},{"type":"free","answers":["hours"]},{"type":"text","value":", y="},{"type":"free","answers":["reported_shape"]},{"type":"text","value":")) + geom_"},{"type":"wb","answers":["point"]},{"type":"text","value":"()"}]}],"kind":"fixed","indentDepth":0}];
+var ID="cp7156101";
+var BLOCKS=[{"lines":[{"parts":[{"value":"ggplot(","type":"text"},{"answers":["shape"],"type":"wb"},{"value":", aes(x=","type":"text"},{"answers":["hours"],"type":"free"},{"value":", y=","type":"text"},{"answers":["reported_shape"],"type":"free"},{"value":")) + geom_","type":"text"},{"answers":["point"],"type":"wb"},{"value":"()","type":"text"}],"indent":0}],"indentDepth":0,"kind":"fixed"}];
 var WB=["shape","point"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -1360,11 +1360,11 @@ init();
 </div>
 </div>
 <p>For the fitted line layer (without the scatter)</p>
-<div class="cpz" id="cp4623082"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp4623082-linenums"></div><div class="cpz-code" id="cp4623082-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp4623082-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp4623082-actions"></div></div><script>
+<div class="cpz" id="cp1644302"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp1644302-linenums"></div><div class="cpz-code" id="cp1644302-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp1644302-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp1644302-actions"></div></div><script>
 (function(){
 try{
-var ID="cp4623082";
-var BLOCKS=[{"lines":[{"indent":0,"parts":[{"type":"text","value":"… + geom_"},{"type":"wb","answers":["smooth"]},{"type":"text","value":"("},{"type":"wb","answers":["method"]},{"type":"text","value":"=\""},{"type":"wb","answers":["lm"]},{"type":"text","value":"\")"}]}],"kind":"fixed","indentDepth":0}];
+var ID="cp1644302";
+var BLOCKS=[{"lines":[{"parts":[{"value":"… + geom_","type":"text"},{"answers":["smooth"],"type":"wb"},{"value":"(","type":"text"},{"answers":["method"],"type":"wb"},{"value":"=\"","type":"text"},{"answers":["lm"],"type":"wb"},{"value":"\")","type":"text"}],"indent":0}],"indentDepth":0,"kind":"fixed"}];
 var WB=["smooth","method","lm"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -2040,11 +2040,11 @@ init();
 </div>
 </div>
 <p>The <code>lm()</code> function in R automatically calculates the residuals for you and stores it in its output.</p>
-<div class="cpz" id="cp5939023"><div class="cpz-layout nowb"><div><div class="cpz-col-label">Code</div><div style="display:flex"><div class="cpz-linenums" id="cp5939023-linenums"></div><div class="cpz-code" id="cp5939023-code"></div></div></div></div><div class="cpz-actions" id="cp5939023-actions"></div></div><script>
+<div class="cpz" id="cp1488163"><div class="cpz-layout nowb"><div><div class="cpz-col-label">Code</div><div style="display:flex"><div class="cpz-linenums" id="cp1488163-linenums"></div><div class="cpz-code" id="cp1488163-code"></div></div></div></div><div class="cpz-actions" id="cp1488163-actions"></div></div><script>
 (function(){
 try{
-var ID="cp5939023";
-var BLOCKS=[{"lines":[{"indent":0,"parts":[{"type":"text","value":"lm_shape <- lm("},{"type":"free","answers":["reported_shape"]},{"type":"text","value":" ~ "},{"type":"free","answers":["hours"]},{"type":"text","value":", data = "},{"type":"free","answers":["shape"]},{"type":"text","value":")"}]}],"kind":"fixed","indentDepth":0},{"lines":[{"indent":0,"parts":[{"type":"text","value":"shape_resids <- "},{"type":"free","answers":["lm_shape"]},{"type":"text","value":"$residuals"}]}],"kind":"fixed","indentDepth":0}];
+var ID="cp1488163";
+var BLOCKS=[{"lines":[{"parts":[{"value":"lm_shape <- lm(","type":"text"},{"answers":["reported_shape"],"type":"free"},{"value":" ~ ","type":"text"},{"answers":["hours"],"type":"free"},{"value":", data = ","type":"text"},{"answers":["shape"],"type":"free"},{"value":")","type":"text"}],"indent":0}],"indentDepth":0,"kind":"fixed"},{"lines":[{"parts":[{"value":"shape_resids <- ","type":"text"},{"answers":["lm_shape"],"type":"free"},{"value":"$residuals","type":"text"}],"indent":0}],"indentDepth":0,"kind":"fixed"}];
 var WB=[];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -2734,11 +2734,11 @@ init();
 </div>
 </div>
 <p>This is how you fit a polynomial function of degree 1 using <code>lm()</code> (equivalent to last week’s method)</p>
-<div class="cpz" id="cp4275064"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp4275064-linenums"></div><div class="cpz-code" id="cp4275064-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp4275064-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp4275064-actions"></div></div><script>
+<div class="cpz" id="cp4682674"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp4682674-linenums"></div><div class="cpz-code" id="cp4682674-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp4682674-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp4682674-actions"></div></div><script>
 (function(){
 try{
-var ID="cp4275064";
-var BLOCKS=[{"lines":[{"indent":0,"parts":[{"type":"text","value":"lm("},{"type":"wb","answers":["shape"]},{"type":"text","value":"$"},{"type":"wb","answers":["reported_shape"]},{"type":"text","value":" ~ poly(shape$"},{"type":"wb","answers":["hours"]},{"type":"text","value":", 1))"}]}],"kind":"fixed","indentDepth":0}];
+var ID="cp4682674";
+var BLOCKS=[{"lines":[{"parts":[{"value":"lm(","type":"text"},{"answers":["shape"],"type":"wb"},{"value":"$","type":"text"},{"answers":["reported_shape"],"type":"wb"},{"value":" ~ poly(shape$","type":"text"},{"answers":["hours"],"type":"wb"},{"value":", 1))","type":"text"}],"indent":0}],"indentDepth":0,"kind":"fixed"}];
 var WB=["shape","reported_shape","hours"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -3388,11 +3388,11 @@ init();
 })();
 </script>
 <p>Based on the previous example, how would you fit a polynomial function of degree 2?</p>
-<div class="cpz" id="cp5594865"><div class="cpz-layout nowb"><div><div class="cpz-col-label">Code</div><div style="display:flex"><div class="cpz-linenums" id="cp5594865-linenums"></div><div class="cpz-code" id="cp5594865-code"></div></div></div></div><div class="cpz-actions" id="cp5594865-actions"></div></div><script>
+<div class="cpz" id="cp3095275"><div class="cpz-layout nowb"><div><div class="cpz-col-label">Code</div><div style="display:flex"><div class="cpz-linenums" id="cp3095275-linenums"></div><div class="cpz-code" id="cp3095275-code"></div></div></div></div><div class="cpz-actions" id="cp3095275-actions"></div></div><script>
 (function(){
 try{
-var ID="cp5594865";
-var BLOCKS=[{"lines":[{"indent":0,"parts":[{"type":"text","value":"lm("},{"type":"free","answers":["shape"]},{"type":"text","value":"$"},{"type":"free","answers":["reported_shape"]},{"type":"text","value":" ~ poly("},{"type":"free","answers":["shape"]},{"type":"text","value":"$"},{"type":"free","answers":["hours"]},{"type":"text","value":", "},{"type":"free","answers":["2"]},{"type":"text","value":"))"}]}],"kind":"fixed","indentDepth":0}];
+var ID="cp3095275";
+var BLOCKS=[{"lines":[{"parts":[{"value":"lm(","type":"text"},{"answers":["shape"],"type":"free"},{"value":"$","type":"text"},{"answers":["reported_shape"],"type":"free"},{"value":" ~ poly(","type":"text"},{"answers":["shape"],"type":"free"},{"value":"$","type":"text"},{"answers":["hours"],"type":"free"},{"value":", ","type":"text"},{"answers":["2"],"type":"free"},{"value":"))","type":"text"}],"indent":0}],"indentDepth":0,"kind":"fixed"}];
 var WB=[];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -4059,11 +4059,11 @@ init();
 </div>
 </div>
 <p>Add a column called “residuals” to the existing data table and fill that column with the residuals you got from <code>lm()</code>.</p>
-<div class="cpz" id="cp9795866"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp9795866-linenums"></div><div class="cpz-code" id="cp9795866-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp9795866-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp9795866-actions"></div></div><script>
+<div class="cpz" id="cp1068446"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp1068446-linenums"></div><div class="cpz-code" id="cp1068446-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp1068446-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp1068446-actions"></div></div><script>
 (function(){
 try{
-var ID="cp9795866";
-var BLOCKS=[{"lines":[{"indent":0,"parts":[{"type":"free","answers":["shape"]},{"type":"text","value":" <- "},{"type":"wb","answers":["shape"]},{"type":"text","value":" %>% "},{"type":"free","answers":["mutate"]},{"type":"text","value":"("},{"type":"free","answers":["residuals"]},{"type":"text","value":" = "},{"type":"wb","answers":["shape_resids"]},{"type":"text","value":")"}]}],"kind":"fixed","indentDepth":0}];
+var ID="cp1068446";
+var BLOCKS=[{"lines":[{"parts":[{"answers":["shape"],"type":"free"},{"value":" <- ","type":"text"},{"answers":["shape"],"type":"wb"},{"value":" %>% ","type":"text"},{"answers":["mutate"],"type":"free"},{"value":"(","type":"text"},{"answers":["residuals"],"type":"free"},{"value":" = ","type":"text"},{"answers":["shape_resids"],"type":"wb"},{"value":")","type":"text"}],"indent":0}],"indentDepth":0,"kind":"fixed"}];
 var WB=["shape","shape_resids"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;

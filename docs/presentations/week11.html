@@ -198,7 +198,7 @@ y = mx + b
 \]</span></p>
 <p><span class="math display">\[
 \text{Depression} = \beta \times \text{Addiction} + \text{Intercept}
-\]</span> <img data-src="assets/linear-regression.png"></p>
+\]</span> <img data-src="assets/linear-regression.png" height="400"></p>
 </section>
 <section id="ci-for-regression-plot" class="slide level2 center" data-background-color="rgba(254, 248, 237, 1)">
 <h2>CI for regression plot</h2>
@@ -323,11 +323,11 @@ CIs are the calculations that allow 95% of experiments to produce intervals that
 .cpz-result.fail{color:#c62828}
 .cpz-tip{font-size:11px;color:#aaa;margin-top:6px}
 </style>
-<div class="cpz" id="cp7242401"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp7242401-linenums"></div><div class="cpz-code" id="cp7242401-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp7242401-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp7242401-actions"></div></div><script>
+<div class="cpz" id="cp8087781"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp8087781-linenums"></div><div class="cpz-code" id="cp8087781-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp8087781-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp8087781-actions"></div></div><script>
 (function(){
 try{
-var ID="cp7242401";
-var BLOCKS=[{"lines":[{"indent":0,"parts":[{"type":"text","value":"ggplot("},{"type":"free","answers":["raw_data"]},{"type":"text","value":", aes(x="},{"type":"wb","answers":["time"]},{"type":"text","value":", y="},{"type":"wb","answers":["score"]},{"type":"text","value":")) + "},{"type":"wb","answers":["geom_point()"]},{"type":"text","value":" + "},{"type":"wb","answers":["geom_smooth(method=\"lm\")"]}]}],"kind":"fixed","indentDepth":0}];
+var ID="cp8087781";
+var BLOCKS=[{"kind":"fixed","lines":[{"indent":0,"parts":[{"value":"ggplot(","type":"text"},{"answers":["raw_data"],"type":"free"},{"value":", aes(x=","type":"text"},{"answers":["time"],"type":"wb"},{"value":", y=","type":"text"},{"answers":["score"],"type":"wb"},{"value":")) + ","type":"text"},{"answers":["geom_point()"],"type":"wb"},{"value":" + ","type":"text"},{"answers":["geom_smooth(method=\"lm\")"],"type":"wb"}]}],"indentDepth":0}];
 var WB=["time","score","geom_point()","geom_smooth(method=\"lm\")"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -984,11 +984,11 @@ init();
 <li>Then use <code>%&gt;%</code> to apply the function <code>summary()</code>. Doing so will output more information about the model you fitted.</li>
 </ul>
 <p>The dependent variable is <code>score</code>, the independent variable is <code>time</code>, and the dataset name is “raw_data”. How would you fit a linear model?</p>
-<div class="cpz" id="cp3828762"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp3828762-linenums"></div><div class="cpz-code" id="cp3828762-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp3828762-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp3828762-actions"></div></div><script>
+<div class="cpz" id="cp7790672"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp7790672-linenums"></div><div class="cpz-code" id="cp7790672-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp7790672-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp7790672-actions"></div></div><script>
 (function(){
 try{
-var ID="cp3828762";
-var BLOCKS=[{"lines":[{"indent":0,"parts":[{"type":"text","value":"lm("},{"type":"wb","answers":["score"]},{"type":"text","value":" ~ "},{"type":"wb","answers":["time"]},{"type":"text","value":", data = "},{"type":"wb","answers":["raw_data"]},{"type":"text","value":") %>% "},{"type":"wb","answers":["summary()"]}]}],"kind":"fixed","indentDepth":0}];
+var ID="cp7790672";
+var BLOCKS=[{"kind":"fixed","lines":[{"indent":0,"parts":[{"value":"lm(","type":"text"},{"answers":["score"],"type":"wb"},{"value":" ~ ","type":"text"},{"answers":["time"],"type":"wb"},{"value":", data = ","type":"text"},{"answers":["raw_data"],"type":"wb"},{"value":") %>% ","type":"text"},{"answers":["summary()"],"type":"wb"}]}],"indentDepth":0}];
 var WB=["score","time","raw_data","summary()"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;

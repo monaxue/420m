@@ -23,7 +23,7 @@ $$
 $$ 
 \text{Depression} = \beta \times \text{Addiction} + \text{Intercept} 
 $$
-![](assets/linear-regression.png)
+![](assets/linear-regression.png){height="400px"}
 
 
 ## CI for regression plot

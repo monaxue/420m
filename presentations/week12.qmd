@@ -2,45 +2,36 @@
 title: "12: Residuals and polynomial fitting"
 ---
 
-## {data-name="Review" background-iframe="https://wall.sli.do/event/9HN7eFh37sHBd29xn64cLL?section=290ab010-501b-4d19-a56a-01d07abf3249&integration=shared-present-mode&utm_source=slidoadmin" background-interactive=true}
+## Announcements {data-name="Announcements"}
 
+- Quiz 3 next week (Nov. 18th)
+    - TBD if there will be a lab as well
+    - As always, you are allowed a single sided cheat sheet with only formulas
+    - You will receive extra credit for cheatsheet
+    - All your cheatsheets together can increase your grade by 3%
+- Case Study 3 after Thanksgiving
 
 <!--
 
-## Answer {.conditional data-admin="true" data-date="2026-04-18"}
+## {data-name="Review" background-iframe="https://wall.sli.do/event/9HN7eFh37sHBd29xn64cLL?section=290ab010-501b-4d19-a56a-01d07abf3249&integration=shared-present-mode&utm_source=slidoadmin" background-interactive=true}
 
-```r
-model1 <- lm(reported_shape ~ hours, data = data)
-model1
-```
-```{r}
-
-library(tidyverse)
-
-data1 <- read_csv("./data/shapeVsHours.csv")
-
-model1 <- lm(reported_shape ~ hours, data = data1)
-
-model1
-```
-
-## Plotting the line
-
-::: {.conditional data-admin="true" data-date="2026-04-18"}
-
-```r
-ggplot(data=..., aes(x=..., y=...)) + geom_point() + geom_smooth(method="lm")
-```
-
-```{r}
-
-ggplot(data=data1, aes(x=hours, y=reported_shape)) + geom_point() + geom_smooth(method="lm")
-
-```
-
-:::
 -->
 
+## Quiz 3 Topics
+
+
+There will be 3-5 questions per topic.
+
+::: {.card-list-compact .nonincremental}
+1. Grouped Data <!--3-->
+1. Simple Regression <!--5-->
+1. Correlation <!--5-->
+1. Decisions <!--4-->
+1. One way ANOVA <!--3-->
+1. Causal graphs <!--4-->
+1. Multiple Regression <!--3-->
+1. Binomial analysis <!--3-->
+:::
 
 ## What are residuals? {data-name="Residuals"}
 
@@ -91,6 +82,12 @@ $\text{errors}_\text{model} = y_\text{data points} - y_\text{model}$
 
 ```{r}
 #| fig-align: "center"
+
+library(tidyverse)
+
+data1 <- read_csv("./data/shapeVsHours.csv")
+
+model1 <- lm(reported_shape ~ hours, data = data1)
 
 data1 <- data1 %>% mutate(resids = model1$residuals)
 

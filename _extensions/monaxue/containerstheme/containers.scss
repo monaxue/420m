@@ -1,22 +1,39 @@
 /*-- scss:defaults --*/
-$padding:     10px 20px;
-$line-height: 1.5;
+$padding-normal: 10px 20px;
+$padding-compact: 5px 10px; 
+$padding-spacious: 30px;
+$line-height-normal: 1.5;
+$line-height-compact: 1.2;
 $radius-1:    15px;
 $radius-2:    12px;
+$radius-3: 10px;
+$margin-top-normal: 0.4em; // default from quarto?
+$margin-bottom-normal: 0.2em; // default from quarto?
+$margin-top-compact: 0.2em;
+$margin-bottom-compact: 0.1em;
 
 /*-- scss:mixins --*/
-@mixin card-item($bg, $width, $radius: $radius-1) {
+@mixin card-item($bg, $width, $radius: $radius-1, $padding: $padding-normal, $line-height: $line-height-normal, $border-color: var(--color-3)) {
   /*--display: block;--*/
   box-sizing: border-box;
   background-color: $bg;
-  border: 2px solid var(--color-3);
+  border: 2px solid $border-color;
   padding: $padding;
   border-radius: $radius;
   width: $width;
   line-height: $line-height;
 }
 
-@mixin card-list-styles {
+@mixin card-list-styles(
+$bg-li-1: var(--color-1),
+$bg-li-2: var(--color-2),
+$border-color: var(--color-3),
+$margin-top: $margin-top-normal, 
+$margin-bottom: $margin-bottom-normal, 
+$line-height: $line-height-normal, 
+$radius-larger: $radius-1,
+$radius-smaller: $radius-2,
+$padding: $padding-normal) {
   ul {
     list-style: none;
     width: 100%;
@@ -34,22 +51,28 @@ $radius-2:    12px;
     margin-left: 0;
     margin-right: 0;
   }
+
+  ul li, ol li{
+    margin-top: $margin-top;
+    margin-bottom: $margin-bottom;
+  }
+
   > ul > li,
   > ol > li { 
-    @include card-item(var(--color-2), 100%); 
-    margin-bottom: 8px; 
+    @include card-item($bg: $bg-li-2, $border-color: $border-color, $width: 100%, $radius: $radius-larger, $padding: $padding, $line-height: $line-height); 
+    //margin-bottom: //8px; 
   }
   li > :where(ul, ol) > li { 
-    @include card-item(var(--color-1), 100%, $radius-2); 
-    margin-bottom: 4px; 
+    @include card-item($bg: $bg-li-1, $border-color: $border-color, $width: 100%, $radius: $radius-smaller, $padding: $padding, $line-height: $line-height); 
+    //margin-bottom: //4px; 
   }
   li > :where(ul, ol) > li > :where(ul, ol) > li { 
-    @include card-item(var(--color-2), 100%, $radius-2); 
-    margin-bottom: 4px; 
+    @include card-item($bg: $bg-li-2, $border-color: $border-color, $width: 100%, $radius: $radius-smaller, $padding: $padding, $line-height: $line-height); 
+    //margin-bottom: //4px; 
   }
   li > :where(ul, ol) {
-    margin-top: 4px;
-    margin-bottom: 4px;
+    //margin-top: // 4px;
+    //margin-bottom: // 4px;
     padding-left: 0;
   }
   ol > li { 
@@ -190,7 +213,7 @@ $radius-2:    12px;
 //div.callout 
 .callout-body {
   background-color: var(--color-1) !important;
-  border-radius: 14px !important;
+  border-radius: $radius-1 !important;
 }
 
 // Changes the background color of the callout title header banner //
@@ -200,12 +223,12 @@ $radius-2:    12px;
 }
 
 .callout-title {
-  border-top-left-radius: 14px !important;
-  border-top-right-radius: 14px !important;
+  border-top-left-radius: $radius-1 !important;
+  border-top-right-radius: $radius-1 !important;
 }
 
 .callout {
-  border-radius: 14px !important; // Adjust the pixel or rem value as desired
+  border-radius: $radius-1 !important; // Adjust the pixel or rem value as desired
 }
 
 // Adds h4-h6 as headings with decreasing size //
@@ -236,7 +259,7 @@ font-size:1.2em ;
     list-style-position: outside;
     margin-left: 1.5em;
     padding-left: 0;
-    line-height: $line-height;
+    line-height: $line-height-normal;
   }
 
   > ul > li,
@@ -248,8 +271,9 @@ font-size:1.2em ;
     padding: 0;
     border-radius: 0;
     width: auto;
-    line-height: $line-height;
+    line-height: $line-height-normal;
     box-sizing: content-box;
+    border: none;
   }
 
   ul.task-list { 
@@ -264,14 +288,23 @@ font-size:1.2em ;
 
 // ── Default card list ──────────────────────────────────────────
 .reveal .slide {
-  --color-2: rgba(244, 223, 184, 1);
-  --color-3: rgba(211, 145, 0, 1);
+  //--color-2: rgba(244, 223, 184, 1);
+  //--color-3: rgba(211, 145, 0, 1);
   @include card-list-styles;
 }
 
 // ── .card-list (explicit) ──────────────────────────────────────
 .reveal .slide .card-list {
   @include card-list-styles;
+}
+
+.reveal .slide .card-list-compact {
+  @include card-list-styles($margin-top: $margin-top-compact, 
+  $margin-bottom: $margin-bottom-compact, 
+  $line-height: $line-height-compact,
+  $radius-larger: $radius-2,
+  $radius-smaller: $radius-3, 
+  $padding: $padding-compact);
 }
 
 // ── .card-list-center ──────────────────────────────────────────
@@ -287,7 +320,7 @@ font-size:1.2em ;
 
   ul {
     list-style: none;
-    line-height: $line-height;
+    line-height: $line-height-normal;
     padding-left: 0;
     margin: 0;
     display: flex;
@@ -298,7 +331,7 @@ font-size:1.2em ;
   ol {
     list-style-type: decimal;
     list-style-position: inside;
-    line-height: $line-height;
+    line-height: $line-height-normal;
     padding-left: 0;
     margin: 0;
     display: flex;
@@ -315,15 +348,14 @@ font-size:1.2em ;
 
   > ul > li,
   > ol > li {
-    @include card-item(var(--color-2), fit-content);
+    @include card-item(var(--color-2), $width: fit-content, $padding: $padding-spacious);
     margin-bottom: 8px;
-    padding: 30px;
   }
   li > :where(ul, ol) > li {
-    @include card-item(var(--color-1), fit-content, $radius-2);
+    @include card-item(var(--color-1), $width: fit-content, $padding: $padding-normal, $radius: $radius-2);
     margin-bottom: 4px; }
   li > :where(ul, ol) > li > :where(ul, ol) > li {
-    @include card-item(var(--color-2), fit-content, $radius-2);
+    @include card-item(var(--color-2), $width: fit-content, $padding: $padding-normal, $radius: $radius-2);
     margin-bottom: 4px;
   }
   li > :where(ul, ol) {
@@ -341,7 +373,7 @@ font-size:1.2em ;
 
   [role="tablist"] {
     list-style: none;
-    margin: 0;
+    margin: 0 !important;
     padding: 6px 8px 0 8px;
     width: 100%;
     box-sizing: border-box;
@@ -398,7 +430,7 @@ font-size:1.2em ;
       list-style: none;
       width: 100%;
       padding-left: 0;
-      line-height: $line-height;
+      line-height: $line-height-normal;
       margin-left: 0;
       margin-right: 0;
     }
@@ -409,17 +441,17 @@ font-size:1.2em ;
 
     ul > li,
     ol > li {
-      @include card-item(var(--color-2), 100%);
+      @include card-item($bg: var(--color-2), $width: 100%, $padding: $padding-normal);
       margin-bottom: 8px;
     }
 
     li > :where(ul, ol) > li {
-      @include card-item(var(--color-1), 100%, $radius-2);
+      @include card-item($bg: var(--color-1), $width: 100%, $radius: $radius-2, $padding: $padding-normal);
       margin-bottom: 4px;
     }
 
     li > :where(ul, ol) > li > :where(ul, ol) > li {
-      @include card-item(var(--color-2), 100%, $radius-2);
+      @include card-item($bg: var(--color-2), $width: 100%, $radius: $radius-2, $padding: $padding-normal);
       margin-bottom: 4px;
     }
 
@@ -433,11 +465,13 @@ font-size:1.2em ;
       display: list-item;
     }
   }
+
+
 }
 
 // ── Global ─────────────────────────────────────────────────────
 .reveal .slides {
-  p, li { line-height: $line-height; }
+  p, li { line-height: $line-height-normal; }
 }
 
 // ── simplemenu: reserve space for the top menu bar ──────────────────

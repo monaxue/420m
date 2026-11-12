@@ -101,7 +101,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-d3e801d455d5e01803a1237582fed831.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-6cf552f07a8a796064ec3533a064e88e.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -221,9 +221,12 @@
   body:has(#title-slide.present) .reveal > .menubar.top { background-color: rgba(244, 223, 184, 1); --color-3: rgba(211, 145, 0, 1); }
   body:has(#title-slide.present) { background-color: rgba(254, 248, 237, 1); }
   .reveal-viewport { background-color: rgba(254, 248, 237, 1); }
-  #section { --color-1: rgba(254, 248, 237, 1); --color-2: rgba(244, 223, 184, 1); --color-3: rgba(211, 145, 0, 1); }
-  body:has(#section.present) .reveal > .menubar.top { background-color: rgba(244, 223, 184, 1); --color-3: rgba(211, 145, 0, 1); }
-  body:has(#section.present) { background-color: rgba(254, 248, 237, 1); }
+  #announcements { --color-1: rgba(254, 248, 237, 1); --color-2: rgba(244, 223, 184, 1); --color-3: rgba(211, 145, 0, 1); }
+  body:has(#announcements.present) .reveal > .menubar.top { background-color: rgba(244, 223, 184, 1); --color-3: rgba(211, 145, 0, 1); }
+  body:has(#announcements.present) { background-color: rgba(254, 248, 237, 1); }
+  #quiz-3-topics { --color-1: rgba(254, 248, 237, 1); --color-2: rgba(244, 223, 184, 1); --color-3: rgba(211, 145, 0, 1); }
+  body:has(#quiz-3-topics.present) .reveal > .menubar.top { background-color: rgba(244, 223, 184, 1); --color-3: rgba(211, 145, 0, 1); }
+  body:has(#quiz-3-topics.present) { background-color: rgba(254, 248, 237, 1); }
   #what-are-residuals { --color-1: rgba(254, 248, 237, 1); --color-2: rgba(244, 223, 184, 1); --color-3: rgba(211, 145, 0, 1); }
   body:has(#what-are-residuals.present) .reveal > .menubar.top { background-color: rgba(244, 223, 184, 1); --color-3: rgba(211, 145, 0, 1); }
   body:has(#what-are-residuals.present) { background-color: rgba(254, 248, 237, 1); }
@@ -261,53 +264,39 @@
 </div>
 
 </section>
-<section id="section" class="slide level2 center" data-name="Review" data-background-iframe="https://wall.sli.do/event/9HN7eFh37sHBd29xn64cLL?section=290ab010-501b-4d19-a56a-01d07abf3249&amp;integration=shared-present-mode&amp;utm_source=slidoadmin" data-background-interactive="true" data-background-color="rgba(254, 248, 237, 1)">
-<h2></h2>
+<section id="announcements" class="slide level2 center" data-name="Announcements" data-background-color="rgba(254, 248, 237, 1)">
+<h2>Announcements</h2>
+<ul>
+<li>Quiz 3 next week (Nov.&nbsp;18th)
+<ul>
+<li>TBD if there will be a lab as well</li>
+<li>As always, you are allowed a single sided cheat sheet with only formulas</li>
+<li>You will receive extra credit for cheatsheet</li>
+<li>All your cheatsheets together can increase your grade by 3%</li>
+</ul></li>
+<li>Case Study 3 after Thanksgiving</li>
+</ul>
 <!--
 
-## Answer {.conditional data-admin="true" data-date="2026-04-18"}
+## {data-name="Review" background-iframe="https://wall.sli.do/event/9HN7eFh37sHBd29xn64cLL?section=290ab010-501b-4d19-a56a-01d07abf3249&integration=shared-present-mode&utm_source=slidoadmin" background-interactive=true}
 
-```r
-model1 <- lm(reported_shape ~ hours, data = data)
-model1
-```
-
-::: {.cell}
-::: {.cell-output .cell-output-stdout}
-
-```
-
-Call:
-lm(formula = reported_shape ~ hours, data = data1)
-
-Coefficients:
-(Intercept)        hours  
-      2.076        1.535  
-```
-
-
-:::
-:::
-
-
-## Plotting the line
-
-::: {.conditional data-admin="true" data-date="2026-04-18"}
-
-```r
-ggplot(data=..., aes(x=..., y=...)) + geom_point() + geom_smooth(method="lm")
-```
-
-
-::: {.cell}
-::: {.cell-output-display}
-![](week12_files/figure-revealjs/unnamed-chunk-2-1.png){width=960}
-:::
-:::
-
-
-:::
 -->
+</section>
+<section id="quiz-3-topics" class="slide level2 center scrollable" data-background-color="rgba(254, 248, 237, 1)">
+<h2>Quiz 3 Topics</h2>
+<p>There will be 3-5 questions per topic.</p>
+<div class="card-list-compact">
+<ol type="1">
+<li>Grouped Data <!--3--></li>
+<li>Simple Regression <!--5--></li>
+<li>Correlation <!--5--></li>
+<li>Decisions <!--4--></li>
+<li>One way ANOVA <!--3--></li>
+<li>Causal graphs <!--4--></li>
+<li>Multiple Regression <!--3--></li>
+<li>Binomial analysis <!--3--></li>
+</ol>
+</div>
 </section>
 <section id="what-are-residuals" class="slide level2 center" data-name="Residuals" data-background-color="rgba(254, 248, 237, 1)">
 <h2>What are residuals?</h2>
@@ -356,7 +345,7 @@ $\text{errors}_\text{model} = y_\text{data points} - y_\text{model}$
 <li><code>Residuals of Dependent Variable ~ Independent Variable</code></li>
 </ul>
 
-<img data-src="week12_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><ul>
+<img data-src="week12_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><ul>
 <li>Because residuals are noise, they should look random. The model we fit is wrong if the residuals don’t look random (linear trend with slope = 0).</li>
 </ul>
 </section>
@@ -371,7 +360,7 @@ $\text{errors}_\text{model} = y_\text{data points} - y_\text{model}$
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-5-1.png" width="576"></p>
+<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-3-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -382,7 +371,7 @@ $\text{errors}_\text{model} = y_\text{data points} - y_\text{model}$
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-6-1.png" width="576"></p>
+<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-4-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -397,7 +386,7 @@ $\text{errors}_\text{model} = y_\text{data points} - y_\text{model}$
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-7-1.png" width="576"></p>
+<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-5-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -408,7 +397,7 @@ $\text{errors}_\text{model} = y_\text{data points} - y_\text{model}$
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-8-1.png" width="576"></p>
+<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-6-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -428,7 +417,7 @@ $\text{errors}_\text{model} = y_\text{data points} - y_\text{model}$
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-9-1.png" width="576"></p>
+<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-7-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -439,7 +428,7 @@ $\text{errors}_\text{model} = y_\text{data points} - y_\text{model}$
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-10-1.png" width="576"></p>
+<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-8-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -457,7 +446,7 @@ $\text{errors}_\text{model} = y_\text{data points} - y_\text{model}$
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-11-1.png" width="576"></p>
+<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-9-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -477,7 +466,7 @@ $\text{errors}_\text{model} = y_\text{data points} - y_\text{model}$
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-12-1.png" width="576"></p>
+<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-10-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -488,7 +477,7 @@ $\text{errors}_\text{model} = y_\text{data points} - y_\text{model}$
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-13-1.png" width="576"></p>
+<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-11-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -503,7 +492,7 @@ $\text{errors}_\text{model} = y_\text{data points} - y_\text{model}$
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-14-1.png" width="576"></p>
+<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-12-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -524,7 +513,7 @@ $\text{errors}_\text{model} = y_\text{data points} - y_\text{model}$
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-15-1.png" width="576"></p>
+<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-13-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -542,7 +531,7 @@ $\text{errors}_\text{model} = y_\text{data points} - y_\text{model}$
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-16-1.png" width="576"></p>
+<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-14-1.png" width="576"></p>
 </figure>
 </div>
 </div>
@@ -570,7 +559,7 @@ $\text{errors}_\text{model} = y_\text{data points} - y_\text{model}$
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-17-1.png" width="480"></p>
+<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-15-1.png" width="480"></p>
 </figure>
 </div>
 </div>
@@ -697,11 +686,11 @@ $\text{errors}_\text{model} = y_\text{data points} - y_\text{model}$
 .cpz-result.fail{color:#c62828}
 .cpz-tip{font-size:11px;color:#aaa;margin-top:6px}
 </style>
-<div class="cpz" id="cp7156101"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp7156101-linenums"></div><div class="cpz-code" id="cp7156101-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp7156101-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp7156101-actions"></div></div><script>
+<div class="cpz" id="cp2799561"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp2799561-linenums"></div><div class="cpz-code" id="cp2799561-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp2799561-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp2799561-actions"></div></div><script>
 (function(){
 try{
-var ID="cp7156101";
-var BLOCKS=[{"lines":[{"parts":[{"value":"ggplot(","type":"text"},{"answers":["shape"],"type":"wb"},{"value":", aes(x=","type":"text"},{"answers":["hours"],"type":"free"},{"value":", y=","type":"text"},{"answers":["reported_shape"],"type":"free"},{"value":")) + geom_","type":"text"},{"answers":["point"],"type":"wb"},{"value":"()","type":"text"}],"indent":0}],"indentDepth":0,"kind":"fixed"}];
+var ID="cp2799561";
+var BLOCKS=[{"kind":"fixed","lines":[{"parts":[{"value":"ggplot(","type":"text"},{"answers":["shape"],"type":"wb"},{"value":", aes(x=","type":"text"},{"answers":["hours"],"type":"free"},{"value":", y=","type":"text"},{"answers":["reported_shape"],"type":"free"},{"value":")) + geom_","type":"text"},{"answers":["point"],"type":"wb"},{"value":"()","type":"text"}],"indent":0}],"indentDepth":0}];
 var WB=["shape","point"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -1354,17 +1343,17 @@ init();
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-19-1.png" width="960"></p>
+<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>For the fitted line layer (without the scatter)</p>
-<div class="cpz" id="cp1644302"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp1644302-linenums"></div><div class="cpz-code" id="cp1644302-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp1644302-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp1644302-actions"></div></div><script>
+<div class="cpz" id="cp7438972"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp7438972-linenums"></div><div class="cpz-code" id="cp7438972-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp7438972-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp7438972-actions"></div></div><script>
 (function(){
 try{
-var ID="cp1644302";
-var BLOCKS=[{"lines":[{"parts":[{"value":"… + geom_","type":"text"},{"answers":["smooth"],"type":"wb"},{"value":"(","type":"text"},{"answers":["method"],"type":"wb"},{"value":"=\"","type":"text"},{"answers":["lm"],"type":"wb"},{"value":"\")","type":"text"}],"indent":0}],"indentDepth":0,"kind":"fixed"}];
+var ID="cp7438972";
+var BLOCKS=[{"kind":"fixed","lines":[{"parts":[{"value":"… + geom_","type":"text"},{"answers":["smooth"],"type":"wb"},{"value":"(","type":"text"},{"answers":["method"],"type":"wb"},{"value":"=\"","type":"text"},{"answers":["lm"],"type":"wb"},{"value":"\")","type":"text"}],"indent":0}],"indentDepth":0}];
 var WB=["smooth","method","lm"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -2017,7 +2006,7 @@ init();
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-20-1.png" width="960"></p>
+<p><img data-src="week12_files/figure-revealjs/unnamed-chunk-18-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -2040,11 +2029,11 @@ init();
 </div>
 </div>
 <p>The <code>lm()</code> function in R automatically calculates the residuals for you and stores it in its output.</p>
-<div class="cpz" id="cp1488163"><div class="cpz-layout nowb"><div><div class="cpz-col-label">Code</div><div style="display:flex"><div class="cpz-linenums" id="cp1488163-linenums"></div><div class="cpz-code" id="cp1488163-code"></div></div></div></div><div class="cpz-actions" id="cp1488163-actions"></div></div><script>
+<div class="cpz" id="cp9317093"><div class="cpz-layout nowb"><div><div class="cpz-col-label">Code</div><div style="display:flex"><div class="cpz-linenums" id="cp9317093-linenums"></div><div class="cpz-code" id="cp9317093-code"></div></div></div></div><div class="cpz-actions" id="cp9317093-actions"></div></div><script>
 (function(){
 try{
-var ID="cp1488163";
-var BLOCKS=[{"lines":[{"parts":[{"value":"lm_shape <- lm(","type":"text"},{"answers":["reported_shape"],"type":"free"},{"value":" ~ ","type":"text"},{"answers":["hours"],"type":"free"},{"value":", data = ","type":"text"},{"answers":["shape"],"type":"free"},{"value":")","type":"text"}],"indent":0}],"indentDepth":0,"kind":"fixed"},{"lines":[{"parts":[{"value":"shape_resids <- ","type":"text"},{"answers":["lm_shape"],"type":"free"},{"value":"$residuals","type":"text"}],"indent":0}],"indentDepth":0,"kind":"fixed"}];
+var ID="cp9317093";
+var BLOCKS=[{"kind":"fixed","lines":[{"parts":[{"value":"lm_shape <- lm(","type":"text"},{"answers":["reported_shape"],"type":"free"},{"value":" ~ ","type":"text"},{"answers":["hours"],"type":"free"},{"value":", data = ","type":"text"},{"answers":["shape"],"type":"free"},{"value":")","type":"text"}],"indent":0}],"indentDepth":0},{"kind":"fixed","lines":[{"parts":[{"value":"shape_resids <- ","type":"text"},{"answers":["lm_shape"],"type":"free"},{"value":"$residuals","type":"text"}],"indent":0}],"indentDepth":0}];
 var WB=[];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -2734,11 +2723,11 @@ init();
 </div>
 </div>
 <p>This is how you fit a polynomial function of degree 1 using <code>lm()</code> (equivalent to last week’s method)</p>
-<div class="cpz" id="cp4682674"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp4682674-linenums"></div><div class="cpz-code" id="cp4682674-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp4682674-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp4682674-actions"></div></div><script>
+<div class="cpz" id="cp1551564"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp1551564-linenums"></div><div class="cpz-code" id="cp1551564-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp1551564-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp1551564-actions"></div></div><script>
 (function(){
 try{
-var ID="cp4682674";
-var BLOCKS=[{"lines":[{"parts":[{"value":"lm(","type":"text"},{"answers":["shape"],"type":"wb"},{"value":"$","type":"text"},{"answers":["reported_shape"],"type":"wb"},{"value":" ~ poly(shape$","type":"text"},{"answers":["hours"],"type":"wb"},{"value":", 1))","type":"text"}],"indent":0}],"indentDepth":0,"kind":"fixed"}];
+var ID="cp1551564";
+var BLOCKS=[{"kind":"fixed","lines":[{"parts":[{"value":"lm(","type":"text"},{"answers":["shape"],"type":"wb"},{"value":"$","type":"text"},{"answers":["reported_shape"],"type":"wb"},{"value":" ~ poly(shape$","type":"text"},{"answers":["hours"],"type":"wb"},{"value":", 1))","type":"text"}],"indent":0}],"indentDepth":0}];
 var WB=["shape","reported_shape","hours"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -3388,11 +3377,11 @@ init();
 })();
 </script>
 <p>Based on the previous example, how would you fit a polynomial function of degree 2?</p>
-<div class="cpz" id="cp3095275"><div class="cpz-layout nowb"><div><div class="cpz-col-label">Code</div><div style="display:flex"><div class="cpz-linenums" id="cp3095275-linenums"></div><div class="cpz-code" id="cp3095275-code"></div></div></div></div><div class="cpz-actions" id="cp3095275-actions"></div></div><script>
+<div class="cpz" id="cp5707055"><div class="cpz-layout nowb"><div><div class="cpz-col-label">Code</div><div style="display:flex"><div class="cpz-linenums" id="cp5707055-linenums"></div><div class="cpz-code" id="cp5707055-code"></div></div></div></div><div class="cpz-actions" id="cp5707055-actions"></div></div><script>
 (function(){
 try{
-var ID="cp3095275";
-var BLOCKS=[{"lines":[{"parts":[{"value":"lm(","type":"text"},{"answers":["shape"],"type":"free"},{"value":"$","type":"text"},{"answers":["reported_shape"],"type":"free"},{"value":" ~ poly(","type":"text"},{"answers":["shape"],"type":"free"},{"value":"$","type":"text"},{"answers":["hours"],"type":"free"},{"value":", ","type":"text"},{"answers":["2"],"type":"free"},{"value":"))","type":"text"}],"indent":0}],"indentDepth":0,"kind":"fixed"}];
+var ID="cp5707055";
+var BLOCKS=[{"kind":"fixed","lines":[{"parts":[{"value":"lm(","type":"text"},{"answers":["shape"],"type":"free"},{"value":"$","type":"text"},{"answers":["reported_shape"],"type":"free"},{"value":" ~ poly(","type":"text"},{"answers":["shape"],"type":"free"},{"value":"$","type":"text"},{"answers":["hours"],"type":"free"},{"value":", ","type":"text"},{"answers":["2"],"type":"free"},{"value":"))","type":"text"}],"indent":0}],"indentDepth":0}];
 var WB=[];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -4059,11 +4048,11 @@ init();
 </div>
 </div>
 <p>Add a column called “residuals” to the existing data table and fill that column with the residuals you got from <code>lm()</code>.</p>
-<div class="cpz" id="cp1068446"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp1068446-linenums"></div><div class="cpz-code" id="cp1068446-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp1068446-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp1068446-actions"></div></div><script>
+<div class="cpz" id="cp9584356"><div class="cpz-layout"><div><div class="cpz-col-label">Code · drop tokens onto blanks</div><div style="display:flex"><div class="cpz-linenums" id="cp9584356-linenums"></div><div class="cpz-code" id="cp9584356-code"></div></div></div><div><div class="cpz-col-label">Word Bank</div><div class="cpz-wb-wrap"><div id="cp9584356-wb"></div></div><div class="cpz-tip">Drag onto a blank · click a filled blank to clear · drag blanks to swap</div></div></div><div class="cpz-actions" id="cp9584356-actions"></div></div><script>
 (function(){
 try{
-var ID="cp1068446";
-var BLOCKS=[{"lines":[{"parts":[{"answers":["shape"],"type":"free"},{"value":" <- ","type":"text"},{"answers":["shape"],"type":"wb"},{"value":" %>% ","type":"text"},{"answers":["mutate"],"type":"free"},{"value":"(","type":"text"},{"answers":["residuals"],"type":"free"},{"value":" = ","type":"text"},{"answers":["shape_resids"],"type":"wb"},{"value":")","type":"text"}],"indent":0}],"indentDepth":0,"kind":"fixed"}];
+var ID="cp9584356";
+var BLOCKS=[{"kind":"fixed","lines":[{"parts":[{"answers":["shape"],"type":"free"},{"value":" <- ","type":"text"},{"answers":["shape"],"type":"wb"},{"value":" %>% ","type":"text"},{"answers":["mutate"],"type":"free"},{"value":"(","type":"text"},{"answers":["residuals"],"type":"free"},{"value":" = ","type":"text"},{"answers":["shape_resids"],"type":"wb"},{"value":")","type":"text"}],"indent":0}],"indentDepth":0}];
 var WB=["shape","shape_resids"];
 var SHOW_ANSWERS=false;
 var SHOW_HINT=false;
@@ -4737,7 +4726,7 @@ ggplot(data=data2, aes(x=..., y=...)) + geom_point() +
 
 ::: {.cell}
 ::: {.cell-output-display}
-![](week12_files/figure-revealjs/unnamed-chunk-26-1.png){width=960}
+![](week12_files/figure-revealjs/unnamed-chunk-24-1.png){width=960}
 :::
 :::
 

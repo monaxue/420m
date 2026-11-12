@@ -5,7 +5,7 @@ title: "12: Residuals and polynomial fitting"
 ## Announcements {data-name="Announcements"}
 
 - Quiz 3 next week (Nov. 18th)
-    - TBD if there will be a lab as well
+    - No lab next week! Only the quiz!
     - As always, you are allowed a single sided cheat sheet with only formulas
     - You will receive extra credit for cheatsheet
     - All your cheatsheets together can increase your grade by 3%

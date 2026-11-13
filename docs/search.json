@@ -1481,13 +1481,13 @@
     "href": "presentations/week12.html#announcements",
     "title": "12: Residuals and polynomial fitting",
     "section": "Announcements",
-    "text": "Announcements\n\nQuiz 3 next week (Nov. 18th)\n\nTBD if there will be a lab as well\nAs always, you are allowed a single sided cheat sheet with only formulas\nYou will receive extra credit for cheatsheet\nAll your cheatsheets together can increase your grade by 3%\n\nCase Study 3 after Thanksgiving"
+    "text": "Announcements\n\nQuiz 3 next week (Nov. 18th)\n\nNo lab next week! Only the quiz!\nAs always, you are allowed a single sided cheat sheet with only formulas\nYou will receive extra credit for cheatsheet\nAll your cheatsheets together can increase your grade by 3%\n\nCase Study 3 after Thanksgiving"
   },
   {
     "objectID": "presentations/week12.html#quiz-3-topics",
     "href": "presentations/week12.html#quiz-3-topics",
     "title": "12: Residuals and polynomial fitting",
     "section": "Quiz 3 Topics",
-    "text": "Quiz 3 Topics\nThere will be 3-5 questions per topic.\n\n\nGrouped Data \nSimple Regression \nCorrelation \nDecisions \nOne way ANOVA \nCausal graphs \nMultiple Regression \nBinomial analysis"
+    "text": "Quiz 3 Topics\nThere will be 3-5 questions per topic.\n\n\nGrouped Data \nSimple Regression \nCorrelation \nPower, Type I vs II errors, alpha \nOne way ANOVA \nCausal graphs \nMultiple Regression \nBinomial analysis"
   }
 ]

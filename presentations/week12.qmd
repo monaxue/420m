@@ -26,7 +26,7 @@ There will be 3-5 questions per topic.
 1. Grouped Data <!--3-->
 1. Simple Regression <!--5-->
 1. Correlation <!--5-->
-1. Decisions <!--4-->
+1. Power, Type I vs II errors, alpha <!--4-->
 1. One way ANOVA <!--3-->
 1. Causal graphs <!--4-->
 1. Multiple Regression <!--3-->
